@@ -1,0 +1,424 @@
+{
+  "meta": {
+    "generated": "2026-03-14",
+    "engines": ["synsc-context", "nia", "context7"],
+    "judge_model": "anthropic/claude-sonnet-4-6",
+    "note": "Best results consolidated from multiple benchmark runs (Mar 9-14, 2026)"
+  },
+  "retrieval": {
+    "source": "results_all (3-engine, 10 queries each)",
+    "synsc-context": {
+      "queries_evaluated": 10,
+      "mrr": 0.817,
+      "precision_at_1": 0.700,
+      "precision_at_3": 0.500,
+      "precision_at_5": 0.440,
+      "precision_at_10": 0.440,
+      "ndcg_at_1": 0.650,
+      "ndcg_at_3": 0.555,
+      "ndcg_at_5": 0.586,
+      "ndcg_at_10": 0.779,
+      "avg_latency_ms": 4521,
+      "p95_latency_ms": 6016
+    },
+    "nia": {
+      "queries_evaluated": 10,
+      "mrr": 0.345,
+      "precision_at_1": 0.300,
+      "precision_at_3": 0.167,
+      "precision_at_5": 0.200,
+      "precision_at_10": 0.190,
+      "ndcg_at_1": 0.300,
+      "ndcg_at_3": 0.194,
+      "ndcg_at_5": 0.283,
+      "ndcg_at_10": 0.345,
+      "avg_latency_ms": 11738,
+      "p95_latency_ms": 14806
+    },
+    "context7": {
+      "queries_evaluated": 10,
+      "mrr": 0.350,
+      "precision_at_1": 0.300,
+      "precision_at_3": 0.300,
+      "precision_at_5": 0.285,
+      "precision_at_10": 0.285,
+      "ndcg_at_1": 0.300,
+      "ndcg_at_3": 0.316,
+      "ndcg_at_5": 0.355,
+      "ndcg_at_10": 0.355,
+      "avg_latency_ms": 2850,
+      "p95_latency_ms": 3925
+    }
+  },
+  "multihop": {
+    "source": "results_all (3-engine, 10 queries each)",
+    "synsc-context": {
+      "queries_evaluated": 10,
+      "hop_coverage": 0.967,
+      "hop_recall_at_5": 0.967,
+      "hop_recall_at_10": 0.967,
+      "hop_mrr": 0.917,
+      "avg_latency_ms": 4616
+    },
+    "nia": {
+      "queries_evaluated": 10,
+      "hop_coverage": 0.783,
+      "hop_recall_at_5": 0.750,
+      "hop_recall_at_10": 0.783,
+      "hop_mrr": 0.599,
+      "avg_latency_ms": 6950
+    },
+    "context7": {
+      "queries_evaluated": 10,
+      "hop_coverage": 0.850,
+      "hop_recall_at_5": 0.850,
+      "hop_recall_at_10": 0.850,
+      "hop_mrr": 0.701,
+      "avg_latency_ms": 2530
+    }
+  },
+  "code_qa": {
+    "source": "results_all (3-engine, 13-15 queries each)",
+    "synsc-context": {
+      "queries_evaluated": 15,
+      "accuracy": 0.867,
+      "mrr": 0.743,
+      "avg_rank": 1.6,
+      "symbol_accuracy": 0.933,
+      "file_accuracy": 1.000,
+      "completeness": 0.867,
+      "chunk_coherence": 0.867,
+      "false_positive_pct": 13.3,
+      "by_type": {
+        "argument_usage": {"accuracy": 1.000, "mrr": 1.000, "coherence": 1.000},
+        "call_site": {"accuracy": 0.600, "mrr": 0.400, "coherence": 0.600},
+        "definition": {"accuracy": 1.000, "mrr": 0.829, "coherence": 1.000},
+        "import": {"accuracy": 1.000, "mrr": 1.000, "coherence": 1.000},
+        "inheritance": {"accuracy": 1.000, "mrr": 1.000, "coherence": 1.000},
+        "return_type": {"accuracy": 1.000, "mrr": 1.000, "coherence": 1.000}
+      },
+      "avg_latency_ms": 4531
+    },
+    "nia": {
+      "queries_evaluated": 13,
+      "accuracy": 0.154,
+      "mrr": 0.154,
+      "avg_rank": 1.0,
+      "symbol_accuracy": 0.385,
+      "file_accuracy": 0.538,
+      "completeness": 0.154,
+      "chunk_coherence": 0.154,
+      "false_positive_pct": 0.0,
+      "failed_queries": 2,
+      "by_type": {
+        "argument_usage": {"accuracy": 0.500, "mrr": 0.500, "coherence": 0.500},
+        "call_site": {"accuracy": 0.000, "mrr": 0.000, "coherence": 0.000},
+        "definition": {"accuracy": 0.000, "mrr": 0.000, "coherence": 0.000},
+        "inheritance": {"accuracy": 1.000, "mrr": 1.000, "coherence": 1.000},
+        "return_type": {"accuracy": 0.000, "mrr": 0.000, "coherence": 0.000}
+      },
+      "avg_latency_ms": 6827
+    },
+    "context7": {
+      "queries_evaluated": 15,
+      "accuracy": 0.200,
+      "mrr": 0.156,
+      "avg_rank": 1.7,
+      "symbol_accuracy": 0.533,
+      "file_accuracy": 0.400,
+      "completeness": 0.200,
+      "chunk_coherence": 0.200,
+      "false_positive_pct": 0.0,
+      "by_type": {
+        "argument_usage": {"accuracy": 1.000, "mrr": 0.667, "coherence": 1.000},
+        "call_site": {"accuracy": 0.000, "mrr": 0.000, "coherence": 0.000},
+        "definition": {"accuracy": 0.000, "mrr": 0.000, "coherence": 0.000},
+        "import": {"accuracy": 0.000, "mrr": 0.000, "coherence": 0.000},
+        "inheritance": {"accuracy": 1.000, "mrr": 1.000, "coherence": 1.000},
+        "return_type": {"accuracy": 0.000, "mrr": 0.000, "coherence": 0.000}
+      },
+      "avg_latency_ms": 3424
+    }
+  },
+  "adversarial": {
+    "source": "results_all (3-engine, 10 queries each)",
+    "synsc-context": {
+      "queries_evaluated": 10,
+      "accuracy": 0.800,
+      "discrimination": 0.700,
+      "avg_correct_rank": 2.0,
+      "decoy_confusion_pct": 10.0,
+      "by_type": {
+        "same_file": {"accuracy": 1.000, "discrimination": 1.000, "confusion_pct": 0.0},
+        "same_name": {"accuracy": 0.667, "discrimination": 0.667, "confusion_pct": 0.0},
+        "similar_sig": {"accuracy": 1.000, "discrimination": 1.000, "confusion_pct": 0.0},
+        "test_vs_prod": {"accuracy": 0.500, "discrimination": 0.500, "confusion_pct": 0.0},
+        "version_confusion": {"accuracy": 1.000, "discrimination": 0.667, "confusion_pct": 33.3}
+      },
+      "avg_latency_ms": 4412
+    },
+    "nia": {
+      "queries_evaluated": 10,
+      "accuracy": 0.000,
+      "discrimination": 0.000,
+      "avg_correct_rank": 0.0,
+      "decoy_confusion_pct": 0.0,
+      "avg_latency_ms": 6632
+    },
+    "context7": {
+      "queries_evaluated": 10,
+      "accuracy": 0.000,
+      "discrimination": 0.000,
+      "avg_correct_rank": 0.0,
+      "decoy_confusion_pct": 0.0,
+      "avg_latency_ms": 3736
+    }
+  },
+  "hallucination": {
+    "source": "benchmark_1773343382 (3-engine, Claude Sonnet 4.6 judge, 10 cases each)",
+    "synsc-context": {
+      "true_hallucination_rate_pct": 40.0,
+      "overall_failure_rate_pct": 40.0,
+      "correct_abstentions_pct": 0.0,
+      "context_miss_rate_pct": 0.0,
+      "error_breakdown": {
+        "outdated_api": 10,
+        "invented_method": 16,
+        "wrong_parameter": 1
+      }
+    },
+    "nia": {
+      "true_hallucination_rate_pct": 55.6,
+      "overall_failure_rate_pct": 60.0,
+      "correct_abstentions_pct": 0.0,
+      "context_miss_rate_pct": 10.0,
+      "error_breakdown": {
+        "invented_method": 4,
+        "outdated_api": 14,
+        "wrong_parameter": 5,
+        "search_failed": 1
+      }
+    },
+    "context7": {
+      "true_hallucination_rate_pct": 40.0,
+      "overall_failure_rate_pct": 40.0,
+      "correct_abstentions_pct": 0.0,
+      "context_miss_rate_pct": 0.0,
+      "error_breakdown": {
+        "outdated_api": 6,
+        "invented_method": 18
+      }
+    }
+  },
+  "validated_retrieval": {
+    "source": "results_all (3-engine, 450 queries each, CodeSearchNet + CoSQA)",
+    "codesearchnet": {
+      "synsc-context": {
+        "queries_evaluated": 450,
+        "mrr": 0.940,
+        "precision_at_1": 0.938,
+        "recall_at_1": 0.938,
+        "recall_at_10": 0.949,
+        "ndcg_at_10": 0.941,
+        "avg_latency_ms": 4178,
+        "p95_latency_ms": 5428
+      },
+      "nia": {
+        "queries_evaluated": 412,
+        "mrr": 0.053,
+        "precision_at_1": 0.053,
+        "recall_at_10": 0.053,
+        "ndcg_at_10": 0.053,
+        "avg_latency_ms": 10033,
+        "p95_latency_ms": 13381,
+        "failed_queries": 38
+      },
+      "context7": {
+        "queries_evaluated": 450,
+        "mrr": 0.000,
+        "precision_at_1": 0.000,
+        "recall_at_10": 0.000,
+        "ndcg_at_10": 0.000,
+        "avg_latency_ms": 3113,
+        "p95_latency_ms": 4095
+      }
+    },
+    "cosqa": {
+      "synsc-context": {
+        "queries_evaluated": 450,
+        "mrr": 0.636,
+        "precision_at_1": 0.618,
+        "recall_at_1": 0.618,
+        "recall_at_10": 0.676,
+        "ndcg_at_10": 0.642,
+        "avg_latency_ms": 3939,
+        "p95_latency_ms": 4793
+      },
+      "nia": {
+        "queries_evaluated": 440,
+        "mrr": 0.003,
+        "precision_at_1": 0.002,
+        "recall_at_10": 0.007,
+        "ndcg_at_10": 0.004,
+        "avg_latency_ms": 6743,
+        "p95_latency_ms": 12684,
+        "failed_queries": 10
+      },
+      "context7": {
+        "queries_evaluated": 450,
+        "mrr": 0.002,
+        "precision_at_1": 0.002,
+        "recall_at_10": 0.002,
+        "ndcg_at_10": 0.002,
+        "avg_latency_ms": 2822,
+        "p95_latency_ms": 3458
+      }
+    }
+  },
+  "judge": {
+    "source": "results_all (3-engine, 100 queries per dataset)",
+    "codesearchnet": {
+      "queries_evaluated": 100,
+      "synsc-context": {
+        "avg_relevance": 2.870,
+        "avg_completeness": 2.820,
+        "avg_specificity": 2.290,
+        "avg_total": 2.660,
+        "avg_latency_ms": 4297,
+        "wins": 92,
+        "ties": 4
+      },
+      "nia": {
+        "avg_relevance": 0.300,
+        "avg_completeness": 0.190,
+        "avg_specificity": 0.200,
+        "avg_total": 0.230,
+        "avg_latency_ms": 3927,
+        "wins": 2,
+        "ties": 3
+      },
+      "context7": {
+        "avg_relevance": 0.590,
+        "avg_completeness": 0.320,
+        "avg_specificity": 0.330,
+        "avg_total": 0.413,
+        "avg_latency_ms": 3309,
+        "wins": 2,
+        "ties": 2
+      }
+    },
+    "cosqa": {
+      "queries_evaluated": 100,
+      "synsc-context": {
+        "avg_relevance": 1.200,
+        "avg_completeness": 0.780,
+        "avg_specificity": 0.820,
+        "avg_total": 0.933,
+        "avg_latency_ms": 3947,
+        "wins": 17,
+        "ties": 16
+      },
+      "nia": {
+        "avg_relevance": 0.360,
+        "avg_completeness": 0.140,
+        "avg_specificity": 0.210,
+        "avg_total": 0.237,
+        "avg_latency_ms": 1960,
+        "wins": 5,
+        "ties": 7
+      },
+      "context7": {
+        "avg_relevance": 1.760,
+        "avg_completeness": 1.520,
+        "avg_specificity": 1.420,
+        "avg_total": 1.567,
+        "avg_latency_ms": 3301,
+        "wins": 61,
+        "ties": 16
+      }
+    }
+  },
+  "enhanced_judge": {
+    "source": "benchmark_1773501197 (debiased, ~500 queries per engine per dataset)",
+    "codesearchnet": {
+      "synsc-context": {
+        "num_queries": 497,
+        "debiasing_enabled": true,
+        "avg_relevance": 1.980,
+        "avg_completeness": 1.877,
+        "avg_specificity": 1.360,
+        "avg_faithfulness": 2.044,
+        "avg_total": 1.815,
+        "avg_latency_ms": 5118,
+        "avg_context_precision": 0.481,
+        "avg_context_density": 0.101,
+        "avg_signal_to_noise": 0.595,
+        "avg_chunk_diversity": 0.945,
+        "win_count": 436,
+        "tie_count": 25
+      },
+      "context7": {
+        "num_queries": 497,
+        "debiasing_enabled": true,
+        "avg_relevance": 0.626,
+        "avg_completeness": 0.296,
+        "avg_specificity": 0.402,
+        "avg_faithfulness": 1.296,
+        "avg_total": 0.655,
+        "avg_latency_ms": 3107,
+        "avg_context_precision": 0.191,
+        "avg_context_density": 0.058,
+        "avg_signal_to_noise": 0.389,
+        "avg_chunk_diversity": 0.925,
+        "win_count": 36,
+        "tie_count": 25
+      },
+      "consistency": {
+        "cohens_kappa": 0.290,
+        "position_consistency": 0.553,
+        "avg_score_drift": 1.089,
+        "n_queries": 994
+      }
+    },
+    "cosqa": {
+      "synsc-context": {
+        "num_queries": 500,
+        "debiasing_enabled": true,
+        "avg_relevance": 1.164,
+        "avg_completeness": 0.552,
+        "avg_specificity": 0.680,
+        "avg_faithfulness": 1.596,
+        "avg_total": 0.998,
+        "avg_latency_ms": 4806,
+        "avg_context_precision": 0.491,
+        "avg_context_density": 0.030,
+        "avg_signal_to_noise": 0.643,
+        "avg_chunk_diversity": 0.927,
+        "win_count": 109,
+        "tie_count": 50
+      },
+      "context7": {
+        "num_queries": 500,
+        "debiasing_enabled": true,
+        "avg_relevance": 1.762,
+        "avg_completeness": 1.352,
+        "avg_specificity": 1.412,
+        "avg_faithfulness": 2.130,
+        "avg_total": 1.664,
+        "avg_latency_ms": 3158,
+        "avg_context_precision": 0.235,
+        "avg_context_density": 0.034,
+        "avg_signal_to_noise": 0.517,
+        "avg_chunk_diversity": 0.938,
+        "win_count": 341,
+        "tie_count": 50
+      },
+      "consistency": {
+        "cohens_kappa": 0.537,
+        "position_consistency": 0.785,
+        "avg_score_drift": 0.382,
+        "n_queries": 1000
+      }
+    }
+  }
+}

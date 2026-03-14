@@ -1,0 +1,176 @@
+{
+  "_description": "Code-specific QA test cases. Each query targets a precise code location — tests chunking quality and symbol extraction.",
+  "test_cases": [
+    {
+      "id": "cq001",
+      "query": "Where is the FastAPI class defined and what parameters does its __init__ accept?",
+      "description": "Definition lookup — should find the FastAPI class constructor",
+      "qa_type": "definition",
+      "language": "python",
+      "target_symbol": "class FastAPI",
+      "target_file": "fastapi/applications.py",
+      "must_contain": ["class FastAPI", "def __init__", "title", "description", "version"],
+      "must_not_contain": [],
+      "expected_chunk_type": "code"
+    },
+    {
+      "id": "cq002",
+      "query": "Where is HTTPException raised with a 404 status code?",
+      "description": "Call site lookup — should find usage, not definition",
+      "qa_type": "call_site",
+      "language": "python",
+      "target_symbol": "HTTPException",
+      "target_file": "",
+      "argument_pattern": "status_code=404",
+      "must_contain": ["HTTPException", "404"],
+      "must_not_contain": []
+    },
+    {
+      "id": "cq003",
+      "query": "What classes inherit from BaseModel in the FastAPI codebase?",
+      "description": "Inheritance lookup — should find subclasses",
+      "qa_type": "inheritance",
+      "language": "python",
+      "target_symbol": "BaseModel",
+      "target_file": "",
+      "must_contain": ["BaseModel"],
+      "must_not_contain": []
+    },
+    {
+      "id": "cq004",
+      "query": "Where is the Depends function defined and how does it resolve dependencies?",
+      "description": "Definition + behavior — tests chunk completeness",
+      "qa_type": "definition",
+      "language": "python",
+      "target_symbol": "Depends",
+      "target_file": "fastapi/",
+      "must_contain": ["Depends", "dependency"],
+      "must_not_contain": []
+    },
+    {
+      "id": "cq005",
+      "query": "Where is AsyncClient instantiated with http2=True?",
+      "description": "Call site with specific argument — precise search",
+      "qa_type": "call_site",
+      "language": "python",
+      "target_symbol": "AsyncClient",
+      "target_file": "",
+      "argument_pattern": "http2=True",
+      "must_contain": ["AsyncClient", "http2"],
+      "must_not_contain": []
+    },
+    {
+      "id": "cq006",
+      "query": "What does the field_validator decorator do in Pydantic v2 and where is it defined?",
+      "description": "Definition lookup for decorator",
+      "qa_type": "definition",
+      "language": "python",
+      "target_symbol": "field_validator",
+      "target_file": "pydantic/",
+      "must_contain": ["field_validator", "def"],
+      "must_not_contain": ["@validator"]
+    },
+    {
+      "id": "cq007",
+      "query": "Where is the Timeout class used with custom connect and read values?",
+      "description": "Call site with multiple arguments",
+      "qa_type": "argument_usage",
+      "language": "python",
+      "target_symbol": "Timeout",
+      "target_file": "",
+      "argument_pattern": "connect",
+      "must_contain": ["Timeout", "connect"],
+      "must_not_contain": []
+    },
+    {
+      "id": "cq008",
+      "query": "What is the return type of the model_dump method in Pydantic BaseModel?",
+      "description": "Return type lookup — needs complete function signature",
+      "qa_type": "return_type",
+      "language": "python",
+      "target_symbol": "model_dump",
+      "target_file": "pydantic/main.py",
+      "must_contain": ["model_dump", "def", "dict"],
+      "must_not_contain": [".dict()"]
+    },
+    {
+      "id": "cq009",
+      "query": "Where is jsonable_encoder imported and used in FastAPI?",
+      "description": "Import + usage tracking",
+      "qa_type": "import",
+      "language": "python",
+      "target_symbol": "jsonable_encoder",
+      "target_file": "fastapi/",
+      "must_contain": ["jsonable_encoder"],
+      "must_not_contain": []
+    },
+    {
+      "id": "cq010",
+      "query": "Where is response_model used as a parameter in FastAPI route decorators?",
+      "description": "Argument usage across multiple call sites",
+      "qa_type": "argument_usage",
+      "language": "python",
+      "target_symbol": "response_model",
+      "target_file": "",
+      "argument_pattern": "response_model",
+      "must_contain": ["response_model"],
+      "must_not_contain": []
+    },
+    {
+      "id": "cq011",
+      "query": "Where is the Router.add_api_route method defined and what decorators does it support?",
+      "description": "Definition of internal routing method",
+      "qa_type": "definition",
+      "language": "python",
+      "target_symbol": "add_api_route",
+      "target_file": "fastapi/routing.py",
+      "must_contain": ["add_api_route", "def", "methods"],
+      "must_not_contain": []
+    },
+    {
+      "id": "cq012",
+      "query": "Where is CORSMiddleware added to the app with allow_credentials=True?",
+      "description": "Specific middleware configuration call site",
+      "qa_type": "call_site",
+      "language": "python",
+      "target_symbol": "CORSMiddleware",
+      "target_file": "",
+      "argument_pattern": "allow_credentials",
+      "must_contain": ["CORSMiddleware", "allow_credentials"],
+      "must_not_contain": []
+    },
+    {
+      "id": "cq013",
+      "query": "What is the complete signature of httpx.AsyncClient.__init__?",
+      "description": "Full constructor signature — tests chunk doesn't split the definition",
+      "qa_type": "definition",
+      "language": "python",
+      "target_symbol": "class AsyncClient",
+      "target_file": "httpx/_client.py",
+      "must_contain": ["AsyncClient", "__init__", "timeout", "headers"],
+      "must_not_contain": []
+    },
+    {
+      "id": "cq014",
+      "query": "Where does Pydantic raise ValidationError and what fields does the error contain?",
+      "description": "Exception raise sites + error structure",
+      "qa_type": "call_site",
+      "language": "python",
+      "target_symbol": "ValidationError",
+      "target_file": "pydantic/",
+      "must_contain": ["ValidationError", "raise"],
+      "must_not_contain": []
+    },
+    {
+      "id": "cq015",
+      "query": "Where is the @app.on_event startup handler used and what has replaced it in newer FastAPI?",
+      "description": "Deprecated API usage — tests version awareness",
+      "qa_type": "call_site",
+      "language": "python",
+      "target_symbol": "on_event",
+      "target_file": "fastapi/",
+      "must_contain": ["on_event"],
+      "must_not_contain": []
+    }
+  ]
+}

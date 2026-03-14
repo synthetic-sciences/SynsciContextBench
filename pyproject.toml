@@ -1,0 +1,72 @@
+[project]
+name = "synsc-context-bench"
+version = "1.0.0"
+description = "Benchmark harness for evaluating synsc-context against other context engines (Nia, Context7)."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [
+    { name = "InkVell" }
+]
+keywords = ["benchmark", "code-search", "retrieval", "evaluation", "mcp", "llm-judge"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Testing",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+    # HTTP client (engine adapters)
+    "httpx>=0.28.1",
+
+    # Numerical / metrics
+    "numpy>=1.24.0",
+
+    # Logging
+    "structlog>=24.1.0",
+
+    # Environment variables
+    "python-dotenv>=1.0.0",
+
+    # Progress bars
+    "tqdm>=4.60.0",
+
+    # HuggingFace dataset downloads
+    "huggingface-hub>=0.20.0",
+
+    # Database access (benchmark_indexer uses synsc internals)
+    "sqlalchemy>=2.0.30",
+]
+
+[project.optional-dependencies]
+# For PDF generation from whitepaper
+pdf = [
+    "markdown>=3.10.0",
+    "weasyprint>=68.0",
+]
+
+dev = [
+    "ruff>=0.4.0",
+    "mypy>=1.10.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["benchmarks"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "C4", "SIM"]
+ignore = ["E501"]

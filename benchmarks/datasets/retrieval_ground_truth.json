@@ -1,0 +1,147 @@
+{
+  "_description": "Ground-truth dataset for retrieval quality benchmarks. Each query has a set of known relevant chunks/files.",
+  "_instructions": "Fill in repo_ids after indexing the test repos in both engines. Mark relevant_ids with the chunk/file identifiers from your indexed data.",
+  "test_repos": [
+    {
+      "url": "https://github.com/fastapi/fastapi",
+      "description": "FastAPI framework — well-documented, good for API search tests"
+    },
+    {
+      "url": "https://github.com/pydantic/pydantic",
+      "description": "Pydantic v2 — data validation, good for symbol search tests"
+    },
+    {
+      "url": "https://github.com/encode/httpx",
+      "description": "HTTPX — async HTTP client, moderate size"
+    }
+  ],
+  "queries": [
+    {
+      "id": "q001",
+      "query": "How to define a POST endpoint with request body validation in FastAPI",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "fastapi/routing.py",
+        "docs_src/body/tutorial001.py"
+      ],
+      "relevant_keywords": ["@app.post", "BaseModel", "Body"],
+      "total_relevant": 5,
+      "notes": "Should find route decorators and Pydantic model usage"
+    },
+    {
+      "id": "q002",
+      "query": "Implement custom exception handler middleware",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "fastapi/exception_handlers.py",
+        "fastapi/middleware/__init__.py"
+      ],
+      "relevant_keywords": ["ExceptionMiddleware", "add_exception_handler"],
+      "total_relevant": 3,
+      "notes": "Tests cross-file reasoning — handler registration + middleware"
+    },
+    {
+      "id": "q003",
+      "query": "BaseModel validator decorator for field validation",
+      "category": "symbol_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "pydantic/functional_validators.py"
+      ],
+      "relevant_keywords": ["field_validator", "model_validator", "@validator"],
+      "total_relevant": 4,
+      "notes": "Pydantic v2 changed validator API — tests for up-to-date results"
+    },
+    {
+      "id": "q004",
+      "query": "async HTTP client with retry and timeout configuration",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "httpx/_client.py",
+        "httpx/_config.py"
+      ],
+      "relevant_keywords": ["AsyncClient", "Timeout", "timeout"],
+      "total_relevant": 4,
+      "notes": "Should find AsyncClient class and Timeout config"
+    },
+    {
+      "id": "q005",
+      "query": "WebSocket connection handling and broadcasting",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "fastapi/websockets.py",
+        "docs_src/websockets/tutorial001.py"
+      ],
+      "relevant_keywords": ["WebSocket", "accept", "send_text", "receive_text"],
+      "total_relevant": 3,
+      "notes": "Tests retrieval of WebSocket-specific code"
+    },
+    {
+      "id": "q006",
+      "query": "How to use dependency injection with database sessions",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "fastapi/dependencies/utils.py",
+        "docs_src/dependencies/tutorial001.py",
+        "docs_src/sql_databases/tutorial001.py"
+      ],
+      "relevant_keywords": ["Depends", "yield", "get_db"],
+      "total_relevant": 5,
+      "notes": "Cross-cutting concern — DI + database patterns"
+    },
+    {
+      "id": "q007",
+      "query": "Configure CORS middleware with allowed origins",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "fastapi/middleware/cors.py"
+      ],
+      "relevant_keywords": ["CORSMiddleware", "allow_origins", "allow_methods"],
+      "total_relevant": 2,
+      "notes": "Straightforward lookup — baseline test"
+    },
+    {
+      "id": "q008",
+      "query": "Pydantic model serialization with custom JSON encoders",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "pydantic/main.py"
+      ],
+      "relevant_keywords": ["model_dump", "model_dump_json", "ConfigDict", "json_encoders"],
+      "total_relevant": 3,
+      "notes": "v2 changed from .dict()/.json() to .model_dump() — tests freshness"
+    },
+    {
+      "id": "q009",
+      "query": "streaming response for large file downloads",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "fastapi/responses.py"
+      ],
+      "relevant_keywords": ["StreamingResponse", "FileResponse"],
+      "total_relevant": 3,
+      "notes": "Should find response classes and usage patterns"
+    },
+    {
+      "id": "q010",
+      "query": "HTTP/2 support and connection pooling configuration",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "httpx/_client.py",
+        "httpx/_config.py"
+      ],
+      "relevant_keywords": ["http2", "pool_limits", "PoolLimits"],
+      "total_relevant": 3,
+      "notes": "Advanced feature — tests depth of indexing"
+    }
+  ]
+}

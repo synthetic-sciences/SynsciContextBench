@@ -1,0 +1,234 @@
+{
+  "_description": "Multi-hop retrieval test cases. Each query requires combining info from 2+ sources to fully answer.",
+  "test_cases": [
+    {
+      "id": "mh001",
+      "query": "How does FastAPI validate request bodies using Pydantic models and what errors does it return for invalid data?",
+      "description": "Requires: (1) FastAPI route + Body() usage, (2) Pydantic validation, (3) exception handler for validation errors",
+      "num_hops": 3,
+      "category": "cross_file",
+      "hops": [
+        {
+          "id": "mh001_h1",
+          "description": "FastAPI route definition with Body/BaseModel parameter",
+          "required_files": ["routing.py", "tutorial001.py"],
+          "required_keywords": ["@app.post", "Body", "BaseModel"]
+        },
+        {
+          "id": "mh001_h2",
+          "description": "Pydantic validation logic",
+          "required_keywords": ["ValidationError", "field_validator", "model_validator"]
+        },
+        {
+          "id": "mh001_h3",
+          "description": "FastAPI exception handler for RequestValidationError",
+          "required_files": ["exception_handlers.py"],
+          "required_keywords": ["RequestValidationError", "422"]
+        }
+      ]
+    },
+    {
+      "id": "mh002",
+      "query": "How to set up an async database session in FastAPI using SQLAlchemy with dependency injection?",
+      "description": "Requires: (1) SQLAlchemy async engine setup, (2) FastAPI Depends(), (3) session lifecycle management",
+      "num_hops": 3,
+      "category": "cross_file",
+      "hops": [
+        {
+          "id": "mh002_h1",
+          "description": "SQLAlchemy async engine and session creation",
+          "required_keywords": ["create_async_engine", "async_sessionmaker", "AsyncSession"]
+        },
+        {
+          "id": "mh002_h2",
+          "description": "FastAPI dependency injection with Depends",
+          "required_files": ["dependencies"],
+          "required_keywords": ["Depends", "yield"]
+        },
+        {
+          "id": "mh002_h3",
+          "description": "Session lifecycle (commit/rollback/close)",
+          "required_keywords": ["commit", "rollback", "close"]
+        }
+      ]
+    },
+    {
+      "id": "mh003",
+      "query": "How to implement OAuth2 authentication in FastAPI with password hashing and JWT tokens?",
+      "description": "Requires: (1) OAuth2 scheme, (2) password hashing, (3) JWT token creation/validation",
+      "num_hops": 3,
+      "category": "cross_file",
+      "hops": [
+        {
+          "id": "mh003_h1",
+          "description": "OAuth2 password bearer scheme setup",
+          "required_keywords": ["OAuth2PasswordBearer", "OAuth2PasswordRequestForm"]
+        },
+        {
+          "id": "mh003_h2",
+          "description": "Password hashing with bcrypt or passlib",
+          "required_keywords": ["hash", "verify", "bcrypt"]
+        },
+        {
+          "id": "mh003_h3",
+          "description": "JWT token encode/decode",
+          "required_keywords": ["jwt", "encode", "decode", "SECRET_KEY"]
+        }
+      ]
+    },
+    {
+      "id": "mh004",
+      "query": "How does HTTPX handle SSL certificate verification and what happens when connecting through a proxy?",
+      "description": "Requires: (1) SSL/TLS config, (2) proxy configuration, (3) transport layer",
+      "num_hops": 2,
+      "category": "cross_file",
+      "hops": [
+        {
+          "id": "mh004_h1",
+          "description": "SSL certificate verification config",
+          "required_files": ["_config.py"],
+          "required_keywords": ["verify", "ssl", "cert"]
+        },
+        {
+          "id": "mh004_h2",
+          "description": "Proxy configuration and transport",
+          "required_keywords": ["proxy", "transport", "HTTPTransport"]
+        }
+      ]
+    },
+    {
+      "id": "mh005",
+      "query": "How to build a FastAPI WebSocket endpoint that broadcasts messages to multiple connected clients with authentication?",
+      "description": "Requires: (1) WebSocket endpoint, (2) connection manager pattern, (3) auth middleware for WS",
+      "num_hops": 3,
+      "category": "cross_file",
+      "hops": [
+        {
+          "id": "mh005_h1",
+          "description": "WebSocket endpoint definition",
+          "required_keywords": ["WebSocket", "websocket", "accept"]
+        },
+        {
+          "id": "mh005_h2",
+          "description": "Connection manager broadcasting",
+          "required_keywords": ["broadcast", "connections", "send_text"]
+        },
+        {
+          "id": "mh005_h3",
+          "description": "WebSocket authentication",
+          "required_keywords": ["token", "authenticate", "query_params"]
+        }
+      ]
+    },
+    {
+      "id": "mh006",
+      "query": "How does Pydantic handle nested model serialization with custom types and what JSON schema does it generate?",
+      "description": "Requires: (1) nested model definition, (2) custom type/serializer, (3) JSON schema generation",
+      "num_hops": 3,
+      "category": "cross_file",
+      "hops": [
+        {
+          "id": "mh006_h1",
+          "description": "Nested Pydantic model definitions",
+          "required_keywords": ["BaseModel", "List", "Optional"]
+        },
+        {
+          "id": "mh006_h2",
+          "description": "Custom serializer or type annotation",
+          "required_keywords": ["field_serializer", "PlainSerializer", "custom"]
+        },
+        {
+          "id": "mh006_h3",
+          "description": "JSON schema generation",
+          "required_keywords": ["model_json_schema", "json_schema", "schema"]
+        }
+      ]
+    },
+    {
+      "id": "mh007",
+      "query": "How to configure FastAPI middleware stack with CORS, rate limiting, and request logging?",
+      "description": "Requires: (1) CORS middleware, (2) rate limiting, (3) custom logging middleware",
+      "num_hops": 3,
+      "category": "cross_file",
+      "hops": [
+        {
+          "id": "mh007_h1",
+          "description": "CORS middleware configuration",
+          "required_keywords": ["CORSMiddleware", "allow_origins"]
+        },
+        {
+          "id": "mh007_h2",
+          "description": "Rate limiting middleware or decorator",
+          "required_keywords": ["rate", "limit", "throttle"]
+        },
+        {
+          "id": "mh007_h3",
+          "description": "Request logging middleware",
+          "required_keywords": ["middleware", "request", "response", "log"]
+        }
+      ]
+    },
+    {
+      "id": "mh008",
+      "query": "How to implement file upload with streaming in FastAPI, validate the file type, and store it with metadata?",
+      "description": "Requires: (1) UploadFile endpoint, (2) MIME type validation, (3) storage + metadata",
+      "num_hops": 3,
+      "category": "cross_file",
+      "hops": [
+        {
+          "id": "mh008_h1",
+          "description": "FastAPI UploadFile endpoint",
+          "required_keywords": ["UploadFile", "File", "upload"]
+        },
+        {
+          "id": "mh008_h2",
+          "description": "File type / MIME validation",
+          "required_keywords": ["content_type", "mime", "validate"]
+        },
+        {
+          "id": "mh008_h3",
+          "description": "File storage and metadata persistence",
+          "required_keywords": ["save", "write", "metadata", "path"]
+        }
+      ]
+    },
+    {
+      "id": "mh009",
+      "query": "How does HTTPX implement request retry with exponential backoff and what events does it expose for monitoring?",
+      "description": "Requires: (1) retry/transport, (2) backoff logic, (3) event hooks",
+      "num_hops": 2,
+      "category": "cross_file",
+      "hops": [
+        {
+          "id": "mh009_h1",
+          "description": "Retry transport or retry logic",
+          "required_keywords": ["retry", "transport", "retries"]
+        },
+        {
+          "id": "mh009_h2",
+          "description": "Event hooks for monitoring",
+          "required_keywords": ["event_hooks", "request", "response"]
+        }
+      ]
+    },
+    {
+      "id": "mh010",
+      "query": "How to set up Pydantic Settings management with environment variables, .env files, and validation?",
+      "description": "Requires: (1) BaseSettings, (2) env file loading, (3) field validation on settings",
+      "num_hops": 2,
+      "category": "cross_file",
+      "hops": [
+        {
+          "id": "mh010_h1",
+          "description": "BaseSettings with env var loading",
+          "required_keywords": ["BaseSettings", "env", "model_config"]
+        },
+        {
+          "id": "mh010_h2",
+          "description": "dotenv file and field validation",
+          "required_keywords": ["env_file", "validator", "field_validator"]
+        }
+      ]
+    }
+  ]
+}

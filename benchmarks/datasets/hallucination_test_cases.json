@@ -1,0 +1,172 @@
+{
+  "_description": "Test cases for hallucination rate benchmark. Each case defines a coding task with known correct API surface.",
+  "_methodology": "Replicates Nia's Context Augmentation Benchmark: query engine for context, feed to LLM, check for invented/wrong/outdated APIs.",
+  "test_cases": [
+    {
+      "id": "h001",
+      "query": "Create a FastAPI endpoint that accepts a JSON body with nested Pydantic models and returns a validated response",
+      "library": "fastapi",
+      "description": "Basic FastAPI + Pydantic v2 usage",
+      "valid_methods": [
+        "FastAPI", "APIRouter", "get", "post", "put", "delete", "patch",
+        "BaseModel", "Field", "model_validate", "model_dump", "model_dump_json",
+        "Depends", "Query", "Path", "Body", "Header", "Cookie",
+        "JSONResponse", "Response", "HTTPException"
+      ],
+      "valid_parameters": {
+        "FastAPI": ["title", "description", "version", "docs_url", "redoc_url", "openapi_url", "debug", "lifespan"],
+        "Field": ["default", "default_factory", "alias", "title", "description", "gt", "ge", "lt", "le", "min_length", "max_length", "pattern", "examples", "json_schema_extra"],
+        "HTTPException": ["status_code", "detail", "headers"]
+      },
+      "deprecated_apis": ["schema_extra", "orm_mode", "validator", "root_validator", ".dict()", ".json()"]
+    },
+    {
+      "id": "h002",
+      "query": "Set up an async HTTPX client with custom timeout, retry logic, and connection pooling",
+      "library": "httpx",
+      "description": "HTTPX async client configuration",
+      "valid_methods": [
+        "AsyncClient", "Client", "get", "post", "put", "delete", "patch",
+        "request", "stream", "Timeout", "Limits", "Response",
+        "AsyncHTTPTransport", "HTTPTransport"
+      ],
+      "valid_parameters": {
+        "AsyncClient": ["base_url", "headers", "cookies", "timeout", "limits", "transport", "http2", "verify", "cert", "follow_redirects", "max_redirects", "event_hooks", "auth"],
+        "Timeout": ["timeout", "connect", "read", "write", "pool"],
+        "Limits": ["max_connections", "max_keepalive_connections", "keepalive_expiry"]
+      },
+      "deprecated_apis": ["PoolLimits", "pool_limits"]
+    },
+    {
+      "id": "h003",
+      "query": "Define a Pydantic v2 model with custom validators, computed fields, and JSON schema customization",
+      "library": "pydantic",
+      "description": "Pydantic v2 model features — tests for v1 vs v2 confusion",
+      "valid_methods": [
+        "BaseModel", "Field", "field_validator", "model_validator",
+        "computed_field", "ConfigDict", "model_dump", "model_dump_json",
+        "model_validate", "model_validate_json", "model_json_schema",
+        "TypeAdapter", "PrivateAttr"
+      ],
+      "valid_parameters": {
+        "ConfigDict": ["strict", "frozen", "populate_by_name", "use_enum_values", "validate_default", "str_strip_whitespace", "json_schema_extra", "title"],
+        "field_validator": ["mode", "check_fields"],
+        "model_validator": ["mode"]
+      },
+      "deprecated_apis": ["validator", "root_validator", "schema_extra", "orm_mode", "allow_mutation", "Config"]
+    },
+    {
+      "id": "h004",
+      "query": "Implement SQLAlchemy 2.0 async session with select statements and relationship loading",
+      "library": "sqlalchemy",
+      "description": "SQLAlchemy 2.0 style — tests for 1.x vs 2.0 confusion",
+      "valid_methods": [
+        "create_async_engine", "async_sessionmaker", "AsyncSession",
+        "select", "insert", "update", "delete", "func", "and_", "or_",
+        "relationship", "Mapped", "mapped_column", "DeclarativeBase",
+        "selectinload", "joinedload", "subqueryload"
+      ],
+      "valid_parameters": {
+        "create_async_engine": ["url", "echo", "pool_size", "max_overflow", "pool_timeout", "pool_recycle"],
+        "mapped_column": ["primary_key", "nullable", "default", "server_default", "index", "unique", "type_"]
+      },
+      "deprecated_apis": ["declarative_base", "Column", "Integer", "String", "query.filter"]
+    },
+    {
+      "id": "h005",
+      "query": "Create a Click CLI application with nested command groups, options with validation, and rich help text",
+      "library": "click",
+      "description": "Click CLI framework",
+      "valid_methods": [
+        "command", "group", "option", "argument", "pass_context",
+        "echo", "secho", "style", "confirm", "prompt",
+        "Choice", "IntRange", "FloatRange", "Path", "File",
+        "Context", "get_current_context"
+      ],
+      "valid_parameters": {
+        "option": ["default", "required", "type", "help", "show_default", "multiple", "count", "flag_value", "is_flag", "envvar", "callback", "prompt"],
+        "argument": ["required", "type", "default", "nargs"],
+        "command": ["name", "help", "epilog", "short_help", "hidden", "deprecated"]
+      },
+      "deprecated_apis": []
+    },
+    {
+      "id": "h006",
+      "query": "Build a LangChain RAG pipeline with document loading, text splitting, vector store, and retrieval chain",
+      "library": "langchain",
+      "description": "LangChain RAG — rapidly changing API, high hallucination risk",
+      "valid_methods": [
+        "ChatOpenAI", "ChatAnthropic", "RecursiveCharacterTextSplitter",
+        "Chroma", "FAISS", "OpenAIEmbeddings",
+        "create_retrieval_chain", "create_stuff_documents_chain",
+        "ChatPromptTemplate", "RunnablePassthrough",
+        "WebBaseLoader", "PyPDFLoader", "TextLoader"
+      ],
+      "valid_parameters": {
+        "RecursiveCharacterTextSplitter": ["chunk_size", "chunk_overlap", "separators", "length_function"],
+        "ChatOpenAI": ["model", "temperature", "max_tokens", "api_key"],
+        "Chroma": ["collection_name", "embedding_function", "persist_directory"]
+      },
+      "deprecated_apis": ["LLMChain", "RetrievalQA", "VectorstoreIndexCreator", "ConversationalRetrievalChain"]
+    },
+    {
+      "id": "h007",
+      "query": "Implement a PyTorch training loop with mixed precision, gradient accumulation, and learning rate scheduling",
+      "library": "pytorch",
+      "description": "PyTorch training patterns",
+      "valid_methods": [
+        "Module", "Linear", "Conv2d", "BatchNorm2d", "ReLU", "Sequential",
+        "Adam", "AdamW", "SGD", "CrossEntropyLoss", "MSELoss",
+        "DataLoader", "Dataset", "autocast", "GradScaler",
+        "CosineAnnealingLR", "StepLR", "OneCycleLR",
+        "no_grad", "save", "load", "cuda", "to"
+      ],
+      "valid_parameters": {
+        "Adam": ["lr", "betas", "eps", "weight_decay", "amsgrad"],
+        "DataLoader": ["dataset", "batch_size", "shuffle", "num_workers", "pin_memory", "drop_last", "collate_fn"],
+        "autocast": ["device_type", "dtype", "enabled"]
+      },
+      "deprecated_apis": ["cuda.amp.autocast", "cuda.amp.GradScaler"]
+    },
+    {
+      "id": "h008",
+      "query": "Create a Stripe payment integration with checkout sessions, webhooks, and subscription management",
+      "library": "stripe",
+      "description": "Stripe API — tests for correct API version awareness",
+      "valid_methods": [
+        "checkout.Session.create", "PaymentIntent.create",
+        "Customer.create", "Customer.retrieve",
+        "Subscription.create", "Subscription.modify",
+        "Webhook.construct_event", "Price.create", "Product.create"
+      ],
+      "valid_parameters": {
+        "checkout.Session.create": ["mode", "line_items", "success_url", "cancel_url", "customer", "payment_method_types", "metadata"],
+        "PaymentIntent.create": ["amount", "currency", "customer", "payment_method", "confirm", "metadata"],
+        "Subscription.create": ["customer", "items", "default_payment_method", "trial_period_days", "metadata"]
+      },
+      "deprecated_apis": ["charges.create", "sources", "tokens.create"]
+    },
+    {
+      "id": "h009",
+      "query": "Build a Next.js App Router page with server components, data fetching, and loading states",
+      "library": "next",
+      "description": "Next.js App Router — tests pages vs app router confusion",
+      "valid_methods": [
+        "fetch", "notFound", "redirect", "useRouter", "usePathname",
+        "useSearchParams", "cookies", "headers", "NextRequest", "NextResponse",
+        "generateMetadata", "generateStaticParams", "revalidatePath", "revalidateTag"
+      ],
+      "valid_parameters": {},
+      "deprecated_apis": ["getServerSideProps", "getStaticProps", "getInitialProps", "getStaticPaths"]
+    },
+    {
+      "id": "h010",
+      "query": "Set up a Tailwind CSS v4 configuration with custom theme, plugins, and dark mode",
+      "library": "tailwindcss",
+      "description": "Tailwind CSS v4 — config changed significantly from v3",
+      "valid_methods": [],
+      "valid_parameters": {},
+      "deprecated_apis": ["tailwind.config.js", "purge", "darkMode: 'class'", "theme.extend"]
+    }
+  ]
+}

@@ -1,0 +1,222 @@
+{
+  "_description": "Adversarial near-miss test cases. Each query has a correct answer and known decoys (similar-but-wrong results) that should rank below it.",
+  "test_cases": [
+    {
+      "id": "adv001",
+      "query": "FastAPI request body validation with Pydantic BaseModel",
+      "description": "Should find actual validation logic, not test fixtures or docs examples",
+      "adversarial_type": "test_vs_prod",
+      "correct_file": "fastapi/routing.py",
+      "correct_keywords": ["BaseModel", "request", "body", "validate"],
+      "decoys": [
+        {
+          "id": "adv001_d1",
+          "description": "Test file that imports BaseModel for test fixtures",
+          "file_pattern": "test_",
+          "keywords": ["BaseModel", "def test_"]
+        },
+        {
+          "id": "adv001_d2",
+          "description": "Documentation example that shows BaseModel usage",
+          "file_pattern": "docs_src/",
+          "keywords": ["BaseModel", "class Item"]
+        }
+      ]
+    },
+    {
+      "id": "adv002",
+      "query": "HTTP connection timeout handling in HTTPX client",
+      "description": "Should find timeout CONFIG, not timeout ERROR handling in tests",
+      "adversarial_type": "same_name",
+      "correct_file": "httpx/_config.py",
+      "correct_keywords": ["Timeout", "connect", "read", "write", "pool"],
+      "decoys": [
+        {
+          "id": "adv002_d1",
+          "description": "Test for timeout behavior (tests timeout, doesn't implement it)",
+          "file_pattern": "test_",
+          "keywords": ["Timeout", "pytest", "assert"]
+        },
+        {
+          "id": "adv002_d2",
+          "description": "Exception class for timeout (TimeoutException, not Timeout config)",
+          "file_pattern": "_exceptions.py",
+          "keywords": ["TimeoutException", "class", "Exception"]
+        }
+      ]
+    },
+    {
+      "id": "adv003",
+      "query": "Pydantic model_dump method implementation",
+      "description": "Should find the real model_dump, not deprecated .dict() or test usage",
+      "adversarial_type": "version_confusion",
+      "correct_file": "pydantic/main.py",
+      "correct_keywords": ["def model_dump", "mode", "include", "exclude"],
+      "decoys": [
+        {
+          "id": "adv003_d1",
+          "description": "Deprecated .dict() method (v1 API)",
+          "file_pattern": "pydantic/",
+          "keywords": ["def dict(", "deprecated", "warnings"]
+        },
+        {
+          "id": "adv003_d2",
+          "description": "Test calling model_dump (usage, not implementation)",
+          "file_pattern": "test_",
+          "keywords": ["model_dump", "assert", "expected"]
+        }
+      ]
+    },
+    {
+      "id": "adv004",
+      "query": "FastAPI WebSocket accept connection implementation",
+      "description": "Should find WebSocket.accept(), not HTTP endpoint or test",
+      "adversarial_type": "same_name",
+      "correct_file": "fastapi/websockets.py",
+      "correct_keywords": ["WebSocket", "accept", "async"],
+      "decoys": [
+        {
+          "id": "adv004_d1",
+          "description": "HTTP endpoint that mentions websocket in docstring",
+          "file_pattern": "routing.py",
+          "keywords": ["websocket", "upgrade", "http"]
+        },
+        {
+          "id": "adv004_d2",
+          "description": "Test for WebSocket that calls accept()",
+          "file_pattern": "test_",
+          "keywords": ["websocket", "accept", "async with"]
+        }
+      ]
+    },
+    {
+      "id": "adv005",
+      "query": "HTTPX AsyncClient.get implementation for making GET requests",
+      "description": "Should find the actual get() method, not sync Client.get or tests",
+      "adversarial_type": "same_name",
+      "correct_file": "httpx/_client.py",
+      "correct_keywords": ["class AsyncClient", "async def get", "request"],
+      "decoys": [
+        {
+          "id": "adv005_d1",
+          "description": "Sync Client.get method (same name, wrong class)",
+          "file_pattern": "httpx/_client.py",
+          "keywords": ["class Client", "def get", "self._send"]
+        },
+        {
+          "id": "adv005_d2",
+          "description": "Test using client.get() (call site, not definition)",
+          "file_pattern": "test_",
+          "keywords": ["client.get", "response", "assert"]
+        }
+      ]
+    },
+    {
+      "id": "adv006",
+      "query": "Pydantic field_validator decorator for custom validation",
+      "description": "Should find v2 field_validator, not v1 @validator",
+      "adversarial_type": "version_confusion",
+      "correct_file": "pydantic/functional_validators.py",
+      "correct_keywords": ["field_validator", "def", "mode"],
+      "decoys": [
+        {
+          "id": "adv006_d1",
+          "description": "Deprecated v1 @validator decorator",
+          "file_pattern": "pydantic/",
+          "keywords": ["@validator", "deprecated", "class Config"]
+        },
+        {
+          "id": "adv006_d2",
+          "description": "Comment/docstring explaining migration from validator to field_validator",
+          "keywords": ["validator", "field_validator", "migration", "deprecated"]
+        }
+      ]
+    },
+    {
+      "id": "adv007",
+      "query": "FastAPI Depends() dependency injection resolver",
+      "description": "Should find the resolver logic, not examples using Depends",
+      "adversarial_type": "same_file",
+      "correct_file": "fastapi/dependencies/",
+      "correct_keywords": ["solve", "Depends", "dependency", "resolve"],
+      "decoys": [
+        {
+          "id": "adv007_d1",
+          "description": "Tutorial using Depends in a simple example",
+          "file_pattern": "docs_src/dependencies/",
+          "keywords": ["Depends", "def common_parameters"]
+        },
+        {
+          "id": "adv007_d2",
+          "description": "Depends class definition (just a container, not the resolver)",
+          "file_pattern": "fastapi/params.py",
+          "keywords": ["class Depends", "__init__", "dependency"]
+        }
+      ]
+    },
+    {
+      "id": "adv008",
+      "query": "HTTPX request authentication with Bearer token",
+      "description": "Should find auth implementation, not test mocking auth",
+      "adversarial_type": "test_vs_prod",
+      "correct_file": "httpx/_auth.py",
+      "correct_keywords": ["Auth", "auth_flow", "request", "Authorization"],
+      "decoys": [
+        {
+          "id": "adv008_d1",
+          "description": "Test with mocked auth header",
+          "file_pattern": "test_",
+          "keywords": ["Authorization", "Bearer", "mock", "assert"]
+        },
+        {
+          "id": "adv008_d2",
+          "description": "Example showing auth parameter usage (not implementation)",
+          "file_pattern": "docs/",
+          "keywords": ["auth", "Bearer", "example"]
+        }
+      ]
+    },
+    {
+      "id": "adv009",
+      "query": "Pydantic ConfigDict for model configuration in v2",
+      "description": "Should find ConfigDict definition, not v1 inner Config class",
+      "adversarial_type": "version_confusion",
+      "correct_file": "pydantic/config.py",
+      "correct_keywords": ["ConfigDict", "strict", "frozen", "populate_by_name"],
+      "decoys": [
+        {
+          "id": "adv009_d1",
+          "description": "v1 inner Config class (deprecated pattern)",
+          "keywords": ["class Config:", "orm_mode", "schema_extra"]
+        },
+        {
+          "id": "adv009_d2",
+          "description": "Comment about Config vs ConfigDict migration",
+          "keywords": ["Config", "ConfigDict", "deprecated", "migration"]
+        }
+      ]
+    },
+    {
+      "id": "adv010",
+      "query": "FastAPI response_model serialization and filtering implementation",
+      "description": "Should find where response_model actually filters output, not where it's declared as param",
+      "adversarial_type": "similar_sig",
+      "correct_file": "fastapi/routing.py",
+      "correct_keywords": ["response_model", "serialize", "jsonable_encoder", "response_model_include"],
+      "decoys": [
+        {
+          "id": "adv010_d1",
+          "description": "Route decorator that accepts response_model parameter (declaration, not usage)",
+          "file_pattern": "fastapi/",
+          "keywords": ["response_model", "Optional", "Type", "parameter"]
+        },
+        {
+          "id": "adv010_d2",
+          "description": "Tutorial showing response_model in a simple example",
+          "file_pattern": "docs_src/",
+          "keywords": ["response_model", "@app.get", "class"]
+        }
+      ]
+    }
+  ]
+}
