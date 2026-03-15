@@ -202,6 +202,6 @@ Thakur et al. (2021) BEIR. NeurIPS
 
 Built by the [Synthetic Sciences](https://github.com/synthetic-sciences) team
 
-Questions? **team@syntheticsciences.ai**
+Questions? **hello@syntheticsciences.ai**
 
 </div>
