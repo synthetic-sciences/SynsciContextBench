@@ -2,185 +2,149 @@
 
 # SynSci Context Bench
 
-**Benchmark harness for head-to-head comparison of code context engines.**
+Benchmark harness for comparing code context engines head-to-head.
 
-Tests [synsc-context](https://github.com/synthetic-sciences/synsc-context), [Nia](https://trynia.ai), and [Context7](https://context7.com) across 8 benchmark suites using automated IR metrics and LLM-as-judge evaluation.
+Tests [Delphie](https://github.com/synthetic-sciences/synsc-context), [Context7](https://context7.com), and [Nia](https://trynia.ai) across 8 benchmark suites, ~2,000 queries, using automated IR metrics and a position-debiased LLM judge.
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
-[![Benchmark Suites](https://img.shields.io/badge/suites-8-58a6ff?style=for-the-badge)]()
+[![Suites](https://img.shields.io/badge/suites-8-58a6ff?style=for-the-badge)]()
 [![Engines](https://img.shields.io/badge/engines-3-f78166?style=for-the-badge)]()
-[![Queries](https://img.shields.io/badge/queries-~2,000-d2a8ff?style=for-the-badge)]()
 [![Judge](https://img.shields.io/badge/judge-Claude_Sonnet_4.6-blueviolet?style=for-the-badge&logo=anthropic&logoColor=white)]()
 
-</div>
-
----
-
-## How It Works
-
-synsc-context is a code context engine that gives AI agents the right code at the right time. This benchmark measures how well it does that compared to alternatives.
-
-<div align="center">
-<img src="assets/charts/architecture.png" alt="synsc-context Architecture" width="700"/>
-<br/>
-<sub>How synsc-context indexes and retrieves code context for AI agents.</sub>
-</div>
-
 <br/>
 
-The evaluation runs through 4 phases, each designed to fix fairness problems in the one before it:
+<img src="assets/charts/results.png" alt="Benchmark Results" width="950"/>
 
-<div align="center">
-<img src="assets/charts/benchmark_pipeline.png" alt="Benchmark Pipeline" width="700"/>
-<br/>
-<sub>Each phase addresses bias from the prior. Phase 4 (position-debiased 4D scoring) is the gold standard.</sub>
 </div>
 
 ---
 
 ## Results
 
-<div align="center">
-<img src="assets/charts/comparison_dashboard.png" alt="Engine Comparison Dashboard" width="950"/>
-</div>
+All numbers pulled from `benchmarks/results/results.json`. Full methodology in [`docs/BENCHMARK_REPORT.md`](docs/BENCHMARK_REPORT.md).
 
-<br/>
+### Custom Benchmarks (hand-crafted queries, 3 engines)
 
-**Key takeaways:**
+| Benchmark | Metric | Delphie | Context7 | Nia |
+|-----------|--------|:---:|:---:|:---:|
+| Retrieval | MRR | **0.817** | 0.350 | 0.345 |
+| Multi-Hop | Coverage | **0.967** | 0.850 | 0.783 |
+| Code QA | Accuracy | **0.867** | 0.200 | 0.154 |
+| Adversarial | Accuracy | **0.800** | 0.000 | 0.000 |
+| Hallucination | Rate (lower is better) | **40%** | **40%** | 55.6% |
 
-- synsc-context wins **88% of CodeSearchNet queries** on the debiased enhanced judge (436 vs 36 wins). CodeSearchNet tests "find the function that does X" -- the actual use case for AI agents navigating codebases.
+### Industry-Standard Datasets (CoSQA + CodeSearchNet, 450 queries each)
 
-- Context7 wins **68% of CoSQA queries** (341 vs 109 wins). CoSQA tests "how do I do X in Python" -- queries an LLM already knows the answer to and would never invoke a context engine for.
+| Dataset | Metric | Delphie | Context7 | Nia |
+|---------|--------|:---:|:---:|:---:|
+| CodeSearchNet | MRR | **0.940** | 0.000 | 0.053 |
+| CodeSearchNet | NDCG@10 | **0.941** | 0.000 | 0.053 |
+| CoSQA | MRR | **0.636** | 0.002 | 0.003 |
+| CoSQA | NDCG@10 | **0.642** | 0.002 | 0.004 |
 
-- On custom benchmarks (retrieval, multi-hop, code QA, adversarial), synsc-context leads across the board. Nia and Context7 score 0% on adversarial near-miss tests.
+### Enhanced LLM Judge (position-debiased, 4D scoring, ~500 queries per dataset)
 
-<details>
-<summary><b>Full results table</b></summary>
+Each query is scored twice with swapped chunk ordering and averaged. This eliminates the ~10% positional bias documented in LLM evaluations (Zheng et al. 2023). Scored on Relevance, Completeness, Specificity, and Faithfulness (0-3 each).
 
-<br/>
+| Dataset | Engine | Relevance | Completeness | Specificity | Faithfulness | Total | Wins |
+|---------|--------|:-:|:-:|:-:|:-:|:-:|:-:|
+| CodeSearchNet | **Delphie** | **1.98** | **1.88** | **1.36** | **2.04** | **1.82** | **436** |
+| CodeSearchNet | Context7 | 0.63 | 0.30 | 0.40 | 1.30 | 0.66 | 36 |
+| CoSQA | Delphie | 1.16 | 0.55 | 0.68 | 1.60 | 1.00 | 109 |
+| CoSQA | **Context7** | **1.76** | **1.35** | **1.41** | **2.13** | **1.66** | **341** |
 
-| Benchmark | Dataset | synsc-context | Nia | Context7 | Winner |
-|-----------|---------|:---:|:---:|:---:|:---:|
-| Retrieval (MRR) | Custom, 10q | **0.817** | 0.345 | 0.350 | synsc |
-| Multi-Hop Coverage | Custom, 10q | **0.967** | 0.783 | 0.850 | synsc |
-| Code QA Accuracy | Custom, 15q | **0.867** | 0.154 | 0.200 | synsc |
-| Adversarial Accuracy | Custom, 10q | **0.800** | 0.000 | 0.000 | synsc |
-| Validated IR (MRR) | CodeSearchNet, 450q | **0.940** | 0.053 | 0.000 | synsc |
-| Validated IR (MRR) | CoSQA, 450q | **0.636** | 0.003 | 0.002 | synsc |
-| Enhanced Judge (4D) | CodeSearchNet, 497q | **1.815** | -- | 0.655 | **synsc (2.8x)** |
-| Enhanced Judge (4D) | CoSQA, 500q | 0.998 | -- | **1.664** | **Context7 (1.67x)** |
-| Hallucination Rate | Custom, 10 cases | **40%** | 55.6% | **40%** | synsc / ctx7 |
+Delphie wins **88%** of CodeSearchNet queries (code-to-code retrieval). Context7 wins **68%** of CoSQA queries (documentation-style "how do I..." questions). See the note on ecological validity below.
 
-</details>
+### A note on CoSQA vs CodeSearchNet
 
----
-
-## Benchmark Suites
-
-| # | Suite | What it tests | Queries |
-|:-:|-------|---------------|:-------:|
-| 1 | **Retrieval Quality** | Precision@K, Recall@K, NDCG@K, MRR against hand-crafted ground truth | 10 |
-| 2 | **Multi-Hop Retrieval** | Queries requiring context from 2+ files/repos | 10 |
-| 3 | **Code QA** | Definitions, call sites, imports, inheritance, return types | 15 |
-| 4 | **Adversarial Near-Miss** | Decoys: same name/wrong context, test vs prod, version confusion | 10 |
-| 5 | **Hallucination Rate** | Does engine context prevent LLM hallucinations? | 10 |
-| 6 | **Validated Datasets** | CoSQA + CodeSearchNet (industry-standard, from HuggingFace) | ~900 |
-| 7 | **LLM-as-Judge** | Blind 3D scoring: relevance, completeness, specificity | ~1,000 |
-| 8 | **Enhanced Judge** | Position-debiased 4D scoring + faithfulness + RAGAS metrics | ~1,000 |
+CoSQA queries look like "how to parse json in python" or "python read csv file". An LLM already knows those answers and would never call a context engine for them. CodeSearchNet queries ("find the function that does X") match how agents actually use context engines in practice. CoSQA scores should be weighted lower when evaluating engines for real agent workflows.
 
 ---
 
-## Setup
+## What's Being Tested
+
+| # | Suite | Tests | Size |
+|:-:|-------|-------|:----:|
+| 1 | **Retrieval Quality** | P@K, Recall@K, NDCG@K, MRR against known ground truth | 10q |
+| 2 | **Multi-Hop Retrieval** | Queries needing context from 2+ files/repos | 10q |
+| 3 | **Code QA** | Definitions, call sites, imports, inheritance, return types | 15q |
+| 4 | **Adversarial Near-Miss** | Decoys: same name/wrong context, test vs prod, version confusion | 10q |
+| 5 | **Hallucination Rate** | Does engine context prevent LLMs from making stuff up? | 10q |
+| 6 | **Validated Datasets** | CoSQA + CodeSearchNet from HuggingFace | ~900q |
+| 7 | **LLM-as-Judge** | Blind 3D scoring (relevance, completeness, specificity) | ~1,000q |
+| 8 | **Enhanced Judge** | Position-debiased 4D + faithfulness + RAGAS metrics | ~1,000q |
+
+---
+
+## Quick Start
 
 ```bash
 uv sync
 cp benchmarks/.env.local.example benchmarks/.env.local
-# Fill in API keys in .env.local
+# fill in your API keys
 ```
 
-| Variable | Purpose |
-|----------|---------|
-| `SYNSC_API_URL` | synsc-context server URL (default `http://localhost:8742`) |
-| `SYNSC_API_KEY` | synsc-context API key |
+```bash
+# run everything
+uv run python -m benchmarks
+
+# run specific suites
+uv run python -m benchmarks --judge-only --engines synsc context7
+uv run python -m benchmarks --retrieval-only --skip-indexing
+uv run python -m benchmarks --enhanced-judge-only
+
+# quick iteration
+uv run python -m benchmarks --judge-only --engines synsc --max-queries 50
+
+# download datasets from HuggingFace
+uv run python -m benchmarks --download-datasets
+```
+
+### Environment Variables
+
+| Variable | What it does |
+|----------|-------------|
+| `SYNSC_API_URL` | Delphie server URL (default `http://localhost:8742`) |
+| `SYNSC_API_KEY` | Delphie API key |
 | `NIA_API_KEY` | Nia API key |
-| `CONTEXT7_ENABLED` | Set `true` to include Context7 |
-| `BENCH_LLM_PROVIDER` | `anthropic`, `gemini`, or `openai` (for judge benchmarks) |
+| `CONTEXT7_ENABLED` | Set `true` for Context7 |
+| `BENCH_LLM_PROVIDER` | `anthropic`, `gemini`, or `openai` |
 | `BENCH_LLM_MODEL` | Model ID for judge benchmarks |
 | `BENCH_LLM_API_KEY` | API key for the judge LLM |
 
-## Usage
-
-```bash
-# Run everything
-uv run python -m benchmarks
-
-# Run specific suites
-uv run python -m benchmarks --judge-only --engines synsc context7
-uv run python -m benchmarks --retrieval-only --skip-indexing
-uv run python -m benchmarks --hallucination-only
-uv run python -m benchmarks --enhanced-judge-only
-
-# Quick iteration (limit queries)
-uv run python -m benchmarks --judge-only --engines synsc --max-queries 50
-
-# Download CoSQA + CodeSearchNet from HuggingFace
-uv run python -m benchmarks --download-datasets
-
-# Multi-model hallucination (test across LLM tiers)
-uv run python -m benchmarks --multi-model
-```
-
 <details>
-<summary><b>All CLI flags</b></summary>
+<summary>All CLI flags</summary>
 
 | Flag | Effect |
 |------|--------|
-| `--engines synsc nia context7` | Select which engines to test |
-| `--skip-indexing` | Skip the repo indexing step |
-| `--match-mode hybrid\|file\|content` | How to match results to ground truth |
+| `--engines synsc nia context7` | Pick engines |
+| `--skip-indexing` | Skip repo indexing |
 | `--no-debiasing` | Disable position debiasing (2x faster) |
-| `--no-significance` | Skip statistical significance analysis |
-| `--bootstrap-n N` | Bootstrap resamples (default: 10,000) |
-| `--significance-alpha F` | Significance level (default: 0.05) |
-| `--dataset cosqa\|codesearchnet` | Run a specific validated dataset |
-| `--multi-model` | Hallucination benchmark across model tiers |
-
-Each suite has `--*-only` (run only that suite) and `--skip-*` (skip it) flags.
+| `--no-significance` | Skip statistical analysis |
+| `--bootstrap-n N` | Bootstrap resamples (default 10,000) |
+| `--dataset cosqa\|codesearchnet` | Run one dataset |
+| `--multi-model` | Hallucination across model tiers |
+| `--max-queries N` | Limit query count |
 
 </details>
 
 ---
 
-## Methodology
+## Statistical Rigor
 
-**Statistical rigor.** All pairwise comparisons include paired t-tests, Wilcoxon signed-rank tests, bootstrap CIs (10K resamples), Cohen's d, Cliff's delta, and Bonferroni correction.
-
-**Position debiasing.** The enhanced judge evaluates each query twice with swapped chunk ordering and averages scores, eliminating the ~10% positional bias documented in LLM evaluations (Zheng et al. 2023).
-
-**Semantic metrics.** Beyond exact-match IR, the harness computes CodeBLEU components, soft token overlap, AST-aware similarity, Success@K, and MAP.
-
-| Fairness concern | How it was addressed |
-|------------------|---------------------|
-| Custom datasets may favor synsc | Added industry-standard CoSQA + CodeSearchNet |
-| Content-matching penalizes text transformation | Added LLM-as-Judge (engine-agnostic) |
-| Single-pass judge has positional bias | Added position debiasing |
-| Only two engines compared | Added Context7 as third engine |
-| Small sample size (50q) | Scaled to 497-500 queries per dataset |
-| Judge reliability unknown | Added Cohen's kappa + Position Consistency |
+Every pairwise comparison includes paired t-tests, Wilcoxon signed-rank, bootstrap CIs (10K resamples), Cohen's d, Cliff's delta, and Bonferroni correction. The enhanced judge tracks its own reliability with Cohen's kappa and Position Consistency metrics.
 
 ---
 
 ## Engine Adapters
 
-Each engine implements the `ContextEngineAdapter` interface:
-
 | Engine | Adapter | Notes |
 |--------|---------|-------|
-| **synsc-context** | `benchmarks/adapters/synsc.py` | HTTP API, requires indexed repos |
+| **Delphie** | `benchmarks/adapters/synsc.py` | HTTP API, needs indexed repos |
 | **Nia** | `benchmarks/adapters/nia.py` | REST API, global knowledge search |
 | **Context7** | `benchmarks/adapters/context7.py` | HTTP API, pre-crawled docs |
 
-To add a new engine, implement `ContextEngineAdapter` in `benchmarks/adapters/base.py` and register it in `benchmarks/__main__.py`.
+Add a new engine by implementing `ContextEngineAdapter` from `benchmarks/adapters/base.py`.
 
 ---
 
@@ -188,61 +152,56 @@ To add a new engine, implement `ContextEngineAdapter` in `benchmarks/adapters/ba
 
 ```
 benchmarks/
-  __main__.py              # CLI entry point
-  runner.py                # Orchestrates all suites
-  config.py                # Environment config
-  metrics.py               # NDCG, MRR, P@K, R@K, MAP, R-Precision
-  semantic_metrics.py      # CodeBLEU, soft overlap, AST similarity
-  statistical_analysis.py  # Paired tests, bootstrap CIs, effect sizes
-  llm_judge.py             # 3D blind scoring
-  enhanced_judge.py        # 4D debiased + RAGAS
-  validated_eval.py        # CoSQA / CodeSearchNet
-  hallucination.py         # Hallucination rate
-  multihop.py              # Multi-hop retrieval
-  code_qa.py               # Code QA
-  adversarial.py           # Adversarial near-miss
-  dataset_loader.py        # HuggingFace downloader
-  adapters/                # Engine adapters (synsc, nia, context7)
-  datasets/                # Ground truth + downloaded datasets
-  results/                 # Generated benchmark results (JSON)
+  __main__.py             cli entry point
+  runner.py               orchestrates suites
+  config.py               env config
+  metrics.py              NDCG, MRR, P@K, R@K, MAP
+  semantic_metrics.py     CodeBLEU, AST similarity
+  statistical_analysis.py paired tests, bootstrap, effect sizes
+  llm_judge.py            3D blind scoring
+  enhanced_judge.py       4D debiased + RAGAS
+  validated_eval.py       CoSQA / CodeSearchNet
+  hallucination.py        hallucination rate
+  multihop.py             multi-hop retrieval
+  code_qa.py              code QA
+  adversarial.py          adversarial near-miss
+  adapters/               engine adapters
+  datasets/               ground truth + downloads
+  results/                output JSON
 docs/
-  WHITEPAPER.md            # Technical whitepaper
-  BENCHMARK_REPORT.md      # Full analysis
-  RESULTS.md               # Tabulated results
-  RESULTS.pdf              # PDF export
+  BENCHMARK_REPORT.md     full analysis
+  RESULTS.md              tabulated results
+  WHITEPAPER.md           technical whitepaper
 scripts/
-  generate_charts.py       # Generate charts from results.json
-  md_to_pdf.py             # Markdown to styled PDF
+  generate_charts.py      regenerate the chart
 ```
 
 ---
 
-## Regenerating Charts
+## Regenerate the Chart
 
 ```bash
 python scripts/generate_charts.py
 ```
 
-Uses Gemini for architecture diagrams and matplotlib for the data dashboard. Charts are saved to `assets/charts/`.
-
 ---
 
 ## References
 
-- Husain et al. (2019). CodeSearchNet Challenge. arXiv:1909.09436.
-- Huang et al. (2021). CoSQA: 20,000+ Web Queries for Code Search and Question Answering. ACL 2021.
-- Zheng et al. (2023). Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena.
-- Shi et al. (2025). Judging the Judges: Evaluating Alignment and Vulnerabilities in LLMs-as-Judges.
-- Es et al. (2024). RAGAS: Automated Evaluation of Retrieval Augmented Generation.
-- Ren et al. (2020). CodeBLEU: A Method for Automatic Evaluation of Code Synthesis.
-- Thakur et al. (2021). BEIR: A Heterogeneous Benchmark for Zero-shot Evaluation of IR Models. NeurIPS.
+Husain et al. (2019) CodeSearchNet Challenge. arXiv:1909.09436 ·
+Huang et al. (2021) CoSQA. ACL 2021 ·
+Zheng et al. (2023) Judging LLM-as-a-Judge ·
+Shi et al. (2025) Judging the Judges ·
+Es et al. (2024) RAGAS ·
+Ren et al. (2020) CodeBLEU ·
+Thakur et al. (2021) BEIR. NeurIPS
 
 ---
 
 <div align="center">
 
-Built by the [Synthetic Sciences](https://github.com/synthetic-sciences) team.
+Built by the [Synthetic Sciences](https://github.com/synthetic-sciences) team
 
-For questions, reach out to **team@syntheticsciences.ai**
+Questions? **team@syntheticsciences.ai**
 
 </div>
