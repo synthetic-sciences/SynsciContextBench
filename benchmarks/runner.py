@@ -1,7 +1,7 @@
 """Benchmark runner — orchestrates all benchmarks.
 
 Runs both engines on the same queries, computes metrics, and produces
-a comparison report.
+a comparison report with full query-level traces for whitepaper analysis.
 """
 
 from __future__ import annotations
@@ -35,6 +35,7 @@ from .llm_judge import (
     print_judge_summary,
     run_judge_benchmark,
 )
+from .logging_config import QueryTrace, TraceStore, get_logger
 from .metrics import (
     AggregateMetrics,
     QueryEvaluation,
@@ -66,6 +67,52 @@ from .semantic_metrics import (
     compute_extended_metrics,
     print_extended_metrics_summary,
 )
+
+logger = get_logger("runner")
+
+
+def _add_traces_from_evals(
+    trace_store: TraceStore | None,
+    benchmark_type: str,
+    engine_name: str,
+    evaluations: list,
+) -> None:
+    """Create traces from per-query evaluations returned by any benchmark module."""
+    if not trace_store:
+        return
+    for ev in evaluations:
+        trace = QueryTrace.create(
+            run_id=trace_store.run_id,
+            engine=engine_name,
+            benchmark_type=benchmark_type,
+        )
+        # Common fields
+        trace.query_text = getattr(ev, "query", "")
+        trace.query_id = getattr(ev, "test_case_id", getattr(ev, "query_id", ""))
+        trace.latency_ms = getattr(ev, "latency_ms", 0.0)
+
+        # Scores — build from whatever metrics the eval has
+        scores = {}
+        for attr in ("mrr", "hop_coverage", "hop_recall_at_5", "hop_recall_at_10",
+                      "avg_hop_mrr", "accuracy", "discrimination", "hallucination_rate",
+                      "true_hallucination_rate"):
+            val = getattr(ev, attr, None)
+            if val is not None:
+                scores[attr] = val
+        # precision/ndcg dicts
+        for dict_attr in ("precision_at", "ndcg_at", "recall_at"):
+            d = getattr(ev, dict_attr, None)
+            if d:
+                for k, v in d.items():
+                    scores[f"{dict_attr.replace('_at', '')}@{k}"] = v
+        trace.scores = scores
+
+        # Error info
+        error = getattr(ev, "error", None) or getattr(ev, "errors", None)
+        if error:
+            trace.error = str(error)[:500]
+
+        trace_store.add_trace(trace)
 
 
 @dataclass
@@ -150,6 +197,8 @@ async def run_retrieval_benchmark(
     engine: ContextEngineAdapter,
     ground_truth_path: str,
     k_values: list[int],
+    trace_store: TraceStore | None = None,
+    max_queries: int | None = None,
 ) -> tuple[AggregateMetrics, list[QueryEvaluation]]:
     """Run retrieval quality benchmark against one engine."""
     with open(ground_truth_path) as f:
@@ -158,31 +207,110 @@ async def run_retrieval_benchmark(
     evaluations: list[QueryEvaluation] = []
 
     queries = data.get("queries", [])
+    if max_queries is not None:
+        queries = queries[:max_queries]
     for query_data in tqdm(queries, desc=f"  {engine.name} retrieval", unit="q"):
         query = query_data["query"]
+        query_id = query_data.get("id", "")
         relevant_files = query_data.get("relevant_files", [])
         relevant_keywords = query_data.get("relevant_keywords", [])
         total_relevant = query_data.get("total_relevant", len(relevant_files))
 
+        # Start trace
+        trace = QueryTrace.create(
+            run_id=trace_store.run_id if trace_store else "",
+            engine=engine.name,
+            benchmark_type="retrieval",
+        )
+        trace.query_id = query_id
+        trace.query_text = query
+        trace.query_metadata = {
+            "category": query_data.get("category", ""),
+            "difficulty": query_data.get("difficulty", ""),
+            "relevant_files": relevant_files,
+            "total_relevant": total_relevant,
+        }
+        trace.request_params = {"top_k": max(k_values)}
+
         try:
             search_results, latency = await engine.search_code(query=query, top_k=max(k_values))
+            trace.latency_ms = latency
+            trace.num_results = len(search_results)
         except Exception as e:
-            print(f"  [!] Query failed for {engine.name}: {query[:50]}... — {e}")
+            trace.error = str(e)
+            err_str = str(e).lower()
+            if "401" in err_str or "unauthorized" in err_str or "forbidden" in err_str:
+                trace.error_category = "auth"
+            elif "timeout" in err_str or "timed out" in err_str:
+                trace.error_category = "timeout"
+            elif "429" in err_str or "rate" in err_str:
+                trace.error_category = "rate_limit"
+            elif "500" in err_str or "502" in err_str or "503" in err_str:
+                trace.error_category = "server_error"
+            else:
+                trace.error_category = "api_error"
+            logger.warning(
+                "Query failed [%s]: %s — %s", trace.error_category, query[:60], e,
+                extra={"engine": engine.name, "query_id": query_id, "error_type": trace.error_category},
+            )
+            if trace_store:
+                trace_store.add_trace(trace)
             continue
 
         # Convert to RetrievalResults with relevance judgments
         retrieval_results = []
-        for sr in search_results:
+        for rank, sr in enumerate(search_results):
             is_rel, grade = _match_relevance(sr, relevant_files, relevant_keywords)
             retrieval_results.append(
                 RetrievalResult(
                     id=sr.id,
                     score=sr.score,
-                    content=sr.content[:200],  # truncate for report
+                    content=sr.content[:200],
                     is_relevant=is_rel,
                     relevance_grade=grade,
                 )
             )
+            trace.results.append({
+                "rank": rank + 1,
+                "id": sr.id,
+                "score": sr.score,
+                "file_path": sr.file_path,
+                "language": sr.language,
+                "repo_name": sr.repo_name,
+                "lines": f"{sr.start_line}-{sr.end_line}",
+                "is_relevant": is_rel,
+                "relevance_grade": grade,
+            })
+            trace.relevance_judgments.append({
+                "rank": rank + 1,
+                "is_relevant": is_rel,
+                "grade": grade,
+                "matched_file": any(rf in sr.file_path for rf in relevant_files),
+                "matched_keyword": any(kw.lower() in sr.content.lower() for kw in relevant_keywords),
+            })
+
+        # Repo/language breakdown
+        repos = [sr.repo_name for sr in search_results if sr.repo_name]
+        langs = [sr.language for sr in search_results if sr.language]
+        trace.repos_in_results = sorted(set(repos))
+        trace.languages_in_results = sorted(set(langs))
+        trace.primary_repo = max(set(repos), key=repos.count) if repos else ""
+        trace.primary_language = max(set(langs), key=langs.count) if langs else ""
+
+        # Token efficiency (approximate: 1 token ≈ 4 chars)
+        total_chars = sum(len(sr.content) for sr in search_results)
+        relevant_chars = sum(
+            len(sr.content) for sr, rr in zip(search_results, retrieval_results)
+            if rr.is_relevant
+        )
+        trace.total_tokens_returned = total_chars // 4
+        trace.relevant_tokens_returned = relevant_chars // 4
+        trace.token_efficiency = (
+            relevant_chars / total_chars if total_chars > 0 else 0.0
+        )
+
+        if not search_results:
+            trace.error_category = "no_results"
 
         qe = QueryEvaluation(
             query=query,
@@ -193,7 +321,31 @@ async def run_retrieval_benchmark(
         evaluate_query(qe, k_values, total_relevant)
         evaluations.append(qe)
 
+        # Record scores in trace
+        trace.scores = {
+            "mrr": qe.mrr,
+            **{f"precision@{k}": v for k, v in qe.precision_at.items()},
+            **{f"ndcg@{k}": v for k, v in qe.ndcg_at.items()},
+            **{f"recall@{k}": v for k, v in qe.recall_at.items()},
+        }
+
+        if trace_store:
+            trace_store.add_trace(trace)
+
+        logger.debug(
+            "Query %s: MRR=%.3f P@1=%.3f latency=%.0fms results=%d",
+            query_id, qe.mrr, qe.precision_at.get(1, 0), latency, len(search_results),
+            extra={"engine": engine.name, "query_id": query_id, "latency_ms": latency},
+        )
+
     agg = aggregate(evaluations, k_values)
+    logger.info(
+        "Retrieval complete: %d queries, MRR=%.3f, P@1=%.3f, NDCG@10=%.3f, avg_latency=%.0fms",
+        agg.num_queries, agg.avg_mrr,
+        agg.avg_precision_at.get(1, 0), agg.avg_ndcg_at.get(10, 0),
+        agg.avg_latency_ms,
+        extra={"engine": engine.name, "benchmark_type": "retrieval"},
+    )
     return agg, evaluations
 
 
@@ -259,12 +411,35 @@ async def run_full_benchmark(
     dataset_filter: list[str] | None = None,
     match_mode: MatchMode = "hybrid",
     enable_debiasing: bool = True,
+    trace_store: TraceStore | None = None,
 ) -> BenchmarkReport:
     """Run all benchmarks across all engines and produce a comparison report."""
+    # Initialize trace store if not provided
+    if trace_store is None:
+        trace_store = TraceStore(config.results_dir)
+    trace_store.start_run(
+        engines=[e.name for e in engines],
+        config=config,
+    )
+    logger.info(
+        "Starting benchmark run %s with engines: %s",
+        trace_store.run_id, ", ".join(e.name for e in engines),
+        extra={"run_id": trace_store.run_id},
+    )
+
     report = BenchmarkReport(
         timestamp=datetime.now(timezone.utc).isoformat(),
         engines=[e.name for e in engines],
     )
+
+    def _save_progress(phase_name: str) -> None:
+        """Incremental save after each phase completes."""
+        try:
+            trace_store.save(report=asdict(report))
+            logger.info("Progress saved after %s phase", phase_name)
+            print(f"  [checkpoint] Progress saved after {phase_name}")
+        except Exception as e:
+            logger.warning("Failed to save progress after %s: %s", phase_name, e)
 
     gt_path = str(config.datasets_dir / "retrieval_ground_truth.json")
     hal_path = str(config.datasets_dir / "hallucination_test_cases.json")
@@ -290,9 +465,10 @@ async def run_full_benchmark(
     if not skip_retrieval:
         print("\n=== Retrieval Quality Benchmark (Precision@K / NDCG / MRR) ===")
         print(f"  Running {len(engines)} engines concurrently...")
+        trace_store.start_benchmark("retrieval")
 
         async def _retrieval_task(eng: ContextEngineAdapter):
-            return eng, await run_retrieval_benchmark(eng, gt_path, config.top_k_values)
+            return eng, await run_retrieval_benchmark(eng, gt_path, config.top_k_values, trace_store, config.max_queries)
 
         retrieval_results = await asyncio.gather(
             *[_retrieval_task(e) for e in engines], return_exceptions=True
@@ -317,13 +493,17 @@ async def run_full_benchmark(
             ]
             _print_retrieval_summary(agg)
 
+        trace_store.end_benchmark("retrieval")
+        _save_progress("retrieval")
+
     # --- Multi-hop Retrieval ---
     if not skip_multihop:
         print("\n=== Multi-Hop Retrieval Benchmark ===")
         print(f"  Running {len(engines)} engines concurrently...")
+        trace_store.start_benchmark("multihop")
 
         async def _multihop_task(eng: ContextEngineAdapter):
-            return eng, await run_multihop_benchmark(eng, mh_path)
+            return eng, await run_multihop_benchmark(eng, mh_path, max_queries=config.max_queries)
 
         multihop_results = await asyncio.gather(
             *[_multihop_task(e) for e in engines], return_exceptions=True
@@ -335,15 +515,38 @@ async def run_full_benchmark(
             engine, (mh_agg, mh_evals) = result
             print(f"\n--- {engine.name} ---")
             report.multihop[engine.name] = asdict(mh_agg)
+            _add_traces_from_evals(trace_store, "multihop", engine.name, mh_evals)
             _print_multihop_summary(mh_agg)
+        trace_store.end_benchmark("multihop")
+        _save_progress("multihop")
 
     # --- Code QA ---
+    # Resolve LLM config for judge-based scoring modes
+    _llm_cfg: LLMModelConfig | None = None
+    if config.model_matrix:
+        _llm_cfg = config.model_matrix[0]
+    elif config.llm_api_key:
+        _llm_cfg = LLMModelConfig(
+            provider=config.llm_provider,
+            model=config.llm_model,
+            tier="default",
+            api_key=config.llm_api_key,
+        )
+    _scoring_mode = "llm" if _llm_cfg else "structural"
+
     if not skip_code_qa:
-        print("\n=== Code-Specific QA Benchmark ===")
+        print(f"\n=== Code-Specific QA Benchmark (scoring: {_scoring_mode}) ===")
         print(f"  Running {len(engines)} engines concurrently...")
+        trace_store.start_benchmark("code_qa")
 
         async def _code_qa_task(eng: ContextEngineAdapter):
-            return eng, await run_code_qa_benchmark(eng, cq_path)
+            return eng, await run_code_qa_benchmark(
+                eng, cq_path, max_queries=config.max_queries,
+                scoring_mode=_scoring_mode,
+                llm_provider=_llm_cfg.provider if _llm_cfg else "",
+                llm_model=_llm_cfg.model if _llm_cfg else "",
+                llm_api_key=_llm_cfg.api_key if _llm_cfg else "",
+            )
 
         code_qa_results = await asyncio.gather(
             *[_code_qa_task(e) for e in engines], return_exceptions=True
@@ -355,15 +558,25 @@ async def run_full_benchmark(
             engine, (cq_agg, cq_results) = result
             print(f"\n--- {engine.name} ---")
             report.code_qa[engine.name] = asdict(cq_agg)
+            _add_traces_from_evals(trace_store, "code_qa", engine.name, cq_results)
             _print_code_qa_summary(cq_agg)
+        trace_store.end_benchmark("code_qa")
+        _save_progress("code_qa")
 
     # --- Adversarial Near-miss ---
     if not skip_adversarial:
-        print("\n=== Adversarial Near-Miss Benchmark ===")
+        print(f"\n=== Adversarial Near-Miss Benchmark (scoring: {_scoring_mode}) ===")
         print(f"  Running {len(engines)} engines concurrently...")
+        trace_store.start_benchmark("adversarial")
 
         async def _adversarial_task(eng: ContextEngineAdapter):
-            return eng, await run_adversarial_benchmark(eng, adv_path)
+            return eng, await run_adversarial_benchmark(
+                eng, adv_path, max_queries=config.max_queries,
+                scoring_mode=_scoring_mode,
+                llm_provider=_llm_cfg.provider if _llm_cfg else "",
+                llm_model=_llm_cfg.model if _llm_cfg else "",
+                llm_api_key=_llm_cfg.api_key if _llm_cfg else "",
+            )
 
         adversarial_results = await asyncio.gather(
             *[_adversarial_task(e) for e in engines], return_exceptions=True
@@ -375,7 +588,10 @@ async def run_full_benchmark(
             engine, (adv_agg, adv_results) = result
             print(f"\n--- {engine.name} ---")
             report.adversarial[engine.name] = asdict(adv_agg)
+            _add_traces_from_evals(trace_store, "adversarial", engine.name, adv_results)
             _print_adversarial_summary(adv_agg)
+        trace_store.end_benchmark("adversarial")
+        _save_progress("adversarial")
 
     # --- Hallucination ---
     if not skip_hallucination:
@@ -412,6 +628,7 @@ async def run_full_benchmark(
                     llm_provider=mcfg.provider,
                     llm_model=mcfg.model,
                     llm_api_key=mcfg.api_key,
+                    max_queries=config.max_queries,
                 )
                 return eng, mcfg, result
 
@@ -449,18 +666,19 @@ async def run_full_benchmark(
                             for tc in hal_result.test_cases
                         ],
                     }
+                    _add_traces_from_evals(trace_store, "hallucination", engine.name, hal_result.test_cases)
                     _print_hallucination_summary(hal_result)
+            _save_progress("hallucination")
 
     # --- Validated Datasets (CodeSearchNet, CoSQA) ---
     if not skip_validated:
         all_validated_datasets = [
             ("codesearchnet_benchmark.json", "CodeSearchNet", "codesearchnet"),
             ("cosqa_benchmark.json", "CoSQA", "cosqa"),
-            (
-                "codesearchnet_challenge_benchmark.json",
-                "CodeSearchNet Challenge",
-                "codesearchnet_challenge",
-            ),
+            ("advtest_benchmark.json", "AdvTest", "advtest"),
+            ("codefeedback_st_benchmark.json", "CodeFeedback-ST", "codefeedback_st"),
+            ("stackoverflow_qa_benchmark.json", "StackOverflow-QA", "stackoverflow_qa"),
+            ("apps_benchmark.json", "APPS", "apps"),
         ]
         # Apply dataset filter if specified
         validated_datasets = [
@@ -479,19 +697,25 @@ async def run_full_benchmark(
 
             print(f"\n--- {display_name} (running {len(engines)} engines concurrently) ---")
 
-            async def _validated_task(eng, ds, kvals, mq, mm):
+            async def _validated_task(eng, ds, kvals, mq, mm, lp, lm, lk):
                 return eng, await run_validated_benchmark(
                     eng,
                     ds,
                     kvals,
                     max_queries=mq,
                     match_mode=mm,
+                    llm_provider=lp,
+                    llm_model=lm,
+                    llm_api_key=lk,
                 )
 
             val_results = await asyncio.gather(
                 *[
                     _validated_task(
-                        e, str(ds_path), config.top_k_values, config.max_queries, match_mode
+                        e, str(ds_path), config.top_k_values, config.max_queries, match_mode,
+                        _llm_cfg.provider if _llm_cfg and match_mode == "llm" else "",
+                        _llm_cfg.model if _llm_cfg and match_mode == "llm" else "",
+                        _llm_cfg.api_key if _llm_cfg and match_mode == "llm" else "",
                     )
                     for e in engines
                 ],
@@ -510,7 +734,9 @@ async def run_full_benchmark(
                     "match_mode": match_mode,
                     **asdict(val_agg),
                 }
+                _add_traces_from_evals(trace_store, f"validated_{display_name}", engine.name, val_evals)
                 print_validated_summary(display_name, val_agg, match_mode)
+            _save_progress(f"validated_{display_name}")
 
         if not found_any:
             print(
@@ -522,6 +748,7 @@ async def run_full_benchmark(
         all_judge_datasets = [
             ("codesearchnet_benchmark.json", "CodeSearchNet", "codesearchnet"),
             ("cosqa_benchmark.json", "CoSQA", "cosqa"),
+            ("advtest_benchmark.json", "AdvTest", "advtest"),
         ]
         judge_datasets = [
             (f, d, k)
@@ -579,6 +806,25 @@ async def run_full_benchmark(
                             "win_count": agg.win_count,
                             "tie_count": agg.tie_count,
                         }
+                    # Add per-query traces from judge results
+                    for jqr in judge_results:
+                        for eng_name, score in jqr.scores.items():
+                            trace = QueryTrace.create(
+                                run_id=trace_store.run_id,
+                                engine=eng_name,
+                                benchmark_type=f"judge_{_key}",
+                            )
+                            trace.query_text = jqr.query
+                            trace.latency_ms = jqr.latencies.get(eng_name, 0.0)
+                            trace.scores = {
+                                "relevance": score.relevance,
+                                "completeness": score.completeness,
+                                "specificity": score.specificity,
+                                "total": score.total,
+                            }
+                            if jqr.error:
+                                trace.error = jqr.error
+                            trace_store.add_trace(trace)
                     print_judge_summary(judge_metrics, display_name)
                 except Exception as e:
                     print(f"  [!] Judge benchmark failed: {e}")
@@ -588,12 +834,15 @@ async def run_full_benchmark(
 
             if not found_any_judge:
                 print("\n  [!] No datasets found for judge benchmark")
+            else:
+                _save_progress("judge")
 
     # --- Enhanced LLM-as-Judge (position-debiased, 4D scoring) ---
     if not skip_enhanced_judge:
         all_enh_datasets = [
             ("codesearchnet_benchmark.json", "CodeSearchNet", "codesearchnet"),
             ("cosqa_benchmark.json", "CoSQA", "cosqa"),
+            ("advtest_benchmark.json", "AdvTest", "advtest"),
         ]
         enh_datasets = [
             (f, d, k)
@@ -692,7 +941,27 @@ async def run_full_benchmark(
                         "avg_score_drift": consistency.avg_score_drift,
                         "n_queries": consistency.n_queries,
                     }
+                    # Add per-engine aggregate traces for enhanced judge
+                    for eng_name, agg in enh_metrics.items():
+                        trace = QueryTrace.create(
+                            run_id=trace_store.run_id,
+                            engine=eng_name,
+                            benchmark_type=f"enhanced_judge_{_key}",
+                        )
+                        trace.query_text = f"[aggregate] {display_name}"
+                        trace.num_results = agg.num_queries
+                        trace.scores = {
+                            "relevance": agg.avg_relevance,
+                            "completeness": agg.avg_completeness,
+                            "specificity": agg.avg_specificity,
+                            "faithfulness": agg.avg_faithfulness,
+                            "total": agg.avg_total,
+                            "context_precision": agg.avg_context_precision,
+                            "context_density": agg.avg_context_density,
+                        }
+                        trace_store.add_trace(trace)
                     print_enhanced_judge_summary(enh_metrics, consistency, display_name)
+                _save_progress("enhanced_judge")
 
     # --- Statistical Significance Analysis ---
     # Collect per-query scores for pairwise significance testing
@@ -769,11 +1038,24 @@ async def run_full_benchmark(
                 print(f"  [!] Significance analysis failed: {e}")
 
     # --- Save report ---
-    report_path = config.results_dir / f"benchmark_{int(time.time())}.json"
-    config.results_dir.mkdir(parents=True, exist_ok=True)
+    report_dir = trace_store.results_dir / "reports"
+    report_dir.mkdir(parents=True, exist_ok=True)
+    report_path = report_dir / f"benchmark_{int(time.time())}.json"
     with open(report_path, "w") as f:
         json.dump(asdict(report), f, indent=2, default=str)
     print(f"\n=== Report saved to {report_path} ===")
+
+    # --- Save traces and manifest ---
+    trace_paths = trace_store.save(report=asdict(report))
+    for label, path in trace_paths.items():
+        logger.info("Saved %s → %s", label, path)
+        print(f"  {label}: {path}")
+
+    logger.info(
+        "Benchmark run %s complete in %.1fs (%d traces)",
+        trace_store.run_id, trace_store.total_duration_s(), len(trace_store.traces),
+        extra={"run_id": trace_store.run_id},
+    )
 
     # Print comparison table
     _print_comparison(report)

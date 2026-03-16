@@ -1,0 +1,337 @@
+run_id,trace_id,engine,benchmark_type,query_id,query_text,num_results,latency_ms,error,error_category,primary_repo,primary_language,total_tokens_returned,relevant_tokens_returned,token_efficiency,mrr,ndcg@1,ndcg@10,ndcg@3,ndcg@5,precision@1,precision@10,precision@3,precision@5,recall@1,recall@10,recall@3,recall@5
+caea35ec96c2,6dc37d2108ab,context7,validated_CodeSearchNet,,"Attempt to parse the passed in string into a valid datetime.
+        If we get a parse error then assume the string is an epoch time
+        and convert to a datetime.",0,2244.78,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,d8b55bde0b66,context7,validated_CodeSearchNet,,"Sets the quantities on each of the products on each of the
+        products specified. Raises an exception (ValidationError) if a limit
+        is violated. `product_quantities` is an iterable of (pro",0,3465.35,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,73985d73e463,context7,validated_CodeSearchNet,,"Load variable from Pickle file
+    
+    Args:
+        path (str): path of the file to load
+
+    Returns:
+        variable read from path",0,2366.20,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,9d5d39b60a73,context7,validated_CodeSearchNet,,Replaces null or blank filter or adds filter to existing list.,0,2161.07,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,9e717edbf775,context7,validated_CodeSearchNet,,"Returns Twitter Bootstrap CSS file.
+    TEMPLATE_DEBUG returns full file, otherwise returns minified file.",0,2701.11,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,3b07bb24662a,context7,validated_CodeSearchNet,,"Pretty tabulated string of all the cached data, and column names",0,2162.26,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,1a57366da6b1,context7,validated_CodeSearchNet,,"Lists all the client nodes registered with Nomad.
+
+           https://www.nomadproject.io/docs/http/nodes.html
+            arguments:
+              - prefix :(str) optional, specifies a string to filt",0,2674.06,,,,,0,0,,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
+caea35ec96c2,74c051f0a273,context7,validated_CodeSearchNet,,Creates or returns a group,0,2366.81,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,b52aaeb91725,context7,validated_CodeSearchNet,,Function to execute and handle a GET request,0,2263.06,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,8512a934de79,context7,validated_CodeSearchNet,,"Print log message *msg* to stdout.
+
+        Parameters
+        -----------
+
+         msg : str
+            String to print on the screen
+
+         level : int
+            Log-level. Only the messages ",0,2468.54,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,cd5494e10004,context7,validated_CodeSearchNet,,"Recognizes and claims Strelka VCFs form the set of all input VCFs.
+
+        Each defined caller has a chance to evaluate and claim all the incoming
+        files as something that it can process.
+
+   ",0,2570.20,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,30e2acaeca9c,context7,validated_CodeSearchNet,,"Create a DirectView and register it with IPython magics
+        
+        Defines the magics `%px, %autopx, %pxresult, %%px`
+        
+        Parameters
+        ----------
+        
+        targets: int",0,2365.16,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,4249a4a100f0,context7,validated_CodeSearchNet,,Print the n most common words and counts in the freqs dict.,0,2367.11,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,9a740d45775c,context7,validated_CodeSearchNet,,"Can be called to rename and relocate the trajectory.
+
+        :param new_name: New name of the trajectory, None if you do not want to change the name.
+
+        :param in_store:
+
+            Set this t",0,2494.19,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,829377800300,context7,validated_CodeSearchNet,,When consumer confirm the authrozation.,0,2703.00,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,bd89721a4229,context7,validated_CodeSearchNet,,"Create new H2OTwoDimTable object from list of (key,value) tuples which are a pre-cursor to JSON dict.
+
+        :param keyvals: list of (key, value) tuples
+        :return: new H2OTwoDimTable object",0,3187.43,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,b81bc0214a95,context7,validated_CodeSearchNet,,"Checks whether the Wolfe or approx Wolfe conditions are satisfied.
+
+  The Wolfe conditions are a set of stopping criteria for an inexact line search
+  algorithm. Let f(a) be the function value along t",0,2416.13,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,d97eb0032d3d,context7,validated_CodeSearchNet,,Return a string containing a crash report.,0,1956.73,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,36ac6a7ae617,context7,validated_CodeSearchNet,,"unpacks data from 'buf' and returns a dication of named fields. the
+        fields can be post-processed by extending the _post_unpack() method.",0,1749.34,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,7222fae78511,context7,validated_CodeSearchNet,,"Instance depends on the API version:
+
+           * 2017-04-01: :class:`DisasterRecoveryConfigsOperations<azure.mgmt.eventhub.v2017_04_01.operations.DisasterRecoveryConfigsOperations>`",0,2697.45,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,1cf0611a6f30,context7,validated_CodeSearchNet,,"Returns ``True`` is the given expression value is a regular expression
+    like string with prefix ``re/`` and suffix ``/``, otherwise ``False``.
+
+    Arguments:
+        expr (mixed): expression value",0,2567.99,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,d3093969c2d2,context7,validated_CodeSearchNet,,"Returns the numpy.dtype used to store the point records in a numpy array
+
+        .. note::
+
+            The dtype corresponds to the dtype with sub_fields *packed* into their
+            composed fie",0,2411.69,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,1cbca5ac1993,context7,validated_CodeSearchNet,,Find the full path to a .bat or .exe using the win32api module.,0,2674.12,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,3c551cd1f540,context7,validated_CodeSearchNet,,"Args:
+            data (str | byte):
+
+        Returns:
+            dict: Dict[str, DataFrame]",0,2514.19,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,2356efc5b5cb,context7,validated_CodeSearchNet,,"Disable event loop integration with PyQt4.
+
+        This merely sets PyOS_InputHook to NULL.",0,1906.86,,,,,0,0,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,7feb7ddafe24,context7,validated_CodeSearchNet,,"Send a message to a node. Returns False if the connection appears to be dead either before or after actually trying to send the message.
+
+        :param node: target node
+        :type node: Node
+    ",0,2228.02,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,0244df4fa76b,context7,validated_CodeSearchNet,,"Gets value of bits between selected range from memory
+
+    :param start: bit address of start of bit of bits
+    :param end: bit address of first bit behind bits
+    :return: instance of BitsVal (deri",0,2162.09,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,98680e55a66f,context7,validated_CodeSearchNet,,"Select all vertices within a cylindrical radius
+
+    Args:
+        radius (float): radius of the sphere
+        center_pt (3 coordinate tuple or list): center point of the sphere
+
+    Layer stack:
+   ",0,2364.32,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,9de62e9dd8eb,context7,validated_CodeSearchNet,,"Consruct fiona schema based on given elements
+
+    :param list Element: list of elements
+    :param dict nsmap: namespace map
+
+    :return dict: schema",0,2029.01,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,d517b8359906,context7,validated_CodeSearchNet,,"Initializes an app to work with this extension.
+
+        The app-context signals will be subscribed and the template context
+        will be initialized.
+
+        :param app: the :class:`flask.Flask` ",0,2270.12,,,,,0,0,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,456e226465f9,context7,validated_CodeSearchNet,,Check all file item with given conditions.,0,2417.25,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,3610c14e0c0a,context7,validated_CodeSearchNet,,"Estimate tx gas. Use the max of calculation using safe method and web3 if operation == CALL or
+        use just the safe calculation otherwise",0,2776.48,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,70843b25ca9d,context7,validated_CodeSearchNet,,"Hook to setup this service with a specific DataManager.
+
+        Will recursively setup sub-services.",0,2060.22,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,44d6e29d7e6c,context7,validated_CodeSearchNet,,"For the documentation see:
+        :class:`~airflow.contrib.operators.gcp_vision_operator.CloudVisionProductCreateOperator`",0,2161.45,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,29e882a992f4,context7,validated_CodeSearchNet,,"Clears the status of a device management request.
+        You can use this operation to clear the status for a completed request, or for an in-progress request which may never complete due to a proble",0,2552.70,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,e905fb13b99a,context7,validated_CodeSearchNet,,Fire update method in all attached observers in order of attachment.,0,2571.10,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,caa8901a9f0a,context7,validated_CodeSearchNet,,Saves features to file.,0,2082.86,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,084bdb9d6a79,context7,validated_CodeSearchNet,,"Returns (module, locals) of the funciton `depth` frames away from the caller",0,2191.82,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,3b0323c79c50,context7,validated_CodeSearchNet,,"Run one pass of the lookahead mapper on the provided DAG.
+
+        Args:
+            dag (DAGCircuit): the directed acyclic graph to be mapped
+        Returns:
+            DAGCircuit: A dag mapped to ",0,2287.92,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,a6b6d6061376,context7,validated_CodeSearchNet,,"Poll a single job from the /Jobs endpoint until it is ""status"": ""DONE"" or ""CANCELLED"" or ""FAILED"" or we time out.",0,2981.24,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,625f7888e2fa,context7,validated_CodeSearchNet,,"turn multi-ip interfaces '0.0.0.0' and '*' into connectable
+    ones, based on the location (default interpretation is localhost).
+    
+    This is for zeromq urls, such as tcp://*:10101.",0,1751.48,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,c529ee355034,context7,validated_CodeSearchNet,,"Merge two Structs with customizable conflict resolution.
+
+        This is similar to :meth:`update`, but much more flexible. First, a
+        dict is made from data+key=value pairs. When merging this ",0,2980.66,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,8378141af0a9,context7,validated_CodeSearchNet,,Is this the christmas period?,0,2571.64,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,77e6f8b25a76,context7,validated_CodeSearchNet,,"Checks that a key matching a wildcard expression exists in a bucket
+
+        :param wildcard_key: the path to the key
+        :type wildcard_key: str
+        :param bucket_name: the name of the bucket",0,2783.73,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,35ec290468c7,context7,validated_CodeSearchNet,,"Return a dict summarizing the coverage data.
+
+        Keys are based on the filenames, and values are the number of executed
+        lines.  If `fullpath` is true, then the keys are the full pathnames",0,2285.38,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,1eb00ca8b5e0,context7,validated_CodeSearchNet,,"This reads at most ""size"" bytes from the file (less if the read hits
+        EOF before obtaining size bytes). If the size argument is negative or
+        omitted, read all data until EOF is reached. ",0,2674.18,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,e132761bdb10,context7,validated_CodeSearchNet,,Check the new string formatting.,0,2423.17,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,cacb6d955ea8,context7,validated_CodeSearchNet,,"Download the POJO for this model to the directory specified by path.
+
+        If path is an empty string, then dump the output to screen.
+
+        :param path:  An absolute path to the directory where",0,2570.65,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,31bd3f364faf,context7,validated_CodeSearchNet,,"Return random value for TimeField
+
+    >>> result = any_form_field(forms.TimeField())
+    >>> type(result)
+    <type 'str'>",0,2160.85,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,011e3b826fde,context7,validated_CodeSearchNet,,"Map each qubit in block_qargs to its wire position among the block's wires.
+        Args:
+            block_qargs (list): list of qubits that a block acts on
+            global_index_map (dict): mappi",0,2368.49,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,e899480215dc,context7,validated_CodeSearchNet,,"Returns an object that makes requests to the API, authenticated
+        with a saved or specified long-lived token, at URLs beginning with
+        `url`.
+
+        If no URL is specified, or if the spe",0,1912.21,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,36f032f434ce,context7,validated_CodeSearchNet,,"Check if a connection could be made to the mongo process specified
+
+    Args:
+        host(str)
+        port(int)
+        username(str)
+        password(str)
+        authdb (str): database to to for a",0,2242.56,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,aa3280488c33,context7,validated_CodeSearchNet,,"Gets an event type.  Parameters: eventTypeId (string), draft (boolean).  Throws APIException on failure.",0,2366.85,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,753188fce56e,context7,validated_CodeSearchNet,,start a new qtconsole connected to our kernel,0,2261.78,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,74940c77ec42,context7,validated_CodeSearchNet,,"See if *name_or_id* is either a thread name or a thread id.
+        The frame of that id/name is returned, or None if name_or_id is
+        invalid.",0,2440.60,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,7dd3df25b64f,context7,validated_CodeSearchNet,,"Print a phone application friendly contact table.
+
+    :param search_terms: used as search term to filter the contacts before
+        printing
+    :type search_terms: str
+    :param vcard_list: the vc",0,2570.83,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,df5bd92c1528,context7,validated_CodeSearchNet,,Command line tool to make a md5sum comparison of two .fil files.,0,2265.76,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,7358b5959684,context7,validated_CodeSearchNet,,Send request,0,2467.95,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,490307e38e41,context7,validated_CodeSearchNet,,Check if the current branch is `dev`.,0,2730.82,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,cc7413b1f8ac,context7,validated_CodeSearchNet,,"Generator for the LIST NEWSGROUPS command.
+
+        Generates a list of newsgroups including the name and a short
+        description.
+
+        See <http://tools.ietf.org/html/rfc3977#section-7.6.6>
+
+",0,2264.13,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,b0f842f712e5,context7,validated_CodeSearchNet,,"Get the confusion matrix for the specified metric
+
+        :param metrics: A string (or list of strings) among metrics listed in :const:`max_metrics`. Defaults to 'f1'.
+        :param thresholds: A va",0,2058.13,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,a6fc931ced16,context7,validated_CodeSearchNet,,Find links that correspond to the given arguments.,0,2678.63,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,23fc5fe4a6fc,context7,validated_CodeSearchNet,,Load from json-encodable,0,2059.44,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,4e081725ca8f,context7,validated_CodeSearchNet,,Puts a value into a queue but aborts if this thread is closed.,0,2367.21,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,d244425e330e,context7,validated_CodeSearchNet,,"Class method to create a :class:`Gallery` instance from the
+        configuration of a sphinx application",0,1950.15,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,13937fa403e0,context7,validated_CodeSearchNet,,"Add `frame_or_fn' to the list of functions that are not to
+        be debugged",0,1470.36,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,f23d18cbc34b,context7,validated_CodeSearchNet,,Represent this dependency as a dict. For json compatibility.,0,2263.20,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,2af74875617d,context7,validated_CodeSearchNet,,"Utility function to calculate a change hash for a `StoreItem`.
+    :param item:
+    :return:",0,2265.22,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,69aba2f66915,context7,validated_CodeSearchNet,,"Function to resolve polytomies for a given parent node. If the
+        number of the direct decendants is less than three (not a polytomy), does
+        nothing. Otherwise, for each pair of nodes, ass",0,2326.69,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,1a5be7e74e1d,context7,validated_CodeSearchNet,,"Creates the directory and all its parent directories if it does not
+        exist yet",0,2265.43,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,c8dc8da2d7c8,context7,validated_CodeSearchNet,,"Create a tuning job
+
+        :param config: the config for tuning
+        :type config: dict
+        :param wait_for_completion: if the program should keep running until job finishes
+        :type wai",0,2370.89,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,12ab2d6ac1ae,context7,validated_CodeSearchNet,,"Get information about the users current playback.
+
+        Returns
+        -------
+        player : Player
+            A player object representing the current playback.",0,2366.37,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,66dcc5119647,context7,validated_CodeSearchNet,,Populate frequency axis,0,2674.05,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,2ef7f3d369a0,context7,validated_CodeSearchNet,,"call will issue the call, and issue a refresh token
+       given a 401 response, and if the client has a _update_token function
+
+       Parameters
+       ==========
+       func: the function (eg, post",0,2208.43,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,45b8ceea2d5b,context7,validated_CodeSearchNet,,"Returns the nextflow params string from a dictionary object.
+
+        The params dict should be a set of key:value pairs with the
+        parameter name, and the default parameter value::
+
+           ",0,2072.76,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,19cbb5750048,context7,validated_CodeSearchNet,,"Print the tasks that would be installed in the
+    crontab, for debugging purposes.",0,2115.64,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,225270e4e8f7,context7,validated_CodeSearchNet,,"Skips to previous track in the user’s queue.
+
+        Note that this will ALWAYS skip to the previous track, regardless of the current track’s progress.
+        Returning to the start of the current t",0,2571.17,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,151565651914,context7,validated_CodeSearchNet,,"Deletes record, and removes it from database.",0,3493.39,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,c036d17a2a76,context7,validated_CodeSearchNet,,"load a google compute config, meaning that we start with a template,
+       and mimic the following example cloudbuild.yaml:
+
+        steps:
+        - name: ""singularityware/singularity:${_SINGULARITY",0,2161.61,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,3c9681d5b821,context7,validated_CodeSearchNet,,"Instance depends on the API version:
+
+           * 2015-12-01: :class:`FeaturesOperations<azure.mgmt.resource.features.v2015_12_01.operations.FeaturesOperations>`",0,2205.58,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,fec09cfc2fde,context7,validated_CodeSearchNet,,Update user-defined information about a variant: manual rank & ACMG.,0,2606.03,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,8b203a3109db,context7,validated_CodeSearchNet,,"Check if run_id is stored in DynamoDB table.
+    Return True if run_id is stored or False otherwise.
+
+    Arguments:
+    dynamodb_client - boto3 DynamoDB client (not service)
+    table_name - string r",0,2400.14,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,a09950dd4a53,context7,validated_CodeSearchNet,,Compute marginal pdf for each individual observable.,0,2878.00,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,734be066f78f,context7,validated_CodeSearchNet,,Take a string and return the corresponding module,0,2668.60,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,ec2fbafc6f1e,context7,validated_CodeSearchNet,,"Find the necessary file for the given test case.
+
+    Args:
+        device(napalm device connection): for which device
+        filename(str): file to find
+        path(str): where to find it relative ",0,2571.34,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,152e9f0b6188,context7,validated_CodeSearchNet,,"Start running.
+
+        Args:
+            data_loaders (list[:obj:`DataLoader`]): Dataloaders for training
+                and validation.
+            workflow (list[tuple]): A list of (phase, epochs)",0,2368.38,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,8c86cadfb1ad,context7,validated_CodeSearchNet,,Enforce that no ranges overlap in internal storage.,0,2467.02,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,f30bce0cb5b5,context7,validated_CodeSearchNet,,"called when a file is uploaded to a private stage for
+    a projectname/version.  link.entry.file_exists() may be false because
+    a more recent revision deleted the file (and files are not revisione",0,1855.13,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,104dda847375,context7,validated_CodeSearchNet,,"Reconstruct the given input sequences.
+
+    Args:
+      inputs: A batch of image sequences `x_{1:T}` of shape
+        `[batch_size, timesteps, height, width, channels]`.
+      samples: Number of sampl",0,2642.34,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,4d3630fd0347,context7,validated_CodeSearchNet,,Return the primary acquire channel of this qubit.,0,1649.79,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,50583c165a16,context7,validated_CodeSearchNet,,"Passes data up to the client via a Queue().
+
+        :param event:
+        :param data:
+        :param args:
+        :return:",0,2776.03,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,cd1852ee31ac,context7,validated_CodeSearchNet,,"Split the tuple (obtained from scan) to separate files.
+       Alternately send full paths to the files in md5 and call it.
+       :param directory: tuple of files in the directory.",0,2185.19,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,0c21fe076ebb,context7,validated_CodeSearchNet,,Parses a DOT file and returns a Godot graph.,0,2600.82,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,0cc8cdd0f79d,context7,validated_CodeSearchNet,,"Get (branch, commit) from HEAD of a git repo.",0,3083.64,,,,,0,0,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,a3db56073c7a,context7,validated_CodeSearchNet,,"Decorator that prevents callbacks from calling into link methods that
+    are not reentrant",0,3132.54,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,d44a523775ee,context7,validated_CodeSearchNet,,"Parse numeric string to int. Supports oct formatted string.
+
+    :param str value: String value to parse as int
+    :return int:",0,2262.15,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,3d301701882f,context7,validated_CodeSearchNet,,"Clear the session history, releasing all object references, and
+        optionally open a new session.",0,2262.44,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,731e63dd7ab9,context7,validated_CodeSearchNet,,"Custom method to execute a job and notify of its result
+
+        :param job: Job object
+        :param queue: the queue containing the object",0,2571.58,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,75bd64fa7a62,context7,validated_CodeSearchNet,,"Try to extract the bigger group of interlinked tokens.
+
+    Should generally be used at last in the collectors chain.",0,2570.10,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,d03ed68aa742,context7,validated_CodeSearchNet,,"Collect all verified variants in a list on institutes and save them to file
+
+    Args:
+        store(adapter.MongoAdapter)
+        institute_list(list): a list of institute ids
+        temp_excel_dir(",0,1649.65,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0

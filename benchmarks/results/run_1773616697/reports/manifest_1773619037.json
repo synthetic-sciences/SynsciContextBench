@@ -1,0 +1,64 @@
+{
+  "metadata": {
+    "run_id": "caea35ec96c2",
+    "timestamp": "2026-03-15T23:18:17.170503+00:00",
+    "git_commit": "fd241d895ac7",
+    "git_branch": "main",
+    "git_dirty": true,
+    "python_version": "3.12.12",
+    "platform": "Linux",
+    "platform_version": "6.19.6-arch1-1",
+    "cpu_count": 8,
+    "hostname": "arch",
+    "engines": [
+      "context7"
+    ],
+    "config_snapshot": {
+      "synsc_api_url": "http://localhost:8742",
+      "synsc_api_key": "***REDACTED***",
+      "nia_api_url": "https://apigcp.trynia.ai",
+      "nia_api_key": "***REDACTED***",
+      "context7_enabled": true,
+      "context7_api_url": "https://context7.com",
+      "context7_api_key": "***REDACTED***",
+      "context7_npx_command": "npx",
+      "context7_request_delay": 0.5,
+      "llm_provider": "anthropic",
+      "llm_model": "claude-sonnet-4-6",
+      "llm_api_key": "***REDACTED***",
+      "top_k_values": [
+        1,
+        3,
+        5,
+        10
+      ],
+      "similarity_threshold": 0.3,
+      "max_queries": 100
+    },
+    "benchmark_version": "1.0.0"
+  },
+  "total_duration_s": 2340.186656610007,
+  "benchmark_timings": {},
+  "trace_count": 300,
+  "trace_file": "traces_1773619037.jsonl",
+  "engines_summary": {
+    "context7": {
+      "total_queries": 300,
+      "errors": 0,
+      "error_categories": {},
+      "avg_latency_ms": 2498.1967756329686,
+      "benchmark_types": [
+        "validated_AdvTest",
+        "validated_CoSQA",
+        "validated_CodeSearchNet"
+      ],
+      "per_repo": {},
+      "per_language": {},
+      "p50_latency_ms": 2552.6977260014974,
+      "p95_latency_ms": 3128.2446550030727,
+      "min_latency_ms": 0.0,
+      "max_latency_ms": 4313.004717987496,
+      "avg_token_efficiency": 0.0
+    }
+  }
+}

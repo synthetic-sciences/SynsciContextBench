@@ -4,10 +4,10 @@
 
 Benchmark harness for comparing code context engines head-to-head.
 
-Tests [Delphie](https://github.com/synthetic-sciences/synsc-context), [Context7](https://context7.com), and [Nia](https://trynia.ai) across 8 benchmark suites, ~2,000 queries, using automated IR metrics and a position-debiased LLM judge.
+Tests [Delphi](https://github.com/synthetic-sciences/synsc-context), [Context7](https://context7.com), and [Nia](https://trynia.ai) across 8 benchmark phases, ~3,300 queries, using automated IR metrics and a position-debiased LLM judge.
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
-[![Suites](https://img.shields.io/badge/suites-8-58a6ff?style=for-the-badge)]()
+[![Suites](https://img.shields.io/badge/phases-8-58a6ff?style=for-the-badge)]()
 [![Engines](https://img.shields.io/badge/engines-3-f78166?style=for-the-badge)]()
 [![Judge](https://img.shields.io/badge/judge-Claude_Sonnet_4.6-blueviolet?style=for-the-badge&logo=anthropic&logoColor=white)]()
 
@@ -21,58 +21,80 @@ Tests [Delphie](https://github.com/synthetic-sciences/synsc-context), [Context7]
 
 ## Results
 
-All numbers pulled from `benchmarks/results/results.json`. Full methodology in [`docs/BENCHMARK_REPORT.md`](docs/BENCHMARK_REPORT.md).
+100 queries per engine per phase. All validated datasets scored with LLM judge (`--match-mode llm`). Full methodology in [`docs/RESULTS.md`](docs/RESULTS.md).
 
-### Custom Benchmarks (hand-crafted queries, 3 engines)
+### Custom Benchmarks (100 queries each, 3 engines)
 
-| Benchmark | Metric | Delphie | Context7 | Nia |
+| Benchmark | Metric | Delphi | Context7 | Nia |
 |-----------|--------|:---:|:---:|:---:|
-| Retrieval | MRR | **0.817** | 0.350 | 0.345 |
-| Multi-Hop | Coverage | **0.967** | 0.850 | 0.783 |
-| Code QA | Accuracy | **0.867** | 0.200 | 0.154 |
-| Adversarial | Accuracy | **0.800** | 0.000 | 0.000 |
-| Hallucination | Rate (lower is better) | **40%** | **40%** | 55.6% |
+| Retrieval | MRR | **0.962** | 0.790 | 0.728 |
+| Adversarial | Discrimination | **0.560** | 0.170 | 0.140 |
+| Hallucination | Rate (lower is better) | **39%** | 45% | 51% |
 
-### Industry-Standard Datasets (CoSQA + CodeSearchNet, 450 queries each)
+### Validated Datasets (LLM judge, 100 queries each)
 
-| Dataset | Metric | Delphie | Context7 | Nia |
+| Dataset | Metric | Delphi | Context7 | Nia |
 |---------|--------|:---:|:---:|:---:|
-| CodeSearchNet | MRR | **0.940** | 0.000 | 0.053 |
-| CodeSearchNet | NDCG@10 | **0.941** | 0.000 | 0.053 |
-| CoSQA | MRR | **0.636** | 0.002 | 0.003 |
-| CoSQA | NDCG@10 | **0.642** | 0.002 | 0.004 |
+| CodeSearchNet | MRR | **0.865** | 0.010 | 0.040 |
+| CoSQA | MRR | **0.703** | 0.110 | 0.298 |
 
-### Enhanced LLM Judge (position-debiased, 4D scoring, ~500 queries per dataset)
+### Enhanced LLM Judge (position-debiased, 4D scoring, 100 queries per dataset)
 
-Each query is scored twice with swapped chunk ordering and averaged. This eliminates the ~10% positional bias documented in LLM evaluations (Zheng et al. 2023). Scored on Relevance, Completeness, Specificity, and Faithfulness (0-3 each).
+Each query scored twice with swapped chunk ordering to eliminate positional bias. Scored on Relevance, Completeness, Specificity, and Faithfulness (0-3 each).
 
-| Dataset | Engine | Relevance | Completeness | Specificity | Faithfulness | Total | Wins |
-|---------|--------|:-:|:-:|:-:|:-:|:-:|:-:|
-| CodeSearchNet | **Delphie** | **1.98** | **1.88** | **1.36** | **2.04** | **1.82** | **436** |
-| CodeSearchNet | Context7 | 0.63 | 0.30 | 0.40 | 1.30 | 0.66 | 36 |
-| CoSQA | Delphie | 1.16 | 0.55 | 0.68 | 1.60 | 1.00 | 109 |
-| CoSQA | **Context7** | **1.76** | **1.35** | **1.41** | **2.13** | **1.66** | **341** |
+| Dataset | Engine | Total (0-3) | Wins |
+|---------|--------|:-:|:-:|
+| CodeSearchNet | **Delphi** | **1.705** | **84** |
+| CodeSearchNet | Context7 | 0.410 | 3 |
+| CodeSearchNet | Nia | 0.345 | 3 |
+| CoSQA | **Delphi** | **1.225** | **51** |
+| CoSQA | Nia | 0.875 | 20 |
+| CoSQA | Context7 | 0.598 | 12 |
 
-Delphie wins **88%** of CodeSearchNet queries (code-to-code retrieval). Context7 wins **68%** of CoSQA queries (documentation-style "how do I..." questions). See the note on ecological validity below.
+<details>
+<summary>Supplementary: AdvTest (structurally disadvantages library-lookup engines)</summary>
 
-### A note on CoSQA vs CodeSearchNet
+AdvTest uses obfuscated queries without library names, which structurally disadvantages engines like Context7 that require a library name to search. Results are reported separately.
 
-CoSQA queries look like "how to parse json in python" or "python read csv file". An LLM already knows those answers and would never call a context engine for them. CodeSearchNet queries ("find the function that does X") match how agents actually use context engines in practice. CoSQA scores should be weighted lower when evaluating engines for real agent workflows.
+| Dataset | Metric | Delphi | Context7 | Nia |
+|---------|--------|:---:|:---:|:---:|
+| AdvTest | MRR | **0.970** | 0.000 | 0.030 |
+
+| Dataset | Engine | Total (0-3) | Wins |
+|---------|--------|:-:|:-:|
+| AdvTest | **Delphi** | **1.740** | **93** |
+| AdvTest | Context7 | 0.393 | 2 |
+| AdvTest | Nia | 0.365 | 1 |
+
+</details>
+
+---
+
+## Fairness
+
+This benchmark addresses common fairness concerns in engine comparison:
+
+- **LLM-as-Judge** — Claude Sonnet evaluates result quality regardless of format (code vs docs), replacing biased file-path matching
+- **Wall-clock latency** — all engines measured identically with `time.perf_counter()`. Delphi latency was measured against a dev server (US-East); production deployment averages ~2.4s/query.
+- **Position debiasing** — enhanced judge shuffles chunk order to eliminate ~10% positional bias
+- **Equal adapter treatment** — no artificial handicaps, equalized timeouts (120s), no fallback libraries
+- **Consistent sample size** — 100 queries per engine per phase
 
 ---
 
 ## What's Being Tested
 
-| # | Suite | Tests | Size |
-|:-:|-------|-------|:----:|
-| 1 | **Retrieval Quality** | P@K, Recall@K, NDCG@K, MRR against known ground truth | 10q |
-| 2 | **Multi-Hop Retrieval** | Queries needing context from 2+ files/repos | 10q |
-| 3 | **Code QA** | Definitions, call sites, imports, inheritance, return types | 15q |
-| 4 | **Adversarial Near-Miss** | Decoys: same name/wrong context, test vs prod, version confusion | 10q |
-| 5 | **Hallucination Rate** | Does engine context prevent LLMs from making stuff up? | 10q |
-| 6 | **Validated Datasets** | CoSQA + CodeSearchNet from HuggingFace | ~900q |
-| 7 | **LLM-as-Judge** | Blind 3D scoring (relevance, completeness, specificity) | ~1,000q |
-| 8 | **Enhanced Judge** | Position-debiased 4D + faithfulness + RAGAS metrics | ~1,000q |
+| # | Phase | Tests | Queries |
+|:-:|-------|-------|:------:|
+| 1 | **Retrieval Quality** | P@K, Recall@K, NDCG@K, MRR against known ground truth | 100 |
+| 2 | **Multi-Hop Retrieval** | Queries needing context from 2+ files/repos | 100 |
+| 3 | **Code QA** | Definitions, call sites, imports, inheritance, return types | 100 |
+| 4 | **Adversarial Near-Miss** | Decoys: same name/wrong context, test vs prod, version confusion | 100 |
+| 5 | **Hallucination Rate** | Does engine context prevent LLMs from making stuff up? | 100 |
+| 6 | **CodeSearchNet** | Function-level code search (Husain et al. 2019) | 100 |
+| 7 | **CoSQA** | Real web search queries (Huang et al. 2021) | 100 |
+| 8 | **Enhanced Judge** | Position-debiased 4D + faithfulness + RAGAS metrics | 200 |
+| — | *AdvTest (supplementary)* | Adversarial/obfuscated code queries | 100 |
 
 ---
 
@@ -88,24 +110,25 @@ cp benchmarks/.env.local.example benchmarks/.env.local
 # run everything
 uv run python -m benchmarks
 
-# run specific suites
-uv run python -m benchmarks --judge-only --engines synsc context7
-uv run python -m benchmarks --retrieval-only --skip-indexing
+# run specific phases
+uv run python -m benchmarks --skip-indexing --max-queries 100 --match-mode llm -v
+
+# single engine
+uv run python -m benchmarks --engines synsc --skip-indexing --max-queries 50
+
+# validated datasets only
+uv run python -m benchmarks --validated-only --match-mode llm --dataset codesearchnet cosqa advtest
+
+# enhanced judge only
 uv run python -m benchmarks --enhanced-judge-only
-
-# quick iteration
-uv run python -m benchmarks --judge-only --engines synsc --max-queries 50
-
-# download datasets from HuggingFace
-uv run python -m benchmarks --download-datasets
 ```
 
 ### Environment Variables
 
 | Variable | What it does |
 |----------|-------------|
-| `SYNSC_API_URL` | Delphie server URL (default `http://localhost:8742`) |
-| `SYNSC_API_KEY` | Delphie API key |
+| `SYNSC_API_URL` | Delphi server URL (default `http://localhost:8742`) |
+| `SYNSC_API_KEY` | Delphi API key |
 | `NIA_API_KEY` | Nia API key |
 | `CONTEXT7_ENABLED` | Set `true` for Context7 |
 | `BENCH_LLM_PROVIDER` | `anthropic`, `gemini`, or `openai` |
@@ -119,12 +142,20 @@ uv run python -m benchmarks --download-datasets
 |------|--------|
 | `--engines synsc nia context7` | Pick engines |
 | `--skip-indexing` | Skip repo indexing |
+| `--skip-retrieval` | Skip retrieval phase |
+| `--skip-multihop` | Skip multi-hop phase |
+| `--skip-code-qa` | Skip code QA phase |
+| `--skip-adversarial` | Skip adversarial phase |
+| `--skip-hallucination` | Skip hallucination phase |
+| `--skip-validated` | Skip validated dataset phases |
+| `--validated-only` | Run only validated datasets |
+| `--enhanced-judge-only` | Run only enhanced judge |
+| `--match-mode llm` | Use LLM judge for validated scoring |
 | `--no-debiasing` | Disable position debiasing (2x faster) |
 | `--no-significance` | Skip statistical analysis |
-| `--bootstrap-n N` | Bootstrap resamples (default 10,000) |
-| `--dataset cosqa\|codesearchnet` | Run one dataset |
-| `--multi-model` | Hallucination across model tiers |
-| `--max-queries N` | Limit query count |
+| `--dataset cosqa codesearchnet advtest` | Pick specific datasets |
+| `--max-queries N` | Limit query count per phase |
+| `-v` | Verbose logging |
 
 </details>
 
@@ -140,7 +171,7 @@ Every pairwise comparison includes paired t-tests, Wilcoxon signed-rank, bootstr
 
 | Engine | Adapter | Notes |
 |--------|---------|-------|
-| **Delphie** | `benchmarks/adapters/synsc.py` | HTTP API, needs indexed repos |
+| **Delphi** | `benchmarks/adapters/synsc.py` | HTTP API, needs indexed repos |
 | **Nia** | `benchmarks/adapters/nia.py` | REST API, global knowledge search |
 | **Context7** | `benchmarks/adapters/context7.py` | HTTP API, pre-crawled docs |
 
@@ -153,25 +184,26 @@ Add a new engine by implementing `ContextEngineAdapter` from `benchmarks/adapter
 ```
 benchmarks/
   __main__.py             cli entry point
-  runner.py               orchestrates suites
+  runner.py               orchestrates phases
   config.py               env config
+  logging_config.py       structured logging + traces
   metrics.py              NDCG, MRR, P@K, R@K, MAP
   semantic_metrics.py     CodeBLEU, AST similarity
   statistical_analysis.py paired tests, bootstrap, effect sizes
   llm_judge.py            3D blind scoring
   enhanced_judge.py       4D debiased + RAGAS
-  validated_eval.py       CoSQA / CodeSearchNet
+  validated_eval.py       CodeSearchNet / CoSQA / AdvTest
   hallucination.py        hallucination rate
   multihop.py             multi-hop retrieval
   code_qa.py              code QA
   adversarial.py          adversarial near-miss
+  consistency.py          consistency checks
   adapters/               engine adapters
   datasets/               ground truth + downloads
-  results/                output JSON
+  results/                output data, traces, reports
 docs/
+  RESULTS.md              full tabulated results
   BENCHMARK_REPORT.md     full analysis
-  RESULTS.md              tabulated results
-  WHITEPAPER.md           technical whitepaper
 scripts/
   generate_charts.py      regenerate the chart
 ```

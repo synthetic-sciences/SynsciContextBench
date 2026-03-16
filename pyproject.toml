@@ -24,24 +24,18 @@ classifiers = [
 dependencies = [
     # HTTP client (engine adapters)
     "httpx>=0.28.1",
-
     # Numerical / metrics
     "numpy>=1.24.0",
-
     # Logging
     "structlog>=24.1.0",
-
     # Environment variables
     "python-dotenv>=1.0.0",
-
     # Progress bars
     "tqdm>=4.60.0",
-
     # HuggingFace dataset downloads
     "huggingface-hub>=0.20.0",
-
-    # Database access (benchmark_indexer uses synsc internals)
     "sqlalchemy>=2.0.30",
+    "matplotlib>=3.10.8",
 ]
 
 [project.optional-dependencies]
