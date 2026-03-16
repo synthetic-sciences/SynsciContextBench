@@ -1,0 +1,437 @@
+run_id,trace_id,engine,benchmark_type,query_id,query_text,num_results,latency_ms,error,error_category,primary_repo,primary_language,total_tokens_returned,relevant_tokens_returned,token_efficiency,mrr,ndcg@1,ndcg@10,ndcg@3,ndcg@5,precision@1,precision@10,precision@3,precision@5,recall@1,recall@10,recall@3,recall@5
+caea35ec96c2,6dc37d2108ab,context7,validated_CodeSearchNet,,"Attempt to parse the passed in string into a valid datetime.
+        If we get a parse error then assume the string is an epoch time
+        and convert to a datetime.",0,2244.78,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,d8b55bde0b66,context7,validated_CodeSearchNet,,"Sets the quantities on each of the products on each of the
+        products specified. Raises an exception (ValidationError) if a limit
+        is violated. `product_quantities` is an iterable of (pro",0,3465.35,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,73985d73e463,context7,validated_CodeSearchNet,,"Load variable from Pickle file
+    
+    Args:
+        path (str): path of the file to load
+
+    Returns:
+        variable read from path",0,2366.20,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,9d5d39b60a73,context7,validated_CodeSearchNet,,Replaces null or blank filter or adds filter to existing list.,0,2161.07,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,9e717edbf775,context7,validated_CodeSearchNet,,"Returns Twitter Bootstrap CSS file.
+    TEMPLATE_DEBUG returns full file, otherwise returns minified file.",0,2701.11,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,3b07bb24662a,context7,validated_CodeSearchNet,,"Pretty tabulated string of all the cached data, and column names",0,2162.26,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,1a57366da6b1,context7,validated_CodeSearchNet,,"Lists all the client nodes registered with Nomad.
+
+           https://www.nomadproject.io/docs/http/nodes.html
+            arguments:
+              - prefix :(str) optional, specifies a string to filt",0,2674.06,,,,,0,0,,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
+caea35ec96c2,74c051f0a273,context7,validated_CodeSearchNet,,Creates or returns a group,0,2366.81,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,b52aaeb91725,context7,validated_CodeSearchNet,,Function to execute and handle a GET request,0,2263.06,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,8512a934de79,context7,validated_CodeSearchNet,,"Print log message *msg* to stdout.
+
+        Parameters
+        -----------
+
+         msg : str
+            String to print on the screen
+
+         level : int
+            Log-level. Only the messages ",0,2468.54,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,cd5494e10004,context7,validated_CodeSearchNet,,"Recognizes and claims Strelka VCFs form the set of all input VCFs.
+
+        Each defined caller has a chance to evaluate and claim all the incoming
+        files as something that it can process.
+
+   ",0,2570.20,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,30e2acaeca9c,context7,validated_CodeSearchNet,,"Create a DirectView and register it with IPython magics
+        
+        Defines the magics `%px, %autopx, %pxresult, %%px`
+        
+        Parameters
+        ----------
+        
+        targets: int",0,2365.16,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,4249a4a100f0,context7,validated_CodeSearchNet,,Print the n most common words and counts in the freqs dict.,0,2367.11,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,9a740d45775c,context7,validated_CodeSearchNet,,"Can be called to rename and relocate the trajectory.
+
+        :param new_name: New name of the trajectory, None if you do not want to change the name.
+
+        :param in_store:
+
+            Set this t",0,2494.19,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,829377800300,context7,validated_CodeSearchNet,,When consumer confirm the authrozation.,0,2703.00,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,bd89721a4229,context7,validated_CodeSearchNet,,"Create new H2OTwoDimTable object from list of (key,value) tuples which are a pre-cursor to JSON dict.
+
+        :param keyvals: list of (key, value) tuples
+        :return: new H2OTwoDimTable object",0,3187.43,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,b81bc0214a95,context7,validated_CodeSearchNet,,"Checks whether the Wolfe or approx Wolfe conditions are satisfied.
+
+  The Wolfe conditions are a set of stopping criteria for an inexact line search
+  algorithm. Let f(a) be the function value along t",0,2416.13,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,d97eb0032d3d,context7,validated_CodeSearchNet,,Return a string containing a crash report.,0,1956.73,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,36ac6a7ae617,context7,validated_CodeSearchNet,,"unpacks data from 'buf' and returns a dication of named fields. the
+        fields can be post-processed by extending the _post_unpack() method.",0,1749.34,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,7222fae78511,context7,validated_CodeSearchNet,,"Instance depends on the API version:
+
+           * 2017-04-01: :class:`DisasterRecoveryConfigsOperations<azure.mgmt.eventhub.v2017_04_01.operations.DisasterRecoveryConfigsOperations>`",0,2697.45,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,1cf0611a6f30,context7,validated_CodeSearchNet,,"Returns ``True`` is the given expression value is a regular expression
+    like string with prefix ``re/`` and suffix ``/``, otherwise ``False``.
+
+    Arguments:
+        expr (mixed): expression value",0,2567.99,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,d3093969c2d2,context7,validated_CodeSearchNet,,"Returns the numpy.dtype used to store the point records in a numpy array
+
+        .. note::
+
+            The dtype corresponds to the dtype with sub_fields *packed* into their
+            composed fie",0,2411.69,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,1cbca5ac1993,context7,validated_CodeSearchNet,,Find the full path to a .bat or .exe using the win32api module.,0,2674.12,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,3c551cd1f540,context7,validated_CodeSearchNet,,"Args:
+            data (str | byte):
+
+        Returns:
+            dict: Dict[str, DataFrame]",0,2514.19,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,2356efc5b5cb,context7,validated_CodeSearchNet,,"Disable event loop integration with PyQt4.
+
+        This merely sets PyOS_InputHook to NULL.",0,1906.86,,,,,0,0,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,7feb7ddafe24,context7,validated_CodeSearchNet,,"Send a message to a node. Returns False if the connection appears to be dead either before or after actually trying to send the message.
+
+        :param node: target node
+        :type node: Node
+    ",0,2228.02,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,0244df4fa76b,context7,validated_CodeSearchNet,,"Gets value of bits between selected range from memory
+
+    :param start: bit address of start of bit of bits
+    :param end: bit address of first bit behind bits
+    :return: instance of BitsVal (deri",0,2162.09,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,98680e55a66f,context7,validated_CodeSearchNet,,"Select all vertices within a cylindrical radius
+
+    Args:
+        radius (float): radius of the sphere
+        center_pt (3 coordinate tuple or list): center point of the sphere
+
+    Layer stack:
+   ",0,2364.32,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,9de62e9dd8eb,context7,validated_CodeSearchNet,,"Consruct fiona schema based on given elements
+
+    :param list Element: list of elements
+    :param dict nsmap: namespace map
+
+    :return dict: schema",0,2029.01,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,d517b8359906,context7,validated_CodeSearchNet,,"Initializes an app to work with this extension.
+
+        The app-context signals will be subscribed and the template context
+        will be initialized.
+
+        :param app: the :class:`flask.Flask` ",0,2270.12,,,,,0,0,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,456e226465f9,context7,validated_CodeSearchNet,,Check all file item with given conditions.,0,2417.25,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,3610c14e0c0a,context7,validated_CodeSearchNet,,"Estimate tx gas. Use the max of calculation using safe method and web3 if operation == CALL or
+        use just the safe calculation otherwise",0,2776.48,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,70843b25ca9d,context7,validated_CodeSearchNet,,"Hook to setup this service with a specific DataManager.
+
+        Will recursively setup sub-services.",0,2060.22,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,44d6e29d7e6c,context7,validated_CodeSearchNet,,"For the documentation see:
+        :class:`~airflow.contrib.operators.gcp_vision_operator.CloudVisionProductCreateOperator`",0,2161.45,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,29e882a992f4,context7,validated_CodeSearchNet,,"Clears the status of a device management request.
+        You can use this operation to clear the status for a completed request, or for an in-progress request which may never complete due to a proble",0,2552.70,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,e905fb13b99a,context7,validated_CodeSearchNet,,Fire update method in all attached observers in order of attachment.,0,2571.10,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,caa8901a9f0a,context7,validated_CodeSearchNet,,Saves features to file.,0,2082.86,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,084bdb9d6a79,context7,validated_CodeSearchNet,,"Returns (module, locals) of the funciton `depth` frames away from the caller",0,2191.82,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,3b0323c79c50,context7,validated_CodeSearchNet,,"Run one pass of the lookahead mapper on the provided DAG.
+
+        Args:
+            dag (DAGCircuit): the directed acyclic graph to be mapped
+        Returns:
+            DAGCircuit: A dag mapped to ",0,2287.92,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,a6b6d6061376,context7,validated_CodeSearchNet,,"Poll a single job from the /Jobs endpoint until it is ""status"": ""DONE"" or ""CANCELLED"" or ""FAILED"" or we time out.",0,2981.24,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,625f7888e2fa,context7,validated_CodeSearchNet,,"turn multi-ip interfaces '0.0.0.0' and '*' into connectable
+    ones, based on the location (default interpretation is localhost).
+    
+    This is for zeromq urls, such as tcp://*:10101.",0,1751.48,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,c529ee355034,context7,validated_CodeSearchNet,,"Merge two Structs with customizable conflict resolution.
+
+        This is similar to :meth:`update`, but much more flexible. First, a
+        dict is made from data+key=value pairs. When merging this ",0,2980.66,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,8378141af0a9,context7,validated_CodeSearchNet,,Is this the christmas period?,0,2571.64,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,77e6f8b25a76,context7,validated_CodeSearchNet,,"Checks that a key matching a wildcard expression exists in a bucket
+
+        :param wildcard_key: the path to the key
+        :type wildcard_key: str
+        :param bucket_name: the name of the bucket",0,2783.73,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,35ec290468c7,context7,validated_CodeSearchNet,,"Return a dict summarizing the coverage data.
+
+        Keys are based on the filenames, and values are the number of executed
+        lines.  If `fullpath` is true, then the keys are the full pathnames",0,2285.38,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,1eb00ca8b5e0,context7,validated_CodeSearchNet,,"This reads at most ""size"" bytes from the file (less if the read hits
+        EOF before obtaining size bytes). If the size argument is negative or
+        omitted, read all data until EOF is reached. ",0,2674.18,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,e132761bdb10,context7,validated_CodeSearchNet,,Check the new string formatting.,0,2423.17,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,cacb6d955ea8,context7,validated_CodeSearchNet,,"Download the POJO for this model to the directory specified by path.
+
+        If path is an empty string, then dump the output to screen.
+
+        :param path:  An absolute path to the directory where",0,2570.65,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,31bd3f364faf,context7,validated_CodeSearchNet,,"Return random value for TimeField
+
+    >>> result = any_form_field(forms.TimeField())
+    >>> type(result)
+    <type 'str'>",0,2160.85,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,011e3b826fde,context7,validated_CodeSearchNet,,"Map each qubit in block_qargs to its wire position among the block's wires.
+        Args:
+            block_qargs (list): list of qubits that a block acts on
+            global_index_map (dict): mappi",0,2368.49,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,e899480215dc,context7,validated_CodeSearchNet,,"Returns an object that makes requests to the API, authenticated
+        with a saved or specified long-lived token, at URLs beginning with
+        `url`.
+
+        If no URL is specified, or if the spe",0,1912.21,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,36f032f434ce,context7,validated_CodeSearchNet,,"Check if a connection could be made to the mongo process specified
+
+    Args:
+        host(str)
+        port(int)
+        username(str)
+        password(str)
+        authdb (str): database to to for a",0,2242.56,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,aa3280488c33,context7,validated_CodeSearchNet,,"Gets an event type.  Parameters: eventTypeId (string), draft (boolean).  Throws APIException on failure.",0,2366.85,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,753188fce56e,context7,validated_CodeSearchNet,,start a new qtconsole connected to our kernel,0,2261.78,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,74940c77ec42,context7,validated_CodeSearchNet,,"See if *name_or_id* is either a thread name or a thread id.
+        The frame of that id/name is returned, or None if name_or_id is
+        invalid.",0,2440.60,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,7dd3df25b64f,context7,validated_CodeSearchNet,,"Print a phone application friendly contact table.
+
+    :param search_terms: used as search term to filter the contacts before
+        printing
+    :type search_terms: str
+    :param vcard_list: the vc",0,2570.83,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,df5bd92c1528,context7,validated_CodeSearchNet,,Command line tool to make a md5sum comparison of two .fil files.,0,2265.76,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,7358b5959684,context7,validated_CodeSearchNet,,Send request,0,2467.95,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,490307e38e41,context7,validated_CodeSearchNet,,Check if the current branch is `dev`.,0,2730.82,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,cc7413b1f8ac,context7,validated_CodeSearchNet,,"Generator for the LIST NEWSGROUPS command.
+
+        Generates a list of newsgroups including the name and a short
+        description.
+
+        See <http://tools.ietf.org/html/rfc3977#section-7.6.6>
+
+",0,2264.13,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,b0f842f712e5,context7,validated_CodeSearchNet,,"Get the confusion matrix for the specified metric
+
+        :param metrics: A string (or list of strings) among metrics listed in :const:`max_metrics`. Defaults to 'f1'.
+        :param thresholds: A va",0,2058.13,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,a6fc931ced16,context7,validated_CodeSearchNet,,Find links that correspond to the given arguments.,0,2678.63,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,23fc5fe4a6fc,context7,validated_CodeSearchNet,,Load from json-encodable,0,2059.44,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,4e081725ca8f,context7,validated_CodeSearchNet,,Puts a value into a queue but aborts if this thread is closed.,0,2367.21,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,d244425e330e,context7,validated_CodeSearchNet,,"Class method to create a :class:`Gallery` instance from the
+        configuration of a sphinx application",0,1950.15,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,13937fa403e0,context7,validated_CodeSearchNet,,"Add `frame_or_fn' to the list of functions that are not to
+        be debugged",0,1470.36,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,f23d18cbc34b,context7,validated_CodeSearchNet,,Represent this dependency as a dict. For json compatibility.,0,2263.20,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,2af74875617d,context7,validated_CodeSearchNet,,"Utility function to calculate a change hash for a `StoreItem`.
+    :param item:
+    :return:",0,2265.22,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,69aba2f66915,context7,validated_CodeSearchNet,,"Function to resolve polytomies for a given parent node. If the
+        number of the direct decendants is less than three (not a polytomy), does
+        nothing. Otherwise, for each pair of nodes, ass",0,2326.69,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,1a5be7e74e1d,context7,validated_CodeSearchNet,,"Creates the directory and all its parent directories if it does not
+        exist yet",0,2265.43,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,c8dc8da2d7c8,context7,validated_CodeSearchNet,,"Create a tuning job
+
+        :param config: the config for tuning
+        :type config: dict
+        :param wait_for_completion: if the program should keep running until job finishes
+        :type wai",0,2370.89,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,12ab2d6ac1ae,context7,validated_CodeSearchNet,,"Get information about the users current playback.
+
+        Returns
+        -------
+        player : Player
+            A player object representing the current playback.",0,2366.37,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,66dcc5119647,context7,validated_CodeSearchNet,,Populate frequency axis,0,2674.05,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,2ef7f3d369a0,context7,validated_CodeSearchNet,,"call will issue the call, and issue a refresh token
+       given a 401 response, and if the client has a _update_token function
+
+       Parameters
+       ==========
+       func: the function (eg, post",0,2208.43,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,45b8ceea2d5b,context7,validated_CodeSearchNet,,"Returns the nextflow params string from a dictionary object.
+
+        The params dict should be a set of key:value pairs with the
+        parameter name, and the default parameter value::
+
+           ",0,2072.76,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,19cbb5750048,context7,validated_CodeSearchNet,,"Print the tasks that would be installed in the
+    crontab, for debugging purposes.",0,2115.64,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,225270e4e8f7,context7,validated_CodeSearchNet,,"Skips to previous track in the user’s queue.
+
+        Note that this will ALWAYS skip to the previous track, regardless of the current track’s progress.
+        Returning to the start of the current t",0,2571.17,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,151565651914,context7,validated_CodeSearchNet,,"Deletes record, and removes it from database.",0,3493.39,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,c036d17a2a76,context7,validated_CodeSearchNet,,"load a google compute config, meaning that we start with a template,
+       and mimic the following example cloudbuild.yaml:
+
+        steps:
+        - name: ""singularityware/singularity:${_SINGULARITY",0,2161.61,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,3c9681d5b821,context7,validated_CodeSearchNet,,"Instance depends on the API version:
+
+           * 2015-12-01: :class:`FeaturesOperations<azure.mgmt.resource.features.v2015_12_01.operations.FeaturesOperations>`",0,2205.58,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,fec09cfc2fde,context7,validated_CodeSearchNet,,Update user-defined information about a variant: manual rank & ACMG.,0,2606.03,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,8b203a3109db,context7,validated_CodeSearchNet,,"Check if run_id is stored in DynamoDB table.
+    Return True if run_id is stored or False otherwise.
+
+    Arguments:
+    dynamodb_client - boto3 DynamoDB client (not service)
+    table_name - string r",0,2400.14,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,a09950dd4a53,context7,validated_CodeSearchNet,,Compute marginal pdf for each individual observable.,0,2878.00,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,734be066f78f,context7,validated_CodeSearchNet,,Take a string and return the corresponding module,0,2668.60,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,ec2fbafc6f1e,context7,validated_CodeSearchNet,,"Find the necessary file for the given test case.
+
+    Args:
+        device(napalm device connection): for which device
+        filename(str): file to find
+        path(str): where to find it relative ",0,2571.34,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,152e9f0b6188,context7,validated_CodeSearchNet,,"Start running.
+
+        Args:
+            data_loaders (list[:obj:`DataLoader`]): Dataloaders for training
+                and validation.
+            workflow (list[tuple]): A list of (phase, epochs)",0,2368.38,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,8c86cadfb1ad,context7,validated_CodeSearchNet,,Enforce that no ranges overlap in internal storage.,0,2467.02,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,f30bce0cb5b5,context7,validated_CodeSearchNet,,"called when a file is uploaded to a private stage for
+    a projectname/version.  link.entry.file_exists() may be false because
+    a more recent revision deleted the file (and files are not revisione",0,1855.13,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,104dda847375,context7,validated_CodeSearchNet,,"Reconstruct the given input sequences.
+
+    Args:
+      inputs: A batch of image sequences `x_{1:T}` of shape
+        `[batch_size, timesteps, height, width, channels]`.
+      samples: Number of sampl",0,2642.34,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,4d3630fd0347,context7,validated_CodeSearchNet,,Return the primary acquire channel of this qubit.,0,1649.79,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,50583c165a16,context7,validated_CodeSearchNet,,"Passes data up to the client via a Queue().
+
+        :param event:
+        :param data:
+        :param args:
+        :return:",0,2776.03,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,cd1852ee31ac,context7,validated_CodeSearchNet,,"Split the tuple (obtained from scan) to separate files.
+       Alternately send full paths to the files in md5 and call it.
+       :param directory: tuple of files in the directory.",0,2185.19,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,0c21fe076ebb,context7,validated_CodeSearchNet,,Parses a DOT file and returns a Godot graph.,0,2600.82,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,0cc8cdd0f79d,context7,validated_CodeSearchNet,,"Get (branch, commit) from HEAD of a git repo.",0,3083.64,,,,,0,0,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,a3db56073c7a,context7,validated_CodeSearchNet,,"Decorator that prevents callbacks from calling into link methods that
+    are not reentrant",0,3132.54,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,d44a523775ee,context7,validated_CodeSearchNet,,"Parse numeric string to int. Supports oct formatted string.
+
+    :param str value: String value to parse as int
+    :return int:",0,2262.15,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,3d301701882f,context7,validated_CodeSearchNet,,"Clear the session history, releasing all object references, and
+        optionally open a new session.",0,2262.44,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,731e63dd7ab9,context7,validated_CodeSearchNet,,"Custom method to execute a job and notify of its result
+
+        :param job: Job object
+        :param queue: the queue containing the object",0,2571.58,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,75bd64fa7a62,context7,validated_CodeSearchNet,,"Try to extract the bigger group of interlinked tokens.
+
+    Should generally be used at last in the collectors chain.",0,2570.10,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,d03ed68aa742,context7,validated_CodeSearchNet,,"Collect all verified variants in a list on institutes and save them to file
+
+    Args:
+        store(adapter.MongoAdapter)
+        institute_list(list): a list of institute ids
+        temp_excel_dir(",0,1649.65,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,a6df9ab3d9b5,context7,validated_CoSQA,,sort by a token in string python,0,0.00,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,6e04d5994888,context7,validated_CoSQA,,python check file is readonly,0,0.00,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,74ce70651c28,context7,validated_CoSQA,,declaring empty numpy array in python,0,2238.70,,,,,0,0,,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
+caea35ec96c2,91139fca37c8,context7,validated_CoSQA,,test for iterable is string in python,0,3080.25,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,8ce9388c78c0,context7,validated_CoSQA,,python print results of query loop,0,2469.42,,,,,0,0,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,a6296264d1de,context7,validated_CoSQA,,how to save header of fits file to export python,0,2918.25,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,3443c8a15d8c,context7,validated_CoSQA,,python calc page align,0,3185.91,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,ebd35faad485,context7,validated_CoSQA,,python numpy array as float,0,2679.68,,,,,0,0,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,6c3a233300de,context7,validated_CoSQA,,input string that replaces occurences python,0,2941.57,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,ac6655d3a6a4,context7,validated_CoSQA,,python check all items in list are ints,0,2210.77,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,783163b9bb24,context7,validated_CoSQA,,how to save variable to text file python,0,2550.90,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,68413c984062,context7,validated_CoSQA,,how to skip an index in a for loop python,0,3128.24,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,80c48ac52fb0,context7,validated_CoSQA,,how to create a tokenization code in python,0,3054.39,,,,,0,0,,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
+caea35ec96c2,5a9083008e13,context7,validated_CoSQA,,python raise without parentheses,0,2775.53,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,3e1bbc024e81,context7,validated_CoSQA,,how to seperate list with commas python,0,2681.66,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,80949a38a888,context7,validated_CoSQA,,python asynchronous function call return,0,2878.60,,,,,0,0,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,7c56b5269967,context7,validated_CoSQA,,how to make a seconds to time in python,0,2570.21,,,,,0,0,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,5ca2b4a1cbfe,context7,validated_CoSQA,,python cast true or false as numbers,0,2584.54,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,56c7b3be1a8b,context7,validated_CoSQA,,add milliseconds to datetime python,0,2933.09,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,3f3dbfd5bc8e,context7,validated_CoSQA,,how to read the last n lines of a program on python,0,2378.77,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,4d88af059045,context7,validated_CoSQA,,python mysql get list of table columns,0,2980.94,,,,,0,0,,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
+caea35ec96c2,e2379ed4ee27,context7,validated_CoSQA,,how to get domain part of a url in python,0,2674.84,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,9ebb6e0352e4,context7,validated_CoSQA,,python flatten a nested dictionaary,0,2955.20,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,c075ab821466,context7,validated_CoSQA,,python session set get,0,2632.91,,,,,0,0,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,8ff75505e7ec,context7,validated_CoSQA,,python save graph into file,0,2869.92,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,7ff3f9e3f164,context7,validated_CoSQA,,chmod python windows to remove file,0,2571.44,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,62508055a957,context7,validated_CoSQA,,add suffixes on concat python,0,2676.16,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,2de34a833237,context7,validated_CoSQA,,how to check python object iterable,0,2162.03,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,08d6bcaa2540,context7,validated_CoSQA,,python 3 tkinter open file dialog,0,2116.66,,,,,0,0,,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
+caea35ec96c2,bc213271635d,context7,validated_CoSQA,,how to indent self python,0,2876.46,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,862ed582a312,context7,validated_CoSQA,,tracking centroid of an object python,0,2673.91,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,e20facc88adc,context7,validated_CoSQA,,python3 ctypes return float array,0,2309.23,,,,,0,0,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,fb1ca1bc643f,context7,validated_CoSQA,,how to make paragraphs in python,0,2652.15,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,5bb3fc3b8d26,context7,validated_CoSQA,,python rest requests delete,0,2453.88,,,,,0,0,,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
+caea35ec96c2,2a7684f11b0f,context7,validated_CoSQA,,python replace month number,0,2162.86,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,82b4c477fd10,context7,validated_CoSQA,,how to tell what type of data object is in python,0,2264.50,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,dbacfb3fe8ba,context7,validated_CoSQA,,python jsonschema validate schema file,0,2673.66,,,,,0,0,,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
+caea35ec96c2,166dc1e61cf4,context7,validated_CoSQA,,get wechat access token python,0,1957.21,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,60f143385a1b,context7,validated_CoSQA,,python change str value to int,0,2685.97,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,971b5674ff9f,context7,validated_CoSQA,,implementing drag and drop python,0,2908.91,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,40782e2de559,context7,validated_CoSQA,,get unique list from two lists python,0,2609.53,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,21c45ca46e74,context7,validated_CoSQA,,python 3 not runnning in git bash,0,2804.74,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,e83ce37ac0c5,context7,validated_CoSQA,,create unknown number of names to print in python,0,1510.25,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,f2dcf252d5e7,context7,validated_CoSQA,,python json if element exists,0,2462.59,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,6e139036196f,context7,validated_CoSQA,,number of unique values in list python,0,2112.34,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,81ee808395e5,context7,validated_CoSQA,,how to randomize items in a list in python,0,2877.18,,,,,0,0,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,3848c5ab1370,context7,validated_CoSQA,,python windows check for keypress,0,2456.57,,,,,0,0,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,24355201b557,context7,validated_CoSQA,,python bind scrollbar to canvas,0,2221.66,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,81b070d26144,context7,validated_CoSQA,,python setlevel how to only record error,0,2469.46,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,8a0f7251b251,context7,validated_CoSQA,,format string with *args python,0,2431.37,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,302d0d5e2a2c,context7,validated_CoSQA,,python get hostip from url,0,2571.93,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,6447af602662,context7,validated_CoSQA,,python numpy masked vailding,0,2255.41,,,,,0,0,,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
+caea35ec96c2,62777ce074ac,context7,validated_CoSQA,,python child widget close signal,0,2264.91,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,a6e60bd9a9c9,context7,validated_CoSQA,,python read from csv into numpy array,0,2372.28,,,,,0,0,,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
+caea35ec96c2,504332f48de5,context7,validated_CoSQA,,cast string to bytearray python,0,2459.21,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,c2fba69f2cd4,context7,validated_CoSQA,,load str into python object,0,2571.56,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,5acffa187722,context7,validated_CoSQA,,python ldap get all groups a user belongs to,0,2981.19,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,beaebbce83d0,context7,validated_CoSQA,,python check type if string,0,0.00,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,d78818b4fb51,context7,validated_CoSQA,,python get current globals,0,2675.00,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,182ddf4b06f4,context7,validated_CoSQA,,get child loggers python,0,2468.13,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,b047a006eee1,context7,validated_CoSQA,,how to know if a text file is empty in python,0,3272.50,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,18aa06d8867f,context7,validated_CoSQA,,python normal distribution p values,0,2998.15,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,b52c78f733cf,context7,validated_CoSQA,,python ctypes array of arrays,0,2264.42,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,d9a4d9c11fbd,context7,validated_CoSQA,,scale 1d array python to between 0 and 1,0,2775.54,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,15692068feb8,context7,validated_CoSQA,,python upper case lower case converter,0,2570.92,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,66e2fd27eed5,context7,validated_CoSQA,,ply python expression evaluator,0,2270.56,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,1d77865fd24e,context7,validated_CoSQA,,python hashlib calc sha1 of file,0,2468.61,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,4aeb9369312e,context7,validated_CoSQA,,python pdb no capture std output,0,2572.41,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,5980f57c84e8,context7,validated_CoSQA,,python how to write a factorial,0,3287.28,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,56b2e8efa62e,context7,validated_CoSQA,,python get the last column,0,2572.99,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,f6725bd7722e,context7,validated_CoSQA,,python how to change file extension,0,2981.88,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,b7f54cf7bda1,context7,validated_CoSQA,,python get process memory info,0,2844.52,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,691098d6fc59,context7,validated_CoSQA,,check if 2 string are equal python,0,2905.03,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,d87bb04bfe9a,context7,validated_CoSQA,,flask python create one table sqlalchemy,0,2577.20,,,,,0,0,,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
+caea35ec96c2,163e9708168e,context7,validated_CoSQA,,clean output folder in python,0,2469.22,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,8529d94a1fb4,context7,validated_CoSQA,,python print nodes binary tree,0,2730.32,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,d46b8c6ff5b1,context7,validated_CoSQA,,python query string parsing,0,2366.19,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,c38e10ce1024,context7,validated_CoSQA,,cycle through a folder of images python,0,2468.90,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,9a0a071f9d01,context7,validated_CoSQA,,check if a date is valid python,0,2674.63,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,6dc328d9c653,context7,validated_CoSQA,,python spherical bessel functions,0,2675.44,,,,,0,0,,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
+caea35ec96c2,162a59a67b71,context7,validated_CoSQA,,how to check a file is empty in python,0,0.00,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,884ef98cec59,context7,validated_CoSQA,,python stop process multiprocessing,0,2500.93,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,2cd4b964dc61,context7,validated_CoSQA,,python make sure all words are separated by a single space,0,2777.56,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,94d34abb79d2,context7,validated_CoSQA,,making a multidimensional array of only 1 in python,0,2265.31,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,196742119faf,context7,validated_CoSQA,,python initialize variable of an object,0,2264.24,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,be2b14cff44d,context7,validated_CoSQA,,python elasticsearch limit results,0,2367.97,,,,,0,0,,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
+caea35ec96c2,073de1664cf1,context7,validated_CoSQA,,how to force exit python without raise,0,2366.95,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,f5fe7dd0d5e1,context7,validated_CoSQA,,python weak reference to bound method,0,1649.85,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,3da12558c5d4,context7,validated_CoSQA,,calling index iterable python,0,2778.67,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,7c0e4f735c1d,context7,validated_CoSQA,,python datetime maybe undefined,0,2776.95,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,ecec323d5073,context7,validated_CoSQA,,python go to next page,0,2613.66,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,83eb0ce8633b,context7,validated_CoSQA,,filling null value sin data frame in python,0,2546.11,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,1f9256149256,context7,validated_CoSQA,,python run external command and get output,0,2058.81,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,06f84c467cd3,context7,validated_CoSQA,,how to compile python program to use in c++,0,2469.79,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,3d318fdedc14,context7,validated_CoSQA,,python img to bytearray,0,0.00,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,3ec99e45ae23,context7,validated_CoSQA,,how to use access token oauth python,0,2877.98,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,f49dae9799ac,context7,validated_CoSQA,,have python line continue on to next line,0,2466.84,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,233514f3bb48,context7,validated_CoSQA,,precision of ints in python,0,2673.93,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,3fb305a85685,context7,validated_CoSQA,,modify the dice roll program to call a function for the die roll s python,0,2468.90,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,2b6673467487,context7,validated_CoSQA,,python 'namespace' object is not iterable,0,2588.55,,,,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0

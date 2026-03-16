@@ -1,0 +1,127 @@
+{
+  "metadata": {
+    "run_id": "acb62a29cc90",
+    "timestamp": "2026-03-15T19:42:37.914826+00:00",
+    "git_commit": "fd241d895ac7",
+    "git_branch": "main",
+    "git_dirty": true,
+    "python_version": "3.12.12",
+    "platform": "Linux",
+    "platform_version": "6.19.6-arch1-1",
+    "cpu_count": 8,
+    "hostname": "arch",
+    "engines": [
+      "synsc-context",
+      "nia",
+      "context7"
+    ],
+    "config_snapshot": {
+      "synsc_api_url": "http://localhost:8742",
+      "synsc_api_key": "***REDACTED***",
+      "nia_api_url": "https://apigcp.trynia.ai",
+      "nia_api_key": "***REDACTED***",
+      "context7_enabled": true,
+      "context7_api_url": "https://context7.com",
+      "context7_api_key": "***REDACTED***",
+      "context7_npx_command": "npx",
+      "context7_request_delay": 0.5,
+      "llm_provider": "anthropic",
+      "llm_model": "claude-sonnet-4-6",
+      "llm_api_key": "***REDACTED***",
+      "top_k_values": [
+        1,
+        3,
+        5,
+        10
+      ],
+      "similarity_threshold": 0.3,
+      "max_queries": 100
+    },
+    "benchmark_version": "1.0.0"
+  },
+  "total_duration_s": 12895.881101656,
+  "benchmark_timings": {
+    "multihop": 697.2767877320002,
+    "code_qa": 1069.570497094006,
+    "adversarial": 1032.2708996490037
+  },
+  "trace_count": 2386,
+  "trace_file": "traces_1773616653.jsonl",
+  "engines_summary": {
+    "synsc-context": {
+      "total_queries": 800,
+      "errors": 39,
+      "error_categories": {
+        "unknown": 39
+      },
+      "avg_latency_ms": 6212.0535674226085,
+      "benchmark_types": [
+        "adversarial",
+        "code_qa",
+        "hallucination",
+        "multihop",
+        "validated_AdvTest",
+        "validated_CoSQA",
+        "validated_CodeFeedback-ST",
+        "validated_CodeSearchNet"
+      ],
+      "per_repo": {},
+      "per_language": {},
+      "p50_latency_ms": 6569.023888005177,
+      "p95_latency_ms": 9232.054644999153,
+      "min_latency_ms": 0.0,
+      "max_latency_ms": 29427.004589000717,
+      "avg_token_efficiency": 0.0
+    },
+    "nia": {
+      "total_queries": 786,
+      "errors": 51,
+      "error_categories": {
+        "unknown": 51
+      },
+      "avg_latency_ms": 1977.2895448421352,
+      "benchmark_types": [
+        "adversarial",
+        "code_qa",
+        "hallucination",
+        "multihop",
+        "validated_AdvTest",
+        "validated_CoSQA",
+        "validated_CodeFeedback-ST",
+        "validated_CodeSearchNet"
+      ],
+      "per_repo": {},
+      "per_language": {},
+      "p50_latency_ms": 1406.5439739933936,
+      "p95_latency_ms": 7990.691555009107,
+      "min_latency_ms": 0.0,
+      "max_latency_ms": 97682.27150000166,
+      "avg_token_efficiency": 0.0
+    },
+    "context7": {
+      "total_queries": 800,
+      "errors": 45,
+      "error_categories": {
+        "unknown": 45
+      },
+      "avg_latency_ms": 947.3022522424071,
+      "benchmark_types": [
+        "adversarial",
+        "code_qa",
+        "hallucination",
+        "multihop",
+        "validated_AdvTest",
+        "validated_CoSQA",
+        "validated_CodeFeedback-ST",
+        "validated_CodeSearchNet"
+      ],
+      "per_repo": {},
+      "per_language": {},
+      "p50_latency_ms": 0.0,
+      "p95_latency_ms": 2981.727751001017,
+      "min_latency_ms": 0.0,
+      "max_latency_ms": 5036.819051994826,
+      "avg_token_efficiency": 0.0
+    }
+  }
+}

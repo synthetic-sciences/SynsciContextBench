@@ -1,0 +1,486 @@
+{
+  "metadata": {
+    "run_id": "acb62a29cc90",
+    "timestamp": "2026-03-15T19:42:37.914826+00:00",
+    "git_commit": "fd241d895ac7",
+    "git_branch": "main",
+    "git_dirty": true,
+    "python_version": "3.12.12",
+    "platform": "Linux",
+    "platform_version": "6.19.6-arch1-1",
+    "cpu_count": 8,
+    "hostname": "arch",
+    "engines": [
+      "synsc-context",
+      "nia",
+      "context7"
+    ],
+    "config_snapshot": {
+      "synsc_api_url": "http://localhost:8742",
+      "synsc_api_key": "***REDACTED***",
+      "nia_api_url": "https://apigcp.trynia.ai",
+      "nia_api_key": "***REDACTED***",
+      "context7_enabled": true,
+      "context7_api_url": "https://context7.com",
+      "context7_api_key": "***REDACTED***",
+      "context7_npx_command": "npx",
+      "context7_request_delay": 0.5,
+      "llm_provider": "anthropic",
+      "llm_model": "claude-sonnet-4-6",
+      "llm_api_key": "***REDACTED***",
+      "top_k_values": [
+        1,
+        3,
+        5,
+        10
+      ],
+      "similarity_threshold": 0.3,
+      "max_queries": 100
+    },
+    "benchmark_version": "1.0.0"
+  },
+  "total_duration_s": 2799.216004078,
+  "benchmark_timings": {
+    "multihop": 697.2767877320002,
+    "code_qa": 1069.570497094006,
+    "adversarial": 1032.2708996490037
+  },
+  "trace_count": 900,
+  "trace_file": "traces_1773606557.jsonl",
+  "engines_summary": {
+    "synsc-context": {
+      "total_queries": 300,
+      "errors": 0,
+      "error_categories": {},
+      "avg_latency_ms": 7192.987936486921,
+      "benchmark_types": [
+        "adversarial",
+        "code_qa",
+        "multihop"
+      ],
+      "per_repo": {},
+      "per_language": {},
+      "p50_latency_ms": 7059.3019779989845,
+      "p95_latency_ms": 9232.524380000541,
+      "min_latency_ms": 5102.607815999363,
+      "max_latency_ms": 11894.370476002223,
+      "avg_token_efficiency": 0.0
+    },
+    "nia": {
+      "total_queries": 300,
+      "errors": 0,
+      "error_categories": {},
+      "avg_latency_ms": 1719.5189571367519,
+      "benchmark_types": [
+        "adversarial",
+        "code_qa",
+        "multihop"
+      ],
+      "per_repo": {},
+      "per_language": {},
+      "p50_latency_ms": 1355.576480003947,
+      "p95_latency_ms": 1667.387105000671,
+      "min_latency_ms": 912.5711649976438,
+      "max_latency_ms": 97682.27150000166,
+      "avg_token_efficiency": 0.0
+    },
+    "context7": {
+      "total_queries": 300,
+      "errors": 0,
+      "error_categories": {},
+      "avg_latency_ms": 2292.463735116495,
+      "benchmark_types": [
+        "adversarial",
+        "code_qa",
+        "multihop"
+      ],
+      "per_repo": {},
+      "per_language": {},
+      "p50_latency_ms": 2458.3890520007117,
+      "p95_latency_ms": 3299.229099000513,
+      "min_latency_ms": 0.0,
+      "max_latency_ms": 5036.819051994826,
+      "avg_token_efficiency": 0.0
+    }
+  },
+  "report": {
+    "timestamp": "2026-03-15T19:42:37.923941+00:00",
+    "engines": [
+      "synsc-context",
+      "nia",
+      "context7"
+    ],
+    "retrieval": {},
+    "hallucination": {},
+    "indexing": {},
+    "multihop": {
+      "synsc-context": {
+        "engine": "synsc-context",
+        "num_queries": 100,
+        "avg_hop_coverage": 0.9733333333333333,
+        "avg_hop_recall_at_5": 0.94,
+        "avg_hop_recall_at_10": 0.9733333333333333,
+        "avg_hop_mrr": 0.8348664021164021,
+        "avg_latency_ms": 6969.244822849869,
+        "by_category": {
+          "3-hop": {
+            "num_queries": 97,
+            "avg_hop_coverage": 0.9725085910652921,
+            "avg_hop_mrr": 0.8297591774395897
+          },
+          "2-hop": {
+            "num_queries": 3,
+            "avg_hop_coverage": 1.0,
+            "avg_hop_mrr": 1.0
+          }
+        }
+      },
+      "nia": {
+        "engine": "nia",
+        "num_queries": 100,
+        "avg_hop_coverage": 0.7316666666666667,
+        "avg_hop_recall_at_5": 0.6716666666666667,
+        "avg_hop_recall_at_10": 0.7316666666666667,
+        "avg_hop_mrr": 0.5526587301587301,
+        "avg_latency_ms": 1127.0997174004879,
+        "by_category": {
+          "3-hop": {
+            "num_queries": 97,
+            "avg_hop_coverage": 0.7285223367697595,
+            "avg_hop_mrr": 0.5474144984454262
+          },
+          "2-hop": {
+            "num_queries": 3,
+            "avg_hop_coverage": 0.8333333333333334,
+            "avg_hop_mrr": 0.7222222222222222
+          }
+        }
+      },
+      "context7": {
+        "engine": "context7",
+        "num_queries": 100,
+        "avg_hop_coverage": 0.8483333333333333,
+        "avg_hop_recall_at_5": 0.8483333333333333,
+        "avg_hop_recall_at_10": 0.8483333333333333,
+        "avg_hop_mrr": 0.8483333333333333,
+        "avg_latency_ms": 2436.947071100003,
+        "by_category": {
+          "3-hop": {
+            "num_queries": 97,
+            "avg_hop_coverage": 0.8487972508591065,
+            "avg_hop_mrr": 0.8487972508591065
+          },
+          "2-hop": {
+            "num_queries": 3,
+            "avg_hop_coverage": 0.8333333333333334,
+            "avg_hop_mrr": 0.8333333333333334
+          }
+        }
+      }
+    },
+    "code_qa": {
+      "synsc-context": {
+        "engine": "synsc-context",
+        "num_queries": 100,
+        "accuracy": 0.31,
+        "avg_rank": 1.0,
+        "mrr": 0.31,
+        "symbol_accuracy": 0.56,
+        "file_accuracy": 0.31,
+        "completeness": 0.11,
+        "coherence": 0.11,
+        "false_positive_rate": 0.0,
+        "by_type": {
+          "definition": {
+            "num_queries": 35,
+            "accuracy": 0.5142857142857142,
+            "mrr": 0.5142857142857142,
+            "completeness": 0.11428571428571428,
+            "coherence": 0.11428571428571428
+          },
+          "call_site": {
+            "num_queries": 22,
+            "accuracy": 0.09090909090909091,
+            "mrr": 0.09090909090909091,
+            "completeness": 0.09090909090909091,
+            "coherence": 0.09090909090909091
+          },
+          "inheritance": {
+            "num_queries": 12,
+            "accuracy": 0.25,
+            "mrr": 0.25,
+            "completeness": 0.0,
+            "coherence": 0.0
+          },
+          "argument_usage": {
+            "num_queries": 17,
+            "accuracy": 0.23529411764705882,
+            "mrr": 0.23529411764705882,
+            "completeness": 0.058823529411764705,
+            "coherence": 0.058823529411764705
+          },
+          "return_type": {
+            "num_queries": 12,
+            "accuracy": 0.16666666666666666,
+            "mrr": 0.16666666666666666,
+            "completeness": 0.16666666666666666,
+            "coherence": 0.16666666666666666
+          },
+          "import": {
+            "num_queries": 2,
+            "accuracy": 1.0,
+            "mrr": 1.0,
+            "completeness": 1.0,
+            "coherence": 1.0
+          }
+        },
+        "avg_latency_ms": 7488.431373910061
+      },
+      "nia": {
+        "engine": "nia",
+        "num_queries": 100,
+        "accuracy": 0.25,
+        "avg_rank": 1.0,
+        "mrr": 0.25,
+        "symbol_accuracy": 0.41,
+        "file_accuracy": 0.25,
+        "completeness": 0.18,
+        "coherence": 0.18,
+        "false_positive_rate": 0.0,
+        "by_type": {
+          "definition": {
+            "num_queries": 35,
+            "accuracy": 0.14285714285714285,
+            "mrr": 0.14285714285714285,
+            "completeness": 0.0,
+            "coherence": 0.0
+          },
+          "call_site": {
+            "num_queries": 22,
+            "accuracy": 0.36363636363636365,
+            "mrr": 0.36363636363636365,
+            "completeness": 0.36363636363636365,
+            "coherence": 0.36363636363636365
+          },
+          "inheritance": {
+            "num_queries": 12,
+            "accuracy": 0.08333333333333333,
+            "mrr": 0.08333333333333333,
+            "completeness": 0.08333333333333333,
+            "coherence": 0.08333333333333333
+          },
+          "argument_usage": {
+            "num_queries": 17,
+            "accuracy": 0.4117647058823529,
+            "mrr": 0.4117647058823529,
+            "completeness": 0.35294117647058826,
+            "coherence": 0.35294117647058826
+          },
+          "return_type": {
+            "num_queries": 12,
+            "accuracy": 0.25,
+            "mrr": 0.25,
+            "completeness": 0.16666666666666666,
+            "coherence": 0.16666666666666666
+          },
+          "import": {
+            "num_queries": 2,
+            "accuracy": 0.5,
+            "mrr": 0.5,
+            "completeness": 0.5,
+            "coherence": 0.5
+          }
+        },
+        "avg_latency_ms": 1407.5122363299306
+      },
+      "context7": {
+        "engine": "context7",
+        "num_queries": 100,
+        "accuracy": 0.26,
+        "avg_rank": 1.0,
+        "mrr": 0.26,
+        "symbol_accuracy": 0.5,
+        "file_accuracy": 0.26,
+        "completeness": 0.21,
+        "coherence": 0.21,
+        "false_positive_rate": 0.0,
+        "by_type": {
+          "definition": {
+            "num_queries": 35,
+            "accuracy": 0.05714285714285714,
+            "mrr": 0.05714285714285714,
+            "completeness": 0.0,
+            "coherence": 0.0
+          },
+          "call_site": {
+            "num_queries": 22,
+            "accuracy": 0.4090909090909091,
+            "mrr": 0.4090909090909091,
+            "completeness": 0.36363636363636365,
+            "coherence": 0.36363636363636365
+          },
+          "inheritance": {
+            "num_queries": 12,
+            "accuracy": 0.16666666666666666,
+            "mrr": 0.16666666666666666,
+            "completeness": 0.16666666666666666,
+            "coherence": 0.16666666666666666
+          },
+          "argument_usage": {
+            "num_queries": 17,
+            "accuracy": 0.47058823529411764,
+            "mrr": 0.47058823529411764,
+            "completeness": 0.47058823529411764,
+            "coherence": 0.47058823529411764
+          },
+          "return_type": {
+            "num_queries": 12,
+            "accuracy": 0.25,
+            "mrr": 0.25,
+            "completeness": 0.16666666666666666,
+            "coherence": 0.16666666666666666
+          },
+          "import": {
+            "num_queries": 2,
+            "accuracy": 1.0,
+            "mrr": 1.0,
+            "completeness": 0.5,
+            "coherence": 0.5
+          }
+        },
+        "avg_latency_ms": 1865.3242302699073
+      }
+    },
+    "adversarial": {
+      "synsc-context": {
+        "engine": "synsc-context",
+        "num_queries": 100,
+        "accuracy": 0.56,
+        "avg_discrimination": 0.49,
+        "avg_correct_rank": 1.0,
+        "decoy_confusion_rate": 0.0,
+        "by_type": {
+          "test_vs_prod": {
+            "num_queries": 5,
+            "accuracy": 0.6,
+            "avg_discrimination": 0.52,
+            "confusion_rate": 0.0
+          },
+          "same_name": {
+            "num_queries": 61,
+            "accuracy": 0.6065573770491803,
+            "avg_discrimination": 0.5065573770491804,
+            "confusion_rate": 0.0
+          },
+          "version_confusion": {
+            "num_queries": 11,
+            "accuracy": 0.7272727272727273,
+            "avg_discrimination": 0.5727272727272728,
+            "confusion_rate": 0.0
+          },
+          "same_file": {
+            "num_queries": 10,
+            "accuracy": 0.2,
+            "avg_discrimination": 0.33999999999999997,
+            "confusion_rate": 0.0
+          },
+          "similar_sig": {
+            "num_queries": 13,
+            "accuracy": 0.46153846153846156,
+            "avg_discrimination": 0.4461538461538461,
+            "confusion_rate": 0.0
+          }
+        },
+        "avg_latency_ms": 7121.287612700835
+      },
+      "nia": {
+        "engine": "nia",
+        "num_queries": 100,
+        "accuracy": 0.14,
+        "avg_discrimination": 0.44299999999999995,
+        "avg_correct_rank": 1.0,
+        "decoy_confusion_rate": 0.0,
+        "by_type": {
+          "test_vs_prod": {
+            "num_queries": 5,
+            "accuracy": 0.0,
+            "avg_discrimination": 0.33999999999999997,
+            "confusion_rate": 0.0
+          },
+          "same_name": {
+            "num_queries": 61,
+            "accuracy": 0.11475409836065574,
+            "avg_discrimination": 0.4540983606557377,
+            "confusion_rate": 0.0
+          },
+          "version_confusion": {
+            "num_queries": 11,
+            "accuracy": 0.2727272727272727,
+            "avg_discrimination": 0.4818181818181818,
+            "confusion_rate": 0.0
+          },
+          "same_file": {
+            "num_queries": 10,
+            "accuracy": 0.1,
+            "avg_discrimination": 0.44000000000000006,
+            "confusion_rate": 0.0
+          },
+          "similar_sig": {
+            "num_queries": 13,
+            "accuracy": 0.23076923076923078,
+            "avg_discrimination": 0.4,
+            "confusion_rate": 0.0
+          }
+        },
+        "avg_latency_ms": 2623.944917679837
+      },
+      "context7": {
+        "engine": "context7",
+        "num_queries": 100,
+        "accuracy": 0.17,
+        "avg_discrimination": 0.425,
+        "avg_correct_rank": 1.0,
+        "decoy_confusion_rate": 0.0,
+        "by_type": {
+          "test_vs_prod": {
+            "num_queries": 5,
+            "accuracy": 0.0,
+            "avg_discrimination": 0.3,
+            "confusion_rate": 0.0
+          },
+          "same_name": {
+            "num_queries": 61,
+            "accuracy": 0.09836065573770492,
+            "avg_discrimination": 0.39016393442622954,
+            "confusion_rate": 0.0
+          },
+          "version_confusion": {
+            "num_queries": 11,
+            "accuracy": 0.45454545454545453,
+            "avg_discrimination": 0.6090909090909091,
+            "confusion_rate": 0.0
+          },
+          "same_file": {
+            "num_queries": 10,
+            "accuracy": 0.1,
+            "avg_discrimination": 0.37,
+            "confusion_rate": 0.0
+          },
+          "similar_sig": {
+            "num_queries": 13,
+            "accuracy": 0.38461538461538464,
+            "avg_discrimination": 0.5230769230769231,
+            "confusion_rate": 0.0
+          }
+        },
+        "avg_latency_ms": 2575.1199039795756
+      }
+    },
+    "validated": {},
+    "judge": {},
+    "enhanced_judge": {},
+    "extended_metrics": {},
+    "significance": {},
+    "query_results": {}
+  }
+}

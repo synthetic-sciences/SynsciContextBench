@@ -26,6 +26,27 @@ from dataclasses import dataclass, field
 import httpx
 
 from .adapters.base import ContextEngineAdapter
+import re
+
+
+def _safe_parse_json(text: str, defaults: dict | None = None) -> dict:
+    """Parse JSON from LLM output, handling markdown fences and malformed responses."""
+    text = text.strip()
+    if text.startswith("```"):
+        text = text.split("\n", 1)[-1].rsplit("```", 1)[0].strip()
+    # Try to extract JSON object if there's extra text around it
+    match = re.search(r"\{[^{}]*\}", text)
+    if match:
+        try:
+            return json.loads(match.group())
+        except json.JSONDecodeError:
+            pass
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        if defaults is not None:
+            return defaults
+        raise
 
 # ---------------------------------------------------------------------------
 # Data structures
@@ -101,6 +122,111 @@ Score the retrieved context on three dimensions (0-3 each):
 
 Respond with ONLY a JSON object, no other text:
 {"relevance": <0-3>, "completeness": <0-3>, "specificity": <0-3>}"""
+
+
+async def _call_llm_judge_raw(
+    system_prompt: str,
+    user_prompt: str,
+    llm_provider: str,
+    llm_model: str,
+    llm_api_key: str,
+    max_retries: int = 3,
+) -> str:
+    """Call an LLM with custom system/user prompts. Returns raw text response.
+
+    Used by adversarial and code_qa modules for LLM-based scoring.
+    Retries on empty responses or HTTP errors with exponential backoff.
+    """
+    import asyncio as _asyncio
+
+    last_error = None
+    for attempt in range(max_retries):
+        try:
+            text = await _call_llm_judge_raw_inner(
+                system_prompt, user_prompt, llm_provider, llm_model, llm_api_key
+            )
+            if text and text.strip():
+                return text
+            last_error = ValueError(f"Empty LLM response (attempt {attempt + 1})")
+        except (httpx.HTTPStatusError, httpx.ReadTimeout, httpx.ConnectTimeout) as e:
+            last_error = e
+        if attempt < max_retries - 1:
+            await _asyncio.sleep(2 ** attempt)
+    raise RuntimeError(f"LLM judge failed after {max_retries} retries: {last_error}")
+
+
+async def _call_llm_judge_raw_inner(
+    system_prompt: str,
+    user_prompt: str,
+    llm_provider: str,
+    llm_model: str,
+    llm_api_key: str,
+) -> str:
+    """Inner LLM call without retry logic."""
+    if llm_provider == "gemini":
+        async with httpx.AsyncClient(timeout=60.0) as client:
+            resp = await client.post(
+                f"https://generativelanguage.googleapis.com/v1beta/models/{llm_model}:generateContent",
+                params={"key": llm_api_key},
+                headers={"Content-Type": "application/json"},
+                json={
+                    "system_instruction": {"parts": [{"text": system_prompt}]},
+                    "contents": [{"parts": [{"text": user_prompt}]}],
+                    "generationConfig": {"maxOutputTokens": 200, "temperature": 0.0},
+                },
+            )
+            resp.raise_for_status()
+            data = resp.json()
+            candidates = data.get("candidates", [])
+            if not candidates:
+                raise RuntimeError("Gemini returned no candidates")
+            return "".join(
+                p.get("text", "")
+                for p in candidates[0].get("content", {}).get("parts", [])
+            )
+
+    elif llm_provider == "anthropic":
+        async with httpx.AsyncClient(timeout=60.0) as client:
+            resp = await client.post(
+                "https://api.anthropic.com/v1/messages",
+                headers={
+                    "x-api-key": llm_api_key,
+                    "anthropic-version": "2023-06-01",
+                    "content-type": "application/json",
+                },
+                json={
+                    "model": llm_model,
+                    "max_tokens": 200,
+                    "system": system_prompt,
+                    "messages": [{"role": "user", "content": user_prompt}],
+                },
+            )
+            resp.raise_for_status()
+            data = resp.json()
+            return data["content"][0]["text"]
+
+    elif llm_provider == "openai":
+        async with httpx.AsyncClient(timeout=60.0) as client:
+            resp = await client.post(
+                "https://api.openai.com/v1/chat/completions",
+                headers={
+                    "Authorization": f"Bearer {llm_api_key}",
+                    "Content-Type": "application/json",
+                },
+                json={
+                    "model": llm_model,
+                    "max_tokens": 200,
+                    "messages": [
+                        {"role": "system", "content": system_prompt},
+                        {"role": "user", "content": user_prompt},
+                    ],
+                },
+            )
+            resp.raise_for_status()
+            data = resp.json()
+            return data["choices"][0]["message"]["content"]
+
+    raise ValueError(f"Unknown LLM provider: {llm_provider}")
 
 
 async def _call_llm_judge(
@@ -187,13 +313,7 @@ async def _call_llm_judge(
     else:
         raise ValueError(f"Unknown LLM provider: {llm_provider}")
 
-    # Parse JSON response
-    text = text.strip()
-    # Handle markdown code blocks
-    if text.startswith("```"):
-        text = text.split("\n", 1)[-1].rsplit("```", 1)[0].strip()
-
-    scores = json.loads(text)
+    scores = _safe_parse_json(text, defaults={"relevance": 0, "completeness": 0, "specificity": 0})
     return JudgeScore(
         relevance=min(3, max(0, int(scores.get("relevance", 0)))),
         completeness=min(3, max(0, int(scores.get("completeness", 0)))),

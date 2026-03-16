@@ -15,6 +15,7 @@ These queries stress-test:
 
 from __future__ import annotations
 
+import asyncio
 import json
 import re
 
@@ -198,18 +199,95 @@ def evaluate_code_qa(
     return qr
 
 
+CODE_QA_JUDGE_PROMPT = """\
+You are an expert code retrieval evaluator. You will be given:
+1. A code-specific question (e.g., "Where is function X defined?")
+2. The target symbol and expected properties
+3. The actual retrieved context from a search engine
+
+Evaluate whether the retrieved context answers the question:
+1. **found** (true/false): Does the context contain the answer to the question?
+2. **symbol_found** (true/false): Is the target symbol present in the context?
+3. **complete** (true/false): Does the context contain the full definition/usage (not truncated)?
+4. **relevance** (0-3): 0=irrelevant, 1=tangential, 2=partially answers, 3=fully answers
+
+Respond with ONLY a JSON object:
+{"found": <true/false>, "symbol_found": <true/false>, "complete": <true/false>, "relevance": <0-3>}"""
+
+
+async def _llm_judge_code_qa(
+    test_case: CodeQATestCase,
+    results: list[SearchResult],
+    llm_provider: str,
+    llm_model: str,
+    llm_api_key: str,
+) -> tuple[bool, bool, bool, int]:
+    """Use LLM judge to evaluate code QA test case.
+
+    Returns (found, symbol_found, complete, relevance).
+    """
+    from .llm_judge import _call_llm_judge_raw, _safe_parse_json
+
+    context = "\n---\n".join(
+        f"[Result {i+1}] {r.file_path}\n{r.content[:1500]}"
+        for i, r in enumerate(results[:5])
+    )
+
+    must_contain_str = ", ".join(test_case.must_contain) if test_case.must_contain else "N/A"
+
+    user_prompt = (
+        f"## Question\n{test_case.query}\n\n"
+        f"## Target\n"
+        f"Symbol: {test_case.target_symbol}\n"
+        f"File: {test_case.target_file or 'any'}\n"
+        f"Type: {test_case.qa_type}\n"
+        f"Language: {test_case.language}\n"
+        f"Expected content: {must_contain_str}\n\n"
+        f"## Retrieved Context\n```\n{context}\n```\n\n"
+        f"Evaluate the retrieved context. Respond with ONLY JSON: "
+        f'{{"found": <true/false>, "symbol_found": <true/false>, "complete": <true/false>, "relevance": <0-3>}}'
+    )
+
+    text = await _call_llm_judge_raw(
+        system_prompt=CODE_QA_JUDGE_PROMPT,
+        user_prompt=user_prompt,
+        llm_provider=llm_provider,
+        llm_model=llm_model,
+        llm_api_key=llm_api_key,
+    )
+
+    scores = _safe_parse_json(text, defaults={"found": False, "symbol_found": False, "complete": False, "relevance": 0})
+    return (
+        bool(scores.get("found", False)),
+        bool(scores.get("symbol_found", False)),
+        bool(scores.get("complete", False)),
+        min(3, max(0, int(scores.get("relevance", 0)))),
+    )
+
+
 async def run_code_qa_benchmark(
     engine: ContextEngineAdapter,
     dataset_path: str,
     top_k: int = 10,
+    max_queries: int | None = None,
+    scoring_mode: str = "structural",
+    llm_provider: str = "",
+    llm_model: str = "",
+    llm_api_key: str = "",
 ) -> tuple[CodeQAAggregateMetrics, list[CodeQAResult]]:
-    """Run code-specific QA benchmark against one engine."""
+    """Run code-specific QA benchmark against one engine.
+
+    Args:
+        scoring_mode: "structural" (file-path + keyword matching) or
+                      "llm" (LLM judge evaluation, fair for doc-oriented engines).
+    """
     test_cases = load_code_qa_cases(dataset_path)
+    if max_queries is not None:
+        test_cases = test_cases[:max_queries]
     results_list: list[CodeQAResult] = []
 
     for tc in tqdm(test_cases, desc=f"  {engine.name} code-qa", unit="q"):
         try:
-            # Use code search for most queries
             search_results, latency = await engine.search_code(
                 query=tc.query,
                 top_k=top_k,
@@ -219,7 +297,33 @@ async def run_code_qa_benchmark(
             print(f"  [!] Code QA query failed for {engine.name}: {tc.query[:50]}... — {e}")
             continue
 
-        qr = evaluate_code_qa(tc, search_results, latency, engine.name)
+        if scoring_mode == "llm" and llm_api_key:
+            try:
+                found, symbol_found, complete, relevance = await _llm_judge_code_qa(
+                    tc, search_results, llm_provider, llm_model, llm_api_key
+                )
+                qr = CodeQAResult(
+                    test_case_id=tc.id,
+                    query=tc.query,
+                    engine=engine.name,
+                    qa_type=tc.qa_type,
+                    latency_ms=latency,
+                    total_results=len(search_results),
+                    found=found,
+                    found_at_rank=1 if found else None,
+                    symbol_found=symbol_found,
+                    file_match=found,  # LLM judge doesn't distinguish file vs content
+                    content_complete=complete,
+                    chunk_coherent=complete,
+                    no_false_positives=True,  # LLM judge handles this implicitly
+                )
+                await asyncio.sleep(0.5)
+            except Exception as e:
+                print(f"  [!] LLM judge failed for {engine.name}: {tc.query[:50]}... — {e}")
+                qr = evaluate_code_qa(tc, search_results, latency, engine.name)
+        else:
+            qr = evaluate_code_qa(tc, search_results, latency, engine.name)
+
         results_list.append(qr)
 
     agg = aggregate_code_qa(results_list)

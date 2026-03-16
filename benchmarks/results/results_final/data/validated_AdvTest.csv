@@ -1,0 +1,1210 @@
+run_id,trace_id,engine,benchmark_type,query_id,query_text,num_results,latency_ms,error,error_category,primary_repo,primary_language,total_tokens_returned,relevant_tokens_returned,token_efficiency,avg_hop_mrr,hallucination_rate,hop_coverage,hop_recall_at_10,hop_recall_at_5,mrr,ndcg@1,ndcg@10,ndcg@3,ndcg@5,precision@1,precision@10,precision@3,precision@5,recall@1,recall@10,recall@3,recall@5
+acb62a29cc90,74a8b9497a39,synsc-context,validated_AdvTest,,Convert to a python 'data frame'.,0,8663.17,,,,,0,0,,,,,,,1.0,1.0,0.9725044904464192,0.9725044904464192,0.9725044904464192,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
+acb62a29cc90,204eae6ac46d,synsc-context,validated_AdvTest,,"Converts an OGR polygon to a 2D NumPy array.
+
+    Arguments:
+    geom -- OGR Geometry
+    size -- array size in pixels as a tuple of (width, height)
+    affine -- AffineTransform",0,6464.74,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,fb3059783551,synsc-context,validated_AdvTest,,"Insert the dims in `axis` back as singletons after being removed.
+
+  Args:
+    x:  `Tensor`.
+    axis:  Python list of integers.
+
+  Returns:
+    `Tensor` with same values as `x`, but additional single",0,9382.40,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,493945b5dcb1,synsc-context,validated_AdvTest,,"Returns module filenames from package.
+
+    Args:
+        package_path: Path to Python package.
+    Returns:
+        A set of module filenames.",0,6216.97,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,95f9a19da869,synsc-context,validated_AdvTest,,Return an instance of deposit PID.,0,5748.23,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,9eb400f0071c,synsc-context,validated_AdvTest,,"Get the pareto_optimal set of Labels, given a departure time.
+
+        Parameters
+        ----------
+        dep_time : float, int
+            time in unix seconds
+        first_leg_can_be_walk : bool",0,8168.23,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,107ac53c84da,synsc-context,validated_AdvTest,,Update existing task on the server,0,5950.95,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,a8a5901628fa,synsc-context,validated_AdvTest,,"Return random value for IntegerField
+
+    >>> result = any_form_field(forms.IntegerField(max_value=200, min_value=100))
+    >>> type(result)
+    <type 'str'>
+    >>> int(result) >=100, int(result) <=2",0,6953.81,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,f6b7a420e94e,synsc-context,validated_AdvTest,,"Gets the codec used for prefix the multicodec prefixed data
+
+    :param bytes bytes_: multicodec prefixed data bytes
+    :return: name of the multicodec used to prefix
+    :rtype: str",0,7129.82,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,62f6bd802100,synsc-context,validated_AdvTest,,"If we can get a valid IP from the request,
+        look up that address in the database to get the appropriate timezone
+        and activate it.
+
+        Else, use the default.",0,6213.09,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,9bc0a4aaf70d,synsc-context,validated_AdvTest,,"Generate the ``versionwarning-data.json`` file.
+
+    This file is included in the output and read by the AJAX request when
+    accessing to the documentation and used to compare the live versions with",0,6664.47,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,8afe9314d3db,synsc-context,validated_AdvTest,,"Prediction method for pairwise causal inference using the ANM model.
+
+        Args:
+            a (numpy.ndarray): Variable 1
+            b (numpy.ndarray): Variable 2
+
+        Returns:
+            fl",0,6427.52,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,0e5db17101ec,synsc-context,validated_AdvTest,,Handler for mv command,0,6665.87,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,bc875125a418,synsc-context,validated_AdvTest,,"Return a topological sorting of nodes in a graph.
+
+    roots - list of root nodes to search from
+    getParents - function which returns the parents of a given node",0,7756.73,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,e595dee60090,synsc-context,validated_AdvTest,,"Retrieve the passage identified by the parameters
+
+        :param objectId: Collection Identifier
+        :type objectId: str
+        :param subreference: Subreference of the passage
+        :type sub",0,6203.43,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,108503270186,synsc-context,validated_AdvTest,,"Create a sub account in the account.
+
+        :param name: The account name.
+        :param description: The account description.
+        :param number: The account number.
+
+        :returns: The crea",0,5952.86,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,2c2bdcf7fe33,synsc-context,validated_AdvTest,,"Return full path to the user-specific data dir for this application.
+
+        ""appname"" is the name of application.
+            If None, just the system directory is returned.
+        ""roaming"" (boole",0,6979.09,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,5a2aa96acb38,synsc-context,validated_AdvTest,,For crawling multiple urls,0,6395.30,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,77de5a38273a,synsc-context,validated_AdvTest,,Class method that will return an Volume object by ID.,0,5951.51,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,4fae6453005c,synsc-context,validated_AdvTest,,Factory method for creating Receive links.,0,6611.11,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,edcace159a8a,synsc-context,validated_AdvTest,,"share will use the client to get a shareable link for an image of choice.
+       the functions returns a url of choice to send to a recipient.",0,5331.39,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,862d27bd42e0,synsc-context,validated_AdvTest,,search across labels,0,5686.30,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,4c063cbf1c99,synsc-context,validated_AdvTest,,Return a Python AST Node for a `try` expression.,0,7794.19,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,56370647a1e6,synsc-context,validated_AdvTest,,"list of videos of a user
+    if username does not set, shows the currently logged in user",0,5782.15,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,bc34b2703b46,synsc-context,validated_AdvTest,,Enforce that no ranges overlap in internal storage.,0,8406.85,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,187575440d32,synsc-context,validated_AdvTest,,"Create a Card object from JSON object
+
+        Returns:
+            Card: The card from the given `card_json`.",0,6609.94,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,f05cb4e77089,synsc-context,validated_AdvTest,,"Renders a javascript snippet suitable for use as a mapbox-gl fill paint entry
+
+        Returns:
+            A dict that can be converted to a mapbox-gl javascript paint snippet",0,6919.98,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,d78b4cbf6a1a,synsc-context,validated_AdvTest,,"Copies a copy of a given endpoint with a new service name.
+    This should be very fast, on the order of several microseconds.
+
+    :param endpoint: existing zipkin_core.Endpoint object
+    :param ser",0,6354.63,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,5aa5448907da,synsc-context,validated_AdvTest,,Creates the final payload based on the x86 and x64 meterpreters.,0,6601.79,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,66c9f2115fea,synsc-context,validated_AdvTest,,adds a new segment to the list.,0,6055.17,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,e295f7e2ea6f,synsc-context,validated_AdvTest,,"Wait until all jobs finish and return the run IDs of the finished jobs
+
+        Returns
+        -------
+        list(str)
+            The list of the run IDs of the finished jobs",0,8072.20,,,,,0,0,,,,,,,1.0,1.0,0.9639404333166532,0.9639404333166532,0.9639404333166532,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,950cadb3c492,synsc-context,validated_AdvTest,,"Return expressions to run as updates during network training.
+
+        Returns
+        -------
+        updates : list of (parameter, expression) pairs
+            A list of named parameter update expr",0,7856.81,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,f7fbec37338c,synsc-context,validated_AdvTest,,"Execute the logic behind the meaning of ExpirationDate + return the matched status.
+
+        :return:
+            The status of the tested domain.
+            Can be one of the official status.
+      ",0,5743.40,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,0808bb7916b4,synsc-context,validated_AdvTest,,Numba-accelerated interval matching algorithm.,0,12337.39,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,10604eb3f70a,synsc-context,validated_AdvTest,,"iterate over each block and replace it with an equivalent Unitary
+        on the same wires.",0,9230.87,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,fc354cf49398,synsc-context,validated_AdvTest,,"Add tomography measurement circuits to a QuantumProgram.
+
+    The quantum program must contain a circuit 'name', which is treated as a
+    state preparation circuit for state tomography, or as teh cir",0,6771.31,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,191adeb8d8ba,synsc-context,validated_AdvTest,,"The printing (as opposed to the parsing part of a 'list'
+        command.",0,6188.97,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,d1e87f2efa29,synsc-context,validated_AdvTest,,"Compute invariants from an existing GraphML file using the remote
+        grute graph services.
+
+        Arguments:
+            graph_file (str): The filename of the graphml file
+            input_for",0,10045.83,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,6607c51dfade,synsc-context,validated_AdvTest,,"Return a single curve object selected by name.
+
+    See :py:func:`get_elliptic_curves` for information about curve objects.
+
+    :param name: The OpenSSL short name identifying the curve object to
+   ",0,5846.14,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,f4281d811747,synsc-context,validated_AdvTest,,"Use the maximum likelihood estimator for a lognormal distribution to
+        produce the best-fit lognormal parameters",0,8405.48,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,81a75ec1f8b5,synsc-context,validated_AdvTest,,Returns the file extension.,0,6775.01,,,,,0,0,,,,,,,1.0,1.0,0.9639404333166532,0.9639404333166532,0.9639404333166532,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,fc2dca88d3a6,synsc-context,validated_AdvTest,,"Find the node to which a connection belongs.
+
+        :param conn: connection object
+        :type conn: TcpConnection
+        :returns corresponding node or None if the node cannot be found
+        :",0,7239.92,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,684a64b475d2,synsc-context,validated_AdvTest,,Decorator to associate a code to an exception,0,6251.75,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,1c845cacb722,synsc-context,validated_AdvTest,,"This nasty piece of code is here to force the loading of IDA's
+     Qt bindings.
+    Without it, Python attempts to load PySide from the site-packages
+     directory, and failing, as it does not play ",0,5478.39,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,907e732d3486,synsc-context,validated_AdvTest,,"executes javascript js in current context
+
+        During initial execute() the converted js is cached for re-use. That means next time you
+        run the same javascript snippet you save many instru",0,9022.90,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,b81a4752a48a,synsc-context,validated_AdvTest,,"Prepare localpart of the JID
+
+        :Parameters:
+            - `data`: localpart of the JID
+        :Types:
+            - `data`: `unicode`
+
+        :raise JIDError: if the local name is too long.
+ ",0,7794.16,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,1e4e6507415a,synsc-context,validated_AdvTest,,"Get an action.
+
+        action_name -- name of the action
+        action_id -- ID of the action
+
+        Returns the requested action if found, else None.",0,6051.79,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,37b120ce2674,synsc-context,validated_AdvTest,,"Recursively compute union of data. For dictionaries, items
+        for specific keys will be combined into a list, depending on the
+        status of the overwrite= parameter. For lists, items will be",0,13279.71,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,355f944cf7b3,synsc-context,validated_AdvTest,,"Generates python code calling a hook.
+
+        self.evalHook('hookname', self.ruleNodes[-1])",0,8000.56,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,64bedd1dd5fd,synsc-context,validated_AdvTest,,Delete a given key or recursively delete the tree below it,0,6343.29,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,dfe489200cea,synsc-context,validated_AdvTest,,"Array slicer object for this tile
+
+        >>> Tile((2,3)).slicer
+        (slice(0, 2, None), slice(0, 3, None))
+
+        >>> np.arange(10)[Tile((4,)).slicer]
+        array([0, 1, 2, 3])",0,8420.03,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,35cf006c7226,synsc-context,validated_AdvTest,,"Check if a path exists, and is a directory.",0,6462.85,,,,,0,0,,,,,,,1.0,1.0,0.9639404333166532,0.9639404333166532,0.9639404333166532,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,1df92c0c3604,synsc-context,validated_AdvTest,,Send encoded instructions to Guacamole guacd server.,0,5949.87,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,f33b9a494dfc,synsc-context,validated_AdvTest,,"Return a user's logins for the given user_id.
+
+        https://canvas.instructure.com/doc/api/logins.html#method.pseudonyms.index",0,7976.70,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,bb06b3bab2ff,synsc-context,validated_AdvTest,,"r""""""
+    Return a waveform's dependent variable vector expressed in decibels.
+
+    :param wave: Waveform
+    :type  wave: :py:class:`peng.eng.Waveform`
+
+    :rtype: :py:class:`peng.eng.Waveform`
+
+    ",0,6563.28,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,a5deb473c745,synsc-context,validated_AdvTest,,"Import a png file into a numpy array.
+
+    Arguments:
+        png_filename (str): A string filename of a png datafile
+
+    Returns:
+        A numpy array with data from the png file",0,6457.91,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,d163e9d2fe2b,synsc-context,validated_AdvTest,,Wrapper for subprocess.check_output.,0,6344.15,,,,,0,0,,,,,,,1.0,0.6666666666666666,0.9134015924715543,0.9134015924715543,0.9134015924715543,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
+acb62a29cc90,1b619d2e14e3,synsc-context,validated_AdvTest,,"Processes a collection in parallel.
+
+    Parameters
+    ----------
+    collection : list
+        i.e. list of Record objects
+    method : method to call on each Record
+    processes : int
+        numb",0,7485.36,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,dffc1bd7a1c5,synsc-context,validated_AdvTest,,Default handler for those not explicitly defined,0,6122.94,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,247aee7bd590,synsc-context,validated_AdvTest,,Prints a report around DagBag loading stats,0,7551.76,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,7cc936f39b47,synsc-context,validated_AdvTest,,"Deletes training log.
+
+        Parameters
+        -----------
+        kwargs : logging information
+            Find items to delete, leave it empty to delete all log.
+
+        Examples
+        -------",0,8614.75,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,1e1751df6689,synsc-context,validated_AdvTest,,"Push Sphinx docs to github_ gh-pages branch.
+
+     1. Create file .nojekyll
+     2. Push the branch to origin/gh-pages
+        after committing using ghp-import_
+
+    Requirements:
+     - easy_install",0,6480.52,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,e240ed8aa75c,synsc-context,validated_AdvTest,,Return a node with label. Create node if label is new,0,6511.99,,,,,0,0,,,,,,,1.0,1.0,0.9385574520455129,0.9385574520455129,0.9385574520455129,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
+acb62a29cc90,db37cfa87c4e,synsc-context,validated_AdvTest,,"Generate a non-silent deprecation warning with stacktrace.
+
+    The used warning is ``imgaug.imgaug.DeprecationWarning``.
+
+    Parameters
+    ----------
+    msg : str
+        The message of the warnin",0,5693.62,,,,,0,0,,,,,,,1.0,1.0,0.9725044904464192,0.9725044904464192,0.9725044904464192,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
+acb62a29cc90,fefad41fd2ed,synsc-context,validated_AdvTest,,handle an unmet dependency,0,6475.90,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,37aa06801d20,synsc-context,validated_AdvTest,,"Tabulate an integral over the surface density of deflection potential of a mass profile. This is used in \
+        the GeneralizedNFW profile classes to speed up the integration procedure.
+
+        Pa",0,7896.07,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,a7a343c11400,synsc-context,validated_AdvTest,,"Create a JSON-LD representation of this LSST LaTeX document.
+
+        Parameters
+        ----------
+        url : `str`, optional
+            URL where this document is published to the web. Prefer
+  ",0,7064.81,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,4907fe1f6f07,synsc-context,validated_AdvTest,,"Delete a PostgreSQL database.
+
+        Example::
+
+            import burlap
+
+            # Remove DB if it exists
+            if burlap.postgres.database_exists('myapp'):
+                burlap.postgr",0,6463.77,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,3368a6d57aa8,synsc-context,validated_AdvTest,,Create an example CSV validator for patient demographic data.,0,7595.03,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,aad915d6fe54,synsc-context,validated_AdvTest,,"Returns formatted element name.
+
+    Parameters
+    ----------
+    s : str
+        of format [A-Z][a-z]?[0-9]+
+
+    Returns
+    -------
+    str
+        LaTeX formatted string with superscript numbers.",0,6146.58,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,67a5df084248,synsc-context,validated_AdvTest,,"Merges overlaps by merging overlapping Intervals.
+
+        The function takes no arguments and returns ``None``. It operates on
+        the striplog 'in place'
+
+        TODO: This function will not wo",0,8584.04,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,b7fd63a497db,synsc-context,validated_AdvTest,,"Detects if the code is running in the App Engine environment.
+
+    Returns:
+        True if running in the GAE environment, False otherwise.",0,6454.07,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,4d397701dda8,synsc-context,validated_AdvTest,,"Load a variant object
+
+        Args:
+            variant_obj(dict)
+
+        Returns:
+            inserted_id",0,6248.35,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,13c97e67d7fa,synsc-context,validated_AdvTest,,"Parse the user information of a given HTML container.
+
+        The method parses all the available user information in the container.
+        If the class ""user-info"" exists, the method will get all t",0,6363.10,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,e6741f61563d,synsc-context,validated_AdvTest,,"Calculate the average heat transfer coefficient.
+
+        :param L: [m] characteristic length of the heat transfer surface
+        :param theta: [°] angle of the surface with the vertical
+        :par",0,5950.74,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,dd8405b83102,synsc-context,validated_AdvTest,,Stop all green threads.,0,6059.35,,,,,0,0,,,,,,,1.0,1.0,0.9639404333166532,0.9639404333166532,0.9639404333166532,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,f943dd943665,synsc-context,validated_AdvTest,,"Convert a string of XML which represents a NIST Randomness Beacon value
+        into a 'NistBeaconValue' object.
+
+        :param input_xml: XML to build a 'NistBeaconValue' from
+        :return: A 'Ni",0,7691.41,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,1b4c3bdc0a11,synsc-context,validated_AdvTest,,"Converts a Open511 JSON document to XML.
+
+    lang: the appropriate language code
+
+    Takes a dict deserialized from JSON, returns an lxml Element.
+
+    Accepts only the full root-level JSON object f",0,6479.13,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,f45d0cbc86dd,synsc-context,validated_AdvTest,,"Creates a websocket connection.
+
+        :return:",0,8613.83,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,c67356a95981,synsc-context,validated_AdvTest,,"Display a group of RGB or Greyscale CNN masks.
+
+    Parameters
+    ----------
+    CNN : numpy.array
+        The image. e.g: 64 5x5 RGB images can be (5, 5, 3, 64).
+    second : int
+        The display",0,8306.09,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,68eec89da09f,synsc-context,validated_AdvTest,,"Utility method to merge an option and config, with the option taking ""
+        precedence",0,7591.71,,,,,0,0,,,,,,,1.0,1.0,0.9639404333166532,0.9639404333166532,0.9639404333166532,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,d748f1d4a8c1,synsc-context,validated_AdvTest,,"Yield single conversion objects from a MARCXML file or string.
+
+        >>> from harvestingkit.inspire_cds_package import Inspire2CDS
+        >>> for record in Inspire2CDS.from_source(""inspire.xml""):
+",0,6952.03,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,f55f34c839ea,synsc-context,validated_AdvTest,,"Returns all of the items from conditions which are enabled by a
+        user being member of a Django Auth Group.",0,6157.84,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,f37fa2e41d10,synsc-context,validated_AdvTest,,"Return a new Streamlet by applying map_function to each element of this Streamlet
+       and flattening the result",0,9137.51,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,d8ae19b72874,synsc-context,validated_AdvTest,,"Check download_dir for previously downloaded file with correct hash
+        If a correct file is found return its path else None",0,6447.30,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
+acb62a29cc90,8ddc14410be9,synsc-context,validated_AdvTest,,"Add a node to the net. Its parents must already be in the
+        net, and its variable must not.",0,7793.17,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,50b467be4619,synsc-context,validated_AdvTest,,"Chunks records of a distributed array.
+
+        Chunking breaks arrays into subarrays, using an specified
+        size of chunks along each value dimension. Can alternatively
+        specify an averag",0,9840.29,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,f17bf5a884bc,synsc-context,validated_AdvTest,,"Check if value has id attribute and return it.
+
+        :param value: The value to get id from.
+        :return: The value.id.",0,6768.88,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,314703942b14,synsc-context,validated_AdvTest,,"Starts a Django management command in a screen.
+
+        Parameters:
+
+            command :- all arguments passed to `./manage` as a single string
+
+            site :- the site to run the command for ",0,6567.08,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,a68a2bee6c30,synsc-context,validated_AdvTest,,"Produce a reduced vcf with variants from the specified coordinates
+           This is used for the alignment viewer.
+
+        Args:
+            case_obj(dict): A case from the scout database
+         ",0,6052.99,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,15981380ac76,synsc-context,validated_AdvTest,,"Generate unified file. Understand by that that we use an unified table
+        instead of a separate table for each status which could result into a
+        misunderstanding.",0,7426.59,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,8b8fa1f2b841,synsc-context,validated_AdvTest,,"Calls the project handler same named function
+
+    Note: the project handler may add some extra arguments to the command,
+          so when use this decorator, add **kwargs to the end of the arguments",0,6268.69,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,f96b20e10d69,synsc-context,validated_AdvTest,,"Load a certificate chain from a file.
+
+        :param certfile: The name of the certificate chain file (``bytes`` or
+            ``unicode``).  Must be PEM encoded.
+
+        :return: None",0,6767.93,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,4aa88924e1f6,synsc-context,validated_AdvTest,,"Calculates the sum of unclaimed credit from this user's credit notes.
+
+    Returns:
+        Decimal: the sum of the values of unclaimed credit notes for the
+            current user.",0,8715.84,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,681832462187,synsc-context,validated_AdvTest,,"Parses an APRS packet and returns a dict with decoded data
+
+    - All attributes are in metric units",0,6058.98,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,8c450930f02d,synsc-context,validated_AdvTest,,"Get attribute, creating if required using specified factory.",0,8491.50,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,56225e81921c,synsc-context,validated_AdvTest,,"Registers protobuf message builders that this client wants to receive
+
+    :param msg_builder: callable to create a protobuf message that this client wants to receive",0,6459.15,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,739b9aca7366,synsc-context,validated_AdvTest,,"Sets the output to the given value.
+
+        Sets `pin` output to given value. If the pin is in INPUT mode, do
+        nothing. If it's an analog pin, value should be in write_range.
+        If it's n",0,10250.60,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,cd7494cc1f50,synsc-context,validated_AdvTest,,Connect to a host,0,6515.18,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,90ce58a91a95,synsc-context,validated_AdvTest,,Load parameters to the block.,0,8476.88,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,e88bf7deb17e,nia,validated_AdvTest,,Convert to a python 'data frame'.,0,6501.53,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,99e742c3c7eb,nia,validated_AdvTest,,"Converts an OGR polygon to a 2D NumPy array.
+
+    Arguments:
+    geom -- OGR Geometry
+    size -- array size in pixels as a tuple of (width, height)
+    affine -- AffineTransform",0,1245.85,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,d9e5bac3d7d2,nia,validated_AdvTest,,"Insert the dims in `axis` back as singletons after being removed.
+
+  Args:
+    x:  `Tensor`.
+    axis:  Python list of integers.
+
+  Returns:
+    `Tensor` with same values as `x`, but additional single",0,1254.51,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,0d3e6a87408d,nia,validated_AdvTest,,"Returns module filenames from package.
+
+    Args:
+        package_path: Path to Python package.
+    Returns:
+        A set of module filenames.",0,1294.16,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,536f203b31f3,nia,validated_AdvTest,,Return an instance of deposit PID.,0,43619.65,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,5882b7a2b452,nia,validated_AdvTest,,"Get the pareto_optimal set of Labels, given a departure time.
+
+        Parameters
+        ----------
+        dep_time : float, int
+            time in unix seconds
+        first_leg_can_be_walk : bool",0,20189.21,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,ae230651b3c8,nia,validated_AdvTest,,Update existing task on the server,0,1378.82,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,1b2059f73d21,nia,validated_AdvTest,,"Return random value for IntegerField
+
+    >>> result = any_form_field(forms.IntegerField(max_value=200, min_value=100))
+    >>> type(result)
+    <type 'str'>
+    >>> int(result) >=100, int(result) <=2",0,1611.53,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,457ba1c64bd9,nia,validated_AdvTest,,"Gets the codec used for prefix the multicodec prefixed data
+
+    :param bytes bytes_: multicodec prefixed data bytes
+    :return: name of the multicodec used to prefix
+    :rtype: str",0,1469.53,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,2d6088ada07c,nia,validated_AdvTest,,"If we can get a valid IP from the request,
+        look up that address in the database to get the appropriate timezone
+        and activate it.
+
+        Else, use the default.",0,1457.42,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,082957b2891d,nia,validated_AdvTest,,"Generate the ``versionwarning-data.json`` file.
+
+    This file is included in the output and read by the AJAX request when
+    accessing to the documentation and used to compare the live versions with",0,44093.84,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,4bda533c356a,nia,validated_AdvTest,,"Prediction method for pairwise causal inference using the ANM model.
+
+        Args:
+            a (numpy.ndarray): Variable 1
+            b (numpy.ndarray): Variable 2
+
+        Returns:
+            fl",0,1689.80,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,a501c1623535,nia,validated_AdvTest,,Handler for mv command,0,9023.72,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,66836b75a655,nia,validated_AdvTest,,"Return a topological sorting of nodes in a graph.
+
+    roots - list of root nodes to search from
+    getParents - function which returns the parents of a given node",0,1669.25,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,24ae6050cdc2,nia,validated_AdvTest,,"Retrieve the passage identified by the parameters
+
+        :param objectId: Collection Identifier
+        :type objectId: str
+        :param subreference: Subreference of the passage
+        :type sub",0,1544.31,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,bce7dc517a7d,nia,validated_AdvTest,,"Create a sub account in the account.
+
+        :param name: The account name.
+        :param description: The account description.
+        :param number: The account number.
+
+        :returns: The crea",0,1561.39,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,666a5685e105,nia,validated_AdvTest,,"Return full path to the user-specific data dir for this application.
+
+        ""appname"" is the name of application.
+            If None, just the system directory is returned.
+        ""roaming"" (boole",0,1597.03,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,f0e0b27cfe94,nia,validated_AdvTest,,For crawling multiple urls,0,1861.05,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,de8e2eb942f3,nia,validated_AdvTest,,Class method that will return an Volume object by ID.,0,1527.71,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,cae2e5d2e2b4,nia,validated_AdvTest,,Factory method for creating Receive links.,0,1402.95,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,1aae63187cd6,nia,validated_AdvTest,,"share will use the client to get a shareable link for an image of choice.
+       the functions returns a url of choice to send to a recipient.",0,1787.40,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,f7b34739dc63,nia,validated_AdvTest,,search across labels,0,1768.07,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,763a00e144b7,nia,validated_AdvTest,,Return a Python AST Node for a `try` expression.,0,1469.14,,,,,0,0,,,,,,,1.0,1.0,0.9502344167898356,0.9502344167898356,0.9502344167898356,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,81b04623c554,nia,validated_AdvTest,,"list of videos of a user
+    if username does not set, shows the currently logged in user",0,1377.28,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,e2acbdb37ffb,nia,validated_AdvTest,,Enforce that no ranges overlap in internal storage.,0,1422.31,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,c2ddd5252e74,nia,validated_AdvTest,,"Create a Card object from JSON object
+
+        Returns:
+            Card: The card from the given `card_json`.",0,1335.07,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,447122049b2f,nia,validated_AdvTest,,"Renders a javascript snippet suitable for use as a mapbox-gl fill paint entry
+
+        Returns:
+            A dict that can be converted to a mapbox-gl javascript paint snippet",0,1508.20,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,a01ff9eacd71,nia,validated_AdvTest,,"Copies a copy of a given endpoint with a new service name.
+    This should be very fast, on the order of several microseconds.
+
+    :param endpoint: existing zipkin_core.Endpoint object
+    :param ser",0,1598.08,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,d965d95d61af,nia,validated_AdvTest,,Creates the final payload based on the x86 and x64 meterpreters.,0,1559.82,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,2d06287bd434,nia,validated_AdvTest,,adds a new segment to the list.,0,1349.28,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,11917f538eba,nia,validated_AdvTest,,"Wait until all jobs finish and return the run IDs of the finished jobs
+
+        Returns
+        -------
+        list(str)
+            The list of the run IDs of the finished jobs",0,1381.05,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,3a66cd8f2a55,nia,validated_AdvTest,,"Return expressions to run as updates during network training.
+
+        Returns
+        -------
+        updates : list of (parameter, expression) pairs
+            A list of named parameter update expr",0,1424.99,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,722f93e6ec08,nia,validated_AdvTest,,"Execute the logic behind the meaning of ExpirationDate + return the matched status.
+
+        :return:
+            The status of the tested domain.
+            Can be one of the official status.
+      ",0,1499.13,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,048700884679,nia,validated_AdvTest,,Numba-accelerated interval matching algorithm.,0,1542.36,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,cfeffdda8629,nia,validated_AdvTest,,"iterate over each block and replace it with an equivalent Unitary
+        on the same wires.",0,1354.79,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,ead36c0d91c6,nia,validated_AdvTest,,"Add tomography measurement circuits to a QuantumProgram.
+
+    The quantum program must contain a circuit 'name', which is treated as a
+    state preparation circuit for state tomography, or as teh cir",0,1428.04,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,91d13dd2c279,nia,validated_AdvTest,,"The printing (as opposed to the parsing part of a 'list'
+        command.",0,1606.31,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,b42e6336c66d,nia,validated_AdvTest,,"Compute invariants from an existing GraphML file using the remote
+        grute graph services.
+
+        Arguments:
+            graph_file (str): The filename of the graphml file
+            input_for",0,1435.95,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,3ffa579b6002,nia,validated_AdvTest,,"Return a single curve object selected by name.
+
+    See :py:func:`get_elliptic_curves` for information about curve objects.
+
+    :param name: The OpenSSL short name identifying the curve object to
+   ",0,1471.40,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,134857379b88,nia,validated_AdvTest,,"Use the maximum likelihood estimator for a lognormal distribution to
+        produce the best-fit lognormal parameters",0,1712.70,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,41cd80bf7199,nia,validated_AdvTest,,Returns the file extension.,0,1465.92,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,24c4188e0008,nia,validated_AdvTest,,"Find the node to which a connection belongs.
+
+        :param conn: connection object
+        :type conn: TcpConnection
+        :returns corresponding node or None if the node cannot be found
+        :",0,1152.53,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,79c0bd94be1d,nia,validated_AdvTest,,Decorator to associate a code to an exception,0,1495.53,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,6397713a959c,nia,validated_AdvTest,,"This nasty piece of code is here to force the loading of IDA's
+     Qt bindings.
+    Without it, Python attempts to load PySide from the site-packages
+     directory, and failing, as it does not play ",0,1521.91,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,d378e9e0fb77,nia,validated_AdvTest,,"executes javascript js in current context
+
+        During initial execute() the converted js is cached for re-use. That means next time you
+        run the same javascript snippet you save many instru",0,1832.69,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,6fb854699194,nia,validated_AdvTest,,"Prepare localpart of the JID
+
+        :Parameters:
+            - `data`: localpart of the JID
+        :Types:
+            - `data`: `unicode`
+
+        :raise JIDError: if the local name is too long.
+ ",0,1800.70,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,d29d71f2532b,nia,validated_AdvTest,,"Get an action.
+
+        action_name -- name of the action
+        action_id -- ID of the action
+
+        Returns the requested action if found, else None.",0,1393.82,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,25d7d8665080,nia,validated_AdvTest,,"Recursively compute union of data. For dictionaries, items
+        for specific keys will be combined into a list, depending on the
+        status of the overwrite= parameter. For lists, items will be",0,1446.73,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,c932f564a3e5,nia,validated_AdvTest,,"Generates python code calling a hook.
+
+        self.evalHook('hookname', self.ruleNodes[-1])",0,1371.66,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,2078f96876c5,nia,validated_AdvTest,,Delete a given key or recursively delete the tree below it,0,1492.02,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,c27907721483,nia,validated_AdvTest,,"Array slicer object for this tile
+
+        >>> Tile((2,3)).slicer
+        (slice(0, 2, None), slice(0, 3, None))
+
+        >>> np.arange(10)[Tile((4,)).slicer]
+        array([0, 1, 2, 3])",0,1753.43,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,e21f5cbae462,nia,validated_AdvTest,,"Check if a path exists, and is a directory.",0,1613.31,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,e80727698fbf,nia,validated_AdvTest,,Send encoded instructions to Guacamole guacd server.,0,1836.64,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,e8cd90f67093,nia,validated_AdvTest,,"Return a user's logins for the given user_id.
+
+        https://canvas.instructure.com/doc/api/logins.html#method.pseudonyms.index",0,1736.10,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,81cdf7a9216e,nia,validated_AdvTest,,"r""""""
+    Return a waveform's dependent variable vector expressed in decibels.
+
+    :param wave: Waveform
+    :type  wave: :py:class:`peng.eng.Waveform`
+
+    :rtype: :py:class:`peng.eng.Waveform`
+
+    ",0,1626.61,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,09dd89776a07,nia,validated_AdvTest,,"Import a png file into a numpy array.
+
+    Arguments:
+        png_filename (str): A string filename of a png datafile
+
+    Returns:
+        A numpy array with data from the png file",0,1497.16,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,6f130e2d598d,nia,validated_AdvTest,,Wrapper for subprocess.check_output.,0,1405.97,,,,,0,0,,,,,,,0.0,1.0,0.9197207891481876,0.9197207891481876,0.9197207891481876,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,79daf3480425,nia,validated_AdvTest,,"Processes a collection in parallel.
+
+    Parameters
+    ----------
+    collection : list
+        i.e. list of Record objects
+    method : method to call on each Record
+    processes : int
+        numb",0,1418.78,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+acb62a29cc90,a769a73069eb,nia,validated_AdvTest,,Default handler for those not explicitly defined,0,1607.90,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,8affad6f6c2f,nia,validated_AdvTest,,Prints a report around DagBag loading stats,0,1498.91,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,6c4e6fcf1968,nia,validated_AdvTest,,"Deletes training log.
+
+        Parameters
+        -----------
+        kwargs : logging information
+            Find items to delete, leave it empty to delete all log.
+
+        Examples
+        -------",0,1692.94,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,8b07690862b8,nia,validated_AdvTest,,"Push Sphinx docs to github_ gh-pages branch.
+
+     1. Create file .nojekyll
+     2. Push the branch to origin/gh-pages
+        after committing using ghp-import_
+
+    Requirements:
+     - easy_install",0,1352.79,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,fa57f07df324,nia,validated_AdvTest,,Return a node with label. Create node if label is new,0,1470.29,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,c10b5e728c82,nia,validated_AdvTest,,"Generate a non-silent deprecation warning with stacktrace.
+
+    The used warning is ``imgaug.imgaug.DeprecationWarning``.
+
+    Parameters
+    ----------
+    msg : str
+        The message of the warnin",0,1470.44,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,f6efa48a1022,nia,validated_AdvTest,,handle an unmet dependency,0,1593.44,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,22fd788cb136,nia,validated_AdvTest,,"Tabulate an integral over the surface density of deflection potential of a mass profile. This is used in \
+        the GeneralizedNFW profile classes to speed up the integration procedure.
+
+        Pa",0,1416.91,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,7502aa5c0a07,nia,validated_AdvTest,,"Create a JSON-LD representation of this LSST LaTeX document.
+
+        Parameters
+        ----------
+        url : `str`, optional
+            URL where this document is published to the web. Prefer
+  ",0,1397.11,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,1b00a8542cb6,nia,validated_AdvTest,,"Delete a PostgreSQL database.
+
+        Example::
+
+            import burlap
+
+            # Remove DB if it exists
+            if burlap.postgres.database_exists('myapp'):
+                burlap.postgr",0,1731.40,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,b71a40cc4990,nia,validated_AdvTest,,Create an example CSV validator for patient demographic data.,0,1490.01,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,2a9c1d966936,nia,validated_AdvTest,,"Returns formatted element name.
+
+    Parameters
+    ----------
+    s : str
+        of format [A-Z][a-z]?[0-9]+
+
+    Returns
+    -------
+    str
+        LaTeX formatted string with superscript numbers.",0,1500.30,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,492e110a8315,nia,validated_AdvTest,,"Merges overlaps by merging overlapping Intervals.
+
+        The function takes no arguments and returns ``None``. It operates on
+        the striplog 'in place'
+
+        TODO: This function will not wo",0,1621.53,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,e98b32c8582f,nia,validated_AdvTest,,"Detects if the code is running in the App Engine environment.
+
+    Returns:
+        True if running in the GAE environment, False otherwise.",0,1322.62,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,324e0d4320da,nia,validated_AdvTest,,"Load a variant object
+
+        Args:
+            variant_obj(dict)
+
+        Returns:
+            inserted_id",0,1405.53,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,743ea340bc06,nia,validated_AdvTest,,"Parse the user information of a given HTML container.
+
+        The method parses all the available user information in the container.
+        If the class ""user-info"" exists, the method will get all t",0,1616.98,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,b748b14334e1,nia,validated_AdvTest,,"Calculate the average heat transfer coefficient.
+
+        :param L: [m] characteristic length of the heat transfer surface
+        :param theta: [°] angle of the surface with the vertical
+        :par",0,1301.95,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,a47673ba86a0,nia,validated_AdvTest,,Stop all green threads.,0,1202.81,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,e38f31c445fc,nia,validated_AdvTest,,"Convert a string of XML which represents a NIST Randomness Beacon value
+        into a 'NistBeaconValue' object.
+
+        :param input_xml: XML to build a 'NistBeaconValue' from
+        :return: A 'Ni",0,1547.70,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,41ce4802bcd8,nia,validated_AdvTest,,"Converts a Open511 JSON document to XML.
+
+    lang: the appropriate language code
+
+    Takes a dict deserialized from JSON, returns an lxml Element.
+
+    Accepts only the full root-level JSON object f",0,1521.73,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,39f1946c90e4,nia,validated_AdvTest,,"Creates a websocket connection.
+
+        :return:",0,1679.79,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,cd1589e4b331,nia,validated_AdvTest,,"Display a group of RGB or Greyscale CNN masks.
+
+    Parameters
+    ----------
+    CNN : numpy.array
+        The image. e.g: 64 5x5 RGB images can be (5, 5, 3, 64).
+    second : int
+        The display",0,1727.99,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,21c3d438a79a,nia,validated_AdvTest,,"Utility method to merge an option and config, with the option taking ""
+        precedence",0,1731.06,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,1c191e229a3d,nia,validated_AdvTest,,"Yield single conversion objects from a MARCXML file or string.
+
+        >>> from harvestingkit.inspire_cds_package import Inspire2CDS
+        >>> for record in Inspire2CDS.from_source(""inspire.xml""):
+",0,1624.65,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,7bbab023fe0d,nia,validated_AdvTest,,"Returns all of the items from conditions which are enabled by a
+        user being member of a Django Auth Group.",0,1419.45,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,b49f702387f2,nia,validated_AdvTest,,"Return a new Streamlet by applying map_function to each element of this Streamlet
+       and flattening the result",0,1404.87,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,53132d1a1f73,nia,validated_AdvTest,,"Check download_dir for previously downloaded file with correct hash
+        If a correct file is found return its path else None",0,1546.34,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,e723ef0bb6a0,nia,validated_AdvTest,,"Add a node to the net. Its parents must already be in the
+        net, and its variable must not.",0,1498.72,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,4bc525e121f8,nia,validated_AdvTest,,"Chunks records of a distributed array.
+
+        Chunking breaks arrays into subarrays, using an specified
+        size of chunks along each value dimension. Can alternatively
+        specify an averag",0,1655.51,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,f7f85033e337,nia,validated_AdvTest,,"Check if value has id attribute and return it.
+
+        :param value: The value to get id from.
+        :return: The value.id.",0,1371.91,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,b144d3e1258e,nia,validated_AdvTest,,"Starts a Django management command in a screen.
+
+        Parameters:
+
+            command :- all arguments passed to `./manage` as a single string
+
+            site :- the site to run the command for ",0,1723.56,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,06f4ff941b82,nia,validated_AdvTest,,"Produce a reduced vcf with variants from the specified coordinates
+           This is used for the alignment viewer.
+
+        Args:
+            case_obj(dict): A case from the scout database
+         ",0,1448.40,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,ed8a5203df69,nia,validated_AdvTest,,"Generate unified file. Understand by that that we use an unified table
+        instead of a separate table for each status which could result into a
+        misunderstanding.",0,1490.63,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,7c1b12c0be63,nia,validated_AdvTest,,"Calls the project handler same named function
+
+    Note: the project handler may add some extra arguments to the command,
+          so when use this decorator, add **kwargs to the end of the arguments",0,1431.24,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,a9d81499f4b0,nia,validated_AdvTest,,"Load a certificate chain from a file.
+
+        :param certfile: The name of the certificate chain file (``bytes`` or
+            ``unicode``).  Must be PEM encoded.
+
+        :return: None",0,1503.73,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,0dea8298d00f,nia,validated_AdvTest,,"Calculates the sum of unclaimed credit from this user's credit notes.
+
+    Returns:
+        Decimal: the sum of the values of unclaimed credit notes for the
+            current user.",0,1404.11,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,82ed945c1ecf,nia,validated_AdvTest,,"Parses an APRS packet and returns a dict with decoded data
+
+    - All attributes are in metric units",0,1570.16,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,7990aee8a9d6,nia,validated_AdvTest,,"Get attribute, creating if required using specified factory.",0,1591.98,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,c7bd5fc3cdb3,nia,validated_AdvTest,,"Registers protobuf message builders that this client wants to receive
+
+    :param msg_builder: callable to create a protobuf message that this client wants to receive",0,1580.38,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,65989957e976,nia,validated_AdvTest,,"Sets the output to the given value.
+
+        Sets `pin` output to given value. If the pin is in INPUT mode, do
+        nothing. If it's an analog pin, value should be in write_range.
+        If it's n",0,1930.78,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,9318cff2834e,nia,validated_AdvTest,,Connect to a host,0,1377.01,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+acb62a29cc90,9dc1a10e27d2,nia,validated_AdvTest,,Load parameters to the block.,0,1387.15,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,434dd599bd80,context7,validated_AdvTest,,Convert to a python 'data frame'.,0,1855.94,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,cc36a1643a8d,context7,validated_AdvTest,,"Converts an OGR polygon to a 2D NumPy array.
+
+    Arguments:
+    geom -- OGR Geometry
+    size -- array size in pixels as a tuple of (width, height)
+    affine -- AffineTransform",0,2780.50,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,e6a31c7b4b3b,context7,validated_AdvTest,,"Insert the dims in `axis` back as singletons after being removed.
+
+  Args:
+    x:  `Tensor`.
+    axis:  Python list of integers.
+
+  Returns:
+    `Tensor` with same values as `x`, but additional single",0,2265.44,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,b2d85fcc3fbc,context7,validated_AdvTest,,"Returns module filenames from package.
+
+    Args:
+        package_path: Path to Python package.
+    Returns:
+        A set of module filenames.",0,2469.92,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,89eaca5fdbca,context7,validated_AdvTest,,Return an instance of deposit PID.,0,2468.96,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,b07e2957461c,context7,validated_AdvTest,,"Get the pareto_optimal set of Labels, given a departure time.
+
+        Parameters
+        ----------
+        dep_time : float, int
+            time in unix seconds
+        first_leg_can_be_walk : bool",0,2059.08,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,ab9d422a182c,context7,validated_AdvTest,,Update existing task on the server,0,2787.03,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,6baa37727f87,context7,validated_AdvTest,,"Return random value for IntegerField
+
+    >>> result = any_form_field(forms.IntegerField(max_value=200, min_value=100))
+    >>> type(result)
+    <type 'str'>
+    >>> int(result) >=100, int(result) <=2",0,2469.80,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,b80d7222eff1,context7,validated_AdvTest,,"Gets the codec used for prefix the multicodec prefixed data
+
+    :param bytes bytes_: multicodec prefixed data bytes
+    :return: name of the multicodec used to prefix
+    :rtype: str",0,2468.92,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,29e3808f6ccd,context7,validated_AdvTest,,"If we can get a valid IP from the request,
+        look up that address in the database to get the appropriate timezone
+        and activate it.
+
+        Else, use the default.",0,2675.53,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,c4ba81de0ea2,context7,validated_AdvTest,,"Generate the ``versionwarning-data.json`` file.
+
+    This file is included in the output and read by the AJAX request when
+    accessing to the documentation and used to compare the live versions with",0,2221.05,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,3122ac0c0472,context7,validated_AdvTest,,"Prediction method for pairwise causal inference using the ANM model.
+
+        Args:
+            a (numpy.ndarray): Variable 1
+            b (numpy.ndarray): Variable 2
+
+        Returns:
+            fl",0,2475.41,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,3358c8c0b7b4,context7,validated_AdvTest,,Handler for mv command,0,2777.30,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,f13bcc8fc1ae,context7,validated_AdvTest,,"Return a topological sorting of nodes in a graph.
+
+    roots - list of root nodes to search from
+    getParents - function which returns the parents of a given node",0,2626.82,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,2366b514a584,context7,validated_AdvTest,,"Retrieve the passage identified by the parameters
+
+        :param objectId: Collection Identifier
+        :type objectId: str
+        :param subreference: Subreference of the passage
+        :type sub",0,2929.38,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,9448d3feadab,context7,validated_AdvTest,,"Create a sub account in the account.
+
+        :param name: The account name.
+        :param description: The account description.
+        :param number: The account number.
+
+        :returns: The crea",0,2878.44,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,eb113a66f946,context7,validated_AdvTest,,"Return full path to the user-specific data dir for this application.
+
+        ""appname"" is the name of application.
+            If None, just the system directory is returned.
+        ""roaming"" (boole",0,2469.15,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,524e3440c48e,context7,validated_AdvTest,,For crawling multiple urls,0,2776.00,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,0dc08b509522,context7,validated_AdvTest,,Class method that will return an Volume object by ID.,0,2366.63,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,20426160ddde,context7,validated_AdvTest,,Factory method for creating Receive links.,0,2457.44,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,bcdf083de59f,context7,validated_AdvTest,,"share will use the client to get a shareable link for an image of choice.
+       the functions returns a url of choice to send to a recipient.",0,2675.99,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,239633cec2a1,context7,validated_AdvTest,,search across labels,0,2571.42,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,2c3ce0f5fdd9,context7,validated_AdvTest,,Return a Python AST Node for a `try` expression.,0,3089.50,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,9e06f18f8564,context7,validated_AdvTest,,"list of videos of a user
+    if username does not set, shows the currently logged in user",0,2715.74,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,bd7d9f73a8eb,context7,validated_AdvTest,,Enforce that no ranges overlap in internal storage.,0,2434.98,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,2e48cbe515ff,context7,validated_AdvTest,,"Create a Card object from JSON object
+
+        Returns:
+            Card: The card from the given `card_json`.",0,2551.46,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,a291a269b44a,context7,validated_AdvTest,,"Renders a javascript snippet suitable for use as a mapbox-gl fill paint entry
+
+        Returns:
+            A dict that can be converted to a mapbox-gl javascript paint snippet",0,2878.85,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,bf6fc9ad178e,context7,validated_AdvTest,,"Copies a copy of a given endpoint with a new service name.
+    This should be very fast, on the order of several microseconds.
+
+    :param endpoint: existing zipkin_core.Endpoint object
+    :param ser",0,2262.07,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,63a72f67e6c5,context7,validated_AdvTest,,Creates the final payload based on the x86 and x64 meterpreters.,0,2961.22,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,2994b233eff9,context7,validated_AdvTest,,adds a new segment to the list.,0,3071.90,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,8624a11eb5dc,context7,validated_AdvTest,,"Wait until all jobs finish and return the run IDs of the finished jobs
+
+        Returns
+        -------
+        list(str)
+            The list of the run IDs of the finished jobs",0,2717.54,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,65098e3bac86,context7,validated_AdvTest,,"Return expressions to run as updates during network training.
+
+        Returns
+        -------
+        updates : list of (parameter, expression) pairs
+            A list of named parameter update expr",0,2905.50,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,27de02fbd4fb,context7,validated_AdvTest,,"Execute the logic behind the meaning of ExpirationDate + return the matched status.
+
+        :return:
+            The status of the tested domain.
+            Can be one of the official status.
+      ",0,3390.37,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,447fd7e55386,context7,validated_AdvTest,,Numba-accelerated interval matching algorithm.,0,2461.92,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,2e645b219cfd,context7,validated_AdvTest,,"iterate over each block and replace it with an equivalent Unitary
+        on the same wires.",0,2640.94,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,4df8865fc1a8,context7,validated_AdvTest,,"Add tomography measurement circuits to a QuantumProgram.
+
+    The quantum program must contain a circuit 'name', which is treated as a
+    state preparation circuit for state tomography, or as teh cir",0,2776.34,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,59fdb4997091,context7,validated_AdvTest,,"The printing (as opposed to the parsing part of a 'list'
+        command.",0,2264.46,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,db05a0ce59c5,context7,validated_AdvTest,,"Compute invariants from an existing GraphML file using the remote
+        grute graph services.
+
+        Arguments:
+            graph_file (str): The filename of the graphml file
+            input_for",0,2878.57,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,2ad8d9489163,context7,validated_AdvTest,,"Return a single curve object selected by name.
+
+    See :py:func:`get_elliptic_curves` for information about curve objects.
+
+    :param name: The OpenSSL short name identifying the curve object to
+   ",0,2673.50,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,e14ad26d9c8e,context7,validated_AdvTest,,"Use the maximum likelihood estimator for a lognormal distribution to
+        produce the best-fit lognormal parameters",0,2575.53,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,9f116ae1ea2a,context7,validated_AdvTest,,Returns the file extension.,0,2413.99,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,bea329f3702b,context7,validated_AdvTest,,"Find the node to which a connection belongs.
+
+        :param conn: connection object
+        :type conn: TcpConnection
+        :returns corresponding node or None if the node cannot be found
+        :",0,2776.69,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,07185399a2fb,context7,validated_AdvTest,,Decorator to associate a code to an exception,0,2941.95,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,cf792000e3aa,context7,validated_AdvTest,,"This nasty piece of code is here to force the loading of IDA's
+     Qt bindings.
+    Without it, Python attempts to load PySide from the site-packages
+     directory, and failing, as it does not play ",0,2776.24,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,3dedfdd715d6,context7,validated_AdvTest,,"executes javascript js in current context
+
+        During initial execute() the converted js is cached for re-use. That means next time you
+        run the same javascript snippet you save many instru",0,2570.88,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,af856b175530,context7,validated_AdvTest,,"Prepare localpart of the JID
+
+        :Parameters:
+            - `data`: localpart of the JID
+        :Types:
+            - `data`: `unicode`
+
+        :raise JIDError: if the local name is too long.
+ ",0,2673.66,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,667247ca09b3,context7,validated_AdvTest,,"Get an action.
+
+        action_name -- name of the action
+        action_id -- ID of the action
+
+        Returns the requested action if found, else None.",0,2879.25,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,113e1c30fd78,context7,validated_AdvTest,,"Recursively compute union of data. For dictionaries, items
+        for specific keys will be combined into a list, depending on the
+        status of the overwrite= parameter. For lists, items will be",0,2571.04,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,779b16ce3d03,context7,validated_AdvTest,,"Generates python code calling a hook.
+
+        self.evalHook('hookname', self.ruleNodes[-1])",0,2329.95,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,7820a6339b29,context7,validated_AdvTest,,Delete a given key or recursively delete the tree below it,0,2777.40,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,667e798f7c8b,context7,validated_AdvTest,,"Array slicer object for this tile
+
+        >>> Tile((2,3)).slicer
+        (slice(0, 2, None), slice(0, 3, None))
+
+        >>> np.arange(10)[Tile((4,)).slicer]
+        array([0, 1, 2, 3])",0,3182.97,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,f42913ba2893,context7,validated_AdvTest,,"Check if a path exists, and is a directory.",0,1854.86,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,b3109ae06107,context7,validated_AdvTest,,Send encoded instructions to Guacamole guacd server.,0,2572.08,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,58ee4e650812,context7,validated_AdvTest,,"Return a user's logins for the given user_id.
+
+        https://canvas.instructure.com/doc/api/logins.html#method.pseudonyms.index",0,2160.59,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,9017a2af2399,context7,validated_AdvTest,,"r""""""
+    Return a waveform's dependent variable vector expressed in decibels.
+
+    :param wave: Waveform
+    :type  wave: :py:class:`peng.eng.Waveform`
+
+    :rtype: :py:class:`peng.eng.Waveform`
+
+    ",0,3190.24,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,8b7087c6131b,context7,validated_AdvTest,,"Import a png file into a numpy array.
+
+    Arguments:
+        png_filename (str): A string filename of a png datafile
+
+    Returns:
+        A numpy array with data from the png file",0,3311.58,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,4f14c91ce24c,context7,validated_AdvTest,,Wrapper for subprocess.check_output.,0,2776.55,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,a5b2b75413d1,context7,validated_AdvTest,,"Processes a collection in parallel.
+
+    Parameters
+    ----------
+    collection : list
+        i.e. list of Record objects
+    method : method to call on each Record
+    processes : int
+        numb",0,2361.32,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,36ec3b87df8d,context7,validated_AdvTest,,Default handler for those not explicitly defined,0,2367.50,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,55f57c47f607,context7,validated_AdvTest,,Prints a report around DagBag loading stats,0,2369.50,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,650934735e61,context7,validated_AdvTest,,"Deletes training log.
+
+        Parameters
+        -----------
+        kwargs : logging information
+            Find items to delete, leave it empty to delete all log.
+
+        Examples
+        -------",0,2058.62,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,4c59aa8eec74,context7,validated_AdvTest,,"Push Sphinx docs to github_ gh-pages branch.
+
+     1. Create file .nojekyll
+     2. Push the branch to origin/gh-pages
+        after committing using ghp-import_
+
+    Requirements:
+     - easy_install",0,2571.05,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,4fb8935e51f6,context7,validated_AdvTest,,Return a node with label. Create node if label is new,0,2161.52,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,7aec07b98b3e,context7,validated_AdvTest,,"Generate a non-silent deprecation warning with stacktrace.
+
+    The used warning is ``imgaug.imgaug.DeprecationWarning``.
+
+    Parameters
+    ----------
+    msg : str
+        The message of the warnin",0,2266.40,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,6591e9eb8b7c,context7,validated_AdvTest,,handle an unmet dependency,0,2468.42,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,ce9d431d4be1,context7,validated_AdvTest,,"Tabulate an integral over the surface density of deflection potential of a mass profile. This is used in \
+        the GeneralizedNFW profile classes to speed up the integration procedure.
+
+        Pa",0,2468.94,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,8a47ac7b7d9c,context7,validated_AdvTest,,"Create a JSON-LD representation of this LSST LaTeX document.
+
+        Parameters
+        ----------
+        url : `str`, optional
+            URL where this document is published to the web. Prefer
+  ",0,2264.80,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,1236dabb5356,context7,validated_AdvTest,,"Delete a PostgreSQL database.
+
+        Example::
+
+            import burlap
+
+            # Remove DB if it exists
+            if burlap.postgres.database_exists('myapp'):
+                burlap.postgr",0,2264.23,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,9fde4f947ec8,context7,validated_AdvTest,,Create an example CSV validator for patient demographic data.,0,2473.78,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,ae71293fd095,context7,validated_AdvTest,,"Returns formatted element name.
+
+    Parameters
+    ----------
+    s : str
+        of format [A-Z][a-z]?[0-9]+
+
+    Returns
+    -------
+    str
+        LaTeX formatted string with superscript numbers.",0,2160.89,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,037ebbfd2b55,context7,validated_AdvTest,,"Merges overlaps by merging overlapping Intervals.
+
+        The function takes no arguments and returns ``None``. It operates on
+        the striplog 'in place'
+
+        TODO: This function will not wo",0,2879.18,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,6d1176c7a38a,context7,validated_AdvTest,,"Detects if the code is running in the App Engine environment.
+
+    Returns:
+        True if running in the GAE environment, False otherwise.",0,2775.17,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,d074a2681309,context7,validated_AdvTest,,"Load a variant object
+
+        Args:
+            variant_obj(dict)
+
+        Returns:
+            inserted_id",0,2776.39,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,b4196d51f289,context7,validated_AdvTest,,"Parse the user information of a given HTML container.
+
+        The method parses all the available user information in the container.
+        If the class ""user-info"" exists, the method will get all t",0,3083.22,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,6ee2d8d6ffa4,context7,validated_AdvTest,,"Calculate the average heat transfer coefficient.
+
+        :param L: [m] characteristic length of the heat transfer surface
+        :param theta: [°] angle of the surface with the vertical
+        :par",0,2469.34,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,b9b090a9a70d,context7,validated_AdvTest,,Stop all green threads.,0,2878.63,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,efa41b3b3590,context7,validated_AdvTest,,"Convert a string of XML which represents a NIST Randomness Beacon value
+        into a 'NistBeaconValue' object.
+
+        :param input_xml: XML to build a 'NistBeaconValue' from
+        :return: A 'Ni",0,3390.38,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,fd07cc5faa45,context7,validated_AdvTest,,"Converts a Open511 JSON document to XML.
+
+    lang: the appropriate language code
+
+    Takes a dict deserialized from JSON, returns an lxml Element.
+
+    Accepts only the full root-level JSON object f",0,2570.78,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,ccfd8a6f0267,context7,validated_AdvTest,,"Creates a websocket connection.
+
+        :return:",0,4313.00,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,3ac26741ba9b,context7,validated_AdvTest,,"Display a group of RGB or Greyscale CNN masks.
+
+    Parameters
+    ----------
+    CNN : numpy.array
+        The image. e.g: 64 5x5 RGB images can be (5, 5, 3, 64).
+    second : int
+        The display",0,2782.04,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,9336b2369158,context7,validated_AdvTest,,"Utility method to merge an option and config, with the option taking ""
+        precedence",0,2674.09,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,6dcec3e827fc,context7,validated_AdvTest,,"Yield single conversion objects from a MARCXML file or string.
+
+        >>> from harvestingkit.inspire_cds_package import Inspire2CDS
+        >>> for record in Inspire2CDS.from_source(""inspire.xml""):
+",0,2797.07,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,c82e501a1e19,context7,validated_AdvTest,,"Returns all of the items from conditions which are enabled by a
+        user being member of a Django Auth Group.",0,2723.66,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,00a2553196ac,context7,validated_AdvTest,,"Return a new Streamlet by applying map_function to each element of this Streamlet
+       and flattening the result",0,2688.03,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,b1851d662166,context7,validated_AdvTest,,"Check download_dir for previously downloaded file with correct hash
+        If a correct file is found return its path else None",0,2671.89,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,a175846cf68f,context7,validated_AdvTest,,"Add a node to the net. Its parents must already be in the
+        net, and its variable must not.",0,2877.58,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,81c8b4aa7b6a,context7,validated_AdvTest,,"Chunks records of a distributed array.
+
+        Chunking breaks arrays into subarrays, using an specified
+        size of chunks along each value dimension. Can alternatively
+        specify an averag",0,2469.87,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,fcf3ce8f5a81,context7,validated_AdvTest,,"Check if value has id attribute and return it.
+
+        :param value: The value to get id from.
+        :return: The value.id.",0,3414.32,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,35abb5432413,context7,validated_AdvTest,,"Starts a Django management command in a screen.
+
+        Parameters:
+
+            command :- all arguments passed to `./manage` as a single string
+
+            site :- the site to run the command for ",0,2578.62,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,5259ddf37b5c,context7,validated_AdvTest,,"Produce a reduced vcf with variants from the specified coordinates
+           This is used for the alignment viewer.
+
+        Args:
+            case_obj(dict): A case from the scout database
+         ",0,2777.29,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,87cc9c232a15,context7,validated_AdvTest,,"Generate unified file. Understand by that that we use an unified table
+        instead of a separate table for each status which could result into a
+        misunderstanding.",0,2878.37,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,1bf8a34162c1,context7,validated_AdvTest,,"Calls the project handler same named function
+
+    Note: the project handler may add some extra arguments to the command,
+          so when use this decorator, add **kwargs to the end of the arguments",0,3074.50,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,7cdd8589aa9f,context7,validated_AdvTest,,"Load a certificate chain from a file.
+
+        :param certfile: The name of the certificate chain file (``bytes`` or
+            ``unicode``).  Must be PEM encoded.
+
+        :return: None",0,2469.04,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,2d2fa75c41d2,context7,validated_AdvTest,,"Calculates the sum of unclaimed credit from this user's credit notes.
+
+    Returns:
+        Decimal: the sum of the values of unclaimed credit notes for the
+            current user.",0,2572.12,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,4009cd4e08c6,context7,validated_AdvTest,,"Parses an APRS packet and returns a dict with decoded data
+
+    - All attributes are in metric units",0,2264.12,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,f53a7520d432,context7,validated_AdvTest,,"Get attribute, creating if required using specified factory.",0,2264.53,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,bdf3c486def1,context7,validated_AdvTest,,"Registers protobuf message builders that this client wants to receive
+
+    :param msg_builder: callable to create a protobuf message that this client wants to receive",0,2585.98,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,ad8152ab5b82,context7,validated_AdvTest,,"Sets the output to the given value.
+
+        Sets `pin` output to given value. If the pin is in INPUT mode, do
+        nothing. If it's an analog pin, value should be in write_range.
+        If it's n",0,2014.54,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,9d5452bc9987,context7,validated_AdvTest,,Connect to a host,0,2672.38,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+caea35ec96c2,89c6be2856fb,context7,validated_AdvTest,,Load parameters to the block.,0,3094.70,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0

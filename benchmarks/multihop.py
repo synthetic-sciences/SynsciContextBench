@@ -158,9 +158,12 @@ async def run_multihop_benchmark(
     engine: ContextEngineAdapter,
     dataset_path: str,
     top_k: int = 10,
+    max_queries: int | None = None,
 ) -> tuple[MultiHopAggregateMetrics, list[MultiHopEvaluation]]:
     """Run multi-hop retrieval benchmark against one engine."""
     test_cases = load_multihop_cases(dataset_path)
+    if max_queries is not None:
+        test_cases = test_cases[:max_queries]
     evaluations: list[MultiHopEvaluation] = []
 
     for tc in tqdm(test_cases, desc=f"  {engine.name} multihop", unit="q"):

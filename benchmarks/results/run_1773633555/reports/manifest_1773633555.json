@@ -1,0 +1,67 @@
+{
+  "metadata": {
+    "run_id": "c2a753df8ec4",
+    "timestamp": "2026-03-16T03:59:15.234270+00:00",
+    "git_commit": "fd241d895ac7",
+    "git_branch": "main",
+    "git_dirty": true,
+    "python_version": "3.12.12",
+    "platform": "Linux",
+    "platform_version": "6.19.6-arch1-1",
+    "cpu_count": 8,
+    "hostname": "arch",
+    "engines": [
+      "synsc-context",
+      "nia",
+      "context7"
+    ],
+    "config_snapshot": {
+      "synsc_api_url": "http://localhost:8742",
+      "synsc_api_key": "***REDACTED***",
+      "nia_api_url": "https://apigcp.trynia.ai",
+      "nia_api_key": "***REDACTED***",
+      "context7_enabled": true,
+      "context7_api_url": "https://context7.com",
+      "context7_api_key": "***REDACTED***",
+      "context7_npx_command": "npx",
+      "context7_request_delay": 0.5,
+      "llm_provider": "anthropic",
+      "llm_model": "claude-sonnet-4-6",
+      "llm_api_key": "***REDACTED***",
+      "top_k_values": [
+        1,
+        3,
+        5,
+        10
+      ],
+      "similarity_threshold": 0.3,
+      "max_queries": 100
+    },
+    "benchmark_version": "1.0.0"
+  },
+  "total_duration_s": 0.0011170500074513257,
+  "benchmark_timings": {},
+  "trace_count": 0,
+  "trace_file": "traces_1773633555.jsonl",
+  "engines_summary": {},
+  "report": {
+    "timestamp": "2026-03-16T03:59:15.244799+00:00",
+    "engines": [
+      "synsc-context",
+      "nia",
+      "context7"
+    ],
+    "retrieval": {},
+    "hallucination": {},
+    "indexing": {},
+    "multihop": {},
+    "code_qa": {},
+    "adversarial": {},
+    "validated": {},
+    "judge": {},
+    "enhanced_judge": {},
+    "extended_metrics": {},
+    "significance": {},
+    "query_results": {}
+  }
+}
