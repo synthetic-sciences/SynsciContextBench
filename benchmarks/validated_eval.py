@@ -17,11 +17,14 @@ Evaluation protocol:
 Match modes:
 - content: Match by text similarity (Jaccard + SequenceMatcher)
 - file: Match by file path in the benchmark repo
-- hybrid: Match if either content or file path matches (fairest for cross-engine)
+- hybrid: Match if either content or file path matches
+- llm: LLM judge evaluates if retrieved results answer the query.
+  Fairest for cross-engine comparison (engine-agnostic, format-agnostic).
 """
 
 from __future__ import annotations
 
+import asyncio
 import json
 import re
 import time
@@ -41,7 +44,7 @@ from .metrics import (
     evaluate_query,
 )
 
-MatchMode = Literal["content", "file", "hybrid"]
+MatchMode = Literal["content", "file", "hybrid", "llm"]
 
 
 @dataclass
@@ -168,6 +171,60 @@ def _match_result_to_corpus(
     return is_relevant, best_grade
 
 
+VALIDATED_JUDGE_PROMPT = """\
+You are an expert code retrieval evaluator. You will be given:
+1. A natural language query
+2. The GROUND TRUTH code that answers the query
+3. A retrieved result from a search engine
+
+Does the retrieved result contain information that answers the query?
+The result does NOT need to be an exact match — it could be documentation,
+a different code snippet that achieves the same thing, or an explanation.
+
+Score:
+- 0: Completely irrelevant
+- 1: Tangentially related but doesn't answer the query
+- 2: Partially answers the query
+- 3: Fully answers the query (even if format differs from ground truth)
+
+Respond with ONLY a JSON object: {"relevance": <0-3>}"""
+
+
+async def _llm_judge_match(
+    query: str,
+    ground_truth_content: str,
+    result_content: str,
+    llm_provider: str,
+    llm_model: str,
+    llm_api_key: str,
+) -> tuple[bool, int]:
+    """Use LLM judge to evaluate if a result matches the ground truth.
+
+    Returns (is_relevant, relevance_grade).
+    """
+    from .llm_judge import _call_llm_judge_raw, _safe_parse_json
+
+    user_prompt = (
+        f"## Query\n{query}\n\n"
+        f"## Ground Truth Code\n```\n{ground_truth_content[:2000]}\n```\n\n"
+        f"## Retrieved Result\n```\n{result_content[:2000]}\n```\n\n"
+        f"Does the retrieved result answer the query? "
+        f'Respond with ONLY JSON: {{"relevance": <0-3>}}'
+    )
+
+    text = await _call_llm_judge_raw(
+        system_prompt=VALIDATED_JUDGE_PROMPT,
+        user_prompt=user_prompt,
+        llm_provider=llm_provider,
+        llm_model=llm_model,
+        llm_api_key=llm_api_key,
+    )
+
+    scores = _safe_parse_json(text, defaults={"relevance": 0})
+    grade = min(3, max(0, int(scores.get("relevance", 0))))
+    return grade >= 2, grade
+
+
 async def run_validated_benchmark(
     engine: ContextEngineAdapter,
     dataset_path: str,
@@ -175,6 +232,9 @@ async def run_validated_benchmark(
     max_queries: int | None = None,
     repo_ids: list[str] | None = None,
     match_mode: MatchMode = "hybrid",
+    llm_provider: str = "",
+    llm_model: str = "",
+    llm_api_key: str = "",
 ) -> tuple[AggregateMetrics, list[QueryEvaluation]]:
     """Run retrieval evaluation using a validated dataset.
 
@@ -185,7 +245,11 @@ async def run_validated_benchmark(
         max_queries: Limit queries for quick testing
         repo_ids: Scope search to specific repo IDs (e.g., benchmark corpus)
         match_mode: How to match results to corpus — "content" (text similarity),
-                    "file" (benchmark repo file path), or "hybrid" (either)
+                    "file" (benchmark repo file path), "hybrid" (either),
+                    or "llm" (LLM judge, fairest for cross-engine comparison)
+        llm_provider: Required for match_mode="llm"
+        llm_model: Required for match_mode="llm"
+        llm_api_key: Required for match_mode="llm"
 
     Returns:
         (aggregate_metrics, per_query_evaluations)
@@ -249,19 +313,47 @@ async def run_validated_benchmark(
 
         # Match results against ground truth
         retrieval_results = []
-        for sr in search_results:
-            is_rel, grade = _match_result_to_corpus(
-                sr, relevant_docs, match_mode=match_mode,
-            )
-            retrieval_results.append(
-                RetrievalResult(
-                    id=sr.id,
-                    score=sr.score,
-                    content=sr.content[:200],
-                    is_relevant=is_rel,
-                    relevance_grade=grade,
+
+        if match_mode == "llm" and llm_api_key:
+            # LLM judge: evaluate top result against ground truth
+            # Only judge top-K results to limit LLM calls
+            ground_truth_content = relevant_docs[0].get("content", "") if relevant_docs else ""
+            for i, sr in enumerate(search_results):
+                if i < 3:  # LLM judge top 3 only, rest assumed irrelevant
+                    try:
+                        is_rel, grade = await _llm_judge_match(
+                            query, ground_truth_content, sr.content,
+                            llm_provider, llm_model, llm_api_key,
+                        )
+                        await asyncio.sleep(0.3)  # rate limit
+                    except Exception:
+                        is_rel, grade = False, 0
+                else:
+                    is_rel, grade = False, 0
+
+                retrieval_results.append(
+                    RetrievalResult(
+                        id=sr.id,
+                        score=sr.score,
+                        content=sr.content[:200],
+                        is_relevant=is_rel,
+                        relevance_grade=grade,
+                    )
                 )
-            )
+        else:
+            for sr in search_results:
+                is_rel, grade = _match_result_to_corpus(
+                    sr, relevant_docs, match_mode=match_mode,
+                )
+                retrieval_results.append(
+                    RetrievalResult(
+                        id=sr.id,
+                        score=sr.score,
+                        content=sr.content[:200],
+                        is_relevant=is_rel,
+                        relevance_grade=grade,
+                    )
+                )
 
         qe = QueryEvaluation(
             query=query,

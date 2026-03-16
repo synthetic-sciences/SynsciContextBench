@@ -23,6 +23,8 @@ from __future__ import annotations
 
 import argparse
 import asyncio
+import logging
+import signal
 import sys
 
 from .adapters import Context7Adapter, NiaAdapter, SynscAdapter
@@ -153,18 +155,19 @@ def parse_args() -> argparse.Namespace:
     # Dataset filter (for validated benchmarks)
     parser.add_argument(
         "--dataset",
-        choices=["cosqa", "codesearchnet", "codesearchnet_challenge"],
+        nargs="+",
+        choices=["codesearchnet", "cosqa", "advtest", "codefeedback_st", "stackoverflow_qa", "apps"],
         default=None,
-        help="Only run a specific validated dataset (e.g., --dataset cosqa)",
+        help="Only run specific validated datasets (e.g., --dataset cosqa advtest)",
     )
 
     # Match mode for validated benchmarks
     parser.add_argument(
         "--match-mode",
-        choices=["content", "file", "hybrid"],
+        choices=["content", "file", "hybrid", "llm"],
         default="hybrid",
         help="How to match results to corpus: content (text similarity), "
-        "file (file path), hybrid (either). Default: hybrid",
+        "file (file path), hybrid (either), llm (LLM judge, fairest). Default: hybrid",
     )
 
     # Query limits
@@ -175,12 +178,27 @@ def parse_args() -> argparse.Namespace:
         help="Max queries per dataset (default: all). Use 50-100 for quick runs.",
     )
 
+    # Logging
+    parser.add_argument(
+        "-v", "--verbose",
+        action="store_true",
+        help="Enable verbose (DEBUG) logging with per-query traces",
+    )
+
     return parser.parse_args()
 
 
 async def main() -> int:
     args = parse_args()
     config = BenchmarkConfig()
+
+    # Set up structured logging
+    from .logging_config import TraceStore, setup_logging
+    trace_store = TraceStore(config.results_dir)
+    bench_logger = setup_logging(
+        results_dir=config.results_dir,
+        level=logging.DEBUG if getattr(args, "verbose", False) else logging.INFO,
+    )
     if args.max_queries is not None:
         config.max_queries = args.max_queries
     if args.multi_model:
@@ -276,10 +294,30 @@ async def main() -> int:
             break
 
     # Dataset filter
-    dataset_filter = None
-    if args.dataset:
-        dataset_filter = [args.dataset]
+    dataset_filter = args.dataset  # already a list or None
 
+    # Register graceful shutdown handler
+    _interrupted = False
+
+    def _graceful_shutdown(signum, frame):
+        nonlocal _interrupted
+        if _interrupted:
+            # Second Ctrl+C — force exit
+            print("\n  [!] Force exit.")
+            sys.exit(1)
+        _interrupted = True
+        print("\n  [!] Interrupted — saving progress before exit...")
+        try:
+            from dataclasses import asdict
+            trace_store.save(report=None)
+            print(f"  [checkpoint] Emergency save to {trace_store.results_dir}")
+        except Exception as e:
+            print(f"  [!] Failed to save: {e}")
+        sys.exit(130)
+
+    signal.signal(signal.SIGINT, _graceful_shutdown)
+
+    report = None
     try:
         report = await run_full_benchmark(
             engines=engines,
@@ -287,8 +325,16 @@ async def main() -> int:
             dataset_filter=dataset_filter,
             match_mode=args.match_mode,
             enable_debiasing=not args.no_debiasing,
+            trace_store=trace_store,
             **all_skips,
         )
+    except KeyboardInterrupt:
+        print("\n  [!] Interrupted — saving progress...")
+        try:
+            trace_store.save(report=None)
+            print(f"  [checkpoint] Emergency save to {trace_store.results_dir}")
+        except Exception as e:
+            print(f"  [!] Failed to save: {e}")
     finally:
         for engine in engines:
             await engine.cleanup()

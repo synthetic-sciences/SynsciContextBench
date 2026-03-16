@@ -1,0 +1,217 @@
+{
+  "description": "Collated benchmark results - synsc vs nia vs context7",
+  "source_runs": {
+    "retrieval": "run_1773598227 (100q per engine, post adapter-fix)",
+    "main": "run_1773603757 (100q per engine, --match-mode llm)",
+    "context7_rerun": "run_1773616697 (adapter fix: HTTP search API + JSON parsing)",
+    "enhanced_judge": "run_1773619549 (enhanced LLM judge with debiasing)"
+  },
+  "phases": {
+    "adversarial": {
+      "total_rows": 300,
+      "engines": {
+        "context7": {
+          "queries": 100,
+          "avg_mrr": 0.0,
+          "errors": 0
+        },
+        "nia": {
+          "queries": 100,
+          "avg_mrr": 0.0,
+          "errors": 0
+        },
+        "synsc-context": {
+          "queries": 100,
+          "avg_mrr": 0.0,
+          "errors": 0
+        }
+      }
+    },
+    "code_qa": {
+      "total_rows": 300,
+      "engines": {
+        "context7": {
+          "queries": 100,
+          "avg_mrr": 0.0,
+          "errors": 0
+        },
+        "nia": {
+          "queries": 100,
+          "avg_mrr": 0.0,
+          "errors": 0
+        },
+        "synsc-context": {
+          "queries": 100,
+          "avg_mrr": 0.0,
+          "errors": 0
+        }
+      }
+    },
+    "hallucination": {
+      "total_rows": 300,
+      "engines": {
+        "context7": {
+          "queries": 100,
+          "avg_mrr": 0.0,
+          "errors": 45
+        },
+        "nia": {
+          "queries": 100,
+          "avg_mrr": 0.0,
+          "errors": 51
+        },
+        "synsc-context": {
+          "queries": 100,
+          "avg_mrr": 0.0,
+          "errors": 39
+        }
+      }
+    },
+    "multihop": {
+      "total_rows": 300,
+      "engines": {
+        "context7": {
+          "queries": 100,
+          "avg_mrr": 0.0,
+          "errors": 0
+        },
+        "nia": {
+          "queries": 100,
+          "avg_mrr": 0.0,
+          "errors": 0
+        },
+        "synsc-context": {
+          "queries": 100,
+          "avg_mrr": 0.0,
+          "errors": 0
+        }
+      }
+    },
+    "retrieval": {
+      "total_rows": 300,
+      "engines": {
+        "context7": {
+          "queries": 100,
+          "avg_mrr": 0.79,
+          "errors": 0
+        },
+        "nia": {
+          "queries": 100,
+          "avg_mrr": 0.728,
+          "errors": 0
+        },
+        "synsc-context": {
+          "queries": 100,
+          "avg_mrr": 0.962,
+          "errors": 0
+        }
+      }
+    },
+    "validated_AdvTest": {
+      "total_rows": 300,
+      "engines": {
+        "context7": {
+          "queries": 100,
+          "avg_mrr": 0.0,
+          "errors": 0
+        },
+        "nia": {
+          "queries": 100,
+          "avg_mrr": 0.03,
+          "errors": 0
+        },
+        "synsc-context": {
+          "queries": 100,
+          "avg_mrr": 0.97,
+          "errors": 0
+        }
+      }
+    },
+    "validated_CoSQA": {
+      "total_rows": 300,
+      "engines": {
+        "context7": {
+          "queries": 100,
+          "avg_mrr": 0.11,
+          "errors": 0
+        },
+        "nia": {
+          "queries": 100,
+          "avg_mrr": 0.298,
+          "errors": 0
+        },
+        "synsc-context": {
+          "queries": 100,
+          "avg_mrr": 0.703,
+          "errors": 0
+        }
+      }
+    },
+    "validated_CodeFeedback-ST": {
+      "total_rows": 286,
+      "engines": {
+        "context7": {
+          "queries": 100,
+          "avg_mrr": 0.02,
+          "errors": 0
+        },
+        "nia": {
+          "queries": 86,
+          "avg_mrr": 0.041,
+          "errors": 0
+        },
+        "synsc-context": {
+          "queries": 100,
+          "avg_mrr": 0.07,
+          "errors": 0
+        }
+      }
+    },
+    "validated_CodeSearchNet": {
+      "total_rows": 300,
+      "engines": {
+        "context7": {
+          "queries": 100,
+          "avg_mrr": 0.01,
+          "errors": 0
+        },
+        "nia": {
+          "queries": 100,
+          "avg_mrr": 0.04,
+          "errors": 0
+        },
+        "synsc-context": {
+          "queries": 100,
+          "avg_mrr": 0.865,
+          "errors": 0
+        }
+      }
+    },
+    "enhanced_judge": {
+      "total_rows": 909,
+      "datasets": [
+        "CodeSearchNet",
+        "CoSQA",
+        "AdvTest"
+      ],
+      "synsc_wins": {
+        "CodeSearchNet": 88,
+        "CoSQA": 54,
+        "AdvTest": 95
+      },
+      "synsc_avg_total": {
+        "CodeSearchNet": 2.497,
+        "CoSQA": 1.487,
+        "AdvTest": 2.663
+      }
+    }
+  },
+  "notes": {
+    "context7_reason": "Adapter bug: _search_library_http parsed wrong JSON format + _infer_library_from_query only checked 20 hardcoded libs. Fixed: now uses HTTP search API fallback.",
+    "context7_rerun_completed": [
+      "validated_CodeSearchNet",
+      "validated_CoSQA",
+      "validated_AdvTest"
+    ]
+  }
+}

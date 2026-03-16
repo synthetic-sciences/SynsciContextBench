@@ -22,7 +22,10 @@ import time
 
 import httpx
 
+from ..logging_config import get_logger
 from .base import ContextEngineAdapter, IndexResult, SearchResult
+
+logger = get_logger("adapter.context7")
 
 # Map common benchmark repo names to Context7 library IDs (/owner/repo format)
 _REPO_TO_CONTEXT7_ID: dict[str, str] = {
@@ -76,6 +79,66 @@ def _infer_library_from_query(query: str) -> str | None:
         if key in query_lower:
             return ctx7_id
     return None
+
+
+def _extract_library_candidates(query: str) -> list[str]:
+    """Extract potential library/framework names from a natural language query.
+
+    Prioritizes single technical words that are likely library names,
+    then falls back to hyphenated combinations (e.g., scikit-learn).
+    """
+    # Common non-library words to skip
+    stop_words = {
+        "how", "to", "in", "the", "a", "an", "is", "it", "do", "does",
+        "can", "what", "why", "when", "where", "which", "with", "from",
+        "for", "on", "of", "by", "at", "as", "or", "and", "not", "no",
+        "get", "set", "use", "using", "create", "make", "find", "check",
+        "if", "else", "return", "function", "method", "class", "file",
+        "string", "list", "dict", "array", "object", "int", "float",
+        "bool", "type", "value", "key", "name", "data", "code", "error",
+        "read", "write", "parse", "convert", "sort", "filter", "map",
+        "loop", "iterate", "print", "output", "input", "variable",
+        "import", "module", "package", "install", "run", "test",
+        "python", "javascript", "java", "ruby", "go", "php", "rust",
+        "typescript", "html", "css", "sql", "bash", "shell",
+        "empty", "line", "into", "result", "query", "call", "number",
+        "readonly", "declaring", "token", "multiple", "char", "byte",
+        "index", "count", "text", "null", "none", "true", "false",
+        "path", "directory", "folder", "table", "column", "row",
+    }
+
+    candidates: list[str] = []
+
+    # 1. Words with dots/hyphens first (e.g., next.js, scikit-learn)
+    words = re.findall(r"[a-zA-Z][a-zA-Z0-9._-]+", query)
+    for word in words:
+        lower = word.lower()
+        if ("." in word or "-" in word) and lower not in stop_words:
+            candidates.append(lower)
+
+    # 2. CamelCase / PascalCase words (e.g., FastAPI, NumPy, TensorFlow)
+    for word in words:
+        lower = word.lower()
+        if lower in stop_words or len(lower) < 3:
+            continue
+        if any(c.isupper() for c in word[1:]):
+            candidates.append(lower)
+
+    # 3. Single words that aren't stop words (most likely library names)
+    for word in words:
+        lower = word.lower()
+        if lower not in stop_words and lower not in candidates and len(lower) >= 4:
+            candidates.append(lower)
+
+    # Deduplicate while preserving order
+    seen: set[str] = set()
+    unique: list[str] = []
+    for c in candidates:
+        if c not in seen:
+            seen.add(c)
+            unique.append(c)
+
+    return unique[:5]  # Limit to top 5 candidates
 
 
 def _parse_txt_to_results(raw_text: str, library_id: str) -> list[SearchResult]:
@@ -188,7 +251,7 @@ class Context7Adapter(ContextEngineAdapter):
         if api_key:
             headers["Authorization"] = f"Bearer {api_key}"
         self._client = httpx.AsyncClient(
-            timeout=60.0,
+            timeout=120.0,
             headers=headers,
         )
         # MCP subprocess for library ID resolution (lazy-started)
@@ -279,6 +342,36 @@ class Context7Adapter(ContextEngineAdapter):
             raise RuntimeError(f"Context7 MCP error: {err.get('message', err)}")
         return resp.get("result", {})
 
+    async def _search_library_http(self, library_name: str) -> str:
+        """Resolve a library name to a Context7 library ID via HTTP API.
+
+        Uses GET /api/v2/libs/search?libraryName=<name>&query=<name>
+        """
+        try:
+            resp = await self._request_with_retry(
+                "GET",
+                f"{self._api_url}/api/v2/libs/search",
+                params={
+                    "libraryName": library_name,
+                    "query": library_name,
+                },
+            )
+            if resp.status_code != 200:
+                return ""
+
+            data = resp.json()
+            # API returns {"results": [...]} or a plain list
+            libraries = data.get("results", data) if isinstance(data, dict) else data
+            if libraries and isinstance(libraries, list) and len(libraries) > 0:
+                best = libraries[0]
+                library_id = best.get("id", "")
+                if library_id:
+                    return library_id
+        except Exception as e:
+            print(f"    [context7] HTTP library search failed for '{library_name}': {e}")
+
+        return ""
+
     async def _resolve_library_mcp(self, library_name: str) -> str:
         """Resolve a library name to a Context7 library ID via MCP."""
         async with self._mcp_lock:
@@ -340,8 +433,6 @@ class Context7Adapter(ContextEngineAdapter):
         language: str | None = None,
     ) -> tuple[list[SearchResult], float]:
         """Search Context7's library docs via HTTP API."""
-        start = time.perf_counter()
-
         # Determine which libraries to search
         library_ids: list[str] = []
         if repo_ids:
@@ -351,32 +442,61 @@ class Context7Adapter(ContextEngineAdapter):
             inferred = _infer_library_from_query(query)
             if inferred:
                 library_ids.append(inferred)
-            else:
-                library_ids.append("/python/cpython")
+
+        # If static mapping failed, try HTTP library search API
+        if not library_ids:
+            candidates = _extract_library_candidates(query)
+            for candidate in candidates:
+                try:
+                    resolved = await self._search_library_http(candidate)
+                    if resolved:
+                        library_ids.append(resolved)
+                        # Cache for future queries
+                        self._library_cache[candidate.lower()] = resolved
+                        break  # Use first successful match
+                except Exception:
+                    continue
+
+        # If no library could be resolved at all, skip search
+        if not library_ids:
+            return [], 0.0
 
         all_results: list[SearchResult] = []
+        total_latency_ms = 0.0
 
-        for library_id in library_ids[:3]:
+        for library_id in library_ids:
             try:
+                # Rate limiting delay — NOT counted in latency
                 if self._request_delay > 0:
                     await asyncio.sleep(self._request_delay)
 
-                raw = await self._query_http(library_id, query, response_type="txt")
-                assert isinstance(raw, str)
-                results = _parse_txt_to_results(raw, library_id)
+                start = time.perf_counter()
+                raw = await self._query_http(library_id, query, response_type="json")
+                request_latency = (time.perf_counter() - start) * 1000
+                total_latency_ms += request_latency
+
+                if isinstance(raw, list):
+                    results = _parse_json_to_results(raw, library_id)
+                else:
+                    # Fallback if server returns text despite json request
+                    results = _parse_txt_to_results(str(raw), library_id)
                 all_results.extend(results)
 
             except httpx.HTTPStatusError as e:
                 if e.response.status_code == 404:
-                    # Library not found — try MCP resolution
                     try:
                         resolved = await self._resolve_library(
                             library_id.strip("/").split("/")[-1]
                         )
                         if resolved and resolved != library_id:
-                            raw = await self._query_http(resolved, query, response_type="txt")
-                            assert isinstance(raw, str)
-                            results = _parse_txt_to_results(raw, resolved)
+                            start = time.perf_counter()
+                            raw = await self._query_http(resolved, query, response_type="json")
+                            request_latency = (time.perf_counter() - start) * 1000
+                            total_latency_ms += request_latency
+                            if isinstance(raw, list):
+                                results = _parse_json_to_results(raw, resolved)
+                            else:
+                                results = _parse_txt_to_results(str(raw), resolved)
                             all_results.extend(results)
                     except Exception as inner_e:
                         print(f"    [context7] Fallback failed for {library_id}: {inner_e}")
@@ -385,8 +505,7 @@ class Context7Adapter(ContextEngineAdapter):
             except Exception as e:
                 print(f"    [context7] Error searching {library_id}: {e}")
 
-        latency = (time.perf_counter() - start) * 1000
-        return all_results[:top_k], latency
+        return all_results[:top_k], total_latency_ms
 
     async def search_papers(
         self,

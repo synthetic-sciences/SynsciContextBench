@@ -11,10 +11,17 @@ Categories of adversarial near-misses:
 4. **Version confusion**: v1 API mixed in with v2 API results
 5. **Test vs production**: Test mock/fixture returned instead of real implementation
 6. **Comment vs code**: Docstring/comment mentioning the concept vs actual implementation
+
+Scoring modes:
+- **structural** (default): File-path + keyword matching. Fast, no LLM cost.
+  Fair for engines that return source code. Disadvantages doc-oriented engines.
+- **llm**: LLM judge evaluates whether the correct result was returned and
+  whether decoys were avoided. Fair across all engine types.
 """
 
 from __future__ import annotations
 
+import asyncio
 import json
 
 from tqdm import tqdm
@@ -158,13 +165,84 @@ def evaluate_adversarial(
     return ar
 
 
+ADVERSARIAL_JUDGE_PROMPT = """\
+You are an expert code retrieval evaluator. You will be given:
+1. A query describing what code the user is looking for
+2. A description of the CORRECT answer (what should be returned)
+3. Descriptions of DECOY answers (similar but wrong results that should NOT be returned)
+4. The actual retrieved context from a search engine
+
+Evaluate:
+1. **correct_found** (true/false): Does the retrieved context contain the correct answer?
+2. **discrimination** (0.0-1.0): How well did the engine avoid returning decoys instead of the correct answer? 1.0 = no decoys present or correct is clearly above decoys. 0.0 = only decoys returned.
+
+Respond with ONLY a JSON object:
+{"correct_found": <true/false>, "discrimination": <0.0-1.0>}"""
+
+
+async def _llm_judge_adversarial(
+    test_case: AdversarialTestCase,
+    results: list[SearchResult],
+    llm_provider: str,
+    llm_model: str,
+    llm_api_key: str,
+) -> tuple[bool, float]:
+    """Use LLM judge to evaluate adversarial test case."""
+    from .llm_judge import _call_llm_judge_raw, _safe_parse_json
+
+    context = "\n---\n".join(
+        f"[Result {i+1}] {r.file_path}\n{r.content[:1500]}"
+        for i, r in enumerate(results[:5])
+    )
+
+    decoy_desc = "\n".join(
+        f"- DECOY: {d.description} (file: {d.file_pattern}, keywords: {', '.join(d.keywords)})"
+        for d in test_case.decoys
+    )
+
+    user_prompt = (
+        f"## Query\n{test_case.query}\n\n"
+        f"## Correct Answer\n"
+        f"File: {test_case.correct_file}\n"
+        f"Keywords: {', '.join(test_case.correct_keywords)}\n"
+        f"Description: {test_case.description}\n\n"
+        f"## Decoys (wrong answers to avoid)\n{decoy_desc}\n\n"
+        f"## Retrieved Context\n```\n{context}\n```\n\n"
+        f"Evaluate the retrieved context. Respond with ONLY JSON: "
+        f'{{"correct_found": <true/false>, "discrimination": <0.0-1.0>}}'
+    )
+
+    text = await _call_llm_judge_raw(
+        system_prompt=ADVERSARIAL_JUDGE_PROMPT,
+        user_prompt=user_prompt,
+        llm_provider=llm_provider,
+        llm_model=llm_model,
+        llm_api_key=llm_api_key,
+    )
+
+    scores = _safe_parse_json(text, defaults={"correct_found": False, "discrimination": 0.0})
+    return bool(scores.get("correct_found", False)), float(scores.get("discrimination", 0.0))
+
+
 async def run_adversarial_benchmark(
     engine: ContextEngineAdapter,
     dataset_path: str,
     top_k: int = 10,
+    max_queries: int | None = None,
+    scoring_mode: str = "structural",
+    llm_provider: str = "",
+    llm_model: str = "",
+    llm_api_key: str = "",
 ) -> tuple[AdversarialAggregateMetrics, list[AdversarialResult]]:
-    """Run adversarial near-miss benchmark against one engine."""
+    """Run adversarial near-miss benchmark against one engine.
+
+    Args:
+        scoring_mode: "structural" (file-path + keyword matching) or
+                      "llm" (LLM judge evaluation, fair for doc-oriented engines).
+    """
     test_cases = load_adversarial_cases(dataset_path)
+    if max_queries is not None:
+        test_cases = test_cases[:max_queries]
     results_list: list[AdversarialResult] = []
 
     for tc in tqdm(test_cases, desc=f"  {engine.name} adversarial", unit="q"):
@@ -176,7 +254,29 @@ async def run_adversarial_benchmark(
             print(f"  [!] Adversarial query failed for {engine.name}: {tc.query[:50]}... — {e}")
             continue
 
-        ar = evaluate_adversarial(tc, search_results, latency, engine.name)
+        if scoring_mode == "llm" and llm_api_key:
+            try:
+                correct_found, discrimination = await _llm_judge_adversarial(
+                    tc, search_results, llm_provider, llm_model, llm_api_key
+                )
+                ar = AdversarialResult(
+                    test_case_id=tc.id,
+                    query=tc.query,
+                    engine=engine.name,
+                    adversarial_type=tc.adversarial_type,
+                    latency_ms=latency,
+                    total_results=len(search_results),
+                    correct_found=correct_found,
+                    correct_rank=1 if correct_found else None,
+                    discrimination_score=discrimination,
+                )
+                await asyncio.sleep(0.5)  # rate limit for LLM calls
+            except Exception as e:
+                print(f"  [!] LLM judge failed for {engine.name}: {tc.query[:50]}... — {e}")
+                ar = evaluate_adversarial(tc, search_results, latency, engine.name)
+        else:
+            ar = evaluate_adversarial(tc, search_results, latency, engine.name)
+
         results_list.append(ar)
 
     agg = aggregate_adversarial(results_list)

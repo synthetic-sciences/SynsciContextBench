@@ -1,0 +1,4 @@
+{"ts": "2026-03-16T03:59:15.244586+00:00", "level": "INFO", "logger": "bench.runner", "msg": "Starting benchmark run c2a753df8ec4 with engines: synsc-context, nia, context7", "run_id": "c2a753df8ec4"}
+{"ts": "2026-03-16T03:59:15.245525+00:00", "level": "INFO", "logger": "bench.runner", "msg": "Saved traces \u2192 /home/keertan/codes/InkVell/synsc-context-bench/benchmarks/results/run_1773633555/traces/traces_1773633555.jsonl"}
+{"ts": "2026-03-16T03:59:15.245646+00:00", "level": "INFO", "logger": "bench.runner", "msg": "Saved manifest \u2192 /home/keertan/codes/InkVell/synsc-context-bench/benchmarks/results/run_1773633555/reports/manifest_1773633555.json"}
+{"ts": "2026-03-16T03:59:15.245726+00:00", "level": "INFO", "logger": "bench.runner", "msg": "Benchmark run c2a753df8ec4 complete in 0.0s (0 traces)", "run_id": "c2a753df8ec4"}

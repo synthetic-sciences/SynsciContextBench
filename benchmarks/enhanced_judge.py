@@ -433,11 +433,9 @@ async def _call_enhanced_judge(
     else:
         raise ValueError(f"Unknown LLM provider: {llm_provider}")
 
-    text = text.strip()
-    if text.startswith("```"):
-        text = text.split("\n", 1)[-1].rsplit("```", 1)[0].strip()
+    from .llm_judge import _safe_parse_json
 
-    scores = json.loads(text)
+    scores = _safe_parse_json(text, defaults={"relevance": 0, "completeness": 0, "specificity": 0, "faithfulness": 0})
     return {
         "relevance": min(3, max(0, int(scores.get("relevance", 0)))),
         "completeness": min(3, max(0, int(scores.get("completeness", 0)))),

@@ -1,0 +1,601 @@
+run_id,trace_id,engine,benchmark_type,query_id,query_text,num_results,latency_ms,error,error_category,primary_repo,primary_language,total_tokens_returned,relevant_tokens_returned,token_efficiency,avg_hop_mrr,hop_coverage,hop_recall_at_10,hop_recall_at_5
+acb62a29cc90,420468f6507f,synsc-context,multihop,mh001,How does FastAPI validate request bodies using Pydantic models and what errors does it return for invalid data?,0,10088.14,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,1ee9585b0d46,synsc-context,multihop,mh002,How to set up an async database session in FastAPI using SQLAlchemy with dependency injection?,0,6143.67,,,,,0,0,,0.8333333333333334,1.0,1.0,1.0
+acb62a29cc90,c7b4f44588b5,synsc-context,multihop,mh003,How to implement OAuth2 authentication in FastAPI with password hashing and JWT tokens?,0,6138.83,,,,,0,0,,0.5555555555555555,1.0,1.0,1.0
+acb62a29cc90,2e09d7dbdbe9,synsc-context,multihop,mh004,How does HTTPX handle SSL certificate verification and what happens when connecting through a proxy?,0,8494.04,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,fd94f494e00b,synsc-context,multihop,mh005,How to build a FastAPI WebSocket endpoint that broadcasts messages to multiple connected clients with authentication?,0,7574.28,,,,,0,0,,0.611111111111111,1.0,1.0,1.0
+acb62a29cc90,c6731e671a2a,synsc-context,multihop,mh006,How does Pydantic handle nested model serialization with custom types and what JSON schema does it generate?,0,7478.34,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,b3066fef83cf,synsc-context,multihop,mh007,"How to configure FastAPI middleware stack with CORS, rate limiting, and request logging?",0,6442.38,,,,,0,0,,0.8333333333333334,1.0,1.0,1.0
+acb62a29cc90,43582dd812b1,synsc-context,multihop,mh008,"How to implement file upload with streaming in FastAPI, validate the file type, and store it with metadata?",0,6576.22,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,cfae4fbe52da,synsc-context,multihop,mh009,How does HTTPX implement request retry with exponential backoff and what events does it expose for monitoring?,0,9491.80,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,43d0613ca8ad,synsc-context,multihop,mh010,"How to set up Pydantic Settings management with environment variables, .env files, and validation?",0,5936.82,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,453f28e33565,synsc-context,multihop,mh011,How to implement rate limiting middleware in FastAPI with Redis backend?,0,6240.18,,,,,0,0,,0.5476190476190476,1.0,1.0,0.6666666666666666
+acb62a29cc90,810401f05354,synsc-context,multihop,mh012,How to implement background task processing in FastAPI with status tracking?,0,6613.85,,,,,0,0,,0.6666666666666666,1.0,1.0,1.0
+acb62a29cc90,5eeed212ffef,synsc-context,multihop,mh013,How to implement API versioning in FastAPI with separate routers and deprecation notices?,0,6695.31,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,f7edffefadcc,synsc-context,multihop,mh014,How does FastAPI handle form data with file uploads and additional metadata fields?,0,6180.11,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,01e03f392dd8,synsc-context,multihop,mh015,How to set up OpenAPI schema customization with security schemes and example requests in FastAPI?,0,5640.70,,,,,0,0,,0.8333333333333334,1.0,1.0,1.0
+acb62a29cc90,b22af5e68e23,synsc-context,multihop,mh016,How to implement server-sent events (SSE) streaming endpoint in FastAPI?,0,8197.73,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,0b1a077c1ef7,synsc-context,multihop,mh017,How to implement custom OpenAPI documentation page with Swagger UI and ReDoc in FastAPI?,0,6278.33,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,d25a116d2245,synsc-context,multihop,mh018,How to handle multipart form data with nested JSON and file uploads in FastAPI?,0,6205.66,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,1d05549ac462,synsc-context,multihop,mh019,How to implement GraphQL endpoint in FastAPI using Strawberry?,0,6486.97,,,,,0,0,,0.8333333333333334,1.0,1.0,1.0
+acb62a29cc90,e8c94c7e77eb,synsc-context,multihop,mh020,How to test FastAPI WebSocket endpoints with pytest and httpx?,0,5834.12,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,2ccf7bf41d54,synsc-context,multihop,mh021,How to implement health checks with dependency verification in FastAPI?,0,5936.49,,,,,0,0,,0.5,1.0,1.0,1.0
+acb62a29cc90,27619cfad291,synsc-context,multihop,mh022,How to implement request/response logging middleware with structured logging in FastAPI?,0,5826.65,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,a59fd9ef827d,synsc-context,multihop,mh023,How does FastAPI implement OpenAPI schema generation from route definitions?,0,8097.44,,,,,0,0,,0.8333333333333334,1.0,1.0,1.0
+acb62a29cc90,961016809208,synsc-context,multihop,mh024,"How to implement content negotiation in FastAPI for JSON, XML, and CSV responses?",0,6642.92,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,9c636bb776d5,synsc-context,multihop,mh025,How to implement pagination with cursor-based and offset-based strategies in FastAPI?,0,5935.77,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,47da9c2b7d98,synsc-context,multihop,mh026,"How does Django process an HTTP request through middleware, URL resolution, and view dispatch?",0,6550.33,,,,,0,0,,0.75,1.0,1.0,1.0
+acb62a29cc90,875e5bdbe86f,synsc-context,multihop,mh027,How to implement custom model managers and querysets with chainable methods in Django?,0,7367.05,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,7bbeda56a1d3,synsc-context,multihop,mh028,How does Django's ORM translate a complex query with annotations and subqueries to SQL?,0,7883.79,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,5e5bac87b6ae,synsc-context,multihop,mh029,How to implement custom authentication backend with permissions in Django?,0,6243.33,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,f7e7f3eda000,synsc-context,multihop,mh030,How does Django's migration system detect model changes and generate migration files?,0,6346.58,,,,,0,0,,0.8333333333333334,1.0,1.0,1.0
+acb62a29cc90,c37bb2118ab8,synsc-context,multihop,mh031,How to implement Django signals for post-save model actions with related object updates?,0,7985.24,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,a57695fe865e,synsc-context,multihop,mh032,How to implement custom Django template tags and filters with inclusion tags?,0,7162.29,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,df93c1441ab7,synsc-context,multihop,mh033,How does Django REST Framework serialize nested models with write support?,0,5937.47,,,,,0,0,,0.7777777777777778,1.0,1.0,1.0
+acb62a29cc90,9df5bb0dbc35,synsc-context,multihop,mh034,How to implement Django Channels WebSocket consumer with group broadcasting?,0,6962.43,,,,,0,0,,0.3333333333333333,0.3333333333333333,0.3333333333333333,0.3333333333333333
+acb62a29cc90,a0b69fdc333c,synsc-context,multihop,mh035,How does Django's form validation work with model forms and custom clean methods?,0,6343.60,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,c5cf31827859,synsc-context,multihop,mh036,How to implement custom admin actions and list filters in Django admin?,0,7056.47,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,0ea84fdd5496,synsc-context,multihop,mh037,How does Django's class-based view handle GET and POST with form processing?,0,7022.62,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,29ef365cae32,synsc-context,multihop,mh038,"How to implement caching with per-view cache, template fragment cache, and low-level cache in Django?",0,6491.77,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,fe135e79bf7a,synsc-context,multihop,mh039,How does Django's prefetch_related optimize queries for reverse foreign keys and many-to-many?,0,7541.81,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,cfafeec7f8fe,synsc-context,multihop,mh040,How to implement multi-database routing in Django with read replicas?,0,6186.11,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,43f7e8c3973c,synsc-context,multihop,mh041,How to implement content types and generic relations in Django?,0,6025.11,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,604a93794ed4,synsc-context,multihop,mh042,How to implement custom User model with email-based authentication in Django?,0,5939.51,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,758f579ad1ca,synsc-context,multihop,mh043,How does Django's test client simulate authenticated requests with session and cookies?,0,6859.18,,,,,0,0,,0.7222222222222223,1.0,1.0,0.6666666666666666
+acb62a29cc90,d16c922bf0cb,synsc-context,multihop,mh044,How to implement Django REST Framework viewsets with custom actions and permissions?,0,7269.38,,,,,0,0,,0.5277777777777778,1.0,1.0,1.0
+acb62a29cc90,5fb0561ab0f0,synsc-context,multihop,mh045,How does Django handle database transactions with atomic blocks and savepoints?,0,6851.76,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,c93cdc1a2828,synsc-context,multihop,mh046,How to implement Flask application factory with blueprints and extensions?,0,7162.60,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,b62522fc1c16,synsc-context,multihop,mh047,How to implement JWT authentication with refresh tokens in Flask?,0,6454.78,,,,,0,0,,0.8333333333333334,1.0,1.0,1.0
+acb62a29cc90,ea103e0c51e7,synsc-context,multihop,mh048,How to implement Flask error handlers with custom error pages and JSON responses?,0,6493.05,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,7d0820ae336f,synsc-context,multihop,mh049,How to implement Flask-SQLAlchemy models with relationships and migrations?,0,6091.73,,,,,0,0,,0.25,1.0,1.0,1.0
+acb62a29cc90,421f7d558afc,synsc-context,multihop,mh050,How to implement Flask middleware for request timing and logging?,0,6960.17,,,,,0,0,,0.4365079365079365,1.0,1.0,0.3333333333333333
+acb62a29cc90,ae88bfe97611,synsc-context,multihop,mh051,How to implement Flask-Login with remember me and session management?,0,10134.63,,,,,0,0,,0.3333333333333333,1.0,1.0,1.0
+acb62a29cc90,5514921099f4,synsc-context,multihop,mh052,How to implement Flask SocketIO with rooms and event broadcasting?,0,6557.74,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,9297737ef3d6,synsc-context,multihop,mh053,How to implement Flask-WTF forms with CSRF protection and file uploads?,0,5624.62,,,,,0,0,,0.38095238095238093,0.6666666666666666,0.6666666666666666,0.3333333333333333
+acb62a29cc90,82fd1142e86c,synsc-context,multihop,mh054,How to implement caching in Flask with Redis and per-route cache invalidation?,0,6444.51,,,,,0,0,,0.8333333333333334,1.0,1.0,1.0
+acb62a29cc90,d403bab533a6,synsc-context,multihop,mh055,How to implement Flask CLI commands with Click integration?,0,6190.84,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,49c6a9cb174c,synsc-context,multihop,mh056,How to implement Flask testing with fixtures and database rollback?,0,6702.74,,,,,0,0,,0.39999999999999997,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,5332e392130b,synsc-context,multihop,mh057,How to implement Flask request hooks for API key validation and rate limiting?,0,6351.41,,,,,0,0,,0.6666666666666666,1.0,1.0,1.0
+acb62a29cc90,ece089172fd3,synsc-context,multihop,mh058,How to implement Flask Blueprints with nested blueprint groups?,0,7059.30,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,205edc3c6736,synsc-context,multihop,mh059,How to implement async views in Flask 2.0+ with background tasks?,0,6448.31,,,,,0,0,,0.6666666666666666,1.0,1.0,1.0
+acb62a29cc90,2752e189717a,synsc-context,multihop,mh060,How to implement Flask config management with environment-specific settings?,0,6550.97,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,d69eb3d8dd71,synsc-context,multihop,mh061,How to implement SQLAlchemy 2.0 async session with connection pooling and health checks?,0,7281.18,,,,,0,0,,0.7083333333333334,1.0,1.0,0.6666666666666666
+acb62a29cc90,5d5eefc44d39,synsc-context,multihop,mh062,How does SQLAlchemy implement the unit of work pattern with identity map and change tracking?,0,7559.21,,,,,0,0,,0.6666666666666666,1.0,1.0,1.0
+acb62a29cc90,333e66aa46a7,synsc-context,multihop,mh063,How to implement SQLAlchemy hybrid properties and expressions for computed columns?,0,8292.14,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,ebc66010d27f,synsc-context,multihop,mh064,How to implement SQLAlchemy event listeners for audit logging?,0,7471.66,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,0cfdbc43f1ee,synsc-context,multihop,mh065,How to implement soft delete with SQLAlchemy using query modification and events?,0,8291.73,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,694d8407d9d5,synsc-context,multihop,mh066,How to implement SQLAlchemy multi-tenancy with schema-based isolation?,0,7063.44,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,f0a3084e0183,synsc-context,multihop,mh067,How does SQLAlchemy handle polymorphic inheritance with joined table and single table strategies?,0,10850.31,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,5652f4f226d3,synsc-context,multihop,mh068,How to implement SQLAlchemy bulk operations with returning and conflict handling?,0,8555.58,,,,,0,0,,0.7037037037037037,1.0,1.0,0.6666666666666666
+acb62a29cc90,5dd24bc5fab0,synsc-context,multihop,mh069,How to implement SQLAlchemy association proxy for simplified many-to-many access?,0,6622.81,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,bff1665fc950,synsc-context,multihop,mh070,How to implement custom SQLAlchemy column types with TypeDecorator?,0,8231.90,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,43f475628687,synsc-context,multihop,mh071,How to implement SQLAlchemy connection events for query timing and slow query logging?,0,7912.62,,,,,0,0,,0.3333333333333333,0.3333333333333333,0.3333333333333333,0.3333333333333333
+acb62a29cc90,2390743c7b59,synsc-context,multihop,mh072,How to implement SQLAlchemy model versioning with history tables?,0,7370.30,,,,,0,0,,0.6666666666666666,1.0,1.0,1.0
+acb62a29cc90,089fa908a153,synsc-context,multihop,mh073,How does SQLAlchemy compile different SQL dialects for PostgreSQL vs MySQL vs SQLite?,0,8250.41,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,1fba15e9a346,synsc-context,multihop,mh074,How to implement SQLAlchemy repository pattern with generic CRUD operations?,0,6487.52,,,,,0,0,,0.6666666666666666,1.0,1.0,1.0
+acb62a29cc90,8fe12a6a7f68,synsc-context,multihop,mh075,How to implement SQLAlchemy with Alembic for online schema migrations?,0,7265.27,,,,,0,0,,0.047619047619047616,0.3333333333333333,0.3333333333333333,0.0
+acb62a29cc90,6179b5257419,synsc-context,multihop,mh076,"How to implement a robust HTTP client with retries, circuit breaker, and fallback in HTTPX?",0,6139.29,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,a995f8b7cf82,synsc-context,multihop,mh077,How to implement OAuth2 client credentials flow with token caching using HTTPX?,0,6448.18,,,,,0,0,,0.611111111111111,1.0,1.0,1.0
+acb62a29cc90,ac51ddc44165,synsc-context,multihop,mh078,How to implement request signing with HMAC authentication in HTTPX?,0,6857.86,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,e07a71191cf6,synsc-context,multihop,mh079,How does HTTPX handle HTTP/2 with stream multiplexing and server push?,0,7061.78,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,2d0c6464bcf6,synsc-context,multihop,mh080,How to implement requests Session with custom adapters and SSL configuration?,0,7332.09,,,,,0,0,,0.8333333333333334,1.0,1.0,1.0
+acb62a29cc90,77d2914c6356,synsc-context,multihop,mh081,How to implement streaming file upload with progress tracking in HTTPX?,0,6381.90,,,,,0,0,,0.75,1.0,1.0,1.0
+acb62a29cc90,98c23d4a09e3,synsc-context,multihop,mh082,How to mock HTTP requests in tests using respx for HTTPX?,0,6551.73,,,,,0,0,,0.26190476190476186,1.0,1.0,0.3333333333333333
+acb62a29cc90,deee55e83bb0,synsc-context,multihop,mh083,How to implement cookie-based session management across requests in HTTPX?,0,7472.60,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,00505f493adc,synsc-context,multihop,mh084,How to implement request/response interceptors in HTTPX using event hooks?,0,7839.35,,,,,0,0,,0.6666666666666666,1.0,1.0,1.0
+acb62a29cc90,b200ddf9c2d9,synsc-context,multihop,mh085,How does HTTPX handle proxy authentication and CONNECT tunneling?,0,7206.56,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,084afe47f2cb,synsc-context,multihop,mh086,How to implement a custom PyTorch Dataset with data augmentation and DataLoader?,0,6403.50,,,,,0,0,,0.7777777777777777,1.0,1.0,1.0
+acb62a29cc90,ba8b1aa7496d,synsc-context,multihop,mh087,How to implement distributed data parallel training in PyTorch?,0,6604.53,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,6656345d7e9e,synsc-context,multihop,mh088,How to implement custom autograd function with forward and backward pass in PyTorch?,0,7513.14,,,,,0,0,,0.6666666666666666,1.0,1.0,1.0
+acb62a29cc90,d15c71bae2cb,synsc-context,multihop,mh089,How to implement learning rate warmup with cosine annealing in PyTorch?,0,6399.54,,,,,0,0,,0.8333333333333334,1.0,1.0,1.0
+acb62a29cc90,aa5e16c8956c,synsc-context,multihop,mh090,How to implement PyTorch model quantization for deployment?,0,6737.73,,,,,0,0,,0.6666666666666666,1.0,1.0,1.0
+acb62a29cc90,2042fd367085,synsc-context,multihop,mh091,How to export PyTorch model to ONNX with dynamic axes and custom operators?,0,7181.38,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,85436a7e8f73,synsc-context,multihop,mh092,How to implement gradient clipping and accumulation in PyTorch training?,0,6858.16,,,,,0,0,,0.6666666666666666,1.0,1.0,1.0
+acb62a29cc90,6df43b0d5261,synsc-context,multihop,mh093,How to implement PyTorch hooks for feature extraction and gradient visualization?,0,6857.12,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,a024818ea059,synsc-context,multihop,mh094,How to implement mixed precision training with GradScaler in PyTorch?,0,6551.48,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,284e634b4713,synsc-context,multihop,mh095,How to implement PyTorch model checkpointing with best model tracking?,0,6551.15,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,bb8e4924b959,synsc-context,multihop,mh096,How to implement custom loss function with class weighting in PyTorch?,0,7369.32,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,08b1f891d294,synsc-context,multihop,mh097,How to implement attention mechanism from scratch in PyTorch?,0,7165.67,,,,,0,0,,0.8333333333333334,1.0,1.0,1.0
+acb62a29cc90,9ae4dac70d34,synsc-context,multihop,mh098,How to implement PyTorch data pipeline with custom collate and sampler?,0,6242.35,,,,,0,0,,0.8333333333333334,1.0,1.0,1.0
+acb62a29cc90,c953e358ebfc,synsc-context,multihop,mh099,How to implement transfer learning with frozen layers and fine-tuning in PyTorch?,0,6655.23,,,,,0,0,,0.8333333333333334,1.0,1.0,1.0
+acb62a29cc90,824f425d0959,synsc-context,multihop,mh100,How to profile PyTorch model performance with torch.profiler?,0,6606.82,,,,,0,0,,0.6666666666666666,1.0,1.0,1.0
+acb62a29cc90,0d4c904a1686,nia,multihop,mh001,How does FastAPI validate request bodies using Pydantic models and what errors does it return for invalid data?,0,1519.55,,,,,0,0,,0.3333333333333333,0.3333333333333333,0.3333333333333333,0.3333333333333333
+acb62a29cc90,66117d7f2f09,nia,multihop,mh002,How to set up an async database session in FastAPI using SQLAlchemy with dependency injection?,0,1074.20,,,,,0,0,,0.5666666666666667,1.0,1.0,1.0
+acb62a29cc90,0a1b44eba51d,nia,multihop,mh003,How to implement OAuth2 authentication in FastAPI with password hashing and JWT tokens?,0,1111.55,,,,,0,0,,0.6666666666666666,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,30bf8642611b,nia,multihop,mh004,How does HTTPX handle SSL certificate verification and what happens when connecting through a proxy?,0,1364.18,,,,,0,0,,0.6666666666666666,1.0,1.0,1.0
+acb62a29cc90,4d79d9816882,nia,multihop,mh005,How to build a FastAPI WebSocket endpoint that broadcasts messages to multiple connected clients with authentication?,0,1062.60,,,,,0,0,,0.38888888888888884,1.0,1.0,0.6666666666666666
+acb62a29cc90,7705b117dfff,nia,multihop,mh006,How does Pydantic handle nested model serialization with custom types and what JSON schema does it generate?,0,1431.39,,,,,0,0,,0.5833333333333334,1.0,1.0,1.0
+acb62a29cc90,fef0dede13c4,nia,multihop,mh007,"How to configure FastAPI middleware stack with CORS, rate limiting, and request logging?",0,1085.84,,,,,0,0,,0.6666666666666666,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,a036b52b098a,nia,multihop,mh008,"How to implement file upload with streaming in FastAPI, validate the file type, and store it with metadata?",0,1668.36,,,,,0,0,,0.6666666666666666,1.0,1.0,1.0
+acb62a29cc90,0d71b41e7120,nia,multihop,mh009,How does HTTPX implement request retry with exponential backoff and what events does it expose for monitoring?,0,1112.26,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,d1d2486fac14,nia,multihop,mh010,"How to set up Pydantic Settings management with environment variables, .env files, and validation?",0,1043.87,,,,,0,0,,0.5,0.5,0.5,0.5
+acb62a29cc90,eaa360810b3b,nia,multihop,mh011,How to implement rate limiting middleware in FastAPI with Redis backend?,0,1636.10,,,,,0,0,,0.6666666666666666,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,cb082c203aa6,nia,multihop,mh012,How to implement background task processing in FastAPI with status tracking?,0,1025.98,,,,,0,0,,0.10833333333333334,0.6666666666666666,0.6666666666666666,0.3333333333333333
+acb62a29cc90,972ee6589339,nia,multihop,mh013,How to implement API versioning in FastAPI with separate routers and deprecation notices?,0,1004.87,,,,,0,0,,0.3333333333333333,1.0,1.0,1.0
+acb62a29cc90,9d4b5550dade,nia,multihop,mh014,How does FastAPI handle form data with file uploads and additional metadata fields?,0,1047.78,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,9e3b1f5d119f,nia,multihop,mh015,How to set up OpenAPI schema customization with security schemes and example requests in FastAPI?,0,1446.04,,,,,0,0,,0.6666666666666666,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,d9206cb70c38,nia,multihop,mh016,How to implement server-sent events (SSE) streaming endpoint in FastAPI?,0,1102.36,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,fa5ae6c30bc3,nia,multihop,mh017,How to implement custom OpenAPI documentation page with Swagger UI and ReDoc in FastAPI?,0,1039.76,,,,,0,0,,0.1111111111111111,0.3333333333333333,0.3333333333333333,0.3333333333333333
+acb62a29cc90,6da85559433a,nia,multihop,mh018,How to handle multipart form data with nested JSON and file uploads in FastAPI?,0,1013.01,,,,,0,0,,0.7083333333333334,1.0,1.0,0.6666666666666666
+acb62a29cc90,9a42ddc9f167,nia,multihop,mh019,How to implement GraphQL endpoint in FastAPI using Strawberry?,0,987.21,,,,,0,0,,0.4444444444444444,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,62757e002453,nia,multihop,mh020,How to test FastAPI WebSocket endpoints with pytest and httpx?,0,1424.85,,,,,0,0,,0.27777777777777773,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,690dcd5214cb,nia,multihop,mh021,How to implement health checks with dependency verification in FastAPI?,0,930.87,,,,,0,0,,0.6666666666666666,1.0,1.0,1.0
+acb62a29cc90,9b4a77e364d7,nia,multihop,mh022,How to implement request/response logging middleware with structured logging in FastAPI?,0,918.37,,,,,0,0,,0.5,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,60c5b7df7de8,nia,multihop,mh023,How does FastAPI implement OpenAPI schema generation from route definitions?,0,1058.96,,,,,0,0,,0.8333333333333334,1.0,1.0,1.0
+acb62a29cc90,e40e4b7635ec,nia,multihop,mh024,"How to implement content negotiation in FastAPI for JSON, XML, and CSV responses?",0,1114.76,,,,,0,0,,0.5,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,f5eaab538b6d,nia,multihop,mh025,How to implement pagination with cursor-based and offset-based strategies in FastAPI?,0,1076.59,,,,,0,0,,0.7777777777777777,1.0,1.0,1.0
+acb62a29cc90,e290f1ddc310,nia,multihop,mh026,"How does Django process an HTTP request through middleware, URL resolution, and view dispatch?",0,1048.29,,,,,0,0,,0.7777777777777777,1.0,1.0,1.0
+acb62a29cc90,96edd98ee858,nia,multihop,mh027,How to implement custom model managers and querysets with chainable methods in Django?,0,982.36,,,,,0,0,,0.1111111111111111,0.3333333333333333,0.3333333333333333,0.3333333333333333
+acb62a29cc90,91bc345949a0,nia,multihop,mh028,How does Django's ORM translate a complex query with annotations and subqueries to SQL?,0,1080.32,,,,,0,0,,0.4444444444444445,1.0,1.0,0.3333333333333333
+acb62a29cc90,cf1139d78d36,nia,multihop,mh029,How to implement custom authentication backend with permissions in Django?,0,1060.56,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,63123588ce9f,nia,multihop,mh030,How does Django's migration system detect model changes and generate migration files?,0,1450.35,,,,,0,0,,0.16666666666666666,0.3333333333333333,0.3333333333333333,0.3333333333333333
+acb62a29cc90,fa7eff73b1c7,nia,multihop,mh031,How to implement Django signals for post-save model actions with related object updates?,0,991.79,,,,,0,0,,0.7777777777777778,1.0,1.0,1.0
+acb62a29cc90,d793f53ad903,nia,multihop,mh032,How to implement custom Django template tags and filters with inclusion tags?,0,987.37,,,,,0,0,,0.4444444444444444,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,5cd9d371deea,nia,multihop,mh033,How does Django REST Framework serialize nested models with write support?,0,945.95,,,,,0,0,,0.3333333333333333,0.3333333333333333,0.3333333333333333,0.3333333333333333
+acb62a29cc90,a85b2abb670f,nia,multihop,mh034,How to implement Django Channels WebSocket consumer with group broadcasting?,0,1000.42,,,,,0,0,,0.3333333333333333,0.3333333333333333,0.3333333333333333,0.3333333333333333
+acb62a29cc90,8bd9eff48e4b,nia,multihop,mh035,How does Django's form validation work with model forms and custom clean methods?,0,972.42,,,,,0,0,,0.1111111111111111,0.3333333333333333,0.3333333333333333,0.3333333333333333
+acb62a29cc90,253e48ab77b9,nia,multihop,mh036,How to implement custom admin actions and list filters in Django admin?,0,1046.34,,,,,0,0,,0.2222222222222222,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,af907fc1e59b,nia,multihop,mh037,How does Django's class-based view handle GET and POST with form processing?,0,1048.36,,,,,0,0,,0.0,0.0,0.0,0.0
+acb62a29cc90,02b4344f434b,nia,multihop,mh038,"How to implement caching with per-view cache, template fragment cache, and low-level cache in Django?",0,1042.01,,,,,0,0,,0.03333333333333333,0.3333333333333333,0.3333333333333333,0.0
+acb62a29cc90,6a993205d0d2,nia,multihop,mh039,How does Django's prefetch_related optimize queries for reverse foreign keys and many-to-many?,0,1147.08,,,,,0,0,,0.6666666666666666,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,700b19384e46,nia,multihop,mh040,How to implement multi-database routing in Django with read replicas?,0,1046.70,,,,,0,0,,0.125,0.6666666666666666,0.6666666666666666,0.3333333333333333
+acb62a29cc90,d33744bbd3ce,nia,multihop,mh041,How to implement content types and generic relations in Django?,0,1065.55,,,,,0,0,,0.047619047619047616,0.3333333333333333,0.3333333333333333,0.0
+acb62a29cc90,661c3ecc9057,nia,multihop,mh042,How to implement custom User model with email-based authentication in Django?,0,985.42,,,,,0,0,,0.0,0.0,0.0,0.0
+acb62a29cc90,09f552604320,nia,multihop,mh043,How does Django's test client simulate authenticated requests with session and cookies?,0,1045.00,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,6016936105df,nia,multihop,mh044,How to implement Django REST Framework viewsets with custom actions and permissions?,0,1020.87,,,,,0,0,,0.0,0.0,0.0,0.0
+acb62a29cc90,b3d1a1f9dfc9,nia,multihop,mh045,How does Django handle database transactions with atomic blocks and savepoints?,0,963.01,,,,,0,0,,0.3333333333333333,0.3333333333333333,0.3333333333333333,0.3333333333333333
+acb62a29cc90,a55e6c2066ff,nia,multihop,mh046,How to implement Flask application factory with blueprints and extensions?,0,1018.06,,,,,0,0,,0.8333333333333334,1.0,1.0,1.0
+acb62a29cc90,c9bd3c092776,nia,multihop,mh047,How to implement JWT authentication with refresh tokens in Flask?,0,1534.85,,,,,0,0,,0.75,1.0,1.0,1.0
+acb62a29cc90,7e3a8f275310,nia,multihop,mh048,How to implement Flask error handlers with custom error pages and JSON responses?,0,1105.88,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,82236b86a215,nia,multihop,mh049,How to implement Flask-SQLAlchemy models with relationships and migrations?,0,1090.57,,,,,0,0,,0.0,0.0,0.0,0.0
+acb62a29cc90,37e0a0f439ff,nia,multihop,mh050,How to implement Flask middleware for request timing and logging?,0,1108.43,,,,,0,0,,0.5833333333333334,1.0,1.0,1.0
+acb62a29cc90,ace437c23a63,nia,multihop,mh051,How to implement Flask-Login with remember me and session management?,0,1472.99,,,,,0,0,,0.3333333333333333,0.3333333333333333,0.3333333333333333,0.3333333333333333
+acb62a29cc90,f4936f7e5871,nia,multihop,mh052,How to implement Flask SocketIO with rooms and event broadcasting?,0,1099.25,,,,,0,0,,0.5,1.0,1.0,1.0
+acb62a29cc90,fbf8086ab98b,nia,multihop,mh053,How to implement Flask-WTF forms with CSRF protection and file uploads?,0,1393.29,,,,,0,0,,0.08333333333333333,0.3333333333333333,0.3333333333333333,0.3333333333333333
+acb62a29cc90,2f7ef1121e51,nia,multihop,mh054,How to implement caching in Flask with Redis and per-route cache invalidation?,0,1355.58,,,,,0,0,,0.5,1.0,1.0,0.6666666666666666
+acb62a29cc90,8e5c87807d2c,nia,multihop,mh055,How to implement Flask CLI commands with Click integration?,0,982.52,,,,,0,0,,0.0,0.0,0.0,0.0
+acb62a29cc90,adb8b3746b5e,nia,multihop,mh056,How to implement Flask testing with fixtures and database rollback?,0,1301.04,,,,,0,0,,0.3333333333333333,0.3333333333333333,0.3333333333333333,0.3333333333333333
+acb62a29cc90,27338f518a74,nia,multihop,mh057,How to implement Flask request hooks for API key validation and rate limiting?,0,1448.65,,,,,0,0,,0.6666666666666666,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,631ceb34a689,nia,multihop,mh058,How to implement Flask Blueprints with nested blueprint groups?,0,1243.76,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,74cede9d5e40,nia,multihop,mh059,How to implement async views in Flask 2.0+ with background tasks?,0,974.77,,,,,0,0,,0.3333333333333333,0.3333333333333333,0.3333333333333333,0.3333333333333333
+acb62a29cc90,477442940621,nia,multihop,mh060,How to implement Flask config management with environment-specific settings?,0,1096.57,,,,,0,0,,0.1111111111111111,0.6666666666666666,0.6666666666666666,0.0
+acb62a29cc90,7ce24cc2b29c,nia,multihop,mh061,How to implement SQLAlchemy 2.0 async session with connection pooling and health checks?,0,1026.24,,,,,0,0,,0.5833333333333334,1.0,1.0,1.0
+acb62a29cc90,304806cf2a51,nia,multihop,mh062,How does SQLAlchemy implement the unit of work pattern with identity map and change tracking?,0,1093.88,,,,,0,0,,0.5,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,79bc99b30a19,nia,multihop,mh063,How to implement SQLAlchemy hybrid properties and expressions for computed columns?,0,1019.64,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,6e6ab4e58514,nia,multihop,mh064,How to implement SQLAlchemy event listeners for audit logging?,0,1261.51,,,,,0,0,,0.7083333333333334,1.0,1.0,0.6666666666666666
+acb62a29cc90,66c380a8f8f4,nia,multihop,mh065,How to implement soft delete with SQLAlchemy using query modification and events?,0,1080.94,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,09a6deb43ea1,nia,multihop,mh066,How to implement SQLAlchemy multi-tenancy with schema-based isolation?,0,1192.84,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,5703c1d985e7,nia,multihop,mh067,How does SQLAlchemy handle polymorphic inheritance with joined table and single table strategies?,0,1045.95,,,,,0,0,,0.8333333333333334,1.0,1.0,1.0
+acb62a29cc90,5252a17896b7,nia,multihop,mh068,How to implement SQLAlchemy bulk operations with returning and conflict handling?,0,1342.00,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,4e41dbcc02aa,nia,multihop,mh069,How to implement SQLAlchemy association proxy for simplified many-to-many access?,0,1155.61,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,03d7ab14115d,nia,multihop,mh070,How to implement custom SQLAlchemy column types with TypeDecorator?,0,912.57,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,2556f1567dbd,nia,multihop,mh071,How to implement SQLAlchemy connection events for query timing and slow query logging?,0,1065.21,,,,,0,0,,0.6666666666666666,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,322236e54f4a,nia,multihop,mh072,How to implement SQLAlchemy model versioning with history tables?,0,977.39,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,1ac95fb6db2e,nia,multihop,mh073,How does SQLAlchemy compile different SQL dialects for PostgreSQL vs MySQL vs SQLite?,0,997.08,,,,,0,0,,0.7777777777777778,1.0,1.0,1.0
+acb62a29cc90,16cdfaf9b631,nia,multihop,mh074,How to implement SQLAlchemy repository pattern with generic CRUD operations?,0,1209.36,,,,,0,0,,0.5476190476190476,1.0,1.0,0.6666666666666666
+acb62a29cc90,ac75c27839f0,nia,multihop,mh075,How to implement SQLAlchemy with Alembic for online schema migrations?,0,1101.39,,,,,0,0,,0.125,0.6666666666666666,0.6666666666666666,0.3333333333333333
+acb62a29cc90,9bf455231756,nia,multihop,mh076,"How to implement a robust HTTP client with retries, circuit breaker, and fallback in HTTPX?",0,1034.22,,,,,0,0,,0.5833333333333334,1.0,1.0,1.0
+acb62a29cc90,b65c303abe3c,nia,multihop,mh077,How to implement OAuth2 client credentials flow with token caching using HTTPX?,0,1014.26,,,,,0,0,,0.8333333333333334,1.0,1.0,1.0
+acb62a29cc90,8abac8c7eeb8,nia,multihop,mh078,How to implement request signing with HMAC authentication in HTTPX?,0,1068.25,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,bfd35ec5b604,nia,multihop,mh079,How does HTTPX handle HTTP/2 with stream multiplexing and server push?,0,1079.04,,,,,0,0,,0.611111111111111,1.0,1.0,1.0
+acb62a29cc90,8993bee449c4,nia,multihop,mh080,How to implement requests Session with custom adapters and SSL configuration?,0,1117.65,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,d69af6aea19b,nia,multihop,mh081,How to implement streaming file upload with progress tracking in HTTPX?,0,1331.36,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,5e359364b22a,nia,multihop,mh082,How to mock HTTP requests in tests using respx for HTTPX?,0,1025.76,,,,,0,0,,0.0,0.0,0.0,0.0
+acb62a29cc90,589f1b599d8d,nia,multihop,mh083,How to implement cookie-based session management across requests in HTTPX?,0,1091.56,,,,,0,0,,0.08333333333333333,0.3333333333333333,0.3333333333333333,0.3333333333333333
+acb62a29cc90,5612e101041d,nia,multihop,mh084,How to implement request/response interceptors in HTTPX using event hooks?,0,1140.65,,,,,0,0,,0.7777777777777778,1.0,1.0,1.0
+acb62a29cc90,6e987ef2f35f,nia,multihop,mh085,How does HTTPX handle proxy authentication and CONNECT tunneling?,0,984.87,,,,,0,0,,0.7142857142857143,1.0,1.0,0.6666666666666666
+acb62a29cc90,cc687014fdd2,nia,multihop,mh086,How to implement a custom PyTorch Dataset with data augmentation and DataLoader?,0,929.04,,,,,0,0,,0.6666666666666666,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,e43ca544ef55,nia,multihop,mh087,How to implement distributed data parallel training in PyTorch?,0,1576.37,,,,,0,0,,0.4166666666666667,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,02841a762aef,nia,multihop,mh088,How to implement custom autograd function with forward and backward pass in PyTorch?,0,1091.73,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,fcb09d82b66d,nia,multihop,mh089,How to implement learning rate warmup with cosine annealing in PyTorch?,0,1603.07,,,,,0,0,,0.1111111111111111,0.3333333333333333,0.3333333333333333,0.3333333333333333
+acb62a29cc90,47533458ad8e,nia,multihop,mh090,How to implement PyTorch model quantization for deployment?,0,1069.22,,,,,0,0,,0.3333333333333333,0.3333333333333333,0.3333333333333333,0.3333333333333333
+acb62a29cc90,aa1da2804d2a,nia,multihop,mh091,How to export PyTorch model to ONNX with dynamic axes and custom operators?,0,1072.12,,,,,0,0,,0.375,0.6666666666666666,0.6666666666666666,0.3333333333333333
+acb62a29cc90,51d3cdc4b309,nia,multihop,mh092,How to implement gradient clipping and accumulation in PyTorch training?,0,982.59,,,,,0,0,,0.21428571428571427,0.6666666666666666,0.6666666666666666,0.3333333333333333
+acb62a29cc90,c4dbfa9c0bd3,nia,multihop,mh093,How to implement PyTorch hooks for feature extraction and gradient visualization?,0,981.73,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,00ac83f8facc,nia,multihop,mh094,How to implement mixed precision training with GradScaler in PyTorch?,0,1086.96,,,,,0,0,,0.5,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,33030b217155,nia,multihop,mh095,How to implement PyTorch model checkpointing with best model tracking?,0,960.15,,,,,0,0,,0.8333333333333334,1.0,1.0,1.0
+acb62a29cc90,60401feed07a,nia,multihop,mh096,How to implement custom loss function with class weighting in PyTorch?,0,1035.08,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,944b447a0b04,nia,multihop,mh097,How to implement attention mechanism from scratch in PyTorch?,0,983.21,,,,,0,0,,0.6666666666666666,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,24ad2e1657f1,nia,multihop,mh098,How to implement PyTorch data pipeline with custom collate and sampler?,0,946.33,,,,,0,0,,0.6666666666666666,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,5dc46b0dac8b,nia,multihop,mh099,How to implement transfer learning with frozen layers and fine-tuning in PyTorch?,0,1505.17,,,,,0,0,,0.3333333333333333,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,aee442a485f0,nia,multihop,mh100,How to profile PyTorch model performance with torch.profiler?,0,1060.24,,,,,0,0,,0.21428571428571427,0.6666666666666666,0.6666666666666666,0.3333333333333333
+acb62a29cc90,e6250d626310,context7,multihop,mh001,How does FastAPI validate request bodies using Pydantic models and what errors does it return for invalid data?,0,3027.79,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,573d9b9fca9e,context7,multihop,mh002,How to set up an async database session in FastAPI using SQLAlchemy with dependency injection?,0,2371.76,,,,,0,0,,0.6666666666666666,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,a7ad2680800d,context7,multihop,mh003,How to implement OAuth2 authentication in FastAPI with password hashing and JWT tokens?,0,2246.01,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,7175e680c48a,context7,multihop,mh004,How does HTTPX handle SSL certificate verification and what happens when connecting through a proxy?,0,2660.41,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,290d66cd5027,context7,multihop,mh005,How to build a FastAPI WebSocket endpoint that broadcasts messages to multiple connected clients with authentication?,0,2518.24,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,dac99b6d73a1,context7,multihop,mh006,How does Pydantic handle nested model serialization with custom types and what JSON schema does it generate?,0,2427.84,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,1978dbc17d4b,context7,multihop,mh007,"How to configure FastAPI middleware stack with CORS, rate limiting, and request logging?",0,2183.83,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,0768665f59a9,context7,multihop,mh008,"How to implement file upload with streaming in FastAPI, validate the file type, and store it with metadata?",0,2240.25,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,3e217744b49b,context7,multihop,mh009,How does HTTPX implement request retry with exponential backoff and what events does it expose for monitoring?,0,3389.62,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,bba07935656a,context7,multihop,mh010,"How to set up Pydantic Settings management with environment variables, .env files, and validation?",0,2774.73,,,,,0,0,,0.5,0.5,0.5,0.5
+acb62a29cc90,a243324753d6,context7,multihop,mh011,How to implement rate limiting middleware in FastAPI with Redis backend?,0,2228.43,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,e57cc42293e7,context7,multihop,mh012,How to implement background task processing in FastAPI with status tracking?,0,2708.70,,,,,0,0,,0.3333333333333333,0.3333333333333333,0.3333333333333333,0.3333333333333333
+acb62a29cc90,5b47b73430e1,context7,multihop,mh013,How to implement API versioning in FastAPI with separate routers and deprecation notices?,0,2476.75,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,be1673dd0139,context7,multihop,mh014,How does FastAPI handle form data with file uploads and additional metadata fields?,0,2467.29,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,4e6f0340ec99,context7,multihop,mh015,How to set up OpenAPI schema customization with security schemes and example requests in FastAPI?,0,2666.27,,,,,0,0,,0.6666666666666666,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,30f5e5137bf0,context7,multihop,mh016,How to implement server-sent events (SSE) streaming endpoint in FastAPI?,0,2774.10,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,037d05810133,context7,multihop,mh017,How to implement custom OpenAPI documentation page with Swagger UI and ReDoc in FastAPI?,0,2578.72,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,f63c473e6dfe,context7,multihop,mh018,How to handle multipart form data with nested JSON and file uploads in FastAPI?,0,2357.00,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,d1c63d49372b,context7,multihop,mh019,How to implement GraphQL endpoint in FastAPI using Strawberry?,0,2247.41,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,3886cb733cd6,context7,multihop,mh020,How to test FastAPI WebSocket endpoints with pytest and httpx?,0,2132.94,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,86e2feabe520,context7,multihop,mh021,How to implement health checks with dependency verification in FastAPI?,0,2348.65,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,f31fd021116b,context7,multihop,mh022,How to implement request/response logging middleware with structured logging in FastAPI?,0,2489.05,,,,,0,0,,0.6666666666666666,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,cf39b5b0a688,context7,multihop,mh023,How does FastAPI implement OpenAPI schema generation from route definitions?,0,2401.12,,,,,0,0,,0.6666666666666666,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,6bd713cf0e42,context7,multihop,mh024,"How to implement content negotiation in FastAPI for JSON, XML, and CSV responses?",0,2991.79,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,28c870a0b593,context7,multihop,mh025,How to implement pagination with cursor-based and offset-based strategies in FastAPI?,0,2270.74,,,,,0,0,,0.6666666666666666,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,90a0ae1b9481,context7,multihop,mh026,"How does Django process an HTTP request through middleware, URL resolution, and view dispatch?",0,2661.88,,,,,0,0,,0.6666666666666666,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,638354334fd5,context7,multihop,mh027,How to implement custom model managers and querysets with chainable methods in Django?,0,2349.52,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,4d1048bb1491,context7,multihop,mh028,How does Django's ORM translate a complex query with annotations and subqueries to SQL?,0,2249.24,,,,,0,0,,0.6666666666666666,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,fcae02ec1ed0,context7,multihop,mh029,How to implement custom authentication backend with permissions in Django?,0,2606.98,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,374979c4d5e5,context7,multihop,mh030,How does Django's migration system detect model changes and generate migration files?,0,2458.39,,,,,0,0,,0.3333333333333333,0.3333333333333333,0.3333333333333333,0.3333333333333333
+acb62a29cc90,0f15722dd0c9,context7,multihop,mh031,How to implement Django signals for post-save model actions with related object updates?,0,2229.93,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,626604b2a4d9,context7,multihop,mh032,How to implement custom Django template tags and filters with inclusion tags?,0,2548.93,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,e166ff00229e,context7,multihop,mh033,How does Django REST Framework serialize nested models with write support?,0,2460.57,,,,,0,0,,0.6666666666666666,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,6cf0545e4fd7,context7,multihop,mh034,How to implement Django Channels WebSocket consumer with group broadcasting?,0,2137.28,,,,,0,0,,0.0,0.0,0.0,0.0
+acb62a29cc90,7e4c37eb6964,context7,multihop,mh035,How does Django's form validation work with model forms and custom clean methods?,0,2466.08,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,d676489d9a91,context7,multihop,mh036,How to implement custom admin actions and list filters in Django admin?,0,2336.73,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,872b2bc71af3,context7,multihop,mh037,How does Django's class-based view handle GET and POST with form processing?,0,2378.47,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,fa41291a46b3,context7,multihop,mh038,"How to implement caching with per-view cache, template fragment cache, and low-level cache in Django?",0,2417.25,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,032c66e8245c,context7,multihop,mh039,How does Django's prefetch_related optimize queries for reverse foreign keys and many-to-many?,0,2420.75,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,7f72c754755a,context7,multihop,mh040,How to implement multi-database routing in Django with read replicas?,0,2740.76,,,,,0,0,,0.6666666666666666,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,3462c2a55d4c,context7,multihop,mh041,How to implement content types and generic relations in Django?,0,2151.44,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,231efd8bb3cb,context7,multihop,mh042,How to implement custom User model with email-based authentication in Django?,0,2434.00,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,c8a65c273d21,context7,multihop,mh043,How does Django's test client simulate authenticated requests with session and cookies?,0,3512.87,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,88d2efb783f8,context7,multihop,mh044,How to implement Django REST Framework viewsets with custom actions and permissions?,0,2550.53,,,,,0,0,,0.6666666666666666,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,85c8625344e9,context7,multihop,mh045,How does Django handle database transactions with atomic blocks and savepoints?,0,2431.63,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,0f0e80ccf31e,context7,multihop,mh046,How to implement Flask application factory with blueprints and extensions?,0,2332.16,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,2bdf3217688d,context7,multihop,mh047,How to implement JWT authentication with refresh tokens in Flask?,0,2209.08,,,,,0,0,,0.6666666666666666,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,8df45a577255,context7,multihop,mh048,How to implement Flask error handlers with custom error pages and JSON responses?,0,2515.90,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,b07d6ef7535a,context7,multihop,mh049,How to implement Flask-SQLAlchemy models with relationships and migrations?,0,1948.30,,,,,0,0,,0.6666666666666666,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,31d6abb40e79,context7,multihop,mh050,How to implement Flask middleware for request timing and logging?,0,1880.92,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,4680c797eb9b,context7,multihop,mh051,How to implement Flask-Login with remember me and session management?,0,2401.12,,,,,0,0,,0.3333333333333333,0.3333333333333333,0.3333333333333333,0.3333333333333333
+acb62a29cc90,2ed297e87d3f,context7,multihop,mh052,How to implement Flask SocketIO with rooms and event broadcasting?,0,2226.29,,,,,0,0,,0.3333333333333333,0.3333333333333333,0.3333333333333333,0.3333333333333333
+acb62a29cc90,b39d54cbfd1c,context7,multihop,mh053,How to implement Flask-WTF forms with CSRF protection and file uploads?,0,2093.82,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,b612931e0fc5,context7,multihop,mh054,How to implement caching in Flask with Redis and per-route cache invalidation?,0,2479.09,,,,,0,0,,0.6666666666666666,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,335d2cd88a53,context7,multihop,mh055,How to implement Flask CLI commands with Click integration?,0,2559.69,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,9bf417b79f6e,context7,multihop,mh056,How to implement Flask testing with fixtures and database rollback?,0,2774.76,,,,,0,0,,0.6666666666666666,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,7045dad4261b,context7,multihop,mh057,How to implement Flask request hooks for API key validation and rate limiting?,0,2087.26,,,,,0,0,,0.3333333333333333,0.3333333333333333,0.3333333333333333,0.3333333333333333
+acb62a29cc90,84faadedf0c1,context7,multihop,mh058,How to implement Flask Blueprints with nested blueprint groups?,0,2162.39,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,6972613d3c97,context7,multihop,mh059,How to implement async views in Flask 2.0+ with background tasks?,0,1825.73,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,5fd721271303,context7,multihop,mh060,How to implement Flask config management with environment-specific settings?,0,1958.76,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,07eefe800b95,context7,multihop,mh061,How to implement SQLAlchemy 2.0 async session with connection pooling and health checks?,0,2316.21,,,,,0,0,,0.6666666666666666,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,b581a78f4ca8,context7,multihop,mh062,How does SQLAlchemy implement the unit of work pattern with identity map and change tracking?,0,2425.91,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,3a96eb9864a6,context7,multihop,mh063,How to implement SQLAlchemy hybrid properties and expressions for computed columns?,0,2094.79,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,23c5a7b85565,context7,multihop,mh064,How to implement SQLAlchemy event listeners for audit logging?,0,2212.42,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,b023e975f10f,context7,multihop,mh065,How to implement soft delete with SQLAlchemy using query modification and events?,0,2752.43,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,4f76d0ad41b4,context7,multihop,mh066,How to implement SQLAlchemy multi-tenancy with schema-based isolation?,0,2216.98,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,22174b5712f0,context7,multihop,mh067,How does SQLAlchemy handle polymorphic inheritance with joined table and single table strategies?,0,2263.09,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,e507bf4d989b,context7,multihop,mh068,How to implement SQLAlchemy bulk operations with returning and conflict handling?,0,2945.52,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,54191dd9c646,context7,multihop,mh069,How to implement SQLAlchemy association proxy for simplified many-to-many access?,0,2348.14,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,fa441adddac8,context7,multihop,mh070,How to implement custom SQLAlchemy column types with TypeDecorator?,0,2996.69,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,09bd3589c8a7,context7,multihop,mh071,How to implement SQLAlchemy connection events for query timing and slow query logging?,0,2579.44,,,,,0,0,,0.6666666666666666,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,d999997e8436,context7,multihop,mh072,How to implement SQLAlchemy model versioning with history tables?,0,2661.32,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,bf7c7baa4d89,context7,multihop,mh073,How does SQLAlchemy compile different SQL dialects for PostgreSQL vs MySQL vs SQLite?,0,2572.46,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,1ccd95052a2e,context7,multihop,mh074,How to implement SQLAlchemy repository pattern with generic CRUD operations?,0,2978.39,,,,,0,0,,0.3333333333333333,0.3333333333333333,0.3333333333333333,0.3333333333333333
+acb62a29cc90,118cd69db1a3,context7,multihop,mh075,How to implement SQLAlchemy with Alembic for online schema migrations?,0,2584.58,,,,,0,0,,0.3333333333333333,0.3333333333333333,0.3333333333333333,0.3333333333333333
+acb62a29cc90,1dba4d04c6a9,context7,multihop,mh076,"How to implement a robust HTTP client with retries, circuit breaker, and fallback in HTTPX?",0,2656.74,,,,,0,0,,0.6666666666666666,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,d3373e2c16d1,context7,multihop,mh077,How to implement OAuth2 client credentials flow with token caching using HTTPX?,0,2790.21,,,,,0,0,,0.6666666666666666,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,99fd1dc5b8e9,context7,multihop,mh078,How to implement request signing with HMAC authentication in HTTPX?,0,2346.68,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,926edc6bf93c,context7,multihop,mh079,How does HTTPX handle HTTP/2 with stream multiplexing and server push?,0,2679.92,,,,,0,0,,0.6666666666666666,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,c91a215d6824,context7,multihop,mh080,How to implement requests Session with custom adapters and SSL configuration?,0,2619.81,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,d991ec3155a3,context7,multihop,mh081,How to implement streaming file upload with progress tracking in HTTPX?,0,3134.47,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,1077cde6f539,context7,multihop,mh082,How to mock HTTP requests in tests using respx for HTTPX?,0,2017.77,,,,,0,0,,0.0,0.0,0.0,0.0
+acb62a29cc90,f20607fe9fcc,context7,multihop,mh083,How to implement cookie-based session management across requests in HTTPX?,0,2713.70,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,da35059ebfe2,context7,multihop,mh084,How to implement request/response interceptors in HTTPX using event hooks?,0,1960.65,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,bc5c889372d5,context7,multihop,mh085,How does HTTPX handle proxy authentication and CONNECT tunneling?,0,2668.35,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,465e8d0c04e6,context7,multihop,mh086,How to implement a custom PyTorch Dataset with data augmentation and DataLoader?,0,2551.55,,,,,0,0,,0.6666666666666666,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,18ba32b64eb4,context7,multihop,mh087,How to implement distributed data parallel training in PyTorch?,0,2283.00,,,,,0,0,,0.6666666666666666,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,22339b2002a2,context7,multihop,mh088,How to implement custom autograd function with forward and backward pass in PyTorch?,0,2210.49,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,bd8c087f0b2e,context7,multihop,mh089,How to implement learning rate warmup with cosine annealing in PyTorch?,0,2254.76,,,,,0,0,,0.6666666666666666,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,8f8defec0a9a,context7,multihop,mh090,How to implement PyTorch model quantization for deployment?,0,1934.44,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,d1e69717001e,context7,multihop,mh091,How to export PyTorch model to ONNX with dynamic axes and custom operators?,0,2214.99,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,bed00f13cfc9,context7,multihop,mh092,How to implement gradient clipping and accumulation in PyTorch training?,0,2307.32,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,85131dd5f840,context7,multihop,mh093,How to implement PyTorch hooks for feature extraction and gradient visualization?,0,2149.57,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,6190d70bf495,context7,multihop,mh094,How to implement mixed precision training with GradScaler in PyTorch?,0,2360.54,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,58de1ca87488,context7,multihop,mh095,How to implement PyTorch model checkpointing with best model tracking?,0,2413.52,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,7014087b72c0,context7,multihop,mh096,How to implement custom loss function with class weighting in PyTorch?,0,2216.42,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,10bbe4516629,context7,multihop,mh097,How to implement attention mechanism from scratch in PyTorch?,0,2366.25,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,9ba6af332503,context7,multihop,mh098,How to implement PyTorch data pipeline with custom collate and sampler?,0,2160.93,,,,,0,0,,0.6666666666666666,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,b26c327683a5,context7,multihop,mh099,How to implement transfer learning with frozen layers and fine-tuning in PyTorch?,0,2365.12,,,,,0,0,,0.6666666666666666,0.6666666666666666,0.6666666666666666,0.6666666666666666
+acb62a29cc90,131d461409cf,context7,multihop,mh100,How to profile PyTorch model performance with torch.profiler?,0,2391.17,,,,,0,0,,1.0,1.0,1.0,1.0
+acb62a29cc90,af963bcedc41,synsc-context,code_qa,cq001,Where is the FastAPI class defined and what parameters does its __init__ accept?,0,7180.23,,,,,0,0,,,,,
+acb62a29cc90,0bb0183380d5,synsc-context,code_qa,cq002,Where is HTTPException raised with a 404 status code?,0,5956.33,,,,,0,0,,,,,
+acb62a29cc90,d2bf59353c9f,synsc-context,code_qa,cq003,What classes inherit from BaseModel in the FastAPI codebase?,0,6061.30,,,,,0,0,,,,,
+acb62a29cc90,d30f070b09a0,synsc-context,code_qa,cq004,Where is the Depends function defined and how does it resolve dependencies?,0,8210.40,,,,,0,0,,,,,
+acb62a29cc90,b5cb87988df3,synsc-context,code_qa,cq005,Where is AsyncClient instantiated with http2=True?,0,7287.42,,,,,0,0,,,,,
+acb62a29cc90,638e390e54c3,synsc-context,code_qa,cq006,What does the field_validator decorator do in Pydantic v2 and where is it defined?,0,8066.56,,,,,0,0,,,,,
+acb62a29cc90,4a5dbafedc23,synsc-context,code_qa,cq007,Where is the Timeout class used with custom connect and read values?,0,6000.33,,,,,0,0,,,,,
+acb62a29cc90,62e83fa4da9a,synsc-context,code_qa,cq008,What is the return type of the model_dump method in Pydantic BaseModel?,0,9824.96,,,,,0,0,,,,,
+acb62a29cc90,623b9df7dd43,synsc-context,code_qa,cq009,Where is jsonable_encoder imported and used in FastAPI?,0,6433.91,,,,,0,0,,,,,
+acb62a29cc90,07112a430bac,synsc-context,code_qa,cq010,Where is response_model used as a parameter in FastAPI route decorators?,0,6666.72,,,,,0,0,,,,,
+acb62a29cc90,e53e223e6459,synsc-context,code_qa,cq011,Where is the Router.add_api_route method defined and what decorators does it support?,0,6942.74,,,,,0,0,,,,,
+acb62a29cc90,7775d57bb599,synsc-context,code_qa,cq012,Where is CORSMiddleware added to the app with allow_credentials=True?,0,7044.76,,,,,0,0,,,,,
+acb62a29cc90,71676563d705,synsc-context,code_qa,cq013,What is the complete signature of httpx.AsyncClient.__init__?,0,6772.32,,,,,0,0,,,,,
+acb62a29cc90,3cd6e355f6f8,synsc-context,code_qa,cq014,Where does Pydantic raise ValidationError and what fields does the error contain?,0,6981.94,,,,,0,0,,,,,
+acb62a29cc90,56baf6960ee0,synsc-context,code_qa,cq015,Where is the @app.on_event startup handler used and what has replaced it in newer FastAPI?,0,6376.28,,,,,0,0,,,,,
+acb62a29cc90,74c9d9d30ebe,synsc-context,code_qa,cq016,Where is the Django Model class defined and what metaclass does it use?,0,6336.55,,,,,0,0,,,,,
+acb62a29cc90,8a7b2dc4231f,synsc-context,code_qa,cq017,Where is the Flask class constructor defined and what parameters does it accept?,0,7742.53,,,,,0,0,,,,,
+acb62a29cc90,2a0241debf3e,synsc-context,code_qa,cq018,Where is the SQLAlchemy create_engine function defined?,0,7169.82,,,,,0,0,,,,,
+acb62a29cc90,be150c703e6a,synsc-context,code_qa,cq019,How is torch.nn.Module.__init__ defined and what does it initialize?,0,7189.49,,,,,0,0,,,,,
+acb62a29cc90,f3f5a6ded2b7,synsc-context,code_qa,cq020,Where is pandas.DataFrame.__init__ defined and what parameters does it accept?,0,8364.01,,,,,0,0,,,,,
+acb62a29cc90,99d20763b295,synsc-context,code_qa,cq021,Where is numpy.ndarray defined as a class?,0,10760.52,,,,,0,0,,,,,
+acb62a29cc90,2806387215a7,synsc-context,code_qa,cq022,Where is the requests.Session class defined and what methods does it expose?,0,7081.64,,,,,0,0,,,,,
+acb62a29cc90,81ae3a33d313,synsc-context,code_qa,cq023,Where is the Celery class defined and what does its __init__ accept?,0,7195.54,,,,,0,0,,,,,
+acb62a29cc90,faa5e33e51ee,synsc-context,code_qa,cq024,Where is the Starlette class defined and how does it differ from FastAPI?,0,7026.82,,,,,0,0,,,,,
+acb62a29cc90,a4df8a5bd20d,synsc-context,code_qa,cq025,Where is aiohttp.ClientSession defined and what parameters does __init__ accept?,0,8353.09,,,,,0,0,,,,,
+acb62a29cc90,1c0da81d2b26,synsc-context,code_qa,cq026,Where is sklearn.base.BaseEstimator defined and what mixin methods does it provide?,0,6567.04,,,,,0,0,,,,,
+acb62a29cc90,d381de45d3a3,synsc-context,code_qa,cq027,Where is the LangChain BaseLLM class defined?,0,6257.85,,,,,0,0,,,,,
+acb62a29cc90,1bacd272b4aa,synsc-context,code_qa,cq028,Where is the Django QuerySet.filter method defined?,0,7697.57,,,,,0,0,,,,,
+acb62a29cc90,039feedddf06,synsc-context,code_qa,cq029,Where is the Flask route decorator defined?,0,7437.79,,,,,0,0,,,,,
+acb62a29cc90,e3201b78299e,synsc-context,code_qa,cq030,Where is SQLAlchemy's Column class defined and what arguments does it accept?,0,8868.39,,,,,0,0,,,,,
+acb62a29cc90,93b891c61dc9,synsc-context,code_qa,cq031,Where is torch.Tensor defined and what are its core attributes?,0,7267.03,,,,,0,0,,,,,
+acb62a29cc90,50d2fde7fc5a,synsc-context,code_qa,cq032,Where is the pandas read_csv function defined?,0,6674.14,,,,,0,0,,,,,
+acb62a29cc90,b60611620913,synsc-context,code_qa,cq033,Where is numpy.array function defined?,0,10359.94,,,,,0,0,,,,,
+acb62a29cc90,44502d8ceb6f,synsc-context,code_qa,cq034,Where is requests.get defined and what parameters does it accept?,0,5845.66,,,,,0,0,,,,,
+acb62a29cc90,ffa1e2e0c86a,synsc-context,code_qa,cq035,Where is the httpx.Response class defined?,0,6827.96,,,,,0,0,,,,,
+acb62a29cc90,45d60ff9e9a0,synsc-context,code_qa,cq036,Where is the Pydantic ConfigDict defined and what keys does it accept?,0,8065.17,,,,,0,0,,,,,
+acb62a29cc90,dbc2c5e92630,synsc-context,code_qa,cq037,Where is the LangChain ChatPromptTemplate class defined?,0,6365.23,,,,,0,0,,,,,
+acb62a29cc90,4dbba6c021ff,synsc-context,code_qa,cq038,Where is the Django URLPattern class defined?,0,5999.72,,,,,0,0,,,,,
+acb62a29cc90,4589058b7c4f,synsc-context,code_qa,cq039,Where is sklearn.pipeline.Pipeline defined and what does __init__ accept?,0,7896.15,,,,,0,0,,,,,
+acb62a29cc90,21f1285cabaa,synsc-context,code_qa,cq040,Where is the Celery task decorator defined?,0,6268.97,,,,,0,0,,,,,
+acb62a29cc90,baab20048a95,synsc-context,code_qa,cq041,Where is SQLAlchemy's relationship function defined?,0,8824.16,,,,,0,0,,,,,
+acb62a29cc90,d8b6118ceed3,synsc-context,code_qa,cq042,Where is the Starlette Request class defined?,0,6674.36,,,,,0,0,,,,,
+acb62a29cc90,a71f1a830297,synsc-context,code_qa,cq043,Where is aiohttp's web.Application class defined?,0,6184.25,,,,,0,0,,,,,
+acb62a29cc90,698146fd2b8f,synsc-context,code_qa,cq044,Where is torch.optim.Adam defined and what hyperparameters does it accept?,0,6568.96,,,,,0,0,,,,,
+acb62a29cc90,8cda5c895462,synsc-context,code_qa,cq045,Where is pandas.DataFrame.merge defined?,0,8506.52,,,,,0,0,,,,,
+acb62a29cc90,371b9332b3b6,synsc-context,code_qa,cq046,Where is Django's authenticate function called with username and password?,0,6569.83,,,,,0,0,,,,,
+acb62a29cc90,3903e127ad14,synsc-context,code_qa,cq047,Where is Flask's render_template called with context variables?,0,6673.79,,,,,0,0,,,,,
+acb62a29cc90,87fcdf901ce0,synsc-context,code_qa,cq048,Where is session.execute called with a select statement in SQLAlchemy?,0,8250.71,,,,,0,0,,,,,
+acb62a29cc90,8682db385f12,synsc-context,code_qa,cq049,Where is model.fit called in scikit-learn with X_train and y_train?,0,9232.52,,,,,0,0,,,,,
+acb62a29cc90,be46b00862a9,synsc-context,code_qa,cq050,Where is torch.save called to persist model state_dict?,0,7187.45,,,,,0,0,,,,,
+acb62a29cc90,55a04c7c3ff0,synsc-context,code_qa,cq051,Where is pd.concat called with axis=1 to concatenate columns?,0,8470.68,,,,,0,0,,,,,
+acb62a29cc90,4e2d61da1bd7,synsc-context,code_qa,cq052,Where is numpy.einsum called for matrix operations?,0,7264.33,,,,,0,0,,,,,
+acb62a29cc90,81f683b4e183,synsc-context,code_qa,cq053,Where is requests.post called with json parameter for API calls?,0,5868.98,,,,,0,0,,,,,
+acb62a29cc90,a496aa1b01e1,synsc-context,code_qa,cq054,Where is Celery's apply_async called with countdown parameter?,0,7235.77,,,,,0,0,,,,,
+acb62a29cc90,fff453edeb0e,synsc-context,code_qa,cq055,Where is httpx.Client.send called with custom transport?,0,7456.13,,,,,0,0,,,,,
+acb62a29cc90,0d2e8676d056,synsc-context,code_qa,cq056,Where is LangChain's chain.invoke called with config parameter?,0,8261.42,,,,,0,0,,,,,
+acb62a29cc90,fbfb77aa5242,synsc-context,code_qa,cq057,Where is Django's reverse function called with kwargs?,0,6162.60,,,,,0,0,,,,,
+acb62a29cc90,f1ac7d56067a,synsc-context,code_qa,cq058,Where is app.add_middleware called in Starlette-based applications?,0,6238.09,,,,,0,0,,,,,
+acb62a29cc90,2b0572be1e02,synsc-context,code_qa,cq059,Where is aiohttp's session.get called with ssl=False?,0,7286.76,,,,,0,0,,,,,
+acb62a29cc90,b17555cba911,synsc-context,code_qa,cq060,Where is DataFrame.groupby called with as_index=False?,0,10009.88,,,,,0,0,,,,,
+acb62a29cc90,3dcd729572fb,synsc-context,code_qa,cq061,Where is torch.nn.CrossEntropyLoss called with label_smoothing?,0,7612.30,,,,,0,0,,,,,
+acb62a29cc90,7c6172609e44,synsc-context,code_qa,cq062,Where is SQLAlchemy's select function called with join for multi-table queries?,0,8585.20,,,,,0,0,,,,,
+acb62a29cc90,3d5fe6e1c8b1,synsc-context,code_qa,cq063,How is the embed_dim argument used in torch.nn.MultiheadAttention?,0,7799.75,,,,,0,0,,,,,
+acb62a29cc90,a9897a390874,synsc-context,code_qa,cq064,How is the on_delete argument used in Django ForeignKey fields?,0,6915.92,,,,,0,0,,,,,
+acb62a29cc90,c2d1a114da0a,synsc-context,code_qa,cq065,How is the strategy argument used in pandas DataFrame.fillna?,0,8721.43,,,,,0,0,,,,,
+acb62a29cc90,80768b7009e2,synsc-context,code_qa,cq066,How is the pool_size argument used in SQLAlchemy create_engine?,0,7711.32,,,,,0,0,,,,,
+acb62a29cc90,ff2e736e4125,synsc-context,code_qa,cq067,How is the verify argument used in requests.get for SSL?,0,6162.13,,,,,0,0,,,,,
+acb62a29cc90,f4b2e1039573,synsc-context,code_qa,cq068,How is the max_retries argument used in Celery task decorator?,0,6776.95,,,,,0,0,,,,,
+acb62a29cc90,ace11ccfa944,synsc-context,code_qa,cq069,How is the follow_redirects argument used in httpx requests?,0,6676.12,,,,,0,0,,,,,
+acb62a29cc90,4d48419cd73c,synsc-context,code_qa,cq070,How is the n_estimators argument used in sklearn RandomForestClassifier?,0,8571.58,,,,,0,0,,,,,
+acb62a29cc90,d6376951864f,synsc-context,code_qa,cq071,How is the temperature argument used in LangChain LLM calls?,0,7750.16,,,,,0,0,,,,,
+acb62a29cc90,68b524ce31f3,synsc-context,code_qa,cq072,How is the lifespan argument used in Starlette Application?,0,6707.34,,,,,0,0,,,,,
+acb62a29cc90,93d0e41ea013,synsc-context,code_qa,cq073,How is the trust_env argument used in aiohttp ClientSession?,0,7594.52,,,,,0,0,,,,,
+acb62a29cc90,011366dfeabf,synsc-context,code_qa,cq074,How is the dtype argument used in numpy zeros and ones?,0,11894.37,,,,,0,0,,,,,
+acb62a29cc90,b4fd54daeba9,synsc-context,code_qa,cq075,How is the status_code argument used in FastAPI Response classes?,0,7185.10,,,,,0,0,,,,,
+acb62a29cc90,068a1d037b48,synsc-context,code_qa,cq076,How is the mode argument used in Pydantic's model_validate?,0,8313.45,,,,,0,0,,,,,
+acb62a29cc90,391fe7241e5e,synsc-context,code_qa,cq077,How is the batch_size argument used in torch.utils.data.DataLoader?,0,7288.09,,,,,0,0,,,,,
+acb62a29cc90,17bd17aef63f,synsc-context,code_qa,cq078,What is the return type of Django QuerySet.values_list with flat=True?,0,7287.45,,,,,0,0,,,,,
+acb62a29cc90,adbd386dcd6e,synsc-context,code_qa,cq079,What is the return type of Flask's jsonify function?,0,6567.30,,,,,0,0,,,,,
+acb62a29cc90,f54e96cd3ceb,synsc-context,code_qa,cq080,What is the return type of SQLAlchemy Session.execute?,0,10153.95,,,,,0,0,,,,,
+acb62a29cc90,415328de92bc,synsc-context,code_qa,cq081,What is the return type of requests.Response.json()?,0,7862.10,,,,,0,0,,,,,
+acb62a29cc90,188c26f7d91d,synsc-context,code_qa,cq082,What is the return type of pandas DataFrame.describe?,0,11078.13,,,,,0,0,,,,,
+acb62a29cc90,5410f4ad9b23,synsc-context,code_qa,cq083,What is the return type of numpy.linalg.svd?,0,8800.91,,,,,0,0,,,,,
+acb62a29cc90,2d47494933e8,synsc-context,code_qa,cq084,What is the return type of torch.nn.Module.parameters()?,0,7493.02,,,,,0,0,,,,,
+acb62a29cc90,59238e43b8ac,synsc-context,code_qa,cq085,What is the return type of sklearn train_test_split?,0,8822.81,,,,,0,0,,,,,
+acb62a29cc90,3bc0fbe041ae,synsc-context,code_qa,cq086,What is the return type of httpx.Response.raise_for_status?,0,7079.88,,,,,0,0,,,,,
+acb62a29cc90,64e2881090d1,synsc-context,code_qa,cq087,What is the return type of Celery AsyncResult.get?,0,7186.49,,,,,0,0,,,,,
+acb62a29cc90,acb069272764,synsc-context,code_qa,cq088,What is the return type of LangChain's chain.invoke?,0,7286.11,,,,,0,0,,,,,
+acb62a29cc90,5f599ade7c12,synsc-context,code_qa,cq089,What classes inherit from Django's View class?,0,6575.01,,,,,0,0,,,,,
+acb62a29cc90,08525e882686,synsc-context,code_qa,cq090,What classes inherit from Flask's MethodView?,0,6773.89,,,,,0,0,,,,,
+acb62a29cc90,a1782464716e,synsc-context,code_qa,cq091,What classes inherit from SQLAlchemy's TypeDecorator?,0,7289.39,,,,,0,0,,,,,
+acb62a29cc90,86eb347d3ad1,synsc-context,code_qa,cq092,What classes inherit from torch.nn.Module in the nn package?,0,8517.57,,,,,0,0,,,,,
+acb62a29cc90,ae1eefa0f41f,synsc-context,code_qa,cq093,What classes inherit from sklearn's TransformerMixin?,0,7901.78,,,,,0,0,,,,,
+acb62a29cc90,e0a30e160f7a,synsc-context,code_qa,cq094,What classes inherit from Pydantic BaseModel in the pydantic package itself?,0,8003.31,,,,,0,0,,,,,
+acb62a29cc90,1a37a2523c40,synsc-context,code_qa,cq095,What classes inherit from Starlette's HTTPEndpoint?,0,6949.84,,,,,0,0,,,,,
+acb62a29cc90,e1b1127a43cd,synsc-context,code_qa,cq096,What classes inherit from aiohttp's AbstractView?,0,7081.14,,,,,0,0,,,,,
+acb62a29cc90,44ec7dd11817,synsc-context,code_qa,cq097,What classes inherit from LangChain's BaseRetriever?,0,6060.31,,,,,0,0,,,,,
+acb62a29cc90,de3df5afdc93,synsc-context,code_qa,cq098,What classes inherit from pandas ExtensionArray?,0,7801.79,,,,,0,0,,,,,
+acb62a29cc90,6b1c9695181a,synsc-context,code_qa,cq099,What classes inherit from Celery's Task base class?,0,7388.16,,,,,0,0,,,,,
+acb62a29cc90,ace7b30ec016,synsc-context,code_qa,cq100,Where is Django's path function imported from in URL configurations?,0,6265.06,,,,,0,0,,,,,
+acb62a29cc90,25198d465b7c,nia,code_qa,cq001,Where is the FastAPI class defined and what parameters does its __init__ accept?,0,1576.19,,,,,0,0,,,,,
+acb62a29cc90,fe4a516cab59,nia,code_qa,cq002,Where is HTTPException raised with a 404 status code?,0,1260.62,,,,,0,0,,,,,
+acb62a29cc90,5afefbe85bca,nia,code_qa,cq003,What classes inherit from BaseModel in the FastAPI codebase?,0,1623.57,,,,,0,0,,,,,
+acb62a29cc90,3c5abc3a3a6d,nia,code_qa,cq004,Where is the Depends function defined and how does it resolve dependencies?,0,1505.57,,,,,0,0,,,,,
+acb62a29cc90,3b3689afc6b1,nia,code_qa,cq005,Where is AsyncClient instantiated with http2=True?,0,1470.06,,,,,0,0,,,,,
+acb62a29cc90,5ef3a0659e2c,nia,code_qa,cq006,What does the field_validator decorator do in Pydantic v2 and where is it defined?,0,1647.91,,,,,0,0,,,,,
+acb62a29cc90,3ae723d411fc,nia,code_qa,cq007,Where is the Timeout class used with custom connect and read values?,0,1356.98,,,,,0,0,,,,,
+acb62a29cc90,573948f63e2d,nia,code_qa,cq008,What is the return type of the model_dump method in Pydantic BaseModel?,0,1381.89,,,,,0,0,,,,,
+acb62a29cc90,d1781f7167b3,nia,code_qa,cq009,Where is jsonable_encoder imported and used in FastAPI?,0,1269.57,,,,,0,0,,,,,
+acb62a29cc90,f19e3a84d7d6,nia,code_qa,cq010,Where is response_model used as a parameter in FastAPI route decorators?,0,1181.87,,,,,0,0,,,,,
+acb62a29cc90,627f89169356,nia,code_qa,cq011,Where is the Router.add_api_route method defined and what decorators does it support?,0,1432.23,,,,,0,0,,,,,
+acb62a29cc90,5ada880243f7,nia,code_qa,cq012,Where is CORSMiddleware added to the app with allow_credentials=True?,0,1240.52,,,,,0,0,,,,,
+acb62a29cc90,b2554d1dae63,nia,code_qa,cq013,What is the complete signature of httpx.AsyncClient.__init__?,0,1582.50,,,,,0,0,,,,,
+acb62a29cc90,244f86fa977a,nia,code_qa,cq014,Where does Pydantic raise ValidationError and what fields does the error contain?,0,1593.96,,,,,0,0,,,,,
+acb62a29cc90,6a688fa4ad0d,nia,code_qa,cq015,Where is the @app.on_event startup handler used and what has replaced it in newer FastAPI?,0,1398.95,,,,,0,0,,,,,
+acb62a29cc90,73974e27e1bb,nia,code_qa,cq016,Where is the Django Model class defined and what metaclass does it use?,0,1290.52,,,,,0,0,,,,,
+acb62a29cc90,46a54af4ac19,nia,code_qa,cq017,Where is the Flask class constructor defined and what parameters does it accept?,0,1398.09,,,,,0,0,,,,,
+acb62a29cc90,387f51dcc242,nia,code_qa,cq018,Where is the SQLAlchemy create_engine function defined?,0,1520.01,,,,,0,0,,,,,
+acb62a29cc90,87524e40f1c2,nia,code_qa,cq019,How is torch.nn.Module.__init__ defined and what does it initialize?,0,1273.63,,,,,0,0,,,,,
+acb62a29cc90,49d9aee2b362,nia,code_qa,cq020,Where is pandas.DataFrame.__init__ defined and what parameters does it accept?,0,1563.84,,,,,0,0,,,,,
+acb62a29cc90,d5d6067d423f,nia,code_qa,cq021,Where is numpy.ndarray defined as a class?,0,1480.12,,,,,0,0,,,,,
+acb62a29cc90,6c59c1fd47ff,nia,code_qa,cq022,Where is the requests.Session class defined and what methods does it expose?,0,1334.91,,,,,0,0,,,,,
+acb62a29cc90,a14d1c6a85b9,nia,code_qa,cq023,Where is the Celery class defined and what does its __init__ accept?,0,1431.62,,,,,0,0,,,,,
+acb62a29cc90,2d32b32ddb4e,nia,code_qa,cq024,Where is the Starlette class defined and how does it differ from FastAPI?,0,1297.66,,,,,0,0,,,,,
+acb62a29cc90,301323a7ffd9,nia,code_qa,cq025,Where is aiohttp.ClientSession defined and what parameters does __init__ accept?,0,1336.08,,,,,0,0,,,,,
+acb62a29cc90,6a5cb5e44fd9,nia,code_qa,cq026,Where is sklearn.base.BaseEstimator defined and what mixin methods does it provide?,0,1627.74,,,,,0,0,,,,,
+acb62a29cc90,6e9f77239067,nia,code_qa,cq027,Where is the LangChain BaseLLM class defined?,0,1230.73,,,,,0,0,,,,,
+acb62a29cc90,4b749ab8120b,nia,code_qa,cq028,Where is the Django QuerySet.filter method defined?,0,1360.50,,,,,0,0,,,,,
+acb62a29cc90,30b872f6e29b,nia,code_qa,cq029,Where is the Flask route decorator defined?,0,1332.45,,,,,0,0,,,,,
+acb62a29cc90,db453a945d63,nia,code_qa,cq030,Where is SQLAlchemy's Column class defined and what arguments does it accept?,0,1530.21,,,,,0,0,,,,,
+acb62a29cc90,c9170052f6bb,nia,code_qa,cq031,Where is torch.Tensor defined and what are its core attributes?,0,1343.36,,,,,0,0,,,,,
+acb62a29cc90,93c8e17da8fa,nia,code_qa,cq032,Where is the pandas read_csv function defined?,0,1576.62,,,,,0,0,,,,,
+acb62a29cc90,ce73e3cad304,nia,code_qa,cq033,Where is numpy.array function defined?,0,1330.90,,,,,0,0,,,,,
+acb62a29cc90,60893291e2f1,nia,code_qa,cq034,Where is requests.get defined and what parameters does it accept?,0,1297.92,,,,,0,0,,,,,
+acb62a29cc90,c25251a5b56c,nia,code_qa,cq035,Where is the httpx.Response class defined?,0,1389.80,,,,,0,0,,,,,
+acb62a29cc90,a77f7f584bf7,nia,code_qa,cq036,Where is the Pydantic ConfigDict defined and what keys does it accept?,0,965.12,,,,,0,0,,,,,
+acb62a29cc90,4f76bd41e71e,nia,code_qa,cq037,Where is the LangChain ChatPromptTemplate class defined?,0,1302.57,,,,,0,0,,,,,
+acb62a29cc90,bb06d02827f3,nia,code_qa,cq038,Where is the Django URLPattern class defined?,0,1370.88,,,,,0,0,,,,,
+acb62a29cc90,907b19ab25bd,nia,code_qa,cq039,Where is sklearn.pipeline.Pipeline defined and what does __init__ accept?,0,1587.74,,,,,0,0,,,,,
+acb62a29cc90,cea2a16dacf8,nia,code_qa,cq040,Where is the Celery task decorator defined?,0,1315.48,,,,,0,0,,,,,
+acb62a29cc90,1f8a86bdd3c5,nia,code_qa,cq041,Where is SQLAlchemy's relationship function defined?,0,1295.00,,,,,0,0,,,,,
+acb62a29cc90,4097bc2ce433,nia,code_qa,cq042,Where is the Starlette Request class defined?,0,1351.37,,,,,0,0,,,,,
+acb62a29cc90,f3d7ff49186d,nia,code_qa,cq043,Where is aiohttp's web.Application class defined?,0,1581.09,,,,,0,0,,,,,
+acb62a29cc90,aa5bb248645c,nia,code_qa,cq044,Where is torch.optim.Adam defined and what hyperparameters does it accept?,0,1290.70,,,,,0,0,,,,,
+acb62a29cc90,bdc473e4784d,nia,code_qa,cq045,Where is pandas.DataFrame.merge defined?,0,1241.61,,,,,0,0,,,,,
+acb62a29cc90,5a88fdd61c46,nia,code_qa,cq046,Where is Django's authenticate function called with username and password?,0,1307.97,,,,,0,0,,,,,
+acb62a29cc90,f26057b1f015,nia,code_qa,cq047,Where is Flask's render_template called with context variables?,0,1320.77,,,,,0,0,,,,,
+acb62a29cc90,5efdc293540e,nia,code_qa,cq048,Where is session.execute called with a select statement in SQLAlchemy?,0,1340.41,,,,,0,0,,,,,
+acb62a29cc90,527120da68f8,nia,code_qa,cq049,Where is model.fit called in scikit-learn with X_train and y_train?,0,1265.53,,,,,0,0,,,,,
+acb62a29cc90,e4850677c41d,nia,code_qa,cq050,Where is torch.save called to persist model state_dict?,0,1471.55,,,,,0,0,,,,,
+acb62a29cc90,98f77106bda5,nia,code_qa,cq051,Where is pd.concat called with axis=1 to concatenate columns?,0,1478.28,,,,,0,0,,,,,
+acb62a29cc90,a912debf6ce8,nia,code_qa,cq052,Where is numpy.einsum called for matrix operations?,0,1402.76,,,,,0,0,,,,,
+acb62a29cc90,fcffe53bcd06,nia,code_qa,cq053,Where is requests.post called with json parameter for API calls?,0,1321.98,,,,,0,0,,,,,
+acb62a29cc90,8a208a6c5aec,nia,code_qa,cq054,Where is Celery's apply_async called with countdown parameter?,0,1412.48,,,,,0,0,,,,,
+acb62a29cc90,7dba4c38347e,nia,code_qa,cq055,Where is httpx.Client.send called with custom transport?,0,2107.83,,,,,0,0,,,,,
+acb62a29cc90,f2340b21f8b2,nia,code_qa,cq056,Where is LangChain's chain.invoke called with config parameter?,0,1296.83,,,,,0,0,,,,,
+acb62a29cc90,def3c140b380,nia,code_qa,cq057,Where is Django's reverse function called with kwargs?,0,1391.50,,,,,0,0,,,,,
+acb62a29cc90,95c209ef69aa,nia,code_qa,cq058,Where is app.add_middleware called in Starlette-based applications?,0,1361.68,,,,,0,0,,,,,
+acb62a29cc90,e181014185d4,nia,code_qa,cq059,Where is aiohttp's session.get called with ssl=False?,0,1454.84,,,,,0,0,,,,,
+acb62a29cc90,4ddaecba8dd5,nia,code_qa,cq060,Where is DataFrame.groupby called with as_index=False?,0,1319.13,,,,,0,0,,,,,
+acb62a29cc90,93bf37e36c26,nia,code_qa,cq061,Where is torch.nn.CrossEntropyLoss called with label_smoothing?,0,1355.16,,,,,0,0,,,,,
+acb62a29cc90,2045eb14c4f7,nia,code_qa,cq062,Where is SQLAlchemy's select function called with join for multi-table queries?,0,1385.32,,,,,0,0,,,,,
+acb62a29cc90,074e8495944c,nia,code_qa,cq063,How is the embed_dim argument used in torch.nn.MultiheadAttention?,0,1312.96,,,,,0,0,,,,,
+acb62a29cc90,4a87f7f79bbb,nia,code_qa,cq064,How is the on_delete argument used in Django ForeignKey fields?,0,1266.42,,,,,0,0,,,,,
+acb62a29cc90,451fa1cfe6f8,nia,code_qa,cq065,How is the strategy argument used in pandas DataFrame.fillna?,0,1375.06,,,,,0,0,,,,,
+acb62a29cc90,bae2cf980796,nia,code_qa,cq066,How is the pool_size argument used in SQLAlchemy create_engine?,0,1307.29,,,,,0,0,,,,,
+acb62a29cc90,b4c285f55ebf,nia,code_qa,cq067,How is the verify argument used in requests.get for SSL?,0,1463.24,,,,,0,0,,,,,
+acb62a29cc90,89981e6e2cab,nia,code_qa,cq068,How is the max_retries argument used in Celery task decorator?,0,1286.03,,,,,0,0,,,,,
+acb62a29cc90,73b48712fb4a,nia,code_qa,cq069,How is the follow_redirects argument used in httpx requests?,0,1621.17,,,,,0,0,,,,,
+acb62a29cc90,f35ce757a075,nia,code_qa,cq070,How is the n_estimators argument used in sklearn RandomForestClassifier?,0,1425.97,,,,,0,0,,,,,
+acb62a29cc90,38300d935a3a,nia,code_qa,cq071,How is the temperature argument used in LangChain LLM calls?,0,1311.53,,,,,0,0,,,,,
+acb62a29cc90,af29ed51336d,nia,code_qa,cq072,How is the lifespan argument used in Starlette Application?,0,1518.80,,,,,0,0,,,,,
+acb62a29cc90,ef3f9c14d16d,nia,code_qa,cq073,How is the trust_env argument used in aiohttp ClientSession?,0,1260.07,,,,,0,0,,,,,
+acb62a29cc90,677e640a1e6e,nia,code_qa,cq074,How is the dtype argument used in numpy zeros and ones?,0,2185.56,,,,,0,0,,,,,
+acb62a29cc90,8495108e382b,nia,code_qa,cq075,How is the status_code argument used in FastAPI Response classes?,0,1336.76,,,,,0,0,,,,,
+acb62a29cc90,f23dafbf2384,nia,code_qa,cq076,How is the mode argument used in Pydantic's model_validate?,0,1497.75,,,,,0,0,,,,,
+acb62a29cc90,3766a6fbc589,nia,code_qa,cq077,How is the batch_size argument used in torch.utils.data.DataLoader?,0,1296.69,,,,,0,0,,,,,
+acb62a29cc90,cb374482f5f4,nia,code_qa,cq078,What is the return type of Django QuerySet.values_list with flat=True?,0,1308.99,,,,,0,0,,,,,
+acb62a29cc90,5bcda66f91a7,nia,code_qa,cq079,What is the return type of Flask's jsonify function?,0,1559.63,,,,,0,0,,,,,
+acb62a29cc90,e5ff6e00a3b5,nia,code_qa,cq080,What is the return type of SQLAlchemy Session.execute?,0,1547.42,,,,,0,0,,,,,
+acb62a29cc90,3e8a7eab9467,nia,code_qa,cq081,What is the return type of requests.Response.json()?,0,1700.52,,,,,0,0,,,,,
+acb62a29cc90,c9822aeb1689,nia,code_qa,cq082,What is the return type of pandas DataFrame.describe?,0,1295.45,,,,,0,0,,,,,
+acb62a29cc90,8832ab8efa29,nia,code_qa,cq083,What is the return type of numpy.linalg.svd?,0,1628.54,,,,,0,0,,,,,
+acb62a29cc90,5c92b33e7aba,nia,code_qa,cq084,What is the return type of torch.nn.Module.parameters()?,0,1514.32,,,,,0,0,,,,,
+acb62a29cc90,3a54a2db0eaf,nia,code_qa,cq085,What is the return type of sklearn train_test_split?,0,968.28,,,,,0,0,,,,,
+acb62a29cc90,59e6edc5ce50,nia,code_qa,cq086,What is the return type of httpx.Response.raise_for_status?,0,1330.12,,,,,0,0,,,,,
+acb62a29cc90,5f235b2df319,nia,code_qa,cq087,What is the return type of Celery AsyncResult.get?,0,1511.28,,,,,0,0,,,,,
+acb62a29cc90,3e0e3a7cbce8,nia,code_qa,cq088,What is the return type of LangChain's chain.invoke?,0,1583.35,,,,,0,0,,,,,
+acb62a29cc90,95b5d5b22bdf,nia,code_qa,cq089,What classes inherit from Django's View class?,0,1232.24,,,,,0,0,,,,,
+acb62a29cc90,b778b992e123,nia,code_qa,cq090,What classes inherit from Flask's MethodView?,0,1377.36,,,,,0,0,,,,,
+acb62a29cc90,0a8d530739f0,nia,code_qa,cq091,What classes inherit from SQLAlchemy's TypeDecorator?,0,1408.43,,,,,0,0,,,,,
+acb62a29cc90,82fe5e234d9a,nia,code_qa,cq092,What classes inherit from torch.nn.Module in the nn package?,0,1572.23,,,,,0,0,,,,,
+acb62a29cc90,62d0fb14bd00,nia,code_qa,cq093,What classes inherit from sklearn's TransformerMixin?,0,1346.22,,,,,0,0,,,,,
+acb62a29cc90,d13320f59526,nia,code_qa,cq094,What classes inherit from Pydantic BaseModel in the pydantic package itself?,0,1320.07,,,,,0,0,,,,,
+acb62a29cc90,f0b73b5fb586,nia,code_qa,cq095,What classes inherit from Starlette's HTTPEndpoint?,0,1643.47,,,,,0,0,,,,,
+acb62a29cc90,cece23c75518,nia,code_qa,cq096,What classes inherit from aiohttp's AbstractView?,0,1291.33,,,,,0,0,,,,,
+acb62a29cc90,0511ddd7aeef,nia,code_qa,cq097,What classes inherit from LangChain's BaseRetriever?,0,1356.18,,,,,0,0,,,,,
+acb62a29cc90,fb8a306adae5,nia,code_qa,cq098,What classes inherit from pandas ExtensionArray?,0,1340.72,,,,,0,0,,,,,
+acb62a29cc90,630c44baeffc,nia,code_qa,cq099,What classes inherit from Celery's Task base class?,0,1200.99,,,,,0,0,,,,,
+acb62a29cc90,1444d9fb1659,nia,code_qa,cq100,Where is Django's path function imported from in URL configurations?,0,1484.11,,,,,0,0,,,,,
+acb62a29cc90,7f115853c5ab,context7,code_qa,cq001,Where is the FastAPI class defined and what parameters does its __init__ accept?,0,2996.00,,,,,0,0,,,,,
+acb62a29cc90,6507d0de1e0f,context7,code_qa,cq002,Where is HTTPException raised with a 404 status code?,0,0.00,,,,,0,0,,,,,
+acb62a29cc90,1cc3f2787f43,context7,code_qa,cq003,What classes inherit from BaseModel in the FastAPI codebase?,0,2443.58,,,,,0,0,,,,,
+acb62a29cc90,c7b58c104b45,context7,code_qa,cq004,Where is the Depends function defined and how does it resolve dependencies?,0,0.00,,,,,0,0,,,,,
+acb62a29cc90,0a4aa9846a48,context7,code_qa,cq005,Where is AsyncClient instantiated with http2=True?,0,0.00,,,,,0,0,,,,,
+acb62a29cc90,5e8e55a72eaf,context7,code_qa,cq006,What does the field_validator decorator do in Pydantic v2 and where is it defined?,0,2992.06,,,,,0,0,,,,,
+acb62a29cc90,2250479173fc,context7,code_qa,cq007,Where is the Timeout class used with custom connect and read values?,0,0.00,,,,,0,0,,,,,
+acb62a29cc90,57d7b2017a55,context7,code_qa,cq008,What is the return type of the model_dump method in Pydantic BaseModel?,0,2664.22,,,,,0,0,,,,,
+acb62a29cc90,0007b93ba3ae,context7,code_qa,cq009,Where is jsonable_encoder imported and used in FastAPI?,0,2575.04,,,,,0,0,,,,,
+acb62a29cc90,a588f5fc72b2,context7,code_qa,cq010,Where is response_model used as a parameter in FastAPI route decorators?,0,2757.44,,,,,0,0,,,,,
+acb62a29cc90,40ab2330fa11,context7,code_qa,cq011,Where is the Router.add_api_route method defined and what decorators does it support?,0,0.00,,,,,0,0,,,,,
+acb62a29cc90,5f0c5e524ffd,context7,code_qa,cq012,Where is CORSMiddleware added to the app with allow_credentials=True?,0,0.00,,,,,0,0,,,,,
+acb62a29cc90,54454ca22992,context7,code_qa,cq013,What is the complete signature of httpx.AsyncClient.__init__?,0,2995.49,,,,,0,0,,,,,
+acb62a29cc90,8b762f0803c0,context7,code_qa,cq014,Where does Pydantic raise ValidationError and what fields does the error contain?,0,3402.20,,,,,0,0,,,,,
+acb62a29cc90,1aec5f94390d,context7,code_qa,cq015,Where is the @app.on_event startup handler used and what has replaced it in newer FastAPI?,0,2883.74,,,,,0,0,,,,,
+acb62a29cc90,278ecb9f4dd6,context7,code_qa,cq016,Where is the Django Model class defined and what metaclass does it use?,0,2172.52,,,,,0,0,,,,,
+acb62a29cc90,84b1c96c33ff,context7,code_qa,cq017,Where is the Flask class constructor defined and what parameters does it accept?,0,2704.02,,,,,0,0,,,,,
+acb62a29cc90,5053e771cb50,context7,code_qa,cq018,Where is the SQLAlchemy create_engine function defined?,0,2671.18,,,,,0,0,,,,,
+acb62a29cc90,ce0d4b597fbb,context7,code_qa,cq019,How is torch.nn.Module.__init__ defined and what does it initialize?,0,0.00,,,,,0,0,,,,,
+acb62a29cc90,6b7cc40c105a,context7,code_qa,cq020,Where is pandas.DataFrame.__init__ defined and what parameters does it accept?,0,2784.51,,,,,0,0,,,,,
+acb62a29cc90,fd68105d27b8,context7,code_qa,cq021,Where is numpy.ndarray defined as a class?,0,3707.97,,,,,0,0,,,,,
+acb62a29cc90,298f690c1734,context7,code_qa,cq022,Where is the requests.Session class defined and what methods does it expose?,0,2291.91,,,,,0,0,,,,,
+acb62a29cc90,70b86f46e761,context7,code_qa,cq023,Where is the Celery class defined and what does its __init__ accept?,0,0.00,,,,,0,0,,,,,
+acb62a29cc90,27f6f1359a7a,context7,code_qa,cq024,Where is the Starlette class defined and how does it differ from FastAPI?,0,2479.16,,,,,0,0,,,,,
+acb62a29cc90,a40d6fd57848,context7,code_qa,cq025,Where is aiohttp.ClientSession defined and what parameters does __init__ accept?,0,0.00,,,,,0,0,,,,,
+acb62a29cc90,bbaa44be3595,context7,code_qa,cq026,Where is sklearn.base.BaseEstimator defined and what mixin methods does it provide?,0,0.00,,,,,0,0,,,,,
+acb62a29cc90,5632e59750b2,context7,code_qa,cq027,Where is the LangChain BaseLLM class defined?,0,4886.79,,,,,0,0,,,,,
+acb62a29cc90,ae2744fdf80c,context7,code_qa,cq028,Where is the Django QuerySet.filter method defined?,0,2215.08,,,,,0,0,,,,,
+acb62a29cc90,e62030e8b20e,context7,code_qa,cq029,Where is the Flask route decorator defined?,0,2777.60,,,,,0,0,,,,,
+acb62a29cc90,6a3be11b9e4a,context7,code_qa,cq030,Where is SQLAlchemy's Column class defined and what arguments does it accept?,0,2680.27,,,,,0,0,,,,,
+acb62a29cc90,439e399fa5f3,context7,code_qa,cq031,Where is torch.Tensor defined and what are its core attributes?,0,0.00,,,,,0,0,,,,,
+acb62a29cc90,b75c5b7b3f03,context7,code_qa,cq032,Where is the pandas read_csv function defined?,0,3504.17,,,,,0,0,,,,,
+acb62a29cc90,642df2c621b0,context7,code_qa,cq033,Where is numpy.array function defined?,0,2744.61,,,,,0,0,,,,,
+acb62a29cc90,f01818893256,context7,code_qa,cq034,Where is requests.get defined and what parameters does it accept?,0,2066.73,,,,,0,0,,,,,
+acb62a29cc90,45fcb006e594,context7,code_qa,cq035,Where is the httpx.Response class defined?,0,2281.19,,,,,0,0,,,,,
+acb62a29cc90,eb300e4bb244,context7,code_qa,cq036,Where is the Pydantic ConfigDict defined and what keys does it accept?,0,2493.40,,,,,0,0,,,,,
+acb62a29cc90,42c5c1b5b00b,context7,code_qa,cq037,Where is the LangChain ChatPromptTemplate class defined?,0,3811.55,,,,,0,0,,,,,
+acb62a29cc90,9e37bdfdd011,context7,code_qa,cq038,Where is the Django URLPattern class defined?,0,2276.17,,,,,0,0,,,,,
+acb62a29cc90,7bbda9973734,context7,code_qa,cq039,Where is sklearn.pipeline.Pipeline defined and what does __init__ accept?,0,0.00,,,,,0,0,,,,,
+acb62a29cc90,2424d599fb97,context7,code_qa,cq040,Where is the Celery task decorator defined?,0,0.00,,,,,0,0,,,,,
+acb62a29cc90,c5ff993d23c3,context7,code_qa,cq041,Where is SQLAlchemy's relationship function defined?,0,2176.52,,,,,0,0,,,,,
+acb62a29cc90,f5866d9e19af,context7,code_qa,cq042,Where is the Starlette Request class defined?,0,2283.66,,,,,0,0,,,,,
+acb62a29cc90,573b63239038,context7,code_qa,cq043,Where is aiohttp's web.Application class defined?,0,0.00,,,,,0,0,,,,,
+acb62a29cc90,18d6986bdcf5,context7,code_qa,cq044,Where is torch.optim.Adam defined and what hyperparameters does it accept?,0,0.00,,,,,0,0,,,,,
+acb62a29cc90,f53489b06d65,context7,code_qa,cq045,Where is pandas.DataFrame.merge defined?,0,3031.20,,,,,0,0,,,,,
+acb62a29cc90,ac59ec3acc1e,context7,code_qa,cq046,Where is Django's authenticate function called with username and password?,0,1838.23,,,,,0,0,,,,,
+acb62a29cc90,77eda7020f3f,context7,code_qa,cq047,Where is Flask's render_template called with context variables?,0,2479.49,,,,,0,0,,,,,
+acb62a29cc90,40cb019d795e,context7,code_qa,cq048,Where is session.execute called with a select statement in SQLAlchemy?,0,2840.79,,,,,0,0,,,,,
+acb62a29cc90,2f452ae6f5dc,context7,code_qa,cq049,Where is model.fit called in scikit-learn with X_train and y_train?,0,0.00,,,,,0,0,,,,,
+acb62a29cc90,11996f5df622,context7,code_qa,cq050,Where is torch.save called to persist model state_dict?,0,0.00,,,,,0,0,,,,,
+acb62a29cc90,2f2d3c48fa4a,context7,code_qa,cq051,Where is pd.concat called with axis=1 to concatenate columns?,0,0.00,,,,,0,0,,,,,
+acb62a29cc90,7e457d84255b,context7,code_qa,cq052,Where is numpy.einsum called for matrix operations?,0,2786.40,,,,,0,0,,,,,
+acb62a29cc90,271a54e537da,context7,code_qa,cq053,Where is requests.post called with json parameter for API calls?,0,2383.05,,,,,0,0,,,,,
+acb62a29cc90,820124e35dd8,context7,code_qa,cq054,Where is Celery's apply_async called with countdown parameter?,0,0.00,,,,,0,0,,,,,
+acb62a29cc90,d3fbec2def06,context7,code_qa,cq055,Where is httpx.Client.send called with custom transport?,0,2733.00,,,,,0,0,,,,,
+acb62a29cc90,9824163a8e0f,context7,code_qa,cq056,Where is LangChain's chain.invoke called with config parameter?,0,4062.30,,,,,0,0,,,,,
+acb62a29cc90,d82b06dec8af,context7,code_qa,cq057,Where is Django's reverse function called with kwargs?,0,2932.74,,,,,0,0,,,,,
+acb62a29cc90,74ab68d9fadf,context7,code_qa,cq058,Where is app.add_middleware called in Starlette-based applications?,0,2959.70,,,,,0,0,,,,,
+acb62a29cc90,e8028bf49c69,context7,code_qa,cq059,Where is aiohttp's session.get called with ssl=False?,0,0.00,,,,,0,0,,,,,
+acb62a29cc90,9ab81a7f7037,context7,code_qa,cq060,Where is DataFrame.groupby called with as_index=False?,0,0.00,,,,,0,0,,,,,
+acb62a29cc90,c62ad8fd4c08,context7,code_qa,cq061,Where is torch.nn.CrossEntropyLoss called with label_smoothing?,0,0.00,,,,,0,0,,,,,
+acb62a29cc90,2545e6f843ea,context7,code_qa,cq062,Where is SQLAlchemy's select function called with join for multi-table queries?,0,2888.69,,,,,0,0,,,,,
+acb62a29cc90,f9378d78ff49,context7,code_qa,cq063,How is the embed_dim argument used in torch.nn.MultiheadAttention?,0,0.00,,,,,0,0,,,,,
+acb62a29cc90,2e540c1f9fc2,context7,code_qa,cq064,How is the on_delete argument used in Django ForeignKey fields?,0,2434.74,,,,,0,0,,,,,
+acb62a29cc90,d3a1661e61e8,context7,code_qa,cq065,How is the strategy argument used in pandas DataFrame.fillna?,0,2548.57,,,,,0,0,,,,,
+acb62a29cc90,42619c49e192,context7,code_qa,cq066,How is the pool_size argument used in SQLAlchemy create_engine?,0,2171.87,,,,,0,0,,,,,
+acb62a29cc90,3acdff648f53,context7,code_qa,cq067,How is the verify argument used in requests.get for SSL?,0,2679.54,,,,,0,0,,,,,
+acb62a29cc90,6856c5733275,context7,code_qa,cq068,How is the max_retries argument used in Celery task decorator?,0,0.00,,,,,0,0,,,,,
+acb62a29cc90,302de75ead97,context7,code_qa,cq069,How is the follow_redirects argument used in httpx requests?,0,2269.36,,,,,0,0,,,,,
+acb62a29cc90,bc1d8d755150,context7,code_qa,cq070,How is the n_estimators argument used in sklearn RandomForestClassifier?,0,0.00,,,,,0,0,,,,,
+acb62a29cc90,304ab4486c30,context7,code_qa,cq071,How is the temperature argument used in LangChain LLM calls?,0,5036.82,,,,,0,0,,,,,
+acb62a29cc90,3df9eeba9b38,context7,code_qa,cq072,How is the lifespan argument used in Starlette Application?,0,2329.91,,,,,0,0,,,,,
+acb62a29cc90,c01814814965,context7,code_qa,cq073,How is the trust_env argument used in aiohttp ClientSession?,0,0.00,,,,,0,0,,,,,
+acb62a29cc90,bbbc697f474f,context7,code_qa,cq074,How is the dtype argument used in numpy zeros and ones?,0,2762.87,,,,,0,0,,,,,
+acb62a29cc90,468b614c31f3,context7,code_qa,cq075,How is the status_code argument used in FastAPI Response classes?,0,2888.31,,,,,0,0,,,,,
+acb62a29cc90,a1b665b3fb99,context7,code_qa,cq076,How is the mode argument used in Pydantic's model_validate?,0,2143.22,,,,,0,0,,,,,
+acb62a29cc90,20e4eb723720,context7,code_qa,cq077,How is the batch_size argument used in torch.utils.data.DataLoader?,0,0.00,,,,,0,0,,,,,
+acb62a29cc90,e0d9c52148b4,context7,code_qa,cq078,What is the return type of Django QuerySet.values_list with flat=True?,0,2622.20,,,,,0,0,,,,,
+acb62a29cc90,afb96f273eef,context7,code_qa,cq079,What is the return type of Flask's jsonify function?,0,2673.60,,,,,0,0,,,,,
+acb62a29cc90,953609574813,context7,code_qa,cq080,What is the return type of SQLAlchemy Session.execute?,0,2686.20,,,,,0,0,,,,,
+acb62a29cc90,4c06a57ab9a1,context7,code_qa,cq081,What is the return type of requests.Response.json()?,0,2661.65,,,,,0,0,,,,,
+acb62a29cc90,5bafe48e7099,context7,code_qa,cq082,What is the return type of pandas DataFrame.describe?,0,2635.88,,,,,0,0,,,,,
+acb62a29cc90,33757a5bc0d1,context7,code_qa,cq083,What is the return type of numpy.linalg.svd?,0,2542.69,,,,,0,0,,,,,
+acb62a29cc90,cd23c1d3c0b5,context7,code_qa,cq084,What is the return type of torch.nn.Module.parameters()?,0,0.00,,,,,0,0,,,,,
+acb62a29cc90,574953334af1,context7,code_qa,cq085,What is the return type of sklearn train_test_split?,0,0.00,,,,,0,0,,,,,
+acb62a29cc90,c8303b0db759,context7,code_qa,cq086,What is the return type of httpx.Response.raise_for_status?,0,3174.92,,,,,0,0,,,,,
+acb62a29cc90,12ec211f12e4,context7,code_qa,cq087,What is the return type of Celery AsyncResult.get?,0,0.00,,,,,0,0,,,,,
+acb62a29cc90,a4eb4dea1475,context7,code_qa,cq088,What is the return type of LangChain's chain.invoke?,0,4393.15,,,,,0,0,,,,,
+acb62a29cc90,6c52c385d2a4,context7,code_qa,cq089,What classes inherit from Django's View class?,0,2445.52,,,,,0,0,,,,,
+acb62a29cc90,4b3fd6799706,context7,code_qa,cq090,What classes inherit from Flask's MethodView?,0,2361.55,,,,,0,0,,,,,
+acb62a29cc90,5f834591043b,context7,code_qa,cq091,What classes inherit from SQLAlchemy's TypeDecorator?,0,2634.17,,,,,0,0,,,,,
+acb62a29cc90,98dd41a2983c,context7,code_qa,cq092,What classes inherit from torch.nn.Module in the nn package?,0,0.00,,,,,0,0,,,,,
+acb62a29cc90,d239a08fcd49,context7,code_qa,cq093,What classes inherit from sklearn's TransformerMixin?,0,0.00,,,,,0,0,,,,,
+acb62a29cc90,9d55a375e76f,context7,code_qa,cq094,What classes inherit from Pydantic BaseModel in the pydantic package itself?,0,3781.84,,,,,0,0,,,,,
+acb62a29cc90,36d0b70f24bc,context7,code_qa,cq095,What classes inherit from Starlette's HTTPEndpoint?,0,3036.10,,,,,0,0,,,,,
+acb62a29cc90,319106b4d19b,context7,code_qa,cq096,What classes inherit from aiohttp's AbstractView?,0,0.00,,,,,0,0,,,,,
+acb62a29cc90,71643b46daa9,context7,code_qa,cq097,What classes inherit from LangChain's BaseRetriever?,0,4374.18,,,,,0,0,,,,,
+acb62a29cc90,52f162c66052,context7,code_qa,cq098,What classes inherit from pandas ExtensionArray?,0,2467.73,,,,,0,0,,,,,
+acb62a29cc90,1f294375d1ac,context7,code_qa,cq099,What classes inherit from Celery's Task base class?,0,0.00,,,,,0,0,,,,,
+acb62a29cc90,d91ebcc70e2a,context7,code_qa,cq100,Where is Django's path function imported from in URL configurations?,0,3121.45,,,,,0,0,,,,,

@@ -256,6 +256,7 @@ async def run_hallucination_benchmark(
     llm_provider: str,
     llm_model: str,
     llm_api_key: str,
+    max_queries: int | None = None,
 ) -> HallucinationBenchmarkResult:
     """Run the full hallucination benchmark against one engine.
 
@@ -265,6 +266,8 @@ async def run_hallucination_benchmark(
     3. Validate generated code against ground truth
     """
     results: list[HallucinationResult] = []
+    if max_queries is not None:
+        test_cases = test_cases[:max_queries]
 
     for tc in tqdm(test_cases, desc=f"  {engine.name} hallucination", unit="q"):
         # Step 1: Get context from the engine

@@ -1,0 +1,182 @@
+{
+  "metadata": {
+    "run_id": "acb62a29cc90",
+    "timestamp": "2026-03-15T19:42:37.914826+00:00",
+    "git_commit": "fd241d895ac7",
+    "git_branch": "main",
+    "git_dirty": true,
+    "python_version": "3.12.12",
+    "platform": "Linux",
+    "platform_version": "6.19.6-arch1-1",
+    "cpu_count": 8,
+    "hostname": "arch",
+    "engines": [
+      "synsc-context",
+      "nia",
+      "context7"
+    ],
+    "config_snapshot": {
+      "synsc_api_url": "http://localhost:8742",
+      "synsc_api_key": "***REDACTED***",
+      "nia_api_url": "https://apigcp.trynia.ai",
+      "nia_api_key": "***REDACTED***",
+      "context7_enabled": true,
+      "context7_api_url": "https://context7.com",
+      "context7_api_key": "***REDACTED***",
+      "context7_npx_command": "npx",
+      "context7_request_delay": 0.5,
+      "llm_provider": "anthropic",
+      "llm_model": "claude-sonnet-4-6",
+      "llm_api_key": "***REDACTED***",
+      "top_k_values": [
+        1,
+        3,
+        5,
+        10
+      ],
+      "similarity_threshold": 0.3,
+      "max_queries": 100
+    },
+    "benchmark_version": "1.0.0"
+  },
+  "total_duration_s": 697.2901830890041,
+  "benchmark_timings": {
+    "multihop": 697.2767877320002
+  },
+  "trace_count": 300,
+  "trace_file": "traces_1773604455.jsonl",
+  "engines_summary": {
+    "synsc-context": {
+      "total_queries": 100,
+      "errors": 0,
+      "error_categories": {},
+      "avg_latency_ms": 6969.244822849869,
+      "benchmark_types": [
+        "multihop"
+      ],
+      "per_repo": {},
+      "per_language": {},
+      "p50_latency_ms": 6695.310893999704,
+      "p95_latency_ms": 8555.575758000487,
+      "min_latency_ms": 5624.620603004587,
+      "max_latency_ms": 10850.311071997567,
+      "avg_token_efficiency": 0.0
+    },
+    "nia": {
+      "total_queries": 100,
+      "errors": 0,
+      "error_categories": {},
+      "avg_latency_ms": 1127.0997174004879,
+      "benchmark_types": [
+        "multihop"
+      ],
+      "per_repo": {},
+      "per_language": {},
+      "p50_latency_ms": 1068.2518559988239,
+      "p95_latency_ms": 1534.8472319965367,
+      "min_latency_ms": 912.5711649976438,
+      "max_latency_ms": 1668.3582029945683,
+      "avg_token_efficiency": 0.0
+    },
+    "context7": {
+      "total_queries": 100,
+      "errors": 0,
+      "error_categories": {},
+      "avg_latency_ms": 2436.947071100003,
+      "benchmark_types": [
+        "multihop"
+      ],
+      "per_repo": {},
+      "per_language": {},
+      "p50_latency_ms": 2401.120663002075,
+      "p95_latency_ms": 2996.6895309989923,
+      "min_latency_ms": 1825.7307980020414,
+      "max_latency_ms": 3512.868448997324,
+      "avg_token_efficiency": 0.0
+    }
+  },
+  "report": {
+    "timestamp": "2026-03-15T19:42:37.923941+00:00",
+    "engines": [
+      "synsc-context",
+      "nia",
+      "context7"
+    ],
+    "retrieval": {},
+    "hallucination": {},
+    "indexing": {},
+    "multihop": {
+      "synsc-context": {
+        "engine": "synsc-context",
+        "num_queries": 100,
+        "avg_hop_coverage": 0.9733333333333333,
+        "avg_hop_recall_at_5": 0.94,
+        "avg_hop_recall_at_10": 0.9733333333333333,
+        "avg_hop_mrr": 0.8348664021164021,
+        "avg_latency_ms": 6969.244822849869,
+        "by_category": {
+          "3-hop": {
+            "num_queries": 97,
+            "avg_hop_coverage": 0.9725085910652921,
+            "avg_hop_mrr": 0.8297591774395897
+          },
+          "2-hop": {
+            "num_queries": 3,
+            "avg_hop_coverage": 1.0,
+            "avg_hop_mrr": 1.0
+          }
+        }
+      },
+      "nia": {
+        "engine": "nia",
+        "num_queries": 100,
+        "avg_hop_coverage": 0.7316666666666667,
+        "avg_hop_recall_at_5": 0.6716666666666667,
+        "avg_hop_recall_at_10": 0.7316666666666667,
+        "avg_hop_mrr": 0.5526587301587301,
+        "avg_latency_ms": 1127.0997174004879,
+        "by_category": {
+          "3-hop": {
+            "num_queries": 97,
+            "avg_hop_coverage": 0.7285223367697595,
+            "avg_hop_mrr": 0.5474144984454262
+          },
+          "2-hop": {
+            "num_queries": 3,
+            "avg_hop_coverage": 0.8333333333333334,
+            "avg_hop_mrr": 0.7222222222222222
+          }
+        }
+      },
+      "context7": {
+        "engine": "context7",
+        "num_queries": 100,
+        "avg_hop_coverage": 0.8483333333333333,
+        "avg_hop_recall_at_5": 0.8483333333333333,
+        "avg_hop_recall_at_10": 0.8483333333333333,
+        "avg_hop_mrr": 0.8483333333333333,
+        "avg_latency_ms": 2436.947071100003,
+        "by_category": {
+          "3-hop": {
+            "num_queries": 97,
+            "avg_hop_coverage": 0.8487972508591065,
+            "avg_hop_mrr": 0.8487972508591065
+          },
+          "2-hop": {
+            "num_queries": 3,
+            "avg_hop_coverage": 0.8333333333333334,
+            "avg_hop_mrr": 0.8333333333333334
+          }
+        }
+      }
+    },
+    "code_qa": {},
+    "adversarial": {},
+    "validated": {},
+    "judge": {},
+    "enhanced_judge": {},
+    "extended_metrics": {},
+    "significance": {},
+    "query_results": {}
+  }
+}

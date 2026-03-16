@@ -6,7 +6,10 @@ import time
 
 import httpx
 
+from ..logging_config import get_logger
 from .base import ContextEngineAdapter, IndexResult, SearchResult
+
+logger = get_logger("adapter.synsc")
 
 
 class SynscAdapter(ContextEngineAdapter):
@@ -58,7 +61,12 @@ class SynscAdapter(ContextEngineAdapter):
             )
 
         server_latency = data.get("search_time_ms", latency)
-        return results, server_latency
+        logger.debug(
+            "search_code: %d results in %.0fms (server: %.0fms) query=%s",
+            len(results), latency, server_latency, query[:60],
+            extra={"engine": self.name, "latency_ms": latency, "server_latency_ms": server_latency, "num_results": len(results)},
+        )
+        return results, latency
 
     async def search_papers(
         self,
