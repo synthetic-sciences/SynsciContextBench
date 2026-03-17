@@ -35,7 +35,7 @@
 
 ## Executive Summary
 
-Delphi was evaluated against Nia and Context7 across 9 benchmark phases totaling ~3,600 data points. All three engines were indexed with the same 15 repositories via web UI. Validated datasets used LLM-as-judge scoring to eliminate format bias between engines.
+Delphi was evaluated against Nia and Context7 across 8 benchmark phases totaling ~3,300 data points (plus 300 supplementary AdvTest). All three engines were indexed with the same 15 repositories via web UI. Validated datasets used LLM-as-judge scoring to eliminate format bias between engines.
 
 ### Results at a Glance
 

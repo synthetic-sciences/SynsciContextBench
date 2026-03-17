@@ -172,7 +172,8 @@ class TraceStore:
         self._benchmark_timings = {}
 
         # Create per-run directory with categorized subfolders
-        ts = int(time.time())
+        from datetime import datetime
+        ts = datetime.now().strftime("%Y%m%d_%H%M%S")
         self.results_dir = self.base_results_dir / f"run_{ts}"
         self.results_dir.mkdir(parents=True, exist_ok=True)
         for sub in ("traces", "logs", "reports", "data"):
@@ -204,7 +205,8 @@ class TraceStore:
 
     def save(self, report: dict | None = None) -> dict[str, Path]:
         """Save all trace data into categorized subfolders. Returns paths to saved files."""
-        timestamp = int(time.time())
+        from datetime import datetime
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         paths: dict[str, Path] = {}
 
         # 1. Full traces (JSONL) → traces/
@@ -422,7 +424,8 @@ def setup_logging(
 
     # File handler — structured JSON (initially in base results_dir)
     results_dir.mkdir(parents=True, exist_ok=True)
-    ts = int(time.time())
+    from datetime import datetime
+    ts = datetime.now().strftime("%Y%m%d_%H%M%S")
     log_path = results_dir / f"bench_{ts}.jsonl"
     fh = logging.FileHandler(log_path)
     fh.setLevel(logging.DEBUG)
@@ -446,7 +449,8 @@ def relocate_log_handler(logs_dir: Path) -> None:
     """
     logger = logging.getLogger("bench")
 
-    new_log_path = logs_dir / f"bench_{int(time.time())}.jsonl"
+    from datetime import datetime
+    new_log_path = logs_dir / f"bench_{datetime.now().strftime('%Y%m%d_%H%M%S')}.jsonl"
     for handler in logger.handlers[:]:
         if isinstance(handler, logging.FileHandler) and not isinstance(
             handler, logging.StreamHandler
