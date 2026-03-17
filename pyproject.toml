@@ -36,6 +36,7 @@ dependencies = [
     "huggingface-hub>=0.20.0",
     "sqlalchemy>=2.0.30",
     "matplotlib>=3.10.8",
+    "reportlab>=4.4.10",
 ]
 
 [project.optional-dependencies]
