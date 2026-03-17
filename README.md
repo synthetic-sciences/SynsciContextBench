@@ -4,7 +4,7 @@
 
 Benchmark harness for comparing code context engines head-to-head.
 
-Tests [Delphi](https://github.com/synthetic-sciences/synsc-context), [Context7](https://context7.com), and [Nia](https://trynia.ai) across 8 benchmark phases, ~3,300 queries, using automated IR metrics and a position-debiased LLM judge.
+Tests [Delphi](https://github.com/synthetic-sciences/synsc-delphi), [Context7](https://context7.com), and [Nia](https://trynia.ai) across 8 benchmark phases, ~3,300 queries, using automated IR metrics and a position-debiased LLM judge.
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![Suites](https://img.shields.io/badge/phases-8-58a6ff?style=for-the-badge)]()
