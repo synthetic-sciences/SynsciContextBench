@@ -1,0 +1,2089 @@
+{
+  "metadata": {
+    "run_id": "7f5a9410f732",
+    "timestamp": "2026-03-18T15:47:59.813524+00:00",
+    "git_commit": "008ba574c7a8",
+    "git_branch": "main",
+    "git_dirty": true,
+    "python_version": "3.12.12",
+    "platform": "Linux",
+    "platform_version": "6.19.6-arch1-1",
+    "cpu_count": 8,
+    "hostname": "arch",
+    "engines": [
+      "synsc-context"
+    ],
+    "config_snapshot": {
+      "synsc_api_url": "https://context.syntheticsciences.ai",
+      "synsc_api_key": "***REDACTED***",
+      "nia_api_url": "https://apigcp.trynia.ai",
+      "nia_api_key": "***REDACTED***",
+      "context7_enabled": true,
+      "context7_api_url": "https://context7.com",
+      "context7_api_key": "***REDACTED***",
+      "context7_npx_command": "npx",
+      "context7_request_delay": 0.5,
+      "llm_provider": "anthropic",
+      "llm_model": "claude-sonnet-4-6",
+      "llm_api_key": "***REDACTED***",
+      "top_k_values": [
+        1,
+        3,
+        5,
+        10
+      ],
+      "similarity_threshold": 0.3,
+      "max_queries": 100
+    },
+    "benchmark_version": "1.0.0"
+  },
+  "total_duration_s": 998.873736345,
+  "benchmark_timings": {
+    "retrieval": 220.6660431600003,
+    "multihop": 215.00773970499995,
+    "code_qa": 563.0801220409999
+  },
+  "trace_count": 300,
+  "trace_file": "traces_20260318_213438.jsonl",
+  "engines_summary": {
+    "synsc-context": {
+      "total_queries": 300,
+      "errors": 0,
+      "error_categories": {},
+      "avg_latency_ms": 2243.578051170016,
+      "benchmark_types": [
+        "code_qa",
+        "multihop",
+        "retrieval"
+      ],
+      "per_repo": {
+        "fastapi/fastapi": {
+          "count": 1,
+          "avg_mrr": 0.5,
+          "avg_latency_ms": 4592.6601470000605
+        },
+        "encode/starlette": {
+          "count": 1,
+          "avg_mrr": 1.0,
+          "avg_latency_ms": 2661.142039999959
+        },
+        "pydantic/pydantic": {
+          "count": 2,
+          "avg_mrr": 0.6,
+          "avg_latency_ms": 2297.454231500069
+        },
+        "aio-libs/aiohttp": {
+          "count": 4,
+          "avg_mrr": 1.0,
+          "avg_latency_ms": 2256.3727500000823
+        },
+        "synthetic-sciences/SynSci-Context-Bench": {
+          "count": 1,
+          "avg_mrr": 1.0,
+          "avg_latency_ms": 2942.854706000162
+        },
+        "sqlalchemy/sqlalchemy": {
+          "count": 10,
+          "avg_mrr": 1.0,
+          "avg_latency_ms": 2161.1931166999966
+        },
+        "django/django": {
+          "count": 20,
+          "avg_mrr": 1.0,
+          "avg_latency_ms": 2173.844227200061
+        },
+        "pallets/flask": {
+          "count": 6,
+          "avg_mrr": 1.0,
+          "avg_latency_ms": 2075.3851261667173
+        },
+        "psf/requests": {
+          "count": 5,
+          "avg_mrr": 1.0,
+          "avg_latency_ms": 2109.0482594000605
+        },
+        "langchain-ai/langchain": {
+          "count": 10,
+          "avg_mrr": 0.825,
+          "avg_latency_ms": 2158.271501800027
+        },
+        "pytorch/pytorch": {
+          "count": 11,
+          "avg_mrr": 0.9272727272727272,
+          "avg_latency_ms": 2148.3974717272595
+        },
+        "scikit-learn/scikit-learn": {
+          "count": 10,
+          "avg_mrr": 1.0,
+          "avg_latency_ms": 2168.6416809001003
+        },
+        "pandas-dev/pandas": {
+          "count": 9,
+          "avg_mrr": 1.0,
+          "avg_latency_ms": 2228.1376969999656
+        },
+        "numpy/numpy": {
+          "count": 10,
+          "avg_mrr": 1.0,
+          "avg_latency_ms": 2158.037620499954
+        }
+      },
+      "per_language": {
+        "python": {
+          "count": 93,
+          "avg_mrr": 0.9672043010752689
+        },
+        "c": {
+          "count": 5,
+          "avg_mrr": 0.8400000000000001
+        },
+        "cpp": {
+          "count": 2,
+          "avg_mrr": 1.0
+        }
+      },
+      "p50_latency_ms": 2149.2141529997753,
+      "p95_latency_ms": 2774.6742989997983,
+      "min_latency_ms": 1824.6315730002607,
+      "max_latency_ms": 7486.543542000163,
+      "avg_token_efficiency": 0.8371506083362594
+    }
+  },
+  "report": {
+    "timestamp": "2026-03-18T15:47:59.822682+00:00",
+    "engines": [
+      "synsc-context"
+    ],
+    "retrieval": {
+      "synsc-context": {
+        "engine": "synsc-context",
+        "num_queries": 100,
+        "avg_precision_at": {
+          "1": 0.94,
+          "3": 0.8733333333333333,
+          "5": 0.852,
+          "10": 0.83
+        },
+        "avg_recall_at": {
+          "1": 0.24350000000000002,
+          "3": 0.6701666666666667,
+          "5": 1.084,
+          "10": 2.103
+        },
+        "avg_ndcg_at": {
+          "1": 0.79,
+          "3": 0.7632752755115965,
+          "5": 0.8030603837497295,
+          "10": 0.9014275579985519
+        },
+        "avg_mrr": 0.9615,
+        "avg_latency_ms": 2204.385436150028,
+        "p95_latency_ms": 2620.7334299997456,
+        "map_score": 0.0,
+        "avg_success_at": {
+          "1": 0.94,
+          "3": 0.97,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "avg_r_precision": 0.0,
+        "hallucination_rate": null,
+        "error_breakdown": {}
+      }
+    },
+    "hallucination": {},
+    "indexing": {},
+    "multihop": {
+      "synsc-context": {
+        "engine": "synsc-context",
+        "num_queries": 100,
+        "avg_hop_coverage": 0.9733333333333333,
+        "avg_hop_recall_at_5": 0.94,
+        "avg_hop_recall_at_10": 0.9733333333333333,
+        "avg_hop_mrr": 0.8348664021164021,
+        "avg_latency_ms": 2146.574265340014,
+        "by_category": {
+          "3-hop": {
+            "num_queries": 97,
+            "avg_hop_coverage": 0.9725085910652921,
+            "avg_hop_mrr": 0.8297591774395897
+          },
+          "2-hop": {
+            "num_queries": 3,
+            "avg_hop_coverage": 1.0,
+            "avg_hop_mrr": 1.0
+          }
+        }
+      }
+    },
+    "code_qa": {
+      "synsc-context": {
+        "engine": "synsc-context",
+        "num_queries": 100,
+        "accuracy": 0.31,
+        "avg_rank": 1.0,
+        "mrr": 0.31,
+        "symbol_accuracy": 0.55,
+        "file_accuracy": 0.31,
+        "completeness": 0.12,
+        "coherence": 0.12,
+        "false_positive_rate": 0.0,
+        "by_type": {
+          "definition": {
+            "num_queries": 35,
+            "accuracy": 0.5142857142857142,
+            "mrr": 0.5142857142857142,
+            "completeness": 0.11428571428571428,
+            "coherence": 0.11428571428571428
+          },
+          "call_site": {
+            "num_queries": 22,
+            "accuracy": 0.09090909090909091,
+            "mrr": 0.09090909090909091,
+            "completeness": 0.09090909090909091,
+            "coherence": 0.09090909090909091
+          },
+          "inheritance": {
+            "num_queries": 12,
+            "accuracy": 0.25,
+            "mrr": 0.25,
+            "completeness": 0.08333333333333333,
+            "coherence": 0.08333333333333333
+          },
+          "argument_usage": {
+            "num_queries": 17,
+            "accuracy": 0.23529411764705882,
+            "mrr": 0.23529411764705882,
+            "completeness": 0.058823529411764705,
+            "coherence": 0.058823529411764705
+          },
+          "return_type": {
+            "num_queries": 12,
+            "accuracy": 0.16666666666666666,
+            "mrr": 0.16666666666666666,
+            "completeness": 0.16666666666666666,
+            "coherence": 0.16666666666666666
+          },
+          "import": {
+            "num_queries": 2,
+            "accuracy": 1.0,
+            "mrr": 1.0,
+            "completeness": 1.0,
+            "coherence": 1.0
+          }
+        },
+        "avg_latency_ms": 2379.774452020006
+      }
+    },
+    "adversarial": {},
+    "validated": {},
+    "judge": {},
+    "enhanced_judge": {},
+    "extended_metrics": {},
+    "significance": {},
+    "query_results": {
+      "synsc-context": [
+        {
+          "query": "How to define a POST endpoint with request body validation in FastAPI",
+          "mrr": 0.5,
+          "precision_at": {
+            "1": 0.0,
+            "3": 0.6666666666666666,
+            "5": 0.8,
+            "10": 0.9
+          },
+          "ndcg_at": {
+            "1": 0.0,
+            "3": 0.5307212739772434,
+            "5": 0.6608397947263839,
+            "10": 0.8328978515038054
+          },
+          "latency_ms": 4592.6601470000605,
+          "num_results": 10
+        },
+        {
+          "query": "Implement custom exception handler middleware",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 0.3333333333333333,
+            "5": 0.2,
+            "10": 0.3
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.46927872602275644,
+            "5": 0.46927872602275644,
+            "10": 0.7585866543655181
+          },
+          "latency_ms": 2661.142039999959,
+          "num_results": 10
+        },
+        {
+          "query": "BaseModel validator decorator for field validation",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 0.3333333333333333,
+            "5": 0.4,
+            "10": 0.2
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.7601875334318685,
+            "5": 0.9238850086262381,
+            "10": 0.9238850086262381
+          },
+          "latency_ms": 2451.0811750001267,
+          "num_results": 10
+        },
+        {
+          "query": "async HTTP client with retry and timeout configuration",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 0.6666666666666666,
+            "5": 0.8,
+            "10": 0.9
+          },
+          "ndcg_at": {
+            "1": 0.5,
+            "3": 0.5307212739772434,
+            "5": 0.6062518444202161,
+            "10": 0.8295278482998963
+          },
+          "latency_ms": 2273.1645819999358,
+          "num_results": 10
+        },
+        {
+          "query": "WebSocket connection handling and broadcasting",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 0.8
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 0.9888026041880242
+          },
+          "latency_ms": 2942.854706000162,
+          "num_results": 10
+        },
+        {
+          "query": "How to use dependency injection with database sessions",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 0.3333333333333333,
+            "5": 0.2,
+            "10": 0.2
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.6131471927654584,
+            "5": 0.6131471927654584,
+            "10": 0.7977228895450266
+          },
+          "latency_ms": 2252.1377680000114,
+          "num_results": 10
+        },
+        {
+          "query": "Configure CORS middleware with allowed origins",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 0.6666666666666666,
+            "5": 0.4,
+            "10": 0.2
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.9197207891481876,
+            "5": 0.9197207891481876,
+            "10": 0.9197207891481876
+          },
+          "latency_ms": 2357.207006000408,
+          "num_results": 10
+        },
+        {
+          "query": "Pydantic model serialization with custom JSON encoders",
+          "mrr": 0.2,
+          "precision_at": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.2,
+            "10": 0.1
+          },
+          "ndcg_at": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.38685280723454163,
+            "10": 0.38685280723454163
+          },
+          "latency_ms": 2143.8272880000113,
+          "num_results": 10
+        },
+        {
+          "query": "streaming response for large file downloads",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 0.8
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 0.9963488021549354
+          },
+          "latency_ms": 2258.345952000127,
+          "num_results": 10
+        },
+        {
+          "query": "HTTP/2 support and connection pooling configuration",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 0.3333333333333333,
+            "5": 0.2,
+            "10": 0.2
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.6131471927654584,
+            "5": 0.6131471927654584,
+            "10": 0.8065735963827293
+          },
+          "latency_ms": 2447.8185800003303,
+          "num_results": 10
+        },
+        {
+          "query": "Django ORM queryset filtering with Q objects for complex lookups",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.8826803184943108,
+            "5": 0.9015629611050541,
+            "10": 0.9683968059898864
+          },
+          "latency_ms": 2148.9433550000285,
+          "num_results": 10
+        },
+        {
+          "query": "Django model field definition with validators and choices",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.8519590445170673,
+            "5": 0.8073332658149857,
+            "10": 0.9356698167116769
+          },
+          "latency_ms": 2045.6563170000663,
+          "num_results": 10
+        },
+        {
+          "query": "Django middleware processing request and response hooks",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 0.8,
+            "10": 0.9
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.8826803184943108,
+            "5": 0.8254016714403228,
+            "10": 0.9585846395487458
+          },
+          "latency_ms": 2046.0790180000004,
+          "num_results": 10
+        },
+        {
+          "query": "Django authentication backend and login view implementation",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "latency_ms": 2021.1112910001248,
+          "num_results": 10
+        },
+        {
+          "query": "Django class-based views with mixins for permissions",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 0.8,
+            "10": 0.8
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.8322824782867448,
+            "5": 0.8526542464062051,
+            "10": 0.9251499812555535
+          },
+          "latency_ms": 2071.485206000034,
+          "num_results": 10
+        },
+        {
+          "query": "Django database migration operations and schema editor",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 0.8,
+            "10": 0.5
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.9651954696014428,
+            "5": 0.8773621705237966,
+            "10": 0.9430980152071228
+          },
+          "latency_ms": 2251.8446149997544,
+          "num_results": 10
+        },
+        {
+          "query": "Django signals post_save and pre_delete receiver registration",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "latency_ms": 1944.765376000305,
+          "num_results": 10
+        },
+        {
+          "query": "Django template engine custom tags and filters",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 0.5,
+            "3": 0.617319681505689,
+            "5": 0.8398625486866789,
+            "10": 0.8781329361553802
+          },
+          "latency_ms": 2596.218445999966,
+          "num_results": 10
+        },
+        {
+          "query": "Django form validation and clean methods",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.8322824782867448,
+            "5": 0.8622240278900382,
+            "10": 0.9518022599408099
+          },
+          "latency_ms": 2620.7334299997456,
+          "num_results": 10
+        },
+        {
+          "query": "Django URL routing with path converters and named patterns",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 0.5,
+            "3": 0.6480409554829326,
+            "5": 0.7808501729798932,
+            "10": 0.8765325173012399
+          },
+          "latency_ms": 1943.137513000238,
+          "num_results": 10
+        },
+        {
+          "query": "Django cache framework backend configuration and usage",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 0.5,
+            "3": 0.8821211986607034,
+            "5": 0.9065280314885752,
+            "10": 0.9334235959390283
+          },
+          "latency_ms": 1942.845404000309,
+          "num_results": 10
+        },
+        {
+          "query": "Django REST serializer-like model_to_dict and serialization",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 0.6666666666666666,
+            "5": 0.8,
+            "10": 0.8
+          },
+          "ndcg_at": {
+            "1": 0.5,
+            "3": 0.3987389739440937,
+            "5": 0.5905552570151383,
+            "10": 0.7772059945051184
+          },
+          "latency_ms": 1946.2330340002154,
+          "num_results": 10
+        },
+        {
+          "query": "Django test client and RequestFactory for unit tests",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "latency_ms": 2046.586631000082,
+          "num_results": 10
+        },
+        {
+          "query": "Django admin site customization with ModelAdmin options",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 0.8
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.8519590445170673,
+            "5": 0.8775416530133452,
+            "10": 0.9273731292083086
+          },
+          "latency_ms": 2861.9410240003162,
+          "num_results": 10
+        },
+        {
+          "query": "Django CSRF protection middleware and token handling",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 0.7
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.8826803184943108,
+            "5": 0.9863520113014781,
+            "10": 0.9732473308731256
+          },
+          "latency_ms": 2048.2691799998065,
+          "num_results": 10
+        },
+        {
+          "query": "Flask application factory pattern with blueprints",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 0.5,
+            "3": 0.680606056760201,
+            "5": 0.7467366458934469,
+            "10": 0.8739131374433791
+          },
+          "latency_ms": 2042.197784000109,
+          "num_results": 10
+        },
+        {
+          "query": "Flask request context and application context management",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 0.9
+          },
+          "ndcg_at": {
+            "1": 0.5,
+            "3": 0.6480409554829326,
+            "5": 0.7979793149825536,
+            "10": 0.8838369546914235
+          },
+          "latency_ms": 2048.415103000025,
+          "num_results": 10
+        },
+        {
+          "query": "Flask route decorator with HTTP methods and URL rules",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "latency_ms": 2046.1618859999362,
+          "num_results": 10
+        },
+        {
+          "query": "Flask error handler registration for HTTP status codes",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 0.6666666666666666,
+            "5": 0.4,
+            "10": 0.4
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.7653606369886217,
+            "5": 0.6366824387328317,
+            "10": 0.8773497378596238
+          },
+          "latency_ms": 2045.4907519997505,
+          "num_results": 10
+        },
+        {
+          "query": "Flask session interface and cookie-based sessions",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 0.6666666666666666,
+            "5": 0.4,
+            "10": 0.2
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "latency_ms": 2148.1244520000473,
+          "num_results": 10
+        },
+        {
+          "query": "Flask template rendering with Jinja2 context processors",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 0.8,
+            "10": 0.8
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 0.8909254103672668,
+            "10": 0.9738270937466379
+          },
+          "latency_ms": 2146.9572149999294,
+          "num_results": 10
+        },
+        {
+          "query": "Flask before_request and after_request hook decorators",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 0.6666666666666666,
+            "5": 0.8,
+            "10": 0.7
+          },
+          "ndcg_at": {
+            "1": 0.5,
+            "3": 0.47909091485969846,
+            "5": 0.6960198499310518,
+            "10": 0.8092306193361595
+          },
+          "latency_ms": 2149.420817000191,
+          "num_results": 10
+        },
+        {
+          "query": "Flask CLI commands with click integration",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.8826803184943108,
+            "5": 0.8310951893751204,
+            "10": 0.9540972201004178
+          },
+          "latency_ms": 2050.006616999781,
+          "num_results": 10
+        },
+        {
+          "query": "Flask JSON response and jsonify helper function",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 0.9
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.7346393630113782,
+            "5": 0.8535105373852008,
+            "10": 0.9356748125206072
+          },
+          "latency_ms": 2143.3164860000034,
+          "num_results": 10
+        },
+        {
+          "query": "Flask extension initialization pattern with init_app",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 0.8,
+            "10": 0.6
+          },
+          "ndcg_at": {
+            "1": 0.5,
+            "3": 0.680606056760201,
+            "5": 0.6376620562607138,
+            "10": 0.7966344666496746
+          },
+          "latency_ms": 2018.9539500001956,
+          "num_results": 10
+        },
+        {
+          "query": "SQLAlchemy declarative model definition with mapped_column",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.7346393630113782,
+            "5": 0.78679862894141,
+            "10": 0.9259756464212772
+          },
+          "latency_ms": 2072.4888329996247,
+          "num_results": 10
+        },
+        {
+          "query": "SQLAlchemy session management and unit of work pattern",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 0.5,
+            "3": 0.6480409554829326,
+            "5": 0.680027307288617,
+            "10": 0.8714065298353165
+          },
+          "latency_ms": 1950.8308810000017,
+          "num_results": 10
+        },
+        {
+          "query": "SQLAlchemy relationship configuration with back_populates and lazy loading",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.7346393630113782,
+            "5": 0.8082168163143322,
+            "10": 0.935660177733689
+          },
+          "latency_ms": 2141.899929000374,
+          "num_results": 10
+        },
+        {
+          "query": "SQLAlchemy core select statement with joins and subqueries",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.7346393630113782,
+            "5": 0.8082168163143322,
+            "10": 0.9387004059966528
+          },
+          "latency_ms": 2147.9589330001545,
+          "num_results": 10
+        },
+        {
+          "query": "SQLAlchemy engine creation and connection pool configuration",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 0.6666666666666666,
+            "5": 0.8,
+            "10": 0.8
+          },
+          "ndcg_at": {
+            "1": 0.5,
+            "3": 0.5307212739772434,
+            "5": 0.5588661171593143,
+            "10": 0.8143159704980667
+          },
+          "latency_ms": 2147.952642999826,
+          "num_results": 10
+        },
+        {
+          "query": "SQLAlchemy event listeners for before_insert and after_update",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.7346393630113782,
+            "5": 0.8535105373852008,
+            "10": 0.9384606660730284
+          },
+          "latency_ms": 2455.0377319997096,
+          "num_results": 10
+        },
+        {
+          "query": "SQLAlchemy hybrid property and expression for computed attributes",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 0.9986400209011808
+          },
+          "latency_ms": 2149.0259710003556,
+          "num_results": 10
+        },
+        {
+          "query": "SQLAlchemy Alembic-style migration with schema alteration",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 0.6666666666666666,
+            "5": 0.4,
+            "10": 0.5
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.8403030283801005,
+            "5": 0.6663180938082345,
+            "10": 0.9208491316051547
+          },
+          "latency_ms": 2147.2963979999804,
+          "num_results": 10
+        },
+        {
+          "query": "SQLAlchemy async session and engine for asyncio applications",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 0.8,
+            "10": 0.7
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.8519590445170673,
+            "5": 0.7993798664604009,
+            "10": 0.9228940501402444
+          },
+          "latency_ms": 2147.302078999928,
+          "num_results": 10
+        },
+        {
+          "query": "Requests library session with persistent cookies and auth",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.7346393630113782,
+            "5": 0.8535105373852008,
+            "10": 0.9357835388349401
+          },
+          "latency_ms": 2046.9867739998335,
+          "num_results": 10
+        },
+        {
+          "query": "Requests response content decoding and JSON parsing",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "latency_ms": 2045.0480710001102,
+          "num_results": 10
+        },
+        {
+          "query": "Requests SSL certificate verification and custom CA bundles",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 0.5,
+            "3": 0.8821211986607034,
+            "5": 0.9065280314885752,
+            "10": 0.9334235959390283
+          },
+          "latency_ms": 2250.5272960002003,
+          "num_results": 10
+        },
+        {
+          "query": "Requests retry strategy with HTTPAdapter and urllib3",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 0.9
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.8826803184943108,
+            "5": 0.9015629611050541,
+            "10": 0.9720250638657923
+          },
+          "latency_ms": 2149.625389999983,
+          "num_results": 10
+        },
+        {
+          "query": "Requests file upload with multipart form data",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 0.9
+          },
+          "ndcg_at": {
+            "1": 0.5,
+            "3": 0.680606056760201,
+            "5": 0.8558112355261802,
+            "10": 0.8832253135734446
+          },
+          "latency_ms": 2243.2552790000955,
+          "num_results": 10
+        },
+        {
+          "query": "Requests hooks and event callbacks on response",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 0.6666666666666666,
+            "5": 0.6,
+            "10": 0.8
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.6993694869720469,
+            "5": 0.7626089347265247,
+            "10": 0.9109999837494639
+          },
+          "latency_ms": 2053.0537660001755,
+          "num_results": 10
+        },
+        {
+          "query": "LangChain chat model interface and message types",
+          "mrr": 0.5,
+          "precision_at": {
+            "1": 0.0,
+            "3": 0.6666666666666666,
+            "5": 0.6,
+            "10": 0.8
+          },
+          "ndcg_at": {
+            "1": 0.0,
+            "3": 0.5307212739772434,
+            "5": 0.5296347172140421,
+            "10": 0.7984658817584759
+          },
+          "latency_ms": 2248.9212170003157,
+          "num_results": 10
+        },
+        {
+          "query": "LangChain chain composition with LCEL pipe operator",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 0.6666666666666666,
+            "5": 0.8,
+            "10": 0.8
+          },
+          "ndcg_at": {
+            "1": 0.5,
+            "3": 0.5209090851403014,
+            "5": 0.6201049688401704,
+            "10": 0.8298639640018205
+          },
+          "latency_ms": 2147.4523830002,
+          "num_results": 10
+        },
+        {
+          "query": "LangChain document loader and text splitter for RAG",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 0.8,
+            "10": 0.8
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 0.9020243604942442,
+            "10": 0.9826741846456148
+          },
+          "latency_ms": 2355.786065999837,
+          "num_results": 10
+        },
+        {
+          "query": "LangChain vector store interface with similarity search",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 0.8,
+            "10": 0.8
+          },
+          "ndcg_at": {
+            "1": 0.5,
+            "3": 0.680606056760201,
+            "5": 0.6376620562607138,
+            "10": 0.8266970138076436
+          },
+          "latency_ms": 2062.9550789999485,
+          "num_results": 10
+        },
+        {
+          "query": "LangChain prompt template with input variables and formatting",
+          "mrr": 0.5,
+          "precision_at": {
+            "1": 0.0,
+            "3": 0.6666666666666666,
+            "5": 0.6,
+            "10": 0.7
+          },
+          "ndcg_at": {
+            "1": 0.0,
+            "3": 0.5307212739772434,
+            "5": 0.5147714448836774,
+            "10": 0.7729117820572334
+          },
+          "latency_ms": 1824.6315730002607,
+          "num_results": 10
+        },
+        {
+          "query": "LangChain output parser for structured JSON responses",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 0.5,
+            "3": 0.680606056760201,
+            "5": 0.8558112355261802,
+            "10": 0.8973000184168799
+          },
+          "latency_ms": 2044.6937950000574,
+          "num_results": 10
+        },
+        {
+          "query": "LangChain agent with tool binding and execution loop",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "latency_ms": 2149.114572999679,
+          "num_results": 10
+        },
+        {
+          "query": "LangChain callback handler for streaming and tracing",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 0.6666666666666666,
+            "5": 0.4,
+            "10": 0.5
+          },
+          "ndcg_at": {
+            "1": 0.5,
+            "3": 0.5209090851403014,
+            "5": 0.4130547397016814,
+            "10": 0.7156093538227795
+          },
+          "latency_ms": 2452.2697809998135,
+          "num_results": 10
+        },
+        {
+          "query": "LangChain memory and conversation history management",
+          "mrr": 0.25,
+          "precision_at": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.2,
+            "10": 0.3
+          },
+          "ndcg_at": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.2289700384906115,
+            "10": 0.5069569504323629
+          },
+          "latency_ms": 2149.272726000163,
+          "num_results": 10
+        },
+        {
+          "query": "LangChain retriever interface and retrieval chain",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 0.6666666666666666,
+            "5": 0.8,
+            "10": 0.7
+          },
+          "ndcg_at": {
+            "1": 0.5,
+            "3": 0.47909091485969846,
+            "5": 0.6960198499310518,
+            "10": 0.7877891130418531
+          },
+          "latency_ms": 2147.6178249999975,
+          "num_results": 10
+        },
+        {
+          "query": "PyTorch neural network module definition with forward pass",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "latency_ms": 1942.6947609999843,
+          "num_results": 10
+        },
+        {
+          "query": "PyTorch autograd and custom backward function implementation",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "latency_ms": 2065.458284000215,
+          "num_results": 10
+        },
+        {
+          "query": "PyTorch DataLoader with custom Dataset and collate function",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 0.6666666666666666,
+            "5": 0.8,
+            "10": 0.9
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.5865984075284455,
+            "5": 0.653135534335885,
+            "10": 0.8704044346918888
+          },
+          "latency_ms": 2232.1634360000644,
+          "num_results": 10
+        },
+        {
+          "query": "PyTorch optimizer SGD and Adam with learning rate scheduling",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 0.5,
+            "3": 0.617319681505689,
+            "5": 0.6258472176711151,
+            "10": 0.8418413685752567
+          },
+          "latency_ms": 2149.2141529997753,
+          "num_results": 10
+        },
+        {
+          "query": "PyTorch distributed data parallel training setup",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 0.6666666666666666,
+            "5": 0.8,
+            "10": 0.6
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.617319681505689,
+            "5": 0.7040090042240594,
+            "10": 0.881254595680755
+          },
+          "latency_ms": 2251.057646999925,
+          "num_results": 10
+        },
+        {
+          "query": "PyTorch model saving and loading with state_dict",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 0.5,
+            "3": 0.8821211986607034,
+            "5": 0.9065280314885752,
+            "10": 0.9334235959390283
+          },
+          "latency_ms": 2250.9926949996952,
+          "num_results": 10
+        },
+        {
+          "query": "PyTorch tensor operations broadcasting and reshaping",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 0.6666666666666666,
+            "5": 0.8,
+            "10": 0.9
+          },
+          "ndcg_at": {
+            "1": 0.5,
+            "3": 0.5209090851403014,
+            "5": 0.7291795584729036,
+            "10": 0.8515064362783363
+          },
+          "latency_ms": 2043.5477049995825,
+          "num_results": 10
+        },
+        {
+          "query": "PyTorch convolutional neural network layers Conv2d and MaxPool2d",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 0.5,
+            "3": 0.8403030283801005,
+            "5": 0.8733683229467235,
+            "10": 0.9098052407296103
+          },
+          "latency_ms": 2254.6844610001244,
+          "num_results": 10
+        },
+        {
+          "query": "PyTorch loss functions cross entropy and MSE",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 0.9
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "latency_ms": 2118.5618059998887,
+          "num_results": 10
+        },
+        {
+          "query": "PyTorch mixed precision training with autocast and GradScaler",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 0.5,
+            "3": 0.6480409554829326,
+            "5": 0.6496091412312497,
+            "10": 0.8697185672397282
+          },
+          "latency_ms": 2075.431457000377,
+          "num_results": 10
+        },
+        {
+          "query": "scikit-learn pipeline with preprocessing and model fitting",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 0.5,
+            "3": 0.6480409554829326,
+            "5": 0.704688883315162,
+            "10": 0.872469371334419
+          },
+          "latency_ms": 2357.9690579999806,
+          "num_results": 10
+        },
+        {
+          "query": "scikit-learn cross-validation and hyperparameter tuning with GridSearchCV",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 0.5,
+            "3": 0.6480409554829326,
+            "5": 0.7456298460447879,
+            "10": 0.8829870352460769
+          },
+          "latency_ms": 2145.6033320000643,
+          "num_results": 10
+        },
+        {
+          "query": "scikit-learn custom transformer with BaseEstimator and TransformerMixin",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "latency_ms": 2145.589169000232,
+          "num_results": 10
+        },
+        {
+          "query": "scikit-learn StandardScaler and feature normalization",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 0.8,
+            "10": 0.9
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.7346393630113782,
+            "5": 0.7245436410976352,
+            "10": 0.9161572625579563
+          },
+          "latency_ms": 2045.1756689999456,
+          "num_results": 10
+        },
+        {
+          "query": "scikit-learn random forest classifier and feature importance",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.8519590445170673,
+            "5": 0.88549505236793,
+            "10": 0.961334811881022
+          },
+          "latency_ms": 2150.4971350000233,
+          "num_results": 10
+        },
+        {
+          "query": "scikit-learn train_test_split and stratified sampling",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 0.9978160083430379
+          },
+          "latency_ms": 2147.667944999739,
+          "num_results": 10
+        },
+        {
+          "query": "scikit-learn classification metrics precision recall F1 score",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 0.8
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.8322824782867448,
+            "5": 0.8622240278900382,
+            "10": 0.9308549118092113
+          },
+          "latency_ms": 2351.4207060002263,
+          "num_results": 10
+        },
+        {
+          "query": "scikit-learn PCA dimensionality reduction implementation",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 0.6666666666666666,
+            "5": 0.8,
+            "10": 0.9
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.5865984075284455,
+            "5": 0.6020852941109803,
+            "10": 0.86606701596065
+          },
+          "latency_ms": 2144.425617000252,
+          "num_results": 10
+        },
+        {
+          "query": "scikit-learn text feature extraction with TfidfVectorizer",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 0.8,
+            "10": 0.9
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.8519590445170673,
+            "5": 0.7618017901203944,
+            "10": 0.9270471883221917
+          },
+          "latency_ms": 2154.180531000293,
+          "num_results": 10
+        },
+        {
+          "query": "scikit-learn gradient boosting classifier with early stopping",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "latency_ms": 2043.887647000247,
+          "num_results": 10
+        },
+        {
+          "query": "pandas DataFrame creation and column selection",
+          "mrr": 0.2,
+          "precision_at": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.2,
+            "10": 0.1
+          },
+          "ndcg_at": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.38685280723454163,
+            "10": 0.38685280723454163
+          },
+          "latency_ms": 2248.5657840002204,
+          "num_results": 10
+        },
+        {
+          "query": "pandas groupby aggregation with custom functions",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.8519590445170673,
+            "5": 0.8274043288765652,
+            "10": 0.9425906423907516
+          },
+          "latency_ms": 2457.2982360000424,
+          "num_results": 10
+        },
+        {
+          "query": "pandas merge and join operations for combining DataFrames",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.7346393630113782,
+            "5": 0.7426142775581612,
+            "10": 0.9242689453074727
+          },
+          "latency_ms": 2251.656376000028,
+          "num_results": 10
+        },
+        {
+          "query": "pandas read_csv with parsing options and dtypes",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.7346393630113782,
+            "5": 0.7165902417430504,
+            "10": 0.913896714584722
+          },
+          "latency_ms": 2145.164630000181,
+          "num_results": 10
+        },
+        {
+          "query": "pandas missing data handling fillna dropna interpolate",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 0.5,
+            "3": 0.617319681505689,
+            "5": 0.7742173914224189,
+            "10": 0.8672730521478628
+          },
+          "latency_ms": 2355.279619999692,
+          "num_results": 10
+        },
+        {
+          "query": "pandas pivot table and crosstab for reshaping data",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.8519590445170673,
+            "5": 0.8073332658149857,
+            "10": 0.9398686809415092
+          },
+          "latency_ms": 2147.989103999862,
+          "num_results": 10
+        },
+        {
+          "query": "pandas datetime index and time series resampling",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 0.5,
+            "3": 0.8821211986607034,
+            "5": 0.9065280314885752,
+            "10": 0.9334235959390283
+          },
+          "latency_ms": 2351.6311399998813,
+          "num_results": 10
+        },
+        {
+          "query": "pandas apply and vectorized string operations",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "latency_ms": 2045.0789960000293,
+          "num_results": 10
+        },
+        {
+          "query": "pandas MultiIndex creation and hierarchical indexing",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.7346393630113782,
+            "5": 0.8649604154943542,
+            "10": 0.937644388250178
+          },
+          "latency_ms": 2149.5937549998416,
+          "num_results": 10
+        },
+        {
+          "query": "pandas categorical data type and memory optimization",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 0.5,
+            "3": 0.6480409554829326,
+            "5": 0.704688883315162,
+            "10": 0.872469371334419
+          },
+          "latency_ms": 2149.547416000132,
+          "num_results": 10
+        },
+        {
+          "query": "NumPy array creation and initialization functions",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "latency_ms": 2043.473454999912,
+          "num_results": 10
+        },
+        {
+          "query": "NumPy broadcasting rules and shape manipulation",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 0.3333333333333333,
+            "5": 0.4,
+            "10": 0.3
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 0.46927872602275644,
+            "5": 0.6508205185601091,
+            "10": 0.7920874914199381
+          },
+          "latency_ms": 2453.952943999866,
+          "num_results": 10
+        },
+        {
+          "query": "NumPy linear algebra matrix multiplication and eigenvalues",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 0.9
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 0.9842184869190973
+          },
+          "latency_ms": 2156.0904559996743,
+          "num_results": 10
+        },
+        {
+          "query": "NumPy random number generation with Generator",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 0.5,
+            "3": 0.7341740173706042,
+            "5": 0.8756769827188949,
+            "10": 0.907794242815066
+          },
+          "latency_ms": 1835.349277000205,
+          "num_results": 10
+        },
+        {
+          "query": "NumPy fancy indexing and boolean masking",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 0.6
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 0.9796825595768971
+          },
+          "latency_ms": 2352.984512999683,
+          "num_results": 10
+        },
+        {
+          "query": "NumPy ufunc implementation and custom universal functions",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "latency_ms": 2249.227692000204,
+          "num_results": 10
+        },
+        {
+          "query": "NumPy structured arrays and record arrays with custom dtypes",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "latency_ms": 2147.5338079999347,
+          "num_results": 10
+        },
+        {
+          "query": "NumPy FFT fast Fourier transform and spectral analysis",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 0.5,
+            "3": 0.7341740173706042,
+            "5": 0.8661072012350618,
+            "10": 0.9006966918779292
+          },
+          "latency_ms": 1947.5851990000592,
+          "num_results": 10
+        },
+        {
+          "query": "NumPy memory layout C order vs Fortran order",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0
+          },
+          "latency_ms": 2041.4346659999865,
+          "num_results": 10
+        },
+        {
+          "query": "NumPy file I/O save and load arrays from disk",
+          "mrr": 1.0,
+          "precision_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 0.6,
+            "10": 0.7
+          },
+          "ndcg_at": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 0.7227265726449519,
+            "10": 0.9325720109418509
+          },
+          "latency_ms": 2352.744195000014,
+          "num_results": 10
+        }
+      ]
+    }
+  }
+}

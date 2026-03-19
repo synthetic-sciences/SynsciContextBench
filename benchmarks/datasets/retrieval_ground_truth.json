@@ -13,6 +13,54 @@
     {
       "url": "https://github.com/encode/httpx",
       "description": "HTTPX — async HTTP client, moderate size"
+    },
+    {
+      "url": "https://github.com/django/django",
+      "description": "Django web framework"
+    },
+    {
+      "url": "https://github.com/pallets/flask",
+      "description": "Flask micro-framework"
+    },
+    {
+      "url": "https://github.com/sqlalchemy/sqlalchemy",
+      "description": "SQLAlchemy ORM/Core"
+    },
+    {
+      "url": "https://github.com/psf/requests",
+      "description": "Requests HTTP library"
+    },
+    {
+      "url": "https://github.com/langchain-ai/langchain",
+      "description": "LangChain AI framework"
+    },
+    {
+      "url": "https://github.com/pytorch/pytorch",
+      "description": "PyTorch ML framework"
+    },
+    {
+      "url": "https://github.com/scikit-learn/scikit-learn",
+      "description": "scikit-learn ML library"
+    },
+    {
+      "url": "https://github.com/pandas-dev/pandas",
+      "description": "pandas data analysis"
+    },
+    {
+      "url": "https://github.com/numpy/numpy",
+      "description": "NumPy numerical computing"
+    },
+    {
+      "url": "https://github.com/celery/celery",
+      "description": "Celery distributed task queue"
+    },
+    {
+      "url": "https://github.com/encode/starlette",
+      "description": "Starlette ASGI framework"
+    },
+    {
+      "url": "https://github.com/aio-libs/aiohttp",
+      "description": "aiohttp async HTTP"
     }
   ],
   "queries": [
@@ -142,6 +190,2430 @@
       "relevant_keywords": ["http2", "pool_limits", "PoolLimits"],
       "total_relevant": 3,
       "notes": "Advanced feature — tests depth of indexing"
+    },
+    {
+      "id": "q011",
+      "query": "Django ORM queryset filtering with Q objects for complex lookups",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "django/db/models/query.py",
+        "django/db/models/query_utils.py"
+      ],
+      "relevant_keywords": ["Q", "filter", "exclude", "__and__", "__or__"],
+      "total_relevant": 5,
+      "notes": "Tests ORM query construction with boolean combinators"
+    },
+    {
+      "id": "q012",
+      "query": "Django model field definition with validators and choices",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "django/db/models/fields/__init__.py",
+        "django/core/validators.py"
+      ],
+      "relevant_keywords": ["CharField", "IntegerField", "validators", "choices"],
+      "total_relevant": 6,
+      "notes": "Core model field API — should be straightforward to find"
+    },
+    {
+      "id": "q013",
+      "query": "Django middleware processing request and response hooks",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "django/utils/deprecation.py",
+        "django/middleware/common.py",
+        "django/core/handlers/base.py"
+      ],
+      "relevant_keywords": ["MiddlewareMixin", "process_request", "process_response", "get_response"],
+      "total_relevant": 5,
+      "notes": "Tests middleware lifecycle understanding"
+    },
+    {
+      "id": "q014",
+      "query": "Django authentication backend and login view implementation",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "django/contrib/auth/backends.py",
+        "django/contrib/auth/views.py",
+        "django/contrib/auth/__init__.py"
+      ],
+      "relevant_keywords": ["authenticate", "login", "ModelBackend", "LoginView"],
+      "total_relevant": 6,
+      "notes": "Cross-module auth flow — backend + views"
+    },
+    {
+      "id": "q015",
+      "query": "Django class-based views with mixins for permissions",
+      "category": "symbol_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "django/views/generic/base.py",
+        "django/contrib/auth/mixins.py"
+      ],
+      "relevant_keywords": ["View", "TemplateView", "LoginRequiredMixin", "PermissionRequiredMixin"],
+      "total_relevant": 5,
+      "notes": "Tests symbol resolution across auth and views modules"
+    },
+    {
+      "id": "q016",
+      "query": "Django database migration operations and schema editor",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "django/db/migrations/operations/models.py",
+        "django/db/migrations/operations/fields.py",
+        "django/db/backends/base/schema.py"
+      ],
+      "relevant_keywords": ["CreateModel", "AddField", "AlterField", "SchemaEditor"],
+      "total_relevant": 6,
+      "notes": "Deep internal — migration engine"
+    },
+    {
+      "id": "q017",
+      "query": "Django signals post_save and pre_delete receiver registration",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "django/db/models/signals.py",
+        "django/dispatch/dispatcher.py"
+      ],
+      "relevant_keywords": ["post_save", "pre_delete", "receiver", "Signal", "connect"],
+      "total_relevant": 4,
+      "notes": "Signal dispatch pattern — well-known API"
+    },
+    {
+      "id": "q018",
+      "query": "Django template engine custom tags and filters",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "django/template/library.py",
+        "django/template/defaulttags.py",
+        "django/template/defaultfilters.py"
+      ],
+      "relevant_keywords": ["register", "simple_tag", "inclusion_tag", "filter"],
+      "total_relevant": 5,
+      "notes": "Template customization — tag and filter registration"
+    },
+    {
+      "id": "q019",
+      "query": "Django form validation and clean methods",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "django/forms/forms.py",
+        "django/forms/fields.py"
+      ],
+      "relevant_keywords": ["Form", "clean", "clean_", "is_valid", "ValidationError"],
+      "total_relevant": 5,
+      "notes": "Form validation lifecycle"
+    },
+    {
+      "id": "q020",
+      "query": "Django URL routing with path converters and named patterns",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "django/urls/resolvers.py",
+        "django/urls/conf.py"
+      ],
+      "relevant_keywords": ["path", "re_path", "URLPattern", "URLResolver", "include"],
+      "total_relevant": 4,
+      "notes": "URL configuration basics"
+    },
+    {
+      "id": "q021",
+      "query": "Django cache framework backend configuration and usage",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "django/core/cache/__init__.py",
+        "django/core/cache/backends/base.py",
+        "django/core/cache/backends/memcached.py"
+      ],
+      "relevant_keywords": ["cache", "CacheHandler", "BaseCache", "get", "set"],
+      "total_relevant": 5,
+      "notes": "Cache abstraction layer"
+    },
+    {
+      "id": "q022",
+      "query": "Django REST serializer-like model_to_dict and serialization",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "django/forms/models.py",
+        "django/core/serializers/json.py",
+        "django/core/serializers/base.py"
+      ],
+      "relevant_keywords": ["model_to_dict", "Serializer", "serialize", "deserialize"],
+      "total_relevant": 4,
+      "notes": "Built-in serialization — not DRF"
+    },
+    {
+      "id": "q023",
+      "query": "Django test client and RequestFactory for unit tests",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "django/test/client.py",
+        "django/test/utils.py"
+      ],
+      "relevant_keywords": ["Client", "RequestFactory", "TestCase", "post", "get"],
+      "total_relevant": 4,
+      "notes": "Testing utilities"
+    },
+    {
+      "id": "q024",
+      "query": "Django admin site customization with ModelAdmin options",
+      "category": "symbol_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "django/contrib/admin/options.py",
+        "django/contrib/admin/sites.py"
+      ],
+      "relevant_keywords": ["ModelAdmin", "list_display", "list_filter", "search_fields", "register"],
+      "total_relevant": 5,
+      "notes": "Admin interface configuration symbols"
+    },
+    {
+      "id": "q025",
+      "query": "Django CSRF protection middleware and token handling",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "django/middleware/csrf.py",
+        "django/template/defaulttags.py"
+      ],
+      "relevant_keywords": ["CsrfViewMiddleware", "csrf_token", "csrf_exempt", "_get_token"],
+      "total_relevant": 4,
+      "notes": "Security middleware — CSRF flow"
+    },
+    {
+      "id": "q026",
+      "query": "Flask application factory pattern with blueprints",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "src/flask/app.py",
+        "src/flask/blueprints.py"
+      ],
+      "relevant_keywords": ["Flask", "Blueprint", "register_blueprint", "create_app"],
+      "total_relevant": 4,
+      "notes": "Core Flask app structure pattern"
+    },
+    {
+      "id": "q027",
+      "query": "Flask request context and application context management",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "src/flask/ctx.py",
+        "src/flask/globals.py"
+      ],
+      "relevant_keywords": ["RequestContext", "AppContext", "push", "pop", "_cv_app", "_cv_request"],
+      "total_relevant": 4,
+      "notes": "Context locals — advanced Flask internal"
+    },
+    {
+      "id": "q028",
+      "query": "Flask route decorator with HTTP methods and URL rules",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "src/flask/app.py",
+        "src/flask/scaffold.py"
+      ],
+      "relevant_keywords": ["route", "add_url_rule", "methods", "endpoint"],
+      "total_relevant": 3,
+      "notes": "Basic routing API"
+    },
+    {
+      "id": "q029",
+      "query": "Flask error handler registration for HTTP status codes",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "src/flask/app.py",
+        "src/flask/scaffold.py"
+      ],
+      "relevant_keywords": ["errorhandler", "register_error_handler", "HTTPException"],
+      "total_relevant": 3,
+      "notes": "Error handling registration"
+    },
+    {
+      "id": "q030",
+      "query": "Flask session interface and cookie-based sessions",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "src/flask/sessions.py"
+      ],
+      "relevant_keywords": ["SessionInterface", "SecureCookieSession", "open_session", "save_session"],
+      "total_relevant": 3,
+      "notes": "Session management internals"
+    },
+    {
+      "id": "q031",
+      "query": "Flask template rendering with Jinja2 context processors",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "src/flask/templating.py",
+        "src/flask/app.py"
+      ],
+      "relevant_keywords": ["render_template", "context_processor", "Environment"],
+      "total_relevant": 3,
+      "notes": "Template rendering pipeline"
+    },
+    {
+      "id": "q032",
+      "query": "Flask before_request and after_request hook decorators",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "src/flask/scaffold.py",
+        "src/flask/app.py"
+      ],
+      "relevant_keywords": ["before_request", "after_request", "teardown_request"],
+      "total_relevant": 3,
+      "notes": "Request lifecycle hooks"
+    },
+    {
+      "id": "q033",
+      "query": "Flask CLI commands with click integration",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "src/flask/cli.py"
+      ],
+      "relevant_keywords": ["FlaskGroup", "AppGroup", "cli", "command", "with_appcontext"],
+      "total_relevant": 3,
+      "notes": "CLI integration via click"
+    },
+    {
+      "id": "q034",
+      "query": "Flask JSON response and jsonify helper function",
+      "category": "symbol_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "src/flask/json/__init__.py",
+        "src/flask/json/provider.py"
+      ],
+      "relevant_keywords": ["jsonify", "JSONProvider", "dumps", "loads"],
+      "total_relevant": 3,
+      "notes": "JSON serialization utility"
+    },
+    {
+      "id": "q035",
+      "query": "Flask extension initialization pattern with init_app",
+      "category": "pattern_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "src/flask/app.py",
+        "src/flask/scaffold.py"
+      ],
+      "relevant_keywords": ["init_app", "extensions", "app.extensions"],
+      "total_relevant": 3,
+      "notes": "Extension design pattern"
+    },
+    {
+      "id": "q036",
+      "query": "SQLAlchemy declarative model definition with mapped_column",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "lib/sqlalchemy/orm/decl_api.py",
+        "lib/sqlalchemy/orm/properties.py"
+      ],
+      "relevant_keywords": ["DeclarativeBase", "mapped_column", "Mapped", "registry"],
+      "total_relevant": 5,
+      "notes": "Modern SQLAlchemy 2.0 style model definition"
+    },
+    {
+      "id": "q037",
+      "query": "SQLAlchemy session management and unit of work pattern",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "lib/sqlalchemy/orm/session.py",
+        "lib/sqlalchemy/orm/scoping.py"
+      ],
+      "relevant_keywords": ["Session", "sessionmaker", "scoped_session", "commit", "flush"],
+      "total_relevant": 5,
+      "notes": "Session lifecycle and transaction management"
+    },
+    {
+      "id": "q038",
+      "query": "SQLAlchemy relationship configuration with back_populates and lazy loading",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "lib/sqlalchemy/orm/relationships.py",
+        "lib/sqlalchemy/orm/strategies.py"
+      ],
+      "relevant_keywords": ["relationship", "back_populates", "backref", "lazy", "selectinload"],
+      "total_relevant": 5,
+      "notes": "ORM relationship loading strategies"
+    },
+    {
+      "id": "q039",
+      "query": "SQLAlchemy core select statement with joins and subqueries",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "lib/sqlalchemy/sql/selectable.py",
+        "lib/sqlalchemy/sql/expression.py"
+      ],
+      "relevant_keywords": ["select", "join", "outerjoin", "subquery", "Select"],
+      "total_relevant": 6,
+      "notes": "Core SQL expression language"
+    },
+    {
+      "id": "q040",
+      "query": "SQLAlchemy engine creation and connection pool configuration",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "lib/sqlalchemy/engine/create.py",
+        "lib/sqlalchemy/pool/impl.py"
+      ],
+      "relevant_keywords": ["create_engine", "QueuePool", "pool_size", "max_overflow"],
+      "total_relevant": 4,
+      "notes": "Engine and connection pool setup"
+    },
+    {
+      "id": "q041",
+      "query": "SQLAlchemy event listeners for before_insert and after_update",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "lib/sqlalchemy/event/api.py",
+        "lib/sqlalchemy/orm/events.py"
+      ],
+      "relevant_keywords": ["listen", "listens_for", "before_insert", "after_update", "MapperEvents"],
+      "total_relevant": 4,
+      "notes": "Event system for ORM lifecycle hooks"
+    },
+    {
+      "id": "q042",
+      "query": "SQLAlchemy hybrid property and expression for computed attributes",
+      "category": "symbol_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "lib/sqlalchemy/ext/hybrid.py"
+      ],
+      "relevant_keywords": ["hybrid_property", "hybrid_method", "expression", "comparator"],
+      "total_relevant": 3,
+      "notes": "Hybrid attributes for Python + SQL dual behavior"
+    },
+    {
+      "id": "q043",
+      "query": "SQLAlchemy Alembic-style migration with schema alteration",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "lib/sqlalchemy/sql/ddl.py",
+        "lib/sqlalchemy/engine/interfaces.py"
+      ],
+      "relevant_keywords": ["CreateTable", "DropTable", "AddColumn", "DDL"],
+      "total_relevant": 4,
+      "notes": "DDL operations for schema management"
+    },
+    {
+      "id": "q044",
+      "query": "SQLAlchemy async session and engine for asyncio applications",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "lib/sqlalchemy/ext/asyncio/session.py",
+        "lib/sqlalchemy/ext/asyncio/engine.py"
+      ],
+      "relevant_keywords": ["AsyncSession", "create_async_engine", "async_sessionmaker"],
+      "total_relevant": 4,
+      "notes": "Async extension for SQLAlchemy"
+    },
+    {
+      "id": "q045",
+      "query": "Requests library session with persistent cookies and auth",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "src/requests/sessions.py",
+        "src/requests/auth.py"
+      ],
+      "relevant_keywords": ["Session", "cookies", "auth", "HTTPBasicAuth", "HTTPDigestAuth"],
+      "total_relevant": 4,
+      "notes": "Session-based request pattern"
+    },
+    {
+      "id": "q046",
+      "query": "Requests response content decoding and JSON parsing",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "src/requests/models.py"
+      ],
+      "relevant_keywords": ["Response", "json", "text", "content", "encoding"],
+      "total_relevant": 3,
+      "notes": "Response object API"
+    },
+    {
+      "id": "q047",
+      "query": "Requests SSL certificate verification and custom CA bundles",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "src/requests/adapters.py",
+        "src/requests/sessions.py"
+      ],
+      "relevant_keywords": ["verify", "cert", "SSLError", "HTTPAdapter"],
+      "total_relevant": 3,
+      "notes": "SSL/TLS configuration"
+    },
+    {
+      "id": "q048",
+      "query": "Requests retry strategy with HTTPAdapter and urllib3",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "src/requests/adapters.py"
+      ],
+      "relevant_keywords": ["HTTPAdapter", "Retry", "max_retries", "mount"],
+      "total_relevant": 3,
+      "notes": "Retry configuration via transport adapter"
+    },
+    {
+      "id": "q049",
+      "query": "Requests file upload with multipart form data",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "src/requests/models.py",
+        "src/requests/utils.py"
+      ],
+      "relevant_keywords": ["files", "multipart", "PreparedRequest", "prepare_body"],
+      "total_relevant": 3,
+      "notes": "Multipart upload handling"
+    },
+    {
+      "id": "q050",
+      "query": "Requests hooks and event callbacks on response",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "src/requests/hooks.py",
+        "src/requests/models.py"
+      ],
+      "relevant_keywords": ["hooks", "dispatch_hook", "response"],
+      "total_relevant": 3,
+      "notes": "Hook system for request/response events"
+    },
+    {
+      "id": "q051",
+      "query": "LangChain chat model interface and message types",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "libs/core/langchain_core/language_models/chat_models.py",
+        "libs/core/langchain_core/messages/__init__.py"
+      ],
+      "relevant_keywords": ["BaseChatModel", "HumanMessage", "AIMessage", "SystemMessage", "invoke"],
+      "total_relevant": 5,
+      "notes": "Core chat model abstraction"
+    },
+    {
+      "id": "q052",
+      "query": "LangChain chain composition with LCEL pipe operator",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "libs/core/langchain_core/runnables/base.py",
+        "libs/core/langchain_core/runnables/passthrough.py"
+      ],
+      "relevant_keywords": ["Runnable", "RunnableSequence", "__or__", "pipe", "invoke"],
+      "total_relevant": 5,
+      "notes": "LangChain Expression Language composition"
+    },
+    {
+      "id": "q053",
+      "query": "LangChain document loader and text splitter for RAG",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "libs/core/langchain_core/document_loaders/base.py",
+        "libs/text-splitters/langchain_text_splitters/character.py"
+      ],
+      "relevant_keywords": ["BaseLoader", "Document", "RecursiveCharacterTextSplitter", "split_documents"],
+      "total_relevant": 5,
+      "notes": "Document ingestion pipeline for RAG"
+    },
+    {
+      "id": "q054",
+      "query": "LangChain vector store interface with similarity search",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "libs/core/langchain_core/vectorstores/base.py"
+      ],
+      "relevant_keywords": ["VectorStore", "similarity_search", "add_documents", "from_documents"],
+      "total_relevant": 4,
+      "notes": "Vector store abstraction for retrieval"
+    },
+    {
+      "id": "q055",
+      "query": "LangChain prompt template with input variables and formatting",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "libs/core/langchain_core/prompts/chat.py",
+        "libs/core/langchain_core/prompts/prompt.py"
+      ],
+      "relevant_keywords": ["ChatPromptTemplate", "PromptTemplate", "from_messages", "format_messages"],
+      "total_relevant": 4,
+      "notes": "Prompt construction utilities"
+    },
+    {
+      "id": "q056",
+      "query": "LangChain output parser for structured JSON responses",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "libs/core/langchain_core/output_parsers/json.py",
+        "libs/core/langchain_core/output_parsers/pydantic.py"
+      ],
+      "relevant_keywords": ["JsonOutputParser", "PydanticOutputParser", "parse", "get_format_instructions"],
+      "total_relevant": 4,
+      "notes": "Structured output parsing"
+    },
+    {
+      "id": "q057",
+      "query": "LangChain agent with tool binding and execution loop",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "libs/core/langchain_core/tools/base.py",
+        "libs/langchain/langchain/agents/agent.py"
+      ],
+      "relevant_keywords": ["BaseTool", "tool", "bind_tools", "AgentExecutor"],
+      "total_relevant": 5,
+      "notes": "Agent-tool interaction pattern"
+    },
+    {
+      "id": "q058",
+      "query": "LangChain callback handler for streaming and tracing",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "libs/core/langchain_core/callbacks/base.py",
+        "libs/core/langchain_core/callbacks/manager.py"
+      ],
+      "relevant_keywords": ["BaseCallbackHandler", "CallbackManager", "on_llm_start", "on_llm_end"],
+      "total_relevant": 4,
+      "notes": "Callback system for observability"
+    },
+    {
+      "id": "q059",
+      "query": "LangChain memory and conversation history management",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "libs/core/langchain_core/chat_history.py",
+        "libs/core/langchain_core/runnables/history.py"
+      ],
+      "relevant_keywords": ["BaseChatMessageHistory", "RunnableWithMessageHistory", "add_message"],
+      "total_relevant": 4,
+      "notes": "Conversation memory patterns"
+    },
+    {
+      "id": "q060",
+      "query": "LangChain retriever interface and retrieval chain",
+      "category": "symbol_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "libs/core/langchain_core/retrievers.py"
+      ],
+      "relevant_keywords": ["BaseRetriever", "get_relevant_documents", "invoke"],
+      "total_relevant": 3,
+      "notes": "Retriever abstraction"
+    },
+    {
+      "id": "q061",
+      "query": "PyTorch neural network module definition with forward pass",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "torch/nn/modules/module.py",
+        "torch/nn/modules/linear.py"
+      ],
+      "relevant_keywords": ["Module", "forward", "nn.Module", "Linear", "parameters"],
+      "total_relevant": 5,
+      "notes": "Core nn.Module pattern"
+    },
+    {
+      "id": "q062",
+      "query": "PyTorch autograd and custom backward function implementation",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "torch/autograd/function.py",
+        "torch/autograd/__init__.py"
+      ],
+      "relevant_keywords": ["Function", "backward", "ctx", "save_for_backward", "grad"],
+      "total_relevant": 5,
+      "notes": "Custom autograd function — advanced"
+    },
+    {
+      "id": "q063",
+      "query": "PyTorch DataLoader with custom Dataset and collate function",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "torch/utils/data/dataloader.py",
+        "torch/utils/data/dataset.py"
+      ],
+      "relevant_keywords": ["DataLoader", "Dataset", "collate_fn", "__getitem__", "__len__"],
+      "total_relevant": 5,
+      "notes": "Data loading pipeline"
+    },
+    {
+      "id": "q064",
+      "query": "PyTorch optimizer SGD and Adam with learning rate scheduling",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "torch/optim/sgd.py",
+        "torch/optim/adam.py",
+        "torch/optim/lr_scheduler.py"
+      ],
+      "relevant_keywords": ["SGD", "Adam", "StepLR", "CosineAnnealingLR", "step"],
+      "total_relevant": 5,
+      "notes": "Optimizer and scheduler configuration"
+    },
+    {
+      "id": "q065",
+      "query": "PyTorch distributed data parallel training setup",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "torch/nn/parallel/distributed.py",
+        "torch/distributed/__init__.py"
+      ],
+      "relevant_keywords": ["DistributedDataParallel", "init_process_group", "all_reduce"],
+      "total_relevant": 5,
+      "notes": "Multi-GPU distributed training"
+    },
+    {
+      "id": "q066",
+      "query": "PyTorch model saving and loading with state_dict",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "torch/serialization.py",
+        "torch/nn/modules/module.py"
+      ],
+      "relevant_keywords": ["save", "load", "state_dict", "load_state_dict"],
+      "total_relevant": 4,
+      "notes": "Model persistence"
+    },
+    {
+      "id": "q067",
+      "query": "PyTorch tensor operations broadcasting and reshaping",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "torch/_refs/__init__.py",
+        "torch/functional.py"
+      ],
+      "relevant_keywords": ["reshape", "view", "expand", "broadcast_tensors", "contiguous"],
+      "total_relevant": 4,
+      "notes": "Tensor manipulation operations"
+    },
+    {
+      "id": "q068",
+      "query": "PyTorch convolutional neural network layers Conv2d and MaxPool2d",
+      "category": "symbol_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "torch/nn/modules/conv.py",
+        "torch/nn/modules/pooling.py"
+      ],
+      "relevant_keywords": ["Conv2d", "MaxPool2d", "kernel_size", "stride", "padding"],
+      "total_relevant": 4,
+      "notes": "CNN building blocks"
+    },
+    {
+      "id": "q069",
+      "query": "PyTorch loss functions cross entropy and MSE",
+      "category": "symbol_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "torch/nn/modules/loss.py"
+      ],
+      "relevant_keywords": ["CrossEntropyLoss", "MSELoss", "NLLLoss", "forward"],
+      "total_relevant": 4,
+      "notes": "Loss function implementations"
+    },
+    {
+      "id": "q070",
+      "query": "PyTorch mixed precision training with autocast and GradScaler",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "torch/amp/autocast_mode.py",
+        "torch/amp/grad_scaler.py"
+      ],
+      "relevant_keywords": ["autocast", "GradScaler", "scale", "unscale_", "float16"],
+      "total_relevant": 4,
+      "notes": "AMP training pattern"
+    },
+    {
+      "id": "q071",
+      "query": "scikit-learn pipeline with preprocessing and model fitting",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "sklearn/pipeline.py"
+      ],
+      "relevant_keywords": ["Pipeline", "make_pipeline", "fit", "transform", "predict"],
+      "total_relevant": 4,
+      "notes": "Core pipeline API"
+    },
+    {
+      "id": "q072",
+      "query": "scikit-learn cross-validation and hyperparameter tuning with GridSearchCV",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "sklearn/model_selection/_search.py",
+        "sklearn/model_selection/_validation.py"
+      ],
+      "relevant_keywords": ["GridSearchCV", "cross_val_score", "cv", "param_grid", "best_params_"],
+      "total_relevant": 5,
+      "notes": "Model selection and tuning"
+    },
+    {
+      "id": "q073",
+      "query": "scikit-learn custom transformer with BaseEstimator and TransformerMixin",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "sklearn/base.py"
+      ],
+      "relevant_keywords": ["BaseEstimator", "TransformerMixin", "fit", "transform", "get_params"],
+      "total_relevant": 3,
+      "notes": "Custom estimator pattern"
+    },
+    {
+      "id": "q074",
+      "query": "scikit-learn StandardScaler and feature normalization",
+      "category": "symbol_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "sklearn/preprocessing/_data.py"
+      ],
+      "relevant_keywords": ["StandardScaler", "MinMaxScaler", "fit_transform", "mean_", "scale_"],
+      "total_relevant": 4,
+      "notes": "Preprocessing scalers"
+    },
+    {
+      "id": "q075",
+      "query": "scikit-learn random forest classifier and feature importance",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "sklearn/ensemble/_forest.py"
+      ],
+      "relevant_keywords": ["RandomForestClassifier", "feature_importances_", "n_estimators", "fit"],
+      "total_relevant": 4,
+      "notes": "Ensemble methods"
+    },
+    {
+      "id": "q076",
+      "query": "scikit-learn train_test_split and stratified sampling",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "sklearn/model_selection/_split.py"
+      ],
+      "relevant_keywords": ["train_test_split", "StratifiedKFold", "test_size", "random_state"],
+      "total_relevant": 3,
+      "notes": "Data splitting utilities"
+    },
+    {
+      "id": "q077",
+      "query": "scikit-learn classification metrics precision recall F1 score",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "sklearn/metrics/_classification.py"
+      ],
+      "relevant_keywords": ["precision_score", "recall_score", "f1_score", "classification_report"],
+      "total_relevant": 4,
+      "notes": "Classification evaluation metrics"
+    },
+    {
+      "id": "q078",
+      "query": "scikit-learn PCA dimensionality reduction implementation",
+      "category": "symbol_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "sklearn/decomposition/_pca.py"
+      ],
+      "relevant_keywords": ["PCA", "n_components", "explained_variance_ratio_", "fit_transform"],
+      "total_relevant": 3,
+      "notes": "PCA implementation"
+    },
+    {
+      "id": "q079",
+      "query": "scikit-learn text feature extraction with TfidfVectorizer",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "sklearn/feature_extraction/text.py"
+      ],
+      "relevant_keywords": ["TfidfVectorizer", "CountVectorizer", "fit_transform", "vocabulary_"],
+      "total_relevant": 4,
+      "notes": "Text processing features"
+    },
+    {
+      "id": "q080",
+      "query": "scikit-learn gradient boosting classifier with early stopping",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "sklearn/ensemble/_gb.py",
+        "sklearn/ensemble/_hist_gradient_boosting/gradient_boosting.py"
+      ],
+      "relevant_keywords": ["GradientBoostingClassifier", "HistGradientBoostingClassifier", "n_iter_no_change", "early_stopping"],
+      "total_relevant": 4,
+      "notes": "Gradient boosting with regularization"
+    },
+    {
+      "id": "q081",
+      "query": "pandas DataFrame creation and column selection",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "pandas/core/frame.py"
+      ],
+      "relevant_keywords": ["DataFrame", "__getitem__", "loc", "iloc", "columns"],
+      "total_relevant": 4,
+      "notes": "Basic DataFrame operations"
+    },
+    {
+      "id": "q082",
+      "query": "pandas groupby aggregation with custom functions",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "pandas/core/groupby/groupby.py",
+        "pandas/core/groupby/generic.py"
+      ],
+      "relevant_keywords": ["groupby", "agg", "aggregate", "transform", "apply"],
+      "total_relevant": 5,
+      "notes": "GroupBy operations"
+    },
+    {
+      "id": "q083",
+      "query": "pandas merge and join operations for combining DataFrames",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "pandas/core/reshape/merge.py",
+        "pandas/core/frame.py"
+      ],
+      "relevant_keywords": ["merge", "join", "on", "how", "left_on", "right_on"],
+      "total_relevant": 4,
+      "notes": "DataFrame merging operations"
+    },
+    {
+      "id": "q084",
+      "query": "pandas read_csv with parsing options and dtypes",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "pandas/io/parsers/readers.py"
+      ],
+      "relevant_keywords": ["read_csv", "dtype", "parse_dates", "na_values", "encoding"],
+      "total_relevant": 3,
+      "notes": "CSV reading configuration"
+    },
+    {
+      "id": "q085",
+      "query": "pandas missing data handling fillna dropna interpolate",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "pandas/core/frame.py",
+        "pandas/core/missing.py"
+      ],
+      "relevant_keywords": ["fillna", "dropna", "interpolate", "isna", "isnull"],
+      "total_relevant": 4,
+      "notes": "Missing value operations"
+    },
+    {
+      "id": "q086",
+      "query": "pandas pivot table and crosstab for reshaping data",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "pandas/core/reshape/pivot.py",
+        "pandas/core/frame.py"
+      ],
+      "relevant_keywords": ["pivot_table", "crosstab", "values", "index", "aggfunc"],
+      "total_relevant": 4,
+      "notes": "Data reshaping operations"
+    },
+    {
+      "id": "q087",
+      "query": "pandas datetime index and time series resampling",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "pandas/core/resample.py",
+        "pandas/tseries/frequencies.py"
+      ],
+      "relevant_keywords": ["resample", "DatetimeIndex", "freq", "asfreq", "rolling"],
+      "total_relevant": 5,
+      "notes": "Time series functionality"
+    },
+    {
+      "id": "q088",
+      "query": "pandas apply and vectorized string operations",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "pandas/core/frame.py",
+        "pandas/core/strings/accessor.py"
+      ],
+      "relevant_keywords": ["apply", "str", "contains", "replace", "extract"],
+      "total_relevant": 4,
+      "notes": "String accessor methods and apply"
+    },
+    {
+      "id": "q089",
+      "query": "pandas MultiIndex creation and hierarchical indexing",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "pandas/core/indexes/multi.py"
+      ],
+      "relevant_keywords": ["MultiIndex", "from_tuples", "from_arrays", "levels", "get_level_values"],
+      "total_relevant": 4,
+      "notes": "Hierarchical indexing"
+    },
+    {
+      "id": "q090",
+      "query": "pandas categorical data type and memory optimization",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "pandas/core/arrays/categorical.py",
+        "pandas/api/types/__init__.py"
+      ],
+      "relevant_keywords": ["Categorical", "CategoricalDtype", "categories", "codes", "ordered"],
+      "total_relevant": 4,
+      "notes": "Categorical data handling"
+    },
+    {
+      "id": "q091",
+      "query": "NumPy array creation and initialization functions",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "numpy/core/numeric.py",
+        "numpy/core/fromnumeric.py"
+      ],
+      "relevant_keywords": ["zeros", "ones", "arange", "linspace", "array"],
+      "total_relevant": 4,
+      "notes": "Basic array creation"
+    },
+    {
+      "id": "q092",
+      "query": "NumPy broadcasting rules and shape manipulation",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "numpy/core/numeric.py",
+        "numpy/lib/stride_tricks.py"
+      ],
+      "relevant_keywords": ["broadcast_to", "broadcast_arrays", "reshape", "newaxis"],
+      "total_relevant": 4,
+      "notes": "Broadcasting mechanics"
+    },
+    {
+      "id": "q093",
+      "query": "NumPy linear algebra matrix multiplication and eigenvalues",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "numpy/linalg/linalg.py"
+      ],
+      "relevant_keywords": ["matmul", "dot", "eig", "eigvals", "inv", "solve"],
+      "total_relevant": 5,
+      "notes": "Linear algebra operations"
+    },
+    {
+      "id": "q094",
+      "query": "NumPy random number generation with Generator",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "numpy/random/_generator.pyx",
+        "numpy/random/__init__.py"
+      ],
+      "relevant_keywords": ["Generator", "default_rng", "random", "normal", "choice"],
+      "total_relevant": 4,
+      "notes": "New-style random number generation"
+    },
+    {
+      "id": "q095",
+      "query": "NumPy fancy indexing and boolean masking",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "numpy/core/numeric.py",
+        "numpy/lib/index_tricks.py"
+      ],
+      "relevant_keywords": ["where", "nonzero", "take", "compress", "ix_"],
+      "total_relevant": 4,
+      "notes": "Advanced indexing"
+    },
+    {
+      "id": "q096",
+      "query": "NumPy ufunc implementation and custom universal functions",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "numpy/core/umath.py",
+        "numpy/core/_multiarray_umath.py"
+      ],
+      "relevant_keywords": ["ufunc", "frompyfunc", "vectorize", "reduce", "accumulate"],
+      "total_relevant": 4,
+      "notes": "Universal function internals"
+    },
+    {
+      "id": "q097",
+      "query": "NumPy structured arrays and record arrays with custom dtypes",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "numpy/core/records.py",
+        "numpy/core/multiarray.py"
+      ],
+      "relevant_keywords": ["dtype", "recarray", "record", "structured", "fields"],
+      "total_relevant": 4,
+      "notes": "Structured data types"
+    },
+    {
+      "id": "q098",
+      "query": "NumPy FFT fast Fourier transform and spectral analysis",
+      "category": "symbol_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "numpy/fft/_pocketfft.py"
+      ],
+      "relevant_keywords": ["fft", "ifft", "fft2", "fftfreq", "rfft"],
+      "total_relevant": 4,
+      "notes": "FFT module"
+    },
+    {
+      "id": "q099",
+      "query": "NumPy memory layout C order vs Fortran order",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "numpy/core/numeric.py",
+        "numpy/core/fromnumeric.py"
+      ],
+      "relevant_keywords": ["order", "C_CONTIGUOUS", "F_CONTIGUOUS", "ascontiguousarray", "flags"],
+      "total_relevant": 3,
+      "notes": "Memory layout internals"
+    },
+    {
+      "id": "q100",
+      "query": "NumPy file I/O save and load arrays from disk",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "numpy/lib/npyio.py"
+      ],
+      "relevant_keywords": ["save", "load", "savez", "savetxt", "loadtxt"],
+      "total_relevant": 3,
+      "notes": "Array persistence"
+    },
+    {
+      "id": "q101",
+      "query": "Celery task definition with retry and error handling",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "celery/app/task.py"
+      ],
+      "relevant_keywords": ["task", "retry", "max_retries", "autoretry_for", "bind"],
+      "total_relevant": 4,
+      "notes": "Core task decorator and retry mechanics"
+    },
+    {
+      "id": "q102",
+      "query": "Celery beat periodic task scheduling with crontab",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "celery/beat.py",
+        "celery/schedules.py"
+      ],
+      "relevant_keywords": ["beat_schedule", "crontab", "periodic_task", "schedule"],
+      "total_relevant": 4,
+      "notes": "Periodic task configuration"
+    },
+    {
+      "id": "q103",
+      "query": "Celery task chaining and group for workflow composition",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "celery/canvas.py"
+      ],
+      "relevant_keywords": ["chain", "group", "chord", "signature", "Signature"],
+      "total_relevant": 5,
+      "notes": "Canvas workflow primitives"
+    },
+    {
+      "id": "q104",
+      "query": "Celery result backend configuration and AsyncResult",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "celery/result.py",
+        "celery/backends/base.py"
+      ],
+      "relevant_keywords": ["AsyncResult", "result_backend", "get", "status", "result"],
+      "total_relevant": 4,
+      "notes": "Result tracking and retrieval"
+    },
+    {
+      "id": "q105",
+      "query": "Celery worker concurrency and prefetch settings",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "celery/worker/worker.py",
+        "celery/worker/consumer/consumer.py"
+      ],
+      "relevant_keywords": ["concurrency", "prefetch_multiplier", "worker_prefetch_multiplier", "Pool"],
+      "total_relevant": 4,
+      "notes": "Worker configuration internals"
+    },
+    {
+      "id": "q106",
+      "query": "Celery signal handlers for task lifecycle events",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "celery/app/task.py",
+        "celery/signals.py"
+      ],
+      "relevant_keywords": ["task_prerun", "task_postrun", "task_success", "task_failure", "before_task_publish"],
+      "total_relevant": 4,
+      "notes": "Task signal hooks"
+    },
+    {
+      "id": "q107",
+      "query": "Celery custom serializer registration",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "celery/utils/serialization.py",
+        "celery/app/defaults.py"
+      ],
+      "relevant_keywords": ["register", "serializer", "accept_content", "task_serializer"],
+      "total_relevant": 3,
+      "notes": "Custom serialization configuration"
+    },
+    {
+      "id": "q108",
+      "query": "Starlette routing with path parameters and route classes",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "starlette/routing.py"
+      ],
+      "relevant_keywords": ["Route", "Router", "Mount", "path", "endpoint"],
+      "total_relevant": 4,
+      "notes": "Core routing mechanism"
+    },
+    {
+      "id": "q109",
+      "query": "Starlette middleware stack and BaseHTTPMiddleware",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "starlette/middleware/__init__.py",
+        "starlette/middleware/base.py"
+      ],
+      "relevant_keywords": ["BaseHTTPMiddleware", "Middleware", "dispatch", "call_next"],
+      "total_relevant": 3,
+      "notes": "Middleware abstraction"
+    },
+    {
+      "id": "q110",
+      "query": "Starlette TestClient for ASGI application testing",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "starlette/testclient.py"
+      ],
+      "relevant_keywords": ["TestClient", "get", "post", "websocket_connect"],
+      "total_relevant": 3,
+      "notes": "Testing utilities"
+    },
+    {
+      "id": "q111",
+      "query": "Starlette static files serving and directory configuration",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "starlette/staticfiles.py"
+      ],
+      "relevant_keywords": ["StaticFiles", "directory", "html", "FileResponse"],
+      "total_relevant": 3,
+      "notes": "Static file serving"
+    },
+    {
+      "id": "q112",
+      "query": "Starlette WebSocket endpoint with accept and receive",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "starlette/websockets.py",
+        "starlette/routing.py"
+      ],
+      "relevant_keywords": ["WebSocket", "WebSocketEndpoint", "accept", "receive_json", "send_json"],
+      "total_relevant": 3,
+      "notes": "WebSocket handling in Starlette"
+    },
+    {
+      "id": "q113",
+      "query": "Starlette background tasks for deferred processing",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "starlette/background.py"
+      ],
+      "relevant_keywords": ["BackgroundTask", "BackgroundTasks", "add_task"],
+      "total_relevant": 2,
+      "notes": "Background task execution"
+    },
+    {
+      "id": "q114",
+      "query": "Starlette authentication middleware and AuthCredentials",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "starlette/authentication.py",
+        "starlette/middleware/authentication.py"
+      ],
+      "relevant_keywords": ["AuthenticationBackend", "AuthCredentials", "UnauthenticatedUser", "requires"],
+      "total_relevant": 4,
+      "notes": "Auth middleware pattern"
+    },
+    {
+      "id": "q115",
+      "query": "aiohttp client session with connection pooling and timeouts",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "aiohttp/client.py",
+        "aiohttp/connector.py"
+      ],
+      "relevant_keywords": ["ClientSession", "TCPConnector", "ClientTimeout", "limit"],
+      "total_relevant": 4,
+      "notes": "HTTP client session setup"
+    },
+    {
+      "id": "q116",
+      "query": "aiohttp web application with request handlers and routes",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "aiohttp/web_app.py",
+        "aiohttp/web_urldispatcher.py"
+      ],
+      "relevant_keywords": ["Application", "add_routes", "RouteTableDef", "get", "post"],
+      "total_relevant": 4,
+      "notes": "Web server routing"
+    },
+    {
+      "id": "q117",
+      "query": "aiohttp WebSocket server implementation with message handling",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "aiohttp/web_ws.py"
+      ],
+      "relevant_keywords": ["WebSocketResponse", "prepare", "receive", "send_str", "WSMsgType"],
+      "total_relevant": 4,
+      "notes": "Server-side WebSocket handling"
+    },
+    {
+      "id": "q118",
+      "query": "aiohttp middleware factory and request lifecycle",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "aiohttp/web_middlewares.py",
+        "aiohttp/web_app.py"
+      ],
+      "relevant_keywords": ["middleware", "normalize_path_middleware", "handler"],
+      "total_relevant": 3,
+      "notes": "Middleware pattern in aiohttp"
+    },
+    {
+      "id": "q119",
+      "query": "aiohttp streaming response and chunked transfer encoding",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "aiohttp/web_response.py",
+        "aiohttp/payload.py"
+      ],
+      "relevant_keywords": ["StreamResponse", "write", "prepare", "content_type"],
+      "total_relevant": 3,
+      "notes": "Streaming response pattern"
+    },
+    {
+      "id": "q120",
+      "query": "aiohttp form data parsing and file upload handling",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "aiohttp/web_request.py",
+        "aiohttp/multipart.py"
+      ],
+      "relevant_keywords": ["post", "multipart", "MultipartReader", "content_disposition"],
+      "total_relevant": 4,
+      "notes": "Multipart request parsing"
+    },
+    {
+      "id": "q121",
+      "query": "Django QuerySet annotation and aggregation with F expressions",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "django/db/models/query.py",
+        "django/db/models/expressions.py"
+      ],
+      "relevant_keywords": ["annotate", "aggregate", "F", "Sum", "Count", "Avg"],
+      "total_relevant": 5,
+      "notes": "Advanced ORM expressions"
+    },
+    {
+      "id": "q122",
+      "query": "Django custom model manager with queryset methods",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "django/db/models/manager.py",
+        "django/db/models/query.py"
+      ],
+      "relevant_keywords": ["Manager", "QuerySet", "get_queryset", "from_queryset"],
+      "total_relevant": 4,
+      "notes": "Custom manager pattern"
+    },
+    {
+      "id": "q123",
+      "query": "Django generic views ListView and DetailView",
+      "category": "symbol_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "django/views/generic/list.py",
+        "django/views/generic/detail.py"
+      ],
+      "relevant_keywords": ["ListView", "DetailView", "get_queryset", "get_context_data", "model"],
+      "total_relevant": 4,
+      "notes": "Generic class-based views"
+    },
+    {
+      "id": "q124",
+      "query": "Django transaction management atomic and on_commit",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "django/db/transaction.py"
+      ],
+      "relevant_keywords": ["atomic", "on_commit", "savepoint", "rollback", "Atomic"],
+      "total_relevant": 3,
+      "notes": "Transaction control"
+    },
+    {
+      "id": "q125",
+      "query": "Django file and image field with upload_to configuration",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "django/db/models/fields/files.py",
+        "django/core/files/storage.py"
+      ],
+      "relevant_keywords": ["FileField", "ImageField", "upload_to", "Storage", "FileSystemStorage"],
+      "total_relevant": 4,
+      "notes": "File upload handling"
+    },
+    {
+      "id": "q126",
+      "query": "Django management command implementation with handle method",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "django/core/management/base.py",
+        "django/core/management/__init__.py"
+      ],
+      "relevant_keywords": ["BaseCommand", "handle", "add_arguments", "call_command"],
+      "total_relevant": 3,
+      "notes": "Custom management commands"
+    },
+    {
+      "id": "q127",
+      "query": "Pydantic TypeAdapter for validating arbitrary types",
+      "category": "symbol_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "pydantic/type_adapter.py"
+      ],
+      "relevant_keywords": ["TypeAdapter", "validate_python", "validate_json", "dump_python"],
+      "total_relevant": 3,
+      "notes": "TypeAdapter for non-model validation"
+    },
+    {
+      "id": "q128",
+      "query": "Pydantic computed field and property-like attributes",
+      "category": "symbol_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "pydantic/fields.py"
+      ],
+      "relevant_keywords": ["computed_field", "Field", "property"],
+      "total_relevant": 3,
+      "notes": "Computed field decorator"
+    },
+    {
+      "id": "q129",
+      "query": "Pydantic model configuration with ConfigDict options",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "pydantic/config.py",
+        "pydantic/main.py"
+      ],
+      "relevant_keywords": ["ConfigDict", "model_config", "strict", "frozen", "extra"],
+      "total_relevant": 4,
+      "notes": "Model configuration options"
+    },
+    {
+      "id": "q130",
+      "query": "Pydantic discriminated union with tagged types",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "pydantic/types.py",
+        "pydantic/fields.py"
+      ],
+      "relevant_keywords": ["Discriminator", "discriminator", "Union", "Tag"],
+      "total_relevant": 3,
+      "notes": "Discriminated union pattern"
+    },
+    {
+      "id": "q131",
+      "query": "Pydantic custom types with annotated validators",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "pydantic/functional_validators.py",
+        "pydantic/types.py"
+      ],
+      "relevant_keywords": ["Annotated", "AfterValidator", "BeforeValidator", "WrapValidator"],
+      "total_relevant": 4,
+      "notes": "Custom validation with Annotated types"
+    },
+    {
+      "id": "q132",
+      "query": "Pydantic settings management with environment variables",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "pydantic/main.py"
+      ],
+      "relevant_keywords": ["BaseSettings", "env", "env_prefix", "model_config"],
+      "total_relevant": 3,
+      "notes": "Note: BaseSettings moved to pydantic-settings package"
+    },
+    {
+      "id": "q133",
+      "query": "HTTPX request and response interceptors with event hooks",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "httpx/_client.py"
+      ],
+      "relevant_keywords": ["event_hooks", "request", "response"],
+      "total_relevant": 3,
+      "notes": "Event hooks for request/response lifecycle"
+    },
+    {
+      "id": "q134",
+      "query": "HTTPX custom transport and mock transport for testing",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "httpx/_transports/default.py",
+        "httpx/_transports/mock.py"
+      ],
+      "relevant_keywords": ["BaseTransport", "AsyncBaseTransport", "MockTransport", "handle_request"],
+      "total_relevant": 4,
+      "notes": "Transport layer abstraction"
+    },
+    {
+      "id": "q135",
+      "query": "HTTPX URL parsing and query parameter manipulation",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "httpx/_urls.py"
+      ],
+      "relevant_keywords": ["URL", "QueryParams", "params", "host", "path"],
+      "total_relevant": 3,
+      "notes": "URL handling utilities"
+    },
+    {
+      "id": "q136",
+      "query": "HTTPX authentication with custom auth flows",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "httpx/_auth.py"
+      ],
+      "relevant_keywords": ["Auth", "BasicAuth", "DigestAuth", "auth_flow"],
+      "total_relevant": 3,
+      "notes": "Authentication handling"
+    },
+    {
+      "id": "q137",
+      "query": "FastAPI OAuth2 with JWT token authentication",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "fastapi/security/oauth2.py",
+        "docs_src/security/tutorial004.py"
+      ],
+      "relevant_keywords": ["OAuth2PasswordBearer", "OAuth2PasswordRequestForm", "jwt", "token"],
+      "total_relevant": 5,
+      "notes": "OAuth2 + JWT pattern"
+    },
+    {
+      "id": "q138",
+      "query": "FastAPI background task execution in endpoints",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "fastapi/background.py",
+        "docs_src/background_tasks/tutorial001.py"
+      ],
+      "relevant_keywords": ["BackgroundTasks", "add_task"],
+      "total_relevant": 3,
+      "notes": "Background task usage in endpoints"
+    },
+    {
+      "id": "q139",
+      "query": "FastAPI APIRouter with prefix and tags for modular routing",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "fastapi/routing.py"
+      ],
+      "relevant_keywords": ["APIRouter", "prefix", "tags", "include_router"],
+      "total_relevant": 3,
+      "notes": "Router-based modular structure"
+    },
+    {
+      "id": "q140",
+      "query": "FastAPI response model with exclude and include fields",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "fastapi/routing.py",
+        "fastapi/encoders.py"
+      ],
+      "relevant_keywords": ["response_model", "response_model_exclude", "jsonable_encoder"],
+      "total_relevant": 4,
+      "notes": "Response serialization control"
+    },
+    {
+      "id": "q141",
+      "query": "Django custom user model with AbstractBaseUser",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "django/contrib/auth/models.py",
+        "django/contrib/auth/base_user.py"
+      ],
+      "relevant_keywords": ["AbstractBaseUser", "AbstractUser", "UserManager", "AUTH_USER_MODEL"],
+      "total_relevant": 4,
+      "notes": "Custom user model implementation"
+    },
+    {
+      "id": "q142",
+      "query": "Django prefetch_related and select_related for query optimization",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "django/db/models/query.py",
+        "django/db/models/sql/compiler.py"
+      ],
+      "relevant_keywords": ["prefetch_related", "select_related", "Prefetch", "prefetch_one_level"],
+      "total_relevant": 5,
+      "notes": "ORM query optimization"
+    },
+    {
+      "id": "q143",
+      "query": "Django content types framework and generic relations",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "django/contrib/contenttypes/models.py",
+        "django/contrib/contenttypes/fields.py"
+      ],
+      "relevant_keywords": ["ContentType", "GenericForeignKey", "GenericRelation", "content_type"],
+      "total_relevant": 4,
+      "notes": "Generic relations via content types"
+    },
+    {
+      "id": "q144",
+      "query": "SQLAlchemy query with window functions and CTE",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "lib/sqlalchemy/sql/expression.py",
+        "lib/sqlalchemy/sql/selectable.py"
+      ],
+      "relevant_keywords": ["over", "func", "cte", "partition_by", "order_by"],
+      "total_relevant": 4,
+      "notes": "Advanced SQL constructs"
+    },
+    {
+      "id": "q145",
+      "query": "SQLAlchemy table reflection and automap",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "lib/sqlalchemy/ext/automap.py",
+        "lib/sqlalchemy/engine/reflection.py"
+      ],
+      "relevant_keywords": ["automap_base", "reflect", "Inspector", "get_table_names"],
+      "total_relevant": 4,
+      "notes": "Schema introspection"
+    },
+    {
+      "id": "q146",
+      "query": "PyTorch custom dataset with image transformations",
+      "category": "pattern_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "torch/utils/data/dataset.py",
+        "torchvision/transforms/transforms.py"
+      ],
+      "relevant_keywords": ["Dataset", "__getitem__", "transform", "Compose", "ToTensor"],
+      "total_relevant": 4,
+      "notes": "Pattern: Dataset + transforms"
+    },
+    {
+      "id": "q147",
+      "query": "PyTorch model inference with torch.no_grad context",
+      "category": "pattern_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "torch/autograd/grad_mode.py"
+      ],
+      "relevant_keywords": ["no_grad", "inference_mode", "enable_grad", "set_grad_enabled"],
+      "total_relevant": 3,
+      "notes": "Inference pattern for disabling gradients"
+    },
+    {
+      "id": "q148",
+      "query": "PyTorch LSTM and GRU recurrent neural network layers",
+      "category": "symbol_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "torch/nn/modules/rnn.py"
+      ],
+      "relevant_keywords": ["LSTM", "GRU", "RNNBase", "hidden_size", "num_layers"],
+      "total_relevant": 4,
+      "notes": "Recurrent network layers"
+    },
+    {
+      "id": "q149",
+      "query": "PyTorch BatchNorm and LayerNorm normalization layers",
+      "category": "symbol_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "torch/nn/modules/batchnorm.py",
+        "torch/nn/modules/normalization.py"
+      ],
+      "relevant_keywords": ["BatchNorm2d", "LayerNorm", "running_mean", "running_var"],
+      "total_relevant": 4,
+      "notes": "Normalization layer implementations"
+    },
+    {
+      "id": "q150",
+      "query": "PyTorch attention mechanism and transformer encoder",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "torch/nn/modules/transformer.py",
+        "torch/nn/modules/activation.py"
+      ],
+      "relevant_keywords": ["MultiheadAttention", "TransformerEncoder", "TransformerEncoderLayer", "forward"],
+      "total_relevant": 5,
+      "notes": "Transformer architecture components"
+    },
+    {
+      "id": "q151",
+      "query": "scikit-learn SVM classifier with kernel selection",
+      "category": "symbol_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "sklearn/svm/_classes.py"
+      ],
+      "relevant_keywords": ["SVC", "SVR", "kernel", "C", "gamma", "fit"],
+      "total_relevant": 3,
+      "notes": "Support vector machine implementation"
+    },
+    {
+      "id": "q152",
+      "query": "scikit-learn column transformer for heterogeneous data preprocessing",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "sklearn/compose/_column_transformer.py"
+      ],
+      "relevant_keywords": ["ColumnTransformer", "make_column_transformer", "remainder", "transformers"],
+      "total_relevant": 3,
+      "notes": "Column-wise preprocessing"
+    },
+    {
+      "id": "q153",
+      "query": "scikit-learn KMeans clustering with elbow method",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "sklearn/cluster/_kmeans.py"
+      ],
+      "relevant_keywords": ["KMeans", "n_clusters", "inertia_", "fit_predict", "labels_"],
+      "total_relevant": 3,
+      "notes": "Clustering algorithm"
+    },
+    {
+      "id": "q154",
+      "query": "pandas DataFrame to_sql and read_sql for database interaction",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "pandas/io/sql.py",
+        "pandas/core/frame.py"
+      ],
+      "relevant_keywords": ["to_sql", "read_sql", "read_sql_query", "SQLDatabase"],
+      "total_relevant": 4,
+      "notes": "SQL I/O operations"
+    },
+    {
+      "id": "q155",
+      "query": "pandas window functions rolling mean and expanding",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "pandas/core/window/rolling.py",
+        "pandas/core/window/expanding.py"
+      ],
+      "relevant_keywords": ["rolling", "expanding", "mean", "std", "window"],
+      "total_relevant": 4,
+      "notes": "Window calculations"
+    },
+    {
+      "id": "q156",
+      "query": "pandas extension array and custom dtype implementation",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "pandas/core/arrays/base.py",
+        "pandas/api/extensions.py"
+      ],
+      "relevant_keywords": ["ExtensionArray", "ExtensionDtype", "register_extension_dtype", "_from_sequence"],
+      "total_relevant": 4,
+      "notes": "Custom extension type pattern"
+    },
+    {
+      "id": "q157",
+      "query": "NumPy einsum for tensor contraction and Einstein summation",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "numpy/core/einsumfunc.py"
+      ],
+      "relevant_keywords": ["einsum", "einsum_path", "subscripts", "optimize"],
+      "total_relevant": 3,
+      "notes": "Einstein summation notation"
+    },
+    {
+      "id": "q158",
+      "query": "NumPy masked array operations for handling invalid data",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "numpy/ma/core.py"
+      ],
+      "relevant_keywords": ["MaskedArray", "masked_where", "filled", "mask"],
+      "total_relevant": 4,
+      "notes": "Masked array functionality"
+    },
+    {
+      "id": "q159",
+      "query": "Django REST-like pagination with Paginator class",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "django/core/paginator.py"
+      ],
+      "relevant_keywords": ["Paginator", "Page", "page_range", "num_pages", "object_list"],
+      "total_relevant": 3,
+      "notes": "Built-in pagination"
+    },
+    {
+      "id": "q160",
+      "query": "Django database router for multi-database setup",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "django/db/utils.py",
+        "django/db/router.py"
+      ],
+      "relevant_keywords": ["DatabaseRouter", "db_for_read", "db_for_write", "allow_migrate"],
+      "total_relevant": 3,
+      "notes": "Multi-database routing"
+    },
+    {
+      "id": "q161",
+      "query": "Flask request parsing with form data and query parameters",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "src/flask/wrappers.py"
+      ],
+      "relevant_keywords": ["Request", "args", "form", "files", "get_json"],
+      "total_relevant": 3,
+      "notes": "Request data access"
+    },
+    {
+      "id": "q162",
+      "query": "Flask testing with test client and application context",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "src/flask/testing.py",
+        "src/flask/app.py"
+      ],
+      "relevant_keywords": ["FlaskClient", "test_client", "test_request_context"],
+      "total_relevant": 3,
+      "notes": "Testing utilities"
+    },
+    {
+      "id": "q163",
+      "query": "SQLAlchemy composite primary key and unique constraint",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "lib/sqlalchemy/sql/schema.py"
+      ],
+      "relevant_keywords": ["PrimaryKeyConstraint", "UniqueConstraint", "CheckConstraint", "Column"],
+      "total_relevant": 3,
+      "notes": "Schema constraint definitions"
+    },
+    {
+      "id": "q164",
+      "query": "SQLAlchemy polymorphic inheritance with joined table",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "lib/sqlalchemy/orm/decl_api.py",
+        "lib/sqlalchemy/orm/mapper.py"
+      ],
+      "relevant_keywords": ["polymorphic_on", "polymorphic_identity", "__mapper_args__", "joined"],
+      "total_relevant": 4,
+      "notes": "Inheritance mapping strategies"
+    },
+    {
+      "id": "q165",
+      "query": "Requests proxy configuration and SOCKS support",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "src/requests/sessions.py",
+        "src/requests/adapters.py"
+      ],
+      "relevant_keywords": ["proxies", "proxy", "SOCKS", "trust_env"],
+      "total_relevant": 3,
+      "notes": "Proxy configuration"
+    },
+    {
+      "id": "q166",
+      "query": "LangChain embedding model interface and similarity computation",
+      "category": "symbol_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "libs/core/langchain_core/embeddings/embeddings.py"
+      ],
+      "relevant_keywords": ["Embeddings", "embed_documents", "embed_query"],
+      "total_relevant": 3,
+      "notes": "Embedding abstraction"
+    },
+    {
+      "id": "q167",
+      "query": "LangChain few-shot prompt template with example selector",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "libs/core/langchain_core/prompts/few_shot.py",
+        "libs/core/langchain_core/example_selectors/base.py"
+      ],
+      "relevant_keywords": ["FewShotPromptTemplate", "BaseExampleSelector", "add_example", "select_examples"],
+      "total_relevant": 4,
+      "notes": "Few-shot learning pattern"
+    },
+    {
+      "id": "q168",
+      "query": "Celery task routing with queues and exchanges",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "celery/app/routes.py",
+        "celery/app/amqp.py"
+      ],
+      "relevant_keywords": ["task_routes", "Queue", "Exchange", "routing_key"],
+      "total_relevant": 4,
+      "notes": "Advanced task routing"
+    },
+    {
+      "id": "q169",
+      "query": "Starlette server-sent events and EventSourceResponse",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "starlette/responses.py"
+      ],
+      "relevant_keywords": ["StreamingResponse", "EventSourceResponse", "async generator"],
+      "total_relevant": 3,
+      "notes": "SSE pattern with streaming response"
+    },
+    {
+      "id": "q170",
+      "query": "aiohttp client tracing and request lifecycle hooks",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "aiohttp/tracing.py"
+      ],
+      "relevant_keywords": ["TraceConfig", "on_request_start", "on_request_end", "TraceRequestStartParams"],
+      "total_relevant": 3,
+      "notes": "Request tracing callbacks"
+    },
+    {
+      "id": "q171",
+      "query": "decorator pattern for caching function results with expiration",
+      "category": "pattern_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "django/utils/functional.py",
+        "django/utils/cache.py"
+      ],
+      "relevant_keywords": ["cached_property", "lru_cache", "cache_page", "cache_control"],
+      "total_relevant": 4,
+      "notes": "Caching decorator patterns across frameworks"
+    },
+    {
+      "id": "q172",
+      "query": "context manager pattern for resource cleanup and transactions",
+      "category": "pattern_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "lib/sqlalchemy/orm/session.py",
+        "django/db/transaction.py"
+      ],
+      "relevant_keywords": ["__enter__", "__exit__", "contextmanager", "begin"],
+      "total_relevant": 5,
+      "notes": "Context manager usage pattern"
+    },
+    {
+      "id": "q173",
+      "query": "async generator pattern for streaming data",
+      "category": "pattern_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "aiohttp/web_response.py",
+        "starlette/responses.py",
+        "httpx/_client.py"
+      ],
+      "relevant_keywords": ["async for", "yield", "aiter_bytes", "StreamingResponse"],
+      "total_relevant": 5,
+      "notes": "Async generator streaming pattern"
+    },
+    {
+      "id": "q174",
+      "query": "singleton pattern implementation in Python frameworks",
+      "category": "pattern_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "django/db/models/base.py",
+        "lib/sqlalchemy/orm/scoping.py"
+      ],
+      "relevant_keywords": ["__new__", "_instance", "scoped_session", "metaclass"],
+      "total_relevant": 3,
+      "notes": "Singleton and scoped instance patterns"
+    },
+    {
+      "id": "q175",
+      "query": "observer pattern with event dispatch and subscription",
+      "category": "pattern_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "django/dispatch/dispatcher.py",
+        "celery/signals.py",
+        "lib/sqlalchemy/event/api.py"
+      ],
+      "relevant_keywords": ["Signal", "connect", "send", "listen", "receiver"],
+      "total_relevant": 5,
+      "notes": "Observer/signal pattern across libraries"
+    },
+    {
+      "id": "q176",
+      "query": "middleware chain pattern request processing pipeline",
+      "category": "pattern_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "django/core/handlers/base.py",
+        "starlette/middleware/__init__.py",
+        "src/flask/app.py"
+      ],
+      "relevant_keywords": ["middleware", "get_response", "call_next", "process_request"],
+      "total_relevant": 5,
+      "notes": "Middleware chain of responsibility pattern"
+    },
+    {
+      "id": "q177",
+      "query": "factory pattern for creating database connections",
+      "category": "pattern_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "lib/sqlalchemy/engine/create.py",
+        "django/db/backends/base/base.py"
+      ],
+      "relevant_keywords": ["create_engine", "DatabaseWrapper", "connect", "create_connection"],
+      "total_relevant": 4,
+      "notes": "Factory method pattern for DB connections"
+    },
+    {
+      "id": "q178",
+      "query": "registry pattern for plugin and extension registration",
+      "category": "pattern_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "django/contrib/admin/sites.py",
+        "lib/sqlalchemy/orm/decl_api.py",
+        "celery/app/registry.py"
+      ],
+      "relevant_keywords": ["register", "registry", "autodiscover", "_registry"],
+      "total_relevant": 5,
+      "notes": "Registry pattern for extensibility"
+    },
+    {
+      "id": "q179",
+      "query": "descriptor protocol for lazy loading attributes",
+      "category": "pattern_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "django/utils/functional.py",
+        "lib/sqlalchemy/orm/attributes.py"
+      ],
+      "relevant_keywords": ["__get__", "__set__", "LazyObject", "InstrumentedAttribute"],
+      "total_relevant": 4,
+      "notes": "Descriptor-based lazy loading"
+    },
+    {
+      "id": "q180",
+      "query": "proxy pattern for deferred object initialization",
+      "category": "pattern_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "django/utils/functional.py",
+        "celery/local.py"
+      ],
+      "relevant_keywords": ["SimpleLazyObject", "LazyObject", "Proxy", "__wrapped__"],
+      "total_relevant": 3,
+      "notes": "Proxy and lazy object patterns"
+    },
+    {
+      "id": "q181",
+      "query": "Django queryset bulk_create and bulk_update for batch operations",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "django/db/models/query.py"
+      ],
+      "relevant_keywords": ["bulk_create", "bulk_update", "batch_size", "update_fields"],
+      "total_relevant": 3,
+      "notes": "Batch database operations"
+    },
+    {
+      "id": "q182",
+      "query": "Django password hashing and validation utilities",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "django/contrib/auth/hashers.py",
+        "django/contrib/auth/password_validation.py"
+      ],
+      "relevant_keywords": ["make_password", "check_password", "PBKDF2PasswordHasher", "validate_password"],
+      "total_relevant": 4,
+      "notes": "Password security utilities"
+    },
+    {
+      "id": "q183",
+      "query": "Flask signal support with blinker for request events",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "src/flask/signals.py"
+      ],
+      "relevant_keywords": ["request_started", "request_finished", "got_request_exception", "Namespace"],
+      "total_relevant": 3,
+      "notes": "Flask signal system"
+    },
+    {
+      "id": "q184",
+      "query": "Flask g object and request-scoped data storage",
+      "category": "symbol_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "src/flask/globals.py",
+        "src/flask/ctx.py"
+      ],
+      "relevant_keywords": ["g", "_AppCtxGlobals", "app_ctx"],
+      "total_relevant": 3,
+      "notes": "Request-scoped global storage"
+    },
+    {
+      "id": "q185",
+      "query": "SQLAlchemy bulk insert performance with insert().values()",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "lib/sqlalchemy/sql/dml.py",
+        "lib/sqlalchemy/dialects/postgresql/dml.py"
+      ],
+      "relevant_keywords": ["insert", "values", "returning", "on_conflict_do_nothing"],
+      "total_relevant": 4,
+      "notes": "Bulk insert and upsert operations"
+    },
+    {
+      "id": "q186",
+      "query": "SQLAlchemy custom column type with TypeDecorator",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "lib/sqlalchemy/sql/type_api.py"
+      ],
+      "relevant_keywords": ["TypeDecorator", "process_bind_param", "process_result_value", "impl"],
+      "total_relevant": 3,
+      "notes": "Custom type implementation"
+    },
+    {
+      "id": "q187",
+      "query": "Requests streaming download with iter_content",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "src/requests/models.py"
+      ],
+      "relevant_keywords": ["iter_content", "iter_lines", "stream", "chunk_size"],
+      "total_relevant": 3,
+      "notes": "Streaming response consumption"
+    },
+    {
+      "id": "q188",
+      "query": "LangChain caching for LLM responses and prompt deduplication",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "libs/core/langchain_core/caches.py",
+        "libs/core/langchain_core/globals.py"
+      ],
+      "relevant_keywords": ["BaseCache", "set_llm_cache", "InMemoryCache", "lookup"],
+      "total_relevant": 3,
+      "notes": "LLM response caching"
+    },
+    {
+      "id": "q189",
+      "query": "LangChain RunnableParallel for concurrent chain execution",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "libs/core/langchain_core/runnables/base.py"
+      ],
+      "relevant_keywords": ["RunnableParallel", "RunnablePassthrough", "assign", "invoke"],
+      "total_relevant": 3,
+      "notes": "Parallel execution in LCEL"
+    },
+    {
+      "id": "q190",
+      "query": "PyTorch learning rate warmup and cosine annealing schedule",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "torch/optim/lr_scheduler.py"
+      ],
+      "relevant_keywords": ["CosineAnnealingWarmRestarts", "LinearLR", "SequentialLR", "get_lr"],
+      "total_relevant": 4,
+      "notes": "Learning rate scheduling strategies"
+    },
+    {
+      "id": "q191",
+      "query": "PyTorch model quantization for inference optimization",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "torch/quantization/quantize.py",
+        "torch/ao/quantization/quantize.py"
+      ],
+      "relevant_keywords": ["quantize_dynamic", "prepare", "convert", "QuantStub"],
+      "total_relevant": 4,
+      "notes": "Model quantization pipeline"
+    },
+    {
+      "id": "q192",
+      "query": "scikit-learn DBSCAN clustering with eps and min_samples",
+      "category": "symbol_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "sklearn/cluster/_dbscan.py"
+      ],
+      "relevant_keywords": ["DBSCAN", "eps", "min_samples", "labels_", "core_sample_indices_"],
+      "total_relevant": 3,
+      "notes": "Density-based clustering"
+    },
+    {
+      "id": "q193",
+      "query": "scikit-learn imputation of missing values with SimpleImputer",
+      "category": "code_search",
+      "difficulty": "easy",
+      "relevant_files": [
+        "sklearn/impute/_base.py"
+      ],
+      "relevant_keywords": ["SimpleImputer", "KNNImputer", "strategy", "fit_transform"],
+      "total_relevant": 3,
+      "notes": "Missing value imputation"
+    },
+    {
+      "id": "q194",
+      "query": "pandas DataFrame styling and conditional formatting",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "pandas/io/formats/style.py",
+        "pandas/io/formats/style_render.py"
+      ],
+      "relevant_keywords": ["Styler", "applymap", "background_gradient", "highlight_max"],
+      "total_relevant": 3,
+      "notes": "DataFrame visual styling"
+    },
+    {
+      "id": "q195",
+      "query": "pandas eval and query for expression-based DataFrame operations",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "pandas/core/frame.py",
+        "pandas/core/computation/eval.py"
+      ],
+      "relevant_keywords": ["eval", "query", "numexpr", "engine"],
+      "total_relevant": 4,
+      "notes": "Expression evaluation engine"
+    },
+    {
+      "id": "q196",
+      "query": "NumPy polynomial fitting and evaluation",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "numpy/polynomial/polynomial.py"
+      ],
+      "relevant_keywords": ["polyfit", "polyval", "Polynomial", "fit", "roots"],
+      "total_relevant": 3,
+      "notes": "Polynomial operations"
+    },
+    {
+      "id": "q197",
+      "query": "Celery rate limiting and task throttling configuration",
+      "category": "code_search",
+      "difficulty": "medium",
+      "relevant_files": [
+        "celery/app/task.py",
+        "celery/worker/consumer/consumer.py"
+      ],
+      "relevant_keywords": ["rate_limit", "task_annotations", "TokenBucket"],
+      "total_relevant": 3,
+      "notes": "Rate limiting for tasks"
+    },
+    {
+      "id": "q198",
+      "query": "aiohttp session middleware with cookie-based storage",
+      "category": "code_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "aiohttp/web_app.py",
+        "aiohttp/web_middlewares.py"
+      ],
+      "relevant_keywords": ["session", "middleware", "cookie", "EncryptedCookieStorage"],
+      "total_relevant": 3,
+      "notes": "Session management in aiohttp"
+    },
+    {
+      "id": "q199",
+      "query": "type annotation patterns with Protocol and runtime_checkable",
+      "category": "pattern_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "pydantic/main.py",
+        "lib/sqlalchemy/orm/decl_api.py",
+        "fastapi/routing.py"
+      ],
+      "relevant_keywords": ["Protocol", "runtime_checkable", "TypeVar", "Generic", "overload"],
+      "total_relevant": 5,
+      "notes": "Type annotation patterns across frameworks"
+    },
+    {
+      "id": "q200",
+      "query": "builder pattern for constructing complex query objects",
+      "category": "pattern_search",
+      "difficulty": "hard",
+      "relevant_files": [
+        "lib/sqlalchemy/sql/selectable.py",
+        "django/db/models/query.py",
+        "lib/sqlalchemy/orm/query.py"
+      ],
+      "relevant_keywords": ["filter", "order_by", "limit", "offset", "where", "join"],
+      "total_relevant": 6,
+      "notes": "Builder/fluent API pattern for query construction"
     }
   ]
 }

@@ -1040,7 +1040,6 @@ async def run_full_benchmark(
     # --- Save report ---
     report_dir = trace_store.results_dir / "reports"
     report_dir.mkdir(parents=True, exist_ok=True)
-    from datetime import datetime
     report_path = report_dir / f"benchmark_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
     with open(report_path, "w") as f:
         json.dump(asdict(report), f, indent=2, default=str)

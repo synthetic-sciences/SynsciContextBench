@@ -262,24 +262,6 @@ class Context7Adapter(ContextEngineAdapter):
         # Cache resolved library IDs
         self._library_cache: dict[str, str] = {}
 
-    async def _query_http(
-        self, library_id: str, query: str, response_type: str = "txt"
-    ) -> str | list[dict]:
-        """Query Context7's HTTP API."""
-        resp = await self._client.get(
-            f"{self._api_url}/api/v2/context",
-            params={
-                "libraryId": library_id,
-                "query": query,
-                "type": response_type,
-            },
-        )
-        resp.raise_for_status()
-
-        if response_type == "json":
-            return resp.json()
-        return resp.text
-
     # ------------------------------------------------------------------
     # MCP stdio helpers (used for library ID resolution as fallback)
     # ------------------------------------------------------------------
@@ -342,6 +324,66 @@ class Context7Adapter(ContextEngineAdapter):
             raise RuntimeError(f"Context7 MCP error: {err.get('message', err)}")
         return resp.get("result", {})
 
+    async def _request_with_retry(
+        self, method: str, url: str, **kwargs: object
+    ) -> httpx.Response:
+        """Make an HTTP request with exponential backoff on 429 and 5xx."""
+        max_retries = 5
+        for attempt in range(max_retries):
+            resp = await self._client.request(method, url, **kwargs)
+
+            if resp.status_code == 429:
+                retry_after = float(resp.headers.get("Retry-After", 2 ** attempt))
+                print(f"    [context7] Rate limited (429), retrying in {retry_after}s...")
+                await asyncio.sleep(retry_after)
+                continue
+
+            if resp.status_code == 301:
+                try:
+                    redirect_data = resp.json()
+                    redirect_url = redirect_data.get("redirectUrl", "")
+                    if redirect_url:
+                        print(f"    [context7] Library redirected to {redirect_url}")
+                        params = dict(kwargs.get("params", {}))  # type: ignore[arg-type]
+                        params["libraryId"] = redirect_url
+                        kwargs = {**kwargs, "params": params}
+                        continue
+                except Exception:
+                    pass
+
+            if resp.status_code == 202:
+                print("    [context7] Library not finalized (202), retrying...")
+                await asyncio.sleep(2 ** attempt)
+                continue
+
+            if resp.status_code >= 500:
+                if attempt < max_retries - 1:
+                    await asyncio.sleep(2 ** attempt)
+                    continue
+
+            return resp
+
+        return resp  # Return last response even if retries exhausted
+
+    async def _query_http(
+        self, library_id: str, query: str, response_type: str = "txt"
+    ) -> str | list[dict]:
+        """Query Context7's HTTP API."""
+        resp = await self._request_with_retry(
+            "GET",
+            f"{self._api_url}/api/v2/context",
+            params={
+                "libraryId": library_id,
+                "query": query,
+                "type": response_type,
+            },
+        )
+        resp.raise_for_status()
+
+        if response_type == "json":
+            return resp.json()
+        return resp.text
+
     async def _search_library_http(self, library_name: str) -> str:
         """Resolve a library name to a Context7 library ID via HTTP API.
 
@@ -400,7 +442,7 @@ class Context7Adapter(ContextEngineAdapter):
     async def _resolve_library(self, library_name: str) -> str:
         """Resolve a library name to Context7 library ID.
 
-        Checks static mapping first, falls back to MCP resolution.
+        Priority: cache -> static mapping -> HTTP search API -> MCP -> guess.
         """
         cache_key = library_name.lower()
         if cache_key in self._library_cache:
@@ -410,6 +452,12 @@ class Context7Adapter(ContextEngineAdapter):
         if cache_key in _REPO_TO_CONTEXT7_ID:
             self._library_cache[cache_key] = _REPO_TO_CONTEXT7_ID[cache_key]
             return self._library_cache[cache_key]
+
+        # Primary: HTTP search API
+        library_id = await self._search_library_http(library_name)
+        if library_id:
+            self._library_cache[cache_key] = library_id
+            return library_id
 
         # Fallback: MCP resolution
         try:
