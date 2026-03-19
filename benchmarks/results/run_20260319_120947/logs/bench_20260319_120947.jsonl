@@ -1,0 +1,6 @@
+{"ts": "2026-03-19T06:39:47.878022+00:00", "level": "INFO", "logger": "bench.runner", "msg": "Starting benchmark run e71e05d58497 with engines: nia, context7", "run_id": "e71e05d58497"}
+{"ts": "2026-03-19T07:49:16.771171+00:00", "level": "INFO", "logger": "bench.runner", "msg": "Progress saved after hallucination phase"}
+{"ts": "2026-03-19T07:49:16.800070+00:00", "level": "INFO", "logger": "bench.runner", "msg": "Saved traces \u2192 /home/keertan/codes/InkVell/synsc-context-bench/benchmarks/results/run_20260319_120947/traces/traces_20260319_131916.jsonl"}
+{"ts": "2026-03-19T07:49:16.800295+00:00", "level": "INFO", "logger": "bench.runner", "msg": "Saved manifest \u2192 /home/keertan/codes/InkVell/synsc-context-bench/benchmarks/results/run_20260319_120947/reports/manifest_20260319_131916.json"}
+{"ts": "2026-03-19T07:49:16.800368+00:00", "level": "INFO", "logger": "bench.runner", "msg": "Saved csv \u2192 /home/keertan/codes/InkVell/synsc-context-bench/benchmarks/results/run_20260319_120947/data/results_20260319_131916.csv"}
+{"ts": "2026-03-19T07:49:16.800440+00:00", "level": "INFO", "logger": "bench.runner", "msg": "Benchmark run e71e05d58497 complete in 4168.9s (200 traces)", "run_id": "e71e05d58497"}

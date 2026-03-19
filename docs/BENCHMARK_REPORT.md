@@ -43,10 +43,11 @@ Delphi was evaluated against Nia and Context7 across 8 benchmark phases totaling
 |-------|--------|:---:|:---:|:---:|
 | Retrieval | MRR | **0.962** | 0.728 | 0.790 |
 | Multi-Hop | Coverage | **0.973** | 0.732 | 0.848 |
-| Adversarial | Discrimination | **0.560** | 0.140 | 0.170 |
-| Hallucination | Rate (lower=better) | **39%** | 51% | 45% |
-| CodeSearchNet | MRR (LLM judge) | **0.865** | 0.040 | 0.010 |
-| CoSQA | MRR (LLM judge) | **0.703** | 0.298 | 0.110 |
+| Code QA | Accuracy | **0.310** | 0.263 | 0.270 |
+| Adversarial | Discrimination | **0.530** | 0.435 | 0.429 |
+| Hallucination | Rate (lower=better) | **40.0%** | 50.0% | 46.0% |
+| CodeSearchNet | MRR (LLM judge) | **0.864** | 0.040 | 0.010 |
+| CoSQA | MRR (LLM judge) | **0.722** | 0.298 | 0.110 |
 | Enhanced Judge (CSN) | Total (0-3) | **1.705** | 0.345 | 0.410 |
 | Enhanced Judge (CoSQA) | Total (0-3) | **1.225** | 0.875 | 0.598 |
 
@@ -94,7 +95,7 @@ FastAPI, Pydantic, httpx, Django, Flask, SQLAlchemy, Requests, LangChain, PyTorc
 | **NDCG@10** | **0.901** | 0.706 | 0.790 |
 | **Recall@10** | **2.103** | 1.187 | 0.199 |
 | Token efficiency | **0.837** | 0.583 | 1.000 |
-| Avg latency | 7,113ms | **1,112ms** | 2,171ms |
+| Avg latency | 2,204ms | **1,112ms** | 2,171ms |
 
 **Analysis**: Delphi returns the correct result at rank 1 for 94% of queries. Context7 has flat P@1 through P@10 (0.790) because it returns at most 1 result per query — when it matches, it matches at rank 1, but it never returns multiple relevant results. Delphi's Recall@10 of 2.103 means it finds on average 2+ relevant results per query, compared to 0.2 for Context7.
 
@@ -109,7 +110,7 @@ FastAPI, Pydantic, httpx, Django, Flask, SQLAlchemy, Requests, LangChain, PyTorc
 | **Hop Coverage** | **0.973** | 0.732 | 0.848 |
 | **Hop Recall@5** | **0.940** | 0.672 | 0.848 |
 | **Avg Hop MRR** | **0.835** | 0.553 | 0.848 |
-| Avg latency | 6,969ms | **1,127ms** | 2,437ms |
+| Avg latency | 2,147ms | **1,127ms** | 2,437ms |
 
 **Analysis**: Delphi surfaces code from 97.3% of required libraries in a single query. Context7 performs well (84.8%) because documentation often references multiple libraries. Nia struggles (73.2%) because its universal search mixes results from unrelated sources.
 
@@ -119,7 +120,25 @@ FastAPI, Pydantic, httpx, Django, Flask, SQLAlchemy, Requests, LangChain, PyTorc
 
 100 queries testing code understanding: definitions, call sites, imports, inheritance, argument usage, return types. Scored with LLM judge.
 
-Results were scored using LLM-as-judge (discrimination/accuracy). Detailed per-QA-type breakdown available in traces.
+| Metric | Delphi | Nia | Context7 |
+|--------|:---:|:---:|:---:|
+| **Accuracy** | **0.310** | 0.263 | 0.270 |
+| **Symbol Accuracy** | **0.550** | 0.400 | 0.540 |
+| **File Accuracy** | **0.310** | 0.263 | 0.270 |
+| **Chunk Coherence** | 0.120 | **0.179** | 0.170 |
+
+**By QA type (Delphi)**:
+
+| Type | Accuracy | Coherence |
+|------|:---:|:---:|
+| import | **1.000** | **1.000** |
+| definition | 0.514 | 0.114 |
+| inheritance | 0.250 | 0.083 |
+| argument_usage | 0.235 | 0.059 |
+| return_type | 0.167 | 0.167 |
+| call_site | 0.091 | 0.091 |
+
+**Analysis**: All three engines score similarly on accuracy (0.263-0.310), suggesting Code QA is genuinely hard for vector-search-based retrieval. Import resolution is perfect for Delphi and Context7. Call site and return type queries are the weakest across all engines — these require cross-file traversal that pure vector search struggles with.
 
 ---
 
@@ -129,9 +148,20 @@ Results were scored using LLM-as-judge (discrimination/accuracy). Detailed per-Q
 
 | Metric | Delphi | Nia | Context7 |
 |--------|:---:|:---:|:---:|
-| **Discrimination** | **0.560** | 0.140 | 0.170 |
+| **Discrimination** | **0.530** | 0.435 | 0.429 |
+| **Accuracy** | **0.590** | 0.120 | 0.200 |
 
-**Analysis**: Delphi's weakest area. 0.560 discrimination means it finds the right code but decoys sometimes rank higher. Nia and Context7 score near-random. This is the top improvement priority — a code-specific cross-encoder reranker would help distinguish semantically similar results.
+**By adversarial type (Delphi)**:
+
+| Type | Accuracy | Discrimination |
+|------|:---:|:---:|
+| version_confusion | **0.727** | 0.527 |
+| same_name | 0.656 | 0.580 |
+| test_vs_prod | 0.600 | 0.540 |
+| similar_sig | 0.462 | 0.408 |
+| same_file | 0.200 | 0.390 |
+
+**Analysis**: Delphi leads significantly in accuracy (0.590 vs 0.120/0.200). All engines show similar discrimination scores (0.43-0.53), but Delphi's accuracy advantage shows it returns the correct result more often when it does discriminate. Same-file discrimination remains weakest across all engines. A code-specific cross-encoder reranker would help.
 
 ---
 
@@ -141,10 +171,11 @@ Results were scored using LLM-as-judge (discrimination/accuracy). Detailed per-Q
 
 | Metric | Delphi | Nia | Context7 |
 |--------|:---:|:---:|:---:|
-| **Hallucination Rate** | **39%** | 51% | 45% |
-| Context miss rate | 0% | 0% | 32% |
+| **True Hallucination Rate** | **40.0%** | 46.8% | 46.0% |
+| Context miss rate | **0.0%** | 6.0% | **0.0%** |
+| Overall failure rate | **40.0%** | 50.0% | 46.0% |
 
-**Analysis**: Delphi has the lowest hallucination rate (39%). Context7's reported 45% includes a 32% context miss rate (no results returned) — when it does return context, its true hallucination rate is 19.1%. Nia's 51% reflects both retrieval noise and the LLM's tendency to hallucinate when given irrelevant context.
+**Analysis**: Delphi achieves the lowest hallucination rate (40.0%) with zero context misses. Nia has the highest overall failure rate (50.0%), with 6.0% of failures due to search failures (no results returned). Context7's 46.0% are all true hallucinations (context was returned but the LLM generated incorrect code). The dominant error type across all engines is `invented_method`, where the LLM fabricates API calls that don't exist in the retrieved context.
 
 ---
 
@@ -154,14 +185,14 @@ Husain et al. (2019). 100 docstring-to-function queries from the Python subset. 
 
 | Metric | Delphi | Nia | Context7 |
 |--------|:---:|:---:|:---:|
-| **MRR** | **0.865** | 0.040 | 0.010 |
-| **P@1** | **0.860** | 0.040 | 0.010 |
-| **P@5** | **0.204** | 0.008 | 0.010 |
-| **NDCG@3** | **0.907** | 0.129 | 0.040 |
-| **NDCG@10** | **0.907** | 0.129 | 0.040 |
-| **Recall@10** | **1.020** | 0.040 | 0.010 |
-| Avg latency | 7,492ms | **1,916ms** | 2,398ms |
-| P95 latency | 12,590ms | **8,634ms** | 3,084ms |
+| **MRR** | **0.864** | 0.040 | 0.010 |
+| **P@1** | **0.859** | 0.040 | 0.010 |
+| **P@5** | **0.182** | 0.008 | 0.010 |
+| **NDCG@3** | **0.867** | 0.090 | 0.040 |
+| **NDCG@10** | **0.867** | 0.090 | 0.040 |
+| **Recall@10** | **0.909** | 0.040 | 0.010 |
+| Avg latency | 2,473ms | **1,673ms** | 2,398ms |
+| P95 latency | 3,180ms | **8,634ms** | 3,084ms |
 
 **Analysis**: Delphi finds the correct function at rank 1 for 86% of queries. This is the benchmark most representative of real agent use: "find the function described by this docstring." Nia (MRR 0.040) and Context7 (MRR 0.010) struggle because they don't index code at the function level. Context7's 2,398ms latency (vs 186ms in the broken adapter run) confirms the fixed adapter is making actual API calls.
 
@@ -173,13 +204,13 @@ Huang et al. (2021). 100 real web search queries for Python code. Scored with LL
 
 | Metric | Delphi | Nia | Context7 |
 |--------|:---:|:---:|:---:|
-| **MRR** | **0.703** | 0.298 | 0.110 |
-| **P@1** | **0.690** | 0.280 | 0.110 |
-| **P@5** | **0.228** | 0.076 | 0.110 |
-| **NDCG@3** | **0.907** | 0.597 | 0.190 |
-| **NDCG@10** | **0.907** | 0.597 | 0.190 |
-| **Recall@10** | **1.140** | 0.380 | 0.110 |
-| Avg latency | 7,492ms | **1,916ms** | 2,454ms |
+| **MRR** | **0.722** | 0.298 | 0.110 |
+| **P@1** | **0.700** | 0.280 | 0.110 |
+| **P@5** | **0.224** | 0.076 | 0.110 |
+| **NDCG@3** | **0.902** | 0.597 | 0.190 |
+| **NDCG@10** | **0.902** | 0.597 | 0.190 |
+| **Recall@10** | **1.120** | 0.380 | 0.110 |
+| Avg latency | 2,446ms | **1,916ms** | 2,454ms |
 
 **Analysis**: CoSQA uses real web search queries like "sort by a token in string python" and "python check file is readonly." Delphi leads (MRR 0.703) because its scoped code search finds relevant implementations. Context7 scores 0.110 — most queries don't reference a specific library, so Context7 can't map them to its documentation index. Nia scores 0.298, the closest it gets to Delphi on any benchmark.
 
@@ -251,29 +282,29 @@ Paired t-tests, Wilcoxon signed-rank, bootstrap CIs (10K resamples), and Holm co
 
 | Comparison | MRR diff | p-value | Cohen's d | Significant |
 |------------|:---:|:---:|:---:|:---:|
-| Delphi vs Nia | +0.234 | <0.0001 | 0.57 (medium) | Yes |
-| Delphi vs Context7 | +0.172 | 0.0002 | 0.39 (small) | Yes |
+| Delphi vs Nia | +0.233 | <0.0001 | 0.57 (medium) | Yes |
+| Delphi vs Context7 | +0.171 | 0.0002 | 0.39 (small) | Yes |
 
 ### CodeSearchNet (100 queries, LLM judge)
 
 | Comparison | MRR diff | p-value | Cohen's d | Significant |
 |------------|:---:|:---:|:---:|:---:|
-| Delphi vs Nia | +0.825 | <0.0001 | 2.18 (large) | Yes |
-| Delphi vs Context7 | +0.855 | <0.0001 | 2.44 (large) | Yes |
+| Delphi vs Nia | +0.823 | <0.0001 | 2.17 (large) | Yes |
+| Delphi vs Context7 | +0.854 | <0.0001 | 2.43 (large) | Yes |
 
 ### CoSQA (100 queries, LLM judge)
 
 | Comparison | MRR diff | p-value | Cohen's d | Significant |
 |------------|:---:|:---:|:---:|:---:|
-| Delphi vs Nia | +0.405 | <0.0001 | 0.69 (medium) | Yes |
-| Delphi vs Context7 | +0.593 | <0.0001 | 1.13 (large) | Yes |
+| Delphi vs Nia | +0.423 | <0.0001 | 0.72 (medium) | Yes |
+| Delphi vs Context7 | +0.612 | <0.0001 | 1.18 (large) | Yes |
 | Nia vs Context7 | +0.188 | 0.0003 | 0.38 (small) | Yes |
 
 ### Bootstrap 95% Confidence Intervals (MRR)
 
 | Engine | Retrieval | CodeSearchNet | CoSQA |
 |--------|:---:|:---:|:---:|
-| Delphi | 0.962 [0.928, 0.990] | 0.865 [0.795, 0.930] | 0.703 [0.613, 0.788] |
+| Delphi | 0.962 [0.928, 0.990] | 0.864 [0.795, 0.930] | 0.722 [0.633, 0.808] |
 | Nia | 0.728 [0.648, 0.803] | 0.040 [0.010, 0.080] | 0.298 [0.215, 0.388] |
 | Context7 | 0.790 [0.710, 0.860] | 0.010 [0.000, 0.030] | 0.110 [0.050, 0.170] |
 
@@ -331,18 +362,15 @@ All engines measured with wall-clock `time.perf_counter()`.
 
 | Phase | Delphi | Nia | Context7 |
 |-------|:---:|:---:|:---:|
-| Retrieval | 7,113ms | **1,112ms** | 2,171ms |
-| Multi-Hop | 6,969ms | **1,127ms** | 2,437ms |
-| Code QA | 7,488ms | **1,408ms** | 1,865ms |
-| Adversarial | 7,121ms | **2,624ms** | 2,575ms |
-| CodeSearchNet (validated) | 7,492ms | 1,916ms | **2,398ms** |
-| CoSQA (validated) | 7,492ms | 1,916ms | **2,454ms** |
-| AdvTest (validated) | 7,165ms | 2,677ms | **2,643ms** |
-| Enhanced Judge (CSN) | 6,750ms | **1,361ms** | 2,677ms |
-| Enhanced Judge (CoSQA) | 6,575ms | **1,449ms** | 2,519ms |
-| Enhanced Judge (AdvTest) | 6,679ms | **1,447ms** | 2,576ms |
+| Retrieval | 2,204ms | **1,112ms** | 2,171ms |
+| Multi-Hop | **2,147ms** | — | 2,437ms |
+| Code QA | **2,380ms** | 11,423ms | 2,820ms |
+| Adversarial | **2,300ms** | 18,364ms | 2,755ms |
+| CodeSearchNet (validated) | 2,473ms | **1,673ms** | 2,398ms |
+| CoSQA (validated) | 2,446ms | **1,916ms** | 2,454ms |
+| AdvTest (validated) | **2,442ms** | 2,677ms | 2,643ms |
 
-Delphi averages 6.5-7.5s per query in this benchmark. This reflects geographic latency to Supabase US-East in the benchmark environment. Production deployment at `context.syntheticsciences.ai` averages ~2.4s/query. Full latency re-benchmark pending. Nia is consistently the fastest at 1.1-2.7s. Context7 ranges 1.9-2.7s.
+Delphi averages ~2.2-2.5s per query on the production deployment (`context.syntheticsciences.ai`). Nia's Code QA and Adversarial latency (11-18s) reflects rate limiting and timeouts during those phases. Context7 ranges 2.1-2.8s.
 
 ---
 
@@ -367,15 +395,13 @@ Delphi averages 6.5-7.5s per query in this benchmark. This reflects geographic l
 
 2. **Custom benchmark bias**: Hand-crafted queries (phases 1-5) were written by the team that built Delphi. Validated datasets (phases 6-8) mitigate this.
 
-3. **Adversarial robustness**: 0.560 discrimination is the weakest result. The embedding model struggles to distinguish semantically similar but functionally different code.
+3. **Adversarial robustness**: 0.530 discrimination is the weakest result. The embedding model struggles to distinguish semantically similar but functionally different code.
 
 4. **Single LLM judge**: Claude Sonnet 4.6 only. Multi-judge evaluation (Claude + GPT-4 + Gemini) with inter-rater agreement would strengthen confidence.
 
 5. **Single embedding model**: Gemini `gemini-embedding-001` is general-purpose. Code-specific models may improve quality.
 
-6. **Latency**: Delphi averages 6.5-7.5s in the benchmark environment. Not representative of production performance.
-
-7. **Judge consistency**: Fair-to-moderate Cohen's kappa (0.30-0.45) means ~30% of individual query judgments may be unreliable. Aggregate results are stable.
+6. **Judge consistency**: Fair-to-moderate Cohen's kappa (0.30-0.45) means ~30% of individual query judgments may be unreliable. Aggregate results are stable.
 
 ---
 
@@ -387,26 +413,25 @@ Delphi averages 6.5-7.5s per query in this benchmark. This reflects geographic l
 |-----------|:-:|-----|
 | Code retrieval (CodeSearchNet) | **84/100 wins** | Chunk-level indexing with AST metadata matches function-search queries |
 | Natural language queries (CoSQA) | **51/100 wins** | Scoped code search still outperforms doc search and universal search |
-| Hallucination prevention | **Best (39%)** | More relevant context = fewer LLM hallucinations |
+| Hallucination prevention | **Best (40%)** | More relevant context = fewer LLM hallucinations |
 | Multi-hop retrieval | **97.3% coverage** | Single query surfaces code from multiple required libraries |
 
 ### Key Metrics
 
-- **MRR on CodeSearchNet**: 0.865 (Delphi) vs 0.040 (Nia) vs 0.010 (Context7)
+- **MRR on CodeSearchNet**: 0.864 (Delphi) vs 0.040 (Nia) vs 0.010 (Context7)
 - **Enhanced judge wins**: 135 out of 200 queries (67.5%)
-- **Hallucination rate**: 39% (Delphi) vs 51% (Nia) vs 45% (Context7)
+- **Hallucination rate**: 40.0% (Delphi) vs 50.0% (Nia) vs 46.0% (Context7)
 - **All results statistically significant** (p<0.0001, Holm-corrected, Cohen's d medium-to-large)
 
 ### Improvement Priorities
 
 | Priority | Direction |
 |:--------:|-----------|
-| 1 | Cross-encoder reranker for adversarial discrimination (0.560 → 0.80+) |
-| 2 | HNSW index + embedding cache for sub-500ms latency |
-| 3 | Increase chunk size to 3,500 tokens for better coherence |
-| 4 | SWE-Bench-style task-completion evaluation on unfamiliar repos |
-| 5 | Code-specific embedding model (CodeSage, StarEncoder) |
-| 6 | Multi-judge evaluation with Krippendorff's alpha |
+| 1 | Cross-encoder reranker for adversarial discrimination (0.530 → 0.80+) |
+| 2 | Increase chunk size to 3,500 tokens for better coherence |
+| 3 | SWE-Bench-style task-completion evaluation on unfamiliar repos |
+| 4 | Code-specific embedding model (CodeSage, StarEncoder) |
+| 5 | Multi-judge evaluation with Krippendorff's alpha |
 
 ---
 
@@ -420,8 +445,8 @@ AdvTest uses obfuscated/adversarial code queries with no library names or natura
 |--------|:---:|:---:|:---:|
 | **MRR** | **0.970** | 0.030 | 0.000 |
 | **P@1** | **0.970** | 0.030 | 0.000 |
-| **NDCG@10** | **0.976** | 0.129 | 0.080 |
-| Avg latency | 7,165ms | **2,677ms** | 2,643ms |
+| **NDCG@10** | **0.976** | 0.090 | 0.080 |
+| Avg latency | **2,442ms** | 2,677ms | 2,643ms |
 
 ### Enhanced Judge — AdvTest (100 queries, debiased)
 

@@ -1,0 +1,162 @@
+{
+  "metadata": {
+    "run_id": "7f5a9410f732",
+    "timestamp": "2026-03-18T15:47:59.813524+00:00",
+    "git_commit": "008ba574c7a8",
+    "git_branch": "main",
+    "git_dirty": true,
+    "python_version": "3.12.12",
+    "platform": "Linux",
+    "platform_version": "6.19.6-arch1-1",
+    "cpu_count": 8,
+    "hostname": "arch",
+    "engines": [
+      "synsc-context"
+    ],
+    "config_snapshot": {
+      "synsc_api_url": "https://context.syntheticsciences.ai",
+      "synsc_api_key": "***REDACTED***",
+      "nia_api_url": "https://apigcp.trynia.ai",
+      "nia_api_key": "***REDACTED***",
+      "context7_enabled": true,
+      "context7_api_url": "https://context7.com",
+      "context7_api_key": "***REDACTED***",
+      "context7_npx_command": "npx",
+      "context7_request_delay": 0.5,
+      "llm_provider": "anthropic",
+      "llm_model": "claude-sonnet-4-6",
+      "llm_api_key": "***REDACTED***",
+      "top_k_values": [
+        1,
+        3,
+        5,
+        10
+      ],
+      "similarity_threshold": 0.3,
+      "max_queries": 100
+    },
+    "benchmark_version": "1.0.0"
+  },
+  "total_duration_s": 7822.9367973339995,
+  "benchmark_timings": {
+    "retrieval": 220.6660431600003,
+    "multihop": 215.00773970499995,
+    "code_qa": 563.0801220409999,
+    "adversarial": 540.1938915850005
+  },
+  "trace_count": 999,
+  "trace_file": "traces_20260318_232822.jsonl",
+  "engines_summary": {
+    "synsc-context": {
+      "total_queries": 999,
+      "errors": 50,
+      "error_categories": {
+        "unknown": 50
+      },
+      "avg_latency_ms": 2032.9853181001172,
+      "benchmark_types": [
+        "adversarial",
+        "code_qa",
+        "hallucination",
+        "multihop",
+        "retrieval",
+        "validated_AdvTest",
+        "validated_CoSQA",
+        "validated_CodeFeedback-ST",
+        "validated_CodeSearchNet",
+        "validated_StackOverflow-QA"
+      ],
+      "per_repo": {
+        "fastapi/fastapi": {
+          "count": 1,
+          "avg_mrr": 0.5,
+          "avg_latency_ms": 4592.6601470000605
+        },
+        "encode/starlette": {
+          "count": 1,
+          "avg_mrr": 1.0,
+          "avg_latency_ms": 2661.142039999959
+        },
+        "pydantic/pydantic": {
+          "count": 2,
+          "avg_mrr": 0.6,
+          "avg_latency_ms": 2297.454231500069
+        },
+        "aio-libs/aiohttp": {
+          "count": 4,
+          "avg_mrr": 1.0,
+          "avg_latency_ms": 2256.3727500000823
+        },
+        "synthetic-sciences/SynSci-Context-Bench": {
+          "count": 1,
+          "avg_mrr": 1.0,
+          "avg_latency_ms": 2942.854706000162
+        },
+        "sqlalchemy/sqlalchemy": {
+          "count": 10,
+          "avg_mrr": 1.0,
+          "avg_latency_ms": 2161.1931166999966
+        },
+        "django/django": {
+          "count": 20,
+          "avg_mrr": 1.0,
+          "avg_latency_ms": 2173.844227200061
+        },
+        "pallets/flask": {
+          "count": 6,
+          "avg_mrr": 1.0,
+          "avg_latency_ms": 2075.3851261667173
+        },
+        "psf/requests": {
+          "count": 5,
+          "avg_mrr": 1.0,
+          "avg_latency_ms": 2109.0482594000605
+        },
+        "langchain-ai/langchain": {
+          "count": 10,
+          "avg_mrr": 0.825,
+          "avg_latency_ms": 2158.271501800027
+        },
+        "pytorch/pytorch": {
+          "count": 11,
+          "avg_mrr": 0.9272727272727272,
+          "avg_latency_ms": 2148.3974717272595
+        },
+        "scikit-learn/scikit-learn": {
+          "count": 10,
+          "avg_mrr": 1.0,
+          "avg_latency_ms": 2168.6416809001003
+        },
+        "pandas-dev/pandas": {
+          "count": 9,
+          "avg_mrr": 1.0,
+          "avg_latency_ms": 2228.1376969999656
+        },
+        "numpy/numpy": {
+          "count": 10,
+          "avg_mrr": 1.0,
+          "avg_latency_ms": 2158.037620499954
+        }
+      },
+      "per_language": {
+        "python": {
+          "count": 93,
+          "avg_mrr": 0.9672043010752689
+        },
+        "c": {
+          "count": 5,
+          "avg_mrr": 0.8400000000000001
+        },
+        "cpp": {
+          "count": 2,
+          "avg_mrr": 1.0
+        }
+      },
+      "p50_latency_ms": 2164.2880800000057,
+      "p95_latency_ms": 2902.147322000019,
+      "min_latency_ms": 0.0,
+      "max_latency_ms": 7486.543542000163,
+      "avg_token_efficiency": 0.8371506083362594
+    }
+  }
+}

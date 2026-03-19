@@ -378,6 +378,111 @@ def download_codesearchnet_challenge() -> Path:
 
 
 # ---------------------------------------------------------------------------
+# AdvTest (CodeXGLUE adversarial code search)
+# ---------------------------------------------------------------------------
+
+def download_advtest(
+    max_samples: int = 500,
+    seed: int = 42,
+) -> Path:
+    """Download AdvTest and convert to retrieval benchmark format.
+
+    AdvTest is the adversarial code search dataset from CodeXGLUE. It is
+    derived from CodeSearchNet but with function names normalized (replaced
+    with generic identifiers) to prevent trivial keyword matching. This
+    tests whether a model truly understands code semantics rather than
+    relying on name overlap between docstrings and function names.
+
+    Args:
+        max_samples: Max number of query-code pairs to include
+        seed: Random seed for sampling
+
+    Returns:
+        Path to the generated JSON file
+    """
+    datasets = _ensure_datasets_lib()
+    random.seed(seed)
+
+    print("  Loading AdvTest (CodeXGLUE NL-Code-Search-Adv)...")
+    try:
+        ds = datasets.load_dataset(
+            "google/code_x_glue_tc_nl_code_search_adv",
+            split="test",
+        )
+    except Exception as e:
+        print(f"  [!] Failed to load AdvTest: {e}")
+        return DATASETS_DIR / "advtest_benchmark.json"
+
+    print(f"  Loaded {len(ds)} test samples")
+
+    indices = list(range(len(ds)))
+    if len(indices) > max_samples:
+        random.shuffle(indices)
+        indices = indices[:max_samples]
+
+    queries = []
+    corpus = []
+    qrels = []
+
+    for i, idx in enumerate(indices):
+        row = ds[idx]
+        docstring = (row.get("docstring") or "").strip()
+        code = (row.get("code") or "").strip()
+        func_name = row.get("func_name", "")
+        repo = row.get("repo", row.get("nwo", ""))
+        path = row.get("path", "")
+
+        if not docstring or not code or len(docstring) < 10:
+            continue
+
+        qid = f"advtest_q_{i}"
+        doc_id = f"advtest_d_{idx}"
+
+        queries.append({
+            "id": qid,
+            "query": docstring,
+            "language": "python",
+            "source": "advtest",
+        })
+
+        corpus.append({
+            "id": doc_id,
+            "content": code,
+            "language": "python",
+            "func_name": func_name,
+            "repo": repo,
+            "file_path": path,
+        })
+
+        qrels.append({
+            "query_id": qid,
+            "doc_id": doc_id,
+            "relevance": 1,
+        })
+
+    output = {
+        "_description": "AdvTest benchmark — adversarial code search with normalized function names",
+        "_source": "google/code_x_glue_tc_nl_code_search_adv (HuggingFace)",
+        "_citation": "Lu et al., 2021. CodeXGLUE: A Machine Learning Benchmark Dataset for Code Understanding and Generation",
+        "_note": "Function names replaced with generic identifiers to prevent trivial keyword matching",
+        "languages": ["python"],
+        "num_queries": len(queries),
+        "num_corpus": len(corpus),
+        "queries": queries,
+        "corpus": corpus,
+        "qrels": qrels,
+    }
+
+    out_path = DATASETS_DIR / "advtest_benchmark.json"
+    DATASETS_DIR.mkdir(parents=True, exist_ok=True)
+    with open(out_path, "w") as f:
+        json.dump(output, f, indent=2)
+
+    print(f"  Saved {len(queries)} queries -> {out_path}")
+    return out_path
+
+
+# ---------------------------------------------------------------------------
 # Download all
 # ---------------------------------------------------------------------------
 

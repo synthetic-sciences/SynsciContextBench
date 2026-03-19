@@ -21,22 +21,23 @@ Tests [Delphi](https://github.com/synthetic-sciences/synsc-delphi), [Context7](h
 
 ## Results
 
-100 queries per engine per phase. All validated datasets scored with LLM judge (`--match-mode llm`). Full methodology in [`docs/RESULTS.md`](docs/RESULTS.md).
+100 queries per engine per phase. All validated datasets scored with LLM judge (`--match-mode llm`). Full methodology in [`docs/BENCHMARK_REPORT.md`](docs/BENCHMARK_REPORT.md).
 
 ### Custom Benchmarks (100 queries each, 3 engines)
 
 | Benchmark | Metric | Delphi | Context7 | Nia |
 |-----------|--------|:---:|:---:|:---:|
 | Retrieval | MRR | **0.962** | 0.790 | 0.728 |
-| Adversarial | Discrimination | **0.560** | 0.170 | 0.140 |
-| Hallucination | Rate (lower is better) | **39%** | 45% | 51% |
+| Code QA | Accuracy | **0.310** | 0.270 | 0.263 |
+| Adversarial | Discrimination | **0.530** | 0.429 | 0.435 |
+| Hallucination | Rate (lower is better) | **40.0%** | 46.0% | 50.0% |
 
 ### Validated Datasets (LLM judge, 100 queries each)
 
 | Dataset | Metric | Delphi | Context7 | Nia |
 |---------|--------|:---:|:---:|:---:|
-| CodeSearchNet | MRR | **0.865** | 0.010 | 0.040 |
-| CoSQA | MRR | **0.703** | 0.110 | 0.298 |
+| CodeSearchNet | MRR | **0.864** | 0.010 | 0.040 |
+| CoSQA | MRR | **0.722** | 0.110 | 0.298 |
 
 ### Enhanced LLM Judge (position-debiased, 4D scoring, 100 queries per dataset)
 
@@ -75,7 +76,7 @@ AdvTest uses obfuscated queries without library names, which structurally disadv
 This benchmark addresses common fairness concerns in engine comparison:
 
 - **LLM-as-Judge** — Claude Sonnet evaluates result quality regardless of format (code vs docs), replacing biased file-path matching
-- **Wall-clock latency** — all engines measured identically with `time.perf_counter()`. Delphi latency was measured against a dev server (US-East); production deployment averages ~2.4s/query.
+- **Wall-clock latency** — all engines measured identically with `time.perf_counter()`. Delphi averages ~2.2-2.5s/query on production deployment.
 - **Position debiasing** — enhanced judge shuffles chunk order to eliminate ~10% positional bias
 - **Equal adapter treatment** — no artificial handicaps, equalized timeouts (120s), no fallback libraries
 - **Consistent sample size** — 100 queries per engine per phase
@@ -202,8 +203,7 @@ benchmarks/
   datasets/               ground truth + downloads
   results/                output data, traces, reports
 docs/
-  RESULTS.md              full tabulated results
-  BENCHMARK_REPORT.md     full analysis
+  BENCHMARK_REPORT.md     full results + analysis
 scripts/
   generate_charts.py      regenerate the chart
 ```

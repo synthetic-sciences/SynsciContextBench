@@ -1,301 +1,296 @@
-run_id,trace_id,engine,benchmark_type,query_id,query_text,num_results,latency_ms,error,error_category,primary_repo,primary_language,total_tokens_returned,relevant_tokens_returned,token_efficiency,avg_hop_mrr,hallucination_rate,hop_coverage,hop_recall_at_10,hop_recall_at_5,mrr,ndcg@1,ndcg@10,ndcg@3,ndcg@5,precision@1,precision@10,precision@3,precision@5,recall@1,recall@10,recall@3,recall@5
-acb62a29cc90,af963bcedc41,synsc-context,code_qa,cq001,Where is the FastAPI class defined and what parameters does its __init__ accept?,0,7180.23,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,0bb0183380d5,synsc-context,code_qa,cq002,Where is HTTPException raised with a 404 status code?,0,5956.33,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,d2bf59353c9f,synsc-context,code_qa,cq003,What classes inherit from BaseModel in the FastAPI codebase?,0,6061.30,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,d30f070b09a0,synsc-context,code_qa,cq004,Where is the Depends function defined and how does it resolve dependencies?,0,8210.40,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,b5cb87988df3,synsc-context,code_qa,cq005,Where is AsyncClient instantiated with http2=True?,0,7287.42,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,638e390e54c3,synsc-context,code_qa,cq006,What does the field_validator decorator do in Pydantic v2 and where is it defined?,0,8066.56,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,4a5dbafedc23,synsc-context,code_qa,cq007,Where is the Timeout class used with custom connect and read values?,0,6000.33,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,62e83fa4da9a,synsc-context,code_qa,cq008,What is the return type of the model_dump method in Pydantic BaseModel?,0,9824.96,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,623b9df7dd43,synsc-context,code_qa,cq009,Where is jsonable_encoder imported and used in FastAPI?,0,6433.91,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,07112a430bac,synsc-context,code_qa,cq010,Where is response_model used as a parameter in FastAPI route decorators?,0,6666.72,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,e53e223e6459,synsc-context,code_qa,cq011,Where is the Router.add_api_route method defined and what decorators does it support?,0,6942.74,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,7775d57bb599,synsc-context,code_qa,cq012,Where is CORSMiddleware added to the app with allow_credentials=True?,0,7044.76,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,71676563d705,synsc-context,code_qa,cq013,What is the complete signature of httpx.AsyncClient.__init__?,0,6772.32,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,3cd6e355f6f8,synsc-context,code_qa,cq014,Where does Pydantic raise ValidationError and what fields does the error contain?,0,6981.94,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,56baf6960ee0,synsc-context,code_qa,cq015,Where is the @app.on_event startup handler used and what has replaced it in newer FastAPI?,0,6376.28,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,74c9d9d30ebe,synsc-context,code_qa,cq016,Where is the Django Model class defined and what metaclass does it use?,0,6336.55,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,8a7b2dc4231f,synsc-context,code_qa,cq017,Where is the Flask class constructor defined and what parameters does it accept?,0,7742.53,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,2a0241debf3e,synsc-context,code_qa,cq018,Where is the SQLAlchemy create_engine function defined?,0,7169.82,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,be150c703e6a,synsc-context,code_qa,cq019,How is torch.nn.Module.__init__ defined and what does it initialize?,0,7189.49,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,f3f5a6ded2b7,synsc-context,code_qa,cq020,Where is pandas.DataFrame.__init__ defined and what parameters does it accept?,0,8364.01,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,99d20763b295,synsc-context,code_qa,cq021,Where is numpy.ndarray defined as a class?,0,10760.52,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,2806387215a7,synsc-context,code_qa,cq022,Where is the requests.Session class defined and what methods does it expose?,0,7081.64,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,81ae3a33d313,synsc-context,code_qa,cq023,Where is the Celery class defined and what does its __init__ accept?,0,7195.54,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,faa5e33e51ee,synsc-context,code_qa,cq024,Where is the Starlette class defined and how does it differ from FastAPI?,0,7026.82,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,a4df8a5bd20d,synsc-context,code_qa,cq025,Where is aiohttp.ClientSession defined and what parameters does __init__ accept?,0,8353.09,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,1c0da81d2b26,synsc-context,code_qa,cq026,Where is sklearn.base.BaseEstimator defined and what mixin methods does it provide?,0,6567.04,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,d381de45d3a3,synsc-context,code_qa,cq027,Where is the LangChain BaseLLM class defined?,0,6257.85,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,1bacd272b4aa,synsc-context,code_qa,cq028,Where is the Django QuerySet.filter method defined?,0,7697.57,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,039feedddf06,synsc-context,code_qa,cq029,Where is the Flask route decorator defined?,0,7437.79,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,e3201b78299e,synsc-context,code_qa,cq030,Where is SQLAlchemy's Column class defined and what arguments does it accept?,0,8868.39,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,93b891c61dc9,synsc-context,code_qa,cq031,Where is torch.Tensor defined and what are its core attributes?,0,7267.03,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,50d2fde7fc5a,synsc-context,code_qa,cq032,Where is the pandas read_csv function defined?,0,6674.14,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,b60611620913,synsc-context,code_qa,cq033,Where is numpy.array function defined?,0,10359.94,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,44502d8ceb6f,synsc-context,code_qa,cq034,Where is requests.get defined and what parameters does it accept?,0,5845.66,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,ffa1e2e0c86a,synsc-context,code_qa,cq035,Where is the httpx.Response class defined?,0,6827.96,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,45d60ff9e9a0,synsc-context,code_qa,cq036,Where is the Pydantic ConfigDict defined and what keys does it accept?,0,8065.17,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,dbc2c5e92630,synsc-context,code_qa,cq037,Where is the LangChain ChatPromptTemplate class defined?,0,6365.23,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,4dbba6c021ff,synsc-context,code_qa,cq038,Where is the Django URLPattern class defined?,0,5999.72,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,4589058b7c4f,synsc-context,code_qa,cq039,Where is sklearn.pipeline.Pipeline defined and what does __init__ accept?,0,7896.15,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,21f1285cabaa,synsc-context,code_qa,cq040,Where is the Celery task decorator defined?,0,6268.97,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,baab20048a95,synsc-context,code_qa,cq041,Where is SQLAlchemy's relationship function defined?,0,8824.16,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,d8b6118ceed3,synsc-context,code_qa,cq042,Where is the Starlette Request class defined?,0,6674.36,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,a71f1a830297,synsc-context,code_qa,cq043,Where is aiohttp's web.Application class defined?,0,6184.25,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,698146fd2b8f,synsc-context,code_qa,cq044,Where is torch.optim.Adam defined and what hyperparameters does it accept?,0,6568.96,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,8cda5c895462,synsc-context,code_qa,cq045,Where is pandas.DataFrame.merge defined?,0,8506.52,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,371b9332b3b6,synsc-context,code_qa,cq046,Where is Django's authenticate function called with username and password?,0,6569.83,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,3903e127ad14,synsc-context,code_qa,cq047,Where is Flask's render_template called with context variables?,0,6673.79,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,87fcdf901ce0,synsc-context,code_qa,cq048,Where is session.execute called with a select statement in SQLAlchemy?,0,8250.71,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,8682db385f12,synsc-context,code_qa,cq049,Where is model.fit called in scikit-learn with X_train and y_train?,0,9232.52,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,be46b00862a9,synsc-context,code_qa,cq050,Where is torch.save called to persist model state_dict?,0,7187.45,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,55a04c7c3ff0,synsc-context,code_qa,cq051,Where is pd.concat called with axis=1 to concatenate columns?,0,8470.68,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,4e2d61da1bd7,synsc-context,code_qa,cq052,Where is numpy.einsum called for matrix operations?,0,7264.33,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,81f683b4e183,synsc-context,code_qa,cq053,Where is requests.post called with json parameter for API calls?,0,5868.98,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,a496aa1b01e1,synsc-context,code_qa,cq054,Where is Celery's apply_async called with countdown parameter?,0,7235.77,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,fff453edeb0e,synsc-context,code_qa,cq055,Where is httpx.Client.send called with custom transport?,0,7456.13,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,0d2e8676d056,synsc-context,code_qa,cq056,Where is LangChain's chain.invoke called with config parameter?,0,8261.42,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,fbfb77aa5242,synsc-context,code_qa,cq057,Where is Django's reverse function called with kwargs?,0,6162.60,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,f1ac7d56067a,synsc-context,code_qa,cq058,Where is app.add_middleware called in Starlette-based applications?,0,6238.09,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,2b0572be1e02,synsc-context,code_qa,cq059,Where is aiohttp's session.get called with ssl=False?,0,7286.76,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,b17555cba911,synsc-context,code_qa,cq060,Where is DataFrame.groupby called with as_index=False?,0,10009.88,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,3dcd729572fb,synsc-context,code_qa,cq061,Where is torch.nn.CrossEntropyLoss called with label_smoothing?,0,7612.30,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,7c6172609e44,synsc-context,code_qa,cq062,Where is SQLAlchemy's select function called with join for multi-table queries?,0,8585.20,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,3d5fe6e1c8b1,synsc-context,code_qa,cq063,How is the embed_dim argument used in torch.nn.MultiheadAttention?,0,7799.75,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,a9897a390874,synsc-context,code_qa,cq064,How is the on_delete argument used in Django ForeignKey fields?,0,6915.92,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,c2d1a114da0a,synsc-context,code_qa,cq065,How is the strategy argument used in pandas DataFrame.fillna?,0,8721.43,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,80768b7009e2,synsc-context,code_qa,cq066,How is the pool_size argument used in SQLAlchemy create_engine?,0,7711.32,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,ff2e736e4125,synsc-context,code_qa,cq067,How is the verify argument used in requests.get for SSL?,0,6162.13,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,f4b2e1039573,synsc-context,code_qa,cq068,How is the max_retries argument used in Celery task decorator?,0,6776.95,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,ace11ccfa944,synsc-context,code_qa,cq069,How is the follow_redirects argument used in httpx requests?,0,6676.12,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,4d48419cd73c,synsc-context,code_qa,cq070,How is the n_estimators argument used in sklearn RandomForestClassifier?,0,8571.58,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,d6376951864f,synsc-context,code_qa,cq071,How is the temperature argument used in LangChain LLM calls?,0,7750.16,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,68b524ce31f3,synsc-context,code_qa,cq072,How is the lifespan argument used in Starlette Application?,0,6707.34,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,93d0e41ea013,synsc-context,code_qa,cq073,How is the trust_env argument used in aiohttp ClientSession?,0,7594.52,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,011366dfeabf,synsc-context,code_qa,cq074,How is the dtype argument used in numpy zeros and ones?,0,11894.37,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,b4fd54daeba9,synsc-context,code_qa,cq075,How is the status_code argument used in FastAPI Response classes?,0,7185.10,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,068a1d037b48,synsc-context,code_qa,cq076,How is the mode argument used in Pydantic's model_validate?,0,8313.45,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,391fe7241e5e,synsc-context,code_qa,cq077,How is the batch_size argument used in torch.utils.data.DataLoader?,0,7288.09,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,17bd17aef63f,synsc-context,code_qa,cq078,What is the return type of Django QuerySet.values_list with flat=True?,0,7287.45,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,adbd386dcd6e,synsc-context,code_qa,cq079,What is the return type of Flask's jsonify function?,0,6567.30,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,f54e96cd3ceb,synsc-context,code_qa,cq080,What is the return type of SQLAlchemy Session.execute?,0,10153.95,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,415328de92bc,synsc-context,code_qa,cq081,What is the return type of requests.Response.json()?,0,7862.10,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,188c26f7d91d,synsc-context,code_qa,cq082,What is the return type of pandas DataFrame.describe?,0,11078.13,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,5410f4ad9b23,synsc-context,code_qa,cq083,What is the return type of numpy.linalg.svd?,0,8800.91,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,2d47494933e8,synsc-context,code_qa,cq084,What is the return type of torch.nn.Module.parameters()?,0,7493.02,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,59238e43b8ac,synsc-context,code_qa,cq085,What is the return type of sklearn train_test_split?,0,8822.81,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,3bc0fbe041ae,synsc-context,code_qa,cq086,What is the return type of httpx.Response.raise_for_status?,0,7079.88,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,64e2881090d1,synsc-context,code_qa,cq087,What is the return type of Celery AsyncResult.get?,0,7186.49,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,acb069272764,synsc-context,code_qa,cq088,What is the return type of LangChain's chain.invoke?,0,7286.11,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,5f599ade7c12,synsc-context,code_qa,cq089,What classes inherit from Django's View class?,0,6575.01,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,08525e882686,synsc-context,code_qa,cq090,What classes inherit from Flask's MethodView?,0,6773.89,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,a1782464716e,synsc-context,code_qa,cq091,What classes inherit from SQLAlchemy's TypeDecorator?,0,7289.39,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,86eb347d3ad1,synsc-context,code_qa,cq092,What classes inherit from torch.nn.Module in the nn package?,0,8517.57,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,ae1eefa0f41f,synsc-context,code_qa,cq093,What classes inherit from sklearn's TransformerMixin?,0,7901.78,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,e0a30e160f7a,synsc-context,code_qa,cq094,What classes inherit from Pydantic BaseModel in the pydantic package itself?,0,8003.31,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,1a37a2523c40,synsc-context,code_qa,cq095,What classes inherit from Starlette's HTTPEndpoint?,0,6949.84,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,e1b1127a43cd,synsc-context,code_qa,cq096,What classes inherit from aiohttp's AbstractView?,0,7081.14,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,44ec7dd11817,synsc-context,code_qa,cq097,What classes inherit from LangChain's BaseRetriever?,0,6060.31,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,de3df5afdc93,synsc-context,code_qa,cq098,What classes inherit from pandas ExtensionArray?,0,7801.79,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,6b1c9695181a,synsc-context,code_qa,cq099,What classes inherit from Celery's Task base class?,0,7388.16,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,ace7b30ec016,synsc-context,code_qa,cq100,Where is Django's path function imported from in URL configurations?,0,6265.06,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,25198d465b7c,nia,code_qa,cq001,Where is the FastAPI class defined and what parameters does its __init__ accept?,0,1576.19,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,fe4a516cab59,nia,code_qa,cq002,Where is HTTPException raised with a 404 status code?,0,1260.62,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,5afefbe85bca,nia,code_qa,cq003,What classes inherit from BaseModel in the FastAPI codebase?,0,1623.57,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,3c5abc3a3a6d,nia,code_qa,cq004,Where is the Depends function defined and how does it resolve dependencies?,0,1505.57,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,3b3689afc6b1,nia,code_qa,cq005,Where is AsyncClient instantiated with http2=True?,0,1470.06,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,5ef3a0659e2c,nia,code_qa,cq006,What does the field_validator decorator do in Pydantic v2 and where is it defined?,0,1647.91,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,3ae723d411fc,nia,code_qa,cq007,Where is the Timeout class used with custom connect and read values?,0,1356.98,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,573948f63e2d,nia,code_qa,cq008,What is the return type of the model_dump method in Pydantic BaseModel?,0,1381.89,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,d1781f7167b3,nia,code_qa,cq009,Where is jsonable_encoder imported and used in FastAPI?,0,1269.57,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,f19e3a84d7d6,nia,code_qa,cq010,Where is response_model used as a parameter in FastAPI route decorators?,0,1181.87,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,627f89169356,nia,code_qa,cq011,Where is the Router.add_api_route method defined and what decorators does it support?,0,1432.23,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,5ada880243f7,nia,code_qa,cq012,Where is CORSMiddleware added to the app with allow_credentials=True?,0,1240.52,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,b2554d1dae63,nia,code_qa,cq013,What is the complete signature of httpx.AsyncClient.__init__?,0,1582.50,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,244f86fa977a,nia,code_qa,cq014,Where does Pydantic raise ValidationError and what fields does the error contain?,0,1593.96,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,6a688fa4ad0d,nia,code_qa,cq015,Where is the @app.on_event startup handler used and what has replaced it in newer FastAPI?,0,1398.95,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,73974e27e1bb,nia,code_qa,cq016,Where is the Django Model class defined and what metaclass does it use?,0,1290.52,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,46a54af4ac19,nia,code_qa,cq017,Where is the Flask class constructor defined and what parameters does it accept?,0,1398.09,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,387f51dcc242,nia,code_qa,cq018,Where is the SQLAlchemy create_engine function defined?,0,1520.01,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,87524e40f1c2,nia,code_qa,cq019,How is torch.nn.Module.__init__ defined and what does it initialize?,0,1273.63,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,49d9aee2b362,nia,code_qa,cq020,Where is pandas.DataFrame.__init__ defined and what parameters does it accept?,0,1563.84,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,d5d6067d423f,nia,code_qa,cq021,Where is numpy.ndarray defined as a class?,0,1480.12,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,6c59c1fd47ff,nia,code_qa,cq022,Where is the requests.Session class defined and what methods does it expose?,0,1334.91,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,a14d1c6a85b9,nia,code_qa,cq023,Where is the Celery class defined and what does its __init__ accept?,0,1431.62,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,2d32b32ddb4e,nia,code_qa,cq024,Where is the Starlette class defined and how does it differ from FastAPI?,0,1297.66,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,301323a7ffd9,nia,code_qa,cq025,Where is aiohttp.ClientSession defined and what parameters does __init__ accept?,0,1336.08,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,6a5cb5e44fd9,nia,code_qa,cq026,Where is sklearn.base.BaseEstimator defined and what mixin methods does it provide?,0,1627.74,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,6e9f77239067,nia,code_qa,cq027,Where is the LangChain BaseLLM class defined?,0,1230.73,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,4b749ab8120b,nia,code_qa,cq028,Where is the Django QuerySet.filter method defined?,0,1360.50,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,30b872f6e29b,nia,code_qa,cq029,Where is the Flask route decorator defined?,0,1332.45,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,db453a945d63,nia,code_qa,cq030,Where is SQLAlchemy's Column class defined and what arguments does it accept?,0,1530.21,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,c9170052f6bb,nia,code_qa,cq031,Where is torch.Tensor defined and what are its core attributes?,0,1343.36,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,93c8e17da8fa,nia,code_qa,cq032,Where is the pandas read_csv function defined?,0,1576.62,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,ce73e3cad304,nia,code_qa,cq033,Where is numpy.array function defined?,0,1330.90,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,60893291e2f1,nia,code_qa,cq034,Where is requests.get defined and what parameters does it accept?,0,1297.92,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,c25251a5b56c,nia,code_qa,cq035,Where is the httpx.Response class defined?,0,1389.80,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,a77f7f584bf7,nia,code_qa,cq036,Where is the Pydantic ConfigDict defined and what keys does it accept?,0,965.12,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,4f76bd41e71e,nia,code_qa,cq037,Where is the LangChain ChatPromptTemplate class defined?,0,1302.57,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,bb06d02827f3,nia,code_qa,cq038,Where is the Django URLPattern class defined?,0,1370.88,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,907b19ab25bd,nia,code_qa,cq039,Where is sklearn.pipeline.Pipeline defined and what does __init__ accept?,0,1587.74,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,cea2a16dacf8,nia,code_qa,cq040,Where is the Celery task decorator defined?,0,1315.48,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,1f8a86bdd3c5,nia,code_qa,cq041,Where is SQLAlchemy's relationship function defined?,0,1295.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,4097bc2ce433,nia,code_qa,cq042,Where is the Starlette Request class defined?,0,1351.37,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,f3d7ff49186d,nia,code_qa,cq043,Where is aiohttp's web.Application class defined?,0,1581.09,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,aa5bb248645c,nia,code_qa,cq044,Where is torch.optim.Adam defined and what hyperparameters does it accept?,0,1290.70,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,bdc473e4784d,nia,code_qa,cq045,Where is pandas.DataFrame.merge defined?,0,1241.61,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,5a88fdd61c46,nia,code_qa,cq046,Where is Django's authenticate function called with username and password?,0,1307.97,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,f26057b1f015,nia,code_qa,cq047,Where is Flask's render_template called with context variables?,0,1320.77,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,5efdc293540e,nia,code_qa,cq048,Where is session.execute called with a select statement in SQLAlchemy?,0,1340.41,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,527120da68f8,nia,code_qa,cq049,Where is model.fit called in scikit-learn with X_train and y_train?,0,1265.53,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,e4850677c41d,nia,code_qa,cq050,Where is torch.save called to persist model state_dict?,0,1471.55,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,98f77106bda5,nia,code_qa,cq051,Where is pd.concat called with axis=1 to concatenate columns?,0,1478.28,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,a912debf6ce8,nia,code_qa,cq052,Where is numpy.einsum called for matrix operations?,0,1402.76,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,fcffe53bcd06,nia,code_qa,cq053,Where is requests.post called with json parameter for API calls?,0,1321.98,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,8a208a6c5aec,nia,code_qa,cq054,Where is Celery's apply_async called with countdown parameter?,0,1412.48,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,7dba4c38347e,nia,code_qa,cq055,Where is httpx.Client.send called with custom transport?,0,2107.83,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,f2340b21f8b2,nia,code_qa,cq056,Where is LangChain's chain.invoke called with config parameter?,0,1296.83,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,def3c140b380,nia,code_qa,cq057,Where is Django's reverse function called with kwargs?,0,1391.50,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,95c209ef69aa,nia,code_qa,cq058,Where is app.add_middleware called in Starlette-based applications?,0,1361.68,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,e181014185d4,nia,code_qa,cq059,Where is aiohttp's session.get called with ssl=False?,0,1454.84,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,4ddaecba8dd5,nia,code_qa,cq060,Where is DataFrame.groupby called with as_index=False?,0,1319.13,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,93bf37e36c26,nia,code_qa,cq061,Where is torch.nn.CrossEntropyLoss called with label_smoothing?,0,1355.16,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,2045eb14c4f7,nia,code_qa,cq062,Where is SQLAlchemy's select function called with join for multi-table queries?,0,1385.32,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,074e8495944c,nia,code_qa,cq063,How is the embed_dim argument used in torch.nn.MultiheadAttention?,0,1312.96,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,4a87f7f79bbb,nia,code_qa,cq064,How is the on_delete argument used in Django ForeignKey fields?,0,1266.42,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,451fa1cfe6f8,nia,code_qa,cq065,How is the strategy argument used in pandas DataFrame.fillna?,0,1375.06,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,bae2cf980796,nia,code_qa,cq066,How is the pool_size argument used in SQLAlchemy create_engine?,0,1307.29,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,b4c285f55ebf,nia,code_qa,cq067,How is the verify argument used in requests.get for SSL?,0,1463.24,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,89981e6e2cab,nia,code_qa,cq068,How is the max_retries argument used in Celery task decorator?,0,1286.03,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,73b48712fb4a,nia,code_qa,cq069,How is the follow_redirects argument used in httpx requests?,0,1621.17,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,f35ce757a075,nia,code_qa,cq070,How is the n_estimators argument used in sklearn RandomForestClassifier?,0,1425.97,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,38300d935a3a,nia,code_qa,cq071,How is the temperature argument used in LangChain LLM calls?,0,1311.53,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,af29ed51336d,nia,code_qa,cq072,How is the lifespan argument used in Starlette Application?,0,1518.80,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,ef3f9c14d16d,nia,code_qa,cq073,How is the trust_env argument used in aiohttp ClientSession?,0,1260.07,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,677e640a1e6e,nia,code_qa,cq074,How is the dtype argument used in numpy zeros and ones?,0,2185.56,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,8495108e382b,nia,code_qa,cq075,How is the status_code argument used in FastAPI Response classes?,0,1336.76,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,f23dafbf2384,nia,code_qa,cq076,How is the mode argument used in Pydantic's model_validate?,0,1497.75,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,3766a6fbc589,nia,code_qa,cq077,How is the batch_size argument used in torch.utils.data.DataLoader?,0,1296.69,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,cb374482f5f4,nia,code_qa,cq078,What is the return type of Django QuerySet.values_list with flat=True?,0,1308.99,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,5bcda66f91a7,nia,code_qa,cq079,What is the return type of Flask's jsonify function?,0,1559.63,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,e5ff6e00a3b5,nia,code_qa,cq080,What is the return type of SQLAlchemy Session.execute?,0,1547.42,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,3e8a7eab9467,nia,code_qa,cq081,What is the return type of requests.Response.json()?,0,1700.52,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,c9822aeb1689,nia,code_qa,cq082,What is the return type of pandas DataFrame.describe?,0,1295.45,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,8832ab8efa29,nia,code_qa,cq083,What is the return type of numpy.linalg.svd?,0,1628.54,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,5c92b33e7aba,nia,code_qa,cq084,What is the return type of torch.nn.Module.parameters()?,0,1514.32,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,3a54a2db0eaf,nia,code_qa,cq085,What is the return type of sklearn train_test_split?,0,968.28,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,59e6edc5ce50,nia,code_qa,cq086,What is the return type of httpx.Response.raise_for_status?,0,1330.12,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,5f235b2df319,nia,code_qa,cq087,What is the return type of Celery AsyncResult.get?,0,1511.28,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,3e0e3a7cbce8,nia,code_qa,cq088,What is the return type of LangChain's chain.invoke?,0,1583.35,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,95b5d5b22bdf,nia,code_qa,cq089,What classes inherit from Django's View class?,0,1232.24,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,b778b992e123,nia,code_qa,cq090,What classes inherit from Flask's MethodView?,0,1377.36,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,0a8d530739f0,nia,code_qa,cq091,What classes inherit from SQLAlchemy's TypeDecorator?,0,1408.43,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,82fe5e234d9a,nia,code_qa,cq092,What classes inherit from torch.nn.Module in the nn package?,0,1572.23,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,62d0fb14bd00,nia,code_qa,cq093,What classes inherit from sklearn's TransformerMixin?,0,1346.22,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,d13320f59526,nia,code_qa,cq094,What classes inherit from Pydantic BaseModel in the pydantic package itself?,0,1320.07,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,f0b73b5fb586,nia,code_qa,cq095,What classes inherit from Starlette's HTTPEndpoint?,0,1643.47,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,cece23c75518,nia,code_qa,cq096,What classes inherit from aiohttp's AbstractView?,0,1291.33,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,0511ddd7aeef,nia,code_qa,cq097,What classes inherit from LangChain's BaseRetriever?,0,1356.18,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,fb8a306adae5,nia,code_qa,cq098,What classes inherit from pandas ExtensionArray?,0,1340.72,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,630c44baeffc,nia,code_qa,cq099,What classes inherit from Celery's Task base class?,0,1200.99,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,1444d9fb1659,nia,code_qa,cq100,Where is Django's path function imported from in URL configurations?,0,1484.11,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,7f115853c5ab,context7,code_qa,cq001,Where is the FastAPI class defined and what parameters does its __init__ accept?,0,2996.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,6507d0de1e0f,context7,code_qa,cq002,Where is HTTPException raised with a 404 status code?,0,0.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,1cc3f2787f43,context7,code_qa,cq003,What classes inherit from BaseModel in the FastAPI codebase?,0,2443.58,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,c7b58c104b45,context7,code_qa,cq004,Where is the Depends function defined and how does it resolve dependencies?,0,0.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,0a4aa9846a48,context7,code_qa,cq005,Where is AsyncClient instantiated with http2=True?,0,0.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,5e8e55a72eaf,context7,code_qa,cq006,What does the field_validator decorator do in Pydantic v2 and where is it defined?,0,2992.06,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,2250479173fc,context7,code_qa,cq007,Where is the Timeout class used with custom connect and read values?,0,0.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,57d7b2017a55,context7,code_qa,cq008,What is the return type of the model_dump method in Pydantic BaseModel?,0,2664.22,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,0007b93ba3ae,context7,code_qa,cq009,Where is jsonable_encoder imported and used in FastAPI?,0,2575.04,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,a588f5fc72b2,context7,code_qa,cq010,Where is response_model used as a parameter in FastAPI route decorators?,0,2757.44,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,40ab2330fa11,context7,code_qa,cq011,Where is the Router.add_api_route method defined and what decorators does it support?,0,0.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,5f0c5e524ffd,context7,code_qa,cq012,Where is CORSMiddleware added to the app with allow_credentials=True?,0,0.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,54454ca22992,context7,code_qa,cq013,What is the complete signature of httpx.AsyncClient.__init__?,0,2995.49,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,8b762f0803c0,context7,code_qa,cq014,Where does Pydantic raise ValidationError and what fields does the error contain?,0,3402.20,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,1aec5f94390d,context7,code_qa,cq015,Where is the @app.on_event startup handler used and what has replaced it in newer FastAPI?,0,2883.74,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,278ecb9f4dd6,context7,code_qa,cq016,Where is the Django Model class defined and what metaclass does it use?,0,2172.52,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,84b1c96c33ff,context7,code_qa,cq017,Where is the Flask class constructor defined and what parameters does it accept?,0,2704.02,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,5053e771cb50,context7,code_qa,cq018,Where is the SQLAlchemy create_engine function defined?,0,2671.18,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,ce0d4b597fbb,context7,code_qa,cq019,How is torch.nn.Module.__init__ defined and what does it initialize?,0,0.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,6b7cc40c105a,context7,code_qa,cq020,Where is pandas.DataFrame.__init__ defined and what parameters does it accept?,0,2784.51,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,fd68105d27b8,context7,code_qa,cq021,Where is numpy.ndarray defined as a class?,0,3707.97,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,298f690c1734,context7,code_qa,cq022,Where is the requests.Session class defined and what methods does it expose?,0,2291.91,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,70b86f46e761,context7,code_qa,cq023,Where is the Celery class defined and what does its __init__ accept?,0,0.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,27f6f1359a7a,context7,code_qa,cq024,Where is the Starlette class defined and how does it differ from FastAPI?,0,2479.16,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,a40d6fd57848,context7,code_qa,cq025,Where is aiohttp.ClientSession defined and what parameters does __init__ accept?,0,0.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,bbaa44be3595,context7,code_qa,cq026,Where is sklearn.base.BaseEstimator defined and what mixin methods does it provide?,0,0.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,5632e59750b2,context7,code_qa,cq027,Where is the LangChain BaseLLM class defined?,0,4886.79,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,ae2744fdf80c,context7,code_qa,cq028,Where is the Django QuerySet.filter method defined?,0,2215.08,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,e62030e8b20e,context7,code_qa,cq029,Where is the Flask route decorator defined?,0,2777.60,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,6a3be11b9e4a,context7,code_qa,cq030,Where is SQLAlchemy's Column class defined and what arguments does it accept?,0,2680.27,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,439e399fa5f3,context7,code_qa,cq031,Where is torch.Tensor defined and what are its core attributes?,0,0.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,b75c5b7b3f03,context7,code_qa,cq032,Where is the pandas read_csv function defined?,0,3504.17,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,642df2c621b0,context7,code_qa,cq033,Where is numpy.array function defined?,0,2744.61,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,f01818893256,context7,code_qa,cq034,Where is requests.get defined and what parameters does it accept?,0,2066.73,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,45fcb006e594,context7,code_qa,cq035,Where is the httpx.Response class defined?,0,2281.19,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,eb300e4bb244,context7,code_qa,cq036,Where is the Pydantic ConfigDict defined and what keys does it accept?,0,2493.40,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,42c5c1b5b00b,context7,code_qa,cq037,Where is the LangChain ChatPromptTemplate class defined?,0,3811.55,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,9e37bdfdd011,context7,code_qa,cq038,Where is the Django URLPattern class defined?,0,2276.17,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,7bbda9973734,context7,code_qa,cq039,Where is sklearn.pipeline.Pipeline defined and what does __init__ accept?,0,0.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,2424d599fb97,context7,code_qa,cq040,Where is the Celery task decorator defined?,0,0.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,c5ff993d23c3,context7,code_qa,cq041,Where is SQLAlchemy's relationship function defined?,0,2176.52,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,f5866d9e19af,context7,code_qa,cq042,Where is the Starlette Request class defined?,0,2283.66,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,573b63239038,context7,code_qa,cq043,Where is aiohttp's web.Application class defined?,0,0.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,18d6986bdcf5,context7,code_qa,cq044,Where is torch.optim.Adam defined and what hyperparameters does it accept?,0,0.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,f53489b06d65,context7,code_qa,cq045,Where is pandas.DataFrame.merge defined?,0,3031.20,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,ac59ec3acc1e,context7,code_qa,cq046,Where is Django's authenticate function called with username and password?,0,1838.23,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,77eda7020f3f,context7,code_qa,cq047,Where is Flask's render_template called with context variables?,0,2479.49,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,40cb019d795e,context7,code_qa,cq048,Where is session.execute called with a select statement in SQLAlchemy?,0,2840.79,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,2f452ae6f5dc,context7,code_qa,cq049,Where is model.fit called in scikit-learn with X_train and y_train?,0,0.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,11996f5df622,context7,code_qa,cq050,Where is torch.save called to persist model state_dict?,0,0.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,2f2d3c48fa4a,context7,code_qa,cq051,Where is pd.concat called with axis=1 to concatenate columns?,0,0.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,7e457d84255b,context7,code_qa,cq052,Where is numpy.einsum called for matrix operations?,0,2786.40,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,271a54e537da,context7,code_qa,cq053,Where is requests.post called with json parameter for API calls?,0,2383.05,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,820124e35dd8,context7,code_qa,cq054,Where is Celery's apply_async called with countdown parameter?,0,0.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,d3fbec2def06,context7,code_qa,cq055,Where is httpx.Client.send called with custom transport?,0,2733.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,9824163a8e0f,context7,code_qa,cq056,Where is LangChain's chain.invoke called with config parameter?,0,4062.30,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,d82b06dec8af,context7,code_qa,cq057,Where is Django's reverse function called with kwargs?,0,2932.74,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,74ab68d9fadf,context7,code_qa,cq058,Where is app.add_middleware called in Starlette-based applications?,0,2959.70,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,e8028bf49c69,context7,code_qa,cq059,Where is aiohttp's session.get called with ssl=False?,0,0.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,9ab81a7f7037,context7,code_qa,cq060,Where is DataFrame.groupby called with as_index=False?,0,0.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,c62ad8fd4c08,context7,code_qa,cq061,Where is torch.nn.CrossEntropyLoss called with label_smoothing?,0,0.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,2545e6f843ea,context7,code_qa,cq062,Where is SQLAlchemy's select function called with join for multi-table queries?,0,2888.69,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,f9378d78ff49,context7,code_qa,cq063,How is the embed_dim argument used in torch.nn.MultiheadAttention?,0,0.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,2e540c1f9fc2,context7,code_qa,cq064,How is the on_delete argument used in Django ForeignKey fields?,0,2434.74,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,d3a1661e61e8,context7,code_qa,cq065,How is the strategy argument used in pandas DataFrame.fillna?,0,2548.57,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,42619c49e192,context7,code_qa,cq066,How is the pool_size argument used in SQLAlchemy create_engine?,0,2171.87,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,3acdff648f53,context7,code_qa,cq067,How is the verify argument used in requests.get for SSL?,0,2679.54,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,6856c5733275,context7,code_qa,cq068,How is the max_retries argument used in Celery task decorator?,0,0.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,302de75ead97,context7,code_qa,cq069,How is the follow_redirects argument used in httpx requests?,0,2269.36,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,bc1d8d755150,context7,code_qa,cq070,How is the n_estimators argument used in sklearn RandomForestClassifier?,0,0.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,304ab4486c30,context7,code_qa,cq071,How is the temperature argument used in LangChain LLM calls?,0,5036.82,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,3df9eeba9b38,context7,code_qa,cq072,How is the lifespan argument used in Starlette Application?,0,2329.91,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,c01814814965,context7,code_qa,cq073,How is the trust_env argument used in aiohttp ClientSession?,0,0.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,bbbc697f474f,context7,code_qa,cq074,How is the dtype argument used in numpy zeros and ones?,0,2762.87,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,468b614c31f3,context7,code_qa,cq075,How is the status_code argument used in FastAPI Response classes?,0,2888.31,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,a1b665b3fb99,context7,code_qa,cq076,How is the mode argument used in Pydantic's model_validate?,0,2143.22,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,20e4eb723720,context7,code_qa,cq077,How is the batch_size argument used in torch.utils.data.DataLoader?,0,0.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,e0d9c52148b4,context7,code_qa,cq078,What is the return type of Django QuerySet.values_list with flat=True?,0,2622.20,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,afb96f273eef,context7,code_qa,cq079,What is the return type of Flask's jsonify function?,0,2673.60,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,953609574813,context7,code_qa,cq080,What is the return type of SQLAlchemy Session.execute?,0,2686.20,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,4c06a57ab9a1,context7,code_qa,cq081,What is the return type of requests.Response.json()?,0,2661.65,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,5bafe48e7099,context7,code_qa,cq082,What is the return type of pandas DataFrame.describe?,0,2635.88,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,33757a5bc0d1,context7,code_qa,cq083,What is the return type of numpy.linalg.svd?,0,2542.69,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,cd23c1d3c0b5,context7,code_qa,cq084,What is the return type of torch.nn.Module.parameters()?,0,0.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,574953334af1,context7,code_qa,cq085,What is the return type of sklearn train_test_split?,0,0.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,c8303b0db759,context7,code_qa,cq086,What is the return type of httpx.Response.raise_for_status?,0,3174.92,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,12ec211f12e4,context7,code_qa,cq087,What is the return type of Celery AsyncResult.get?,0,0.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,a4eb4dea1475,context7,code_qa,cq088,What is the return type of LangChain's chain.invoke?,0,4393.15,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,6c52c385d2a4,context7,code_qa,cq089,What classes inherit from Django's View class?,0,2445.52,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,4b3fd6799706,context7,code_qa,cq090,What classes inherit from Flask's MethodView?,0,2361.55,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,5f834591043b,context7,code_qa,cq091,What classes inherit from SQLAlchemy's TypeDecorator?,0,2634.17,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,98dd41a2983c,context7,code_qa,cq092,What classes inherit from torch.nn.Module in the nn package?,0,0.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,d239a08fcd49,context7,code_qa,cq093,What classes inherit from sklearn's TransformerMixin?,0,0.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,9d55a375e76f,context7,code_qa,cq094,What classes inherit from Pydantic BaseModel in the pydantic package itself?,0,3781.84,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,36d0b70f24bc,context7,code_qa,cq095,What classes inherit from Starlette's HTTPEndpoint?,0,3036.10,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,319106b4d19b,context7,code_qa,cq096,What classes inherit from aiohttp's AbstractView?,0,0.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,71643b46daa9,context7,code_qa,cq097,What classes inherit from LangChain's BaseRetriever?,0,4374.18,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,52f162c66052,context7,code_qa,cq098,What classes inherit from pandas ExtensionArray?,0,2467.73,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,1f294375d1ac,context7,code_qa,cq099,What classes inherit from Celery's Task base class?,0,0.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,d91ebcc70e2a,context7,code_qa,cq100,Where is Django's path function imported from in URL configurations?,0,3121.45,,,,,0,0,,,,,,,,,,,,,,,,,,,
+avg_hop_mrr,benchmark_type,engine,error,error_category,hallucination_rate,hop_coverage,hop_recall_at_10,hop_recall_at_5,latency_ms,mrr,ndcg@1,ndcg@10,ndcg@3,ndcg@5,num_results,precision@1,precision@10,precision@3,precision@5,primary_language,primary_repo,query_id,query_text,recall@1,recall@10,recall@3,recall@5,relevant_tokens_returned,run_id,token_efficiency,total_tokens_returned,trace_id
+,code_qa,synsc-context,,,,,,,2085.21,,,,,,0,,,,,,,cq001,Where is the FastAPI class defined and what parameters does its __init__ accept?,,,,,0,7f5a9410f732,,0,bbe078cdacb6
+,code_qa,synsc-context,,,,,,,2160.65,,,,,,0,,,,,,,cq002,Where is HTTPException raised with a 404 status code?,,,,,0,7f5a9410f732,,0,2b86e09c4e3a
+,code_qa,synsc-context,,,,,,,2140.21,,,,,,0,,,,,,,cq003,What classes inherit from BaseModel in the FastAPI codebase?,,,,,0,7f5a9410f732,,0,38ecc3f4335a
+,code_qa,synsc-context,,,,,,,2384.27,,,,,,0,,,,,,,cq004,Where is the Depends function defined and how does it resolve dependencies?,,,,,0,7f5a9410f732,,0,a8856b16a42b
+,code_qa,synsc-context,,,,,,,2153.57,,,,,,0,,,,,,,cq005,Where is AsyncClient instantiated with http2=True?,,,,,0,7f5a9410f732,,0,cb39a213b57e
+,code_qa,synsc-context,,,,,,,2771.30,,,,,,0,,,,,,,cq006,What does the field_validator decorator do in Pydantic v2 and where is it defined?,,,,,0,7f5a9410f732,,0,8ca1c2a0c37f
+,code_qa,synsc-context,,,,,,,2057.63,,,,,,0,,,,,,,cq007,Where is the Timeout class used with custom connect and read values?,,,,,0,7f5a9410f732,,0,f3557e438d08
+,code_qa,synsc-context,,,,,,,2264.69,,,,,,0,,,,,,,cq008,What is the return type of the model_dump method in Pydantic BaseModel?,,,,,0,7f5a9410f732,,0,2bf0b3888807
+,code_qa,synsc-context,,,,,,,2059.30,,,,,,0,,,,,,,cq009,Where is jsonable_encoder imported and used in FastAPI?,,,,,0,7f5a9410f732,,0,ba54604a5f5c
+,code_qa,synsc-context,,,,,,,2061.85,,,,,,0,,,,,,,cq010,Where is response_model used as a parameter in FastAPI route decorators?,,,,,0,7f5a9410f732,,0,906304a15b14
+,code_qa,synsc-context,,,,,,,2160.90,,,,,,0,,,,,,,cq011,Where is the Router.add_api_route method defined and what decorators does it support?,,,,,0,7f5a9410f732,,0,4177c4386013
+,code_qa,synsc-context,,,,,,,2195.54,,,,,,0,,,,,,,cq012,Where is CORSMiddleware added to the app with allow_credentials=True?,,,,,0,7f5a9410f732,,0,12ec16ea325a
+,code_qa,synsc-context,,,,,,,2162.26,,,,,,0,,,,,,,cq013,What is the complete signature of httpx.AsyncClient.__init__?,,,,,0,7f5a9410f732,,0,71103ffe1c49
+,code_qa,synsc-context,,,,,,,2057.07,,,,,,0,,,,,,,cq014,Where does Pydantic raise ValidationError and what fields does the error contain?,,,,,0,7f5a9410f732,,0,d111245d82db
+,code_qa,synsc-context,,,,,,,2266.05,,,,,,0,,,,,,,cq015,Where is the @app.on_event startup handler used and what has replaced it in newer FastAPI?,,,,,0,7f5a9410f732,,0,2a35bf3d087b
+,code_qa,synsc-context,,,,,,,2251.29,,,,,,0,,,,,,,cq016,Where is the Django Model class defined and what metaclass does it use?,,,,,0,7f5a9410f732,,0,723861cbb646
+,code_qa,synsc-context,,,,,,,2085.28,,,,,,0,,,,,,,cq017,Where is the Flask class constructor defined and what parameters does it accept?,,,,,0,7f5a9410f732,,0,7ba1c75cea22
+,code_qa,synsc-context,,,,,,,1987.73,,,,,,0,,,,,,,cq018,Where is the SQLAlchemy create_engine function defined?,,,,,0,7f5a9410f732,,0,deccb6d5a3ca
+,code_qa,synsc-context,,,,,,,2065.40,,,,,,0,,,,,,,cq019,How is torch.nn.Module.__init__ defined and what does it initialize?,,,,,0,7f5a9410f732,,0,eb47a2a801df
+,code_qa,synsc-context,,,,,,,4327.72,,,,,,0,,,,,,,cq020,Where is pandas.DataFrame.__init__ defined and what parameters does it accept?,,,,,0,7f5a9410f732,,0,176b07707fea
+,code_qa,synsc-context,,,,,,,2759.80,,,,,,0,,,,,,,cq021,Where is numpy.ndarray defined as a class?,,,,,0,7f5a9410f732,,0,13ba189b0b22
+,code_qa,synsc-context,,,,,,,3184.56,,,,,,0,,,,,,,cq022,Where is the requests.Session class defined and what methods does it expose?,,,,,0,7f5a9410f732,,0,e62f1eddf9d8
+,code_qa,synsc-context,,,,,,,2166.79,,,,,,0,,,,,,,cq023,Where is the Celery class defined and what does its __init__ accept?,,,,,0,7f5a9410f732,,0,3e8b83188c55
+,code_qa,synsc-context,,,,,,,2060.95,,,,,,0,,,,,,,cq024,Where is the Starlette class defined and how does it differ from FastAPI?,,,,,0,7f5a9410f732,,0,a706d7e58e8f
+,code_qa,synsc-context,,,,,,,2058.74,,,,,,0,,,,,,,cq025,Where is aiohttp.ClientSession defined and what parameters does __init__ accept?,,,,,0,7f5a9410f732,,0,f2c5c942fa32
+,code_qa,synsc-context,,,,,,,2880.04,,,,,,0,,,,,,,cq026,Where is sklearn.base.BaseEstimator defined and what mixin methods does it provide?,,,,,0,7f5a9410f732,,0,576c97e7c9ba
+,code_qa,synsc-context,,,,,,,2059.53,,,,,,0,,,,,,,cq027,Where is the LangChain BaseLLM class defined?,,,,,0,7f5a9410f732,,0,e8136f85d412
+,code_qa,synsc-context,,,,,,,2367.56,,,,,,0,,,,,,,cq028,Where is the Django QuerySet.filter method defined?,,,,,0,7f5a9410f732,,0,5098dba32390
+,code_qa,synsc-context,,,,,,,2263.97,,,,,,0,,,,,,,cq029,Where is the Flask route decorator defined?,,,,,0,7f5a9410f732,,0,d886d4590199
+,code_qa,synsc-context,,,,,,,2163.84,,,,,,0,,,,,,,cq030,Where is SQLAlchemy's Column class defined and what arguments does it accept?,,,,,0,7f5a9410f732,,0,8d8e1e444935
+,code_qa,synsc-context,,,,,,,2200.95,,,,,,0,,,,,,,cq031,Where is torch.Tensor defined and what are its core attributes?,,,,,0,7f5a9410f732,,0,a261386e4ed0
+,code_qa,synsc-context,,,,,,,2060.66,,,,,,0,,,,,,,cq032,Where is the pandas read_csv function defined?,,,,,0,7f5a9410f732,,0,a055ca14599b
+,code_qa,synsc-context,,,,,,,2264.93,,,,,,0,,,,,,,cq033,Where is numpy.array function defined?,,,,,0,7f5a9410f732,,0,f0cd22b0a135
+,code_qa,synsc-context,,,,,,,2058.82,,,,,,0,,,,,,,cq034,Where is requests.get defined and what parameters does it accept?,,,,,0,7f5a9410f732,,0,f5731212da43
+,code_qa,synsc-context,,,,,,,2980.08,,,,,,0,,,,,,,cq035,Where is the httpx.Response class defined?,,,,,0,7f5a9410f732,,0,67365521aa1a
+,code_qa,synsc-context,,,,,,,2162.55,,,,,,0,,,,,,,cq036,Where is the Pydantic ConfigDict defined and what keys does it accept?,,,,,0,7f5a9410f732,,0,f398d4280d81
+,code_qa,synsc-context,,,,,,,3187.28,,,,,,0,,,,,,,cq037,Where is the LangChain ChatPromptTemplate class defined?,,,,,0,7f5a9410f732,,0,73982406148f
+,code_qa,synsc-context,,,,,,,2056.71,,,,,,0,,,,,,,cq038,Where is the Django URLPattern class defined?,,,,,0,7f5a9410f732,,0,db4a8bbfe724
+,code_qa,synsc-context,,,,,,,2162.14,,,,,,0,,,,,,,cq039,Where is sklearn.pipeline.Pipeline defined and what does __init__ accept?,,,,,0,7f5a9410f732,,0,9a2a87819af6
+,code_qa,synsc-context,,,,,,,2264.89,,,,,,0,,,,,,,cq040,Where is the Celery task decorator defined?,,,,,0,7f5a9410f732,,0,3537808bba98
+,code_qa,synsc-context,,,,,,,2366.63,,,,,,0,,,,,,,cq041,Where is SQLAlchemy's relationship function defined?,,,,,0,7f5a9410f732,,0,fb09c8a91abb
+,code_qa,synsc-context,,,,,,,2570.64,,,,,,0,,,,,,,cq042,Where is the Starlette Request class defined?,,,,,0,7f5a9410f732,,0,6bafd49f0e80
+,code_qa,synsc-context,,,,,,,2164.03,,,,,,0,,,,,,,cq043,Where is aiohttp's web.Application class defined?,,,,,0,7f5a9410f732,,0,a5381b5fd13d
+,code_qa,synsc-context,,,,,,,2570.44,,,,,,0,,,,,,,cq044,Where is torch.optim.Adam defined and what hyperparameters does it accept?,,,,,0,7f5a9410f732,,0,c9c9d2baafd2
+,code_qa,synsc-context,,,,,,,2134.32,,,,,,0,,,,,,,cq045,Where is pandas.DataFrame.merge defined?,,,,,0,7f5a9410f732,,0,a75bc6e6d971
+,code_qa,synsc-context,,,,,,,1958.61,,,,,,0,,,,,,,cq046,Where is Django's authenticate function called with username and password?,,,,,0,7f5a9410f732,,0,dd35657385a6
+,code_qa,synsc-context,,,,,,,2263.59,,,,,,0,,,,,,,cq047,Where is Flask's render_template called with context variables?,,,,,0,7f5a9410f732,,0,4abdffbc7c10
+,code_qa,synsc-context,,,,,,,2467.59,,,,,,0,,,,,,,cq048,Where is session.execute called with a select statement in SQLAlchemy?,,,,,0,7f5a9410f732,,0,81877c6bb2cb
+,code_qa,synsc-context,,,,,,,2160.34,,,,,,0,,,,,,,cq049,Where is model.fit called in scikit-learn with X_train and y_train?,,,,,0,7f5a9410f732,,0,23c382846bbe
+,code_qa,synsc-context,,,,,,,2164.75,,,,,,0,,,,,,,cq050,Where is torch.save called to persist model state_dict?,,,,,0,7f5a9410f732,,0,333bd7fa520c
+,code_qa,synsc-context,,,,,,,2777.23,,,,,,0,,,,,,,cq051,Where is pd.concat called with axis=1 to concatenate columns?,,,,,0,7f5a9410f732,,0,684ee0d62648
+,code_qa,synsc-context,,,,,,,2058.81,,,,,,0,,,,,,,cq052,Where is numpy.einsum called for matrix operations?,,,,,0,7f5a9410f732,,0,3ff09de8a0e1
+,code_qa,synsc-context,,,,,,,2058.47,,,,,,0,,,,,,,cq053,Where is requests.post called with json parameter for API calls?,,,,,0,7f5a9410f732,,0,a7eb4d3a4a63
+,code_qa,synsc-context,,,,,,,2273.32,,,,,,0,,,,,,,cq054,Where is Celery's apply_async called with countdown parameter?,,,,,0,7f5a9410f732,,0,fea09925aebe
+,code_qa,synsc-context,,,,,,,2326.59,,,,,,0,,,,,,,cq055,Where is httpx.Client.send called with custom transport?,,,,,0,7f5a9410f732,,0,9b1873e4f4c9
+,code_qa,synsc-context,,,,,,,2264.49,,,,,,0,,,,,,,cq056,Where is LangChain's chain.invoke called with config parameter?,,,,,0,7f5a9410f732,,0,30d71484925e
+,code_qa,synsc-context,,,,,,,2264.28,,,,,,0,,,,,,,cq057,Where is Django's reverse function called with kwargs?,,,,,0,7f5a9410f732,,0,9d6af98b7e79
+,code_qa,synsc-context,,,,,,,7486.54,,,,,,0,,,,,,,cq058,Where is app.add_middleware called in Starlette-based applications?,,,,,0,7f5a9410f732,,0,e915fdc97374
+,code_qa,synsc-context,,,,,,,2675.56,,,,,,0,,,,,,,cq059,Where is aiohttp's session.get called with ssl=False?,,,,,0,7f5a9410f732,,0,4e79d9976eb0
+,code_qa,synsc-context,,,,,,,2168.05,,,,,,0,,,,,,,cq060,Where is DataFrame.groupby called with as_index=False?,,,,,0,7f5a9410f732,,0,0aad253f40b5
+,code_qa,synsc-context,,,,,,,2077.24,,,,,,0,,,,,,,cq061,Where is torch.nn.CrossEntropyLoss called with label_smoothing?,,,,,0,7f5a9410f732,,0,6a77adcb4951
+,code_qa,synsc-context,,,,,,,2671.11,,,,,,0,,,,,,,cq062,Where is SQLAlchemy's select function called with join for multi-table queries?,,,,,0,7f5a9410f732,,0,ae43f75d518c
+,code_qa,synsc-context,,,,,,,2261.57,,,,,,0,,,,,,,cq063,How is the embed_dim argument used in torch.nn.MultiheadAttention?,,,,,0,7f5a9410f732,,0,4ff4f8fe5ae3
+,code_qa,synsc-context,,,,,,,2364.05,,,,,,0,,,,,,,cq064,How is the on_delete argument used in Django ForeignKey fields?,,,,,0,7f5a9410f732,,0,d04b244a78d8
+,code_qa,synsc-context,,,,,,,2071.25,,,,,,0,,,,,,,cq065,How is the strategy argument used in pandas DataFrame.fillna?,,,,,0,7f5a9410f732,,0,27ee168ff25f
+,code_qa,synsc-context,,,,,,,2367.72,,,,,,0,,,,,,,cq066,How is the pool_size argument used in SQLAlchemy create_engine?,,,,,0,7f5a9410f732,,0,c96d274fe525
+,code_qa,synsc-context,,,,,,,2056.27,,,,,,0,,,,,,,cq067,How is the verify argument used in requests.get for SSL?,,,,,0,7f5a9410f732,,0,7592a89e0d7f
+,code_qa,synsc-context,,,,,,,2059.05,,,,,,0,,,,,,,cq068,How is the max_retries argument used in Celery task decorator?,,,,,0,7f5a9410f732,,0,82799b178e08
+,code_qa,synsc-context,,,,,,,2162.38,,,,,,0,,,,,,,cq069,How is the follow_redirects argument used in httpx requests?,,,,,0,7f5a9410f732,,0,2225fa02f0a6
+,code_qa,synsc-context,,,,,,,2162.88,,,,,,0,,,,,,,cq070,How is the n_estimators argument used in sklearn RandomForestClassifier?,,,,,0,7f5a9410f732,,0,88170bbc0257
+,code_qa,synsc-context,,,,,,,2427.69,,,,,,0,,,,,,,cq071,How is the temperature argument used in LangChain LLM calls?,,,,,0,7f5a9410f732,,0,0117cbed9e01
+,code_qa,synsc-context,,,,,,,2774.67,,,,,,0,,,,,,,cq072,How is the lifespan argument used in Starlette Application?,,,,,0,7f5a9410f732,,0,889b6b811c6e
+,code_qa,synsc-context,,,,,,,2571.99,,,,,,0,,,,,,,cq073,How is the trust_env argument used in aiohttp ClientSession?,,,,,0,7f5a9410f732,,0,9b453342e356
+,code_qa,synsc-context,,,,,,,2367.41,,,,,,0,,,,,,,cq074,How is the dtype argument used in numpy zeros and ones?,,,,,0,7f5a9410f732,,0,4a7119c87176
+,code_qa,synsc-context,,,,,,,2066.25,,,,,,0,,,,,,,cq075,How is the status_code argument used in FastAPI Response classes?,,,,,0,7f5a9410f732,,0,a7d93a221284
+,code_qa,synsc-context,,,,,,,2368.18,,,,,,0,,,,,,,cq076,How is the mode argument used in Pydantic's model_validate?,,,,,0,7f5a9410f732,,0,14c34a7adba4
+,code_qa,synsc-context,,,,,,,2059.60,,,,,,0,,,,,,,cq077,How is the batch_size argument used in torch.utils.data.DataLoader?,,,,,0,7f5a9410f732,,0,26af9599dc96
+,code_qa,synsc-context,,,,,,,2469.19,,,,,,0,,,,,,,cq078,What is the return type of Django QuerySet.values_list with flat=True?,,,,,0,7f5a9410f732,,0,5214c54b059e
+,code_qa,synsc-context,,,,,,,2365.41,,,,,,0,,,,,,,cq079,What is the return type of Flask's jsonify function?,,,,,0,7f5a9410f732,,0,c9a73c48ec96
+,code_qa,synsc-context,,,,,,,2165.69,,,,,,0,,,,,,,cq080,What is the return type of SQLAlchemy Session.execute?,,,,,0,7f5a9410f732,,0,3c58064dfec9
+,code_qa,synsc-context,,,,,,,2468.41,,,,,,0,,,,,,,cq081,What is the return type of requests.Response.json()?,,,,,0,7f5a9410f732,,0,e6e9b1e7696c
+,code_qa,synsc-context,,,,,,,2571.88,,,,,,0,,,,,,,cq082,What is the return type of pandas DataFrame.describe?,,,,,0,7f5a9410f732,,0,6075e27ffaed
+,code_qa,synsc-context,,,,,,,2164.12,,,,,,0,,,,,,,cq083,What is the return type of numpy.linalg.svd?,,,,,0,7f5a9410f732,,0,64eb24986f22
+,code_qa,synsc-context,,,,,,,2364.78,,,,,,0,,,,,,,cq084,What is the return type of torch.nn.Module.parameters()?,,,,,0,7f5a9410f732,,0,1b84274bac73
+,code_qa,synsc-context,,,,,,,2367.91,,,,,,0,,,,,,,cq085,What is the return type of sklearn train_test_split?,,,,,0,7f5a9410f732,,0,67e36478a82f
+,code_qa,synsc-context,,,,,,,2162.29,,,,,,0,,,,,,,cq086,What is the return type of httpx.Response.raise_for_status?,,,,,0,7f5a9410f732,,0,3358e114863a
+,code_qa,synsc-context,,,,,,,2005.32,,,,,,0,,,,,,,cq087,What is the return type of Celery AsyncResult.get?,,,,,0,7f5a9410f732,,0,2d1c40f6cf10
+,code_qa,synsc-context,,,,,,,2856.61,,,,,,0,,,,,,,cq088,What is the return type of LangChain's chain.invoke?,,,,,0,7f5a9410f732,,0,580215d78b3c
+,code_qa,synsc-context,,,,,,,3184.89,,,,,,0,,,,,,,cq089,What classes inherit from Django's View class?,,,,,0,7f5a9410f732,,0,46e144da7ab8
+,code_qa,synsc-context,,,,,,,2364.57,,,,,,0,,,,,,,cq090,What classes inherit from Flask's MethodView?,,,,,0,7f5a9410f732,,0,e247b14507dd
+,code_qa,synsc-context,,,,,,,2366.52,,,,,,0,,,,,,,cq091,What classes inherit from SQLAlchemy's TypeDecorator?,,,,,0,7f5a9410f732,,0,3a9230143c55
+,code_qa,synsc-context,,,,,,,2879.18,,,,,,0,,,,,,,cq092,What classes inherit from torch.nn.Module in the nn package?,,,,,0,7f5a9410f732,,0,ef1217436256
+,code_qa,synsc-context,,,,,,,2365.92,,,,,,0,,,,,,,cq093,What classes inherit from sklearn's TransformerMixin?,,,,,0,7f5a9410f732,,0,9e14e732d911
+,code_qa,synsc-context,,,,,,,2350.28,,,,,,0,,,,,,,cq094,What classes inherit from Pydantic BaseModel in the pydantic package itself?,,,,,0,7f5a9410f732,,0,b94cd9c426fe
+,code_qa,synsc-context,,,,,,,2265.23,,,,,,0,,,,,,,cq095,What classes inherit from Starlette's HTTPEndpoint?,,,,,0,7f5a9410f732,,0,d504004f7f4d
+,code_qa,synsc-context,,,,,,,2367.20,,,,,,0,,,,,,,cq096,What classes inherit from aiohttp's AbstractView?,,,,,0,7f5a9410f732,,0,cb6dfb6d3118
+,code_qa,synsc-context,,,,,,,2058.95,,,,,,0,,,,,,,cq097,What classes inherit from LangChain's BaseRetriever?,,,,,0,7f5a9410f732,,0,4a743a3ffd04
+,code_qa,synsc-context,,,,,,,2571.69,,,,,,0,,,,,,,cq098,What classes inherit from pandas ExtensionArray?,,,,,0,7f5a9410f732,,0,b8591e38ed84
+,code_qa,synsc-context,,,,,,,2057.27,,,,,,0,,,,,,,cq099,What classes inherit from Celery's Task base class?,,,,,0,7f5a9410f732,,0,d52cc29a78dc
+,code_qa,synsc-context,,,,,,,2057.85,,,,,,0,,,,,,,cq100,Where is Django's path function imported from in URL configurations?,,,,,0,7f5a9410f732,,0,0145828d1f72
+,code_qa,nia,,,,,,,1618.04,,,,,,0,,,,,,,cq001,Where is the FastAPI class defined and what parameters does its __init__ accept?,,,,,0,b7692c5d098e,,0,aacfaff75653
+,code_qa,nia,,,,,,,54862.35,,,,,,0,,,,,,,cq002,Where is HTTPException raised with a 404 status code?,,,,,0,b7692c5d098e,,0,426f0e4cfeb5
+,code_qa,nia,,,,,,,7549.35,,,,,,0,,,,,,,cq004,Where is the Depends function defined and how does it resolve dependencies?,,,,,0,b7692c5d098e,,0,ae46aeb20e42
+,code_qa,nia,,,,,,,9091.68,,,,,,0,,,,,,,cq005,Where is AsyncClient instantiated with http2=True?,,,,,0,b7692c5d098e,,0,dcbd6bc6bbe7
+,code_qa,nia,,,,,,,6941.65,,,,,,0,,,,,,,cq006,What does the field_validator decorator do in Pydantic v2 and where is it defined?,,,,,0,b7692c5d098e,,0,18b0300af640
+,code_qa,nia,,,,,,,10105.44,,,,,,0,,,,,,,cq007,Where is the Timeout class used with custom connect and read values?,,,,,0,b7692c5d098e,,0,7ff323ac93ad
+,code_qa,nia,,,,,,,7560.38,,,,,,0,,,,,,,cq009,Where is jsonable_encoder imported and used in FastAPI?,,,,,0,b7692c5d098e,,0,7165e4f79c0c
+,code_qa,nia,,,,,,,33186.20,,,,,,0,,,,,,,cq010,Where is response_model used as a parameter in FastAPI route decorators?,,,,,0,b7692c5d098e,,0,40f1764d4e01
+,code_qa,nia,,,,,,,3364.59,,,,,,0,,,,,,,cq011,Where is the Router.add_api_route method defined and what decorators does it support?,,,,,0,b7692c5d098e,,0,0e4f8d213c88
+,code_qa,nia,,,,,,,11064.73,,,,,,0,,,,,,,cq012,Where is CORSMiddleware added to the app with allow_credentials=True?,,,,,0,b7692c5d098e,,0,aa25907dca7f
+,code_qa,nia,,,,,,,10836.68,,,,,,0,,,,,,,cq013,What is the complete signature of httpx.AsyncClient.__init__?,,,,,0,b7692c5d098e,,0,e395631f1a53
+,code_qa,nia,,,,,,,7660.97,,,,,,0,,,,,,,cq014,Where does Pydantic raise ValidationError and what fields does the error contain?,,,,,0,b7692c5d098e,,0,24fd4114dd6c
+,code_qa,nia,,,,,,,6129.29,,,,,,0,,,,,,,cq015,Where is the @app.on_event startup handler used and what has replaced it in newer FastAPI?,,,,,0,b7692c5d098e,,0,d2b418e2bbd6
+,code_qa,nia,,,,,,,7677.37,,,,,,0,,,,,,,cq016,Where is the Django Model class defined and what metaclass does it use?,,,,,0,b7692c5d098e,,0,90fed28fcc5b
+,code_qa,nia,,,,,,,5930.76,,,,,,0,,,,,,,cq017,Where is the Flask class constructor defined and what parameters does it accept?,,,,,0,b7692c5d098e,,0,6a9eee1b7eb7
+,code_qa,nia,,,,,,,11747.58,,,,,,0,,,,,,,cq019,How is torch.nn.Module.__init__ defined and what does it initialize?,,,,,0,b7692c5d098e,,0,4736822679a2
+,code_qa,nia,,,,,,,9892.83,,,,,,0,,,,,,,cq021,Where is numpy.ndarray defined as a class?,,,,,0,b7692c5d098e,,0,a50a82b63188
+,code_qa,nia,,,,,,,6634.66,,,,,,0,,,,,,,cq022,Where is the requests.Session class defined and what methods does it expose?,,,,,0,b7692c5d098e,,0,95c3a2974225
+,code_qa,nia,,,,,,,9627.42,,,,,,0,,,,,,,cq023,Where is the Celery class defined and what does its __init__ accept?,,,,,0,b7692c5d098e,,0,b3d477b2dc39
+,code_qa,nia,,,,,,,6617.59,,,,,,0,,,,,,,cq024,Where is the Starlette class defined and how does it differ from FastAPI?,,,,,0,b7692c5d098e,,0,90238cca6d00
+,code_qa,nia,,,,,,,11047.47,,,,,,0,,,,,,,cq025,Where is aiohttp.ClientSession defined and what parameters does __init__ accept?,,,,,0,b7692c5d098e,,0,4581d038f405
+,code_qa,nia,,,,,,,5659.54,,,,,,0,,,,,,,cq026,Where is sklearn.base.BaseEstimator defined and what mixin methods does it provide?,,,,,0,b7692c5d098e,,0,18c7334c2474
+,code_qa,nia,,,,,,,9995.04,,,,,,0,,,,,,,cq027,Where is the LangChain BaseLLM class defined?,,,,,0,b7692c5d098e,,0,039a990efa69
+,code_qa,nia,,,,,,,13203.87,,,,,,0,,,,,,,cq028,Where is the Django QuerySet.filter method defined?,,,,,0,b7692c5d098e,,0,b5569fdc815e
+,code_qa,nia,,,,,,,9682.46,,,,,,0,,,,,,,cq029,Where is the Flask route decorator defined?,,,,,0,b7692c5d098e,,0,f89876a705d6
+,code_qa,nia,,,,,,,8775.46,,,,,,0,,,,,,,cq030,Where is SQLAlchemy's Column class defined and what arguments does it accept?,,,,,0,b7692c5d098e,,0,a074c70018a6
+,code_qa,nia,,,,,,,8871.81,,,,,,0,,,,,,,cq031,Where is torch.Tensor defined and what are its core attributes?,,,,,0,b7692c5d098e,,0,227ec2c41051
+,code_qa,nia,,,,,,,8752.68,,,,,,0,,,,,,,cq032,Where is the pandas read_csv function defined?,,,,,0,b7692c5d098e,,0,f9ca1c99787d
+,code_qa,nia,,,,,,,10202.81,,,,,,0,,,,,,,cq033,Where is numpy.array function defined?,,,,,0,b7692c5d098e,,0,7945f815996c
+,code_qa,nia,,,,,,,9006.84,,,,,,0,,,,,,,cq034,Where is requests.get defined and what parameters does it accept?,,,,,0,b7692c5d098e,,0,8a5b797cf36b
+,code_qa,nia,,,,,,,12261.21,,,,,,0,,,,,,,cq035,Where is the httpx.Response class defined?,,,,,0,b7692c5d098e,,0,25c25cbf3d70
+,code_qa,nia,,,,,,,11239.56,,,,,,0,,,,,,,cq036,Where is the Pydantic ConfigDict defined and what keys does it accept?,,,,,0,b7692c5d098e,,0,aab041c302ac
+,code_qa,nia,,,,,,,11657.23,,,,,,0,,,,,,,cq037,Where is the LangChain ChatPromptTemplate class defined?,,,,,0,b7692c5d098e,,0,e7db6fe127ab
+,code_qa,nia,,,,,,,8968.90,,,,,,0,,,,,,,cq038,Where is the Django URLPattern class defined?,,,,,0,b7692c5d098e,,0,ff8b5cfc853d
+,code_qa,nia,,,,,,,7330.48,,,,,,0,,,,,,,cq039,Where is sklearn.pipeline.Pipeline defined and what does __init__ accept?,,,,,0,b7692c5d098e,,0,7a16f602179e
+,code_qa,nia,,,,,,,11031.67,,,,,,0,,,,,,,cq040,Where is the Celery task decorator defined?,,,,,0,b7692c5d098e,,0,0f12753cdf80
+,code_qa,nia,,,,,,,10844.52,,,,,,0,,,,,,,cq041,Where is SQLAlchemy's relationship function defined?,,,,,0,b7692c5d098e,,0,2fbba5ef88c6
+,code_qa,nia,,,,,,,11564.81,,,,,,0,,,,,,,cq042,Where is the Starlette Request class defined?,,,,,0,b7692c5d098e,,0,14dcc2275e9f
+,code_qa,nia,,,,,,,13029.04,,,,,,0,,,,,,,cq043,Where is aiohttp's web.Application class defined?,,,,,0,b7692c5d098e,,0,330a16be95b8
+,code_qa,nia,,,,,,,8546.27,,,,,,0,,,,,,,cq044,Where is torch.optim.Adam defined and what hyperparameters does it accept?,,,,,0,b7692c5d098e,,0,22923e22e9f9
+,code_qa,nia,,,,,,,10241.50,,,,,,0,,,,,,,cq045,Where is pandas.DataFrame.merge defined?,,,,,0,b7692c5d098e,,0,6d22873124a3
+,code_qa,nia,,,,,,,11700.78,,,,,,0,,,,,,,cq046,Where is Django's authenticate function called with username and password?,,,,,0,b7692c5d098e,,0,76ee2ded3df6
+,code_qa,nia,,,,,,,9077.64,,,,,,0,,,,,,,cq047,Where is Flask's render_template called with context variables?,,,,,0,b7692c5d098e,,0,dd40119eb181
+,code_qa,nia,,,,,,,8959.29,,,,,,0,,,,,,,cq048,Where is session.execute called with a select statement in SQLAlchemy?,,,,,0,b7692c5d098e,,0,ad8c06eb20a1
+,code_qa,nia,,,,,,,9268.34,,,,,,0,,,,,,,cq049,Where is model.fit called in scikit-learn with X_train and y_train?,,,,,0,b7692c5d098e,,0,4ac29f674b0d
+,code_qa,nia,,,,,,,17977.81,,,,,,0,,,,,,,cq050,Where is torch.save called to persist model state_dict?,,,,,0,b7692c5d098e,,0,159f9fcdd062
+,code_qa,nia,,,,,,,11633.44,,,,,,0,,,,,,,cq051,Where is pd.concat called with axis=1 to concatenate columns?,,,,,0,b7692c5d098e,,0,4c64c8aab246
+,code_qa,nia,,,,,,,10281.93,,,,,,0,,,,,,,cq052,Where is numpy.einsum called for matrix operations?,,,,,0,b7692c5d098e,,0,c1853f8f1f17
+,code_qa,nia,,,,,,,8439.00,,,,,,0,,,,,,,cq053,Where is requests.post called with json parameter for API calls?,,,,,0,b7692c5d098e,,0,308c75d6f898
+,code_qa,nia,,,,,,,9022.36,,,,,,0,,,,,,,cq054,Where is Celery's apply_async called with countdown parameter?,,,,,0,b7692c5d098e,,0,b9b9731f3e81
+,code_qa,nia,,,,,,,12688.02,,,,,,0,,,,,,,cq055,Where is httpx.Client.send called with custom transport?,,,,,0,b7692c5d098e,,0,cd243acb35fd
+,code_qa,nia,,,,,,,13244.65,,,,,,0,,,,,,,cq056,Where is LangChain's chain.invoke called with config parameter?,,,,,0,b7692c5d098e,,0,1d8ad4baa459
+,code_qa,nia,,,,,,,11039.33,,,,,,0,,,,,,,cq057,Where is Django's reverse function called with kwargs?,,,,,0,b7692c5d098e,,0,dbbe1ed9ab60
+,code_qa,nia,,,,,,,11957.99,,,,,,0,,,,,,,cq058,Where is app.add_middleware called in Starlette-based applications?,,,,,0,b7692c5d098e,,0,e63610fb72f4
+,code_qa,nia,,,,,,,11575.09,,,,,,0,,,,,,,cq059,Where is aiohttp's session.get called with ssl=False?,,,,,0,b7692c5d098e,,0,3d586302583f
+,code_qa,nia,,,,,,,11696.85,,,,,,0,,,,,,,cq060,Where is DataFrame.groupby called with as_index=False?,,,,,0,b7692c5d098e,,0,c56b3ae8ea39
+,code_qa,nia,,,,,,,13450.96,,,,,,0,,,,,,,cq061,Where is torch.nn.CrossEntropyLoss called with label_smoothing?,,,,,0,b7692c5d098e,,0,5c70932d5086
+,code_qa,nia,,,,,,,6750.53,,,,,,0,,,,,,,cq062,Where is SQLAlchemy's select function called with join for multi-table queries?,,,,,0,b7692c5d098e,,0,b08a06fd139e
+,code_qa,nia,,,,,,,13377.58,,,,,,0,,,,,,,cq063,How is the embed_dim argument used in torch.nn.MultiheadAttention?,,,,,0,b7692c5d098e,,0,6c2085f794ee
+,code_qa,nia,,,,,,,12453.99,,,,,,0,,,,,,,cq064,How is the on_delete argument used in Django ForeignKey fields?,,,,,0,b7692c5d098e,,0,17e9be89a145
+,code_qa,nia,,,,,,,8416.19,,,,,,0,,,,,,,cq065,How is the strategy argument used in pandas DataFrame.fillna?,,,,,0,b7692c5d098e,,0,c2abc775a8b1
+,code_qa,nia,,,,,,,7312.28,,,,,,0,,,,,,,cq066,How is the pool_size argument used in SQLAlchemy create_engine?,,,,,0,b7692c5d098e,,0,94e148c68a16
+,code_qa,nia,,,,,,,10399.46,,,,,,0,,,,,,,cq067,How is the verify argument used in requests.get for SSL?,,,,,0,b7692c5d098e,,0,506231b223fb
+,code_qa,nia,,,,,,,7216.66,,,,,,0,,,,,,,cq068,How is the max_retries argument used in Celery task decorator?,,,,,0,b7692c5d098e,,0,9a944ee1c662
+,code_qa,nia,,,,,,,9187.46,,,,,,0,,,,,,,cq069,How is the follow_redirects argument used in httpx requests?,,,,,0,b7692c5d098e,,0,fa25f69cacab
+,code_qa,nia,,,,,,,8781.50,,,,,,0,,,,,,,cq070,How is the n_estimators argument used in sklearn RandomForestClassifier?,,,,,0,b7692c5d098e,,0,8364be99c035
+,code_qa,nia,,,,,,,11336.33,,,,,,0,,,,,,,cq071,How is the temperature argument used in LangChain LLM calls?,,,,,0,b7692c5d098e,,0,7778615ff58c
+,code_qa,nia,,,,,,,11828.87,,,,,,0,,,,,,,cq072,How is the lifespan argument used in Starlette Application?,,,,,0,b7692c5d098e,,0,474e94b1037f
+,code_qa,nia,,,,,,,8294.84,,,,,,0,,,,,,,cq073,How is the trust_env argument used in aiohttp ClientSession?,,,,,0,b7692c5d098e,,0,4c01a17319e8
+,code_qa,nia,,,,,,,6434.61,,,,,,0,,,,,,,cq074,How is the dtype argument used in numpy zeros and ones?,,,,,0,b7692c5d098e,,0,a385bfae892c
+,code_qa,nia,,,,,,,6486.25,,,,,,0,,,,,,,cq075,How is the status_code argument used in FastAPI Response classes?,,,,,0,b7692c5d098e,,0,c681e4795b34
+,code_qa,nia,,,,,,,9409.90,,,,,,0,,,,,,,cq076,How is the mode argument used in Pydantic's model_validate?,,,,,0,b7692c5d098e,,0,b4868eb0996a
+,code_qa,nia,,,,,,,11053.47,,,,,,0,,,,,,,cq077,How is the batch_size argument used in torch.utils.data.DataLoader?,,,,,0,b7692c5d098e,,0,79441c64455f
+,code_qa,nia,,,,,,,9304.87,,,,,,0,,,,,,,cq078,What is the return type of Django QuerySet.values_list with flat=True?,,,,,0,b7692c5d098e,,0,cca3af942e0f
+,code_qa,nia,,,,,,,7210.97,,,,,,0,,,,,,,cq079,What is the return type of Flask's jsonify function?,,,,,0,b7692c5d098e,,0,757f4800b416
+,code_qa,nia,,,,,,,10131.09,,,,,,0,,,,,,,cq080,What is the return type of SQLAlchemy Session.execute?,,,,,0,b7692c5d098e,,0,88c610273de2
+,code_qa,nia,,,,,,,9876.43,,,,,,0,,,,,,,cq081,What is the return type of requests.Response.json()?,,,,,0,b7692c5d098e,,0,c1cd9776ea90
+,code_qa,nia,,,,,,,7503.27,,,,,,0,,,,,,,cq082,What is the return type of pandas DataFrame.describe?,,,,,0,b7692c5d098e,,0,f6c8f2ea1078
+,code_qa,nia,,,,,,,9401.19,,,,,,0,,,,,,,cq083,What is the return type of numpy.linalg.svd?,,,,,0,b7692c5d098e,,0,17abfb16cc9c
+,code_qa,nia,,,,,,,9868.97,,,,,,0,,,,,,,cq084,What is the return type of torch.nn.Module.parameters()?,,,,,0,b7692c5d098e,,0,dcc698242ca3
+,code_qa,nia,,,,,,,11207.96,,,,,,0,,,,,,,cq085,What is the return type of sklearn train_test_split?,,,,,0,b7692c5d098e,,0,f27e376f70c5
+,code_qa,nia,,,,,,,15741.65,,,,,,0,,,,,,,cq086,What is the return type of httpx.Response.raise_for_status?,,,,,0,b7692c5d098e,,0,a543f83e11ac
+,code_qa,nia,,,,,,,11156.95,,,,,,0,,,,,,,cq087,What is the return type of Celery AsyncResult.get?,,,,,0,b7692c5d098e,,0,4916a4686538
+,code_qa,nia,,,,,,,10580.24,,,,,,0,,,,,,,cq088,What is the return type of LangChain's chain.invoke?,,,,,0,b7692c5d098e,,0,cd115640c23b
+,code_qa,nia,,,,,,,9612.81,,,,,,0,,,,,,,cq089,What classes inherit from Django's View class?,,,,,0,b7692c5d098e,,0,2605f3c18fba
+,code_qa,nia,,,,,,,11442.21,,,,,,0,,,,,,,cq090,What classes inherit from Flask's MethodView?,,,,,0,b7692c5d098e,,0,38a9199c7009
+,code_qa,nia,,,,,,,9955.43,,,,,,0,,,,,,,cq091,What classes inherit from SQLAlchemy's TypeDecorator?,,,,,0,b7692c5d098e,,0,84ffb2bae5db
+,code_qa,nia,,,,,,,9192.98,,,,,,0,,,,,,,cq092,What classes inherit from torch.nn.Module in the nn package?,,,,,0,b7692c5d098e,,0,1bcfc5715288
+,code_qa,nia,,,,,,,12193.95,,,,,,0,,,,,,,cq093,What classes inherit from sklearn's TransformerMixin?,,,,,0,b7692c5d098e,,0,acb2cb864876
+,code_qa,nia,,,,,,,7342.81,,,,,,0,,,,,,,cq094,What classes inherit from Pydantic BaseModel in the pydantic package itself?,,,,,0,b7692c5d098e,,0,26aeca2ede68
+,code_qa,nia,,,,,,,12788.72,,,,,,0,,,,,,,cq095,What classes inherit from Starlette's HTTPEndpoint?,,,,,0,b7692c5d098e,,0,42c39750bd97
+,code_qa,nia,,,,,,,13142.08,,,,,,0,,,,,,,cq096,What classes inherit from aiohttp's AbstractView?,,,,,0,b7692c5d098e,,0,9e343fe44760
+,code_qa,nia,,,,,,,9563.95,,,,,,0,,,,,,,cq097,What classes inherit from LangChain's BaseRetriever?,,,,,0,b7692c5d098e,,0,71c26d9eab35
+,code_qa,nia,,,,,,,11018.80,,,,,,0,,,,,,,cq099,What classes inherit from Celery's Task base class?,,,,,0,b7692c5d098e,,0,9af0cb9ba49e
+,code_qa,nia,,,,,,,96137.85,,,,,,0,,,,,,,cq100,Where is Django's path function imported from in URL configurations?,,,,,0,b7692c5d098e,,0,edd58355fb2e
+,code_qa,context7,,,,,,,2822.78,,,,,,0,,,,,,,cq001,Where is the FastAPI class defined and what parameters does its __init__ accept?,,,,,0,b7692c5d098e,,0,f54d0b994e1d
+,code_qa,context7,,,,,,,2253.65,,,,,,0,,,,,,,cq002,Where is HTTPException raised with a 404 status code?,,,,,0,b7692c5d098e,,0,2a4ee74dcf92
+,code_qa,context7,,,,,,,2275.57,,,,,,0,,,,,,,cq003,What classes inherit from BaseModel in the FastAPI codebase?,,,,,0,b7692c5d098e,,0,fa13f7051e3e
+,code_qa,context7,,,,,,,2469.46,,,,,,0,,,,,,,cq004,Where is the Depends function defined and how does it resolve dependencies?,,,,,0,b7692c5d098e,,0,e7dbc11d00e1
+,code_qa,context7,,,,,,,3081.56,,,,,,0,,,,,,,cq005,Where is AsyncClient instantiated with http2=True?,,,,,0,b7692c5d098e,,0,b23c5862a635
+,code_qa,context7,,,,,,,2276.46,,,,,,0,,,,,,,cq006,What does the field_validator decorator do in Pydantic v2 and where is it defined?,,,,,0,b7692c5d098e,,0,4a97c0b337a1
+,code_qa,context7,,,,,,,2776.61,,,,,,0,,,,,,,cq007,Where is the Timeout class used with custom connect and read values?,,,,,0,b7692c5d098e,,0,da673b52a0ec
+,code_qa,context7,,,,,,,2784.93,,,,,,0,,,,,,,cq008,What is the return type of the model_dump method in Pydantic BaseModel?,,,,,0,b7692c5d098e,,0,4b85fa3e514f
+,code_qa,context7,,,,,,,2786.96,,,,,,0,,,,,,,cq009,Where is jsonable_encoder imported and used in FastAPI?,,,,,0,b7692c5d098e,,0,4a24006264af
+,code_qa,context7,,,,,,,2786.73,,,,,,0,,,,,,,cq010,Where is response_model used as a parameter in FastAPI route decorators?,,,,,0,b7692c5d098e,,0,24abe5dc3095
+,code_qa,context7,,,,,,,3294.29,,,,,,0,,,,,,,cq011,Where is the Router.add_api_route method defined and what decorators does it support?,,,,,0,b7692c5d098e,,0,6a93c2a20a73
+,code_qa,context7,,,,,,,2775.06,,,,,,0,,,,,,,cq012,Where is CORSMiddleware added to the app with allow_credentials=True?,,,,,0,b7692c5d098e,,0,1200a5cf8322
+,code_qa,context7,,,,,,,2581.86,,,,,,0,,,,,,,cq013,What is the complete signature of httpx.AsyncClient.__init__?,,,,,0,b7692c5d098e,,0,d3d8fda19676
+,code_qa,context7,,,,,,,2852.06,,,,,,0,,,,,,,cq014,Where does Pydantic raise ValidationError and what fields does the error contain?,,,,,0,b7692c5d098e,,0,f01689519e1e
+,code_qa,context7,,,,,,,3344.31,,,,,,0,,,,,,,cq015,Where is the @app.on_event startup handler used and what has replaced it in newer FastAPI?,,,,,0,b7692c5d098e,,0,d6bafb811777
+,code_qa,context7,,,,,,,3707.54,,,,,,0,,,,,,,cq016,Where is the Django Model class defined and what metaclass does it use?,,,,,0,b7692c5d098e,,0,118a16bfbe5e
+,code_qa,context7,,,,,,,2582.74,,,,,,0,,,,,,,cq017,Where is the Flask class constructor defined and what parameters does it accept?,,,,,0,b7692c5d098e,,0,4861fbab7fa4
+,code_qa,context7,,,,,,,3298.28,,,,,,0,,,,,,,cq018,Where is the SQLAlchemy create_engine function defined?,,,,,0,b7692c5d098e,,0,cce88bf34b0e
+,code_qa,context7,,,,,,,2675.69,,,,,,0,,,,,,,cq019,How is torch.nn.Module.__init__ defined and what does it initialize?,,,,,0,b7692c5d098e,,0,0a96a0b3e5d8
+,code_qa,context7,,,,,,,2580.98,,,,,,0,,,,,,,cq020,Where is pandas.DataFrame.__init__ defined and what parameters does it accept?,,,,,0,b7692c5d098e,,0,eace985770b0
+,code_qa,context7,,,,,,,2992.50,,,,,,0,,,,,,,cq021,Where is numpy.ndarray defined as a class?,,,,,0,b7692c5d098e,,0,ec9c1dfc1ec8
+,code_qa,context7,,,,,,,3195.12,,,,,,0,,,,,,,cq022,Where is the requests.Session class defined and what methods does it expose?,,,,,0,b7692c5d098e,,0,261fca3f3f2d
+,code_qa,context7,,,,,,,2775.70,,,,,,0,,,,,,,cq023,Where is the Celery class defined and what does its __init__ accept?,,,,,0,b7692c5d098e,,0,22c02b47fcb7
+,code_qa,context7,,,,,,,2992.35,,,,,,0,,,,,,,cq024,Where is the Starlette class defined and how does it differ from FastAPI?,,,,,0,b7692c5d098e,,0,6ce652376de0
+,code_qa,context7,,,,,,,2878.94,,,,,,0,,,,,,,cq025,Where is aiohttp.ClientSession defined and what parameters does __init__ accept?,,,,,0,b7692c5d098e,,0,777db3b7d663
+,code_qa,context7,,,,,,,2675.77,,,,,,0,,,,,,,cq026,Where is sklearn.base.BaseEstimator defined and what mixin methods does it provide?,,,,,0,b7692c5d098e,,0,2b58d101b9de
+,code_qa,context7,,,,,,,4835.14,,,,,,0,,,,,,,cq027,Where is the LangChain BaseLLM class defined?,,,,,0,b7692c5d098e,,0,a05179238f4f
+,code_qa,context7,,,,,,,3196.62,,,,,,0,,,,,,,cq028,Where is the Django QuerySet.filter method defined?,,,,,0,b7692c5d098e,,0,acdef0bb6081
+,code_qa,context7,,,,,,,2783.44,,,,,,0,,,,,,,cq029,Where is the Flask route decorator defined?,,,,,0,b7692c5d098e,,0,df4f0f688ae4
+,code_qa,context7,,,,,,,2787.71,,,,,,0,,,,,,,cq030,Where is SQLAlchemy's Column class defined and what arguments does it accept?,,,,,0,b7692c5d098e,,0,1284bc2085aa
+,code_qa,context7,,,,,,,2980.81,,,,,,0,,,,,,,cq031,Where is torch.Tensor defined and what are its core attributes?,,,,,0,b7692c5d098e,,0,e033e02acb75
+,code_qa,context7,,,,,,,2684.34,,,,,,0,,,,,,,cq032,Where is the pandas read_csv function defined?,,,,,0,b7692c5d098e,,0,d2679487afaf
+,code_qa,context7,,,,,,,2924.10,,,,,,0,,,,,,,cq033,Where is numpy.array function defined?,,,,,0,b7692c5d098e,,0,e643fe6358af
+,code_qa,context7,,,,,,,2432.20,,,,,,0,,,,,,,cq034,Where is requests.get defined and what parameters does it accept?,,,,,0,b7692c5d098e,,0,dc0955c2d0bd
+,code_qa,context7,,,,,,,2786.02,,,,,,0,,,,,,,cq035,Where is the httpx.Response class defined?,,,,,0,b7692c5d098e,,0,cb31f9212b0d
+,code_qa,context7,,,,,,,2621.38,,,,,,0,,,,,,,cq036,Where is the Pydantic ConfigDict defined and what keys does it accept?,,,,,0,b7692c5d098e,,0,18eae092a16b
+,code_qa,context7,,,,,,,4016.51,,,,,,0,,,,,,,cq037,Where is the LangChain ChatPromptTemplate class defined?,,,,,0,b7692c5d098e,,0,96110c181a0b
+,code_qa,context7,,,,,,,2581.65,,,,,,0,,,,,,,cq038,Where is the Django URLPattern class defined?,,,,,0,b7692c5d098e,,0,0b80940b4a97
+,code_qa,context7,,,,,,,3087.28,,,,,,0,,,,,,,cq039,Where is sklearn.pipeline.Pipeline defined and what does __init__ accept?,,,,,0,b7692c5d098e,,0,941da11c2b19
+,code_qa,context7,,,,,,,2981.26,,,,,,0,,,,,,,cq040,Where is the Celery task decorator defined?,,,,,0,b7692c5d098e,,0,1553cdba60ad
+,code_qa,context7,,,,,,,2581.48,,,,,,0,,,,,,,cq041,Where is SQLAlchemy's relationship function defined?,,,,,0,b7692c5d098e,,0,b19d845d2bb9
+,code_qa,context7,,,,,,,2377.37,,,,,,0,,,,,,,cq042,Where is the Starlette Request class defined?,,,,,0,b7692c5d098e,,0,d6fde15010cf
+,code_qa,context7,,,,,,,2468.90,,,,,,0,,,,,,,cq043,Where is aiohttp's web.Application class defined?,,,,,0,b7692c5d098e,,0,c12a4f253667
+,code_qa,context7,,,,,,,2365.89,,,,,,0,,,,,,,cq044,Where is torch.optim.Adam defined and what hyperparameters does it accept?,,,,,0,b7692c5d098e,,0,9d3312b9ee11
+,code_qa,context7,,,,,,,2685.02,,,,,,0,,,,,,,cq045,Where is pandas.DataFrame.merge defined?,,,,,0,b7692c5d098e,,0,8c5a0b549a4a
+,code_qa,context7,,,,,,,2643.15,,,,,,0,,,,,,,cq046,Where is Django's authenticate function called with username and password?,,,,,0,b7692c5d098e,,0,bf09269a165e
+,code_qa,context7,,,,,,,2292.86,,,,,,0,,,,,,,cq047,Where is Flask's render_template called with context variables?,,,,,0,b7692c5d098e,,0,23710c1efa87
+,code_qa,context7,,,,,,,2803.23,,,,,,0,,,,,,,cq048,Where is session.execute called with a select statement in SQLAlchemy?,,,,,0,b7692c5d098e,,0,748109cfc1bf
+,code_qa,context7,,,,,,,1904.49,,,,,,0,,,,,,,cq049,Where is model.fit called in scikit-learn with X_train and y_train?,,,,,0,b7692c5d098e,,0,9302ca07abaa
+,code_qa,context7,,,,,,,2216.35,,,,,,0,,,,,,,cq050,Where is torch.save called to persist model state_dict?,,,,,0,b7692c5d098e,,0,a82d662e9621
+,code_qa,context7,,,,,,,2579.97,,,,,,0,,,,,,,cq051,Where is pd.concat called with axis=1 to concatenate columns?,,,,,0,b7692c5d098e,,0,b916017a9627
+,code_qa,context7,,,,,,,2274.28,,,,,,0,,,,,,,cq052,Where is numpy.einsum called for matrix operations?,,,,,0,b7692c5d098e,,0,0df24d763fba
+,code_qa,context7,,,,,,,2619.66,,,,,,0,,,,,,,cq053,Where is requests.post called with json parameter for API calls?,,,,,0,b7692c5d098e,,0,bf1dd9f420e9
+,code_qa,context7,,,,,,,2295.26,,,,,,0,,,,,,,cq054,Where is Celery's apply_async called with countdown parameter?,,,,,0,b7692c5d098e,,0,853a54f77381
+,code_qa,context7,,,,,,,2237.13,,,,,,0,,,,,,,cq055,Where is httpx.Client.send called with custom transport?,,,,,0,b7692c5d098e,,0,c473340a9009
+,code_qa,context7,,,,,,,4062.21,,,,,,0,,,,,,,cq056,Where is LangChain's chain.invoke called with config parameter?,,,,,0,b7692c5d098e,,0,ff3182d303f1
+,code_qa,context7,,,,,,,2299.05,,,,,,0,,,,,,,cq057,Where is Django's reverse function called with kwargs?,,,,,0,b7692c5d098e,,0,72780e6690cb
+,code_qa,context7,,,,,,,2531.47,,,,,,0,,,,,,,cq058,Where is app.add_middleware called in Starlette-based applications?,,,,,0,b7692c5d098e,,0,1d59e2065f97
+,code_qa,context7,,,,,,,2597.75,,,,,,0,,,,,,,cq059,Where is aiohttp's session.get called with ssl=False?,,,,,0,b7692c5d098e,,0,21d403bdd924
+,code_qa,context7,,,,,,,2919.58,,,,,,0,,,,,,,cq060,Where is DataFrame.groupby called with as_index=False?,,,,,0,b7692c5d098e,,0,dac032823c83
+,code_qa,context7,,,,,,,2461.57,,,,,,0,,,,,,,cq061,Where is torch.nn.CrossEntropyLoss called with label_smoothing?,,,,,0,b7692c5d098e,,0,457d70f17990
+,code_qa,context7,,,,,,,2991.71,,,,,,0,,,,,,,cq062,Where is SQLAlchemy's select function called with join for multi-table queries?,,,,,0,b7692c5d098e,,0,9a360fa9c8d2
+,code_qa,context7,,,,,,,2881.06,,,,,,0,,,,,,,cq063,How is the embed_dim argument used in torch.nn.MultiheadAttention?,,,,,0,b7692c5d098e,,0,2022f1a99625
+,code_qa,context7,,,,,,,2825.77,,,,,,0,,,,,,,cq064,How is the on_delete argument used in Django ForeignKey fields?,,,,,0,b7692c5d098e,,0,b131c1adf79a
+,code_qa,context7,,,,,,,2772.41,,,,,,0,,,,,,,cq065,How is the strategy argument used in pandas DataFrame.fillna?,,,,,0,b7692c5d098e,,0,d6a53171059e
+,code_qa,context7,,,,,,,2812.43,,,,,,0,,,,,,,cq066,How is the pool_size argument used in SQLAlchemy create_engine?,,,,,0,b7692c5d098e,,0,aebc44d57007
+,code_qa,context7,,,,,,,2417.69,,,,,,0,,,,,,,cq067,How is the verify argument used in requests.get for SSL?,,,,,0,b7692c5d098e,,0,4b5b14accf7b
+,code_qa,context7,,,,,,,2571.51,,,,,,0,,,,,,,cq068,How is the max_retries argument used in Celery task decorator?,,,,,0,b7692c5d098e,,0,2dde2c443e30
+,code_qa,context7,,,,,,,2794.92,,,,,,0,,,,,,,cq069,How is the follow_redirects argument used in httpx requests?,,,,,0,b7692c5d098e,,0,6479ee4693d5
+,code_qa,context7,,,,,,,2821.84,,,,,,0,,,,,,,cq070,How is the n_estimators argument used in sklearn RandomForestClassifier?,,,,,0,b7692c5d098e,,0,d9a5fc0ee797
+,code_qa,context7,,,,,,,5404.31,,,,,,0,,,,,,,cq071,How is the temperature argument used in LangChain LLM calls?,,,,,0,b7692c5d098e,,0,08ec3f589b59
+,code_qa,context7,,,,,,,2812.95,,,,,,0,,,,,,,cq072,How is the lifespan argument used in Starlette Application?,,,,,0,b7692c5d098e,,0,8212c6f4bca8
+,code_qa,context7,,,,,,,2573.29,,,,,,0,,,,,,,cq073,How is the trust_env argument used in aiohttp ClientSession?,,,,,0,b7692c5d098e,,0,a7e9d74cd01f
+,code_qa,context7,,,,,,,3006.95,,,,,,0,,,,,,,cq074,How is the dtype argument used in numpy zeros and ones?,,,,,0,b7692c5d098e,,0,1967a6d25901
+,code_qa,context7,,,,,,,2320.31,,,,,,0,,,,,,,cq075,How is the status_code argument used in FastAPI Response classes?,,,,,0,b7692c5d098e,,0,c8d781d6ca2d
+,code_qa,context7,,,,,,,3108.30,,,,,,0,,,,,,,cq076,How is the mode argument used in Pydantic's model_validate?,,,,,0,b7692c5d098e,,0,aec325f6e491
+,code_qa,context7,,,,,,,4005.70,,,,,,0,,,,,,,cq077,How is the batch_size argument used in torch.utils.data.DataLoader?,,,,,0,b7692c5d098e,,0,015cd43a2c61
+,code_qa,context7,,,,,,,2685.82,,,,,,0,,,,,,,cq078,What is the return type of Django QuerySet.values_list with flat=True?,,,,,0,b7692c5d098e,,0,bddb85ee178c
+,code_qa,context7,,,,,,,2157.13,,,,,,0,,,,,,,cq079,What is the return type of Flask's jsonify function?,,,,,0,b7692c5d098e,,0,3940103656e4
+,code_qa,context7,,,,,,,2377.48,,,,,,0,,,,,,,cq080,What is the return type of SQLAlchemy Session.execute?,,,,,0,b7692c5d098e,,0,bd2bb36bb618
+,code_qa,context7,,,,,,,2706.46,,,,,,0,,,,,,,cq081,What is the return type of requests.Response.json()?,,,,,0,b7692c5d098e,,0,b33d78d8b075
+,code_qa,context7,,,,,,,2499.94,,,,,,0,,,,,,,cq082,What is the return type of pandas DataFrame.describe?,,,,,0,b7692c5d098e,,0,2c39b2785f13
+,code_qa,context7,,,,,,,2581.85,,,,,,0,,,,,,,cq083,What is the return type of numpy.linalg.svd?,,,,,0,b7692c5d098e,,0,af8e700a9d5f
+,code_qa,context7,,,,,,,2292.19,,,,,,0,,,,,,,cq084,What is the return type of torch.nn.Module.parameters()?,,,,,0,b7692c5d098e,,0,4798d690cdeb
+,code_qa,context7,,,,,,,2510.07,,,,,,0,,,,,,,cq085,What is the return type of sklearn train_test_split?,,,,,0,b7692c5d098e,,0,db74f40e82c7
+,code_qa,context7,,,,,,,2434.66,,,,,,0,,,,,,,cq086,What is the return type of httpx.Response.raise_for_status?,,,,,0,b7692c5d098e,,0,95f98717fa5a
+,code_qa,context7,,,,,,,2187.80,,,,,,0,,,,,,,cq087,What is the return type of Celery AsyncResult.get?,,,,,0,b7692c5d098e,,0,3148adf94438
+,code_qa,context7,,,,,,,4768.53,,,,,,0,,,,,,,cq088,What is the return type of LangChain's chain.invoke?,,,,,0,b7692c5d098e,,0,f0ede3b25c79
+,code_qa,context7,,,,,,,2607.34,,,,,,0,,,,,,,cq089,What classes inherit from Django's View class?,,,,,0,b7692c5d098e,,0,1e11f1fe2cae
+,code_qa,context7,,,,,,,2237.50,,,,,,0,,,,,,,cq090,What classes inherit from Flask's MethodView?,,,,,0,b7692c5d098e,,0,30e1bf855188
+,code_qa,context7,,,,,,,2941.51,,,,,,0,,,,,,,cq091,What classes inherit from SQLAlchemy's TypeDecorator?,,,,,0,b7692c5d098e,,0,dcd240e4c023
+,code_qa,context7,,,,,,,2555.89,,,,,,0,,,,,,,cq092,What classes inherit from torch.nn.Module in the nn package?,,,,,0,b7692c5d098e,,0,4a374bf0d6cd
+,code_qa,context7,,,,,,,2158.80,,,,,,0,,,,,,,cq093,What classes inherit from sklearn's TransformerMixin?,,,,,0,b7692c5d098e,,0,00aa3cfe1de1
+,code_qa,context7,,,,,,,2582.27,,,,,,0,,,,,,,cq094,What classes inherit from Pydantic BaseModel in the pydantic package itself?,,,,,0,b7692c5d098e,,0,1cf5c923c386
+,code_qa,context7,,,,,,,3092.23,,,,,,0,,,,,,,cq095,What classes inherit from Starlette's HTTPEndpoint?,,,,,0,b7692c5d098e,,0,95a7596ad4de
+,code_qa,context7,,,,,,,5131.52,,,,,,0,,,,,,,cq096,What classes inherit from aiohttp's AbstractView?,,,,,0,b7692c5d098e,,0,892ab7ba60e0
+,code_qa,context7,,,,,,,4215.96,,,,,,0,,,,,,,cq097,What classes inherit from LangChain's BaseRetriever?,,,,,0,b7692c5d098e,,0,8c5d83f59602
+,code_qa,context7,,,,,,,2684.85,,,,,,0,,,,,,,cq098,What classes inherit from pandas ExtensionArray?,,,,,0,b7692c5d098e,,0,b0c18c3ed51d
+,code_qa,context7,,,,,,,2468.66,,,,,,0,,,,,,,cq099,What classes inherit from Celery's Task base class?,,,,,0,b7692c5d098e,,0,038300474a7a
+,code_qa,context7,,,,,,,2520.20,,,,,,0,,,,,,,cq100,Where is Django's path function imported from in URL configurations?,,,,,0,b7692c5d098e,,0,a9b9a15066cd
