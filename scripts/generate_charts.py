@@ -38,27 +38,31 @@ plt.rcParams.update({
 
 
 def main():
-    # Results from results_final (100 queries per engine per phase)
+    # All 8 phases from results_final (100 queries per engine per phase)
     metrics = [
         "Retrieval\nMRR",
+        "Multi-Hop\nCoverage",
+        "Code QA\nAccuracy",
+        "Adversarial\nDiscrim.",
+        "Hallucination\nAvoidance",
         "CodeSearchNet\nMRR",
         "CoSQA\nMRR",
-        "Adversarial\nDiscrimination",
-        "Hallucination\nAvoidance",
+        "Enhanced\nJudge Wins",
     ]
 
-    delphi  = [0.962, 0.865, 0.703, 0.560, 0.61]   # halluc avoidance = 1 - 0.39
-    context7 = [0.790, 0.010, 0.110, 0.170, 0.55]   # 1 - 0.45
-    nia      = [0.728, 0.040, 0.298, 0.140, 0.49]   # 1 - 0.51
+    #                Retr   MHop   CQA    Adv    HallAv  CSN    CoSQA  EJ wins
+    delphi   = [0.962, 0.973, 0.310, 0.530, 0.60,  0.864, 0.722, 0.675]  # EJ: 135/200
+    context7 = [0.790, 0.848, 0.270, 0.429, 0.54,  0.010, 0.110, 0.075]  # EJ: 15/200
+    nia      = [0.728, 0.732, 0.263, 0.435, 0.50,  0.040, 0.298, 0.115]  # EJ: 23/200
 
     engines = ["Delphi", "Context7", "Nia"]
     colors  = [CLR_DELPH, CLR_CTX7, CLR_NIA]
 
-    fig, ax = plt.subplots(figsize=(14, 7))
+    fig, ax = plt.subplots(figsize=(18, 7))
 
     x = np.arange(len(metrics))
     n_engines = 3
-    total_width = 0.72
+    total_width = 0.75
     bar_width = total_width / n_engines
     gap = 0.02
 
@@ -70,15 +74,15 @@ def main():
         )
         for bar in bars:
             h = bar.get_height()
-            if h > 5:
+            if h > 4:
                 ax.text(
-                    bar.get_x() + bar.get_width() / 2, h + 1.2,
+                    bar.get_x() + bar.get_width() / 2, h + 1.0,
                     f"{h:.1f}", ha="center", va="bottom",
-                    fontsize=10, fontweight="bold", color=TXT_DARK,
+                    fontsize=8.5, fontweight="bold", color=TXT_DARK,
                 )
 
     # y-axis
-    ax.set_ylim(0, 108)
+    ax.set_ylim(0, 112)
     ax.set_yticks([0, 20, 40, 60, 80, 100])
     ax.set_yticklabels(["0%", "20%", "40%", "60%", "80%", "100%"], fontsize=11)
     for tick_val in [20, 40, 60, 80, 100]:
@@ -86,7 +90,7 @@ def main():
 
     # x-axis
     ax.set_xticks(x)
-    ax.set_xticklabels(metrics, fontsize=12, fontweight="bold")
+    ax.set_xticklabels(metrics, fontsize=10.5, fontweight="bold")
 
     # spines
     for spine in ax.spines.values():
@@ -95,9 +99,9 @@ def main():
     ax.tick_params(axis="y", length=0)
 
     # title
-    fig.text(0.06, 0.96, "SynSci Context Bench", fontsize=26, fontweight="bold",
+    fig.text(0.05, 0.96, "SynSci Context Bench", fontsize=26, fontweight="bold",
              color=TXT_DARK, ha="left", va="top")
-    fig.text(0.06, 0.91,
+    fig.text(0.05, 0.91,
              "3 engines \u00b7 8 phases \u00b7 100 queries/engine/phase \u00b7 LLM judge (Claude Sonnet 4.6)",
              fontsize=12, color=TXT_MID, ha="left", va="top")
 
@@ -111,10 +115,11 @@ def main():
         text.set_color(TXT_DARK)
 
     # footnote
-    fig.text(0.06, -0.02,
+    fig.text(0.05, -0.02,
              "All differences statistically significant (p<0.0001, Holm-corrected). "
-             "Hallucination Avoidance = 1 \u2212 Hallucination Rate.",
-             fontsize=9, color=TXT_MID, ha="left", va="top", style="italic")
+             "Hallucination Avoidance = 1 \u2212 Rate. "
+             "Enhanced Judge Wins = win % across CodeSearchNet + CoSQA (200 queries).",
+             fontsize=8.5, color=TXT_MID, ha="left", va="top", style="italic")
 
     fig.savefig(OUT / "results.png", facecolor=BG)
     plt.close(fig)

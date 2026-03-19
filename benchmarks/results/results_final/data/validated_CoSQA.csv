@@ -1,104 +1,4 @@
 run_id,trace_id,engine,benchmark_type,query_id,query_text,num_results,latency_ms,error,error_category,primary_repo,primary_language,total_tokens_returned,relevant_tokens_returned,token_efficiency,avg_hop_mrr,hallucination_rate,hop_coverage,hop_recall_at_10,hop_recall_at_5,mrr,ndcg@1,ndcg@10,ndcg@3,ndcg@5,precision@1,precision@10,precision@3,precision@5,recall@1,recall@10,recall@3,recall@5
-acb62a29cc90,31eb54e18a14,synsc-context,validated_CoSQA,,sort by a token in string python,0,5285.52,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
-acb62a29cc90,faffc305f952,synsc-context,validated_CoSQA,,python check file is readonly,0,5455.73,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-acb62a29cc90,01529d0c266e,synsc-context,validated_CoSQA,,declaring empty numpy array in python,0,10251.21,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-acb62a29cc90,ce9fdebdbee3,synsc-context,validated_CoSQA,,test for iterable is string in python,0,7071.41,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.3,1.0,0.6,1.0,3.0,3.0,3.0
-acb62a29cc90,8e45950bc6a5,synsc-context,validated_CoSQA,,python print results of query loop,0,9148.20,,,,,0,0,,,,,,,1.0,1.0,0.9639404333166532,0.9639404333166532,0.9639404333166532,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
-acb62a29cc90,81bfdd2f6d92,synsc-context,validated_CoSQA,,how to save header of fits file to export python,0,6327.88,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
-acb62a29cc90,01b20047db52,synsc-context,validated_CoSQA,,python calc page align,0,6258.21,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
-acb62a29cc90,f12f1c92c3f3,synsc-context,validated_CoSQA,,python numpy array as float,0,9738.03,,,,,0,0,,,,,,,1.0,1.0,0.9639404333166532,0.9639404333166532,0.9639404333166532,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
-acb62a29cc90,c5c25c1553c3,synsc-context,validated_CoSQA,,input string that replaces occurences python,0,6666.93,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.3,1.0,0.6,1.0,3.0,3.0,3.0
-acb62a29cc90,63a6d5d9a309,synsc-context,validated_CoSQA,,python check all items in list are ints,0,7282.91,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-acb62a29cc90,1ab3b602dbdc,synsc-context,validated_CoSQA,,how to save variable to text file python,0,5850.02,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
-acb62a29cc90,80f6c72e9376,synsc-context,validated_CoSQA,,how to skip an index in a for loop python,0,6317.98,,,,,0,0,,,,,,,0.0,1.0,0.9197207891481876,0.9197207891481876,0.9197207891481876,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-acb62a29cc90,9498884a619c,synsc-context,validated_CoSQA,,how to create a tokenization code in python,0,6156.11,,,,,0,0,,,,,,,1.0,1.0,0.9651954696014428,0.9651954696014428,0.9651954696014428,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
-acb62a29cc90,20cd67fc2f3f,synsc-context,validated_CoSQA,,python raise without parentheses,0,6520.66,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
-acb62a29cc90,e3d6da5a369a,synsc-context,validated_CoSQA,,how to seperate list with commas python,0,5406.25,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.3,1.0,0.6,1.0,3.0,3.0,3.0
-acb62a29cc90,73b072144192,synsc-context,validated_CoSQA,,python asynchronous function call return,0,7543.12,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-acb62a29cc90,12f3b3ff23b6,synsc-context,validated_CoSQA,,how to make a seconds to time in python,0,5746.88,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
-acb62a29cc90,8629d1608f53,synsc-context,validated_CoSQA,,python cast true or false as numbers,0,14382.27,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-acb62a29cc90,7169bf6428a1,synsc-context,validated_CoSQA,,add milliseconds to datetime python,0,6867.56,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
-acb62a29cc90,a835dc55d07c,synsc-context,validated_CoSQA,,how to read the last n lines of a program on python,0,6049.56,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
-acb62a29cc90,66a1319c976b,synsc-context,validated_CoSQA,,python mysql get list of table columns,0,6978.36,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
-acb62a29cc90,400b4820bd0f,synsc-context,validated_CoSQA,,how to get domain part of a url in python,0,7364.72,,,,,0,0,,,,,,,1.0,1.0,0.9514426589871553,0.9514426589871553,0.9514426589871553,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
-acb62a29cc90,f1bcf5103954,synsc-context,validated_CoSQA,,python flatten a nested dictionaary,0,19356.93,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.3,1.0,0.6,1.0,3.0,3.0,3.0
-acb62a29cc90,9bed2a139c12,synsc-context,validated_CoSQA,,python session set get,0,6370.58,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-acb62a29cc90,da4029c681d6,synsc-context,validated_CoSQA,,python save graph into file,0,12590.22,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
-acb62a29cc90,c78bbb523a2c,synsc-context,validated_CoSQA,,chmod python windows to remove file,0,11555.07,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
-acb62a29cc90,522f355763b7,synsc-context,validated_CoSQA,,add suffixes on concat python,0,18400.29,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-acb62a29cc90,addb90a423a5,synsc-context,validated_CoSQA,,how to check python object iterable,0,29427.00,,,,,0,0,,,,,,,1.0,1.0,0.9385574520455129,0.9385574520455129,0.9385574520455129,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
-acb62a29cc90,a8cc903cfa34,synsc-context,validated_CoSQA,,python 3 tkinter open file dialog,0,7591.41,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
-acb62a29cc90,522cdf057e27,synsc-context,validated_CoSQA,,how to indent self python,0,9232.05,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
-acb62a29cc90,1bf3b9838d46,synsc-context,validated_CoSQA,,tracking centroid of an object python,0,5615.85,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
-acb62a29cc90,7d026bd08936,synsc-context,validated_CoSQA,,python3 ctypes return float array,0,5748.83,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
-acb62a29cc90,05175514b066,synsc-context,validated_CoSQA,,how to make paragraphs in python,0,5948.18,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
-acb62a29cc90,b4a4a045fa6a,synsc-context,validated_CoSQA,,python rest requests delete,0,6464.07,,,,,0,0,,,,,,,1.0,0.6666666666666666,0.9134015924715543,0.9134015924715543,0.9134015924715543,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
-acb62a29cc90,3f68a82d7a8d,synsc-context,validated_CoSQA,,python replace month number,0,5399.44,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
-acb62a29cc90,16f94fc3972c,synsc-context,validated_CoSQA,,how to tell what type of data object is in python,0,6262.64,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.3,1.0,0.6,1.0,3.0,3.0,3.0
-acb62a29cc90,fee94426d546,synsc-context,validated_CoSQA,,python jsonschema validate schema file,0,9534.09,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
-acb62a29cc90,4943fe6bb24f,synsc-context,validated_CoSQA,,get wechat access token python,0,5714.08,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
-acb62a29cc90,526f907daf0e,synsc-context,validated_CoSQA,,python change str value to int,0,6054.94,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
-acb62a29cc90,350187c76c88,synsc-context,validated_CoSQA,,implementing drag and drop python,0,7280.23,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-acb62a29cc90,57df6f918ec1,synsc-context,validated_CoSQA,,get unique list from two lists python,0,8092.25,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
-acb62a29cc90,338df0d6d49f,synsc-context,validated_CoSQA,,python 3 not runnning in git bash,0,6308.27,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-acb62a29cc90,6b895a7fd5c8,synsc-context,validated_CoSQA,,create unknown number of names to print in python,0,6372.22,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
-acb62a29cc90,0c8b71a1f376,synsc-context,validated_CoSQA,,python json if element exists,0,6325.61,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
-acb62a29cc90,f59630f5b00d,synsc-context,validated_CoSQA,,number of unique values in list python,0,5834.58,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
-acb62a29cc90,6add051e327b,synsc-context,validated_CoSQA,,how to randomize items in a list in python,0,7146.16,,,,,0,0,,,,,,,1.0,1.0,0.9725044904464192,0.9725044904464192,0.9725044904464192,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
-acb62a29cc90,7678c34c5edc,synsc-context,validated_CoSQA,,python windows check for keypress,0,6282.10,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-acb62a29cc90,8212ed10e968,synsc-context,validated_CoSQA,,python bind scrollbar to canvas,0,5646.35,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-acb62a29cc90,655f1f891dd1,synsc-context,validated_CoSQA,,python setlevel how to only record error,0,6008.86,,,,,0,0,,,,,,,0.0,1.0,0.9197207891481876,0.9197207891481876,0.9197207891481876,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-acb62a29cc90,697e74e23765,synsc-context,validated_CoSQA,,format string with *args python,0,5911.77,,,,,0,0,,,,,,,0.0,0.0,0.6309297535714575,0.6309297535714575,0.6309297535714575,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-acb62a29cc90,d805ad2179d5,synsc-context,validated_CoSQA,,python get hostip from url,0,5848.48,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
-acb62a29cc90,04fb087be182,synsc-context,validated_CoSQA,,python numpy masked vailding,0,9638.65,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-acb62a29cc90,9a778786865d,synsc-context,validated_CoSQA,,python child widget close signal,0,6054.65,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-acb62a29cc90,bd90fc849d7f,synsc-context,validated_CoSQA,,python read from csv into numpy array,0,7237.50,,,,,0,0,,,,,,,1.0,1.0,0.9725044904464192,0.9725044904464192,0.9725044904464192,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
-acb62a29cc90,ca7ecb2ef378,synsc-context,validated_CoSQA,,cast string to bytearray python,0,6452.98,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
-acb62a29cc90,bea3c1b0055c,synsc-context,validated_CoSQA,,load str into python object,0,6663.76,,,,,0,0,,,,,,,1.0,1.0,0.9651954696014428,0.9651954696014428,0.9651954696014428,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
-acb62a29cc90,981e035228ea,synsc-context,validated_CoSQA,,python ldap get all groups a user belongs to,0,6154.84,,,,,0,0,,,,,,,1.0,1.0,0.9725044904464192,0.9725044904464192,0.9725044904464192,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
-acb62a29cc90,b67b62a0e91d,synsc-context,validated_CoSQA,,python check type if string,0,8006.18,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
-acb62a29cc90,b7a982198b3c,synsc-context,validated_CoSQA,,python get current globals,0,10775.28,,,,,0,0,,,,,,,0.5,0.0,0.6309297535714575,0.6309297535714575,0.6309297535714575,0.0,0.1,0.3333333333333333,0.2,0.0,1.0,1.0,1.0
-acb62a29cc90,979e703dc651,synsc-context,validated_CoSQA,,get child loggers python,0,6463.04,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-acb62a29cc90,b2e091063b5b,synsc-context,validated_CoSQA,,how to know if a text file is empty in python,0,5642.72,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
-acb62a29cc90,60166a3a9b20,synsc-context,validated_CoSQA,,python normal distribution p values,0,6882.93,,,,,0,0,,,,,,,1.0,1.0,0.9725044904464192,0.9725044904464192,0.9725044904464192,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
-acb62a29cc90,9b1a825e3ca1,synsc-context,validated_CoSQA,,python ctypes array of arrays,0,5959.06,,,,,0,0,,,,,,,0.0,1.0,0.9197207891481876,0.9197207891481876,0.9197207891481876,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-acb62a29cc90,9056776ef972,synsc-context,validated_CoSQA,,scale 1d array python to between 0 and 1,0,9811.47,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
-acb62a29cc90,00811026ab76,synsc-context,validated_CoSQA,,python upper case lower case converter,0,6460.39,,,,,0,0,,,,,,,1.0,1.0,0.9725044904464192,0.9725044904464192,0.9725044904464192,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
-acb62a29cc90,f0b83d138222,synsc-context,validated_CoSQA,,ply python expression evaluator,0,6947.75,,,,,0,0,,,,,,,0.3333333333333333,0.5,0.8403030283801005,0.8403030283801005,0.8403030283801005,0.0,0.1,0.3333333333333333,0.2,0.0,1.0,1.0,1.0
-acb62a29cc90,a7915dce8e49,synsc-context,validated_CoSQA,,python hashlib calc sha1 of file,0,5950.09,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.3,1.0,0.6,1.0,3.0,3.0,3.0
-acb62a29cc90,f90eb04de30a,synsc-context,validated_CoSQA,,python pdb no capture std output,0,6059.66,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
-acb62a29cc90,b457a9909779,synsc-context,validated_CoSQA,,python how to write a factorial,0,5225.25,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
-acb62a29cc90,e9f65c5af70a,synsc-context,validated_CoSQA,,python get the last column,0,8632.15,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-acb62a29cc90,9c495ecc0a1c,synsc-context,validated_CoSQA,,python how to change file extension,0,6006.67,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-acb62a29cc90,56ad5e6a9226,synsc-context,validated_CoSQA,,python get process memory info,0,7200.12,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
-acb62a29cc90,81638d4818aa,synsc-context,validated_CoSQA,,check if 2 string are equal python,0,6949.70,,,,,0,0,,,,,,,1.0,1.0,0.9385574520455129,0.9385574520455129,0.9385574520455129,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
-acb62a29cc90,3660bea435e0,synsc-context,validated_CoSQA,,flask python create one table sqlalchemy,0,7575.17,,,,,0,0,,,,,,,1.0,1.0,0.9385574520455129,0.9385574520455129,0.9385574520455129,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
-acb62a29cc90,6db3b0d053a7,synsc-context,validated_CoSQA,,clean output folder in python,0,6211.22,,,,,0,0,,,,,,,1.0,1.0,0.9777813616305049,0.9777813616305049,0.9777813616305049,1.0,0.3,1.0,0.6,1.0,3.0,3.0,3.0
-acb62a29cc90,aebcd3d247e2,synsc-context,validated_CoSQA,,python print nodes binary tree,0,8581.64,,,,,0,0,,,,,,,1.0,0.6666666666666666,0.9224945116765986,0.9224945116765986,0.9224945116765986,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
-acb62a29cc90,418ee2ddb96c,synsc-context,validated_CoSQA,,python query string parsing,0,6099.03,,,,,0,0,,,,,,,1.0,1.0,0.9725044904464192,0.9725044904464192,0.9725044904464192,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
-acb62a29cc90,0dcbbcebccbe,synsc-context,validated_CoSQA,,cycle through a folder of images python,0,5524.87,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
-acb62a29cc90,3fedaa57dd27,synsc-context,validated_CoSQA,,check if a date is valid python,0,6320.09,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
-acb62a29cc90,225ce6460e1c,synsc-context,validated_CoSQA,,python spherical bessel functions,0,6986.35,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
-acb62a29cc90,c65be68a86a9,synsc-context,validated_CoSQA,,how to check a file is empty in python,0,5336.57,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
-acb62a29cc90,9b85db9f6ddf,synsc-context,validated_CoSQA,,python stop process multiprocessing,0,6696.41,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-acb62a29cc90,ace439c6f49c,synsc-context,validated_CoSQA,,python make sure all words are separated by a single space,0,5628.50,,,,,0,0,,,,,,,0.0,1.0,0.9197207891481876,0.9197207891481876,0.9197207891481876,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-acb62a29cc90,e8398e50d78f,synsc-context,validated_CoSQA,,making a multidimensional array of only 1 in python,0,7855.26,,,,,0,0,,,,,,,1.0,1.0,0.9197207891481876,0.9197207891481876,0.9197207891481876,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
-acb62a29cc90,7887e08cf67f,synsc-context,validated_CoSQA,,python initialize variable of an object,0,6258.83,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
-acb62a29cc90,793d33854bd9,synsc-context,validated_CoSQA,,python elasticsearch limit results,0,7898.02,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
-acb62a29cc90,992cd35e2ebf,synsc-context,validated_CoSQA,,how to force exit python without raise,0,6259.67,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-acb62a29cc90,19abef17dd07,synsc-context,validated_CoSQA,,python weak reference to bound method,0,7384.98,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-acb62a29cc90,c5535c0cc39d,synsc-context,validated_CoSQA,,calling index iterable python,0,8936.72,,,,,0,0,,,,,,,0.0,0.0,0.6309297535714575,0.6309297535714575,0.6309297535714575,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-acb62a29cc90,5eedc2f0c254,synsc-context,validated_CoSQA,,python datetime maybe undefined,0,6669.42,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-acb62a29cc90,4057b7177225,synsc-context,validated_CoSQA,,python go to next page,0,6016.66,,,,,0,0,,,,,,,1.0,1.0,0.9639404333166532,0.9639404333166532,0.9639404333166532,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
-acb62a29cc90,a135281647a1,synsc-context,validated_CoSQA,,filling null value sin data frame in python,0,10353.94,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
-acb62a29cc90,ad386191cbe9,synsc-context,validated_CoSQA,,python run external command and get output,0,6134.47,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
-acb62a29cc90,f7dbb5084c4b,synsc-context,validated_CoSQA,,how to compile python program to use in c++,0,6563.47,,,,,0,0,,,,,,,0.0,0.0,0.6309297535714575,0.6309297535714575,0.6309297535714575,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-acb62a29cc90,e4f5a7dfb462,synsc-context,validated_CoSQA,,python img to bytearray,0,6372.07,,,,,0,0,,,,,,,1.0,1.0,0.9639404333166532,0.9639404333166532,0.9639404333166532,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
-acb62a29cc90,39a62a34878f,synsc-context,validated_CoSQA,,how to use access token oauth python,0,5657.55,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
-acb62a29cc90,60a7ebd8b33c,synsc-context,validated_CoSQA,,have python line continue on to next line,0,6072.84,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
-acb62a29cc90,a282041f31c0,synsc-context,validated_CoSQA,,precision of ints in python,0,9898.33,,,,,0,0,,,,,,,0.0,1.0,0.9197207891481876,0.9197207891481876,0.9197207891481876,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-acb62a29cc90,fa909c285455,synsc-context,validated_CoSQA,,modify the dice roll program to call a function for the die roll s python,0,6463.71,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
-acb62a29cc90,27a63203fd89,synsc-context,validated_CoSQA,,python 'namespace' object is not iterable,0,7261.04,,,,,0,0,,,,,,,0.5,0.0,0.6309297535714574,0.6309297535714574,0.6309297535714574,0.0,0.1,0.3333333333333333,0.2,0.0,1.0,1.0,1.0
 acb62a29cc90,b2c8cc94ebea,nia,validated_CoSQA,,sort by a token in string python,0,1532.71,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
 acb62a29cc90,42bfaca98046,nia,validated_CoSQA,,python check file is readonly,0,1355.81,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
 acb62a29cc90,f297a28aa083,nia,validated_CoSQA,,declaring empty numpy array in python,0,1437.20,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
@@ -299,3 +199,103 @@ caea35ec96c2,f49dae9799ac,context7,validated_CoSQA,,have python line continue on
 caea35ec96c2,233514f3bb48,context7,validated_CoSQA,,precision of ints in python,0,2673.93,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
 caea35ec96c2,3fb305a85685,context7,validated_CoSQA,,modify the dice roll program to call a function for the die roll s python,0,2468.90,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
 caea35ec96c2,2b6673467487,context7,validated_CoSQA,,python 'namespace' object is not iterable,0,2588.55,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+7f5a9410f732,4cbb6ee953df,synsc-context,validated_CoSQA,,sort by a token in string python,0,2071.65,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,6c007009838b,synsc-context,validated_CoSQA,,python check file is readonly,0,2156.55,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+7f5a9410f732,080124bd2a60,synsc-context,validated_CoSQA,,declaring empty numpy array in python,0,2362.12,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+7f5a9410f732,8aec6b223746,synsc-context,validated_CoSQA,,test for iterable is string in python,0,2210.61,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
+7f5a9410f732,516bf5fb8d70,synsc-context,validated_CoSQA,,python print results of query loop,0,2258.60,,,,,0,0,,,,,,,1.0,1.0,0.9639404333166532,0.9639404333166532,0.9639404333166532,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,effa139b6e86,synsc-context,validated_CoSQA,,how to save header of fits file to export python,0,3078.35,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,0aacf8d4e848,synsc-context,validated_CoSQA,,python calc page align,0,2362.31,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,fe41515700ff,synsc-context,validated_CoSQA,,python numpy array as float,0,2567.06,,,,,0,0,,,,,,,1.0,1.0,0.9639404333166532,0.9639404333166532,0.9639404333166532,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,93d09aee2b6b,synsc-context,validated_CoSQA,,input string that replaces occurences python,0,2873.07,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.3,1.0,0.6,1.0,3.0,3.0,3.0
+7f5a9410f732,7583478b171a,synsc-context,validated_CoSQA,,python check all items in list are ints,0,2565.19,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+7f5a9410f732,85111345094f,synsc-context,validated_CoSQA,,how to save variable to text file python,0,2157.17,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
+7f5a9410f732,d3f5976626bd,synsc-context,validated_CoSQA,,how to skip an index in a for loop python,0,2465.49,,,,,0,0,,,,,,,0.0,1.0,0.9197207891481876,0.9197207891481876,0.9197207891481876,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+7f5a9410f732,62d5a7937c72,synsc-context,validated_CoSQA,,how to create a tokenization code in python,0,2999.68,,,,,0,0,,,,,,,1.0,1.0,0.9651954696014428,0.9651954696014428,0.9651954696014428,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
+7f5a9410f732,6bec0b231120,synsc-context,validated_CoSQA,,python raise without parentheses,0,2259.07,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,ab18a538f27b,synsc-context,validated_CoSQA,,how to seperate list with commas python,0,2167.84,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.3,1.0,0.6,1.0,3.0,3.0,3.0
+7f5a9410f732,973bd80467ad,synsc-context,validated_CoSQA,,python asynchronous function call return,0,2874.18,,,,,0,0,,,,,,,0.5,0.5,0.8821211986607034,0.8821211986607034,0.8821211986607034,0.0,0.1,0.3333333333333333,0.2,0.0,1.0,1.0,1.0
+7f5a9410f732,8c4fbf81a048,synsc-context,validated_CoSQA,,how to make a seconds to time in python,0,2362.15,,,,,0,0,,,,,,,1.0,1.0,0.9502344167898356,0.9502344167898356,0.9502344167898356,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,635839a3e3df,synsc-context,validated_CoSQA,,python cast true or false as numbers,0,2665.52,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+7f5a9410f732,546a75dfc99a,synsc-context,validated_CoSQA,,add milliseconds to datetime python,0,2459.65,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,d25edacde5d4,synsc-context,validated_CoSQA,,how to read the last n lines of a program on python,0,2157.33,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
+7f5a9410f732,1ae7aeb5e91f,synsc-context,validated_CoSQA,,python mysql get list of table columns,0,2260.34,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
+7f5a9410f732,6140d4fa13c0,synsc-context,validated_CoSQA,,how to get domain part of a url in python,0,3080.25,,,,,0,0,,,,,,,1.0,1.0,0.9514426589871553,0.9514426589871553,0.9514426589871553,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
+7f5a9410f732,06bba16a567b,synsc-context,validated_CoSQA,,python flatten a nested dictionaary,0,2157.53,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.3,1.0,0.6,1.0,3.0,3.0,3.0
+7f5a9410f732,67d5e3ec1455,synsc-context,validated_CoSQA,,python session set get,0,2349.81,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+7f5a9410f732,b26dd70e9153,synsc-context,validated_CoSQA,,python save graph into file,0,2259.37,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,3706ccafee37,synsc-context,validated_CoSQA,,chmod python windows to remove file,0,2563.79,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,d843a1af9e2b,synsc-context,validated_CoSQA,,add suffixes on concat python,0,2565.21,,,,,0,0,,,,,,,0.0,0.0,0.6309297535714575,0.6309297535714575,0.6309297535714575,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+7f5a9410f732,c8ea77351d0b,synsc-context,validated_CoSQA,,how to check python object iterable,0,2260.74,,,,,0,0,,,,,,,1.0,1.0,0.9385574520455129,0.9385574520455129,0.9385574520455129,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
+7f5a9410f732,ba6f76a312f5,synsc-context,validated_CoSQA,,python 3 tkinter open file dialog,0,2260.41,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,31ff135749e8,synsc-context,validated_CoSQA,,how to indent self python,0,2874.10,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,ca64cc75fcd6,synsc-context,validated_CoSQA,,tracking centroid of an object python,0,2260.74,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,e75fa2b69edf,synsc-context,validated_CoSQA,,python3 ctypes return float array,0,2121.23,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,0e0c4af92f43,synsc-context,validated_CoSQA,,how to make paragraphs in python,0,2259.94,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,8ce13335ef94,synsc-context,validated_CoSQA,,python rest requests delete,0,2154.81,,,,,0,0,,,,,,,1.0,0.6666666666666666,0.9134015924715543,0.9134015924715543,0.9134015924715543,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
+7f5a9410f732,6f2887f774c0,synsc-context,validated_CoSQA,,python replace month number,0,4207.57,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,8784e193eee6,synsc-context,validated_CoSQA,,how to tell what type of data object is in python,0,2361.08,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.3,1.0,0.6,1.0,3.0,3.0,3.0
+7f5a9410f732,4e16d1102e28,synsc-context,validated_CoSQA,,python jsonschema validate schema file,0,2362.31,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,ff3ad0cc1b37,synsc-context,validated_CoSQA,,get wechat access token python,0,2157.79,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,ddf906b80a46,synsc-context,validated_CoSQA,,python change str value to int,0,2261.11,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
+7f5a9410f732,c469c60b9ab3,synsc-context,validated_CoSQA,,implementing drag and drop python,0,2462.89,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+7f5a9410f732,278376c00e33,synsc-context,validated_CoSQA,,get unique list from two lists python,0,2258.31,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
+7f5a9410f732,78a0ba555bce,synsc-context,validated_CoSQA,,python 3 not runnning in git bash,0,2259.01,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,44a2057743b5,synsc-context,validated_CoSQA,,create unknown number of names to print in python,0,2360.23,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,1eb36a1563f4,synsc-context,validated_CoSQA,,python json if element exists,0,2259.75,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,f24ac1a17dfb,synsc-context,validated_CoSQA,,number of unique values in list python,0,2288.28,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,864753da568e,synsc-context,validated_CoSQA,,how to randomize items in a list in python,0,2975.42,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,4ad30ecf553d,synsc-context,validated_CoSQA,,python windows check for keypress,0,2359.66,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+7f5a9410f732,f3622cf2a562,synsc-context,validated_CoSQA,,python bind scrollbar to canvas,0,2664.94,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+7f5a9410f732,3c8aefc6ab25,synsc-context,validated_CoSQA,,python setlevel how to only record error,0,3078.53,,,,,0,0,,,,,,,0.3333333333333333,0.5,0.7601875334318685,0.7601875334318685,0.7601875334318685,0.0,0.1,0.3333333333333333,0.2,0.0,1.0,1.0,1.0
+7f5a9410f732,d2f8430dee28,synsc-context,validated_CoSQA,,format string with *args python,0,2361.50,,,,,0,0,,,,,,,0.0,0.0,0.6309297535714575,0.6309297535714575,0.6309297535714575,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+7f5a9410f732,e17c1e4b1a4b,synsc-context,validated_CoSQA,,python get hostip from url,0,2669.31,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,5405e4d404c3,synsc-context,validated_CoSQA,,python numpy masked vailding,0,2362.81,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+7f5a9410f732,3e198490b621,synsc-context,validated_CoSQA,,python child widget close signal,0,2152.26,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+7f5a9410f732,daa4f0e7e6af,synsc-context,validated_CoSQA,,python read from csv into numpy array,0,2856.96,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,358c946cdbce,synsc-context,validated_CoSQA,,cast string to bytearray python,0,2259.08,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,3d19a1b3f10c,synsc-context,validated_CoSQA,,load str into python object,0,2565.76,,,,,0,0,,,,,,,1.0,1.0,0.9651954696014428,0.9651954696014428,0.9651954696014428,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
+7f5a9410f732,cd34f0d83b2e,synsc-context,validated_CoSQA,,python ldap get all groups a user belongs to,0,3077.25,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,2743048123d3,synsc-context,validated_CoSQA,,python check type if string,0,2258.82,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
+7f5a9410f732,8b0d9f34d104,synsc-context,validated_CoSQA,,python get current globals,0,2260.49,,,,,0,0,,,,,,,0.5,0.0,0.6309297535714575,0.6309297535714575,0.6309297535714575,0.0,0.1,0.3333333333333333,0.2,0.0,1.0,1.0,1.0
+7f5a9410f732,eeb28a293edd,synsc-context,validated_CoSQA,,get child loggers python,0,2669.25,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+7f5a9410f732,0b1ca856460c,synsc-context,validated_CoSQA,,how to know if a text file is empty in python,0,2158.72,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,83e2a38908b3,synsc-context,validated_CoSQA,,python normal distribution p values,0,2363.57,,,,,0,0,,,,,,,1.0,1.0,0.9725044904464192,0.9725044904464192,0.9725044904464192,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
+7f5a9410f732,d0c55054b0aa,synsc-context,validated_CoSQA,,python ctypes array of arrays,0,2952.01,,,,,0,0,,,,,,,0.0,1.0,0.9197207891481876,0.9197207891481876,0.9197207891481876,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+7f5a9410f732,a2b900ae7eb7,synsc-context,validated_CoSQA,,scale 1d array python to between 0 and 1,0,2463.75,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,2fb8cf136e48,synsc-context,validated_CoSQA,,python upper case lower case converter,0,2054.69,,,,,0,0,,,,,,,1.0,1.0,0.9725044904464192,0.9725044904464192,0.9725044904464192,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
+7f5a9410f732,5dcfcf34ad32,synsc-context,validated_CoSQA,,ply python expression evaluator,0,2258.57,,,,,0,0,,,,,,,0.3333333333333333,0.5,0.8403030283801005,0.8403030283801005,0.8403030283801005,0.0,0.1,0.3333333333333333,0.2,0.0,1.0,1.0,1.0
+7f5a9410f732,5c26a3b38b9d,synsc-context,validated_CoSQA,,python hashlib calc sha1 of file,0,2463.10,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.3,1.0,0.6,1.0,3.0,3.0,3.0
+7f5a9410f732,2c7edc348aa3,synsc-context,validated_CoSQA,,python pdb no capture std output,0,2462.33,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,75298898177b,synsc-context,validated_CoSQA,,python how to write a factorial,0,2052.88,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
+7f5a9410f732,2f529b6a68e9,synsc-context,validated_CoSQA,,python get the last column,0,2465.84,,,,,0,0,,,,,,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+7f5a9410f732,2401534436ec,synsc-context,validated_CoSQA,,python how to change file extension,0,2173.92,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+7f5a9410f732,c8070d0502f8,synsc-context,validated_CoSQA,,python get process memory info,0,2464.71,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,4192c3dd3008,synsc-context,validated_CoSQA,,check if 2 string are equal python,0,2467.43,,,,,0,0,,,,,,,1.0,1.0,0.9385574520455129,0.9385574520455129,0.9385574520455129,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
+7f5a9410f732,27982ed8c9bc,synsc-context,validated_CoSQA,,flask python create one table sqlalchemy,0,2156.24,,,,,0,0,,,,,,,1.0,1.0,0.9385574520455129,0.9385574520455129,0.9385574520455129,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
+7f5a9410f732,ef5c25693f28,synsc-context,validated_CoSQA,,clean output folder in python,0,2157.03,,,,,0,0,,,,,,,1.0,1.0,0.9777813616305049,0.9777813616305049,0.9777813616305049,1.0,0.3,1.0,0.6,1.0,3.0,3.0,3.0
+7f5a9410f732,18b466d6f2e0,synsc-context,validated_CoSQA,,python print nodes binary tree,0,2258.46,,,,,0,0,,,,,,,1.0,0.6666666666666666,0.9224945116765986,0.9224945116765986,0.9224945116765986,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
+7f5a9410f732,5d68eeecc19e,synsc-context,validated_CoSQA,,python query string parsing,0,2465.87,,,,,0,0,,,,,,,1.0,1.0,0.9725044904464192,0.9725044904464192,0.9725044904464192,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
+7f5a9410f732,457b33064580,synsc-context,validated_CoSQA,,cycle through a folder of images python,0,2158.88,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,02570c528adb,synsc-context,validated_CoSQA,,check if a date is valid python,0,2262.92,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
+7f5a9410f732,0ee741bff8fa,synsc-context,validated_CoSQA,,python spherical bessel functions,0,2361.90,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,403f31a45200,synsc-context,validated_CoSQA,,how to check a file is empty in python,0,2565.74,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,26e1b26c052c,synsc-context,validated_CoSQA,,python stop process multiprocessing,0,2158.93,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+7f5a9410f732,7d65da627aa8,synsc-context,validated_CoSQA,,python make sure all words are separated by a single space,0,2669.12,,,,,0,0,,,,,,,0.0,1.0,0.9197207891481876,0.9197207891481876,0.9197207891481876,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+7f5a9410f732,4853dfb9e79f,synsc-context,validated_CoSQA,,making a multidimensional array of only 1 in python,0,2874.63,,,,,0,0,,,,,,,1.0,1.0,0.9651954696014428,0.9651954696014428,0.9651954696014428,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
+7f5a9410f732,d873c7b55db4,synsc-context,validated_CoSQA,,python initialize variable of an object,0,2563.93,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
+7f5a9410f732,b223a22ba787,synsc-context,validated_CoSQA,,python elasticsearch limit results,0,2466.07,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
+7f5a9410f732,b3f521e6b013,synsc-context,validated_CoSQA,,how to force exit python without raise,0,2565.79,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+7f5a9410f732,d1392e4bae7c,synsc-context,validated_CoSQA,,python weak reference to bound method,0,2126.77,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+7f5a9410f732,059ad0a2033c,synsc-context,validated_CoSQA,,calling index iterable python,0,2259.30,,,,,0,0,,,,,,,0.0,0.0,0.6309297535714575,0.6309297535714575,0.6309297535714575,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+7f5a9410f732,9935f252dee7,synsc-context,validated_CoSQA,,python datetime maybe undefined,0,2360.28,,,,,0,0,,,,,,,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+7f5a9410f732,9e4cca566c4a,synsc-context,validated_CoSQA,,python go to next page,0,2669.15,,,,,0,0,,,,,,,1.0,1.0,0.9639404333166532,0.9639404333166532,0.9639404333166532,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,2ef2faf17207,synsc-context,validated_CoSQA,,filling null value sin data frame in python,0,2670.09,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
+7f5a9410f732,df968d141225,synsc-context,validated_CoSQA,,python run external command and get output,0,2765.05,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.2,0.6666666666666666,0.4,1.0,2.0,2.0,2.0
+7f5a9410f732,37e06a970ab7,synsc-context,validated_CoSQA,,how to compile python program to use in c++,0,2259.51,,,,,0,0,,,,,,,0.0,0.0,0.6309297535714575,0.6309297535714575,0.6309297535714575,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+7f5a9410f732,a660e2429aa5,synsc-context,validated_CoSQA,,python img to bytearray,0,2568.11,,,,,0,0,,,,,,,1.0,1.0,0.9639404333166532,0.9639404333166532,0.9639404333166532,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,6ba407f1044c,synsc-context,validated_CoSQA,,how to use access token oauth python,0,2054.35,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,a4a683268023,synsc-context,validated_CoSQA,,have python line continue on to next line,0,2463.50,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,7a079344f3e3,synsc-context,validated_CoSQA,,precision of ints in python,0,2873.22,,,,,0,0,,,,,,,0.0,1.0,0.9197207891481876,0.9197207891481876,0.9197207891481876,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+7f5a9410f732,b86ba2db4ea2,synsc-context,validated_CoSQA,,modify the dice roll program to call a function for the die roll s python,0,2243.49,,,,,0,0,,,,,,,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.3333333333333333,0.2,1.0,1.0,1.0,1.0
+7f5a9410f732,a44bb400b1c6,synsc-context,validated_CoSQA,,python 'namespace' object is not iterable,0,2459.16,,,,,0,0,,,,,,,0.5,0.0,0.6590018048024133,0.6590018048024133,0.6590018048024133,0.0,0.1,0.3333333333333333,0.2,0.0,1.0,1.0,1.0

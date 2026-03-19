@@ -1,301 +1,293 @@
-run_id,trace_id,engine,benchmark_type,query_id,query_text,num_results,latency_ms,error,error_category,primary_repo,primary_language,total_tokens_returned,relevant_tokens_returned,token_efficiency,avg_hop_mrr,hallucination_rate,hop_coverage,hop_recall_at_10,hop_recall_at_5,mrr,ndcg@1,ndcg@10,ndcg@3,ndcg@5,precision@1,precision@10,precision@3,precision@5,recall@1,recall@10,recall@3,recall@5
-acb62a29cc90,b5c4f41ac6af,synsc-context,adversarial,adv001,FastAPI request body validation with Pydantic BaseModel,0,5102.61,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,a0f9068d69da,synsc-context,adversarial,adv002,HTTP connection timeout handling in HTTPX client,0,6881.23,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,bc7b24d84191,synsc-context,adversarial,adv003,Pydantic model_dump method implementation,0,7347.53,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,d8c759a2357b,synsc-context,adversarial,adv004,FastAPI WebSocket accept connection implementation,0,7390.02,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,136b9002c4f3,synsc-context,adversarial,adv005,HTTPX AsyncClient.get implementation for making GET requests,0,11059.28,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,63e61c93d4dd,synsc-context,adversarial,adv006,Pydantic field_validator decorator for custom validation,0,7078.25,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,0e95a367b3af,synsc-context,adversarial,adv007,FastAPI Depends() dependency injection resolver,0,6479.42,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,6f660a6ce12c,synsc-context,adversarial,adv008,HTTPX request authentication with Bearer token,0,6263.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,5609d6aa4cfd,synsc-context,adversarial,adv009,Pydantic ConfigDict for model configuration in v2,0,6571.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,e61a95729e7a,synsc-context,adversarial,adv010,FastAPI response_model serialization and filtering implementation,0,7081.34,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,3921a3b4c124,synsc-context,adversarial,adv011,FastAPI lifespan context manager for startup/shutdown,0,5756.42,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,4756e4642d97,synsc-context,adversarial,adv012,FastAPI APIRouter include with dependencies and tags,0,6467.59,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,54939727d3ba,synsc-context,adversarial,adv013,FastAPI Security dependency with OAuth2 scopes,0,5844.55,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,e4375e09de5e,synsc-context,adversarial,adv014,FastAPI path operation decorator internals,0,7096.24,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,7f3f2b70ba42,synsc-context,adversarial,adv015,FastAPI Depends resolution order and sub-dependencies,0,6271.28,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,8232cf0e3d66,synsc-context,adversarial,adv016,FastAPI background task execution after response,0,6062.77,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,6ef6f95dc428,synsc-context,adversarial,adv017,FastAPI TestClient configuration with app overrides,0,6539.55,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,8decf17635a6,synsc-context,adversarial,adv018,FastAPI JSONResponse with custom status code and headers,0,6422.49,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,d71b25b12add,synsc-context,adversarial,adv019,FastAPI request body with File and Form mixed parameters,0,6363.25,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,79b8762616bc,synsc-context,adversarial,adv020,FastAPI exception handler registration and dispatch,0,7085.31,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,a413343cb454,synsc-context,adversarial,adv021,Django QuerySet.filter implementation with Q objects,0,7105.11,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,02d388bb4af2,synsc-context,adversarial,adv022,Django Model.save() with update_fields and force_insert,0,7153.54,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,88cfa92f7fce,synsc-context,adversarial,adv023,Django middleware CSRF protection implementation,0,5945.83,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,ed72d888a5ee,synsc-context,adversarial,adv024,Django ORM select_related vs prefetch_related implementation,0,7388.59,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,2824160938f2,synsc-context,adversarial,adv025,Django URL resolver matching algorithm,0,6089.41,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,42acf3ec3e5d,synsc-context,adversarial,adv026,Django template engine rendering with context processors,0,6265.41,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,1a117b01c653,synsc-context,adversarial,adv027,Django migration operations AddField and AlterField,0,7178.79,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,0f6fc9a52912,synsc-context,adversarial,adv028,Django form field validation with clean methods,0,6875.84,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,429c3cdd0a17,synsc-context,adversarial,adv029,Django cache framework backend implementation,0,7184.31,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,7df9ee9f57ab,synsc-context,adversarial,adv030,Django signals post_save implementation and dispatch,0,6058.35,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,31ef939a2b59,synsc-context,adversarial,adv031,Django REST Framework serializer validation with validate_ methods,0,7560.64,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,ed4d6feb3473,synsc-context,adversarial,adv032,Django admin ModelAdmin changelist_view implementation,0,6716.20,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,b3cf80ea14b0,synsc-context,adversarial,adv033,Django class-based view dispatch method,0,6426.15,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,634abd38a6ae,synsc-context,adversarial,adv034,Django database router for multi-database read replicas,0,6774.83,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,92c8da158736,synsc-context,adversarial,adv035,Django test client login and session handling,0,6775.12,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,908987aeba41,synsc-context,adversarial,adv036,Django QuerySet aggregate vs annotate implementation,0,7082.09,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,dd0572302e4b,synsc-context,adversarial,adv037,Django GenericForeignKey content type resolution,0,6306.54,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,33cdf3a8c730,synsc-context,adversarial,adv038,Django management command implementation with add_arguments,0,6895.83,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,fbfd4d838653,synsc-context,adversarial,adv039,Django QuerySet update with F() expressions for atomic updates,0,8363.94,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,53dfaa6bd92a,synsc-context,adversarial,adv040,Django password hashing with PBKDF2 and Argon2,0,6677.43,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,4618bbec67ec,synsc-context,adversarial,adv041,Flask application context and request context implementation,0,6570.46,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,c6c1c37f4310,synsc-context,adversarial,adv042,Flask Blueprint registration and deferred setup,0,7044.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,83aaf7b7f9ce,synsc-context,adversarial,adv043,Flask url_for reverse URL generation implementation,0,7183.21,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,7de1f78ee1bb,synsc-context,adversarial,adv044,Flask session interface and cookie signing,0,6608.73,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,40d317916281,synsc-context,adversarial,adv045,Flask error handler lookup and dispatch,0,6672.21,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,ad72aba2a740,synsc-context,adversarial,adv046,Flask Jinja2 environment configuration and custom filters,0,6203.81,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,b66d8fc19863,synsc-context,adversarial,adv047,Flask before_request and after_request hook execution,0,7374.34,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,a6b383b320be,synsc-context,adversarial,adv048,Flask send_file and send_from_directory implementation,0,6276.81,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,dd256b3d2586,synsc-context,adversarial,adv049,Flask CLI command registration with app.cli,0,6057.80,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,c9bc588bed2f,synsc-context,adversarial,adv050,Flask config from environment and files,0,6786.72,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,e26ac04386f5,synsc-context,adversarial,adv051,Flask g object implementation for request-scoped globals,0,6468.75,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,76660044ce1a,synsc-context,adversarial,adv052,Flask make_response for custom response objects,0,7493.52,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,d626fadba0e3,synsc-context,adversarial,adv053,Flask signal support with blinker,0,6391.02,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,4ff2161eebba,synsc-context,adversarial,adv054,Flask WSGI app __call__ and request dispatch,0,6101.08,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,6f3f77c1d867,synsc-context,adversarial,adv055,Flask JSON provider and custom JSON encoding,0,5795.38,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,1adc3b7bc8a0,synsc-context,adversarial,adv056,SQLAlchemy 2.0 select() statement construction,0,8211.91,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,3ad82fae0f8d,synsc-context,adversarial,adv057,SQLAlchemy Mapped[] type annotation for ORM columns,0,8153.24,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,8e5000b010e5,synsc-context,adversarial,adv058,SQLAlchemy async session context manager,0,6757.43,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,4dda332743a3,synsc-context,adversarial,adv059,SQLAlchemy relationship() with lazy loading strategies,0,8541.99,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,0389932c99b1,synsc-context,adversarial,adv060,SQLAlchemy event.listen for session lifecycle events,0,7697.70,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,c95be173a470,synsc-context,adversarial,adv061,SQLAlchemy type coercion with TypeDecorator,0,8078.96,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,d18d6cc4d298,synsc-context,adversarial,adv062,SQLAlchemy connection pool implementation and recycling,0,7390.84,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,6cd2569cee67,synsc-context,adversarial,adv063,SQLAlchemy alembic migration env.py configuration,0,6263.96,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,7e62df443ead,synsc-context,adversarial,adv064,SQLAlchemy inspect() for runtime model introspection,0,7264.67,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,4031cda2e1ad,synsc-context,adversarial,adv065,SQLAlchemy hybrid_property for Python+SQL dual expressions,0,7208.47,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,4e067c1a07aa,synsc-context,adversarial,adv066,SQLAlchemy bulk insert performance with insert().values(),0,8479.81,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,545c23f25260,synsc-context,adversarial,adv067,SQLAlchemy compile SQL to string for debugging,0,7561.16,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,1f4063edda23,synsc-context,adversarial,adv068,SQLAlchemy DeclarativeBase metaclass for model registration,0,7594.50,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,df3a4a5af2af,synsc-context,adversarial,adv069,SQLAlchemy with_for_update for row-level locking,0,9543.14,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,8a7620ae292c,synsc-context,adversarial,adv070,SQLAlchemy Index and UniqueConstraint definition,0,9885.20,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,00b0d10245f3,synsc-context,adversarial,adv071,HTTPX AsyncClient request method dispatching GET/POST,0,7900.98,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,0df3048fcfc7,synsc-context,adversarial,adv072,HTTPX transport layer for connection handling,0,6674.43,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,984fa7369b30,synsc-context,adversarial,adv073,HTTPX URL parsing and construction,0,6467.55,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,96b585eed628,synsc-context,adversarial,adv074,Requests Session.send with prepared request,0,7511.49,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,7f28a0adc915,synsc-context,adversarial,adv075,Requests HTTPAdapter with max_retries and pool_connections,0,6905.48,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,fbc3f37a6c2a,synsc-context,adversarial,adv076,HTTPX cookie handling and CookieJar implementation,0,6407.31,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,a75dacdc6bb5,synsc-context,adversarial,adv077,HTTPX response streaming with aiter_bytes and aiter_lines,0,8005.17,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,833e86454c3c,synsc-context,adversarial,adv078,Requests response content decoding and encoding detection,0,6570.34,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,1339f6a920f2,synsc-context,adversarial,adv079,HTTPX event hooks for request/response interception,0,6403.99,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,1959be3de833,synsc-context,adversarial,adv080,HTTPX proxy configuration and CONNECT tunneling,0,8786.84,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,7c0f12e821ac,synsc-context,adversarial,adv081,Pydantic v2 model_validate for parsing data,0,7757.35,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,e8d93e45e019,synsc-context,adversarial,adv082,Pydantic v2 ConfigDict for model configuration,0,7183.01,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,6b85b2edd09c,synsc-context,adversarial,adv083,Pydantic TypeAdapter for standalone validation,0,7395.44,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,e5ea5e508b21,synsc-context,adversarial,adv084,Pydantic computed_field for derived properties,0,7718.50,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,e1b49a8d81d5,synsc-context,adversarial,adv085,Pydantic model_json_schema generation,0,8581.07,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,f773ecd3decf,synsc-context,adversarial,adv086,Pydantic PlainValidator and WrapValidator custom types,0,7352.37,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,ada5bf9dac15,synsc-context,adversarial,adv087,Pydantic Field with JSON schema customization,0,8313.86,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,609c0fa5fb47,synsc-context,adversarial,adv088,Pydantic BaseSettings for environment variable loading,0,6253.53,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,90e687afcac1,synsc-context,adversarial,adv089,Pydantic PrivateAttr for non-validated private attributes,0,8708.05,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,6bfd8b6befdf,synsc-context,adversarial,adv090,Pydantic custom serializer with field_serializer and model_serializer,0,8081.91,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,3d80190b46f9,synsc-context,adversarial,adv091,Pydantic discriminated unions with Discriminator,0,7796.92,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,9e7a73d6bdce,synsc-context,adversarial,adv092,Pydantic validation error formatting and error types,0,7289.82,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,3dde9081f2ff,synsc-context,adversarial,adv093,Pydantic generic models with TypeVar,0,7901.39,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,13009f1018b1,synsc-context,adversarial,adv094,Pydantic AliasPath and AliasChoices for nested data access,0,6979.56,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,11bb82fd512d,synsc-context,adversarial,adv095,Pydantic model inheritance and field override behavior,0,7492.94,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,206c357e30f7,synsc-context,adversarial,adv096,PyTorch torch.amp.autocast for mixed precision,0,7184.45,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,7581b7f8c441,synsc-context,adversarial,adv097,PyTorch nn.Module forward method dispatch,0,7798.28,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,79b14cf760e0,synsc-context,adversarial,adv098,PyTorch DataLoader worker process management,0,6281.19,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,f9c7347417eb,synsc-context,adversarial,adv099,PyTorch optimizer.step() with closure for LBFGS,0,7901.23,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,abde9d93b402,synsc-context,adversarial,adv100,PyTorch distributed all_reduce for gradient synchronization,0,6876.40,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,9fd0f71ccc19,nia,adversarial,adv001,FastAPI request body validation with Pydantic BaseModel,0,1533.45,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,1c4a4c2c2bf0,nia,adversarial,adv002,HTTP connection timeout handling in HTTPX client,0,1475.03,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,6a6f68dbe4ab,nia,adversarial,adv003,Pydantic model_dump method implementation,0,1520.78,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,1fb917e38feb,nia,adversarial,adv004,FastAPI WebSocket accept connection implementation,0,1813.40,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,bb08d1904f96,nia,adversarial,adv005,HTTPX AsyncClient.get implementation for making GET requests,0,1085.13,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,5e304abb6ef1,nia,adversarial,adv006,Pydantic field_validator decorator for custom validation,0,1445.36,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,559acb76c68d,nia,adversarial,adv007,FastAPI Depends() dependency injection resolver,0,1292.73,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,f65464b19cfd,nia,adversarial,adv008,HTTPX request authentication with Bearer token,0,1381.59,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,560febd12c22,nia,adversarial,adv009,Pydantic ConfigDict for model configuration in v2,0,1315.01,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,3811a90d2ae2,nia,adversarial,adv010,FastAPI response_model serialization and filtering implementation,0,1296.99,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,4682714905fc,nia,adversarial,adv011,FastAPI lifespan context manager for startup/shutdown,0,1303.23,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,3c8d30508f5a,nia,adversarial,adv012,FastAPI APIRouter include with dependencies and tags,0,1564.05,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,1611488fd764,nia,adversarial,adv013,FastAPI Security dependency with OAuth2 scopes,0,1247.48,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,ccb5d1bc181b,nia,adversarial,adv014,FastAPI path operation decorator internals,0,1651.02,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,2e929dd540e0,nia,adversarial,adv015,FastAPI Depends resolution order and sub-dependencies,0,1307.94,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,f0ceefebabc8,nia,adversarial,adv016,FastAPI background task execution after response,0,1393.34,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,de9579eb0560,nia,adversarial,adv017,FastAPI TestClient configuration with app overrides,0,1404.64,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,28bcc61da133,nia,adversarial,adv018,FastAPI JSONResponse with custom status code and headers,0,1385.90,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,5f155f748f08,nia,adversarial,adv019,FastAPI request body with File and Form mixed parameters,0,1459.62,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,a6afa0e90890,nia,adversarial,adv020,FastAPI exception handler registration and dispatch,0,1072.46,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,257f8f3ac606,nia,adversarial,adv021,Django QuerySet.filter implementation with Q objects,0,1372.03,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,cc6e13329f52,nia,adversarial,adv022,Django Model.save() with update_fields and force_insert,0,1388.32,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,229f901d6d0c,nia,adversarial,adv023,Django middleware CSRF protection implementation,0,1039.49,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,a5fba81b13d6,nia,adversarial,adv024,Django ORM select_related vs prefetch_related implementation,0,1488.19,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,f4abe746ab07,nia,adversarial,adv025,Django URL resolver matching algorithm,0,1378.92,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,9d0a06b1318b,nia,adversarial,adv026,Django template engine rendering with context processors,0,1483.40,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,3688a1a4caff,nia,adversarial,adv027,Django migration operations AddField and AlterField,0,1407.11,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,73bb468e48c8,nia,adversarial,adv028,Django form field validation with clean methods,0,1283.44,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,d9e2307f169c,nia,adversarial,adv029,Django cache framework backend implementation,0,6353.90,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,a4c94d55ce7d,nia,adversarial,adv030,Django signals post_save implementation and dispatch,0,1316.40,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,694e6e55f5a1,nia,adversarial,adv031,Django REST Framework serializer validation with validate_ methods,0,1281.19,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,1394b887e44b,nia,adversarial,adv032,Django admin ModelAdmin changelist_view implementation,0,1331.49,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,b44c76a0d56e,nia,adversarial,adv033,Django class-based view dispatch method,0,1272.66,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,05e9e409b105,nia,adversarial,adv034,Django database router for multi-database read replicas,0,1545.07,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,708aa7726418,nia,adversarial,adv035,Django test client login and session handling,0,1390.87,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,3c48b9e000c9,nia,adversarial,adv036,Django QuerySet aggregate vs annotate implementation,0,1433.77,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,a73866d0adc7,nia,adversarial,adv037,Django GenericForeignKey content type resolution,0,1473.49,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,00a37bee0c8a,nia,adversarial,adv038,Django management command implementation with add_arguments,0,1419.23,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,0f8a40193ddf,nia,adversarial,adv039,Django QuerySet update with F() expressions for atomic updates,0,1330.01,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,fc6be2b00253,nia,adversarial,adv040,Django password hashing with PBKDF2 and Argon2,0,1336.67,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,db69b62b267c,nia,adversarial,adv041,Flask application context and request context implementation,0,1361.23,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,0c43b7bc75a8,nia,adversarial,adv042,Flask Blueprint registration and deferred setup,0,1445.14,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,c3217a15e7a1,nia,adversarial,adv043,Flask url_for reverse URL generation implementation,0,1491.88,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,ce07c60a8073,nia,adversarial,adv044,Flask session interface and cookie signing,0,97682.27,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,a7dfb148ef0f,nia,adversarial,adv045,Flask error handler lookup and dispatch,0,1647.45,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,9a354919c399,nia,adversarial,adv046,Flask Jinja2 environment configuration and custom filters,0,1585.83,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,3ddc42c392f4,nia,adversarial,adv047,Flask before_request and after_request hook execution,0,1481.62,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,f4e1ea09db6a,nia,adversarial,adv048,Flask send_file and send_from_directory implementation,0,1832.10,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,d02e56cf6ed9,nia,adversarial,adv049,Flask CLI command registration with app.cli,0,1382.46,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,5e77d1d0884b,nia,adversarial,adv050,Flask config from environment and files,0,1654.32,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,93409a6e5d19,nia,adversarial,adv051,Flask g object implementation for request-scoped globals,0,1686.65,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,f1da5f74237e,nia,adversarial,adv052,Flask make_response for custom response objects,0,1377.99,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,721f9ed3c762,nia,adversarial,adv053,Flask signal support with blinker,0,1436.27,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,2ce5fd13453a,nia,adversarial,adv054,Flask WSGI app __call__ and request dispatch,0,1428.28,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,8378d591c540,nia,adversarial,adv055,Flask JSON provider and custom JSON encoding,0,1073.87,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,dc313f416b2c,nia,adversarial,adv056,SQLAlchemy 2.0 select() statement construction,0,1385.83,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,c69f94c8f0b6,nia,adversarial,adv057,SQLAlchemy Mapped[] type annotation for ORM columns,0,1537.51,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,5e5998eb2486,nia,adversarial,adv058,SQLAlchemy async session context manager,0,1505.68,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,2849609b5913,nia,adversarial,adv059,SQLAlchemy relationship() with lazy loading strategies,0,1450.62,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,f404c962e52a,nia,adversarial,adv060,SQLAlchemy event.listen for session lifecycle events,0,1451.01,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,44ff582b91f7,nia,adversarial,adv061,SQLAlchemy type coercion with TypeDecorator,0,1305.83,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,fe55e4fbf7c2,nia,adversarial,adv062,SQLAlchemy connection pool implementation and recycling,0,1576.11,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,78337741b895,nia,adversarial,adv063,SQLAlchemy alembic migration env.py configuration,0,1451.81,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,2fbf2246e0d6,nia,adversarial,adv064,SQLAlchemy inspect() for runtime model introspection,0,1525.43,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,a0d7fffc4e61,nia,adversarial,adv065,SQLAlchemy hybrid_property for Python+SQL dual expressions,0,1454.40,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,709391ad0257,nia,adversarial,adv066,SQLAlchemy bulk insert performance with insert().values(),0,1784.34,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,7027daa87cec,nia,adversarial,adv067,SQLAlchemy compile SQL to string for debugging,0,1598.29,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,028474d15c04,nia,adversarial,adv068,SQLAlchemy DeclarativeBase metaclass for model registration,0,1605.25,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,7b4713a423c2,nia,adversarial,adv069,SQLAlchemy with_for_update for row-level locking,0,1537.57,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,012a9086ab75,nia,adversarial,adv070,SQLAlchemy Index and UniqueConstraint definition,0,1544.76,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,ef83596198db,nia,adversarial,adv071,HTTPX AsyncClient request method dispatching GET/POST,0,1511.76,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,6fd744e7a4cb,nia,adversarial,adv072,HTTPX transport layer for connection handling,0,1410.27,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,25b7552f0539,nia,adversarial,adv073,HTTPX URL parsing and construction,0,1524.94,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,157168ab3bb7,nia,adversarial,adv074,Requests Session.send with prepared request,0,1366.04,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,8788ba469a71,nia,adversarial,adv075,Requests HTTPAdapter with max_retries and pool_connections,0,1423.24,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,ea73c3e88f4a,nia,adversarial,adv076,HTTPX cookie handling and CookieJar implementation,0,6342.85,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,7abaa9616804,nia,adversarial,adv077,HTTPX response streaming with aiter_bytes and aiter_lines,0,1441.60,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,a134ddc6d827,nia,adversarial,adv078,Requests response content decoding and encoding detection,0,12304.97,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,9f2c26add52a,nia,adversarial,adv079,HTTPX event hooks for request/response interception,0,1541.25,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,3f9b3340588c,nia,adversarial,adv080,HTTPX proxy configuration and CONNECT tunneling,0,1624.95,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,32d58453d50a,nia,adversarial,adv081,Pydantic v2 model_validate for parsing data,0,1853.77,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,803c1c289303,nia,adversarial,adv082,Pydantic v2 ConfigDict for model configuration,0,1426.36,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,c8f9c5941005,nia,adversarial,adv083,Pydantic TypeAdapter for standalone validation,0,1574.44,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,3d30984c880b,nia,adversarial,adv084,Pydantic computed_field for derived properties,0,1515.50,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,64ff1df8fcd7,nia,adversarial,adv085,Pydantic model_json_schema generation,0,1412.59,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,7bde82f7fc2a,nia,adversarial,adv086,Pydantic PlainValidator and WrapValidator custom types,0,1920.54,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,849c9f8027ba,nia,adversarial,adv087,Pydantic Field with JSON schema customization,0,1441.04,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,87602dd35750,nia,adversarial,adv088,Pydantic BaseSettings for environment variable loading,0,1653.62,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,2b642930d003,nia,adversarial,adv089,Pydantic PrivateAttr for non-validated private attributes,0,1264.65,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,7af04d781080,nia,adversarial,adv090,Pydantic custom serializer with field_serializer and model_serializer,0,1476.31,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,0cf475bdfa47,nia,adversarial,adv091,Pydantic discriminated unions with Discriminator,0,1482.95,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,41b6f3bfc15b,nia,adversarial,adv092,Pydantic validation error formatting and error types,0,1418.63,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,5c292f0dabbe,nia,adversarial,adv093,Pydantic generic models with TypeVar,0,1417.54,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,8fca9ea2ce4a,nia,adversarial,adv094,Pydantic AliasPath and AliasChoices for nested data access,0,1491.52,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,7c73471c5067,nia,adversarial,adv095,Pydantic model inheritance and field override behavior,0,1374.27,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,22c78f0a06e6,nia,adversarial,adv096,PyTorch torch.amp.autocast for mixed precision,0,1375.70,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,f16272de2e0a,nia,adversarial,adv097,PyTorch nn.Module forward method dispatch,0,1667.39,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,607d021c9ec9,nia,adversarial,adv098,PyTorch DataLoader worker process management,0,1560.40,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,d8c08419df59,nia,adversarial,adv099,PyTorch optimizer.step() with closure for LBFGS,0,1591.89,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,cf8b060ab915,nia,adversarial,adv100,PyTorch distributed all_reduce for gradient synchronization,0,1426.89,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,f4dfdf1d6342,context7,adversarial,adv001,FastAPI request body validation with Pydantic BaseModel,0,2505.24,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,27a1cc6578ad,context7,adversarial,adv002,HTTP connection timeout handling in HTTPX client,0,3200.72,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,73c4230b6aaf,context7,adversarial,adv003,Pydantic model_dump method implementation,0,2478.63,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,8975371d8f61,context7,adversarial,adv004,FastAPI WebSocket accept connection implementation,0,2509.37,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,feb500b79207,context7,adversarial,adv005,HTTPX AsyncClient.get implementation for making GET requests,0,2779.35,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,2003f8bb292f,context7,adversarial,adv006,Pydantic field_validator decorator for custom validation,0,2767.76,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,9c3afea292a9,context7,adversarial,adv007,FastAPI Depends() dependency injection resolver,0,2981.73,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,c4ff7dd880b7,context7,adversarial,adv008,HTTPX request authentication with Bearer token,0,2785.53,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,1ad3b183dc56,context7,adversarial,adv009,Pydantic ConfigDict for model configuration in v2,0,2478.24,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,472c90db6aa9,context7,adversarial,adv010,FastAPI response_model serialization and filtering implementation,0,2992.48,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,03c86cf6c3d9,context7,adversarial,adv011,FastAPI lifespan context manager for startup/shutdown,0,3076.33,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,8636268c76a1,context7,adversarial,adv012,FastAPI APIRouter include with dependencies and tags,0,3299.23,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,41e2064ac669,context7,adversarial,adv013,FastAPI Security dependency with OAuth2 scopes,0,3007.27,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,8084e814cd27,context7,adversarial,adv014,FastAPI path operation decorator internals,0,2645.60,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,95b01b0e8c6e,context7,adversarial,adv015,FastAPI Depends resolution order and sub-dependencies,0,1814.11,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,1ca96bf695f5,context7,adversarial,adv016,FastAPI background task execution after response,0,2480.98,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,a46f312a8fc6,context7,adversarial,adv017,FastAPI TestClient configuration with app overrides,0,2378.51,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,f16566fabebc,context7,adversarial,adv018,FastAPI JSONResponse with custom status code and headers,0,2453.45,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,03ada2de9385,context7,adversarial,adv019,FastAPI request body with File and Form mixed parameters,0,2594.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,3f0d2377a8c7,context7,adversarial,adv020,FastAPI exception handler registration and dispatch,0,2618.90,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,2f9bfb9aa39c,context7,adversarial,adv021,Django QuerySet.filter implementation with Q objects,0,2289.75,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,b0fcd49ed6cb,context7,adversarial,adv022,Django Model.save() with update_fields and force_insert,0,2848.21,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,39084ecf4549,context7,adversarial,adv023,Django middleware CSRF protection implementation,0,2069.59,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,0de2019077b7,context7,adversarial,adv024,Django ORM select_related vs prefetch_related implementation,0,2354.62,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,aa4a11adf998,context7,adversarial,adv025,Django URL resolver matching algorithm,0,2351.90,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,f79801b5eea2,context7,adversarial,adv026,Django template engine rendering with context processors,0,2386.58,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,1da1836841cf,context7,adversarial,adv027,Django migration operations AddField and AlterField,0,2750.06,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,5f1b0f3ca3ca,context7,adversarial,adv028,Django form field validation with clean methods,0,2673.22,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,0f155d8117fe,context7,adversarial,adv029,Django cache framework backend implementation,0,2599.67,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,78b53efc1a45,context7,adversarial,adv030,Django signals post_save implementation and dispatch,0,2670.48,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,4fe334011fa5,context7,adversarial,adv031,Django REST Framework serializer validation with validate_ methods,0,2586.46,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,6e956bc3fe21,context7,adversarial,adv032,Django admin ModelAdmin changelist_view implementation,0,2393.30,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,d59003ec95c6,context7,adversarial,adv033,Django class-based view dispatch method,0,2551.06,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,a24d89378cc5,context7,adversarial,adv034,Django database router for multi-database read replicas,0,2414.34,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,f4e224167233,context7,adversarial,adv035,Django test client login and session handling,0,2452.23,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,753615a96b41,context7,adversarial,adv036,Django QuerySet aggregate vs annotate implementation,0,2402.52,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,588bbfc19940,context7,adversarial,adv037,Django GenericForeignKey content type resolution,0,2639.34,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,df3e602764b1,context7,adversarial,adv038,Django management command implementation with add_arguments,0,2458.70,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,71841a27f34e,context7,adversarial,adv039,Django QuerySet update with F() expressions for atomic updates,0,2279.12,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,020a01c0afc5,context7,adversarial,adv040,Django password hashing with PBKDF2 and Argon2,0,2422.04,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,9dfb7d5b8b7c,context7,adversarial,adv041,Flask application context and request context implementation,0,1983.47,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,222e3c9ae864,context7,adversarial,adv042,Flask Blueprint registration and deferred setup,0,2144.51,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,5f06f616575f,context7,adversarial,adv043,Flask url_for reverse URL generation implementation,0,3613.43,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,6fbec3359600,context7,adversarial,adv044,Flask session interface and cookie signing,0,2070.45,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,ba4e1e333cfa,context7,adversarial,adv045,Flask error handler lookup and dispatch,0,2457.74,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,1cfe58957cdc,context7,adversarial,adv046,Flask Jinja2 environment configuration and custom filters,0,2730.23,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,559766ba20d4,context7,adversarial,adv047,Flask before_request and after_request hook execution,0,2493.94,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,58199aa28046,context7,adversarial,adv048,Flask send_file and send_from_directory implementation,0,2131.13,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,d6dcfa5d9948,context7,adversarial,adv049,Flask CLI command registration with app.cli,0,2554.01,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,c9692f54c109,context7,adversarial,adv050,Flask config from environment and files,0,1868.44,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,f115b014fd07,context7,adversarial,adv051,Flask g object implementation for request-scoped globals,0,2074.23,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,13c0b79beeb9,context7,adversarial,adv052,Flask make_response for custom response objects,0,2011.44,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,f1fe984f2411,context7,adversarial,adv053,Flask signal support with blinker,0,2714.92,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,ba4886d94d5e,context7,adversarial,adv054,Flask WSGI app __call__ and request dispatch,0,2583.67,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,753c3fd792bc,context7,adversarial,adv055,Flask JSON provider and custom JSON encoding,0,2276.25,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,583de490e5e1,context7,adversarial,adv056,SQLAlchemy 2.0 select() statement construction,0,2239.67,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,cc9e1b70cbab,context7,adversarial,adv057,SQLAlchemy Mapped[] type annotation for ORM columns,0,2446.22,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,a9ffe46f49bf,context7,adversarial,adv058,SQLAlchemy async session context manager,0,3093.11,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,a7eea4d74470,context7,adversarial,adv059,SQLAlchemy relationship() with lazy loading strategies,0,2686.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,13df2a61972c,context7,adversarial,adv060,SQLAlchemy event.listen for session lifecycle events,0,2439.81,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,7ddf740d262a,context7,adversarial,adv061,SQLAlchemy type coercion with TypeDecorator,0,2857.34,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,89d4bcca4a90,context7,adversarial,adv062,SQLAlchemy connection pool implementation and recycling,0,2355.43,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,996a2ff50457,context7,adversarial,adv063,SQLAlchemy alembic migration env.py configuration,0,2376.84,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,5910f57e5ada,context7,adversarial,adv064,SQLAlchemy inspect() for runtime model introspection,0,2438.61,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,33fa3b2ce793,context7,adversarial,adv065,SQLAlchemy hybrid_property for Python+SQL dual expressions,0,2498.29,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,c257f653d693,context7,adversarial,adv066,SQLAlchemy bulk insert performance with insert().values(),0,2722.31,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,4973bc764b7b,context7,adversarial,adv067,SQLAlchemy compile SQL to string for debugging,0,2928.15,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,980fc67d3066,context7,adversarial,adv068,SQLAlchemy DeclarativeBase metaclass for model registration,0,2833.38,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,140f00af2852,context7,adversarial,adv069,SQLAlchemy with_for_update for row-level locking,0,2465.30,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,60a9d763edde,context7,adversarial,adv070,SQLAlchemy Index and UniqueConstraint definition,0,2365.13,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,658f30782fbb,context7,adversarial,adv071,HTTPX AsyncClient request method dispatching GET/POST,0,2373.25,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,f0e25d0fe21f,context7,adversarial,adv072,HTTPX transport layer for connection handling,0,2399.69,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,63faf48ca6de,context7,adversarial,adv073,HTTPX URL parsing and construction,0,2213.53,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,4c3ac9538083,context7,adversarial,adv074,Requests Session.send with prepared request,0,2376.53,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,98ef7f8232bf,context7,adversarial,adv075,Requests HTTPAdapter with max_retries and pool_connections,0,2895.83,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,0feab3ea953e,context7,adversarial,adv076,HTTPX cookie handling and CookieJar implementation,0,2876.10,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,e9f3d224b673,context7,adversarial,adv077,HTTPX response streaming with aiter_bytes and aiter_lines,0,2940.66,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,9829327622e3,context7,adversarial,adv078,Requests response content decoding and encoding detection,0,2637.72,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,d64f8a17f681,context7,adversarial,adv079,HTTPX event hooks for request/response interception,0,2538.00,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,38398a7f23a2,context7,adversarial,adv080,HTTPX proxy configuration and CONNECT tunneling,0,2537.31,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,41fadf41d6a5,context7,adversarial,adv081,Pydantic v2 model_validate for parsing data,0,2434.80,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,cb50f334cbbb,context7,adversarial,adv082,Pydantic v2 ConfigDict for model configuration,0,2886.38,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,38bc5f68561e,context7,adversarial,adv083,Pydantic TypeAdapter for standalone validation,0,2272.83,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,5cf5e8651d56,context7,adversarial,adv084,Pydantic computed_field for derived properties,0,2301.14,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,f74545bdf3eb,context7,adversarial,adv085,Pydantic model_json_schema generation,0,2682.20,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,7b51714011c4,context7,adversarial,adv086,Pydantic PlainValidator and WrapValidator custom types,0,3755.01,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,26bf85914b62,context7,adversarial,adv087,Pydantic Field with JSON schema customization,0,2578.62,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,22be52062d78,context7,adversarial,adv088,Pydantic BaseSettings for environment variable loading,0,2749.77,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,7e580b2473b8,context7,adversarial,adv089,Pydantic PrivateAttr for non-validated private attributes,0,3103.68,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,64d2cc068494,context7,adversarial,adv090,Pydantic custom serializer with field_serializer and model_serializer,0,2679.67,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,38cba7b7053f,context7,adversarial,adv091,Pydantic discriminated unions with Discriminator,0,3094.44,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,5c430a00e02c,context7,adversarial,adv092,Pydantic validation error formatting and error types,0,2432.88,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,7ccae10f77c3,context7,adversarial,adv093,Pydantic generic models with TypeVar,0,2751.30,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,0552114a09b2,context7,adversarial,adv094,Pydantic AliasPath and AliasChoices for nested data access,0,2707.92,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,33b344f53b2f,context7,adversarial,adv095,Pydantic model inheritance and field override behavior,0,2527.77,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,040b2a4e33d4,context7,adversarial,adv096,PyTorch torch.amp.autocast for mixed precision,0,2231.23,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,f33f9988e002,context7,adversarial,adv097,PyTorch nn.Module forward method dispatch,0,2789.02,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,880caf26ebf2,context7,adversarial,adv098,PyTorch DataLoader worker process management,0,2585.70,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,7b8721b3c68a,context7,adversarial,adv099,PyTorch optimizer.step() with closure for LBFGS,0,2388.69,,,,,0,0,,,,,,,,,,,,,,,,,,,
-acb62a29cc90,d1cb6adf7c6d,context7,adversarial,adv100,PyTorch distributed all_reduce for gradient synchronization,0,2876.28,,,,,0,0,,,,,,,,,,,,,,,,,,,
+avg_hop_mrr,benchmark_type,engine,error,error_category,hallucination_rate,hop_coverage,hop_recall_at_10,hop_recall_at_5,latency_ms,mrr,ndcg@1,ndcg@10,ndcg@3,ndcg@5,num_results,precision@1,precision@10,precision@3,precision@5,primary_language,primary_repo,query_id,query_text,recall@1,recall@10,recall@3,recall@5,relevant_tokens_returned,run_id,token_efficiency,total_tokens_returned,trace_id
+,adversarial,synsc-context,,,,,,,1766.32,,,,,,0,,,,,,,adv001,FastAPI request body validation with Pydantic BaseModel,,,,,0,7f5a9410f732,,0,ab8ba786ce17
+,adversarial,synsc-context,,,,,,,2263.68,,,,,,0,,,,,,,adv002,HTTP connection timeout handling in HTTPX client,,,,,0,7f5a9410f732,,0,911e59975d24
+,adversarial,synsc-context,,,,,,,2364.62,,,,,,0,,,,,,,adv003,Pydantic model_dump method implementation,,,,,0,7f5a9410f732,,0,f5b6f2374179
+,adversarial,synsc-context,,,,,,,2609.53,,,,,,0,,,,,,,adv004,FastAPI WebSocket accept connection implementation,,,,,0,7f5a9410f732,,0,06fda559dfe0
+,adversarial,synsc-context,,,,,,,2163.60,,,,,,0,,,,,,,adv005,HTTPX AsyncClient.get implementation for making GET requests,,,,,0,7f5a9410f732,,0,a9d549497ada
+,adversarial,synsc-context,,,,,,,2469.14,,,,,,0,,,,,,,adv006,Pydantic field_validator decorator for custom validation,,,,,0,7f5a9410f732,,0,42df974bdae1
+,adversarial,synsc-context,,,,,,,3083.99,,,,,,0,,,,,,,adv007,FastAPI Depends() dependency injection resolver,,,,,0,7f5a9410f732,,0,236ba15075f0
+,adversarial,synsc-context,,,,,,,2066.74,,,,,,0,,,,,,,adv008,HTTPX request authentication with Bearer token,,,,,0,7f5a9410f732,,0,a3bf065979f0
+,adversarial,synsc-context,,,,,,,2532.27,,,,,,0,,,,,,,adv009,Pydantic ConfigDict for model configuration in v2,,,,,0,7f5a9410f732,,0,326476b6b592
+,adversarial,synsc-context,,,,,,,2097.14,,,,,,0,,,,,,,adv010,FastAPI response_model serialization and filtering implementation,,,,,0,7f5a9410f732,,0,33d4c9510f71
+,adversarial,synsc-context,,,,,,,2368.05,,,,,,0,,,,,,,adv011,FastAPI lifespan context manager for startup/shutdown,,,,,0,7f5a9410f732,,0,bb718914e35a
+,adversarial,synsc-context,,,,,,,2365.81,,,,,,0,,,,,,,adv012,FastAPI APIRouter include with dependencies and tags,,,,,0,7f5a9410f732,,0,5e0e529b1f18
+,adversarial,synsc-context,,,,,,,1956.12,,,,,,0,,,,,,,adv013,FastAPI Security dependency with OAuth2 scopes,,,,,0,7f5a9410f732,,0,4383abede8d1
+,adversarial,synsc-context,,,,,,,2065.77,,,,,,0,,,,,,,adv014,FastAPI path operation decorator internals,,,,,0,7f5a9410f732,,0,4f62efe47580
+,adversarial,synsc-context,,,,,,,2162.13,,,,,,0,,,,,,,adv015,FastAPI Depends resolution order and sub-dependencies,,,,,0,7f5a9410f732,,0,00ec3d87514f
+,adversarial,synsc-context,,,,,,,2264.06,,,,,,0,,,,,,,adv016,FastAPI background task execution after response,,,,,0,7f5a9410f732,,0,5473bb552c3e
+,adversarial,synsc-context,,,,,,,2162.94,,,,,,0,,,,,,,adv017,FastAPI TestClient configuration with app overrides,,,,,0,7f5a9410f732,,0,f9f605885c9d
+,adversarial,synsc-context,,,,,,,2235.42,,,,,,0,,,,,,,adv018,FastAPI JSONResponse with custom status code and headers,,,,,0,7f5a9410f732,,0,e6ea366e6e84
+,adversarial,synsc-context,,,,,,,2468.10,,,,,,0,,,,,,,adv019,FastAPI request body with File and Form mixed parameters,,,,,0,7f5a9410f732,,0,8586ccb487a9
+,adversarial,synsc-context,,,,,,,2059.70,,,,,,0,,,,,,,adv020,FastAPI exception handler registration and dispatch,,,,,0,7f5a9410f732,,0,bda88c60bf61
+,adversarial,synsc-context,,,,,,,2264.12,,,,,,0,,,,,,,adv021,Django QuerySet.filter implementation with Q objects,,,,,0,7f5a9410f732,,0,22a8e3601fe6
+,adversarial,synsc-context,,,,,,,2163.08,,,,,,0,,,,,,,adv022,Django Model.save() with update_fields and force_insert,,,,,0,7f5a9410f732,,0,75e4a2f9243b
+,adversarial,synsc-context,,,,,,,2058.57,,,,,,0,,,,,,,adv023,Django middleware CSRF protection implementation,,,,,0,7f5a9410f732,,0,a388c45f00fe
+,adversarial,synsc-context,,,,,,,2366.17,,,,,,0,,,,,,,adv024,Django ORM select_related vs prefetch_related implementation,,,,,0,7f5a9410f732,,0,6f4e02437f95
+,adversarial,synsc-context,,,,,,,2070.58,,,,,,0,,,,,,,adv025,Django URL resolver matching algorithm,,,,,0,7f5a9410f732,,0,51400a168cf8
+,adversarial,synsc-context,,,,,,,2263.27,,,,,,0,,,,,,,adv026,Django template engine rendering with context processors,,,,,0,7f5a9410f732,,0,50498a312486
+,adversarial,synsc-context,,,,,,,2264.53,,,,,,0,,,,,,,adv027,Django migration operations AddField and AlterField,,,,,0,7f5a9410f732,,0,0816bc23ae11
+,adversarial,synsc-context,,,,,,,2366.15,,,,,,0,,,,,,,adv028,Django form field validation with clean methods,,,,,0,7f5a9410f732,,0,e91a3f4d5b71
+,adversarial,synsc-context,,,,,,,2776.74,,,,,,0,,,,,,,adv029,Django cache framework backend implementation,,,,,0,7f5a9410f732,,0,499c7f8952fd
+,adversarial,synsc-context,,,,,,,2059.55,,,,,,0,,,,,,,adv030,Django signals post_save implementation and dispatch,,,,,0,7f5a9410f732,,0,d5323bd316fa
+,adversarial,synsc-context,,,,,,,2366.76,,,,,,0,,,,,,,adv031,Django REST Framework serializer validation with validate_ methods,,,,,0,7f5a9410f732,,0,a5ea856198e6
+,adversarial,synsc-context,,,,,,,2161.77,,,,,,0,,,,,,,adv032,Django admin ModelAdmin changelist_view implementation,,,,,0,7f5a9410f732,,0,8070a1c88a88
+,adversarial,synsc-context,,,,,,,2469.27,,,,,,0,,,,,,,adv033,Django class-based view dispatch method,,,,,0,7f5a9410f732,,0,009338016952
+,adversarial,synsc-context,,,,,,,2366.03,,,,,,0,,,,,,,adv034,Django database router for multi-database read replicas,,,,,0,7f5a9410f732,,0,ebb724a3aedb
+,adversarial,synsc-context,,,,,,,2263.25,,,,,,0,,,,,,,adv035,Django test client login and session handling,,,,,0,7f5a9410f732,,0,362f5c8b62c9
+,adversarial,synsc-context,,,,,,,2059.65,,,,,,0,,,,,,,adv036,Django QuerySet aggregate vs annotate implementation,,,,,0,7f5a9410f732,,0,9cacbff84c0d
+,adversarial,synsc-context,,,,,,,2272.37,,,,,,0,,,,,,,adv037,Django GenericForeignKey content type resolution,,,,,0,7f5a9410f732,,0,d4d4dcae7fed
+,adversarial,synsc-context,,,,,,,2059.89,,,,,,0,,,,,,,adv038,Django management command implementation with add_arguments,,,,,0,7f5a9410f732,,0,5006dc8e8e4a
+,adversarial,synsc-context,,,,,,,2263.97,,,,,,0,,,,,,,adv039,Django QuerySet update with F() expressions for atomic updates,,,,,0,7f5a9410f732,,0,a9eab905633f
+,adversarial,synsc-context,,,,,,,2059.93,,,,,,0,,,,,,,adv040,Django password hashing with PBKDF2 and Argon2,,,,,0,7f5a9410f732,,0,aeb5a5f12b3b
+,adversarial,synsc-context,,,,,,,2059.91,,,,,,0,,,,,,,adv041,Flask application context and request context implementation,,,,,0,7f5a9410f732,,0,fcf7071dbf4c
+,adversarial,synsc-context,,,,,,,2765.27,,,,,,0,,,,,,,adv042,Flask Blueprint registration and deferred setup,,,,,0,7f5a9410f732,,0,e5ae3dbe4d24
+,adversarial,synsc-context,,,,,,,2469.55,,,,,,0,,,,,,,adv043,Flask url_for reverse URL generation implementation,,,,,0,7f5a9410f732,,0,8b7d0f71170a
+,adversarial,synsc-context,,,,,,,2059.93,,,,,,0,,,,,,,adv044,Flask session interface and cookie signing,,,,,0,7f5a9410f732,,0,8fad8827df1d
+,adversarial,synsc-context,,,,,,,2366.34,,,,,,0,,,,,,,adv045,Flask error handler lookup and dispatch,,,,,0,7f5a9410f732,,0,cee9113a7991
+,adversarial,synsc-context,,,,,,,2058.50,,,,,,0,,,,,,,adv046,Flask Jinja2 environment configuration and custom filters,,,,,0,7f5a9410f732,,0,4235068b6938
+,adversarial,synsc-context,,,,,,,2063.55,,,,,,0,,,,,,,adv047,Flask before_request and after_request hook execution,,,,,0,7f5a9410f732,,0,25f5c7c9c523
+,adversarial,synsc-context,,,,,,,2057.63,,,,,,0,,,,,,,adv048,Flask send_file and send_from_directory implementation,,,,,0,7f5a9410f732,,0,dea0d193cb4d
+,adversarial,synsc-context,,,,,,,3083.99,,,,,,0,,,,,,,adv049,Flask CLI command registration with app.cli,,,,,0,7f5a9410f732,,0,e693f3bc4d8c
+,adversarial,synsc-context,,,,,,,2255.76,,,,,,0,,,,,,,adv050,Flask config from environment and files,,,,,0,7f5a9410f732,,0,f449900e856a
+,adversarial,synsc-context,,,,,,,2161.63,,,,,,0,,,,,,,adv051,Flask g object implementation for request-scoped globals,,,,,0,7f5a9410f732,,0,ba979b44de92
+,adversarial,synsc-context,,,,,,,2264.10,,,,,,0,,,,,,,adv052,Flask make_response for custom response objects,,,,,0,7f5a9410f732,,0,8e6aaf48b275
+,adversarial,synsc-context,,,,,,,2058.83,,,,,,0,,,,,,,adv053,Flask signal support with blinker,,,,,0,7f5a9410f732,,0,b4b30708508d
+,adversarial,synsc-context,,,,,,,2162.37,,,,,,0,,,,,,,adv054,Flask WSGI app __call__ and request dispatch,,,,,0,7f5a9410f732,,0,ea71c646a8ee
+,adversarial,synsc-context,,,,,,,2058.95,,,,,,0,,,,,,,adv055,Flask JSON provider and custom JSON encoding,,,,,0,7f5a9410f732,,0,6d8eb91118c5
+,adversarial,synsc-context,,,,,,,2366.50,,,,,,0,,,,,,,adv056,SQLAlchemy 2.0 select() statement construction,,,,,0,7f5a9410f732,,0,6775b54f8d1e
+,adversarial,synsc-context,,,,,,,2058.25,,,,,,0,,,,,,,adv057,SQLAlchemy Mapped[] type annotation for ORM columns,,,,,0,7f5a9410f732,,0,94cea0e88620
+,adversarial,synsc-context,,,,,,,2287.11,,,,,,0,,,,,,,adv058,SQLAlchemy async session context manager,,,,,0,7f5a9410f732,,0,d58460df0e46
+,adversarial,synsc-context,,,,,,,2366.77,,,,,,0,,,,,,,adv059,SQLAlchemy relationship() with lazy loading strategies,,,,,0,7f5a9410f732,,0,073351151b1b
+,adversarial,synsc-context,,,,,,,2366.11,,,,,,0,,,,,,,adv060,SQLAlchemy event.listen for session lifecycle events,,,,,0,7f5a9410f732,,0,cb434147f00d
+,adversarial,synsc-context,,,,,,,2059.89,,,,,,0,,,,,,,adv061,SQLAlchemy type coercion with TypeDecorator,,,,,0,7f5a9410f732,,0,65cee9c8770c
+,adversarial,synsc-context,,,,,,,2307.08,,,,,,0,,,,,,,adv062,SQLAlchemy connection pool implementation and recycling,,,,,0,7f5a9410f732,,0,ae8713f6046f
+,adversarial,synsc-context,,,,,,,2262.48,,,,,,0,,,,,,,adv063,SQLAlchemy alembic migration env.py configuration,,,,,0,7f5a9410f732,,0,e58a1b44deaf
+,adversarial,synsc-context,,,,,,,2161.94,,,,,,0,,,,,,,adv064,SQLAlchemy inspect() for runtime model introspection,,,,,0,7f5a9410f732,,0,b1caf93781c9
+,adversarial,synsc-context,,,,,,,2467.34,,,,,,0,,,,,,,adv065,SQLAlchemy hybrid_property for Python+SQL dual expressions,,,,,0,7f5a9410f732,,0,2b9fd9c4429e
+,adversarial,synsc-context,,,,,,,2262.85,,,,,,0,,,,,,,adv066,SQLAlchemy bulk insert performance with insert().values(),,,,,0,7f5a9410f732,,0,5950c70e019e
+,adversarial,synsc-context,,,,,,,2470.32,,,,,,0,,,,,,,adv067,SQLAlchemy compile SQL to string for debugging,,,,,0,7f5a9410f732,,0,245629885d11
+,adversarial,synsc-context,,,,,,,2365.03,,,,,,0,,,,,,,adv068,SQLAlchemy DeclarativeBase metaclass for model registration,,,,,0,7f5a9410f732,,0,c1e09e0eda48
+,adversarial,synsc-context,,,,,,,2879.06,,,,,,0,,,,,,,adv069,SQLAlchemy with_for_update for row-level locking,,,,,0,7f5a9410f732,,0,6bdba5adb4c2
+,adversarial,synsc-context,,,,,,,2571.75,,,,,,0,,,,,,,adv070,SQLAlchemy Index and UniqueConstraint definition,,,,,0,7f5a9410f732,,0,da5682dacf4e
+,adversarial,synsc-context,,,,,,,2160.71,,,,,,0,,,,,,,adv071,HTTPX AsyncClient request method dispatching GET/POST,,,,,0,7f5a9410f732,,0,bf3b72828c91
+,adversarial,synsc-context,,,,,,,2287.16,,,,,,0,,,,,,,adv072,HTTPX transport layer for connection handling,,,,,0,7f5a9410f732,,0,11b6c8c5652c
+,adversarial,synsc-context,,,,,,,2065.42,,,,,,0,,,,,,,adv073,HTTPX URL parsing and construction,,,,,0,7f5a9410f732,,0,31aff336f2c5
+,adversarial,synsc-context,,,,,,,2162.78,,,,,,0,,,,,,,adv074,Requests Session.send with prepared request,,,,,0,7f5a9410f732,,0,a5d3a37ad7dc
+,adversarial,synsc-context,,,,,,,2251.92,,,,,,0,,,,,,,adv075,Requests HTTPAdapter with max_retries and pool_connections,,,,,0,7f5a9410f732,,0,ab607b5c7d4a
+,adversarial,synsc-context,,,,,,,2162.68,,,,,,0,,,,,,,adv076,HTTPX cookie handling and CookieJar implementation,,,,,0,7f5a9410f732,,0,c8561785d361
+,adversarial,synsc-context,,,,,,,2674.77,,,,,,0,,,,,,,adv077,HTTPX response streaming with aiter_bytes and aiter_lines,,,,,0,7f5a9410f732,,0,44b0c2467dfd
+,adversarial,synsc-context,,,,,,,2161.69,,,,,,0,,,,,,,adv078,Requests response content decoding and encoding detection,,,,,0,7f5a9410f732,,0,27f0fed30bff
+,adversarial,synsc-context,,,,,,,2675.71,,,,,,0,,,,,,,adv079,HTTPX event hooks for request/response interception,,,,,0,7f5a9410f732,,0,e6a2f8af9c8f
+,adversarial,synsc-context,,,,,,,2264.99,,,,,,0,,,,,,,adv080,HTTPX proxy configuration and CONNECT tunneling,,,,,0,7f5a9410f732,,0,b5d457e761ed
+,adversarial,synsc-context,,,,,,,2059.90,,,,,,0,,,,,,,adv081,Pydantic v2 model_validate for parsing data,,,,,0,7f5a9410f732,,0,c238b6b77e0a
+,adversarial,synsc-context,,,,,,,2164.29,,,,,,0,,,,,,,adv082,Pydantic v2 ConfigDict for model configuration,,,,,0,7f5a9410f732,,0,84d52640b7ca
+,adversarial,synsc-context,,,,,,,2366.30,,,,,,0,,,,,,,adv083,Pydantic TypeAdapter for standalone validation,,,,,0,7f5a9410f732,,0,990c78c62ab5
+,adversarial,synsc-context,,,,,,,2880.19,,,,,,0,,,,,,,adv084,Pydantic computed_field for derived properties,,,,,0,7f5a9410f732,,0,1d4beebc9f69
+,adversarial,synsc-context,,,,,,,2339.96,,,,,,0,,,,,,,adv085,Pydantic model_json_schema generation,,,,,0,7f5a9410f732,,0,2af3c33c9a1d
+,adversarial,synsc-context,,,,,,,2161.89,,,,,,0,,,,,,,adv086,Pydantic PlainValidator and WrapValidator custom types,,,,,0,7f5a9410f732,,0,f4aa82441c50
+,adversarial,synsc-context,,,,,,,2367.02,,,,,,0,,,,,,,adv087,Pydantic Field with JSON schema customization,,,,,0,7f5a9410f732,,0,e3d94a27e0c4
+,adversarial,synsc-context,,,,,,,2162.42,,,,,,0,,,,,,,adv088,Pydantic BaseSettings for environment variable loading,,,,,0,7f5a9410f732,,0,fd35088393fd
+,adversarial,synsc-context,,,,,,,2468.46,,,,,,0,,,,,,,adv089,Pydantic PrivateAttr for non-validated private attributes,,,,,0,7f5a9410f732,,0,d53529325194
+,adversarial,synsc-context,,,,,,,2468.42,,,,,,0,,,,,,,adv090,Pydantic custom serializer with field_serializer and model_serializer,,,,,0,7f5a9410f732,,0,c3df4383c0c6
+,adversarial,synsc-context,,,,,,,2483.01,,,,,,0,,,,,,,adv091,Pydantic discriminated unions with Discriminator,,,,,0,7f5a9410f732,,0,8e5cf00d3d8e
+,adversarial,synsc-context,,,,,,,2059.38,,,,,,0,,,,,,,adv092,Pydantic validation error formatting and error types,,,,,0,7f5a9410f732,,0,e60c3956bbbf
+,adversarial,synsc-context,,,,,,,2162.52,,,,,,0,,,,,,,adv093,Pydantic generic models with TypeVar,,,,,0,7f5a9410f732,,0,fc4ce3348240
+,adversarial,synsc-context,,,,,,,2668.96,,,,,,0,,,,,,,adv094,Pydantic AliasPath and AliasChoices for nested data access,,,,,0,7f5a9410f732,,0,ed3d07ea6726
+,adversarial,synsc-context,,,,,,,2468.03,,,,,,0,,,,,,,adv095,Pydantic model inheritance and field override behavior,,,,,0,7f5a9410f732,,0,13f39bfbdd8b
+,adversarial,synsc-context,,,,,,,2057.39,,,,,,0,,,,,,,adv096,PyTorch torch.amp.autocast for mixed precision,,,,,0,7f5a9410f732,,0,09ca12bfe404
+,adversarial,synsc-context,,,,,,,2144.97,,,,,,0,,,,,,,adv097,PyTorch nn.Module forward method dispatch,,,,,0,7f5a9410f732,,0,1b47a433667b
+,adversarial,synsc-context,,,,,,,2366.10,,,,,,0,,,,,,,adv098,PyTorch DataLoader worker process management,,,,,0,7f5a9410f732,,0,e484d794a6ef
+,adversarial,synsc-context,,,,,,,2345.08,,,,,,0,,,,,,,adv099,PyTorch optimizer.step() with closure for LBFGS,,,,,0,7f5a9410f732,,0,b3a12bd3ac1d
+,adversarial,synsc-context,,,,,,,3186.01,,,,,,0,,,,,,,adv100,PyTorch distributed all_reduce for gradient synchronization,,,,,0,7f5a9410f732,,0,814c76b57a2a
+,adversarial,nia,,,,,,,73880.38,,,,,,0,,,,,,,adv001,FastAPI request body validation with Pydantic BaseModel,,,,,0,b7692c5d098e,,0,f1b9f3589ed7
+,adversarial,nia,,,,,,,2737.93,,,,,,0,,,,,,,adv003,Pydantic model_dump method implementation,,,,,0,b7692c5d098e,,0,5a2913a62d76
+,adversarial,nia,,,,,,,15574.85,,,,,,0,,,,,,,adv005,HTTPX AsyncClient.get implementation for making GET requests,,,,,0,b7692c5d098e,,0,87778d71f056
+,adversarial,nia,,,,,,,115296.17,,,,,,0,,,,,,,adv006,Pydantic field_validator decorator for custom validation,,,,,0,b7692c5d098e,,0,00999e2ccd98
+,adversarial,nia,,,,,,,11723.06,,,,,,0,,,,,,,adv007,FastAPI Depends() dependency injection resolver,,,,,0,b7692c5d098e,,0,25f25b7dbb85
+,adversarial,nia,,,,,,,11235.32,,,,,,0,,,,,,,adv008,HTTPX request authentication with Bearer token,,,,,0,b7692c5d098e,,0,0d1cb1f2c3fc
+,adversarial,nia,,,,,,,16801.53,,,,,,0,,,,,,,adv010,FastAPI response_model serialization and filtering implementation,,,,,0,b7692c5d098e,,0,2263e2348b2c
+,adversarial,nia,,,,,,,9895.72,,,,,,0,,,,,,,adv011,FastAPI lifespan context manager for startup/shutdown,,,,,0,b7692c5d098e,,0,3c658cc4f95d
+,adversarial,nia,,,,,,,10367.66,,,,,,0,,,,,,,adv012,FastAPI APIRouter include with dependencies and tags,,,,,0,b7692c5d098e,,0,d111c80f9237
+,adversarial,nia,,,,,,,12837.87,,,,,,0,,,,,,,adv013,FastAPI Security dependency with OAuth2 scopes,,,,,0,b7692c5d098e,,0,240967e22fbe
+,adversarial,nia,,,,,,,10029.85,,,,,,0,,,,,,,adv014,FastAPI path operation decorator internals,,,,,0,b7692c5d098e,,0,53ef26592102
+,adversarial,nia,,,,,,,84124.90,,,,,,0,,,,,,,adv015,FastAPI Depends resolution order and sub-dependencies,,,,,0,b7692c5d098e,,0,fe2b0119585b
+,adversarial,nia,,,,,,,9861.61,,,,,,0,,,,,,,adv016,FastAPI background task execution after response,,,,,0,b7692c5d098e,,0,46100c5ded26
+,adversarial,nia,,,,,,,10786.32,,,,,,0,,,,,,,adv017,FastAPI TestClient configuration with app overrides,,,,,0,b7692c5d098e,,0,07a06fdb08d2
+,adversarial,nia,,,,,,,14928.26,,,,,,0,,,,,,,adv018,FastAPI JSONResponse with custom status code and headers,,,,,0,b7692c5d098e,,0,adf2a6384029
+,adversarial,nia,,,,,,,50022.23,,,,,,0,,,,,,,adv019,FastAPI request body with File and Form mixed parameters,,,,,0,b7692c5d098e,,0,b61a8e102238
+,adversarial,nia,,,,,,,11097.44,,,,,,0,,,,,,,adv020,FastAPI exception handler registration and dispatch,,,,,0,b7692c5d098e,,0,a779acabb1be
+,adversarial,nia,,,,,,,11000.36,,,,,,0,,,,,,,adv021,Django QuerySet.filter implementation with Q objects,,,,,0,b7692c5d098e,,0,43ee57c50583
+,adversarial,nia,,,,,,,15417.76,,,,,,0,,,,,,,adv022,Django Model.save() with update_fields and force_insert,,,,,0,b7692c5d098e,,0,58eb26156d65
+,adversarial,nia,,,,,,,13865.81,,,,,,0,,,,,,,adv023,Django middleware CSRF protection implementation,,,,,0,b7692c5d098e,,0,0f32c9f547d0
+,adversarial,nia,,,,,,,12887.89,,,,,,0,,,,,,,adv024,Django ORM select_related vs prefetch_related implementation,,,,,0,b7692c5d098e,,0,f9a12c62223e
+,adversarial,nia,,,,,,,11218.88,,,,,,0,,,,,,,adv025,Django URL resolver matching algorithm,,,,,0,b7692c5d098e,,0,2f5f8a3e4c29
+,adversarial,nia,,,,,,,14026.00,,,,,,0,,,,,,,adv026,Django template engine rendering with context processors,,,,,0,b7692c5d098e,,0,2bf18ac65c4d
+,adversarial,nia,,,,,,,14096.34,,,,,,0,,,,,,,adv027,Django migration operations AddField and AlterField,,,,,0,b7692c5d098e,,0,ae1fa878a10f
+,adversarial,nia,,,,,,,10420.97,,,,,,0,,,,,,,adv028,Django form field validation with clean methods,,,,,0,b7692c5d098e,,0,d093cc134fd4
+,adversarial,nia,,,,,,,10776.91,,,,,,0,,,,,,,adv029,Django cache framework backend implementation,,,,,0,b7692c5d098e,,0,56875c9b4c0c
+,adversarial,nia,,,,,,,12966.66,,,,,,0,,,,,,,adv030,Django signals post_save implementation and dispatch,,,,,0,b7692c5d098e,,0,fa859d15e8a7
+,adversarial,nia,,,,,,,9172.20,,,,,,0,,,,,,,adv031,Django REST Framework serializer validation with validate_ methods,,,,,0,b7692c5d098e,,0,cdb38dee6a33
+,adversarial,nia,,,,,,,9470.12,,,,,,0,,,,,,,adv032,Django admin ModelAdmin changelist_view implementation,,,,,0,b7692c5d098e,,0,b83933972a5b
+,adversarial,nia,,,,,,,11491.78,,,,,,0,,,,,,,adv033,Django class-based view dispatch method,,,,,0,b7692c5d098e,,0,ee82afd5762c
+,adversarial,nia,,,,,,,32537.25,,,,,,0,,,,,,,adv034,Django database router for multi-database read replicas,,,,,0,b7692c5d098e,,0,1d6cb7a110ce
+,adversarial,nia,,,,,,,11966.81,,,,,,0,,,,,,,adv035,Django test client login and session handling,,,,,0,b7692c5d098e,,0,eefbce8dfede
+,adversarial,nia,,,,,,,13520.32,,,,,,0,,,,,,,adv036,Django QuerySet aggregate vs annotate implementation,,,,,0,b7692c5d098e,,0,89b78f5d7740
+,adversarial,nia,,,,,,,15004.79,,,,,,0,,,,,,,adv037,Django GenericForeignKey content type resolution,,,,,0,b7692c5d098e,,0,436ce934530d
+,adversarial,nia,,,,,,,12968.13,,,,,,0,,,,,,,adv038,Django management command implementation with add_arguments,,,,,0,b7692c5d098e,,0,63f824f2dd69
+,adversarial,nia,,,,,,,12058.38,,,,,,0,,,,,,,adv039,Django QuerySet update with F() expressions for atomic updates,,,,,0,b7692c5d098e,,0,826bff27a397
+,adversarial,nia,,,,,,,17034.40,,,,,,0,,,,,,,adv040,Django password hashing with PBKDF2 and Argon2,,,,,0,b7692c5d098e,,0,ec662796bf0b
+,adversarial,nia,,,,,,,13702.79,,,,,,0,,,,,,,adv041,Flask application context and request context implementation,,,,,0,b7692c5d098e,,0,d97b46ce96a8
+,adversarial,nia,,,,,,,13355.62,,,,,,0,,,,,,,adv042,Flask Blueprint registration and deferred setup,,,,,0,b7692c5d098e,,0,f10648273464
+,adversarial,nia,,,,,,,11236.26,,,,,,0,,,,,,,adv043,Flask url_for reverse URL generation implementation,,,,,0,b7692c5d098e,,0,93d920773088
+,adversarial,nia,,,,,,,10847.50,,,,,,0,,,,,,,adv044,Flask session interface and cookie signing,,,,,0,b7692c5d098e,,0,4cf30d8addb8
+,adversarial,nia,,,,,,,11672.22,,,,,,0,,,,,,,adv045,Flask error handler lookup and dispatch,,,,,0,b7692c5d098e,,0,9ec860ff6fbe
+,adversarial,nia,,,,,,,12282.68,,,,,,0,,,,,,,adv046,Flask Jinja2 environment configuration and custom filters,,,,,0,b7692c5d098e,,0,d7697fd93ab8
+,adversarial,nia,,,,,,,17853.94,,,,,,0,,,,,,,adv047,Flask before_request and after_request hook execution,,,,,0,b7692c5d098e,,0,e5cb28994946
+,adversarial,nia,,,,,,,12543.28,,,,,,0,,,,,,,adv049,Flask CLI command registration with app.cli,,,,,0,b7692c5d098e,,0,f0e253a0b165
+,adversarial,nia,,,,,,,12604.49,,,,,,0,,,,,,,adv051,Flask g object implementation for request-scoped globals,,,,,0,b7692c5d098e,,0,dbaecd3d889e
+,adversarial,nia,,,,,,,87685.81,,,,,,0,,,,,,,adv052,Flask make_response for custom response objects,,,,,0,b7692c5d098e,,0,12345d30e8b8
+,adversarial,nia,,,,,,,10406.96,,,,,,0,,,,,,,adv053,Flask signal support with blinker,,,,,0,b7692c5d098e,,0,efb106e4a939
+,adversarial,nia,,,,,,,11349.49,,,,,,0,,,,,,,adv054,Flask WSGI app __call__ and request dispatch,,,,,0,b7692c5d098e,,0,567c300b8fca
+,adversarial,nia,,,,,,,12729.14,,,,,,0,,,,,,,adv055,Flask JSON provider and custom JSON encoding,,,,,0,b7692c5d098e,,0,44e78815898b
+,adversarial,nia,,,,,,,8456.10,,,,,,0,,,,,,,adv057,SQLAlchemy Mapped[] type annotation for ORM columns,,,,,0,b7692c5d098e,,0,44cdf8a86866
+,adversarial,nia,,,,,,,36836.06,,,,,,0,,,,,,,adv058,SQLAlchemy async session context manager,,,,,0,b7692c5d098e,,0,16b21dbd7bf9
+,adversarial,nia,,,,,,,9758.15,,,,,,0,,,,,,,adv059,SQLAlchemy relationship() with lazy loading strategies,,,,,0,b7692c5d098e,,0,1828ad0e3799
+,adversarial,nia,,,,,,,18192.03,,,,,,0,,,,,,,adv060,SQLAlchemy event.listen for session lifecycle events,,,,,0,b7692c5d098e,,0,5cb91440802a
+,adversarial,nia,,,,,,,39585.23,,,,,,0,,,,,,,adv061,SQLAlchemy type coercion with TypeDecorator,,,,,0,b7692c5d098e,,0,9d3b221938b8
+,adversarial,nia,,,,,,,10428.85,,,,,,0,,,,,,,adv062,SQLAlchemy connection pool implementation and recycling,,,,,0,b7692c5d098e,,0,f9ff6fbf13b2
+,adversarial,nia,,,,,,,58160.00,,,,,,0,,,,,,,adv063,SQLAlchemy alembic migration env.py configuration,,,,,0,b7692c5d098e,,0,6294fe7e3ad4
+,adversarial,nia,,,,,,,11185.59,,,,,,0,,,,,,,adv065,SQLAlchemy hybrid_property for Python+SQL dual expressions,,,,,0,b7692c5d098e,,0,5badd03490f8
+,adversarial,nia,,,,,,,10693.59,,,,,,0,,,,,,,adv066,SQLAlchemy bulk insert performance with insert().values(),,,,,0,b7692c5d098e,,0,a6018fa9d6f5
+,adversarial,nia,,,,,,,11451.64,,,,,,0,,,,,,,adv067,SQLAlchemy compile SQL to string for debugging,,,,,0,b7692c5d098e,,0,a9b9fadd83b5
+,adversarial,nia,,,,,,,7973.76,,,,,,0,,,,,,,adv068,SQLAlchemy DeclarativeBase metaclass for model registration,,,,,0,b7692c5d098e,,0,f84617adcfdb
+,adversarial,nia,,,,,,,10684.96,,,,,,0,,,,,,,adv069,SQLAlchemy with_for_update for row-level locking,,,,,0,b7692c5d098e,,0,b3f453609645
+,adversarial,nia,,,,,,,11446.96,,,,,,0,,,,,,,adv070,SQLAlchemy Index and UniqueConstraint definition,,,,,0,b7692c5d098e,,0,aebec75e9bb8
+,adversarial,nia,,,,,,,1937.27,,,,,,0,,,,,,,adv071,HTTPX AsyncClient request method dispatching GET/POST,,,,,0,b7692c5d098e,,0,b19643bf6743
+,adversarial,nia,,,,,,,10725.90,,,,,,0,,,,,,,adv072,HTTPX transport layer for connection handling,,,,,0,b7692c5d098e,,0,77bbea65cc97
+,adversarial,nia,,,,,,,9864.53,,,,,,0,,,,,,,adv073,HTTPX URL parsing and construction,,,,,0,b7692c5d098e,,0,a71a578825e5
+,adversarial,nia,,,,,,,55839.92,,,,,,0,,,,,,,adv074,Requests Session.send with prepared request,,,,,0,b7692c5d098e,,0,b4880aee0feb
+,adversarial,nia,,,,,,,9572.82,,,,,,0,,,,,,,adv075,Requests HTTPAdapter with max_retries and pool_connections,,,,,0,b7692c5d098e,,0,b63bff30ca99
+,adversarial,nia,,,,,,,8939.26,,,,,,0,,,,,,,adv076,HTTPX cookie handling and CookieJar implementation,,,,,0,b7692c5d098e,,0,99d2a396c26f
+,adversarial,nia,,,,,,,10749.63,,,,,,0,,,,,,,adv077,HTTPX response streaming with aiter_bytes and aiter_lines,,,,,0,b7692c5d098e,,0,183f03a8b10b
+,adversarial,nia,,,,,,,12468.47,,,,,,0,,,,,,,adv078,Requests response content decoding and encoding detection,,,,,0,b7692c5d098e,,0,f2f0f0cfd9ba
+,adversarial,nia,,,,,,,12594.82,,,,,,0,,,,,,,adv079,HTTPX event hooks for request/response interception,,,,,0,b7692c5d098e,,0,149e43959dd2
+,adversarial,nia,,,,,,,11851.78,,,,,,0,,,,,,,adv080,HTTPX proxy configuration and CONNECT tunneling,,,,,0,b7692c5d098e,,0,881352326e1f
+,adversarial,nia,,,,,,,11154.82,,,,,,0,,,,,,,adv081,Pydantic v2 model_validate for parsing data,,,,,0,b7692c5d098e,,0,873c8370bc44
+,adversarial,nia,,,,,,,12768.84,,,,,,0,,,,,,,adv082,Pydantic v2 ConfigDict for model configuration,,,,,0,b7692c5d098e,,0,d7003a310ee6
+,adversarial,nia,,,,,,,11858.07,,,,,,0,,,,,,,adv083,Pydantic TypeAdapter for standalone validation,,,,,0,b7692c5d098e,,0,c75b11f17f83
+,adversarial,nia,,,,,,,9801.55,,,,,,0,,,,,,,adv084,Pydantic computed_field for derived properties,,,,,0,b7692c5d098e,,0,b5da7495c1fe
+,adversarial,nia,,,,,,,13332.24,,,,,,0,,,,,,,adv085,Pydantic model_json_schema generation,,,,,0,b7692c5d098e,,0,8c83ef72de36
+,adversarial,nia,,,,,,,11801.61,,,,,,0,,,,,,,adv086,Pydantic PlainValidator and WrapValidator custom types,,,,,0,b7692c5d098e,,0,56b118ac874b
+,adversarial,nia,,,,,,,115399.34,,,,,,0,,,,,,,adv087,Pydantic Field with JSON schema customization,,,,,0,b7692c5d098e,,0,4af30325fc5e
+,adversarial,nia,,,,,,,11668.05,,,,,,0,,,,,,,adv089,Pydantic PrivateAttr for non-validated private attributes,,,,,0,b7692c5d098e,,0,419bac4dae52
+,adversarial,nia,,,,,,,11184.54,,,,,,0,,,,,,,adv090,Pydantic custom serializer with field_serializer and model_serializer,,,,,0,b7692c5d098e,,0,a1ca3bbb9dcd
+,adversarial,nia,,,,,,,12420.24,,,,,,0,,,,,,,adv091,Pydantic discriminated unions with Discriminator,,,,,0,b7692c5d098e,,0,13b09b83197a
+,adversarial,nia,,,,,,,2048.78,,,,,,0,,,,,,,adv092,Pydantic validation error formatting and error types,,,,,0,b7692c5d098e,,0,c1cf1e80bc9a
+,adversarial,nia,,,,,,,11426.93,,,,,,0,,,,,,,adv093,Pydantic generic models with TypeVar,,,,,0,b7692c5d098e,,0,c7e4d1f8e933
+,adversarial,nia,,,,,,,10319.91,,,,,,0,,,,,,,adv094,Pydantic AliasPath and AliasChoices for nested data access,,,,,0,b7692c5d098e,,0,583988e9cf56
+,adversarial,nia,,,,,,,13992.91,,,,,,0,,,,,,,adv095,Pydantic model inheritance and field override behavior,,,,,0,b7692c5d098e,,0,407b8241b475
+,adversarial,nia,,,,,,,13606.61,,,,,,0,,,,,,,adv096,PyTorch torch.amp.autocast for mixed precision,,,,,0,b7692c5d098e,,0,fba87988f686
+,adversarial,nia,,,,,,,9806.25,,,,,,0,,,,,,,adv097,PyTorch nn.Module forward method dispatch,,,,,0,b7692c5d098e,,0,d5b7f922517a
+,adversarial,nia,,,,,,,12476.94,,,,,,0,,,,,,,adv098,PyTorch DataLoader worker process management,,,,,0,b7692c5d098e,,0,71c7fd328c21
+,adversarial,nia,,,,,,,11446.67,,,,,,0,,,,,,,adv099,PyTorch optimizer.step() with closure for LBFGS,,,,,0,b7692c5d098e,,0,1c39f0123a0f
+,adversarial,nia,,,,,,,12223.06,,,,,,0,,,,,,,adv100,PyTorch distributed all_reduce for gradient synchronization,,,,,0,b7692c5d098e,,0,87be847df8aa
+,adversarial,context7,,,,,,,3380.70,,,,,,0,,,,,,,adv001,FastAPI request body validation with Pydantic BaseModel,,,,,0,b7692c5d098e,,0,d8b8ce62690c
+,adversarial,context7,,,,,,,2684.54,,,,,,0,,,,,,,adv002,HTTP connection timeout handling in HTTPX client,,,,,0,b7692c5d098e,,0,ad624f11e63b
+,adversarial,context7,,,,,,,2683.64,,,,,,0,,,,,,,adv003,Pydantic model_dump method implementation,,,,,0,b7692c5d098e,,0,1e1f6872a4f7
+,adversarial,context7,,,,,,,2473.05,,,,,,0,,,,,,,adv004,FastAPI WebSocket accept connection implementation,,,,,0,b7692c5d098e,,0,b3cceb80a162
+,adversarial,context7,,,,,,,2684.62,,,,,,0,,,,,,,adv005,HTTPX AsyncClient.get implementation for making GET requests,,,,,0,b7692c5d098e,,0,4dfdc633e76c
+,adversarial,context7,,,,,,,2549.95,,,,,,0,,,,,,,adv006,Pydantic field_validator decorator for custom validation,,,,,0,b7692c5d098e,,0,207dc2528c55
+,adversarial,context7,,,,,,,2580.87,,,,,,0,,,,,,,adv007,FastAPI Depends() dependency injection resolver,,,,,0,b7692c5d098e,,0,8a80786a6298
+,adversarial,context7,,,,,,,2684.09,,,,,,0,,,,,,,adv008,HTTPX request authentication with Bearer token,,,,,0,b7692c5d098e,,0,c01c8d4e393f
+,adversarial,context7,,,,,,,2673.51,,,,,,0,,,,,,,adv009,Pydantic ConfigDict for model configuration in v2,,,,,0,b7692c5d098e,,0,5facdf14763d
+,adversarial,context7,,,,,,,3117.74,,,,,,0,,,,,,,adv010,FastAPI response_model serialization and filtering implementation,,,,,0,b7692c5d098e,,0,24a80ebf85a4
+,adversarial,context7,,,,,,,2481.54,,,,,,0,,,,,,,adv011,FastAPI lifespan context manager for startup/shutdown,,,,,0,b7692c5d098e,,0,aaf9e5e93607
+,adversarial,context7,,,,,,,2685.44,,,,,,0,,,,,,,adv012,FastAPI APIRouter include with dependencies and tags,,,,,0,b7692c5d098e,,0,138b65e1c7c8
+,adversarial,context7,,,,,,,2887.32,,,,,,0,,,,,,,adv013,FastAPI Security dependency with OAuth2 scopes,,,,,0,b7692c5d098e,,0,4f8f45d79264
+,adversarial,context7,,,,,,,2479.45,,,,,,0,,,,,,,adv014,FastAPI path operation decorator internals,,,,,0,b7692c5d098e,,0,a3db56415104
+,adversarial,context7,,,,,,,2697.40,,,,,,0,,,,,,,adv015,FastAPI Depends resolution order and sub-dependencies,,,,,0,b7692c5d098e,,0,cfbd731a0840
+,adversarial,context7,,,,,,,3107.18,,,,,,0,,,,,,,adv016,FastAPI background task execution after response,,,,,0,b7692c5d098e,,0,d10a40c6b88c
+,adversarial,context7,,,,,,,2889.07,,,,,,0,,,,,,,adv017,FastAPI TestClient configuration with app overrides,,,,,0,b7692c5d098e,,0,74cbe507027f
+,adversarial,context7,,,,,,,3120.01,,,,,,0,,,,,,,adv018,FastAPI JSONResponse with custom status code and headers,,,,,0,b7692c5d098e,,0,26c2e49e09f9
+,adversarial,context7,,,,,,,2780.17,,,,,,0,,,,,,,adv019,FastAPI request body with File and Form mixed parameters,,,,,0,b7692c5d098e,,0,6407ed3eff93
+,adversarial,context7,,,,,,,2991.36,,,,,,0,,,,,,,adv020,FastAPI exception handler registration and dispatch,,,,,0,b7692c5d098e,,0,9a036498bc4c
+,adversarial,context7,,,,,,,2923.14,,,,,,0,,,,,,,adv021,Django QuerySet.filter implementation with Q objects,,,,,0,b7692c5d098e,,0,70c9fb3c4e76
+,adversarial,context7,,,,,,,2583.68,,,,,,0,,,,,,,adv022,Django Model.save() with update_fields and force_insert,,,,,0,b7692c5d098e,,0,0715a65f6bb7
+,adversarial,context7,,,,,,,2351.16,,,,,,0,,,,,,,adv023,Django middleware CSRF protection implementation,,,,,0,b7692c5d098e,,0,227f00d7c6e6
+,adversarial,context7,,,,,,,2528.67,,,,,,0,,,,,,,adv024,Django ORM select_related vs prefetch_related implementation,,,,,0,b7692c5d098e,,0,b94011356e80
+,adversarial,context7,,,,,,,2788.04,,,,,,0,,,,,,,adv025,Django URL resolver matching algorithm,,,,,0,b7692c5d098e,,0,1f28e1da6894
+,adversarial,context7,,,,,,,3708.68,,,,,,0,,,,,,,adv026,Django template engine rendering with context processors,,,,,0,b7692c5d098e,,0,27cf55001a31
+,adversarial,context7,,,,,,,4016.07,,,,,,0,,,,,,,adv027,Django migration operations AddField and AlterField,,,,,0,b7692c5d098e,,0,05d4f35ada82
+,adversarial,context7,,,,,,,2377.20,,,,,,0,,,,,,,adv028,Django form field validation with clean methods,,,,,0,b7692c5d098e,,0,7d30b1679a99
+,adversarial,context7,,,,,,,2530.81,,,,,,0,,,,,,,adv029,Django cache framework backend implementation,,,,,0,b7692c5d098e,,0,e51b3f612ade
+,adversarial,context7,,,,,,,3709.98,,,,,,0,,,,,,,adv030,Django signals post_save implementation and dispatch,,,,,0,b7692c5d098e,,0,333f96710c7a
+,adversarial,context7,,,,,,,2890.44,,,,,,0,,,,,,,adv031,Django REST Framework serializer validation with validate_ methods,,,,,0,b7692c5d098e,,0,078570e494ee
+,adversarial,context7,,,,,,,2991.08,,,,,,0,,,,,,,adv032,Django admin ModelAdmin changelist_view implementation,,,,,0,b7692c5d098e,,0,bbd534946b6d
+,adversarial,context7,,,,,,,2650.85,,,,,,0,,,,,,,adv033,Django class-based view dispatch method,,,,,0,b7692c5d098e,,0,69b95c2b603b
+,adversarial,context7,,,,,,,2972.79,,,,,,0,,,,,,,adv034,Django database router for multi-database read replicas,,,,,0,b7692c5d098e,,0,272fcbc088e7
+,adversarial,context7,,,,,,,2632.69,,,,,,0,,,,,,,adv035,Django test client login and session handling,,,,,0,b7692c5d098e,,0,81fa9d6cab02
+,adversarial,context7,,,,,,,2821.40,,,,,,0,,,,,,,adv036,Django QuerySet aggregate vs annotate implementation,,,,,0,b7692c5d098e,,0,545cd2c21779
+,adversarial,context7,,,,,,,2543.50,,,,,,0,,,,,,,adv037,Django GenericForeignKey content type resolution,,,,,0,b7692c5d098e,,0,bf55d1f9533b
+,adversarial,context7,,,,,,,2651.03,,,,,,0,,,,,,,adv038,Django management command implementation with add_arguments,,,,,0,b7692c5d098e,,0,689b88d396ba
+,adversarial,context7,,,,,,,2620.34,,,,,,0,,,,,,,adv039,Django QuerySet update with F() expressions for atomic updates,,,,,0,b7692c5d098e,,0,10164b4cd8df
+,adversarial,context7,,,,,,,3462.76,,,,,,0,,,,,,,adv040,Django password hashing with PBKDF2 and Argon2,,,,,0,b7692c5d098e,,0,130ba1cc2738
+,adversarial,context7,,,,,,,2582.99,,,,,,0,,,,,,,adv041,Flask application context and request context implementation,,,,,0,b7692c5d098e,,0,f2b59e1d2333
+,adversarial,context7,,,,,,,2683.86,,,,,,0,,,,,,,adv042,Flask Blueprint registration and deferred setup,,,,,0,b7692c5d098e,,0,ff4c04a81303
+,adversarial,context7,,,,,,,2991.60,,,,,,0,,,,,,,adv043,Flask url_for reverse URL generation implementation,,,,,0,b7692c5d098e,,0,16cb71ebf91c
+,adversarial,context7,,,,,,,2787.40,,,,,,0,,,,,,,adv044,Flask session interface and cookie signing,,,,,0,b7692c5d098e,,0,86e0e4abf644
+,adversarial,context7,,,,,,,2710.02,,,,,,0,,,,,,,adv045,Flask error handler lookup and dispatch,,,,,0,b7692c5d098e,,0,a6ed827bbcc6
+,adversarial,context7,,,,,,,2518.95,,,,,,0,,,,,,,adv046,Flask Jinja2 environment configuration and custom filters,,,,,0,b7692c5d098e,,0,0db26043fcdd
+,adversarial,context7,,,,,,,2588.21,,,,,,0,,,,,,,adv047,Flask before_request and after_request hook execution,,,,,0,b7692c5d098e,,0,e5b0a7d2b9e5
+,adversarial,context7,,,,,,,2581.66,,,,,,0,,,,,,,adv048,Flask send_file and send_from_directory implementation,,,,,0,b7692c5d098e,,0,596749cab86d
+,adversarial,context7,,,,,,,3399.62,,,,,,0,,,,,,,adv049,Flask CLI command registration with app.cli,,,,,0,b7692c5d098e,,0,a966cbbb6f5d
+,adversarial,context7,,,,,,,2480.05,,,,,,0,,,,,,,adv050,Flask config from environment and files,,,,,0,b7692c5d098e,,0,3bc2d2d6f8f5
+,adversarial,context7,,,,,,,3402.20,,,,,,0,,,,,,,adv051,Flask g object implementation for request-scoped globals,,,,,0,b7692c5d098e,,0,aa6f20cb1230
+,adversarial,context7,,,,,,,2256.96,,,,,,0,,,,,,,adv052,Flask make_response for custom response objects,,,,,0,b7692c5d098e,,0,0822f792d09e
+,adversarial,context7,,,,,,,2619.54,,,,,,0,,,,,,,adv053,Flask signal support with blinker,,,,,0,b7692c5d098e,,0,48534c9acd89
+,adversarial,context7,,,,,,,2683.71,,,,,,0,,,,,,,adv054,Flask WSGI app __call__ and request dispatch,,,,,0,b7692c5d098e,,0,766de2ddbba0
+,adversarial,context7,,,,,,,2317.50,,,,,,0,,,,,,,adv055,Flask JSON provider and custom JSON encoding,,,,,0,b7692c5d098e,,0,6c9a339fa7fb
+,adversarial,context7,,,,,,,2589.32,,,,,,0,,,,,,,adv056,SQLAlchemy 2.0 select() statement construction,,,,,0,b7692c5d098e,,0,c6861bd23030
+,adversarial,context7,,,,,,,3003.45,,,,,,0,,,,,,,adv057,SQLAlchemy Mapped[] type annotation for ORM columns,,,,,0,b7692c5d098e,,0,92522a9a2e76
+,adversarial,context7,,,,,,,2552.36,,,,,,0,,,,,,,adv058,SQLAlchemy async session context manager,,,,,0,b7692c5d098e,,0,18bd6b2723bc
+,adversarial,context7,,,,,,,2991.17,,,,,,0,,,,,,,adv059,SQLAlchemy relationship() with lazy loading strategies,,,,,0,b7692c5d098e,,0,ea7ad03c610f
+,adversarial,context7,,,,,,,2786.84,,,,,,0,,,,,,,adv060,SQLAlchemy event.listen for session lifecycle events,,,,,0,b7692c5d098e,,0,de48d8ade706
+,adversarial,context7,,,,,,,2580.41,,,,,,0,,,,,,,adv061,SQLAlchemy type coercion with TypeDecorator,,,,,0,b7692c5d098e,,0,5a3df5bcfbd6
+,adversarial,context7,,,,,,,2460.68,,,,,,0,,,,,,,adv062,SQLAlchemy connection pool implementation and recycling,,,,,0,b7692c5d098e,,0,9aaca2d1ae1b
+,adversarial,context7,,,,,,,2582.24,,,,,,0,,,,,,,adv063,SQLAlchemy alembic migration env.py configuration,,,,,0,b7692c5d098e,,0,19a6d525c4df
+,adversarial,context7,,,,,,,3196.36,,,,,,0,,,,,,,adv064,SQLAlchemy inspect() for runtime model introspection,,,,,0,b7692c5d098e,,0,7132ba3e251e
+,adversarial,context7,,,,,,,2791.07,,,,,,0,,,,,,,adv065,SQLAlchemy hybrid_property for Python+SQL dual expressions,,,,,0,b7692c5d098e,,0,0aa442588f0b
+,adversarial,context7,,,,,,,2788.48,,,,,,0,,,,,,,adv066,SQLAlchemy bulk insert performance with insert().values(),,,,,0,b7692c5d098e,,0,20fcf644969b
+,adversarial,context7,,,,,,,2555.41,,,,,,0,,,,,,,adv067,SQLAlchemy compile SQL to string for debugging,,,,,0,b7692c5d098e,,0,d67d7ea98ab1
+,adversarial,context7,,,,,,,2581.98,,,,,,0,,,,,,,adv068,SQLAlchemy DeclarativeBase metaclass for model registration,,,,,0,b7692c5d098e,,0,f0a1b90b7fca
+,adversarial,context7,,,,,,,2580.80,,,,,,0,,,,,,,adv069,SQLAlchemy with_for_update for row-level locking,,,,,0,b7692c5d098e,,0,d1d52ef56dd8
+,adversarial,context7,,,,,,,2686.33,,,,,,0,,,,,,,adv070,SQLAlchemy Index and UniqueConstraint definition,,,,,0,b7692c5d098e,,0,978874d7f626
+,adversarial,context7,,,,,,,2582.04,,,,,,0,,,,,,,adv071,HTTPX AsyncClient request method dispatching GET/POST,,,,,0,b7692c5d098e,,0,bc49a84ae930
+,adversarial,context7,,,,,,,2554.72,,,,,,0,,,,,,,adv072,HTTPX transport layer for connection handling,,,,,0,b7692c5d098e,,0,ac841fd8eb97
+,adversarial,context7,,,,,,,2499.15,,,,,,0,,,,,,,adv073,HTTPX URL parsing and construction,,,,,0,b7692c5d098e,,0,c85631f6dab3
+,adversarial,context7,,,,,,,3094.32,,,,,,0,,,,,,,adv074,Requests Session.send with prepared request,,,,,0,b7692c5d098e,,0,5a91400f4093
+,adversarial,context7,,,,,,,2375.42,,,,,,0,,,,,,,adv075,Requests HTTPAdapter with max_retries and pool_connections,,,,,0,b7692c5d098e,,0,7aa3cb586276
+,adversarial,context7,,,,,,,2682.37,,,,,,0,,,,,,,adv076,HTTPX cookie handling and CookieJar implementation,,,,,0,b7692c5d098e,,0,f4b714f58578
+,adversarial,context7,,,,,,,2664.76,,,,,,0,,,,,,,adv077,HTTPX response streaming with aiter_bytes and aiter_lines,,,,,0,b7692c5d098e,,0,a946bef2fe0e
+,adversarial,context7,,,,,,,2376.74,,,,,,0,,,,,,,adv078,Requests response content decoding and encoding detection,,,,,0,b7692c5d098e,,0,8ebc4203fb30
+,adversarial,context7,,,,,,,2746.00,,,,,,0,,,,,,,adv079,HTTPX event hooks for request/response interception,,,,,0,b7692c5d098e,,0,0fd1e1653fcb
+,adversarial,context7,,,,,,,2678.17,,,,,,0,,,,,,,adv080,HTTPX proxy configuration and CONNECT tunneling,,,,,0,b7692c5d098e,,0,2a1533478ef5
+,adversarial,context7,,,,,,,2335.12,,,,,,0,,,,,,,adv081,Pydantic v2 model_validate for parsing data,,,,,0,b7692c5d098e,,0,3182a6efd253
+,adversarial,context7,,,,,,,2582.59,,,,,,0,,,,,,,adv082,Pydantic v2 ConfigDict for model configuration,,,,,0,b7692c5d098e,,0,80696d07e404
+,adversarial,context7,,,,,,,2480.15,,,,,,0,,,,,,,adv083,Pydantic TypeAdapter for standalone validation,,,,,0,b7692c5d098e,,0,e8e9c06a3586
+,adversarial,context7,,,,,,,2377.27,,,,,,0,,,,,,,adv084,Pydantic computed_field for derived properties,,,,,0,b7692c5d098e,,0,359e1cb88a90
+,adversarial,context7,,,,,,,2376.68,,,,,,0,,,,,,,adv085,Pydantic model_json_schema generation,,,,,0,b7692c5d098e,,0,f6b2b6543527
+,adversarial,context7,,,,,,,2797.50,,,,,,0,,,,,,,adv086,Pydantic PlainValidator and WrapValidator custom types,,,,,0,b7692c5d098e,,0,56ce0e04afd5
+,adversarial,context7,,,,,,,2888.71,,,,,,0,,,,,,,adv087,Pydantic Field with JSON schema customization,,,,,0,b7692c5d098e,,0,4d246025ef72
+,adversarial,context7,,,,,,,3171.28,,,,,,0,,,,,,,adv088,Pydantic BaseSettings for environment variable loading,,,,,0,b7692c5d098e,,0,d129cb279531
+,adversarial,context7,,,,,,,2495.34,,,,,,0,,,,,,,adv089,Pydantic PrivateAttr for non-validated private attributes,,,,,0,b7692c5d098e,,0,3042bd0b2a23
+,adversarial,context7,,,,,,,2889.13,,,,,,0,,,,,,,adv090,Pydantic custom serializer with field_serializer and model_serializer,,,,,0,b7692c5d098e,,0,a7a8b5a1df98
+,adversarial,context7,,,,,,,2789.22,,,,,,0,,,,,,,adv091,Pydantic discriminated unions with Discriminator,,,,,0,b7692c5d098e,,0,81531d21d9c4
+,adversarial,context7,,,,,,,2906.68,,,,,,0,,,,,,,adv092,Pydantic validation error formatting and error types,,,,,0,b7692c5d098e,,0,9178de657044
+,adversarial,context7,,,,,,,3196.53,,,,,,0,,,,,,,adv093,Pydantic generic models with TypeVar,,,,,0,b7692c5d098e,,0,90169364443e
+,adversarial,context7,,,,,,,2684.04,,,,,,0,,,,,,,adv094,Pydantic AliasPath and AliasChoices for nested data access,,,,,0,b7692c5d098e,,0,08591daa0d29
+,adversarial,context7,,,,,,,2419.98,,,,,,0,,,,,,,adv095,Pydantic model inheritance and field override behavior,,,,,0,b7692c5d098e,,0,ef1177bb822e
+,adversarial,context7,,,,,,,3401.81,,,,,,0,,,,,,,adv096,PyTorch torch.amp.autocast for mixed precision,,,,,0,b7692c5d098e,,0,d949c89a8f40
+,adversarial,context7,,,,,,,3195.83,,,,,,0,,,,,,,adv097,PyTorch nn.Module forward method dispatch,,,,,0,b7692c5d098e,,0,cd9585025715
+,adversarial,context7,,,,,,,2160.31,,,,,,0,,,,,,,adv098,PyTorch DataLoader worker process management,,,,,0,b7692c5d098e,,0,c51f6f4d4a0b
+,adversarial,context7,,,,,,,2632.95,,,,,,0,,,,,,,adv099,PyTorch optimizer.step() with closure for LBFGS,,,,,0,b7692c5d098e,,0,d0bb3901e4c6
+,adversarial,context7,,,,,,,2788.70,,,,,,0,,,,,,,adv100,PyTorch distributed all_reduce for gradient synchronization,,,,,0,b7692c5d098e,,0,a42960886668

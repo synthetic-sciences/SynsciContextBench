@@ -236,28 +236,43 @@ Total: ~3,300 evaluated data points across 3 engines (plus 300 supplementary Adv
 | Hop Recall@5 | **0.940** | 0.672 | 0.848 |
 | Avg Hop MRR | **0.835** | 0.553 | 0.848 |
 
-### 6.3 Adversarial Near-Miss (100 queries, LLM judge)
+### 6.3 Code-Specific QA (100 queries, LLM judge)
 
 | Metric | Delphi | Nia | Context7 |
 |--------|:---:|:---:|:---:|
-| Discrimination | **0.560** | 0.140 | 0.170 |
+| Accuracy | **0.310** | 0.263 | 0.270 |
+| Symbol Accuracy | **0.550** | 0.400 | 0.540 |
+| Chunk Coherence | 0.120 | **0.179** | 0.170 |
 
-### 6.4 Hallucination Rate (100 queries)
+By QA type (Delphi): imports (1.000), definition (0.514), inheritance (0.250), argument_usage (0.235), return_type (0.167), call_site (0.091).
+
+### 6.4 Adversarial Near-Miss (100 queries, LLM judge)
 
 | Metric | Delphi | Nia | Context7 |
 |--------|:---:|:---:|:---:|
-| Hallucination Rate | **39%** | 51% | 45% |
+| Discrimination | **0.530** | 0.435 | 0.429 |
+| Accuracy | **0.590** | 0.120 | 0.200 |
 
-### 6.5 Validated Datasets (LLM judge, 100 queries each)
+By type (Delphi): version_confusion (0.727), same_name (0.656), test_vs_prod (0.600), similar_sig (0.462), same_file (0.200).
+
+### 6.5 Hallucination Rate (100 queries)
+
+| Metric | Delphi | Nia | Context7 |
+|--------|:---:|:---:|:---:|
+| True Hallucination Rate | **40.0%** | 46.8% | 46.0% |
+| Context Miss Rate | **0.0%** | 6.0% | **0.0%** |
+| Overall Failure Rate | **40.0%** | 50.0% | 46.0% |
+
+### 6.6 Validated Datasets (LLM judge, 100 queries each)
 
 | Dataset | Metric | Delphi | Nia | Context7 |
 |---------|--------|:---:|:---:|:---:|
-| **CodeSearchNet** | MRR | **0.865** | 0.040 | 0.010 |
-| | NDCG@10 | **0.907** | 0.129 | 0.040 |
-| **CoSQA** | MRR | **0.703** | 0.298 | 0.110 |
-| | NDCG@10 | **0.907** | 0.597 | 0.190 |
+| **CodeSearchNet** | MRR | **0.864** | 0.040 | 0.010 |
+| | NDCG@10 | **0.867** | 0.090 | 0.040 |
+| **CoSQA** | MRR | **0.722** | 0.298 | 0.110 |
+| | NDCG@10 | **0.902** | 0.597 | 0.190 |
 
-### 6.6 Enhanced Judge — Position-Debiased 4D (100 queries per dataset)
+### 6.7 Enhanced Judge — Position-Debiased 4D (100 queries per dataset)
 
 #### CodeSearchNet
 
@@ -281,14 +296,14 @@ Total: ~3,300 evaluated data points across 3 engines (plus 300 supplementary Adv
 | **Total (0-3)** | **1.225** | 0.875 | 0.598 |
 | **Wins** | **51** | 20 | 12 |
 
-### 6.7 LLM Judge — Non-Debiased (100 queries each)
+### 6.8 LLM Judge — Non-Debiased (100 queries each)
 
 | Dataset | Delphi | Nia | Context7 | Delphi Wins |
 |---------|:---:|:---:|:---:|:---:|
 | CodeSearchNet | **2.497** | 0.177 | 0.170 | 88/100 |
 | CoSQA | **1.487** | 0.917 | 0.413 | 54/100 |
 
-### 6.8 Context Quality (RAGAS-inspired)
+### 6.9 Context Quality (RAGAS-inspired)
 
 | Metric | CSN Delphi | CSN Nia | CSN ctx7 | CoSQA Delphi | CoSQA Nia | CoSQA ctx7 |
 |--------|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -298,7 +313,7 @@ Total: ~3,300 evaluated data points across 3 engines (plus 300 supplementary Adv
 
 Context7 has higher precision and signal/noise when it returns results — focused documentation excerpts. But it returns relevant results for far fewer queries.
 
-### 6.9 Judge Consistency
+### 6.10 Judge Consistency
 
 | Metric | CodeSearchNet | CoSQA |
 |--------|:---:|:---:|
@@ -308,18 +323,18 @@ Context7 has higher precision and signal/noise when it returns results — focus
 
 Position debiasing is essential for code retrieval evaluation — code chunks exhibit stronger positional effects than general text.
 
-### 6.10 Statistical Significance
+### 6.11 Statistical Significance
 
 Paired t-tests, Wilcoxon signed-rank, bootstrap CIs (10K resamples), and Holm correction for multiple comparisons. All pairwise differences are statistically significant.
 
 | Phase | Comparison | MRR diff | p-value | Cohen's d |
 |-------|------------|:---:|:---:|:---:|
-| Retrieval | Delphi vs Nia | +0.234 | <0.0001 | 0.57 (medium) |
-| Retrieval | Delphi vs Context7 | +0.172 | 0.0002 | 0.39 (small) |
-| CodeSearchNet | Delphi vs Nia | +0.825 | <0.0001 | 2.18 (large) |
-| CodeSearchNet | Delphi vs Context7 | +0.855 | <0.0001 | 2.44 (large) |
-| CoSQA | Delphi vs Nia | +0.405 | <0.0001 | 0.69 (medium) |
-| CoSQA | Delphi vs Context7 | +0.593 | <0.0001 | 1.13 (large) |
+| Retrieval | Delphi vs Nia | +0.233 | <0.0001 | 0.57 (medium) |
+| Retrieval | Delphi vs Context7 | +0.171 | 0.0002 | 0.39 (small) |
+| CodeSearchNet | Delphi vs Nia | +0.823 | <0.0001 | 2.17 (large) |
+| CodeSearchNet | Delphi vs Context7 | +0.854 | <0.0001 | 2.43 (large) |
+| CoSQA | Delphi vs Nia | +0.423 | <0.0001 | 0.72 (medium) |
+| CoSQA | Delphi vs Context7 | +0.612 | <0.0001 | 1.18 (large) |
 
 Bootstrap 95% CIs confirm no overlap between Delphi and competitors on any validated dataset. All results survive Holm correction at alpha=0.0042.
 
@@ -327,13 +342,13 @@ Bootstrap 95% CIs confirm no overlap between Delphi and competitors on any valid
 
 ## 7. Limitations
 
-- **Adversarial robustness**: 0.560 discrimination score shows the embedding model struggles to distinguish semantically similar but functionally different code.
+- **Adversarial robustness**: 0.530 discrimination score shows the embedding model struggles to distinguish semantically similar but functionally different code.
 
 - **Single embedding model**: Gemini `gemini-embedding-001` is general-purpose. Code-specific models (CodeSage, StarEncoder) may improve quality.
 
 - **Single LLM judge**: Claude Sonnet 4.6 only. Multi-judge evaluation would strengthen confidence.
 
-- **Latency**: Delphi averaged 6.5-7.5s per query vs 1.1-2.7s for competitors in this benchmark. This reflected geographic latency to Supabase (US-East); production deployment at `context.syntheticsciences.ai` averages ~2.4s/query. Full latency re-benchmark pending.
+- **Latency**: Delphi averaged ~2.2-2.5s per query on the production deployment at `context.syntheticsciences.ai`.
 
 ---
 

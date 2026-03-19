@@ -1,0 +1,1712 @@
+{
+  "timestamp": "2026-03-19T07:52:11.564782+00:00",
+  "engines": [
+    "synsc-context"
+  ],
+  "retrieval": {},
+  "hallucination": {
+    "synsc-context__anthropic_default": {
+      "engine": "synsc-context",
+      "llm_provider": "anthropic",
+      "llm_model": "claude-sonnet-4-6",
+      "llm_tier": "default",
+      "overall_rate": 0.4,
+      "true_hallucination_rate": 0.4,
+      "abstention_rate": 0.0,
+      "context_miss_rate": 0.0,
+      "error_breakdown": {
+        "outdated_api": 11,
+        "invented_method": 123,
+        "wrong_parameter": 33
+      },
+      "num_cases": 100,
+      "cases": [
+        {
+          "query": "Create a FastAPI endpoint that accepts a JSON body with nested Pydantic models and returns a validated response",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nfrom fastapi import FastAPI\nfrom pydantic import BaseModel, HttpUrl\n\napp = FastAPI()\n\n\nclass Image(BaseModel):\n    url: HttpUrl\n    name: str\n\n\nclass Item(BaseModel):\n    name: str\n    description: str | None = None\n    price: float\n    tax: float | None = None\n    tags: set[str] = set()\n    images: list[Image] | None = None\n\n\nclass Offer(BaseModel):\n    name: str\n    description: str | None = None\n    price: float\n    items: list[Item]\n\n\n@app.post(\"/offers/\", response_model=Offer, sum"
+        },
+        {
+          "query": "Set up an async HTTPX client with custom timeout, retry logic, and connection pooling",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nimport asyncio\nimport httpx\nfrom httpx import AsyncClient, Limits, Timeout\n\n\nasync def make_request_with_retry(\n    client: AsyncClient,\n    method: str,\n    url: str,\n    max_retries: int = 3,\n    retry_delay: float = 1.0,\n    **kwargs,\n) -> httpx.Response:\n    last_exception = None\n    for attempt in range(max_retries):\n        try:\n            response = await client.request(method, url, **kwargs)\n            response.raise_for_status()\n            return response\n        except (ht"
+        },
+        {
+          "query": "Define a Pydantic v2 model with custom validators, computed fields, and JSON schema customization",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "outdated_api",
+              "detail": "'field_validator' uses deprecated API 'validator'",
+              "call": "field_validator",
+              "context_available": true
+            },
+            {
+              "type": "outdated_api",
+              "detail": "'field_validator' uses deprecated API 'validator'",
+              "call": "field_validator",
+              "context_available": true
+            },
+            {
+              "type": "outdated_api",
+              "detail": "'field_validator' uses deprecated API 'validator'",
+              "call": "field_validator",
+              "context_available": true
+            },
+            {
+              "type": "outdated_api",
+              "detail": "'field_validator' uses deprecated API 'validator'",
+              "call": "field_validator",
+              "context_available": true
+            },
+            {
+              "type": "outdated_api",
+              "detail": "'field_validator' uses deprecated API 'validator'",
+              "call": "field_validator",
+              "context_available": true
+            },
+            {
+              "type": "outdated_api",
+              "detail": "'model_validator' uses deprecated API 'validator'",
+              "call": "model_validator",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method '__get_pydantic_core_schema__' not found in pydantic API",
+              "call": "__get_pydantic_core_schema__",
+              "context_available": true
+            },
+            {
+              "type": "outdated_api",
+              "detail": "'core_schema.no_info_plain_validator_function' uses deprecated API 'validator'",
+              "call": "core_schema.no_info_plain_validator_function",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method '__get_pydantic_json_schema__' not found in pydantic API",
+              "call": "__get_pydantic_json_schema__",
+              "context_available": true
+            },
+            {
+              "type": "outdated_api",
+              "detail": "'field_validator' uses deprecated API 'validator'",
+              "call": "field_validator",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\nfrom typing import Any, ClassVar\nfrom pydantic import BaseModel, Field, computed_field, field_validator, model_validator\nfrom pydantic.json_schema import JsonSchemaValue, GetJsonSchemaHandler\nfrom pydantic import GetCoreSchemaHandler\nfrom pydantic_core import core_schema\nimport re\n\n\nclass Address(BaseModel):\n    street: str\n    city: str\n    zip_code: str\n    country: str = \"US\"\n\n    model_config = {\"json_schema_extra\": {\"examples\": [{\"street\": \"123 Main St\", \"city\": \"Springfield\", \"zi"
+        },
+        {
+          "query": "Implement SQLAlchemy 2.0 async session with select statements and relationship loading",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nfrom __future__ import annotations\n\nimport asyncio\nfrom typing import List, Optional\n\nfrom sqlalchemy import ForeignKey, String, select\nfrom sqlalchemy.ext.asyncio import (\n    AsyncAttrs,\n    AsyncSession,\n    async_sessionmaker,\n    create_async_engine,\n)\nfrom sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship, selectinload\n\n\n# --- Models ---\n\nclass Base(AsyncAttrs, DeclarativeBase):\n    pass\n\n\nclass User(Base):\n    __tablename__ = \"users\"\n\n    id: Mapped[int]"
+        },
+        {
+          "query": "Create a Click CLI application with nested command groups, options with validation, and rich help text",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "invented_method",
+              "detail": "Method 'click.BadParameter' not found in click API",
+              "call": "click.BadParameter",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'click.BadParameter' not found in click API",
+              "call": "click.BadParameter",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'click.version_option' not found in click API",
+              "call": "click.version_option",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'click.ClickException' not found in click API",
+              "call": "click.ClickException",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\n#!/usr/bin/env python3\n\"\"\"Click CLI application with nested command groups, options with validation, and rich help text.\"\"\"\n\nimport json\nimport sys\nfrom functools import update_wrapper\nfrom typing import Any, Optional\n\nimport click\nfrom click import Context, ParamType\n\n\n# \u2500\u2500\u2500 Custom Parameter Types \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nclass JSONParamType(ParamType):\n    \"\"\"A Click parameter type that parses JSON strings.\"\"\"\n\n    name = \"JSON\"\n\n    def convert(self, valu"
+        },
+        {
+          "query": "Build a LangChain RAG pipeline with document loading, text splitting, vector store, and retrieval chain",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "wrong_parameter",
+              "detail": "Parameter 'add_start_index' not valid for RecursiveCharacterTextSplitter()",
+              "call": "RecursiveCharacterTextSplitter",
+              "parameter": "add_start_index",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\n\"\"\"LangChain RAG pipeline with document loading, text splitting, vector store, and retrieval chain.\"\"\"\n\nfrom langchain_community.document_loaders import WebBaseLoader, PyPDFLoader, TextLoader\nfrom langchain_community.vectorstores import Chroma, FAISS\nfrom langchain_core.documents import Document\nfrom langchain_core.output_parsers import StrOutputParser\nfrom langchain_core.runnables import RunnablePassthrough\nfrom langchain_openai import ChatOpenAI, OpenAIEmbeddings\nfrom langchain_text_"
+        },
+        {
+          "query": "Implement a PyTorch training loop with mixed precision, gradient accumulation, and learning rate scheduling",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nimport torch\nimport torch.nn as nn\nimport torch.optim as optim\nfrom torch.optim.lr_scheduler import StepLR\nfrom torch.cuda.amp import GradScaler\nfrom torch.utils.data import DataLoader, TensorDataset\n\n\nclass SimpleModel(nn.Module):\n    def __init__(self, input_dim: int, hidden_dim: int, output_dim: int):\n        super().__init__()\n        self.fc1 = nn.Linear(input_dim, hidden_dim)\n        self.relu = nn.ReLU()\n        self.dropout = nn.Dropout(0.5)\n        self.fc2 = nn.Linear(hidden_"
+        },
+        {
+          "query": "Create a Stripe payment integration with checkout sessions, webhooks, and subscription management",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "invented_method",
+              "detail": "Method 'stripe.checkout.Session.create' not found in stripe API",
+              "call": "stripe.checkout.Session.create",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'stripe.checkout.Session.retrieve' not found in stripe API",
+              "call": "stripe.checkout.Session.retrieve",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'stripe.Customer.create' not found in stripe API",
+              "call": "stripe.Customer.create",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'stripe.Customer.retrieve' not found in stripe API",
+              "call": "stripe.Customer.retrieve",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'stripe.Customer.modify' not found in stripe API",
+              "call": "stripe.Customer.modify",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'stripe.Subscription.retrieve' not found in stripe API",
+              "call": "stripe.Subscription.retrieve",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'stripe.Subscription.retrieve' not found in stripe API",
+              "call": "stripe.Subscription.retrieve",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\nimport stripe\nimport os\nimport json\nfrom datetime import datetime\nfrom flask import Flask, request, jsonify, redirect\n\napp = Flask(__name__)\n\n# Initialize Stripe\nstripe.api_key = os.environ.get('STRIPE_SECRET_KEY')\nSTRIPE_WEBHOOK_SECRET = os.environ.get('STRIPE_WEBHOOK_SECRET')\nSTRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')\n\n# Price IDs from your Stripe dashboard\nPRICE_IDS = {\n    'basic': os.environ.get('STRIPE_PRICE_BASIC', 'price_basic_monthly'),\n    'pro': os.env"
+        },
+        {
+          "query": "Build a Next.js App Router page with server components, data fetching, and loading states",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\n# Next.js App Router page with server components, data fetching, and loading states\n# Generated as Python string representations of the Next.js files\n\nnextjs_files = {\n    \"app/page.tsx\": '''\nimport { Suspense } from \"react\";\nimport { ArrowRight } from \"lucide-react\";\nimport DataList from \"@/components/DataList\";\nimport DataListSkeleton from \"@/components/DataListSkeleton\";\n\nasync function getData() {\n  const res = await fetch(\"https://jsonplaceholder.typicode.com/posts?_limit=10\", {\n "
+        },
+        {
+          "query": "Set up a Tailwind CSS v4 configuration with custom theme, plugins, and dark mode",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\n# Tailwind CSS v4 Configuration Setup\n# Note: Tailwind CSS v4 uses CSS-first configuration instead of tailwind.config.js\n\n# Generate the main CSS file with Tailwind v4 configuration\ntailwind_css_content = \"\"\"@import \"tailwindcss\";\n\n/* Tailwind CSS v4 - CSS-first configuration */\n\n@theme {\n  /* Colors */\n  --color-base: #0E0D0C;\n  --color-surface: #141312;\n  --color-surface-highlight: #1A1918;\n  --color-border: #2A2928;\n  --color-accent: #F97316;\n  --color-accent-hover: #EA580C;\n  --col"
+        },
+        {
+          "query": "Build a Django 5 REST API with class-based views, custom permissions, and queryset filtering",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\n# models.py\nfrom django.db import models\nfrom django.contrib.auth.models import User\n\n\nclass Especialidade(models.Model):\n    nome = models.CharField(max_length=100)\n    descricao = models.TextField(blank=True, null=True)\n    ativo = models.BooleanField(default=True)\n    criado_em = models.DateTimeField(auto_now_add=True)\n    atualizado_em = models.DateTimeField(auto_now=True)\n\n    class Meta:\n        ordering = ['nome']\n        verbose_name = 'Especialidade'\n        verbose_name_plura"
+        },
+        {
+          "query": "Create a Flask application with Blueprints, custom error handlers, and SQLAlchemy integration",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nfrom flask import Flask, Blueprint, render_template, jsonify, request\nfrom flask_sqlalchemy import SQLAlchemy\nfrom werkzeug.exceptions import HTTPException, NotFound, BadRequest\nfrom copy import deepcopy\n\n# Initialize extensions\ndb = SQLAlchemy()\n\n# ---------------------------------------------------------------------------\n# Models\n# ---------------------------------------------------------------------------\n\nclass User(db.Model):\n    __tablename__ = 'users'\n\n    id = db.Column(db.Int"
+        },
+        {
+          "query": "Implement a pandas DataFrame pipeline with method chaining, window functions, and categorical data handling",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nimport pandas as pd\nimport numpy as np\n\n# \u2500\u2500 1. Build sample data \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnp.random.seed(42)\nn = 100\n\ndf = pd.DataFrame({\n    \"date\":     pd.date_range(\"2023-01-01\", periods=n, freq=\"D\"),\n    \"category\": pd.Categorical(\n        np.random.choice([\"A\", \"B\", \"C\", \"D\"], size=n),\n        categories=[\"A\", \"B\", \"C\", \"D\"],\n        ordered=True,\n    ),\n    \"value\":    np.random.randn(n).cumsum() + 50,\n    \"volume\":   np.random.randint(100, 1000, size"
+        },
+        {
+          "query": "Build a NumPy computation pipeline with broadcasting, structured arrays, and random number generation",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nimport numpy as np\nimport pickle\nfrom numpy.random import PCG64\nimport numba as nb\n\n# \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n# 1.  Fast normal\u2011variate generator via Numba\n# \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nbit_gen   = PCG64()\nnext_d    = bit_gen.cffi.next_double\nstate_addr = bit_gen.cffi.state_address\n\ndef _normals_python(n, state):\n    out = np.empty(n)\n    for i in range((n + 1) // 2):\n        x1 = 2.0 * next_d(state) - 1.0\n        x2 = 2.0 * next_d(state) - 1.0\n "
+        },
+        {
+          "query": "Perform SciPy optimization with constraints, curve fitting, and sparse matrix operations",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "invented_method",
+              "detail": "Method 'scipy_optimization_with_constraints' not found in scipy API",
+              "call": "scipy_optimization_with_constraints",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'scipy_curve_fitting' not found in scipy API",
+              "call": "scipy_curve_fitting",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'scipy.sparse.coo_matrix' not found in scipy API",
+              "call": "scipy.sparse.coo_matrix",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\nimport numpy as np\nimport scipy.optimize\nimport scipy.sparse\nfrom scipy.linalg import cho_solve, cho_factor\nfrom scipy.optimize import curve_fit, minimize, LinearConstraint, NonlinearConstraint\n\n\ndef scipy_optimization_with_constraints():\n    \"\"\"Perform SciPy optimization with constraints.\"\"\"\n    \n    # Define objective function\n    def objective(x):\n        return (x[0] - 2)**2 + (x[1] - 3)**2 + x[0]*x[1]\n    \n    # Define gradient of objective\n    def objective_grad(x):\n        grad "
+        },
+        {
+          "query": "Build a Polars data pipeline with lazy frames, window functions, and expression API",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nimport polars as pl\nfrom datetime import date\n\n# Create sample data\ndata = {\n    \"date\": [\n        date(2024, 1, 1), date(2024, 1, 2), date(2024, 1, 3),\n        date(2024, 1, 4), date(2024, 1, 5), date(2024, 1, 6),\n        date(2024, 1, 1), date(2024, 1, 2), date(2024, 1, 3),\n        date(2024, 1, 4), date(2024, 1, 5), date(2024, 1, 6),\n    ],\n    \"category\": [\"A\", \"A\", \"A\", \"A\", \"A\", \"A\", \"B\", \"B\", \"B\", \"B\", \"B\", \"B\"],\n    \"sales\": [100, 150, 200, 175, 225, 300, 80, 120, 160, 140, 180"
+        },
+        {
+          "query": "Train a scikit-learn pipeline with custom transformers, cross-validation, and hyperparameter search",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nfrom sklearn.datasets import load_breast_cancer\nfrom sklearn.model_selection import GridSearchCV, train_test_split, StratifiedKFold, cross_validate\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.pipeline import Pipeline\nfrom sklearn.feature_selection import SelectKBest, f_classif\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.base import BaseEstimator, TransformerMixin\nfrom sklearn.metrics import make_scorer, f1_score, accuracy_score\nfrom sklearn.utils."
+        },
+        {
+          "query": "Fine-tune a HuggingFace Transformers model with the Trainer API, custom data collator, and evaluation metrics",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "wrong_parameter",
+              "detail": "Parameter 'warmup_ratio' not valid for TrainingArguments()",
+              "call": "TrainingArguments",
+              "parameter": "warmup_ratio",
+              "context_available": true
+            },
+            {
+              "type": "wrong_parameter",
+              "detail": "Parameter 'metric_for_best_model' not valid for TrainingArguments()",
+              "call": "TrainingArguments",
+              "parameter": "metric_for_best_model",
+              "context_available": true
+            },
+            {
+              "type": "wrong_parameter",
+              "detail": "Parameter 'greater_is_better' not valid for TrainingArguments()",
+              "call": "TrainingArguments",
+              "parameter": "greater_is_better",
+              "context_available": true
+            },
+            {
+              "type": "wrong_parameter",
+              "detail": "Parameter 'logging_dir' not valid for TrainingArguments()",
+              "call": "TrainingArguments",
+              "parameter": "logging_dir",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\nimport numpy as np\nfrom datasets import load_dataset\nfrom transformers import (\n    AutoTokenizer,\n    AutoModelForSequenceClassification,\n    TrainingArguments,\n    Trainer,\n    DataCollatorWithPadding,\n)\nfrom sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score\nimport torch\n\n\n# Configuration\nMODEL_NAME = \"bert-base-uncased\"\nDATASET_NAME = \"imdb\"\nNUM_LABELS = 2\nMAX_LENGTH = 512\nOUTPUT_DIR = \"./fine_tuned_model\"\nBATCH_SIZE = 16\nNUM_EPOCHS = 3\nLEARNING_RATE = 2"
+        },
+        {
+          "query": "Create a Keras 3 model with functional API, custom training step, and multi-backend support",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "invented_method",
+              "detail": "Method 'keras.metrics.Mean' not found in keras API",
+              "call": "keras.metrics.Mean",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'keras.metrics.BinaryAccuracy' not found in keras API",
+              "call": "keras.metrics.BinaryAccuracy",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'keras.metrics.AUC' not found in keras API",
+              "call": "keras.metrics.AUC",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'keras.metrics.Precision' not found in keras API",
+              "call": "keras.metrics.Precision",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'keras.metrics.Recall' not found in keras API",
+              "call": "keras.metrics.Recall",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\nimport numpy as np\nimport pandas as pd\nimport keras\nfrom keras import layers, ops, optimizers, losses, metrics\nimport tensorflow as tf\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.preprocessing import StandardScaler\nfrom imblearn.over_sampling import RandomOverSampler\n\n# Configure backend (can be 'tensorflow', 'jax', or 'torch')\nimport os\nos.environ[\"KERAS_BACKEND\"] = \"tensorflow\"  # Change to 'jax' or 'torch' as needed\n\n# \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500"
+        },
+        {
+          "query": "Implement asyncio concurrent tasks with structured concurrency, timeout handling, and cancellation",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "invented_method",
+              "detail": "Method 'asyncio_timeout' not found in asyncio API",
+              "call": "asyncio_timeout",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'asyncio.ensure_future' not found in asyncio API",
+              "call": "asyncio.ensure_future",
+              "context_available": true
+            },
+            {
+              "type": "outdated_api",
+              "detail": "'asyncio.ensure_future' uses deprecated API 'ensure_future'",
+              "call": "asyncio.ensure_future",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'asyncio_timeout' not found in asyncio API",
+              "call": "asyncio_timeout",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'asyncio.ensure_future' not found in asyncio API",
+              "call": "asyncio.ensure_future",
+              "context_available": true
+            },
+            {
+              "type": "outdated_api",
+              "detail": "'asyncio.ensure_future' uses deprecated API 'ensure_future'",
+              "call": "asyncio.ensure_future",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'asyncio_timeout' not found in asyncio API",
+              "call": "asyncio_timeout",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'asyncio.ensure_future' not found in asyncio API",
+              "call": "asyncio.ensure_future",
+              "context_available": true
+            },
+            {
+              "type": "outdated_api",
+              "detail": "'asyncio.ensure_future' uses deprecated API 'ensure_future'",
+              "call": "asyncio.ensure_future",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'asyncio_timeout' not found in asyncio API",
+              "call": "asyncio_timeout",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'asyncio_timeout' not found in asyncio API",
+              "call": "asyncio_timeout",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\nfrom __future__ import annotations\n\nimport asyncio\nimport sys\nfrom collections.abc import Awaitable, Callable, Coroutine\nfrom contextlib import suppress\nfrom math import ceil\nfrom typing import Any, TypeVar\n\n_T = TypeVar(\"_T\")\n\n\n# ---------------------------------------------------------------------------\n# Timeout helpers (mirrors the shim pattern from the context)\n# ---------------------------------------------------------------------------\n\nif sys.version_info[:2] < (3, 11):\n    fro"
+        },
+        {
+          "query": "Set up a Celery task queue with periodic tasks, result backends, retry policies, and task chaining",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nfrom datetime import timedelta\nfrom celery import Celery, shared_task, chain\nfrom celery.schedules import crontab\nfrom celery.utils.log import get_task_logger\n\nlogger = get_task_logger(__name__)\n\n# Initialize Celery application with Redis as broker and result backend\napp = Celery('task_queue')\n\napp.config_from_object({\n    'broker_url': 'redis://localhost:6379/0',\n    'result_backend': 'redis://localhost:6379/0',\n    'task_ignore_result': False,\n    'task_serializer': 'json',\n    'resu"
+        },
+        {
+          "query": "Build a Redis cache layer with pipelining, pub/sub messaging, and Lua scripting using redis-py",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "invented_method",
+              "detail": "Method 'redis.call' not found in redis-py API",
+              "call": "redis.call",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'redis.call' not found in redis-py API",
+              "call": "redis.call",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'redis.call' not found in redis-py API",
+              "call": "redis.call",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'redis.call' not found in redis-py API",
+              "call": "redis.call",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'redis.call' not found in redis-py API",
+              "call": "redis.call",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\nimport pickle\nimport time\nimport threading\nfrom hashlib import sha1\nfrom typing import Any, Callable, Dict, List, Optional, Union\n\nimport redis\nfrom redis.exceptions import ResponseError\n\n\n# \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n# Lua script loader (borrowed pattern from docs)\n# \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nNO_SCRIPT_MESSAGES = (\"NOSCRIPT\",)\n\n\ndef _script_load(script: str) -> Callable:\n    \"\"\"\n    Load a Lua script and return a callable that executes it via "
+        },
+        {
+          "query": "Implement a PyMongo aggregation pipeline with lookup, group, faceted search, and change streams",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nfrom pymongo import MongoClient\nfrom pymongo.errors import ConnectionFailure, OperationFailure\nimport pymongo\n\n\nclass MongoDBAdvancedInterface:\n\n    def __init__(self, host=\"localhost\", port=27017):\n        try:\n            self.client = MongoClient(host, port)\n            self.db = self.client['mydatabase']\n            print(\"Connected to MongoDB\")\n        except ConnectionFailure:\n            print(\"Failed to connect to MongoDB\")\n\n    def aggregation_with_lookup(self, collection_name"
+        },
+        {
+          "query": "Create a Typer CLI application with subcommands, rich help panels, and automatic shell completion",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "invented_method",
+              "detail": "Method 'app.add_typer' not found in typer API",
+              "call": "app.add_typer",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'app.add_typer' not found in typer API",
+              "call": "app.add_typer",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'app.add_typer' not found in typer API",
+              "call": "app.add_typer",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\n\"\"\"\nTyper CLI application with subcommands, rich help panels, and automatic shell completion.\n\"\"\"\n\nfrom __future__ import annotations\n\nimport subprocess\nimport sys\nfrom pathlib import Path\nfrom typing import Optional\n\nimport typer\nfrom rich.console import Console\nfrom rich.panel import Panel\nfrom rich.table import Table\nfrom typing_extensions import Annotated\n\napp = typer.Typer(\n    name=\"mycli\",\n    help=\"A powerful CLI application with subcommands and rich help.\",\n    add_completion="
+        },
+        {
+          "query": "Build a Rich terminal UI with live display, tables, progress bars, and tree views",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "wrong_parameter",
+              "detail": "Parameter 'header_style' not valid for Table()",
+              "call": "Table",
+              "parameter": "header_style",
+              "context_available": true
+            },
+            {
+              "type": "wrong_parameter",
+              "detail": "Parameter 'border_style' not valid for Table()",
+              "call": "Table",
+              "parameter": "border_style",
+              "context_available": true
+            },
+            {
+              "type": "wrong_parameter",
+              "detail": "Parameter 'row_styles' not valid for Table()",
+              "call": "Table",
+              "parameter": "row_styles",
+              "context_available": true
+            },
+            {
+              "type": "wrong_parameter",
+              "detail": "Parameter 'header_style' not valid for Table()",
+              "call": "Table",
+              "parameter": "header_style",
+              "context_available": true
+            },
+            {
+              "type": "wrong_parameter",
+              "detail": "Parameter 'border_style' not valid for Table()",
+              "call": "Table",
+              "parameter": "border_style",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\n\"\"\"Rich terminal UI with live display, tables, progress bars, and tree views.\"\"\"\n\nimport time\nimport random\nimport threading\nfrom typing import Any\n\nfrom rich.console import Console\nfrom rich.live import Live\nfrom rich.table import Table\nfrom rich.progress import (\n    Progress,\n    BarColumn,\n    TextColumn,\n    TimeRemainingColumn,\n    TimeElapsedColumn,\n    FileSizeColumn,\n    TotalFileSizeColumn,\n    TransferSpeedColumn,\n    TaskProgressColumn,\n    SpinnerColumn,\n)\nfrom rich.tree i"
+        },
+        {
+          "query": "Set up structured logging with structlog including processors, formatters, and context binding",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "invented_method",
+              "detail": "Method 'setup_structlog' not found in structlog API",
+              "call": "setup_structlog",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'structlog.stdlib.PositionalArgumentsFormatter' not found in structlog API",
+              "call": "structlog.stdlib.PositionalArgumentsFormatter",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'structlog.processors.TimeStamper' not found in structlog API",
+              "call": "structlog.processors.TimeStamper",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'structlog.processors.StackInfoRenderer' not found in structlog API",
+              "call": "structlog.processors.StackInfoRenderer",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'structlog.processors.JSONRenderer' not found in structlog API",
+              "call": "structlog.processors.JSONRenderer",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'structlog.dev.ConsoleRenderer' not found in structlog API",
+              "call": "structlog.dev.ConsoleRenderer",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'structlog.stdlib.ProcessorFormatter' not found in structlog API",
+              "call": "structlog.stdlib.ProcessorFormatter",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'structlog.contextvars.bind_contextvars' not found in structlog API",
+              "call": "structlog.contextvars.bind_contextvars",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'structlog.contextvars.unbind_contextvars' not found in structlog API",
+              "call": "structlog.contextvars.unbind_contextvars",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'structlog.contextvars.clear_contextvars' not found in structlog API",
+              "call": "structlog.contextvars.clear_contextvars",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'StructlogContextManager' not found in structlog API",
+              "call": "StructlogContextManager",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'setup_structlog' not found in structlog API",
+              "call": "setup_structlog",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\nimport logging\nimport sys\nimport structlog\nfrom structlog.types import EventDict, WrappedLogger\nfrom typing import Any\n\n\ndef add_log_level(logger: WrappedLogger, method: str, event_dict: EventDict) -> EventDict:\n    \"\"\"Add log level to event dict.\"\"\"\n    event_dict[\"level\"] = method.upper()\n    return event_dict\n\n\ndef add_caller_info(logger: WrappedLogger, method: str, event_dict: EventDict) -> EventDict:\n    \"\"\"Add caller information to event dict.\"\"\"\n    import traceback\n    frame = "
+        },
+        {
+          "query": "Create a Loguru logging setup with rotation, serialization, custom sinks, and structured output",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nimport sys\nimport json\nimport logging\nfrom pathlib import Path\nfrom datetime import datetime\nfrom loguru import logger\n\n\ndef serialize_record(record):\n    \"\"\"Custom serializer for structured JSON output.\"\"\"\n    subset = {\n        \"timestamp\": record[\"time\"].strftime(\"%Y-%m-%dT%H:%M:%S.%f%z\"),\n        \"level\": record[\"level\"].name,\n        \"message\": record[\"message\"],\n        \"module\": record[\"module\"],\n        \"function\": record[\"function\"],\n        \"line\": record[\"line\"],\n        \"pr"
+        },
+        {
+          "query": "Build a React 19 application with server components, use hook, and concurrent features",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```tsx\nimport React, { \n  useState, \n  useEffect, \n  useTransition, \n  useDeferredValue, \n  useCallback,\n  use,\n  Suspense,\n  memo\n} from 'react';\n\n// \u2500\u2500 Types \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\ninterface Experiment {\n  id: string;\n  name: string;\n  status: 'queued' | 'running' | 'blocked' | 'done';\n  step?: number;\n  totalSteps?: number;\n  metric?: number;\n  paper?: string;\n}\n\ninterface LogEntry {\n  ts: number;\n  level: 'info' | 'warn' | 'error';\n  msg: stri"
+        },
+        {
+          "query": "Implement an Express.js REST API with middleware chain, error handling, and route organization",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\n# Express.js REST API with middleware chain, error handling, and route organization\n# Translated to Python using Starlette (equivalent architecture)\n\nimport os\nfrom contextlib import asynccontextmanager\nfrom starlette.applications import Starlette\nfrom starlette.middleware import Middleware\nfrom starlette.middleware.cors import CORSMiddleware\nfrom starlette.routing import Mount, Route\nfrom starlette.requests import Request\nfrom starlette.responses import JSONResponse\nfrom starlette.typ"
+        },
+        {
+          "query": "Create a Prisma schema with relations, middleware, and complex queries using the client",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "invented_method",
+              "detail": "Method 'Prisma' not found in prisma API",
+              "call": "Prisma",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\n# Prisma Schema with Relations, Middleware, and Complex Queries\n# Using Prisma Client Python\n\n# First, create the schema.prisma file\nPRISMA_SCHEMA = \"\"\"\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\ngenerator client {\n  provider             = \"prisma-client-py\"\n  recursive_type_depth = 5\n}\n\nmodel User {\n  id        String   @id @default(cuid())\n  email     String   @unique\n  name      String?\n  createdAt DateTime @default(now())\n  updatedAt DateTime @upd"
+        },
+        {
+          "query": "Build a Zod schema with complex validation, transforms, and type inference for a TypeScript API",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nfrom pydantic import BaseModel, Field, field_validator, model_validator\nfrom pydantic.functional_validators import AfterValidator, BeforeValidator\nfrom typing import Annotated, Any, Optional, Union, Literal\nfrom datetime import datetime\nfrom enum import Enum\nimport re\n\n\n# Enums for type safety\nclass UserRole(str, Enum):\n    ADMIN = \"admin\"\n    USER = \"user\"\n    MODERATOR = \"moderator\"\n\n\nclass AccountStatus(str, Enum):\n    ACTIVE = \"active\"\n    INACTIVE = \"inactive\"\n    SUSPENDED = \"sus"
+        },
+        {
+          "query": "Implement TanStack Query v5 with mutations, optimistic updates, and infinite scroll pagination",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "invented_method",
+              "detail": "Method 'QueryState' not found in tanstack-query API",
+              "call": "QueryState",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'query_fn' not found in tanstack-query API",
+              "call": "query_fn",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'QueryState' not found in tanstack-query API",
+              "call": "QueryState",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'query_fn' not found in tanstack-query API",
+              "call": "query_fn",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\nimport asyncio\nimport json\nfrom typing import Any, Optional\nfrom dataclasses import dataclass, field\nfrom collections import defaultdict\n\n\n@dataclass\nclass QueryKey:\n    key: tuple\n\n    def __hash__(self):\n        return hash(self.key)\n\n    def __eq__(self, other):\n        return self.key == other.key\n\n\n@dataclass\nclass QueryState:\n    data: Any = None\n    error: Any = None\n    status: str = \"pending\"  # pending, loading, success, error\n    is_fetching: bool = False\n    is_stale: bool "
+        },
+        {
+          "query": "Build a Starlette ASGI application with WebSocket support, middleware, and background tasks",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nfrom __future__ import annotations\n\nimport asyncio\nfrom contextlib import asynccontextmanager\nfrom typing import Any\n\nfrom starlette.applications import Starlette\nfrom starlette.background import BackgroundTask, BackgroundTasks\nfrom starlette.middleware import Middleware\nfrom starlette.middleware.cors import CORSMiddleware\nfrom starlette.requests import Request\nfrom starlette.responses import JSONResponse\nfrom starlette.routing import Route, WebSocketRoute\nfrom starlette.types import A"
+        },
+        {
+          "query": "Create an aiohttp web server with WebSocket support, sessions, and middleware",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nimport asyncio\nimport json\nimport logging\nfrom typing import Any\n\nfrom aiohttp import web, WSMsgType\n\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\n\n# --------------------------------------------------------------------------- #\n# In-memory session store (replace with Redis / DB in production)             #\n# --------------------------------------------------------------------------- #\nsessions: dict[str, dict[str, Any]] = {}\n\n\n# -------------------------"
+        },
+        {
+          "query": "Build a Tornado web application with async request handlers, WebSockets, and coroutine patterns",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "invented_method",
+              "detail": "Method 'tornado.web.HTTPError' not found in tornado API",
+              "call": "tornado.web.HTTPError",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'tornado.web.HTTPError' not found in tornado API",
+              "call": "tornado.web.HTTPError",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'tornado.web.HTTPError' not found in tornado API",
+              "call": "tornado.web.HTTPError",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'tornado.web.HTTPError' not found in tornado API",
+              "call": "tornado.web.HTTPError",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\nimport asyncio\nimport json\nimport logging\nimport os\nimport uuid\nfrom collections import defaultdict\nfrom datetime import datetime\nfrom typing import Any\n\nimport tornado.escape\nimport tornado.gen\nimport tornado.httpserver\nimport tornado.ioloop\nimport tornado.options\nimport tornado.web\nimport tornado.websocket\n\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\n\n# In-memory store for connected WebSocket clients\nconnected_clients: dict[str, set] = defaultdict(set"
+        },
+        {
+          "query": "Create a Sanic web application with blueprints, streaming, and signal-based middleware",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "invented_method",
+              "detail": "Method 'SanicException' not found in sanic API",
+              "call": "SanicException",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\nimport asyncio\nimport time\nfrom contextlib import asynccontextmanager\nfrom typing import Any\n\nfrom sanic import Sanic, Blueprint\nfrom sanic.request import Request\nfrom sanic.response import JSONResponse, StreamingHTTPResponse, json, stream, text\nfrom sanic.signals import Event\nfrom sanic.exceptions import Unauthorized, NotFound, SanicException\nfrom sanic.log import logger\nfrom sanic.middleware import Middleware\n\n\n# ======================================================================="
+        },
+        {
+          "query": "Build a Falcon REST API with middleware, hooks, responders, and ASGI support",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "invented_method",
+              "detail": "Method 'falcon.HTTPStatus' not found in falcon API",
+              "call": "falcon.HTTPStatus",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'falcon.HTTPTooManyRequests' not found in falcon API",
+              "call": "falcon.HTTPTooManyRequests",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'falcon.HTTPUnauthorized' not found in falcon API",
+              "call": "falcon.HTTPUnauthorized",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'falcon.HTTPUnsupportedMediaType' not found in falcon API",
+              "call": "falcon.HTTPUnsupportedMediaType",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\nfrom __future__ import annotations\n\nimport json\nimport logging\nimport os\nfrom collections.abc import AsyncGenerator\nfrom contextlib import asynccontextmanager\nfrom contextvars import ContextVar\nfrom typing import Any\n\nimport falcon\nimport falcon.asgi\nfrom falcon import Request, Response, App\nfrom falcon.asgi import App as ASGIApp\n\nlogger = logging.getLogger(__name__)\n\n# Context variable for current user/API key\n_current_api_key: ContextVar[str | None] = ContextVar(\"_current_api_key\", d"
+        },
+        {
+          "query": "Implement a TensorFlow 2.x model with tf.data pipeline, custom training, and SavedModel export",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nimport tensorflow as tf\nimport numpy as np\nfrom pathlib import Path\n\n# Load and preprocess MNIST dataset\n(x_train, y_train), (x_test, y_test) = tf.keras.datasets.mnist.load_data()\n\nx_train = x_train.reshape(-1, 28, 28, 1).astype('float32') / 255.0\nx_test = x_test.reshape(-1, 28, 28, 1).astype('float32') / 255.0\ny_train = tf.keras.utils.to_categorical(y_train, num_classes=10)\ny_test = tf.keras.utils.to_categorical(y_test, num_classes=10)\n\n# Build tf.data pipeline\nBATCH_SIZE = 256\nSHUFFL"
+        },
+        {
+          "query": "Create a Dask distributed computation with delayed functions, DataFrames, and cluster management",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "invented_method",
+              "detail": "Method 'create_dask_dataframe' not found in dask API",
+              "call": "create_dask_dataframe",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'compute_dask_aggregations' not found in dask API",
+              "call": "compute_dask_aggregations",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'filter_and_transform_dask' not found in dask API",
+              "call": "filter_and_transform_dask",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\nimport pandas as pd\nimport numpy as np\nfrom multiprocessing import Pool\nfrom functools import partial\nimport dask\nimport dask.dataframe as dd\nimport dask.array as da\nfrom dask import delayed\nfrom dask.distributed import Client, LocalCluster\nimport warnings\n\n\n# \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n# 1. Cluster Management\n# \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\ndef create_local_cluster(n_workers: int = 4, threads_per_worker: int = 2, memory_limit: str = \"2GB\"):\n    \"\"\"\n"
+        },
+        {
+          "query": "Build a Tortoise ORM application with models, relations, and async query building",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\n\"\"\"\nTortoise ORM application with models, relations, and async query building.\n\"\"\"\n\nimport asyncio\nfrom datetime import datetime\nfrom typing import Optional, List\nfrom tortoise import Tortoise, fields\nfrom tortoise.models import Model\nfrom tortoise.queryset import QuerySet\nfrom tortoise.transactions import in_transaction\nfrom tortoise.expressions import Q\nfrom tortoise.functions import Count\n\n\n# ==============================================================================\n# MODEL DEFI"
+        },
+        {
+          "query": "Implement a Peewee ORM application with model definitions, joins, and transaction management",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\n\"\"\"\nPeewee ORM application with model definitions, joins, and transaction management.\n\"\"\"\n\nimport json\nimport logging\nfrom contextlib import contextmanager\nfrom datetime import datetime, timezone\nfrom typing import Any\nfrom uuid import uuid4\n\nimport peewee\n\n# ==============================================================================\n# DATABASE CONFIGURATION\n# ==============================================================================\n\ndatabase = peewee.SqliteDatabase(\n    \"app.d"
+        },
+        {
+          "query": "Set up a requests-based HTTP client with session management, authentication, and streaming",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nimport requests\nfrom requests.adapters import HTTPAdapter\nfrom urllib3.util.retry import Retry\nfrom typing import Optional, Dict, Any, Iterator\nimport json\n\n\nclass TokenAuth(requests.auth.AuthBase):\n    \"\"\"Token-based authentication handler.\"\"\"\n    \n    def __init__(self, token: str) -> None:\n        self.token = token\n    \n    def __call__(self, r: requests.PreparedRequest) -> requests.PreparedRequest:\n        r.headers[\"Authorization\"] = f\"Bearer {self.token}\"\n        return r\n\n\nclas"
+        },
+        {
+          "query": "Build a urllib3 connection pool with retries, TLS configuration, and proxy support",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "invented_method",
+              "detail": "Method 'create_urllib3_context' not found in urllib3 API",
+              "call": "create_urllib3_context",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\nimport ssl\nimport urllib3\nfrom urllib3 import PoolManager, ProxyManager\nfrom urllib3.util.retry import Retry\nfrom urllib3.util.ssl_ import create_urllib3_context\n\n\ndef build_connection_pool(\n    # Pool settings\n    num_pools: int = 10,\n    maxsize: int = 10,\n    block: bool = False,\n    # Retry settings\n    retries: int = 3,\n    backoff_factor: float = 0.3,\n    status_forcelist: tuple = (500, 502, 503, 504),\n    allowed_methods: tuple = (\"HEAD\", \"GET\", \"POST\", \"PUT\", \"DELETE\", \"OPTIONS"
+        },
+        {
+          "query": "Implement a Gin web server with route groups, middleware, validation, and custom error handling in Go",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\npackage main\n\nimport (\n\t\"errors\"\n\t\"log\"\n\t\"net/http\"\n\t\"strings\"\n\t\"time\"\n\n\t\"github.com/gin-gonic/gin\"\n\t\"github.com/gin-gonic/gin/binding\"\n\t\"github.com/go-playground/validator/v10\"\n)\n\n// =========================================================================\n// MODELS & REQUEST/RESPONSE TYPES\n// =========================================================================\n\ntype User struct {\n\tID        string    `json:\"id\"`\n\tName      string    `json:\"name\"`\n\tEmail     string    `json:\"emai"
+        },
+        {
+          "query": "Build an Echo web application with middleware, request binding, and response rendering in Go",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "invented_method",
+              "detail": "Method 'echo.PathParamsBinder' not found in echo API",
+              "call": "echo.PathParamsBinder",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'echo.PathParamsBinder' not found in echo API",
+              "call": "echo.PathParamsBinder",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'echo.PathParamsBinder' not found in echo API",
+              "call": "echo.PathParamsBinder",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\npackage main\n\nimport (\n\t\"net/http\"\n\t\"time\"\n\n\t\"github.com/labstack/echo/v4\"\n\t\"github.com/labstack/echo/v4/middleware\"\n)\n\n// User represents a user in the system\ntype User struct {\n\tID        int       `json:\"id\"`\n\tName      string    `json:\"name\" form:\"name\" validate:\"required\"`\n\tEmail     string    `json:\"email\" form:\"email\" validate:\"required,email\"`\n\tCreatedAt time.Time `json:\"created_at\"`\n}\n\n// CreateUserRequest represents the request body for creating a user\ntype CreateUserRequest "
+        },
+        {
+          "query": "Implement a GORM database layer with models, associations, hooks, and scoped queries in Go",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\n\"\"\"\nGORM database layer implementation in Go with models, associations, hooks, and scoped queries.\nGenerated as a Python string containing Go code, following the SQLAlchemy models pattern.\n\"\"\"\n\nGORM_MODELS_GO = '''package database\n\nimport (\n\t\"crypto/sha256\"\n\t\"encoding/hex\"\n\t\"encoding/json\"\n\t\"fmt\"\n\t\"time\"\n\n\t\"github.com/google/uuid\"\n\t\"gorm.io/driver/postgres\"\n\t\"gorm.io/driver/sqlite\"\n\t\"gorm.io/gorm\"\n\t\"gorm.io/gorm/logger\"\n)\n\n// ============================================================"
+        },
+        {
+          "query": "Build an Actix-web server with extractors, middleware, state management, and error handling in Rust",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nrust_actix_web_server = '''\nuse actix_web::{\n    dev::{forward_ready, Service, ServiceRequest, ServiceResponse, Transform},\n    error::{ErrorInternalServerError, ErrorNotFound, ErrorUnauthorized},\n    get, post, put, delete,\n    middleware::Logger,\n    web::{self, Data, Json, Path, Query},\n    App, Error, HttpRequest, HttpResponse, HttpServer, Result,\n};\nuse actix_web::body::EitherBody;\nuse futures_util::future::{ready, LocalBoxFuture, Ready};\nuse serde::{Deserialize, Serialize};\nuse s"
+        },
+        {
+          "query": "Implement a Tokio async runtime with channels, select, timers, and spawned tasks in Rust",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nimport asyncio\nimport threading\nfrom typing import Any, Optional, Callable\nfrom queue import Queue, Empty\nimport time\n\n\n# Simulating Tokio-like channels\nclass Sender:\n    def __init__(self, queue: asyncio.Queue):\n        self._queue = queue\n\n    async def send(self, value: Any) -> None:\n        await self._queue.put(value)\n\n    def blocking_send(self, value: Any) -> None:\n        loop = asyncio.new_event_loop()\n        loop.run_until_complete(self._queue.put(value))\n        loop.close("
+        },
+        {
+          "query": "Build a Serde serialization layer with custom derive, field attributes, and format support in Rust",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "invented_method",
+              "detail": "Method 'run_rust_serde_example' not found in serde API",
+              "call": "run_rust_serde_example",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'serde' not found in serde API",
+              "call": "serde",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'serde' not found in serde API",
+              "call": "serde",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'serde' not found in serde API",
+              "call": "serde",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'serde' not found in serde API",
+              "call": "serde",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'serde' not found in serde API",
+              "call": "serde",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'serde' not found in serde API",
+              "call": "serde",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'serde' not found in serde API",
+              "call": "serde",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'serde' not found in serde API",
+              "call": "serde",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'serde' not found in serde API",
+              "call": "serde",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'serde' not found in serde API",
+              "call": "serde",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'serde' not found in serde API",
+              "call": "serde",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'serde' not found in serde API",
+              "call": "serde",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "\n```python\nimport subprocess\nimport sys\nimport tempfile\nimport os\n\ndef run_rust_serde_example():\n    \"\"\"\n    Demonstrates a Serde serialization layer with custom derive, field attributes,\n    and format support in Rust by creating and running a Rust project.\n    \"\"\"\n    \n    rust_code = r'''\nuse serde::{Deserialize, Serialize};\nuse serde_json::{self, Value};\nuse std::collections::HashMap;\n\n// Custom serialization format support\n#[derive(Debug, Clone, PartialEq)]\npub enum SerializationFormat {\n  "
+        },
+        {
+          "query": "Implement a Django REST Framework API with serializers, viewsets, permissions, and pagination",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\n# models.py\nfrom django.db import models\n\n\nclass Especialidade(models.Model):\n    nome = models.CharField(max_length=100)\n    descricao = models.TextField(blank=True, null=True)\n    ativo = models.BooleanField(default=True)\n    criado_em = models.DateTimeField(auto_now_add=True)\n    atualizado_em = models.DateTimeField(auto_now=True)\n\n    class Meta:\n        ordering = ['nome']\n        verbose_name = 'Especialidade'\n        verbose_name_plural = 'Especialidades'\n\n    def __str__(self):"
+        },
+        {
+          "query": "Create a Dramatiq task queue with actors, middleware, results backend, and rate limiting",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\n\"\"\"Dramatiq task queue with actors, middleware, results backend, and rate limiting.\"\"\"\n\nimport time\nimport logging\nfrom functools import wraps\nfrom threading import local\n\nimport dramatiq\nfrom dramatiq.brokers.redis import RedisBroker\nfrom dramatiq.middleware import (\n    AgeLimit,\n    TimeLimit,\n    Callbacks,\n    Pipelines,\n    Retries,\n    CurrentMessage,\n)\nfrom dramatiq.results import Results\nfrom dramatiq.results.backends import RedisBackend\nfrom dramatiq.rate_limits import Concur"
+        },
+        {
+          "query": "Build an RQ (Redis Queue) worker setup with job scheduling, failure handling, and monitoring",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "invented_method",
+              "detail": "Method 'RQ' not found in rq API",
+              "call": "RQ",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\n\"\"\"RQ (Redis Queue) worker setup with job scheduling, failure handling, and monitoring.\"\"\"\n\nfrom __future__ import annotations\n\nimport logging\nimport os\nimport signal\nimport socket\nimport sys\nimport time\nfrom datetime import datetime, timedelta, timezone\nfrom typing import Any, Callable, Optional\n\nimport redis\nfrom rq import Queue, Worker, Connection\nfrom rq.job import Job, JobStatus\nfrom rq.exceptions import NoSuchJobError\nfrom rq.timeouts import JobTimeoutException\nfrom rq_scheduler "
+        },
+        {
+          "query": "Set up a Django 5 model layer with custom managers, querysets, signals, and migration operations",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\n# models.py\nfrom django.db import models\nfrom django.db.models import QuerySet, Manager\nfrom django.db.models import signals\nfrom django.dispatch import receiver\n\n\n# Custom QuerySet\nclass ArticleQuerySet(QuerySet):\n    def published(self):\n        return self.filter(status='published')\n\n    def draft(self):\n        return self.filter(status='draft')\n\n    def by_author(self, author):\n        return self.filter(author=author)\n\n    def recent(self):\n        return self.order_by('-created_"
+        },
+        {
+          "query": "Build a multi-step LangChain agent with tool calling, memory, and structured output",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "wrong_parameter",
+              "detail": "Parameter 'early_stopping_method' not valid for AgentExecutor()",
+              "call": "AgentExecutor",
+              "parameter": "early_stopping_method",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\nfrom typing import Any\n\nfrom langchain_core.messages import SystemMessage\nfrom langchain_core.tools import BaseTool, tool\nfrom langchain_openai import ChatOpenAI\n\nfrom langchain_classic.agents.openai_functions_agent.agent_token_buffer_memory import (\n    AgentTokenBufferMemory,\n)\nfrom langchain_classic.agents.openai_functions_agent.base import OpenAIFunctionsAgent\nfrom langchain_classic.agents.agent import AgentExecutor\nfrom langchain_core.prompts.chat import MessagesPlaceholder\n\n\n# De"
+        },
+        {
+          "query": "Create a FastAPI application with OAuth2 authentication, dependency injection, and background tasks",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\n\"\"\"\nFastAPI application with OAuth2 authentication, dependency injection, and background tasks.\n\"\"\"\n\nimport time\nimport uuid\nimport logging\nfrom typing import Any, Optional\nfrom collections import defaultdict\n\nfrom fastapi import (\n    FastAPI,\n    HTTPException,\n    Depends,\n    BackgroundTasks,\n    Request,\n    status,\n)\nfrom fastapi.middleware.cors import CORSMiddleware\nfrom fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm\nfrom pydantic import BaseModel\n\nlogge"
+        },
+        {
+          "query": "Implement a complex Pydantic v2 settings management with environment variable parsing and nested configs",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\n\"\"\"\nComplex Pydantic v2 settings management with environment variable parsing and nested configs.\n\"\"\"\n\nimport json\nimport os\nfrom functools import lru_cache\nfrom pathlib import Path\nfrom typing import Any, Literal\n\nfrom pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator\nfrom pydantic_settings import BaseSettings, SettingsConfigDict\n\n\n# ---------------------------------------------------------------------------\n# Nested config models\n# -----------------------"
+        },
+        {
+          "query": "Build a PyTorch Lightning training module with callbacks, logging, and distributed training",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nimport os\nimport copy\nfrom typing import Any, Dict, Optional, Type\n\nimport torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom torch.utils.data import DataLoader, TensorDataset\n\ntry:\n    import pytorch_lightning as pl\n    from pytorch_lightning import Trainer\n    from pytorch_lightning.callbacks import (\n        Callback,\n        ModelCheckpoint,\n        EarlyStopping,\n        LearningRateMonitor,\n    )\n    from pytorch_lightning.loggers import TensorBoardLogger, CSVLogger"
+        },
+        {
+          "query": "Build a Next.js API route handler with middleware, streaming responses, and server actions",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nimport os\nimport json\nimport asyncio\nfrom typing import Any, AsyncIterator, Iterator, Callable\nfrom contextlib import asynccontextmanager\nfrom starlette.requests import Request\nfrom starlette.responses import Response, JSONResponse, StreamingResponse\nfrom starlette.middleware.base import BaseHTTPMiddleware\nfrom starlette.routing import Route, Mount\nfrom starlette.applications import Starlette\nfrom starlette.middleware import Middleware\nfrom starlette.types import ASGIApp, Receive, Scop"
+        },
+        {
+          "query": "Create a comprehensive test suite with pytest including fixtures, parametrize, mocking, and async tests",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\n\"\"\"Comprehensive test suite with pytest fixtures, parametrize, mocking, and async tests.\"\"\"\nimport asyncio\nimport os\nfrom collections.abc import AsyncIterator, Iterator\nfrom typing import Any\nfrom unittest.mock import AsyncMock, MagicMock, patch\n\nimport pytest\n\n\n# =============================================================================\n# Sample classes and functions to test\n# =============================================================================\n\n\nclass DatabaseClient:\n    "
+        },
+        {
+          "query": "Set up a comprehensive mypy type checking configuration with plugins, overrides, and strict mode",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "invented_method",
+              "detail": "Method 'generate_mypy_config' not found in mypy API",
+              "call": "generate_mypy_config",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'generate_pyproject_toml_mypy_section' not found in mypy API",
+              "call": "generate_pyproject_toml_mypy_section",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'generate_pydantic_mypy_plugin_config' not found in mypy API",
+              "call": "generate_pydantic_mypy_plugin_config",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'generate_strict_mypy_overrides' not found in mypy API",
+              "call": "generate_strict_mypy_overrides",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\n# mypy.ini or setup.cfg [mypy] section equivalent as a Python configuration generator\n\nimport textwrap\n\n\ndef generate_mypy_config() -> str:\n    \"\"\"Generate a comprehensive mypy configuration.\"\"\"\n    \n    config = textwrap.dedent(\"\"\"\n    [mypy]\n    # Import discovery\n    mypy_path = typings\n    files = pandas, typings\n    namespace_packages = False\n    explicit_package_bases = False\n    ignore_missing_imports = True\n    follow_imports = normal\n    follow_imports_for_stubs = False\n    no"
+        },
+        {
+          "query": "Build a SQLAlchemy 2.0 model with hybrid properties, custom types, and event listeners",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nfrom __future__ import annotations\n\nimport json\nfrom dataclasses import dataclass\nfrom datetime import datetime\nfrom typing import Any, List, MutableMapping, Optional, Tuple, Type\n\nfrom sqlalchemy import (\n    Column,\n    DateTime,\n    Float,\n    Integer,\n    String,\n    Text,\n    TypeDecorator,\n    event,\n    func,\n    inspect,\n    tuple_,\n)\nfrom sqlalchemy.ext.hybrid import Comparator, hybrid_property\nfrom sqlalchemy.ext.mutable import Mutable\nfrom sqlalchemy.orm import (\n    Declara"
+        },
+        {
+          "query": "Implement a complete Docker Compose setup with multi-stage builds, health checks, and network configuration",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nimport subprocess\nimport sys\nfrom pathlib import Path\n\nDOCKER_COMPOSE_CONTENT = \"\"\"version: '3.8'\n\nservices:\n  app:\n    build:\n      context: .\n      dockerfile: Dockerfile\n      target: production\n    container_name: app-service\n    ports:\n      - \"8000:8000\"\n    volumes:\n      - app_data:/app/data\n    environment:\n      - APP_HOST=0.0.0.0\n      - APP_PORT=8000\n      - DATABASE_URL=sqlite:////app/data/db/app.db\n      - LOG_LEVEL=INFO\n      - TOKENIZERS_PARALLELISM=false\n    networks:\n"
+        },
+        {
+          "query": "Create a Kubernetes deployment manifest with rolling updates, resource limits, probes, and autoscaling",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nfrom kubernetes import client, config\nfrom kubernetes.client.rest import ApiException\n\n\ndef create_deployment_manifest():\n    \"\"\"Create a Kubernetes Deployment with rolling updates, resource limits, and probes.\"\"\"\n    \n    # Resource requirements\n    resources = client.V1ResourceRequirements(\n        requests={\n            \"cpu\": \"250m\",\n            \"memory\": \"256Mi\"\n        },\n        limits={\n            \"cpu\": \"500m\",\n            \"memory\": \"512Mi\"\n        }\n    )\n    \n    # Liveness"
+        },
+        {
+          "query": "Build a Webpack 5 configuration with code splitting, module federation, and asset optimization",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "invented_method",
+              "detail": "Method 'generate_webpack_config' not found in webpack API",
+              "call": "generate_webpack_config",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\n# webpack.config.py - Python script to generate Webpack 5 configuration files\n\nimport json\nimport os\n\ndef generate_webpack_config():\n    \"\"\"Generate Webpack 5 configuration with code splitting, module federation, and asset optimization\"\"\"\n    \n    webpack_config = \"\"\"const path = require('path');\nconst { ModuleFederationPlugin } = require('webpack').container;\nconst HtmlWebpackPlugin = require('html-webpack-plugin');\nconst MiniCssExtractPlugin = require('mini-css-extract-plugin');\ncons"
+        },
+        {
+          "query": "Create a Matplotlib visualization with subplots, custom styling, annotations, and interactive features",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nimport matplotlib.pyplot as plt\nimport matplotlib.patches as mpatches\nfrom matplotlib.widgets import Slider, Button, CheckButtons\nimport numpy as np\nimport pandas as pd\nfrom sklearn import datasets\nimport seaborn as sns\nfrom mpl_toolkits.mplot3d import Axes3D\n\n# Load and prepare the Iris dataset\niris = datasets.load_iris()\ndataset = pd.DataFrame(data=iris.data, columns=iris.feature_names)\ndataset.columns = dataset.columns.str.replace(r\" \\(cm\\)\", \"\", regex=True)\ndataset.columns = datase"
+        },
+        {
+          "query": "Build a Plotly interactive dashboard with subplots, animations, and custom themes",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "wrong_parameter",
+              "detail": "Parameter 'vertical_spacing' not valid for make_subplots()",
+              "call": "make_subplots",
+              "parameter": "vertical_spacing",
+              "context_available": true
+            },
+            {
+              "type": "wrong_parameter",
+              "detail": "Parameter 'horizontal_spacing' not valid for make_subplots()",
+              "call": "make_subplots",
+              "parameter": "horizontal_spacing",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\nimport plotly.graph_objects as go\nimport plotly.express as px\nfrom plotly.subplots import make_subplots\nimport pandas as pd\nimport numpy as np\nfrom sklearn import datasets\n\n\n# \u2500\u2500 Custom theme \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCUSTOM_THEME = {\n    \"bg_dark\":   \"#0a0a0a\",\n    \"bg_panel\":  \"#111111\",\n    \"bg_card\":   \"#1a1a1a\",\n    \"accent\":    \"#f97316\",\n    \"accent2\":   \"#ea580c\",\n    \"green\":     \"#22c55e\",\n    \"purple\":    \"#a855f7\",\n    \"text1\":     \"#ede"
+        },
+        {
+          "query": "Create a Seaborn statistical visualization with faceted plots, regression, and custom palettes",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nimport pandas as pd\nimport seaborn as sns\nimport matplotlib.pyplot as plt\nfrom sklearn.datasets import fetch_openml\n\n# Load the Titanic dataset\ntitanic = fetch_openml('titanic', version=1, as_frame=True)\ndf = titanic.frame\n\n# Drop rows with missing 'age' values\ndf = df.dropna(subset=['age'])\n\n# Convert relevant columns to numeric types\ndf['age'] = pd.to_numeric(df['age'], errors='coerce')\ndf['fare'] = pd.to_numeric(df['fare'], errors='coerce')\ndf['survived'] = pd.to_numeric(df['survive"
+        },
+        {
+          "query": "Implement a Celery beat scheduler with timezone-aware periodic tasks and dynamic scheduling",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\n\"\"\"\nTimezone-aware Celery beat scheduler with dynamic scheduling capabilities.\n\"\"\"\nimport time\nfrom datetime import datetime\nfrom typing import Any\n\nimport pytz\nfrom celery import Celery\nfrom celery.beat import PersistentScheduler, ScheduleEntry, Scheduler\nfrom celery.schedules import crontab, schedule\nfrom celery.utils.log import get_logger\nfrom celery.utils.time import maybe_make_aware\nfrom kombu.utils.objects import cached_property\n\nlogger = get_logger(__name__)\n\n\n# Initialize Celer"
+        },
+        {
+          "query": "Build a comprehensive Alembic migration setup with auto-generation, batch operations, and data migrations",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\n# =============================================================================\n# alembic_setup/\n# \u251c\u2500\u2500 alembic.ini\n# \u251c\u2500\u2500 env.py\n# \u251c\u2500\u2500 script.py.mako\n# \u2514\u2500\u2500 versions/\n#     \u251c\u2500\u2500 001_initial_schema.py\n#     \u251c\u2500\u2500 002_add_user_preferences.py\n#     \u2514\u2500\u2500 003_data_migration_normalize_emails.py\n# =============================================================================\n\n# =============================================================================\n# models.py - SQLAlchemy models\n# ==========="
+        },
+        {
+          "query": "Implement a Marshmallow schema with nested objects, custom fields, and two-way serialization",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nimport marshmallow as ma\nfrom marshmallow import Schema, fields, post_load, pre_load, post_dump, validates, ValidationError\nfrom typing import Any, Optional\nimport json\nfrom datetime import datetime, date\n\n\n# \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 Domain models \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nclass Address:\n    def __init__(self, street: str, city: str, zip_code: str, country: str = \"US\"):\n        self.street = street\n        self.city = city\n        self.zip_code = zip_code\n        self.country = c"
+        },
+        {
+          "query": "Create a comprehensive AWS Boto3 setup for S3 operations with presigned URLs, multipart upload, and lifecycle rules",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nimport boto3\nimport os\nimport math\nfrom pathlib import Path\nfrom botocore.exceptions import ClientError\nfrom botocore.config import Config\n\n\n# \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n# Client / Resource Factories\n# \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\ndef create_s3_client(region_name: str = \"us-east-1\") -> boto3.client:\n    return boto3.client(\n        \"s3\",\n        region_name=region_name,\n        config=Config(signature_version=\"s3v4\"),\n    )\n\n\ndef create_s3_resource("
+        },
+        {
+          "query": "Implement Google Cloud Firestore operations with transactions, batch writes, and real-time listeners",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nfrom __future__ import annotations\n\nimport logging\nfrom datetime import datetime, timedelta\nfrom typing import Any, Callable, Dict, List, Optional\n\nfrom google.cloud import firestore\nfrom google.cloud.firestore_v1 import (\n    DocumentReference,\n    CollectionReference,\n    Transaction,\n    WriteBatch,\n    Watch,\n)\nfrom google.cloud.firestore_v1.base_query import BaseQuery\nfrom google.api_core import retry\nfrom google.api_core.exceptions import Conflict, NotFound\n\nlogger = logging.getL"
+        },
+        {
+          "query": "Build a Celery task with custom serializers, priority queues, and canvas workflows",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "invented_method",
+              "detail": "Method 'Celery' not found in celery API",
+              "call": "Celery",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\nimport celery\nfrom celery import Celery, signature, group, chain, chord\nfrom celery.utils.log import get_task_logger\nfrom kombu import Queue, Exchange\n\nlogger = get_task_logger(__name__)\n\n# Configure Celery application\napp = Celery('workflow_tasks')\n\napp.conf.update(\n    # Broker and backend settings\n    broker_url='redis://localhost:6379/0',\n    result_backend='redis://localhost:6379/1',\n\n    # Serialization settings\n    task_serializer='json',\n    result_serializer='json',\n    accept"
+        },
+        {
+          "query": "Create an OpenAI API integration with chat completions, function calling, streaming, and embeddings",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\n\"\"\"OpenAI API integration with chat completions, function calling, streaming, and embeddings.\"\"\"\n\nfrom __future__ import annotations\n\nimport json\nfrom typing import Any, Iterator, Sequence\n\nimport openai\n\n\nclass OpenAIIntegration:\n    \"\"\"Comprehensive OpenAI API integration supporting chat completions,\n    function calling, streaming, and embeddings.\"\"\"\n\n    def __init__(\n        self,\n        api_key: str,\n        model: str = \"gpt-4o\",\n        embedding_model: str = \"text-embedding-3"
+        },
+        {
+          "query": "Build a Anthropic Claude integration with streaming, tool use, and multi-turn conversations",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "invented_method",
+              "detail": "Method 'ChatAnthropic' not found in anthropic API",
+              "call": "ChatAnthropic",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\n\"\"\"Anthropic Claude integration with streaming, tool use, and multi-turn conversations.\"\"\"\n\nfrom __future__ import annotations\n\nimport json\nfrom typing import Any\n\nfrom langchain_anthropic import ChatAnthropic\nfrom langchain_core.messages import AIMessage, HumanMessage, SystemMessage, ToolMessage\nfrom langchain_core.tools import tool\n\n\n# Define tools\n@tool\ndef get_weather(location: str, unit: str = \"celsius\") -> str:\n    \"\"\"Get the current weather for a location.\n\n    Args:\n        loc"
+        },
+        {
+          "query": "Implement a Supabase backend with auth, real-time subscriptions, storage, and edge functions",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "invented_method",
+              "detail": "Method '_get_supabase_url' not found in supabase API",
+              "call": "_get_supabase_url",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method '_get_supabase_service_key' not found in supabase API",
+              "call": "_get_supabase_service_key",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method '_get_supabase_publishable_key' not found in supabase API",
+              "call": "_get_supabase_publishable_key",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'Supabase' not found in supabase API",
+              "call": "Supabase",
+              "context_available": true
+            },
+            {
+              "type": "wrong_parameter",
+              "detail": "Parameter 'str' not valid for select()",
+              "call": "select",
+              "parameter": "str",
+              "context_available": true
+            },
+            {
+              "type": "wrong_parameter",
+              "detail": "Parameter 'dict' not valid for select()",
+              "call": "select",
+              "parameter": "dict",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'get_supabase_rest' not found in supabase API",
+              "call": "get_supabase_rest",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'SupabaseREST' not found in supabase API",
+              "call": "SupabaseREST",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method '_get_supabase_service_key' not found in supabase API",
+              "call": "_get_supabase_service_key",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method '_get_supabase_url' not found in supabase API",
+              "call": "_get_supabase_url",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method '_get_supabase_service_key' not found in supabase API",
+              "call": "_get_supabase_service_key",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method '_get_supabase_publishable_key' not found in supabase API",
+              "call": "_get_supabase_publishable_key",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'get_supabase_rest' not found in supabase API",
+              "call": "get_supabase_rest",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\n\"\"\"\nSupabase backend implementation with auth, real-time subscriptions,\nstorage, and edge functions for SyntheticSciences Research Context.\n\"\"\"\n\nimport logging\nimport os\nimport json\nimport time\nimport threading\nimport requests\nfrom typing import Optional, Callable, Any\nfrom datetime import datetime\n\nlogger = logging.getLogger(__name__)\n\n\ndef _require_env(var_name: str) -> str:\n    value = os.environ.get(var_name)\n    if not value:\n        raise RuntimeError(\n            f\"Missing requi"
+        },
+        {
+          "query": "Build a comprehensive GitHub Actions workflow with matrix strategy, caching, artifacts, and reusable workflows",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "invented_method",
+              "detail": "Method 'generate_github_actions_workflow' not found in github-actions API",
+              "call": "generate_github_actions_workflow",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'generate_github_actions_workflow' not found in github-actions API",
+              "call": "generate_github_actions_workflow",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "\n```python\nimport anthropic\n\nclient = anthropic.Anthropic()\n\nWORKFLOW_PROMPT = \"\"\"Create a comprehensive GitHub Actions workflow YAML file that includes:\n\n1. **Matrix Strategy**: Test across multiple Python versions (3.9, 3.10, 3.11, 3.12, 3.13) and operating systems (ubuntu-latest, windows-latest, macos-latest)\n\n2. **Caching**: \n   - Cache pip dependencies using actions/cache@v5\n   - Cache based on requirements files hash\n   - Restore cache on cache miss\n\n3. **Artifacts**:\n   - Upload test repo"
+        },
+        {
+          "query": "Create a Terraform infrastructure configuration with modules, state management, and provider configuration",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "invented_method",
+              "detail": "Method 'create_terraform_infrastructure' not found in terraform API",
+              "call": "create_terraform_infrastructure",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\nimport os\nimport textwrap\nfrom pathlib import Path\n\n\ndef create_terraform_infrastructure():\n    \"\"\"Create a complete Terraform infrastructure configuration with modules,\n    state management, and provider configuration.\"\"\"\n    \n    base_dir = Path(\"terraform-infrastructure\")\n    base_dir.mkdir(exist_ok=True)\n    \n    # Create directory structure\n    dirs = [\n        \"modules/networking\",\n        \"modules/compute\",\n        \"modules/security\",\n        \"modules/database\",\n        \"environ"
+        },
+        {
+          "query": "Implement a Svelte 5 component with runes, snippets, and fine-grained reactivity",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\n# This request asks for Svelte 5 component code, but the instruction says to return only Python code.\n# The provided documentation covers Preact, HTM, and React - none of which are Svelte.\n# Based on the constraint to use ONLY the provided context/documentation and return Python code,\n# here is a Python representation of a reactive component system inspired by the concepts shown:\n\nfrom dataclasses import dataclass, field\nfrom typing import Any, Callable, Optional\nimport copy\n\n\n# Fine-g"
+        },
+        {
+          "query": "Build a Vue 3 application with Composition API, Pinia store, and Vue Router 4",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\n# Vue 3 Application with Composition API, Pinia Store, and Vue Router 4\n# This Python script generates the necessary files for the Vue 3 application\n\nimport os\n\ndef create_file(path, content):\n    os.makedirs(os.path.dirname(path), exist_ok=True)\n    with open(path, 'w') as f:\n        f.write(content)\n    print(f\"Created: {path}\")\n\n# package.json\npackage_json = '''{\n  \"name\": \"vue3-pinia-router-app\",\n  \"version\": \"0.0.0\",\n  \"private\": true,\n  \"scripts\": {\n    \"dev\": \"vite\",\n    \"build\""
+        },
+        {
+          "query": "Create an Angular 17 application with signals, standalone components, and new control flow",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "invented_method",
+              "detail": "Method 'generate_angular17_app' not found in angular API",
+              "call": "generate_angular17_app",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\n# Python script to generate Angular 17 application files with signals, standalone components, and new control flow\n\nimport os\n\ndef create_file(path: str, content: str) -> None:\n    \"\"\"Create a file with the given content, creating directories as needed.\"\"\"\n    os.makedirs(os.path.dirname(path), exist_ok=True)\n    with open(path, 'w') as f:\n        f.write(content)\n    print(f\"Created: {path}\")\n\ndef generate_angular17_app():\n    base = \"angular17-signals-app\"\n\n    # package.json\n    cre"
+        },
+        {
+          "query": "Build a GraphQL API with Strawberry framework including subscriptions, dataloaders, and authentication",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nimport asyncio\nimport time\nfrom collections import defaultdict\nfrom functools import wraps\nfrom typing import Any, AsyncGenerator, Optional\n\nimport strawberry\nfrom strawberry.dataloader import DataLoader\nfrom strawberry.extensions import Extension\nfrom strawberry.fastapi import GraphQLRouter\nfrom strawberry.subscriptions import GRAPHQL_TRANSPORT_WS_PROTOCOL, GRAPHQL_WS_PROTOCOL\nfrom strawberry.types import Info\nfrom fastapi import FastAPI, HTTPException, Depends\nfrom fastapi.middleware"
+        },
+        {
+          "query": "Create a comprehensive Pillow image processing pipeline with filters, compositing, and format conversion",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nimport os\nimport io\nimport numpy\nfrom PIL import Image, ImageFilter, ImageEnhance, ImageDraw, ImageFont, ImageChops, ImageOps\nfrom typing import Optional, Union, Tuple, List\nimport logging\n\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\n\n\nclass ImageProcessingPipeline:\n    \"\"\"\n    A comprehensive Pillow image processing pipeline with filters,\n    compositing, and format conversion capabilities.\n    \"\"\"\n\n    def __init__(self, image: Optional[Union[Image.Im"
+        },
+        {
+          "query": "Implement a comprehensive Arrow/Parquet data pipeline with PyArrow for columnar data processing",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nfrom __future__ import annotations\n\nimport io\nimport json\nimport os\nfrom typing import Any\n\nimport pyarrow as pa\nimport pyarrow.parquet as pq\nimport pyarrow.compute as pc\nimport pyarrow.fs as pa_fs\nimport pandas as pd\nfrom pandas.io.parquet import get_engine, _get_path_or_handle\nfrom pandas.core.arrays.arrow.extension_types import (\n    ArrowPeriodType,\n    ArrowIntervalType,\n)\n\n\n# \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n# 1. Schema helpers\n# \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500"
+        },
+        {
+          "query": "Build a comprehensive cryptography setup with Fernet encryption, RSA key pairs, and certificate generation",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nimport os\nimport datetime\nimport base64\nfrom typing import Optional, Tuple\n\nfrom cryptography.fernet import Fernet\nfrom cryptography.hazmat.backends import default_backend\nfrom cryptography.hazmat.primitives import hashes, serialization\nfrom cryptography.hazmat.primitives.asymmetric import padding, rsa\nfrom cryptography.hazmat.primitives.asymmetric.rsa import RSAPrivateKey, RSAPublicKey\nfrom cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC\nfrom cryptography.x509 import (\n   "
+        },
+        {
+          "query": "Create an Elasticsearch query with aggregations, highlighting, and suggesters using elasticsearch-py",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nfrom elasticsearch import Elasticsearch\n\n# Initialize the Elasticsearch client\nes = Elasticsearch(\"http://localhost:9200\")\n\n# Define the index name\nindex_name = \"products\"\n\n# Build the query with aggregations, highlighting, and suggesters\nquery_body = {\n    \"query\": {\n        \"bool\": {\n            \"must\": [\n                {\n                    \"multi_match\": {\n                        \"query\": \"python programming\",\n                        \"fields\": [\"title^3\", \"description\", \"tags\"],\n "
+        },
+        {
+          "query": "Implement a comprehensive GraphQL server with Ariadne including schema-first design, subscriptions, and uploads",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\n\"\"\"\nComprehensive GraphQL server with Ariadne including schema-first design,\nsubscriptions, and file uploads.\n\"\"\"\n\nimport asyncio\nimport json\nimport os\nfrom collections import defaultdict\nfrom contextlib import asynccontextmanager\nfrom datetime import datetime, timezone\nfrom pathlib import Path\nfrom typing import Any, AsyncGenerator\n\nfrom ariadne import (\n    MutationType,\n    QueryType,\n    SubscriptionType,\n    make_executable_schema,\n    upload_scalar,\n)\nfrom ariadne.asgi import Gra"
+        },
+        {
+          "query": "Build a comprehensive Airflow DAG with task dependencies, sensors, hooks, and dynamic task mapping",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "invented_method",
+              "detail": "Method 'context_to_airflow_vars' not found in airflow API",
+              "call": "context_to_airflow_vars",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'context_to_airflow_vars' not found in airflow API",
+              "call": "context_to_airflow_vars",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'context_to_airflow_vars' not found in airflow API",
+              "call": "context_to_airflow_vars",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'context_to_airflow_vars' not found in airflow API",
+              "call": "context_to_airflow_vars",
+              "context_available": true
+            },
+            {
+              "type": "wrong_parameter",
+              "detail": "Parameter 'description' not valid for DAG()",
+              "call": "DAG",
+              "parameter": "description",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\n\"\"\"\nComprehensive Airflow DAG with task dependencies, sensors, hooks, and dynamic task mapping.\n\"\"\"\n\nimport json\nimport logging\nfrom datetime import datetime, timedelta\nfrom typing import Any\n\nfrom airflow import DAG\nfrom airflow.decorators import task, task_group\nfrom airflow.hooks.base import BaseHook\nfrom airflow.models import Variable\nfrom airflow.operators.bash import BashOperator\nfrom airflow.operators.empty import EmptyOperator\nfrom airflow.operators.python import PythonOperator"
+        },
+        {
+          "query": "Create a comprehensive Prefect 2 flow with tasks, retries, caching, and deployment configuration",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "wrong_parameter",
+              "detail": "Parameter 'cache_policy' not valid for task()",
+              "call": "task",
+              "parameter": "cache_policy",
+              "context_available": true
+            },
+            {
+              "type": "wrong_parameter",
+              "detail": "Parameter 'hours' not valid for task()",
+              "call": "task",
+              "parameter": "hours",
+              "context_available": true
+            },
+            {
+              "type": "wrong_parameter",
+              "detail": "Parameter 'cache_policy' not valid for task()",
+              "call": "task",
+              "parameter": "cache_policy",
+              "context_available": true
+            },
+            {
+              "type": "wrong_parameter",
+              "detail": "Parameter 'minutes' not valid for task()",
+              "call": "task",
+              "parameter": "minutes",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\nimport hashlib\nimport os\nimport time\nfrom datetime import datetime, timedelta\nfrom functools import partial\nfrom pathlib import Path\nfrom typing import Any, Optional\n\nfrom prefect import flow, get_run_logger, task\nfrom prefect.artifacts import create_markdown_artifact\nfrom prefect.cache_policies import INPUTS, TASK_SOURCE\nfrom prefect.deployments import Deployment\nfrom prefect.filesystems import LocalFileSystem\nfrom prefect.server.schemas.schedules import CronSchedule, IntervalSchedule"
+        },
+        {
+          "query": "Implement a comprehensive gRPC service with protobuf, streaming, interceptors, and health checks in Python",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "invented_method",
+              "detail": "Method 'grpc.unary_unary_rpc_method_handler' not found in grpc API",
+              "call": "grpc.unary_unary_rpc_method_handler",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\n\"\"\"\nComprehensive gRPC service implementation with protobuf, streaming, interceptors, and health checks.\n\"\"\"\n\nimport asyncio\nimport logging\nimport time\nimport uuid\nfrom concurrent import futures\nfrom typing import AsyncIterator, Iterator\n\nimport grpc\nfrom grpc import ServicerContext\nfrom grpc_health.v1 import health, health_pb2, health_pb2_grpc\nfrom grpc_reflection.v1alpha import reflection\n\n# ============================================================\n# Proto-like message classes (no"
+        },
+        {
+          "query": "Build a FastAPI WebSocket server with connection management, broadcasting, and heartbeat",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nimport asyncio\nimport logging\nfrom contextlib import asynccontextmanager\nfrom typing import Any\n\nfrom fastapi import FastAPI, WebSocket, WebSocketDisconnect\nfrom fastapi.responses import HTMLResponse\n\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\n\nhtml = \"\"\"\n<!DOCTYPE html>\n<html>\n    <head>\n        <title>WebSocket Chat</title>\n        <style>\n            body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }\n          "
+        },
+        {
+          "query": "Create a SQLModel application with models, relationships, and async database operations",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "wrong_parameter",
+              "detail": "Parameter 'default_factory' not valid for Field()",
+              "call": "Field",
+              "parameter": "default_factory",
+              "context_available": true
+            },
+            {
+              "type": "wrong_parameter",
+              "detail": "Parameter 'default_factory' not valid for Field()",
+              "call": "Field",
+              "parameter": "default_factory",
+              "context_available": true
+            },
+            {
+              "type": "wrong_parameter",
+              "detail": "Parameter 'default_factory' not valid for Field()",
+              "call": "Field",
+              "parameter": "default_factory",
+              "context_available": true
+            },
+            {
+              "type": "wrong_parameter",
+              "detail": "Parameter 'default_factory' not valid for Field()",
+              "call": "Field",
+              "parameter": "default_factory",
+              "context_available": true
+            },
+            {
+              "type": "wrong_parameter",
+              "detail": "Parameter 'default_factory' not valid for Field()",
+              "call": "Field",
+              "parameter": "default_factory",
+              "context_available": true
+            },
+            {
+              "type": "wrong_parameter",
+              "detail": "Parameter 'default_factory' not valid for Field()",
+              "call": "Field",
+              "parameter": "default_factory",
+              "context_available": true
+            },
+            {
+              "type": "wrong_parameter",
+              "detail": "Parameter 'cascade_delete' not valid for Relationship()",
+              "call": "Relationship",
+              "parameter": "cascade_delete",
+              "context_available": true
+            },
+            {
+              "type": "wrong_parameter",
+              "detail": "Parameter 'default_factory' not valid for Field()",
+              "call": "Field",
+              "parameter": "default_factory",
+              "context_available": true
+            },
+            {
+              "type": "wrong_parameter",
+              "detail": "Parameter 'default_factory' not valid for Field()",
+              "call": "Field",
+              "parameter": "default_factory",
+              "context_available": true
+            },
+            {
+              "type": "wrong_parameter",
+              "detail": "Parameter 'default_factory' not valid for Field()",
+              "call": "Field",
+              "parameter": "default_factory",
+              "context_available": true
+            },
+            {
+              "type": "wrong_parameter",
+              "detail": "Parameter 'default_factory' not valid for Field()",
+              "call": "Field",
+              "parameter": "default_factory",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\nimport asyncio\nimport json\nfrom datetime import datetime, timezone\nfrom typing import Any, AsyncGenerator, Optional\nfrom uuid import uuid4\n\nfrom fastapi import Depends, FastAPI, HTTPException, Query\nfrom sqlalchemy.ext.asyncio import AsyncSession, create_async_engine\nfrom sqlalchemy.orm import selectinload\nfrom sqlmodel import Field, Relationship, SQLModel, col, select\nfrom sqlalchemy.ext.asyncio import async_sessionmaker\n\n\n# ============================================================"
+        },
+        {
+          "query": "Build a Tauri desktop application with commands, state management, and event system using Rust backend",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "invented_method",
+              "detail": "Method 'tauri.conf.json' not found in tauri API",
+              "call": "tauri.conf.json",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "\n```python\nimport anthropic\n\nclient = anthropic.Anthropic()\n\nprompt = \"\"\"Build a Tauri desktop application with commands, state management, and event system using Rust backend.\n\nGenerate a complete Tauri application with:\n1. Rust backend with multiple commands (greet, get_state, update_state, emit_event)\n2. State management using Tauri's State management\n3. Event system for frontend-backend communication\n4. TypeScript/React frontend that interacts with the Rust backend\n5. Proper error handling t"
+        },
+        {
+          "query": "Implement a comprehensive Pytest-BDD test suite with scenarios, step definitions, and fixtures",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\n\"\"\"\nComprehensive Pytest-BDD Test Suite with Scenarios, Step Definitions, and Fixtures\n\"\"\"\n\nfrom __future__ import annotations\n\nimport json\nimport os\nimport tempfile\nfrom collections import defaultdict\nfrom pathlib import Path\nfrom typing import Any, Generator\nfrom unittest.mock import MagicMock, patch\n\nimport pytest\n\n# \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n# Feature file content (written to a temp directory by the session fixture)\n# \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500"
+        },
+        {
+          "query": "Create a Pydantic AI agent with tool definitions, structured output, and retry handling",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nfrom __future__ import annotations\n\nimport json\nimport logging\nfrom typing import Any\n\nfrom pydantic import BaseModel, Field\nfrom langchain_core.tools import StructuredTool\nfrom langchain_core.messages import AIMessage\n\nlogger = logging.getLogger(__name__)\n\n\n# --- Structured Output Schemas ---\n\nclass WeatherResult(BaseModel):\n    \"\"\"Structured output for weather queries.\"\"\"\n    location: str = Field(description=\"The location for the weather query\")\n    temperature: float = Field(descri"
+        },
+        {
+          "query": "Build a comprehensive Regex pattern matching pipeline with named groups, lookahead, and Unicode support",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "invented_method",
+              "detail": "Method 'RegexPipelineError' not found in re API",
+              "call": "RegexPipelineError",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'register' not found in re API",
+              "call": "register",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'RegexPipelineError' not found in re API",
+              "call": "RegexPipelineError",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'RegexPipelineError' not found in re API",
+              "call": "RegexPipelineError",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'RegexPipelineError' not found in re API",
+              "call": "RegexPipelineError",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'replace_category' not found in re API",
+              "call": "replace_category",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'return' not found in re API",
+              "call": "return",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'RegexPipelineError' not found in re API",
+              "call": "RegexPipelineError",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'NamedGroupRegistry' not found in re API",
+              "call": "NamedGroupRegistry",
+              "context_available": true
+            },
+            {
+              "type": "invented_method",
+              "detail": "Method 'self.registry.register' not found in re API",
+              "call": "self.registry.register",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\nimport re\nfrom typing import Optional, Dict, List, Tuple, Any\n\n\n# Unicode-aware regex patterns for identifier names\nUNICODE_IDENTIFIER_START = (\n    r'[\\$A-Z_a-z\\xAA\\xB5\\xBA\\xC0-\\xD6\\xD8-\\xF6\\xF8-\\u02C1]'\n)\n\n# Core regex patterns for the pipeline\nNAMED_GROUP_PATTERN = r'\\(\\?P<(?P<name>[A-Za-z_][A-Za-z0-9_]*)>'\nLOOKAHEAD_PATTERN = r'\\(\\?=(?P<lookahead>[^)]+)\\)'\nLOOKBEHIND_PATTERN = r'\\(\\?<=(?P<lookbehind>[^)]+)\\)'\nNEGATIVE_LOOKAHEAD_PATTERN = r'\\(\\?!(?P<neg_lookahead>[^)]+)\\)'\nUNICODE_C"
+        },
+        {
+          "query": "Create a Pydantic dataclass with field aliases, discriminated unions, and custom JSON encoders",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "wrong_parameter",
+              "detail": "Parameter 'ge' not valid for Field()",
+              "call": "Field",
+              "parameter": "ge",
+              "context_available": true
+            },
+            {
+              "type": "wrong_parameter",
+              "detail": "Parameter 'le' not valid for Field()",
+              "call": "Field",
+              "parameter": "le",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\nimport json\nfrom dataclasses import field\nfrom typing import Annotated, Any, Literal, Union\n\nfrom pydantic import field_validator\nfrom pydantic.dataclasses import dataclass\nfrom pydantic import ConfigDict, Field, Discriminator, Tag\nfrom pydantic.alias_generators import to_camel\n\n\n# Custom JSON encoder for special types\nclass CustomJSONEncoder(json.JSONEncoder):\n    def default(self, obj):\n        if isinstance(obj, Vehicle):\n            return obj.__dict__\n        return super().defaul"
+        },
+        {
+          "query": "Implement a complete HTMX-powered Django application with server-sent events and WebSocket fallback",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\n\"\"\"\nComplete HTMX-powered Django application with Server-Sent Events and WebSocket fallback.\n\nStructure:\n- models.py\n- consumers.py (Django Channels WebSocket)\n- views.py\n- urls.py\n- routing.py (ASGI routing)\n- asgi.py\n- settings_fragment.py (relevant settings)\n- templates (inline as strings)\n\"\"\"\n\n# ============================================================\n# models.py\n# ============================================================\n\nfrom django.db import models\nfrom django.contrib.aut"
+        },
+        {
+          "query": "Build a Neon serverless Postgres application with connection pooling, branching, and edge functions",
+          "hallucination_rate": 0.0,
+          "errors": [],
+          "code_snippet": "```python\nimport os\nimport json\nimport asyncio\nfrom typing import Optional, Any\nfrom urllib.parse import urlparse\nimport httpx\n\n\n# ============================================================================\n# NEON SERVERLESS POSTGRES APPLICATION\n# Connection Pooling, Branching, and Edge Functions\n# ============================================================================\n\nNEON_API_KEY = os.environ.get(\"NEON_API_KEY\", \"\")\nNEON_PROJECT_ID = os.environ.get(\"NEON_PROJECT_ID\", \"\")\nDATABASE_URL = "
+        },
+        {
+          "query": "Create a comprehensive tRPC API with routers, middleware, subscriptions, and React integration",
+          "hallucination_rate": 1.0,
+          "errors": [
+            {
+              "type": "invented_method",
+              "detail": "Method 'TRPCErrorCode' not found in trpc API",
+              "call": "TRPCErrorCode",
+              "context_available": true
+            }
+          ],
+          "code_snippet": "```python\n\"\"\"\nComprehensive tRPC-style API implementation in Python with routers, middleware,\nsubscriptions, and React integration support.\n\nThis implements a tRPC-inspired pattern using FastAPI with WebSocket support,\ntype-safe procedures, middleware chaining, and SSE for React integration.\n\"\"\"\n\nimport asyncio\nimport json\nimport time\nimport uuid\nfrom collections.abc import AsyncIterator, Callable, Awaitable\nfrom contextlib import asynccontextmanager\nfrom dataclasses import dataclass, field\nfrom"
+        }
+      ]
+    }
+  },
+  "indexing": {},
+  "multihop": {},
+  "code_qa": {},
+  "adversarial": {},
+  "validated": {},
+  "judge": {},
+  "enhanced_judge": {},
+  "extended_metrics": {},
+  "significance": {},
+  "query_results": {}
+}
