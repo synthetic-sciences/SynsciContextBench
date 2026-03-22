@@ -60,11 +60,15 @@ class HallucinationResult:
 
 
 def precision_at_k(results: list[RetrievalResult], k: int) -> float:
-    """Fraction of top-k results that are relevant."""
-    top_k = results[:k]
-    if not top_k:
+    """Fraction of top-k results that are relevant.
+
+    Divides by k (not the number of returned results) so that engines
+    returning fewer results are not artificially inflated.
+    """
+    if k == 0:
         return 0.0
-    return sum(1 for r in top_k if r.is_relevant) / len(top_k)
+    top_k = results[:k]
+    return sum(1 for r in top_k if r.is_relevant) / k
 
 
 def recall_at_k(results: list[RetrievalResult], k: int, total_relevant: int) -> float:
@@ -92,13 +96,26 @@ def dcg_at_k(results: list[RetrievalResult], k: int) -> float:
     return total
 
 
-def ndcg_at_k(results: list[RetrievalResult], k: int, total_relevant: int) -> float:
-    """Normalized DCG — compares actual ranking to ideal ranking."""
+def ndcg_at_k(
+    results: list[RetrievalResult],
+    k: int,
+    total_relevant: int,
+    max_grade: int = 2,
+) -> float:
+    """Normalized DCG — compares actual ranking to the corpus-level ideal.
+
+    The ideal DCG is built from ALL known relevant documents (not just the
+    ones the engine returned).  This follows TREC / BEIR convention and
+    prevents inflated scores when an engine returns few results.
+    """
     actual_dcg = dcg_at_k(results, k)
 
-    # Build ideal ranking: all relevant items first, sorted by grade desc
-    ideal = sorted(results, key=lambda r: r.relevance_grade, reverse=True)
-    ideal_dcg = dcg_at_k(ideal, k)
+    # Build corpus-level ideal: total_relevant docs at max_grade, ranked
+    # perfectly, truncated to k positions.
+    ideal_count = min(total_relevant, k)
+    ideal_dcg = sum(
+        max_grade / math.log2(i + 2) for i in range(ideal_count)
+    )
 
     if ideal_dcg == 0:
         return 0.0
