@@ -71,6 +71,51 @@ from .semantic_metrics import (
 logger = get_logger("runner")
 
 
+# ---------------------------------------------------------------------------
+# Checkpoint resume
+# ---------------------------------------------------------------------------
+
+# Map from BenchmarkReport field names to the phases that populate them.
+_PHASE_FIELDS = [
+    "retrieval",
+    "multihop",
+    "code_qa",
+    "adversarial",
+    "hallucination",
+    "validated",
+    "judge",
+    "enhanced_judge",
+]
+
+
+def load_checkpoint(run_dir: str) -> dict | None:
+    """Load the latest manifest with a report from *run_dir*.
+
+    Returns the report dict or None if no valid checkpoint exists.
+    """
+    run_path = Path(run_dir)
+    reports_dir = run_path / "reports"
+    if not reports_dir.is_dir():
+        logger.warning("No reports/ directory in %s", run_dir)
+        return None
+
+    # Find the newest manifest that contains a report
+    manifests = sorted(reports_dir.glob("manifest_*.json"), reverse=True)
+    for mf in manifests:
+        try:
+            with open(mf) as f:
+                data = json.load(f)
+            if data.get("report"):
+                report = data["report"]
+                completed = [p for p in _PHASE_FIELDS if report.get(p)]
+                print(f"  [resume] Loaded checkpoint from {mf.name}")
+                print(f"  [resume] Completed phases: {', '.join(completed) or 'none'}")
+                return report
+        except (json.JSONDecodeError, OSError) as exc:
+            logger.warning("Skipping bad manifest %s: %s", mf, exc)
+    return None
+
+
 def _add_traces_from_evals(
     trace_store: TraceStore | None,
     benchmark_type: str,
@@ -412,6 +457,7 @@ async def run_full_benchmark(
     match_mode: MatchMode = "hybrid",
     enable_debiasing: bool = True,
     trace_store: TraceStore | None = None,
+    resume_report: dict | None = None,
 ) -> BenchmarkReport:
     """Run all benchmarks across all engines and produce a comparison report."""
     # Initialize trace store if not provided
@@ -431,6 +477,42 @@ async def run_full_benchmark(
         timestamp=datetime.now(timezone.utc).isoformat(),
         engines=[e.name for e in engines],
     )
+
+    # ---- Resume: restore completed phases and auto-skip them ----
+    if resume_report:
+        # Copy completed phase data into the fresh report
+        for phase_field in _PHASE_FIELDS:
+            saved = resume_report.get(phase_field)
+            if saved:
+                setattr(report, phase_field, saved)
+        # Restore query_results if present (needed for statistical analysis)
+        if resume_report.get("query_results"):
+            report.query_results = resume_report["query_results"]
+        # Auto-skip phases that already have data
+        if resume_report.get("retrieval") and not skip_retrieval:
+            print("  [resume] Skipping retrieval (already completed)")
+            skip_retrieval = True
+        if resume_report.get("multihop") and not skip_multihop:
+            print("  [resume] Skipping multihop (already completed)")
+            skip_multihop = True
+        if resume_report.get("code_qa") and not skip_code_qa:
+            print("  [resume] Skipping code_qa (already completed)")
+            skip_code_qa = True
+        if resume_report.get("adversarial") and not skip_adversarial:
+            print("  [resume] Skipping adversarial (already completed)")
+            skip_adversarial = True
+        if resume_report.get("hallucination") and not skip_hallucination:
+            print("  [resume] Skipping hallucination (already completed)")
+            skip_hallucination = True
+        if resume_report.get("validated") and not skip_validated:
+            print("  [resume] Skipping validated (already completed)")
+            skip_validated = True
+        if resume_report.get("judge") and not skip_judge:
+            print("  [resume] Skipping judge (already completed)")
+            skip_judge = True
+        if resume_report.get("enhanced_judge") and not skip_enhanced_judge:
+            print("  [resume] Skipping enhanced_judge (already completed)")
+            skip_enhanced_judge = True
 
     def _save_progress(phase_name: str) -> None:
         """Incremental save after each phase completes."""

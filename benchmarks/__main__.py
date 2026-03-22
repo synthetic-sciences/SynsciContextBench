@@ -178,6 +178,16 @@ def parse_args() -> argparse.Namespace:
         help="Max queries per dataset (default: all). Use 50-100 for quick runs.",
     )
 
+    # Resume from checkpoint
+    parser.add_argument(
+        "--resume",
+        type=str,
+        default=None,
+        metavar="RUN_DIR",
+        help="Resume from a previous run directory (e.g., benchmarks/results/run_20260322_115101). "
+        "Completed phases are loaded from the latest checkpoint and skipped automatically.",
+    )
+
     # Logging
     parser.add_argument(
         "-v", "--verbose",
@@ -298,6 +308,7 @@ async def main() -> int:
 
     # Register graceful shutdown handler
     _interrupted = False
+    _active_report = None  # set during run so emergency save can include it
 
     def _graceful_shutdown(signum, frame):
         nonlocal _interrupted
@@ -309,13 +320,23 @@ async def main() -> int:
         print("\n  [!] Interrupted — saving progress before exit...")
         try:
             from dataclasses import asdict
-            trace_store.save(report=None)
+            save_data = asdict(_active_report) if _active_report else None
+            trace_store.save(report=save_data)
             print(f"  [checkpoint] Emergency save to {trace_store.results_dir}")
         except Exception as e:
             print(f"  [!] Failed to save: {e}")
         sys.exit(130)
 
     signal.signal(signal.SIGINT, _graceful_shutdown)
+
+    # Load checkpoint for resume
+    resume_report = None
+    if args.resume:
+        from .runner import load_checkpoint
+        resume_report = load_checkpoint(args.resume)
+        if resume_report is None:
+            print(f"[ERROR] No valid checkpoint found in {args.resume}")
+            return 1
 
     report = None
     try:
@@ -326,12 +347,15 @@ async def main() -> int:
             match_mode=args.match_mode,
             enable_debiasing=not args.no_debiasing,
             trace_store=trace_store,
+            resume_report=resume_report,
             **all_skips,
         )
     except KeyboardInterrupt:
         print("\n  [!] Interrupted — saving progress...")
         try:
-            trace_store.save(report=None)
+            from dataclasses import asdict
+            save_data = asdict(report) if report else None
+            trace_store.save(report=save_data)
             print(f"  [checkpoint] Emergency save to {trace_store.results_dir}")
         except Exception as e:
             print(f"  [!] Failed to save: {e}")

@@ -12,6 +12,7 @@ providing accurate, up-to-date context.
 
 from __future__ import annotations
 
+import ast
 import json
 import re
 
@@ -60,19 +61,57 @@ class HallucinationBenchmarkResult:
 # ---------------------------------------------------------------------------
 
 def _extract_function_calls(code: str) -> list[dict]:
-    """Extract function/method calls from generated code.
+    """Extract function/method calls from generated code using the AST.
 
-    Returns list of {name, args} dicts.
-    Simple regex-based extraction — not a full AST parse, but sufficient
-    for benchmark validation.
+    Returns list of {name, args, raw_args} dicts.
+    Falls back to regex for code that fails to parse.
     """
+    calls = _extract_calls_ast(code)
+    if calls is not None:
+        return calls
+    # Fallback: regex for unparseable fragments
+    return _extract_calls_regex(code)
+
+
+def _resolve_call_name(node: ast.expr) -> str | None:
+    """Turn a call target AST node into a dotted name string."""
+    if isinstance(node, ast.Name):
+        return node.id
+    if isinstance(node, ast.Attribute):
+        parent = _resolve_call_name(node.value)
+        if parent:
+            return f"{parent}.{node.attr}"
+        return node.attr
+    return None
+
+
+def _extract_calls_ast(code: str) -> list[dict] | None:
+    """AST-based extraction.  Returns None if the code can't be parsed."""
+    try:
+        tree = ast.parse(code)
+    except SyntaxError:
+        return None
+
+    calls: list[dict] = []
+    for node in ast.walk(tree):
+        if not isinstance(node, ast.Call):
+            continue
+        name = _resolve_call_name(node.func)
+        if name is None:
+            continue
+        kwargs = [kw.arg for kw in node.keywords if kw.arg is not None]
+        raw_args = ast.get_source_segment(code, node)
+        calls.append({"name": name, "args": kwargs, "raw_args": raw_args or ""})
+    return calls
+
+
+def _extract_calls_regex(code: str) -> list[dict]:
+    """Regex fallback for code that fails AST parsing."""
     calls = []
-    # Match patterns like: obj.method(args) or function(args)
     pattern = r'(\w+(?:\.\w+)*)\s*\((.*?)\)'
     for match in re.finditer(pattern, code, re.DOTALL):
         name = match.group(1)
         args_str = match.group(2).strip()
-        # Extract keyword arguments
         kwarg_pattern = r'(\w+)\s*='
         kwargs = re.findall(kwarg_pattern, args_str)
         calls.append({"name": name, "args": kwargs, "raw_args": args_str})
