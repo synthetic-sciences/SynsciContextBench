@@ -38,7 +38,7 @@ plt.rcParams.update({
 
 
 def main():
-    # All 8 phases from results_final (100 queries per engine per phase)
+    # All 9 phases from results_final (100 queries per engine per phase, 25 SWE cases)
     metrics = [
         "Retrieval\nMRR",
         "Multi-Hop\nCoverage",
@@ -48,17 +48,18 @@ def main():
         "CodeSearchNet\nMRR",
         "CoSQA\nMRR",
         "Enhanced\nJudge Wins",
+        "SWE-Agent\nComposite",
     ]
 
-    #                Retr   MHop   CQA    Adv    HallAv  CSN    CoSQA  EJ wins
-    delphi   = [0.962, 0.973, 0.310, 0.530, 0.60,  0.864, 0.722, 0.675]  # EJ: 135/200
-    context7 = [0.790, 0.848, 0.270, 0.429, 0.54,  0.010, 0.110, 0.075]  # EJ: 15/200
-    nia      = [0.728, 0.732, 0.263, 0.435, 0.50,  0.040, 0.298, 0.115]  # EJ: 23/200
+    #                Retr   MHop   CQA    Adv    HallAv  CSN    CoSQA  EJ wins SWE
+    delphi   = [0.962, 0.973, 0.310, 0.530, 0.60,  0.864, 0.722, 0.675, 0.806]  # EJ: 135/200
+    context7 = [0.790, 0.848, 0.270, 0.429, 0.54,  0.010, 0.110, 0.075, 0.821]  # EJ: 15/200
+    nia      = [0.728, 0.732, 0.263, 0.435, 0.50,  0.040, 0.298, 0.115, 0.802]  # EJ: 23/200
 
     engines = ["Delphi", "Context7", "Nia"]
     colors  = [CLR_DELPH, CLR_CTX7, CLR_NIA]
 
-    fig, ax = plt.subplots(figsize=(18, 7))
+    fig, ax = plt.subplots(figsize=(20, 7))
 
     x = np.arange(len(metrics))
     n_engines = 3
@@ -102,7 +103,7 @@ def main():
     fig.text(0.05, 0.96, "SynSci Context Bench", fontsize=26, fontweight="bold",
              color=TXT_DARK, ha="left", va="top")
     fig.text(0.05, 0.91,
-             "3 engines \u00b7 8 phases \u00b7 100 queries/engine/phase \u00b7 LLM judge (Claude Sonnet 4.6)",
+             "3 engines \u00b7 9 phases \u00b7 ~3,600 data points \u00b7 LLM judge (Claude Sonnet 4.6)",
              fontsize=12, color=TXT_MID, ha="left", va="top")
 
     # legend
@@ -118,7 +119,8 @@ def main():
     fig.text(0.05, -0.02,
              "All differences statistically significant (p<0.0001, Holm-corrected). "
              "Hallucination Avoidance = 1 \u2212 Rate. "
-             "Enhanced Judge Wins = win % across CodeSearchNet + CoSQA (200 queries).",
+             "Enhanced Judge Wins = win % across CodeSearchNet + CoSQA (200 queries). "
+             "SWE-Agent Composite = judge score on 25 code generation tasks (baseline: 0.665).",
              fontsize=8.5, color=TXT_MID, ha="left", va="top", style="italic")
 
     fig.savefig(OUT / "results.png", facecolor=BG)

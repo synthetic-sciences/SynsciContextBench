@@ -4,7 +4,8 @@
     "retrieval": "run_1773598227 (100q per engine, post adapter-fix)",
     "main": "run_1773603757 (100q per engine, --match-mode llm)",
     "context7_rerun": "run_1773616697 (adapter fix: HTTP search API + JSON parsing)",
-    "enhanced_judge": "run_1773619549 (enhanced LLM judge with debiasing)"
+    "enhanced_judge": "run_1773619549 (enhanced LLM judge with debiasing)",
+    "swe_agent": "run_20260323_181518 (25 SWE tasks, 3 engines + baseline, gold + agent queries)"
   },
   "phases": {
     "adversarial": {
@@ -203,6 +204,52 @@
         "CodeSearchNet": 2.497,
         "CoSQA": 1.487,
         "AdvTest": 2.663
+      }
+    },
+    "swe_agent": {
+      "total_cases": 25,
+      "query_modes": ["gold", "agent"],
+      "turns": 2,
+      "knowledge_tiers": {"A": 9, "B": 10, "C": 6},
+      "baseline": {
+        "avg_judge_composite": 0.665,
+        "avg_criteria_pass_rate": 0.90,
+        "parse_rate": 0.52
+      },
+      "engines": {
+        "synsc-context": {
+          "cases": 25,
+          "avg_judge_composite": 0.806,
+          "avg_criteria_pass_rate": 0.92,
+          "avg_context_utilization": 0.118,
+          "parse_rate": 0.88,
+          "delta_composite": 0.142,
+          "delta_pct": "+21%",
+          "by_tier": {"A": 0.826, "B": 0.765, "C": 0.848},
+          "tier_deltas": {"A": "+0.108", "B": "+0.128", "C": "+0.215"}
+        },
+        "nia": {
+          "cases": 25,
+          "avg_judge_composite": 0.802,
+          "avg_criteria_pass_rate": 0.887,
+          "avg_context_utilization": 0.212,
+          "parse_rate": 0.84,
+          "delta_composite": 0.137,
+          "delta_pct": "+21%",
+          "by_tier": {"A": 0.801, "B": 0.757, "C": 0.879},
+          "tier_deltas": {"A": "+0.083", "B": "+0.120", "C": "+0.247"}
+        },
+        "context7": {
+          "cases": 25,
+          "avg_judge_composite": 0.821,
+          "avg_criteria_pass_rate": 0.880,
+          "avg_context_utilization": 0.163,
+          "parse_rate": 0.88,
+          "delta_composite": 0.156,
+          "delta_pct": "+23%",
+          "by_tier": {"A": 0.819, "B": 0.787, "C": 0.879},
+          "tier_deltas": {"A": "+0.164", "B": "+0.150", "C": "+0.247"}
+        }
       }
     }
   },

@@ -14,6 +14,8 @@ Usage:
     python -m benchmarks --engines nia                 # Only test Nia
     python -m benchmarks --engines context7            # Only test Context7
     python -m benchmarks --engines synsc nia context7  # All three engines
+    python -m benchmarks --swe-agent-only               # Only SWE-Agent benchmark (Phase 9)
+    python -m benchmarks --swe-agent-only --engines none  # Baseline-only (LLM without context)
     python -m benchmarks --multi-model                 # Hallucination across all configured models
     python -m benchmarks --match-mode hybrid           # Match by content OR file path (default)
     python -m benchmarks --match-mode file             # Match by file path only (fair cross-engine)
@@ -41,9 +43,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--engines",
         nargs="+",
-        choices=["synsc", "nia", "context7", "all"],
+        choices=["synsc", "nia", "context7", "all", "none"],
         default=["all"],
-        help="Which engines to benchmark (default: all)",
+        help="Which engines to benchmark (default: all). "
+        "Use 'none' with --swe-agent-only to run baseline-only (LLM without context).",
     )
 
     # Dataset download
@@ -101,6 +104,11 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Only run enhanced LLM-as-judge (position-debiased, with context quality metrics)",
     )
+    only_group.add_argument(
+        "--swe-agent-only",
+        action="store_true",
+        help="Only run SWE-Agent benchmark (Phase 9: context engine value-add for real SWE tasks)",
+    )
 
     # --skip-* flags
     parser.add_argument("--skip-indexing", action="store_true", help="Skip indexing step")
@@ -119,6 +127,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--skip-judge", action="store_true", help="Skip LLM-as-judge benchmark")
     parser.add_argument(
         "--skip-enhanced-judge", action="store_true", help="Skip enhanced LLM-as-judge benchmark"
+    )
+    parser.add_argument(
+        "--skip-swe-agent", action="store_true", help="Skip SWE-Agent benchmark (Phase 9)"
     )
 
     # Statistical analysis
@@ -143,6 +154,13 @@ def parse_args() -> argparse.Namespace:
         "--no-debiasing",
         action="store_true",
         help="Disable position debiasing in enhanced judge (faster, 2x fewer LLM calls)",
+    )
+
+    # SWE-Agent options
+    parser.add_argument(
+        "--with-agent-queries",
+        action="store_true",
+        help="Also run AI-generated queries alongside gold queries in SWE-Agent (default: gold only)",
     )
 
     # Multi-model
@@ -235,8 +253,10 @@ async def main() -> int:
 
     # Determine which engines to test
     engine_names = set(args.engines)
+    no_engine_mode = "none" in engine_names
     if "all" in engine_names:
         engine_names = {"synsc", "nia", "context7"}
+    engine_names.discard("none")
 
     # Validate config
     engines = []
@@ -265,11 +285,19 @@ async def main() -> int:
                 )
             )
 
-    if not engines:
+    if not engines and not no_engine_mode:
         print("[ERROR] No engines configured. Set SYNSC_API_KEY / NIA_API_KEY / CONTEXT7_ENABLED.")
+        print("        Use '--engines none --swe-agent-only' to run baseline-only.")
         return 1
 
-    print(f"Benchmarking engines: {', '.join(e.name for e in engines)}")
+    if no_engine_mode and not getattr(args, "swe_agent_only", False):
+        print("[ERROR] '--engines none' is only supported with --swe-agent-only (baseline-only mode).")
+        return 1
+
+    if engines:
+        print(f"Benchmarking engines: {', '.join(e.name for e in engines)}")
+    else:
+        print("Baseline-only mode (no context engines)")
 
     # Resolve skip flags
     all_skips = {
@@ -282,6 +310,7 @@ async def main() -> int:
         "skip_validated": args.skip_validated,
         "skip_judge": args.skip_judge,
         "skip_enhanced_judge": args.skip_enhanced_judge,
+        "skip_swe_agent": args.skip_swe_agent,
     }
 
     # --*-only: skip everything except the chosen one
@@ -294,6 +323,7 @@ async def main() -> int:
         "hallucination_only": "skip_hallucination",
         "judge_only": "skip_judge",
         "enhanced_judge_only": "skip_enhanced_judge",
+        "swe_agent_only": "skip_swe_agent",
     }
     for flag_name, keep_key in only_map.items():
         if getattr(args, flag_name, False):
@@ -346,6 +376,7 @@ async def main() -> int:
             dataset_filter=dataset_filter,
             match_mode=args.match_mode,
             enable_debiasing=not args.no_debiasing,
+            with_agent_queries=getattr(args, "with_agent_queries", False),
             trace_store=trace_store,
             resume_report=resume_report,
             **all_skips,
