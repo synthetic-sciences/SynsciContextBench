@@ -62,6 +62,11 @@ from .enhanced_judge import (
     print_enhanced_judge_summary,
     run_enhanced_judge_benchmark,
 )
+from .swe_agent import (
+    SWEBenchmarkResult,
+    print_swe_agent_summary,
+    run_swe_agent_benchmark,
+)
 from .semantic_metrics import (
     ExtendedRetrievalMetrics,
     compute_extended_metrics,
@@ -85,6 +90,7 @@ _PHASE_FIELDS = [
     "validated",
     "judge",
     "enhanced_judge",
+    "swe_agent",
 ]
 
 
@@ -193,6 +199,9 @@ class BenchmarkReport:
 
     # Enhanced judge (position-debiased, with context quality) per engine
     enhanced_judge: dict[str, dict] = field(default_factory=dict)
+
+    # SWE-Agent benchmark (Phase 9): context engine value-add for real SWE tasks
+    swe_agent: dict[str, dict] = field(default_factory=dict)
 
     # Extended retrieval metrics (MAP, Success@K, R-Precision, CodeBLEU)
     extended_metrics: dict[str, dict] = field(default_factory=dict)
@@ -453,9 +462,11 @@ async def run_full_benchmark(
     skip_validated: bool = False,
     skip_judge: bool = False,
     skip_enhanced_judge: bool = False,
+    skip_swe_agent: bool = False,
     dataset_filter: list[str] | None = None,
     match_mode: MatchMode = "hybrid",
     enable_debiasing: bool = True,
+    with_agent_queries: bool = False,
     trace_store: TraceStore | None = None,
     resume_report: dict | None = None,
 ) -> BenchmarkReport:
@@ -513,6 +524,9 @@ async def run_full_benchmark(
         if resume_report.get("enhanced_judge") and not skip_enhanced_judge:
             print("  [resume] Skipping enhanced_judge (already completed)")
             skip_enhanced_judge = True
+        if resume_report.get("swe_agent") and not skip_swe_agent:
+            print("  [resume] Skipping swe_agent (already completed)")
+            skip_swe_agent = True
 
     def _save_progress(phase_name: str) -> None:
         """Incremental save after each phase completes."""
@@ -1045,6 +1059,67 @@ async def run_full_benchmark(
                     print_enhanced_judge_summary(enh_metrics, consistency, display_name)
                 _save_progress("enhanced_judge")
 
+    # ---- Phase 9: SWE-Agent Benchmark ----
+    if not skip_swe_agent:
+        print("\n=== Phase 9: SWE-Agent Benchmark ===")
+        swe_path = str(config.datasets_dir / "swe_agent_test_cases.json")
+
+        if not config.llm_api_key:
+            print("\n  [!] Skipping SWE-Agent — no LLM API keys configured")
+        elif not Path(swe_path).exists():
+            print(f"\n  [!] Skipping SWE-Agent — dataset not found: {swe_path}")
+        else:
+            try:
+                swe_result = await run_swe_agent_benchmark(
+                    engines=engines,
+                    test_cases_path=swe_path,
+                    llm_provider=config.llm_provider,
+                    llm_model=config.llm_model,
+                    llm_api_key=config.llm_api_key,
+                    max_queries=config.max_queries,
+                    enable_debiasing=enable_debiasing,
+                    with_agent_queries=with_agent_queries,
+                )
+
+                # Store baseline results
+                if swe_result.baseline_results:
+                    report.swe_agent["baseline"] = asdict(swe_result.baseline_results)
+
+                # Store per-engine results
+                for eng_name, eng_agg in swe_result.engine_results.items():
+                    report.swe_agent[eng_name] = asdict(eng_agg)
+
+                # Store deltas
+                report.swe_agent["_deltas"] = swe_result.delta_scores
+
+                # Store per-case results for statistical analysis
+                report.swe_agent["_per_case"] = swe_result.per_case_results
+
+                # Add traces
+                for per_case in swe_result.per_case_results:
+                    trace = QueryTrace.create(
+                        run_id=trace_store.run_id,
+                        engine=per_case.get("engine", ""),
+                        benchmark_type="swe_agent",
+                    )
+                    trace.query_text = per_case.get("test_case_id", "")
+                    trace.latency_ms = per_case.get("latency_ms", 0.0)
+                    trace.scores = {
+                        "judge_composite": per_case.get("judge_composite", 0),
+                        "criteria_pass_rate": per_case.get("criteria_pass_rate", 0),
+                        "context_utilization": per_case.get("context_utilization_score", 0),
+                        "hallucination_count": per_case.get("hallucination_count", 0),
+                    }
+                    trace_store.add_trace(trace)
+
+                print_swe_agent_summary(swe_result)
+            except Exception as e:
+                print(f"\n  [!] SWE-Agent benchmark failed: {e}")
+                import traceback
+                traceback.print_exc()
+
+            _save_progress("swe_agent")
+
     # --- Statistical Significance Analysis ---
     # Collect per-query scores for pairwise significance testing
     if len(engines) >= 2 and report.query_results:
@@ -1506,5 +1581,38 @@ def _print_comparison(report: BenchmarkReport) -> None:
                         val = report.hallucination[k].get("error_breakdown", {}).get(err_type, 0)
                         row += f"{val:>20}"
                     print(row)
+
+    # SWE-Agent comparison
+    if report.swe_agent:
+        print("\n--- SWE-Agent (Phase 9) ---")
+        header = f"{'Metric':<25}" + "".join(f"{e:>15}" for e in report.engines)
+        print(header)
+        print("-" * len(header))
+
+        for metric, label in [
+            ("avg_judge_composite", "Judge composite"),
+            ("avg_criteria_pass_rate", "Criteria pass rate"),
+            ("avg_file_targeting", "File targeting"),
+            ("avg_context_utilization", "Context utilization"),
+            ("avg_hallucination_count", "Halluc./case"),
+            ("parse_rate", "Parse rate"),
+        ]:
+            row = f"{label:<25}"
+            for eng in report.engines:
+                val = report.swe_agent.get(eng, {}).get(metric, 0)
+                if "halluc" in metric.lower():
+                    row += f"{val:>15.1f}"
+                elif isinstance(val, float) and val <= 1.0:
+                    row += f"{val:>14.1%} "
+                else:
+                    row += f"{val:>15.3f}"
+            print(row)
+
+        # Baseline reference
+        bl = report.swe_agent.get("baseline", {})
+        if bl:
+            print(f"\n  Baseline (no context): "
+                  f"composite={bl.get('avg_judge_composite', 0):.3f}  "
+                  f"criteria={bl.get('avg_criteria_pass_rate', 0):.0%}")
 
     print()
