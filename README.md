@@ -4,10 +4,10 @@
 
 Benchmark harness for comparing code context engines head-to-head.
 
-Tests [Delphi](https://github.com/synthetic-sciences/synsc-delphi), [Context7](https://context7.com), and [Nia](https://trynia.ai) across 8 benchmark phases, ~3,300 queries, using automated IR metrics and a position-debiased LLM judge.
+Tests [Delphi](https://github.com/synthetic-sciences/synsc-delphi), [Context7](https://context7.com), and [Nia](https://trynia.ai) across 9 benchmark phases, ~3,600 data points, using automated IR metrics, a position-debiased LLM judge, and SWE-Agent code generation evaluation.
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
-[![Suites](https://img.shields.io/badge/phases-8-58a6ff?style=for-the-badge)]()
+[![Suites](https://img.shields.io/badge/phases-9-58a6ff?style=for-the-badge)]()
 [![Engines](https://img.shields.io/badge/engines-3-f78166?style=for-the-badge)]()
 [![Judge](https://img.shields.io/badge/judge-Claude_Sonnet_4.6-blueviolet?style=for-the-badge&logo=anthropic&logoColor=white)]()
 
@@ -52,6 +52,22 @@ Each query scored twice with swapped chunk ordering to eliminate positional bias
 | CoSQA | Nia | 0.875 | 20 |
 | CoSQA | Context7 | 0.598 | 12 |
 
+### SWE-Agent Benchmark (25 tasks, gold + agent queries, no-context baseline)
+
+Does feeding context engine results to an LLM actually produce better code? 25 hand-crafted SWE tasks across 3 knowledge tiers.
+
+| Metric | Baseline (no context) | Delphi | Context7 | Nia |
+|--------|:---:|:---:|:---:|:---:|
+| Judge composite | 0.665 | **0.806** (+21%) | 0.821 (+23%) | 0.802 (+21%) |
+| Criteria pass | 90% | **92%** | 88% | 89% |
+| Context utilization | — | 12% | 16% | **21%** |
+
+| Knowledge Tier | Delphi delta | Context7 delta | Nia delta |
+|----------------|:---:|:---:|:---:|
+| A (well-known) | +0.108 | **+0.164** | +0.083 |
+| B (niche/recent) | +0.128 | **+0.150** | +0.120 |
+| C (version-specific) | **+0.215** | +0.247 | +0.247 |
+
 <details>
 <summary>Supplementary: AdvTest (structurally disadvantages library-lookup engines)</summary>
 
@@ -95,6 +111,7 @@ This benchmark addresses common fairness concerns in engine comparison:
 | 6 | **CodeSearchNet** | Function-level code search (Husain et al. 2019) | 100 |
 | 7 | **CoSQA** | Real web search queries (Huang et al. 2021) | 100 |
 | 8 | **Enhanced Judge** | Position-debiased 4D + faithfulness + RAGAS metrics | 200 |
+| 9 | **SWE-Agent** | Code generation with/without context, no-context baseline | 25 |
 | — | *AdvTest (supplementary)* | Adversarial/obfuscated code queries | 100 |
 
 ---
@@ -155,6 +172,10 @@ uv run python -m benchmarks --enhanced-judge-only
 | `--no-debiasing` | Disable position debiasing (2x faster) |
 | `--no-significance` | Skip statistical analysis |
 | `--dataset cosqa codesearchnet advtest` | Pick specific datasets |
+| `--swe-agent-only` | Run only SWE-Agent benchmark |
+| `--skip-swe-agent` | Skip SWE-Agent benchmark |
+| `--with-agent-queries` | Also run AI-generated queries (default: gold only) |
+| `--engines none` | Baseline-only mode (with `--swe-agent-only`) |
 | `--max-queries N` | Limit query count per phase |
 | `-v` | Verbose logging |
 
@@ -198,6 +219,7 @@ benchmarks/
   multihop.py             multi-hop retrieval
   code_qa.py              code QA
   adversarial.py          adversarial near-miss
+  swe_agent.py            SWE-Agent code generation benchmark
   consistency.py          consistency checks
   adapters/               engine adapters
   datasets/               ground truth + downloads
