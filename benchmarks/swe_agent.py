@@ -840,9 +840,13 @@ async def run_swe_agent_benchmark(
     4. Evaluate all solutions
     5. Compute deltas
     """
+    from .sampling import stratified_sample
+
     test_cases = load_test_cases(test_cases_path)
-    if max_queries is not None:
-        test_cases = test_cases[:max_queries]
+    # Stratify by knowledge tier so a subsample still spans A/B/C tiers.
+    test_cases = stratified_sample(
+        test_cases, max_queries, key=lambda tc: getattr(tc, "knowledge_tier", "A"), seed=0,
+    )
 
     all_results: list[SWEResult] = []
     baseline_results: list[SWEResult] = []

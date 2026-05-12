@@ -274,16 +274,19 @@ async def run_code_qa_benchmark(
     llm_provider: str = "",
     llm_model: str = "",
     llm_api_key: str = "",
+    seed: int = 0,
 ) -> tuple[CodeQAAggregateMetrics, list[CodeQAResult]]:
     """Run code-specific QA benchmark against one engine.
 
     Args:
         scoring_mode: "structural" (file-path + keyword matching) or
                       "llm" (LLM judge evaluation, fair for doc-oriented engines).
+        seed: RNG seed for query sub-sampling (deterministic across engines).
     """
+    from .sampling import sample_seeded
+
     test_cases = load_code_qa_cases(dataset_path)
-    if max_queries is not None:
-        test_cases = test_cases[:max_queries]
+    test_cases = sample_seeded(test_cases, max_queries, seed=seed)
     results_list: list[CodeQAResult] = []
 
     for tc in tqdm(test_cases, desc=f"  {engine.name} code-qa", unit="q"):
