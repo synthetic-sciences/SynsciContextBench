@@ -37,7 +37,7 @@ from dataclasses import dataclass, field
 
 import httpx
 
-from .adapters.base import ContextEngineAdapter
+from ..adapters.base import ContextEngineAdapter
 
 
 # ---------------------------------------------------------------------------

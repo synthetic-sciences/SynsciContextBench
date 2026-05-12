@@ -25,10 +25,10 @@ from pathlib import Path
 
 from tqdm import tqdm
 
-from .adapters.base import ContextEngineAdapter, SearchResult
-from .failure_taxonomy import _classify_thesis_failure
-from .logging_config import get_logger
-from .sampling import sample_seeded
+from ..adapters.base import ContextEngineAdapter, SearchResult
+from ..scoring.failure_taxonomy import _classify_thesis_failure
+from ..infra.logging_config import get_logger
+from ..infra.sampling import sample_seeded
 
 logger = get_logger("session_replay")
 

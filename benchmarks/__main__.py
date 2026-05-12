@@ -282,7 +282,7 @@ async def main() -> int:
     config = BenchmarkConfig()
 
     # Set up structured logging
-    from .logging_config import TraceStore, setup_logging
+    from .infra.logging_config import TraceStore, setup_logging
     trace_store = TraceStore(config.results_dir)
     bench_logger = setup_logging(
         results_dir=config.results_dir,
@@ -311,7 +311,7 @@ async def main() -> int:
 
     # --- Download datasets mode ---
     if args.download_datasets:
-        from .dataset_loader import download_all
+        from .utils.dataset_loader import download_all
 
         download_all(
             csn_max_per_lang=args.dataset_max_samples,

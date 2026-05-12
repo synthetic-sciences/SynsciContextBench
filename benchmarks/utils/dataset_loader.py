@@ -25,7 +25,9 @@ import json
 import random
 from pathlib import Path
 
-DATASETS_DIR = Path(__file__).parent / "datasets"
+# Downloads land under benchmarks/datasets/validated/, side-by-side with the
+# in-repo hand-curated cases in benchmarks/datasets/curated/.
+DATASETS_DIR = Path(__file__).resolve().parent.parent / "datasets" / "validated"
 
 
 def _ensure_datasets_lib():

@@ -9,3 +9,8 @@ build/
 .venv/
 .mypy_cache/
 .ruff_cache/
+.DS_Store
+
+# Stray top-level log files from interrupted runs (each run also writes
+# its own logs/ under results/run_<ts>/).
+benchmarks/results/bench_*.jsonl
