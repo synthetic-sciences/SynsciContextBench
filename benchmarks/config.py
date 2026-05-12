@@ -106,6 +106,14 @@ class BenchmarkConfig:
     top_k_values: list[int] = field(default_factory=lambda: [1, 3, 5, 10])
     similarity_threshold: float = 0.3
     max_queries: int | None = None  # Limit queries per dataset (None = all)
+    # Seed list for query sub-sampling. A single benchmark run can replay
+    # itself across multiple seeds; aggregate stats then report mean ± CI
+    # over seeds rather than a single deterministic draw.
+    seeds: list[int] = field(default_factory=lambda: [0])
+    # Cap the number of results scored by the LLM judge in `validated_eval`.
+    # The previous hard-coded cap of 3 silently forced rank-4+ to be
+    # irrelevant. 10 lines up with the default reporting window.
+    judge_top_k: int = 10
 
     # --- Paths ---
     datasets_dir: Path = Path(__file__).parent / "datasets"

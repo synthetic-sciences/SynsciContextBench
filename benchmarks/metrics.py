@@ -72,12 +72,27 @@ def precision_at_k(results: list[RetrievalResult], k: int) -> float:
 
 
 def recall_at_k(results: list[RetrievalResult], k: int, total_relevant: int) -> float:
-    """Fraction of all relevant docs found in top-k."""
+    """Fraction of all relevant docs found in top-k.
+
+    A retrieval system may return many chunks from the same source file, so we
+    deduplicate by RetrievalResult.id before counting relevant hits. This
+    prevents Recall@K > 1.0 when several returned chunks share the same
+    ground-truth source.
+    """
     if total_relevant == 0:
         return 0.0
     top_k = results[:k]
-    found = sum(1 for r in top_k if r.is_relevant)
-    return found / total_relevant
+    seen: set[str] = set()
+    found = 0
+    for r in top_k:
+        if not r.is_relevant:
+            continue
+        key = r.id or ""
+        if key in seen:
+            continue
+        seen.add(key)
+        found += 1
+    return min(found / total_relevant, 1.0)
 
 
 def mrr(results: list[RetrievalResult]) -> float:

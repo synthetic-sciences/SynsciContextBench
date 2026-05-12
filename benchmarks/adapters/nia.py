@@ -59,16 +59,21 @@ class NiaAdapter(ContextEngineAdapter):
         if language:
             payload["language"] = language
 
-        # Throttle to stay under Nia's rate limit
+        # Full user-visible latency starts before throttling so we count
+        # the rate-limit delay and all retries — the diagnosis flagged
+        # this as a fairness gap vs synsc-context.
+        user_start = time.perf_counter()
+
         if self._request_delay > 0:
             await asyncio.sleep(self._request_delay)
 
         # Retry with backoff on 429
         max_retries = 5
+        request_latency = 0.0
         for attempt in range(max_retries):
             start = time.perf_counter()
             resp = await self._client.post("/v2/universal-search", json=payload)
-            latency = (time.perf_counter() - start) * 1000
+            request_latency = (time.perf_counter() - start) * 1000
 
             if resp.status_code == 429 and attempt < max_retries - 1:
                 wait = 2 ** (attempt + 1)
@@ -78,6 +83,8 @@ class NiaAdapter(ContextEngineAdapter):
 
             resp.raise_for_status()
             break
+
+        latency = (time.perf_counter() - user_start) * 1000
 
         data = resp.json()
 
