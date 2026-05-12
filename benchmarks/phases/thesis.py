@@ -45,8 +45,8 @@ from pathlib import Path
 
 from tqdm import tqdm
 
-from .adapters.base import ContextEngineAdapter, SearchResult
-from .logging_config import get_logger
+from ..adapters.base import ContextEngineAdapter, SearchResult
+from ..infra.logging_config import get_logger
 
 logger = get_logger("thesis")
 
@@ -244,7 +244,7 @@ async def _judge_score(
     llm_api_key: str,
 ) -> float:
     """Call the LLM judge for one case. Returns a float in [0, 1]."""
-    from .llm_judge import _call_llm_judge_raw, _safe_parse_json
+    from ..judges.llm_judge import _call_llm_judge_raw, _safe_parse_json
 
     context_blob = "\n\n---\n\n".join(
         f"[{c.file_path or c.id}]\n{(c.content or '')[:600]}" for c in chunks[:8]
@@ -332,7 +332,7 @@ async def run_thesis_benchmark(
     anchor_hit + evidence_recall signals only, which still discriminates
     engines that surface the right evidence from those that do not.
     """
-    from .sampling import stratified_sample
+    from ..infra.sampling import stratified_sample
 
     cases = load_thesis_cases(dataset_path)
     cases = stratified_sample(cases, max_cases, key=lambda c: c.category, seed=seed)

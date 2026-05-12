@@ -27,7 +27,7 @@ import os
 import shutil
 import time
 
-from ..logging_config import get_logger
+from ..infra.logging_config import get_logger
 from .base import ContextEngineAdapter, IndexResult, SearchResult
 
 logger = get_logger("adapter.synsc-mcp")

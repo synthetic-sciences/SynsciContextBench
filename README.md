@@ -237,47 +237,92 @@ Add a new engine by implementing `ContextEngineAdapter` from `benchmarks/adapter
 ## Project Structure
 
 ```
-benchmarks/
-  __main__.py             cli entry point
-  runner.py               orchestrates phases
-  config.py               env config (seeds, judge_top_k, etc.)
-  sampling.py             seeded + stratified query sampling
-  logging_config.py       structured logging + traces
-  metrics.py              NDCG, MRR, P@K, R@K, MAP (Recall@K dedup-fixed)
-  semantic_metrics.py     CodeBLEU, AST similarity
-  statistical_analysis.py paired tests, bootstrap, effect sizes
-  llm_judge.py            3D blind scoring
-  enhanced_judge.py       4D debiased + RAGAS
-  validated_eval.py       CodeSearchNet / CoSQA / AdvTest (judge_top_k aware)
-  hallucination.py        hallucination rate
-  multihop.py             multi-hop retrieval
-  code_qa.py              code QA
-  adversarial.py          adversarial near-miss
-  swe_agent.py            SWE-Agent code generation benchmark
-  swe_real_patch.py       real-patch SWE eval (clone + apply + test)
-  thesis.py               Phase 10 — Thesis-workflow benchmark
-  session_replay.py       Phase 11 — real-session replay
-  context_grounding.py    citation, utilization, hallucination-reduction
-  latency.py              end-to-end latency meter (incl. retries/sleeps)
-  leaderboards.py         per-category leaderboards
-  failure_taxonomy.py     classify failures into actionable buckets
-  consistency.py          consistency checks
-  adapters/
-    synsc.py              HTTP adapter (quality_mode aware)
-    synsc_mcp.py          MCP-proxy adapter (build_context_pack etc.)
-    nia.py                Nia adapter (full-latency accounted)
-    context7.py           Context7 adapter (full-latency accounted)
-  datasets/
-    thesis_test_cases.json
-    session_replay_cases.json
-    swe_agent_test_cases.json
-    ... plus the validated dataset downloads
-  results/                output data, traces, reports
-docs/
-  BENCHMARK_REPORT.md     full results + analysis
-scripts/
-  generate_charts.py      regenerate the chart
+synsci-context-bench/
+├── README.md                  this file
+├── ARCHITECTURE.md            high-level design + diagnosis traceability
+├── CHANGELOG.md               release notes (1.0 → 1.1 → reorg)
+├── CONTRIBUTING.md            how to add phases / engines / metrics
+├── pyproject.toml
+│
+├── benchmarks/
+│   ├── README.md              package overview
+│   ├── __main__.py            cli entry point
+│   ├── runner.py              phase orchestrator
+│   ├── config.py              env + path config (curated_dir, validated_dir, seeds)
+│   │
+│   ├── adapters/              one file per engine
+│   │   ├── synsc.py           Delphi HTTP (quality_mode aware)
+│   │   ├── synsc_mcp.py       Delphi MCP-proxy (build_context_pack)
+│   │   ├── nia.py             Nia REST (full-latency accounted)
+│   │   ├── context7.py        Context7 HTTP (full-latency accounted)
+│   │   └── base.py            ContextEngineAdapter interface
+│   │
+│   ├── phases/                one module per benchmark phase
+│   │   ├── multihop.py        Phase 2
+│   │   ├── code_qa.py         Phase 3
+│   │   ├── adversarial.py     Phase 4
+│   │   ├── hallucination.py   Phase 5
+│   │   ├── validated_eval.py  Phase 6 — CodeSearchNet / CoSQA / AdvTest
+│   │   ├── swe_agent.py       Phase 9 — code generation benchmark
+│   │   ├── swe_real_patch.py  Phase 9b — real-patch eval (opt-in)
+│   │   ├── thesis.py          Phase 10 — Thesis workflow
+│   │   └── session_replay.py  Phase 11 — production session replay
+│   │
+│   ├── judges/                LLM-as-judge implementations
+│   │   ├── llm_judge.py       3D blind scoring
+│   │   └── enhanced_judge.py  4D position-debiased + RAGAS
+│   │
+│   ├── scoring/               deterministic scoring + analysis
+│   │   ├── metrics.py         MRR, NDCG, P@K, R@K (dedup-fixed), MAP
+│   │   ├── semantic_metrics.py     CodeBLEU + AST similarity
+│   │   ├── context_grounding.py    citation, utilization, hallucination-reduction
+│   │   ├── leaderboards.py    per-category leaderboards
+│   │   ├── failure_taxonomy.py     classify failures into actionable buckets
+│   │   └── statistical_analysis.py paired tests, bootstrap, effect sizes
+│   │
+│   ├── infra/                 operational glue
+│   │   ├── logging_config.py  structured logging + per-query traces
+│   │   ├── sampling.py        seeded + stratified sampling
+│   │   ├── latency.py         end-to-end latency meter
+│   │   └── consistency.py     repeat-run consistency checks
+│   │
+│   ├── utils/                 standalone helpers
+│   │   ├── dataset_loader.py  downloads CodeSearchNet / CoSQA / ...
+│   │   └── create_benchmark_repo.py  fixture builder
+│   │
+│   ├── datasets/
+│   │   ├── curated/           hand-built cases owned by this repo
+│   │   │   ├── retrieval_ground_truth.json
+│   │   │   ├── multihop_test_cases.json
+│   │   │   ├── code_qa_test_cases.json
+│   │   │   ├── adversarial_test_cases.json
+│   │   │   ├── hallucination_test_cases.json
+│   │   │   ├── swe_agent_test_cases.json
+│   │   │   ├── thesis_test_cases.json
+│   │   │   └── session_replay_cases.json
+│   │   └── validated/         downloaded standard datasets
+│   │       ├── codesearchnet_benchmark.json
+│   │       ├── cosqa_benchmark.json
+│   │       ├── advtest_benchmark.json
+│   │       └── ...
+│   │
+│   └── results/               run_<ts>/ directories — traces, manifests, CSVs
+│
+├── docs/
+│   ├── README.md              docs index
+│   ├── PHASES.md              per-phase deep dive
+│   ├── METRICS.md             per-metric reference
+│   └── BENCHMARK_REPORT.md    last full-run report
+│
+├── scripts/
+│   └── generate_charts.py     regenerate assets/charts/results.png
+│
+└── assets/
+    └── charts/
 ```
+
+Every subdirectory has its own `README.md` that describes what's in it
+and the local conventions.
 
 ---
 

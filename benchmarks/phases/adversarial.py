@@ -27,7 +27,7 @@ import json
 from tqdm import tqdm
 from dataclasses import dataclass, field
 
-from .adapters.base import ContextEngineAdapter, SearchResult
+from ..adapters.base import ContextEngineAdapter, SearchResult
 
 
 @dataclass
@@ -188,7 +188,7 @@ async def _llm_judge_adversarial(
     llm_api_key: str,
 ) -> tuple[bool, float]:
     """Use LLM judge to evaluate adversarial test case."""
-    from .llm_judge import _call_llm_judge_raw, _safe_parse_json
+    from ..judges.llm_judge import _call_llm_judge_raw, _safe_parse_json
 
     context = "\n---\n".join(
         f"[Result {i+1}] {r.file_path}\n{r.content[:1500]}"
@@ -242,7 +242,7 @@ async def run_adversarial_benchmark(
                       "llm" (LLM judge evaluation, fair for doc-oriented engines).
         seed: RNG seed for query sub-sampling (deterministic across engines).
     """
-    from .sampling import sample_seeded
+    from ..infra.sampling import sample_seeded
 
     test_cases = load_adversarial_cases(dataset_path)
     test_cases = sample_seeded(test_cases, max_queries, seed=seed)

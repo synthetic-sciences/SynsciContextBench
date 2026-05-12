@@ -116,8 +116,21 @@ class BenchmarkConfig:
     judge_top_k: int = 10
 
     # --- Paths ---
+    # ``datasets_dir`` is the root that contains both ``curated/`` (hand-built
+    # test cases owned by this repo) and ``validated/`` (downloaded standard
+    # datasets like CodeSearchNet / CoSQA / AdvTest).
     datasets_dir: Path = Path(__file__).parent / "datasets"
     results_dir: Path = Path(__file__).parent / "results"
+
+    @property
+    def curated_dir(self) -> Path:
+        """Hand-curated benchmark cases (Thesis, session replay, etc.)."""
+        return self.datasets_dir / "curated"
+
+    @property
+    def validated_dir(self) -> Path:
+        """Downloaded validated datasets (CodeSearchNet, CoSQA, AdvTest...)."""
+        return self.datasets_dir / "validated"
 
     def load_model_matrix(self) -> list[LLMModelConfig]:
         """Load the multi-model matrix from env vars."""

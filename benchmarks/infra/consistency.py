@@ -12,7 +12,7 @@ import math
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
 
-from .adapters.base import ContextEngineAdapter
+from ..adapters.base import ContextEngineAdapter
 from .logging_config import get_logger
 
 logger = get_logger("consistency")

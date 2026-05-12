@@ -130,7 +130,7 @@ def fact_utilization(answer: str, chunks: list[str]) -> tuple[int, int, float]:
     extractor otherwise.
     """
     try:
-        from .swe_agent import _compute_context_utilization  # type: ignore
+        from ..phases.swe_agent import _compute_context_utilization  # type: ignore
         return _compute_context_utilization(answer or "", chunks)
     except Exception:
         return _fallback_utilization(answer or "", chunks)

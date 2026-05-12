@@ -26,9 +26,9 @@ from pathlib import Path
 
 from tqdm import tqdm
 
-from .adapters.base import ContextEngineAdapter
+from ..adapters.base import ContextEngineAdapter
 from .hallucination import validate_code, HallucinationTestCase
-from .llm_judge import _safe_parse_json
+from ..judges.llm_judge import _safe_parse_json
 
 
 # ---------------------------------------------------------------------------
@@ -840,7 +840,7 @@ async def run_swe_agent_benchmark(
     4. Evaluate all solutions
     5. Compute deltas
     """
-    from .sampling import stratified_sample
+    from ..infra.sampling import stratified_sample
 
     test_cases = load_test_cases(test_cases_path)
     # Stratify by knowledge tier so a subsample still spans A/B/C tiers.

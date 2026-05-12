@@ -15,7 +15,7 @@ import time
 
 import httpx
 
-from ..logging_config import get_logger
+from ..infra.logging_config import get_logger
 from .base import ContextEngineAdapter, IndexResult, SearchResult
 
 logger = get_logger("adapter.nia")

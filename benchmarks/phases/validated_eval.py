@@ -35,8 +35,8 @@ from difflib import SequenceMatcher
 from pathlib import Path
 from typing import Literal
 
-from .adapters.base import ContextEngineAdapter, SearchResult
-from .metrics import (
+from ..adapters.base import ContextEngineAdapter, SearchResult
+from ..scoring.metrics import (
     AggregateMetrics,
     QueryEvaluation,
     RetrievalResult,
@@ -202,7 +202,7 @@ async def _llm_judge_match(
 
     Returns (is_relevant, relevance_grade).
     """
-    from .llm_judge import _call_llm_judge_raw, _safe_parse_json
+    from ..judges.llm_judge import _call_llm_judge_raw, _safe_parse_json
 
     user_prompt = (
         f"## Query\n{query}\n\n"

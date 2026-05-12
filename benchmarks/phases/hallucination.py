@@ -21,8 +21,8 @@ from dataclasses import dataclass, field
 
 import httpx
 
-from .adapters.base import ContextEngineAdapter
-from .metrics import HallucinationResult
+from ..adapters.base import ContextEngineAdapter
+from ..scoring.metrics import HallucinationResult
 
 
 @dataclass
@@ -305,7 +305,7 @@ async def run_hallucination_benchmark(
     2. Feed context to LLM for code generation
     3. Validate generated code against ground truth
     """
-    from .sampling import sample_seeded
+    from ..infra.sampling import sample_seeded
 
     results: list[HallucinationResult] = []
     test_cases = sample_seeded(test_cases, max_queries, seed=seed)

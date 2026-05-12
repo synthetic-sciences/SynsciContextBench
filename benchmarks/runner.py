@@ -16,27 +16,62 @@ from pathlib import Path
 from tqdm import tqdm
 
 from .adapters.base import ContextEngineAdapter, SearchResult
-from .adversarial import (
-    AdversarialAggregateMetrics,
-    run_adversarial_benchmark,
-)
-from .code_qa import (
-    CodeQAAggregateMetrics,
-    run_code_qa_benchmark,
-)
 from .config import BenchmarkConfig, LLMModelConfig
-from .hallucination import (
-    HallucinationBenchmarkResult,
-    load_test_cases,
-    run_hallucination_benchmark,
+from .infra.logging_config import QueryTrace, TraceStore, get_logger
+from .judges.enhanced_judge import (
+    print_enhanced_judge_summary,
+    run_enhanced_judge_benchmark,
 )
-from .llm_judge import (
+from .judges.llm_judge import (
     JudgeAggregateMetrics,
     print_judge_summary,
     run_judge_benchmark,
 )
-from .logging_config import QueryTrace, TraceStore, get_logger
-from .metrics import (
+from .phases.adversarial import (
+    AdversarialAggregateMetrics,
+    run_adversarial_benchmark,
+)
+from .phases.code_qa import (
+    CodeQAAggregateMetrics,
+    run_code_qa_benchmark,
+)
+from .phases.hallucination import (
+    HallucinationBenchmarkResult,
+    load_test_cases,
+    run_hallucination_benchmark,
+)
+from .phases.multihop import (
+    MultiHopAggregateMetrics,
+    run_multihop_benchmark,
+)
+from .phases.session_replay import (
+    print_session_replay_summary,
+    run_session_replay_benchmark,
+)
+from .phases.swe_agent import (
+    SWEBenchmarkResult,
+    print_swe_agent_summary,
+    run_swe_agent_benchmark,
+)
+from .phases.thesis import (
+    ThesisEngineReport,
+    print_thesis_summary,
+    run_thesis_benchmark,
+)
+from .phases.validated_eval import (
+    MatchMode,
+    print_validated_summary,
+    run_validated_benchmark,
+)
+from .scoring.failure_taxonomy import (
+    build_failure_taxonomy as _build_failure_taxonomy,
+    print_failure_taxonomy,
+)
+from .scoring.leaderboards import (
+    build_leaderboards as _build_leaderboards,
+    print_leaderboards,
+)
+from .scoring.metrics import (
     AggregateMetrics,
     QueryEvaluation,
     RetrievalResult,
@@ -44,47 +79,15 @@ from .metrics import (
     aggregate_hallucinations,
     evaluate_query,
 )
-from .multihop import (
-    MultiHopAggregateMetrics,
-    run_multihop_benchmark,
-)
-from .validated_eval import (
-    MatchMode,
-    print_validated_summary,
-    run_validated_benchmark,
-)
-from .statistical_analysis import (
-    bootstrap_ci,
-    print_significance_summary,
-    run_pairwise_significance,
-)
-from .enhanced_judge import (
-    print_enhanced_judge_summary,
-    run_enhanced_judge_benchmark,
-)
-from .swe_agent import (
-    SWEBenchmarkResult,
-    print_swe_agent_summary,
-    run_swe_agent_benchmark,
-)
-from .thesis import (
-    ThesisEngineReport,
-    print_thesis_summary,
-    run_thesis_benchmark,
-)
-from .leaderboards import build_leaderboards as _build_leaderboards, print_leaderboards
-from .failure_taxonomy import (
-    build_failure_taxonomy as _build_failure_taxonomy,
-    print_failure_taxonomy,
-)
-from .session_replay import (
-    print_session_replay_summary,
-    run_session_replay_benchmark,
-)
-from .semantic_metrics import (
+from .scoring.semantic_metrics import (
     ExtendedRetrievalMetrics,
     compute_extended_metrics,
     print_extended_metrics_summary,
+)
+from .scoring.statistical_analysis import (
+    bootstrap_ci,
+    print_significance_summary,
+    run_pairwise_significance,
 )
 
 logger = get_logger("runner")
@@ -292,7 +295,7 @@ async def run_retrieval_benchmark(
     seed: int = 0,
 ) -> tuple[AggregateMetrics, list[QueryEvaluation]]:
     """Run retrieval quality benchmark against one engine."""
-    from .sampling import sample_seeded
+    from .infra.sampling import sample_seeded
 
     with open(ground_truth_path) as f:
         data = json.load(f)
@@ -582,11 +585,11 @@ async def run_full_benchmark(
         except Exception as e:
             logger.warning("Failed to save progress after %s: %s", phase_name, e)
 
-    gt_path = str(config.datasets_dir / "retrieval_ground_truth.json")
-    hal_path = str(config.datasets_dir / "hallucination_test_cases.json")
-    mh_path = str(config.datasets_dir / "multihop_test_cases.json")
-    cq_path = str(config.datasets_dir / "code_qa_test_cases.json")
-    adv_path = str(config.datasets_dir / "adversarial_test_cases.json")
+    gt_path = str(config.curated_dir / "retrieval_ground_truth.json")
+    hal_path = str(config.curated_dir / "hallucination_test_cases.json")
+    mh_path = str(config.curated_dir / "multihop_test_cases.json")
+    cq_path = str(config.curated_dir / "code_qa_test_cases.json")
+    adv_path = str(config.curated_dir / "adversarial_test_cases.json")
 
     # --- Indexing ---
     if not skip_indexing:
@@ -847,7 +850,7 @@ async def run_full_benchmark(
         ]
         found_any = False
         for filename, display_name, _key in validated_datasets:
-            ds_path = config.datasets_dir / filename
+            ds_path = config.validated_dir / filename
             if not ds_path.exists():
                 continue
             if not found_any:
@@ -938,7 +941,7 @@ async def run_full_benchmark(
         else:
             found_any_judge = False
             for filename, display_name, _key in judge_datasets:
-                ds_path = config.datasets_dir / filename
+                ds_path = config.validated_dir / filename
                 if not ds_path.exists():
                     continue
                 if not found_any_judge:
@@ -1033,7 +1036,7 @@ async def run_full_benchmark(
             valid_enh = [
                 (f, d, k)
                 for f, d, k in enh_datasets
-                if (config.datasets_dir / f).exists()
+                if (config.validated_dir / f).exists()
             ]
 
             if not valid_enh:
@@ -1052,7 +1055,7 @@ async def run_full_benchmark(
                 )
 
                 async def _run_enh_dataset(filename, display_name, _key):
-                    ds_path = config.datasets_dir / filename
+                    ds_path = config.validated_dir / filename
                     return _key, display_name, await run_enhanced_judge_benchmark(
                         engines=engines,
                         dataset_path=str(ds_path),
@@ -1130,7 +1133,7 @@ async def run_full_benchmark(
     # ---- Phase 9: SWE-Agent Benchmark ----
     if not skip_swe_agent:
         print("\n=== Phase 9: SWE-Agent Benchmark ===")
-        swe_path = str(config.datasets_dir / "swe_agent_test_cases.json")
+        swe_path = str(config.curated_dir / "swe_agent_test_cases.json")
 
         if not config.llm_api_key:
             print("\n  [!] Skipping SWE-Agent — no LLM API keys configured")
@@ -1190,7 +1193,7 @@ async def run_full_benchmark(
 
     # ---- Phase 10: Thesis Workflow Benchmark ----
     if not skip_thesis:
-        thesis_path = config.datasets_dir / "thesis_test_cases.json"
+        thesis_path = config.curated_dir / "thesis_test_cases.json"
         if not thesis_path.exists():
             print(f"\n  [!] Skipping Thesis benchmark — dataset not found: {thesis_path}")
         else:
@@ -1255,7 +1258,7 @@ async def run_full_benchmark(
 
     # ---- Phase 11: Session Replay Benchmark ----
     if not skip_session_replay:
-        replay_path = config.datasets_dir / "session_replay_cases.json"
+        replay_path = config.curated_dir / "session_replay_cases.json"
         if not replay_path.exists():
             print(
                 f"\n  [!] Skipping Session Replay — dataset not found: {replay_path}"
