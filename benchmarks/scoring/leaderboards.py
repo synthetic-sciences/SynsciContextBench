@@ -1,7 +1,7 @@
 """Per-category leaderboards.
 
 The single-line "Engine X wins" reporting buries the actual story: an engine
-can win scoped code retrieval but lose Thesis workflow context entirely. The
+can win scoped code retrieval but lose Atlas workflow context entirely. The
 diagnosis explicitly asked for separate leaderboards per category, with each
 engine's strongest axis surfaced rather than a global average.
 
@@ -11,11 +11,11 @@ This module derives a small set of category leaderboards from a populated
 - ``code_retrieval``     — MRR over hand-curated retrieval + validated CSN
 - ``docs_lookup``        — MRR over CoSQA + StackOverflow QA (real user
                            queries, often answered by documentation)
-- ``paper_qa``           — Composite over Thesis ``paper_qa`` and ``synthesis``
+- ``paper_qa``           — Composite over Atlas ``paper_qa`` and ``synthesis``
                            categories (paper-flavored cases)
-- ``thesis_graph``       — Composite over Thesis ``graph_memory``,
+- ``atlas_graph``       — Composite over Atlas ``graph_memory``,
                            ``prior_decision``, ``avoid_repeat``, ``multi_turn``
-- ``tool_contract``      — Composite over Thesis ``tool_contract`` category
+- ``tool_contract``      — Composite over Atlas ``tool_contract`` category
 - ``swe_patch``          — SWE-Agent judge composite (and pass-rate)
 - ``hallucination``      — Lower is better; reported as 1 - hallucination_rate
                            so the leaderboard is "higher = better" consistent.
@@ -89,8 +89,8 @@ def _build_docs_lookup(report: dict, engines: list[str]) -> list[dict]:
     return sorted(rows, key=lambda r: r["score"], reverse=True)
 
 
-def _thesis_category_avg(report: dict, engine: str, cats: list[str]) -> float | None:
-    eng_rep = (report.get("thesis") or {}).get(engine)
+def _atlas_category_avg(report: dict, engine: str, cats: list[str]) -> float | None:
+    eng_rep = (report.get("atlas") or {}).get(engine)
     if not eng_rep:
         return None
     available = eng_rep.get("categories") or {}
@@ -107,18 +107,18 @@ def _thesis_category_avg(report: dict, engine: str, cats: list[str]) -> float | 
 def _build_paper_qa(report: dict, engines: list[str]) -> list[dict]:
     rows: list[dict] = []
     for e in engines:
-        score = _thesis_category_avg(report, e, ["paper_qa", "synthesis"])
+        score = _atlas_category_avg(report, e, ["paper_qa", "synthesis"])
         if score is None:
             continue
         rows.append(_entry(e, score))
     return sorted(rows, key=lambda r: r["score"], reverse=True)
 
 
-def _build_thesis_graph(report: dict, engines: list[str]) -> list[dict]:
+def _build_atlas_graph(report: dict, engines: list[str]) -> list[dict]:
     rows: list[dict] = []
     cats = ["graph_memory", "prior_decision", "avoid_repeat", "multi_turn"]
     for e in engines:
-        score = _thesis_category_avg(report, e, cats)
+        score = _atlas_category_avg(report, e, cats)
         if score is None:
             continue
         rows.append(_entry(e, score))
@@ -128,7 +128,7 @@ def _build_thesis_graph(report: dict, engines: list[str]) -> list[dict]:
 def _build_tool_contract(report: dict, engines: list[str]) -> list[dict]:
     rows: list[dict] = []
     for e in engines:
-        score = _thesis_category_avg(report, e, ["tool_contract"])
+        score = _atlas_category_avg(report, e, ["tool_contract"])
         if score is None:
             continue
         rows.append(_entry(e, score))
@@ -206,7 +206,7 @@ def build_leaderboards(report: dict) -> dict[str, list[dict]]:
     _add("code_retrieval", _build_code_retrieval(report, engines))
     _add("docs_lookup", _build_docs_lookup(report, engines))
     _add("paper_qa", _build_paper_qa(report, engines))
-    _add("thesis_graph", _build_thesis_graph(report, engines))
+    _add("atlas_graph", _build_atlas_graph(report, engines))
     _add("tool_contract", _build_tool_contract(report, engines))
     _add("swe_patch", _build_swe_patch(report, engines))
     _add("context_utilization", _build_context_utilization(report, engines))

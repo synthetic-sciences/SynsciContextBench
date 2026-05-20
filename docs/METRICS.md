@@ -98,7 +98,7 @@ clamped to [0,1]. Zero means context did nothing.
 `negative_signals_before - negative_signals_after`. Positive means
 context prevented some fabrications.
 
-## Thesis composite — `benchmarks/phases/thesis.py`
+## Atlas composite — `benchmarks/phases/atlas.py`
 
 For one case:
 

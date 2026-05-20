@@ -18,7 +18,7 @@ Smoke-test the harness without hitting an engine:
 
 ```bash
 SYNSC_API_KEY=x NIA_API_KEY=y CONTEXT7_ENABLED=false \
-  uv run python -m benchmarks --thesis-only --max-queries 2 --skip-indexing
+  uv run python -m benchmarks --atlas-only --max-queries 2 --skip-indexing
 ```
 
 This should run, fail every search (no real engine), still build leaderboards,
@@ -29,7 +29,7 @@ and write a manifest under `benchmarks/results/run_<ts>/`.
 1. **Author a dataset.** Drop a JSON file under
    `benchmarks/datasets/curated/<phase>_test_cases.json`. Start with
    `_description` and `_methodology` at the top. Look at
-   `thesis_test_cases.json` for an example schema.
+   `atlas_test_cases.json` for an example schema.
 2. **Write the phase module.** Add `benchmarks/phases/<phase>.py`. Follow
    the contract in [`phases/README.md`](./benchmarks/phases/README.md):
    - Accept `engine`, `dataset_path`, `top_k`, `max_queries`, `seed`,
@@ -102,7 +102,7 @@ the way the smoke at the bottom of the PR commit message did.
 
 - Use `aayambansal/<short-topic>` for branch names if you're the
   maintainer. External contributors: any prefix is fine.
-- Keep commits focused. The diagnosis + Thesis + session-replay work is
+- Keep commits focused. The diagnosis + Atlas + session-replay work is
   one logical change; the package reorganization is another.
 - Don't add `Co-Authored-By:` trailers; this repo has a single author of
   record.

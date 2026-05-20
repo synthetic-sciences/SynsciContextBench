@@ -17,11 +17,11 @@ Versions track the benchmark methodology, not just code edits.
 - `BenchmarkConfig` exposes `curated_dir` and `validated_dir` properties
   so phases reference paths through config, not raw strings.
 
-## 1.1.0 — Thesis & session replay, fairness fixes
+## 1.1.0 — Atlas & session replay, fairness fixes
 
 ### Added
 
-- **Phase 10 — Thesis Workflow.** 20 hand-curated cases across 8
+- **Phase 10 — Atlas Workflow.** 20 hand-curated cases across 8
   categories (`tool_contract`, `graph_memory`, `artifact`, `paper_qa`,
   `multi_turn`, `prior_decision`, `avoid_repeat`, `synthesis`). Per-category
   composite blends anchor-hit + evidence recall + optional LLM rubric.
@@ -31,7 +31,7 @@ Versions track the benchmark methodology, not just code edits.
   "now bad_ranking" vs "resolved".
 - **Per-category leaderboards** (`scoring/leaderboards.py`). Replaces the
   single-winner report with `code_retrieval`, `docs_lookup`, `paper_qa`,
-  `thesis_graph`, `tool_contract`, `swe_patch`, `context_utilization`,
+  `atlas_graph`, `tool_contract`, `swe_patch`, `context_utilization`,
   `hallucination_inverted`.
 - **Failure taxonomy classifier** (`scoring/failure_taxonomy.py`). Buckets:
   `missing_index_coverage`, `bad_retrieval`, `bad_ranking`, `bad_packaging`,
@@ -46,8 +46,8 @@ Versions track the benchmark methodology, not just code edits.
   buckets.
 - **`phases/swe_real_patch.py`** — opt-in real-patch SWE evaluation
   (`--real-patch`) that clones, applies, and runs tests.
-- New CLI flags: `--thesis-only`, `--session-replay-only`,
-  `--skip-thesis`, `--skip-session-replay`, `--engines synsc-mcp`,
+- New CLI flags: `--atlas-only`, `--session-replay-only`,
+  `--skip-atlas`, `--skip-session-replay`, `--engines synsc-mcp`,
   `--synsc-quality-mode`, `--judge-top-k`, `--seed`, `--num-seeds`,
   `--real-patch`.
 
