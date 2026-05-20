@@ -1,0 +1,661 @@
+{
+  "_description": "SWE-Agent benchmark (Phase 9): realistic software engineering tasks measuring context engine value-add.",
+  "_methodology": "For each task, solutions are generated WITH and WITHOUT context. Scored on correctness, hallucination, code quality, and structural checks. Test cases stratified by knowledge tier: A (well-known), B (niche/recent), C (version-specific).",
+  "_tier_distribution": {
+    "A": "Well-known libraries (FastAPI, NumPy, Requests, Flask, Django) — LLM knows these APIs",
+    "B": "Niche/recent libraries (Polars, Litestar, msgspec, Ruff, uv) — LLM lacks training data",
+    "C": "Version-specific migrations (Pydantic v1→v2, SQLAlchemy 1.4→2.0, Click→Typer) — LLM may have stale info"
+  },
+  "test_cases": [
+    {
+      "id": "swe001",
+      "task_type": "bug_fix",
+      "title": "Fix TypeError in async route handler when body is None",
+      "description": "When a POST request is sent with an empty body to /api/items, the handler raises TypeError: 'NoneType' object is not subscriptable. The handler should return a 422 validation error instead.",
+      "library": "fastapi",
+      "knowledge_tier": "A",
+      "difficulty": "medium",
+      "version_specific": false,
+      "gold_queries": [
+        "FastAPI POST request handler empty body None validation",
+        "FastAPI request body validation error handling"
+      ],
+      "expected_files": ["fastapi/routing.py", "fastapi/dependencies/utils.py"],
+      "expected_patterns": ["if.*body.*is.*None", "HTTPException.*422", "RequestValidationError"],
+      "expected_symbols": ["HTTPException", "RequestValidationError"],
+      "acceptance_criteria": {
+        "structural_checks": ["contains_null_check", "raises_or_returns_error"]
+      },
+      "judge_rubric": {
+        "correctness": "Does the patch correctly handle None body with a 422 response?",
+        "completeness": "Does it handle edge cases (empty string, malformed JSON)?",
+        "code_quality": "Is the fix idiomatic, minimal, and well-placed?",
+        "no_hallucination": "Does it use only real FastAPI APIs?"
+      }
+    },
+    {
+      "id": "swe002",
+      "task_type": "bug_fix",
+      "title": "Fix race condition in Flask session handling with concurrent requests",
+      "description": "When multiple concurrent requests hit the same Flask session, session data is intermittently lost. The session middleware needs proper locking or the response should use a thread-safe session store.",
+      "library": "flask",
+      "knowledge_tier": "A",
+      "difficulty": "hard",
+      "version_specific": false,
+      "gold_queries": [
+        "Flask session race condition concurrent requests",
+        "Flask thread-safe session handling middleware"
+      ],
+      "expected_files": ["flask/sessions.py", "flask/app.py"],
+      "expected_patterns": ["SecureCookieSession", "session_interface", "Lock"],
+      "expected_symbols": ["SecureCookieSessionInterface", "session"],
+      "acceptance_criteria": {
+        "structural_checks": ["contains_class_definition", "contains_function_definition"]
+      },
+      "judge_rubric": {
+        "correctness": "Does the solution address the race condition properly?",
+        "completeness": "Does it handle session creation, update, and deletion safely?",
+        "code_quality": "Is the locking mechanism clean and not overly complex?",
+        "no_hallucination": "Does it use real Flask session APIs?"
+      }
+    },
+    {
+      "id": "swe003",
+      "task_type": "bug_fix",
+      "title": "Fix NumPy broadcasting error in matrix multiplication with mismatched shapes",
+      "description": "A custom layer's forward pass fails with 'ValueError: operands could not be broadcast together' when batch dimensions don't align. Fix the shape handling to support both 2D and 3D input tensors.",
+      "library": "numpy",
+      "knowledge_tier": "A",
+      "difficulty": "medium",
+      "version_specific": false,
+      "gold_queries": [
+        "NumPy broadcasting rules matrix multiplication",
+        "NumPy reshape expand_dims batch dimension handling"
+      ],
+      "expected_files": ["numpy/core/numeric.py"],
+      "expected_patterns": ["reshape", "expand_dims|newaxis", "matmul|@"],
+      "expected_symbols": ["np.expand_dims", "np.matmul"],
+      "acceptance_criteria": {
+        "structural_checks": ["contains_function_definition", "contains_return"]
+      },
+      "judge_rubric": {
+        "correctness": "Does the fix handle both 2D and 3D input correctly?",
+        "completeness": "Does it validate input shapes before operations?",
+        "code_quality": "Is it a clean, minimal fix using idiomatic NumPy?",
+        "no_hallucination": "Does it use only real NumPy APIs?"
+      }
+    },
+    {
+      "id": "swe004",
+      "task_type": "bug_fix",
+      "title": "Fix requests SSL certificate verification failure with custom CA bundle",
+      "description": "HTTP requests to an internal API fail with SSLError when using a corporate CA bundle. The session's verify parameter should accept a custom CA file path and properly merge with system certificates.",
+      "library": "requests",
+      "knowledge_tier": "A",
+      "difficulty": "easy",
+      "version_specific": false,
+      "gold_queries": [
+        "requests library SSL certificate verification custom CA bundle",
+        "requests Session verify parameter CA cert path"
+      ],
+      "expected_files": ["requests/adapters.py", "requests/sessions.py"],
+      "expected_patterns": ["verify.*=", "cert.*=", "Session"],
+      "expected_symbols": ["Session", "verify"],
+      "acceptance_criteria": {
+        "structural_checks": ["contains_function_definition"]
+      },
+      "judge_rubric": {
+        "correctness": "Does the fix properly configure SSL verification with a custom CA?",
+        "completeness": "Does it handle missing CA file, invalid path, and fallback?",
+        "code_quality": "Is it a clean use of the requests API?",
+        "no_hallucination": "Does it use only real requests APIs and parameters?"
+      }
+    },
+    {
+      "id": "swe005",
+      "task_type": "bug_fix",
+      "title": "Fix Django ORM N+1 query in serializer with nested relationships",
+      "description": "An API endpoint returning a list of orders with items and products makes O(N*M) database queries due to missing prefetch. Fix with select_related and prefetch_related to reduce to O(1) queries.",
+      "library": "django",
+      "knowledge_tier": "A",
+      "difficulty": "medium",
+      "version_specific": false,
+      "gold_queries": [
+        "Django ORM N+1 query optimization select_related prefetch_related",
+        "Django queryset prefetch nested relationships"
+      ],
+      "expected_files": ["django/db/models/query.py"],
+      "expected_patterns": ["select_related", "prefetch_related", "Prefetch"],
+      "expected_symbols": ["select_related", "prefetch_related"],
+      "acceptance_criteria": {
+        "structural_checks": ["contains_function_definition"]
+      },
+      "judge_rubric": {
+        "correctness": "Does the fix eliminate the N+1 queries?",
+        "completeness": "Are all nested relationships properly prefetched?",
+        "code_quality": "Is the queryset optimization clean and maintainable?",
+        "no_hallucination": "Does it use only real Django ORM APIs?"
+      }
+    },
+    {
+      "id": "swe006",
+      "task_type": "bug_fix",
+      "title": "Fix incorrect group_by aggregation losing null values in Polars",
+      "description": "When using Polars group_by with an aggregation, rows where the group column contains null are silently dropped. The expected behavior is to include null as its own group, matching SQL semantics.",
+      "library": "polars",
+      "knowledge_tier": "B",
+      "difficulty": "medium",
+      "version_specific": false,
+      "gold_queries": [
+        "Polars group_by null values handling maintain_order",
+        "Polars DataFrame aggregation null group"
+      ],
+      "expected_files": ["polars/dataframe/group_by.py"],
+      "expected_patterns": ["group_by", "maintain_order", "null"],
+      "expected_symbols": ["group_by", "agg"],
+      "acceptance_criteria": {
+        "structural_checks": ["contains_function_definition", "contains_null_check"]
+      },
+      "judge_rubric": {
+        "correctness": "Does it correctly handle null values in group_by?",
+        "completeness": "Does it work with multiple aggregation functions?",
+        "code_quality": "Does it use idiomatic Polars expressions?",
+        "no_hallucination": "Does it use only real Polars APIs (not Pandas APIs)?"
+      }
+    },
+    {
+      "id": "swe007",
+      "task_type": "bug_fix",
+      "title": "Fix Litestar dependency injection scope leak between requests",
+      "description": "A request-scoped dependency in Litestar is being shared across requests when using the built-in DI container. The dependency's state bleeds between concurrent requests. Fix the scope configuration.",
+      "library": "litestar",
+      "knowledge_tier": "B",
+      "difficulty": "hard",
+      "version_specific": false,
+      "gold_queries": [
+        "Litestar dependency injection request scope lifecycle",
+        "Litestar Provide dependency scope configuration"
+      ],
+      "expected_files": ["litestar/di.py", "litestar/connection/base.py"],
+      "expected_patterns": ["Provide", "scope.*request", "dependency"],
+      "expected_symbols": ["Provide", "Dependency"],
+      "acceptance_criteria": {
+        "structural_checks": ["contains_function_definition", "contains_class_definition"]
+      },
+      "judge_rubric": {
+        "correctness": "Does it fix the scope leak by properly configuring request scope?",
+        "completeness": "Does it handle cleanup on request end?",
+        "code_quality": "Is it idiomatic Litestar, not FastAPI patterns?",
+        "no_hallucination": "Does it use real Litestar DI APIs (Provide, not Depends)?"
+      }
+    },
+    {
+      "id": "swe008",
+      "task_type": "feature_addition",
+      "title": "Add rate limiting middleware with configurable sliding window",
+      "description": "Implement a rate limiting middleware for a Litestar application using a sliding window algorithm. It should support per-client rate limits with configurable window size and max requests, using an in-memory store.",
+      "library": "litestar",
+      "knowledge_tier": "B",
+      "difficulty": "hard",
+      "version_specific": false,
+      "gold_queries": [
+        "Litestar middleware implementation AbstractMiddleware",
+        "Litestar rate limiting sliding window middleware"
+      ],
+      "expected_files": ["litestar/middleware/base.py"],
+      "expected_patterns": ["AbstractMiddleware|MiddlewareProtocol", "async.*def.*__call__", "sliding.*window|rate.*limit"],
+      "expected_symbols": ["AbstractMiddleware", "ASGIApp"],
+      "acceptance_criteria": {
+        "structural_checks": ["contains_class_definition", "contains_async", "contains_rate_limit"]
+      },
+      "judge_rubric": {
+        "correctness": "Does the middleware correctly implement sliding window rate limiting?",
+        "completeness": "Does it handle per-client tracking, window expiry, and limit headers?",
+        "code_quality": "Is it properly structured as Litestar middleware?",
+        "no_hallucination": "Does it use real Litestar middleware APIs?"
+      }
+    },
+    {
+      "id": "swe009",
+      "task_type": "feature_addition",
+      "title": "Add msgspec Struct validation with custom field constraints",
+      "description": "Create a user registration schema using msgspec Struct with custom validation: email format, password strength (min 8 chars, uppercase, number), and age range (18-120). Include a custom __post_init__ validator.",
+      "library": "msgspec",
+      "knowledge_tier": "B",
+      "difficulty": "medium",
+      "version_specific": false,
+      "gold_queries": [
+        "msgspec Struct validation custom constraints",
+        "msgspec field Meta constraints post_init"
+      ],
+      "expected_files": ["msgspec/structs.py"],
+      "expected_patterns": ["Struct", "Meta|field", "__post_init__"],
+      "expected_symbols": ["Struct", "Meta", "field"],
+      "acceptance_criteria": {
+        "structural_checks": ["contains_class_definition", "contains_validation"]
+      },
+      "judge_rubric": {
+        "correctness": "Does the schema correctly validate all three constraints?",
+        "completeness": "Are all validation rules implemented with proper error messages?",
+        "code_quality": "Does it use msgspec idioms (not Pydantic patterns)?",
+        "no_hallucination": "Does it use only real msgspec APIs (Struct, Meta, not BaseModel)?"
+      }
+    },
+    {
+      "id": "swe010",
+      "task_type": "feature_addition",
+      "title": "Add custom Polars expression plugin for business day calculation",
+      "description": "Create a custom Polars expression that calculates the number of business days between two date columns, excluding weekends and a configurable list of holidays.",
+      "library": "polars",
+      "knowledge_tier": "B",
+      "difficulty": "hard",
+      "version_specific": false,
+      "gold_queries": [
+        "Polars custom expression plugin register_plugin",
+        "Polars date operations business days weekday"
+      ],
+      "expected_files": ["polars/expr/expr.py"],
+      "expected_patterns": ["map_batches|map_elements|register", "is_business_day|weekday", "Expr"],
+      "expected_symbols": ["Expr", "map_batches"],
+      "acceptance_criteria": {
+        "structural_checks": ["contains_function_definition", "contains_return"]
+      },
+      "judge_rubric": {
+        "correctness": "Does it correctly calculate business days excluding weekends and holidays?",
+        "completeness": "Does it handle edge cases (same day, reversed dates, holidays)?",
+        "code_quality": "Does it use Polars expressions idiomatically?",
+        "no_hallucination": "Does it use real Polars APIs for date operations?"
+      }
+    },
+    {
+      "id": "swe011",
+      "task_type": "feature_addition",
+      "title": "Add FastAPI WebSocket endpoint with authentication and heartbeat",
+      "description": "Implement a WebSocket endpoint that requires JWT authentication on connection, sends periodic heartbeat pings, and gracefully handles disconnection with cleanup.",
+      "library": "fastapi",
+      "knowledge_tier": "A",
+      "difficulty": "medium",
+      "version_specific": false,
+      "gold_queries": [
+        "FastAPI WebSocket endpoint authentication JWT",
+        "FastAPI WebSocket heartbeat ping pong disconnect"
+      ],
+      "expected_files": ["fastapi/websockets.py", "fastapi/routing.py"],
+      "expected_patterns": ["@.*websocket", "WebSocket", "accept|close", "async.*for"],
+      "expected_symbols": ["WebSocket", "WebSocketDisconnect"],
+      "acceptance_criteria": {
+        "structural_checks": ["contains_async", "contains_decorator", "contains_error_handling"]
+      },
+      "judge_rubric": {
+        "correctness": "Does it properly authenticate WebSocket connections and handle messages?",
+        "completeness": "Does it include heartbeat, auth, and cleanup on disconnect?",
+        "code_quality": "Is it idiomatic FastAPI WebSocket code?",
+        "no_hallucination": "Does it use only real FastAPI WebSocket APIs?"
+      }
+    },
+    {
+      "id": "swe012",
+      "task_type": "feature_addition",
+      "title": "Build a CLI tool with Typer using subcommands, options, and rich help",
+      "description": "Create a CLI tool using Typer with: a main app, two subcommands ('init' and 'deploy'), typed options with defaults, environment variable support, and Rich-formatted help text.",
+      "library": "typer",
+      "knowledge_tier": "B",
+      "difficulty": "medium",
+      "version_specific": false,
+      "gold_queries": [
+        "Typer CLI subcommands app callback options",
+        "Typer rich help text environment variable option"
+      ],
+      "expected_files": ["typer/main.py"],
+      "expected_patterns": ["Typer\\(\\)", "app\\.command|@app", "Option\\(", "envvar"],
+      "expected_symbols": ["Typer", "Option", "Argument"],
+      "acceptance_criteria": {
+        "structural_checks": ["contains_function_definition", "contains_decorator", "contains_import"]
+      },
+      "judge_rubric": {
+        "correctness": "Does it create a working Typer CLI with subcommands?",
+        "completeness": "Are options, env vars, and help text all implemented?",
+        "code_quality": "Does it use Typer patterns (not Click patterns)?",
+        "no_hallucination": "Does it use real Typer APIs?"
+      }
+    },
+    {
+      "id": "swe013",
+      "task_type": "refactoring",
+      "title": "Extract validation logic from route handler into reusable dependency",
+      "description": "A FastAPI route handler has 30+ lines of inline validation logic (checking user permissions, validating business rules, rate limit checks). Extract this into a clean dependency injection pattern using Depends().",
+      "library": "fastapi",
+      "knowledge_tier": "A",
+      "difficulty": "medium",
+      "version_specific": false,
+      "gold_queries": [
+        "FastAPI dependency injection Depends pattern",
+        "FastAPI reusable dependency validation extraction"
+      ],
+      "expected_files": ["fastapi/dependencies/utils.py", "fastapi/params.py"],
+      "expected_patterns": ["Depends\\(", "async.*def.*validate|check|verify", "HTTPException"],
+      "expected_symbols": ["Depends", "HTTPException"],
+      "acceptance_criteria": {
+        "structural_checks": ["contains_function_definition", "contains_async", "contains_decorator"]
+      },
+      "judge_rubric": {
+        "correctness": "Does the refactoring preserve all validation logic correctly?",
+        "completeness": "Are all validations extracted into composable dependencies?",
+        "code_quality": "Is the dependency structure clean and reusable?",
+        "no_hallucination": "Does it use only real FastAPI dependency injection APIs?"
+      }
+    },
+    {
+      "id": "swe014",
+      "task_type": "refactoring",
+      "title": "Refactor synchronous file processing to async with aiofiles",
+      "description": "A data pipeline reads multiple large CSV files synchronously, blocking the event loop. Refactor to use aiofiles for async file I/O and asyncio.gather for concurrent processing.",
+      "library": "aiofiles",
+      "knowledge_tier": "B",
+      "difficulty": "medium",
+      "version_specific": false,
+      "gold_queries": [
+        "aiofiles async file reading CSV processing",
+        "asyncio gather concurrent file processing"
+      ],
+      "expected_files": ["aiofiles/os.py", "aiofiles/threadpool.py"],
+      "expected_patterns": ["aiofiles\\.open", "async.*with", "asyncio\\.gather"],
+      "expected_symbols": ["aiofiles", "gather"],
+      "acceptance_criteria": {
+        "structural_checks": ["contains_async", "contains_import", "contains_error_handling"]
+      },
+      "judge_rubric": {
+        "correctness": "Does the refactoring correctly use async file I/O?",
+        "completeness": "Does it handle errors, large files, and cleanup?",
+        "code_quality": "Is the async pattern clean and non-blocking?",
+        "no_hallucination": "Does it use real aiofiles APIs?"
+      }
+    },
+    {
+      "id": "swe015",
+      "task_type": "refactoring",
+      "title": "Replace deprecated decorator pattern with class-based approach",
+      "description": "A Django application uses the deprecated @csrf_exempt decorator approach on class-based views. Refactor to use the CsrfExemptMixin pattern and update the URL configuration accordingly.",
+      "library": "django",
+      "knowledge_tier": "A",
+      "difficulty": "easy",
+      "version_specific": false,
+      "gold_queries": [
+        "Django class-based view CSRF exempt mixin pattern",
+        "Django deprecate function decorator class-based view"
+      ],
+      "expected_files": ["django/views/generic/base.py", "django/utils/decorators.py"],
+      "expected_patterns": ["class.*Mixin|class.*View", "csrf_exempt", "dispatch|as_view"],
+      "expected_symbols": ["View", "csrf_exempt"],
+      "acceptance_criteria": {
+        "structural_checks": ["contains_class_definition", "contains_function_definition", "contains_decorator"]
+      },
+      "judge_rubric": {
+        "correctness": "Does the refactoring correctly exempt CSRF on the class-based view?",
+        "completeness": "Is the URL configuration updated to use as_view()?",
+        "code_quality": "Is the mixin pattern clean and follows Django conventions?",
+        "no_hallucination": "Does it use only real Django APIs?"
+      }
+    },
+    {
+      "id": "swe016",
+      "task_type": "refactoring",
+      "title": "Refactor raw SQL queries to use SQLAlchemy 2.0 ORM patterns",
+      "description": "A codebase has raw SQL string queries using connection.execute(text(...)). Refactor these to use SQLAlchemy 2.0 ORM patterns with select(), where(), and proper session management.",
+      "library": "sqlalchemy",
+      "knowledge_tier": "C",
+      "difficulty": "medium",
+      "version_specific": true,
+      "gold_queries": [
+        "SQLAlchemy 2.0 select statement ORM pattern",
+        "SQLAlchemy 2.0 session execute select where"
+      ],
+      "expected_files": ["sqlalchemy/orm/session.py", "sqlalchemy/sql/selectable.py"],
+      "expected_patterns": ["select\\(", "\\.where\\(", "session\\.execute", "session\\.scalars"],
+      "expected_symbols": ["select", "where", "Session"],
+      "acceptance_criteria": {
+        "structural_checks": ["contains_function_definition", "uses_new_api"]
+      },
+      "judge_rubric": {
+        "correctness": "Does it correctly translate raw SQL to SQLAlchemy 2.0 ORM?",
+        "completeness": "Are all queries converted with proper session management?",
+        "code_quality": "Does it use SQLAlchemy 2.0 style (not 1.x Query API)?",
+        "no_hallucination": "Does it use real SQLAlchemy 2.0 APIs (select(), not query())?"
+      }
+    },
+    {
+      "id": "swe017",
+      "task_type": "api_migration",
+      "title": "Migrate Pydantic v1 validators to v2 field_validator and model_validator",
+      "description": "A data model uses Pydantic v1 @validator and @root_validator decorators. Migrate to v2's @field_validator and @model_validator with mode='before'/'after', updating all validator signatures and return types.",
+      "library": "pydantic",
+      "knowledge_tier": "C",
+      "difficulty": "medium",
+      "version_specific": true,
+      "gold_queries": [
+        "Pydantic v2 migration field_validator model_validator",
+        "Pydantic v2 validator decorator changes from v1"
+      ],
+      "expected_files": ["pydantic/functional_validators.py"],
+      "expected_patterns": ["field_validator", "model_validator", "mode.*=.*'before'|mode.*=.*'after'"],
+      "expected_symbols": ["field_validator", "model_validator"],
+      "acceptance_criteria": {
+        "structural_checks": ["contains_class_definition", "contains_validation", "uses_new_api"]
+      },
+      "judge_rubric": {
+        "correctness": "Does it correctly migrate all validators to v2 syntax?",
+        "completeness": "Are all @validator and @root_validator instances migrated?",
+        "code_quality": "Does it follow Pydantic v2 conventions (not v1 patterns)?",
+        "no_hallucination": "Does it use real Pydantic v2 APIs (not deprecated v1 APIs)?"
+      }
+    },
+    {
+      "id": "swe018",
+      "task_type": "api_migration",
+      "title": "Migrate Pydantic v1 Config class to v2 model_config dict",
+      "description": "A set of Pydantic models use the v1 inner Config class pattern (class Config: orm_mode = True, allow_mutation = False). Migrate to v2's model_config = ConfigDict(...) pattern with updated field names.",
+      "library": "pydantic",
+      "knowledge_tier": "C",
+      "difficulty": "easy",
+      "version_specific": true,
+      "gold_queries": [
+        "Pydantic v2 ConfigDict model_config migration",
+        "Pydantic v2 from_attributes replace orm_mode"
+      ],
+      "expected_files": ["pydantic/config.py"],
+      "expected_patterns": ["model_config.*=.*ConfigDict", "from_attributes", "frozen"],
+      "expected_symbols": ["ConfigDict", "model_config"],
+      "acceptance_criteria": {
+        "structural_checks": ["contains_class_definition", "uses_new_api"]
+      },
+      "judge_rubric": {
+        "correctness": "Does it correctly migrate Config class to ConfigDict?",
+        "completeness": "Are all Config fields renamed to v2 equivalents (orm_mode→from_attributes, allow_mutation→frozen)?",
+        "code_quality": "Is the migration clean with no leftover v1 patterns?",
+        "no_hallucination": "Does it use real Pydantic v2 ConfigDict field names?"
+      }
+    },
+    {
+      "id": "swe019",
+      "task_type": "api_migration",
+      "title": "Migrate SQLAlchemy 1.4 Query API to 2.0 select() style",
+      "description": "A codebase uses session.query(Model).filter(...).all() patterns from SQLAlchemy 1.4. Migrate all queries to the 2.0 select(Model).where(...) pattern using session.execute() and session.scalars().",
+      "library": "sqlalchemy",
+      "knowledge_tier": "C",
+      "difficulty": "medium",
+      "version_specific": true,
+      "gold_queries": [
+        "SQLAlchemy 2.0 migration query to select",
+        "SQLAlchemy session.query to session.execute select migration"
+      ],
+      "expected_files": ["sqlalchemy/orm/session.py", "sqlalchemy/future/engine.py"],
+      "expected_patterns": ["select\\(", "session\\.execute", "session\\.scalars", "\\.where\\("],
+      "expected_symbols": ["select", "execute", "scalars"],
+      "acceptance_criteria": {
+        "structural_checks": ["contains_function_definition", "uses_new_api"]
+      },
+      "judge_rubric": {
+        "correctness": "Does it correctly replace .query() with select()?",
+        "completeness": "Are .filter()→.where(), .all()→.scalars().all() all migrated?",
+        "code_quality": "Does it use clean SQLAlchemy 2.0 patterns throughout?",
+        "no_hallucination": "Does it use real SQLAlchemy 2.0 APIs?"
+      }
+    },
+    {
+      "id": "swe020",
+      "task_type": "api_migration",
+      "title": "Migrate Click CLI application to Typer with type hints",
+      "description": "A CLI tool built with Click uses @click.command(), @click.option(), and @click.argument() decorators. Migrate to Typer, replacing decorators with Python type hints and Typer's app.command() pattern.",
+      "library": "typer",
+      "knowledge_tier": "C",
+      "difficulty": "medium",
+      "version_specific": true,
+      "gold_queries": [
+        "Typer migration from Click decorators to type hints",
+        "Typer app command option argument equivalent Click"
+      ],
+      "expected_files": ["typer/main.py", "typer/params.py"],
+      "expected_patterns": ["Typer\\(\\)", "app\\.command", "Option\\(", "Argument\\("],
+      "expected_symbols": ["Typer", "Option", "Argument"],
+      "acceptance_criteria": {
+        "structural_checks": ["contains_function_definition", "contains_import"]
+      },
+      "judge_rubric": {
+        "correctness": "Does the migration correctly translate Click to Typer patterns?",
+        "completeness": "Are all Click decorators replaced with Typer equivalents?",
+        "code_quality": "Does it use Typer's type-hint-first approach, not Click patterns?",
+        "no_hallucination": "Does it use real Typer APIs?"
+      }
+    },
+    {
+      "id": "swe021",
+      "task_type": "bug_fix",
+      "title": "Fix msgspec JSON decoding error with optional union types",
+      "description": "A msgspec Struct with a field typed as 'int | str | None' raises DecodeError when the JSON value is null. The field should correctly decode null to None. Fix the Struct definition and decoder configuration.",
+      "library": "msgspec",
+      "knowledge_tier": "B",
+      "difficulty": "easy",
+      "version_specific": false,
+      "gold_queries": [
+        "msgspec Struct optional union type None decoding",
+        "msgspec JSON decode null optional field"
+      ],
+      "expected_files": ["msgspec/structs.py", "msgspec/json.py"],
+      "expected_patterns": ["Struct", "None|Optional", "decode"],
+      "expected_symbols": ["Struct", "Decoder"],
+      "acceptance_criteria": {
+        "structural_checks": ["contains_class_definition", "contains_null_check"]
+      },
+      "judge_rubric": {
+        "correctness": "Does it fix the decoding of null to None for union types?",
+        "completeness": "Does it handle int, str, and None cases correctly?",
+        "code_quality": "Does it use msgspec patterns (not dataclass/pydantic)?",
+        "no_hallucination": "Does it use only real msgspec APIs?"
+      }
+    },
+    {
+      "id": "swe022",
+      "task_type": "bug_fix",
+      "title": "Fix Polars LazyFrame collect error with nested struct columns",
+      "description": "A Polars LazyFrame pipeline fails on .collect() when operating on nested struct columns with with_columns. The error is 'SchemaError: column not found'. Fix the column reference to use the correct struct field access syntax.",
+      "library": "polars",
+      "knowledge_tier": "B",
+      "difficulty": "medium",
+      "version_specific": false,
+      "gold_queries": [
+        "Polars struct column field access LazyFrame",
+        "Polars nested struct with_columns SchemaError"
+      ],
+      "expected_files": ["polars/expr/expr.py", "polars/lazyframe/frame.py"],
+      "expected_patterns": ["struct\\.field", "with_columns", "col\\("],
+      "expected_symbols": ["col", "struct"],
+      "acceptance_criteria": {
+        "structural_checks": ["contains_function_definition", "contains_return"]
+      },
+      "judge_rubric": {
+        "correctness": "Does it fix the struct field access in the LazyFrame pipeline?",
+        "completeness": "Does it handle multiple struct fields and nested access?",
+        "code_quality": "Does it use Polars expression API idiomatically?",
+        "no_hallucination": "Does it use real Polars struct access APIs?"
+      }
+    },
+    {
+      "id": "swe023",
+      "task_type": "feature_addition",
+      "title": "Add background task queue with dependency-injected workers in FastAPI",
+      "description": "Implement a background task system in FastAPI using BackgroundTasks with a worker pool pattern. Tasks should be enqueued from route handlers via dependency injection and processed asynchronously.",
+      "library": "fastapi",
+      "knowledge_tier": "A",
+      "difficulty": "medium",
+      "version_specific": false,
+      "gold_queries": [
+        "FastAPI BackgroundTasks dependency injection worker",
+        "FastAPI background task queue async processing"
+      ],
+      "expected_files": ["fastapi/background.py", "fastapi/routing.py"],
+      "expected_patterns": ["BackgroundTasks", "add_task", "Depends"],
+      "expected_symbols": ["BackgroundTasks", "Depends"],
+      "acceptance_criteria": {
+        "structural_checks": ["contains_async", "contains_function_definition", "contains_decorator"]
+      },
+      "judge_rubric": {
+        "correctness": "Does it correctly use BackgroundTasks for async task processing?",
+        "completeness": "Does it include task enqueueing, worker logic, and error handling?",
+        "code_quality": "Is it clean FastAPI with proper dependency injection?",
+        "no_hallucination": "Does it use real FastAPI BackgroundTasks API?"
+      }
+    },
+    {
+      "id": "swe024",
+      "task_type": "api_migration",
+      "title": "Migrate SQLAlchemy 1.4 declarative_base to 2.0 DeclarativeBase",
+      "description": "A project uses the old declarative_base() factory function from SQLAlchemy 1.4. Migrate to 2.0's class-based DeclarativeBase pattern with Mapped[] type annotations and mapped_column().",
+      "library": "sqlalchemy",
+      "knowledge_tier": "C",
+      "difficulty": "hard",
+      "version_specific": true,
+      "gold_queries": [
+        "SQLAlchemy 2.0 DeclarativeBase Mapped mapped_column migration",
+        "SQLAlchemy 2.0 type annotated ORM declarative"
+      ],
+      "expected_files": ["sqlalchemy/orm/decl_api.py"],
+      "expected_patterns": ["DeclarativeBase", "Mapped\\[", "mapped_column"],
+      "expected_symbols": ["DeclarativeBase", "Mapped", "mapped_column"],
+      "acceptance_criteria": {
+        "structural_checks": ["contains_class_definition", "uses_new_api", "contains_import"]
+      },
+      "judge_rubric": {
+        "correctness": "Does it correctly migrate from declarative_base() to DeclarativeBase?",
+        "completeness": "Are Column()→mapped_column() and plain types→Mapped[] all migrated?",
+        "code_quality": "Does it use proper SQLAlchemy 2.0 type annotations?",
+        "no_hallucination": "Does it use real SQLAlchemy 2.0 APIs (DeclarativeBase, not Base)?"
+      }
+    },
+    {
+      "id": "swe025",
+      "task_type": "feature_addition",
+      "title": "Add structured logging with context propagation using structlog",
+      "description": "Implement structured JSON logging using structlog with: automatic context propagation across async calls, request ID injection middleware, and processor chain configuration for both development (console) and production (JSON) output.",
+      "library": "structlog",
+      "knowledge_tier": "B",
+      "difficulty": "medium",
+      "version_specific": false,
+      "gold_queries": [
+        "structlog configuration processor chain JSON logging",
+        "structlog context propagation async middleware request ID"
+      ],
+      "expected_files": ["structlog/_config.py", "structlog/contextvars.py"],
+      "expected_patterns": ["configure", "bind_contextvars|merge_contextvars", "JSONRenderer|json"],
+      "expected_symbols": ["configure", "get_logger", "bind_contextvars"],
+      "acceptance_criteria": {
+        "structural_checks": ["contains_function_definition", "contains_import"]
+      },
+      "judge_rubric": {
+        "correctness": "Does it correctly configure structlog with processor chain?",
+        "completeness": "Does it include context propagation, request ID, and dual output?",
+        "code_quality": "Does it use structlog patterns (not stdlib logging patterns)?",
+        "no_hallucination": "Does it use only real structlog APIs?"
+      }
+    }
+  ]
+}
