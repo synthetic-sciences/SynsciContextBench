@@ -6,18 +6,24 @@ import time
 
 import httpx
 
-from ..logging_config import get_logger
+from ..infra.logging_config import get_logger
 from .base import ContextEngineAdapter, IndexResult, SearchResult
 
 logger = get_logger("adapter.synsc")
 
 
 class SynscAdapter(ContextEngineAdapter):
-    """Adapter for synsc-context HTTP API."""
+    """Adapter for synsc-context HTTP API.
+
+    Accepts an optional ``quality_mode`` (default ``agent``). Servers that
+    do not yet implement the agent-quality endpoints just ignore the field.
+    The benchmark is set up so users can compare ``quality_mode=default`` vs
+    ``quality_mode=agent`` head-to-head.
+    """
 
     name = "synsc-context"
 
-    def __init__(self, api_url: str, api_key: str):
+    def __init__(self, api_url: str, api_key: str, quality_mode: str = "agent"):
         self.api_url = api_url.rstrip("/")
         self.headers = {"Authorization": f"Bearer {api_key}"}
         self._client = httpx.AsyncClient(
@@ -25,6 +31,7 @@ class SynscAdapter(ContextEngineAdapter):
             headers=self.headers,
             timeout=120.0,
         )
+        self._quality_mode = quality_mode
 
     async def search_code(
         self,
@@ -33,14 +40,24 @@ class SynscAdapter(ContextEngineAdapter):
         repo_ids: list[str] | None = None,
         language: str | None = None,
     ) -> tuple[list[SearchResult], float]:
-        payload: dict = {"query": query, "top_k": top_k}
+        payload: dict = {
+            "query": query,
+            "top_k": top_k,
+            "quality_mode": self._quality_mode,
+        }
         if repo_ids:
             payload["repo_ids"] = repo_ids
         if language:
             payload["language"] = language
 
         start = time.perf_counter()
-        resp = await self._client.post("/v1/search/code", json=payload)
+        # Prefer the new context-pack endpoint when the server exposes it;
+        # fall back to /v1/search/code on 404. We do not retry here, so a
+        # missing endpoint just costs one extra request.
+        endpoint = "/v1/search/context_pack" if self._quality_mode == "agent" else "/v1/search/code"
+        resp = await self._client.post(endpoint, json=payload)
+        if resp.status_code == 404 and endpoint != "/v1/search/code":
+            resp = await self._client.post("/v1/search/code", json=payload)
         latency = (time.perf_counter() - start) * 1000
         resp.raise_for_status()
         data = resp.json()

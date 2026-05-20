@@ -22,7 +22,7 @@ import time
 
 import httpx
 
-from ..logging_config import get_logger
+from ..infra.logging_config import get_logger
 from .base import ContextEngineAdapter, IndexResult, SearchResult
 
 logger = get_logger("adapter.context7")
@@ -511,10 +511,16 @@ class Context7Adapter(ContextEngineAdapter):
 
         all_results: list[SearchResult] = []
         total_latency_ms = 0.0
+        # End-to-end "user time": includes rate-limit sleeps and retries the
+        # caller cannot avoid. The benchmark reports both numbers so we can
+        # show the gap.
+        user_start = time.perf_counter()
 
         for library_id in library_ids:
             try:
-                # Rate limiting delay — NOT counted in latency
+                # Rate-limiting delay — counted as part of user-visible
+                # latency. Skipping it here understates Context7's real
+                # request cost (the diagnosis flagged this exact gap).
                 if self._request_delay > 0:
                     await asyncio.sleep(self._request_delay)
 
@@ -553,7 +559,12 @@ class Context7Adapter(ContextEngineAdapter):
             except Exception as e:
                 print(f"    [context7] Error searching {library_id}: {e}")
 
-        return all_results[:top_k], total_latency_ms
+        # Full user-visible latency: includes rate-limit sleeps + retries.
+        user_latency_ms = (time.perf_counter() - user_start) * 1000
+        # Return the user-visible number so the benchmark reports the cost
+        # the agent actually paid; the request-only number is still
+        # available in `total_latency_ms` for debugging adapters.
+        return all_results[:top_k], user_latency_ms
 
     async def search_papers(
         self,

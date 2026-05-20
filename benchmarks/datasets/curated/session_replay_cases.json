@@ -1,0 +1,134 @@
+{
+  "_description": "Real-session-replay benchmark. Each case is a moment from a real Atlas session where one engine produced visibly better context than another. We re-run all engines on the same query and check whether the failing engine surfaces the missing evidence. The diagnosis explicitly asked for this: 'Replay real failures where Nia beat Delphi.'",
+  "_methodology": "Cases are sourced from production session traces (the Atlas project where the diagnosis originated) and stripped of any tenant-specific identifiers. Each case fixes (a) the question/query, (b) the engine that originally won and lost, and (c) the failure cause as labeled at the time of analysis. The replay step measures whether the modern Delphi build closes the gap.",
+  "_failure_causes": [
+    "missing_index_coverage",
+    "bad_retrieval",
+    "bad_ranking",
+    "bad_packaging",
+    "tool_ergonomics",
+    "benchmark_blind_spot"
+  ],
+  "cases": [
+    {
+      "id": "rsr001",
+      "category": "atlas_context",
+      "query": "What MCP tools does Atlas expose for graph mutations?",
+      "loser_engine": "synsc-context",
+      "winner_engine": "nia",
+      "labeled_cause": "missing_index_coverage",
+      "labeled_cause_notes": "Delphi indexed only source code with .py suffix, so MCP tool definitions (in mcp/tools.py) were partly covered, but the schema in docs/ was missed entirely.",
+      "expected_evidence": ["node_create", "artifact_upload", "commit_outcome", "graph_query"],
+      "expected_anchors": ["mcp/tools", "docs/mcp-schema"],
+      "minimum_relevance": 0.6
+    },
+    {
+      "id": "rsr002",
+      "category": "decision_memory",
+      "query": "Why did we choose pgvector over Qdrant in last quarter's decision?",
+      "loser_engine": "synsc-context",
+      "winner_engine": "nia",
+      "labeled_cause": "missing_index_coverage",
+      "labeled_cause_notes": "Decision records lived as markdown in a non-indexed folder; Nia surfaced them via global web docs.",
+      "expected_evidence": ["pgvector", "Qdrant", "decision", "operational"],
+      "expected_anchors": ["graph/decision/pgvector-vs-qdrant"],
+      "minimum_relevance": 0.5
+    },
+    {
+      "id": "rsr003",
+      "category": "paper_qa",
+      "query": "What does BEIR say about reranker effectiveness on sparse retrievers?",
+      "loser_engine": "synsc-context",
+      "winner_engine": "nia",
+      "labeled_cause": "bad_retrieval",
+      "labeled_cause_notes": "Delphi paper-search was pure vector similarity and surfaced the wrong section; Nia's broader corpus surfaced the right section.",
+      "expected_evidence": ["BEIR", "reranker", "sparse"],
+      "expected_anchors": ["papers/thakur-2021-beir"],
+      "minimum_relevance": 0.5
+    },
+    {
+      "id": "rsr004",
+      "category": "artifact_lookup",
+      "query": "Find the most recent retrieval ablation results table.",
+      "loser_engine": "synsc-context",
+      "winner_engine": "nia",
+      "labeled_cause": "bad_packaging",
+      "labeled_cause_notes": "Delphi returned the file containing the table but truncated the table itself; agent could not act on a half-row.",
+      "expected_evidence": ["ablation", "results", "table"],
+      "expected_anchors": ["artifacts/retrieval-ablation"],
+      "minimum_relevance": 0.5
+    },
+    {
+      "id": "rsr005",
+      "category": "tool_contract",
+      "query": "What is the schema for Atlas MCP node_create?",
+      "loser_engine": "synsc-context",
+      "winner_engine": "nia",
+      "labeled_cause": "missing_index_coverage",
+      "labeled_cause_notes": "Tool schemas live in mcp/schemas/*.json; not indexed by default suffix filter.",
+      "expected_evidence": ["node_create", "parent_node_id", "title", "content"],
+      "expected_anchors": ["mcp/schemas/node_create"],
+      "minimum_relevance": 0.6
+    },
+    {
+      "id": "rsr006",
+      "category": "avoid_repeat",
+      "query": "Did we previously evaluate jina v2 embeddings on CodeSearchNet?",
+      "loser_engine": "synsc-context",
+      "winner_engine": "nia",
+      "labeled_cause": "bad_ranking",
+      "labeled_cause_notes": "Delphi had the prior experiment node indexed but ranked it below newer, less relevant chunks.",
+      "expected_evidence": ["jina", "CodeSearchNet", "outcome"],
+      "expected_anchors": ["graph/experiment/jina-csn"],
+      "minimum_relevance": 0.5
+    },
+    {
+      "id": "rsr007",
+      "category": "synthesis",
+      "query": "Combine our reranking decision with the Husain MRR paper finding to recommend a config.",
+      "loser_engine": "synsc-context",
+      "winner_engine": "nia",
+      "labeled_cause": "bad_packaging",
+      "labeled_cause_notes": "Delphi returned chunks for each component but lacked a synthesis-friendly packing.",
+      "expected_evidence": ["reranking", "Husain", "MRR"],
+      "expected_anchors": ["papers/husain-2019-codesearchnet", "graph/decision/reranker-default-off"],
+      "minimum_relevance": 0.6
+    },
+    {
+      "id": "rsr008",
+      "category": "regression_triage",
+      "query": "We saw a regression after enabling reranking — show the trace.",
+      "loser_engine": "synsc-context",
+      "winner_engine": "nia",
+      "labeled_cause": "bad_retrieval",
+      "labeled_cause_notes": "Delphi did not surface the regression artifact because it lived under artifacts/ which was not indexed.",
+      "expected_evidence": ["regression", "reranking", "trace"],
+      "expected_anchors": ["artifacts/regression-trace"],
+      "minimum_relevance": 0.5
+    },
+    {
+      "id": "rsr009",
+      "category": "graph_summary",
+      "query": "Summarize the open hypotheses across active campaigns.",
+      "loser_engine": "synsc-context",
+      "winner_engine": "nia",
+      "labeled_cause": "missing_index_coverage",
+      "labeled_cause_notes": "Atlas graph data was not indexed by Delphi at all; Nia had partial coverage via web search.",
+      "expected_evidence": ["open hypothesis", "active campaign"],
+      "expected_anchors": ["graph/summary/active"],
+      "minimum_relevance": 0.4
+    },
+    {
+      "id": "rsr010",
+      "category": "tool_ergonomics",
+      "query": "How do I tell Delphi to include test files in indexing?",
+      "loser_engine": "synsc-context",
+      "winner_engine": "context7",
+      "labeled_cause": "tool_ergonomics",
+      "labeled_cause_notes": "The MCP proxy historically only accepted url+branch; deep_index/include_tests were not exposed to agents at all.",
+      "expected_evidence": ["include_tests", "quality_mode", "deep_index"],
+      "expected_anchors": ["docs/mcp", "tool_contracts/index_repository"],
+      "minimum_relevance": 0.5
+    }
+  ]
+}

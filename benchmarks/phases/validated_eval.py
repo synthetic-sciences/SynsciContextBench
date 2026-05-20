@@ -35,8 +35,8 @@ from difflib import SequenceMatcher
 from pathlib import Path
 from typing import Literal
 
-from .adapters.base import ContextEngineAdapter, SearchResult
-from .metrics import (
+from ..adapters.base import ContextEngineAdapter, SearchResult
+from ..scoring.metrics import (
     AggregateMetrics,
     QueryEvaluation,
     RetrievalResult,
@@ -202,7 +202,7 @@ async def _llm_judge_match(
 
     Returns (is_relevant, relevance_grade).
     """
-    from .llm_judge import _call_llm_judge_raw, _safe_parse_json
+    from ..judges.llm_judge import _call_llm_judge_raw, _safe_parse_json
 
     user_prompt = (
         f"## Query\n{query}\n\n"
@@ -235,6 +235,8 @@ async def run_validated_benchmark(
     llm_provider: str = "",
     llm_model: str = "",
     llm_api_key: str = "",
+    judge_top_k: int = 10,
+    seed: int = 0,
 ) -> tuple[AggregateMetrics, list[QueryEvaluation]]:
     """Run retrieval evaluation using a validated dataset.
 
@@ -250,6 +252,10 @@ async def run_validated_benchmark(
         llm_provider: Required for match_mode="llm"
         llm_model: Required for match_mode="llm"
         llm_api_key: Required for match_mode="llm"
+        judge_top_k: When match_mode="llm", number of top results to judge
+            (previously hard-coded to 3, which forced rank-4+ irrelevant).
+            Default 10 covers the full reporting window.
+        seed: Random seed used for query sampling when max_queries is set.
 
     Returns:
         (aggregate_metrics, per_query_evaluations)
@@ -285,7 +291,12 @@ async def run_validated_benchmark(
             query_relevant.setdefault(qid, []).append(doc_with_meta)
 
     if max_queries:
-        queries = queries[:max_queries]
+        import random as _rnd
+        rng = _rnd.Random(seed)
+        # Stable, seeded sample so different engines see the same queries
+        # (deterministic given seed) but order is not first-N.
+        if len(queries) > max_queries:
+            queries = rng.sample(queries, max_queries)
 
     evaluations: list[QueryEvaluation] = []
     total = len(queries)
@@ -315,11 +326,14 @@ async def run_validated_benchmark(
         retrieval_results = []
 
         if match_mode == "llm" and llm_api_key:
-            # LLM judge: evaluate top result against ground truth
-            # Only judge top-K results to limit LLM calls
+            # LLM judge: score the top `judge_top_k` results against ground
+            # truth. Previously hard-coded to 3, which forced any result
+            # ranked 4+ to be irrelevant and silently capped Recall@10 at
+            # 3/total_relevant.
             ground_truth_content = relevant_docs[0].get("content", "") if relevant_docs else ""
+            cutoff = max(judge_top_k, max(k_values))
             for i, sr in enumerate(search_results):
-                if i < 3:  # LLM judge top 3 only, rest assumed irrelevant
+                if i < cutoff:
                     try:
                         is_rel, grade = await _llm_judge_match(
                             query, ground_truth_content, sr.content,

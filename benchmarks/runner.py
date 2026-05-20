@@ -16,27 +16,62 @@ from pathlib import Path
 from tqdm import tqdm
 
 from .adapters.base import ContextEngineAdapter, SearchResult
-from .adversarial import (
-    AdversarialAggregateMetrics,
-    run_adversarial_benchmark,
-)
-from .code_qa import (
-    CodeQAAggregateMetrics,
-    run_code_qa_benchmark,
-)
 from .config import BenchmarkConfig, LLMModelConfig
-from .hallucination import (
-    HallucinationBenchmarkResult,
-    load_test_cases,
-    run_hallucination_benchmark,
+from .infra.logging_config import QueryTrace, TraceStore, get_logger
+from .judges.enhanced_judge import (
+    print_enhanced_judge_summary,
+    run_enhanced_judge_benchmark,
 )
-from .llm_judge import (
+from .judges.llm_judge import (
     JudgeAggregateMetrics,
     print_judge_summary,
     run_judge_benchmark,
 )
-from .logging_config import QueryTrace, TraceStore, get_logger
-from .metrics import (
+from .phases.adversarial import (
+    AdversarialAggregateMetrics,
+    run_adversarial_benchmark,
+)
+from .phases.code_qa import (
+    CodeQAAggregateMetrics,
+    run_code_qa_benchmark,
+)
+from .phases.hallucination import (
+    HallucinationBenchmarkResult,
+    load_test_cases,
+    run_hallucination_benchmark,
+)
+from .phases.multihop import (
+    MultiHopAggregateMetrics,
+    run_multihop_benchmark,
+)
+from .phases.session_replay import (
+    print_session_replay_summary,
+    run_session_replay_benchmark,
+)
+from .phases.swe_agent import (
+    SWEBenchmarkResult,
+    print_swe_agent_summary,
+    run_swe_agent_benchmark,
+)
+from .phases.atlas import (
+    AtlasEngineReport,
+    print_atlas_summary,
+    run_atlas_benchmark,
+)
+from .phases.validated_eval import (
+    MatchMode,
+    print_validated_summary,
+    run_validated_benchmark,
+)
+from .scoring.failure_taxonomy import (
+    build_failure_taxonomy as _build_failure_taxonomy,
+    print_failure_taxonomy,
+)
+from .scoring.leaderboards import (
+    build_leaderboards as _build_leaderboards,
+    print_leaderboards,
+)
+from .scoring.metrics import (
     AggregateMetrics,
     QueryEvaluation,
     RetrievalResult,
@@ -44,33 +79,15 @@ from .metrics import (
     aggregate_hallucinations,
     evaluate_query,
 )
-from .multihop import (
-    MultiHopAggregateMetrics,
-    run_multihop_benchmark,
-)
-from .validated_eval import (
-    MatchMode,
-    print_validated_summary,
-    run_validated_benchmark,
-)
-from .statistical_analysis import (
-    bootstrap_ci,
-    print_significance_summary,
-    run_pairwise_significance,
-)
-from .enhanced_judge import (
-    print_enhanced_judge_summary,
-    run_enhanced_judge_benchmark,
-)
-from .swe_agent import (
-    SWEBenchmarkResult,
-    print_swe_agent_summary,
-    run_swe_agent_benchmark,
-)
-from .semantic_metrics import (
+from .scoring.semantic_metrics import (
     ExtendedRetrievalMetrics,
     compute_extended_metrics,
     print_extended_metrics_summary,
+)
+from .scoring.statistical_analysis import (
+    bootstrap_ci,
+    print_significance_summary,
+    run_pairwise_significance,
 )
 
 logger = get_logger("runner")
@@ -91,6 +108,8 @@ _PHASE_FIELDS = [
     "judge",
     "enhanced_judge",
     "swe_agent",
+    "atlas",
+    "session_replay",
 ]
 
 
@@ -203,6 +222,22 @@ class BenchmarkReport:
     # SWE-Agent benchmark (Phase 9): context engine value-add for real SWE tasks
     swe_agent: dict[str, dict] = field(default_factory=dict)
 
+    # Atlas-workflow benchmark (Phase 10): tool contracts, graph memory,
+    # artifacts, paper QA, multi-turn workflows, prior decisions.
+    atlas: dict[str, dict] = field(default_factory=dict)
+
+    # Session-replay benchmark (Phase 11): real moments from production
+    # Atlas sessions where one engine beat another, replayed against the
+    # current build of every engine with failure-cause labels.
+    session_replay: dict[str, dict] = field(default_factory=dict)
+
+    # Per-category leaderboards built at report time, separating "good at
+    # code retrieval" from "good at Atlas workflows" etc.
+    leaderboards: dict[str, list[dict]] = field(default_factory=dict)
+
+    # Failure taxonomy classification per engine (failure-cause buckets).
+    failure_taxonomy: dict[str, dict] = field(default_factory=dict)
+
     # Extended retrieval metrics (MAP, Success@K, R-Precision, CodeBLEU)
     extended_metrics: dict[str, dict] = field(default_factory=dict)
 
@@ -225,26 +260,30 @@ def _match_relevance(
 ) -> tuple[bool, int]:
     """Determine if a search result is relevant based on ground truth.
 
+    Stricter than the previous OR-of-two-booleans implementation, which gave
+    grade=1 to any chunk containing a single matching keyword. Single-token
+    matches like "BaseModel" or "Lock" trigger on almost any chunk from the
+    target library, inflating recall and producing the Recall@K > 1 artifact.
+
+    Rules:
+      - File match alone           → grade 1
+      - File match + keyword       → grade 2
+      - 2+ distinct keyword hits   → grade 1 (covers docs/different file layouts)
+      - Otherwise                  → grade 0
+
     Returns (is_relevant, relevance_grade 0-2).
     """
-    score = 0
-
-    # File path match
-    for rf in relevant_files:
-        if rf in result.file_path:
-            score += 1
-            break
-
-    # Keyword match
+    file_match = any(rf in result.file_path for rf in relevant_files if rf)
     content_lower = result.content.lower()
-    for kw in relevant_keywords:
-        if kw.lower() in content_lower:
-            score += 1
-            break
+    kw_hits = sum(1 for kw in relevant_keywords if kw and kw.lower() in content_lower)
 
-    is_relevant = score > 0
-    grade = min(score, 2)
-    return is_relevant, grade
+    if file_match and kw_hits >= 1:
+        return True, 2
+    if file_match:
+        return True, 1
+    if kw_hits >= 2:
+        return True, 1
+    return False, 0
 
 
 async def run_retrieval_benchmark(
@@ -253,16 +292,17 @@ async def run_retrieval_benchmark(
     k_values: list[int],
     trace_store: TraceStore | None = None,
     max_queries: int | None = None,
+    seed: int = 0,
 ) -> tuple[AggregateMetrics, list[QueryEvaluation]]:
     """Run retrieval quality benchmark against one engine."""
+    from .infra.sampling import sample_seeded
+
     with open(ground_truth_path) as f:
         data = json.load(f)
 
     evaluations: list[QueryEvaluation] = []
 
-    queries = data.get("queries", [])
-    if max_queries is not None:
-        queries = queries[:max_queries]
+    queries = sample_seeded(data.get("queries", []), max_queries, seed=seed)
     for query_data in tqdm(queries, desc=f"  {engine.name} retrieval", unit="q"):
         query = query_data["query"]
         query_id = query_data.get("id", "")
@@ -463,6 +503,8 @@ async def run_full_benchmark(
     skip_judge: bool = False,
     skip_enhanced_judge: bool = False,
     skip_swe_agent: bool = False,
+    skip_atlas: bool = False,
+    skip_session_replay: bool = False,
     dataset_filter: list[str] | None = None,
     match_mode: MatchMode = "hybrid",
     enable_debiasing: bool = True,
@@ -527,6 +569,12 @@ async def run_full_benchmark(
         if resume_report.get("swe_agent") and not skip_swe_agent:
             print("  [resume] Skipping swe_agent (already completed)")
             skip_swe_agent = True
+        if resume_report.get("atlas") and not skip_atlas:
+            print("  [resume] Skipping atlas (already completed)")
+            skip_atlas = True
+        if resume_report.get("session_replay") and not skip_session_replay:
+            print("  [resume] Skipping session_replay (already completed)")
+            skip_session_replay = True
 
     def _save_progress(phase_name: str) -> None:
         """Incremental save after each phase completes."""
@@ -537,11 +585,11 @@ async def run_full_benchmark(
         except Exception as e:
             logger.warning("Failed to save progress after %s: %s", phase_name, e)
 
-    gt_path = str(config.datasets_dir / "retrieval_ground_truth.json")
-    hal_path = str(config.datasets_dir / "hallucination_test_cases.json")
-    mh_path = str(config.datasets_dir / "multihop_test_cases.json")
-    cq_path = str(config.datasets_dir / "code_qa_test_cases.json")
-    adv_path = str(config.datasets_dir / "adversarial_test_cases.json")
+    gt_path = str(config.curated_dir / "retrieval_ground_truth.json")
+    hal_path = str(config.curated_dir / "hallucination_test_cases.json")
+    mh_path = str(config.curated_dir / "multihop_test_cases.json")
+    cq_path = str(config.curated_dir / "code_qa_test_cases.json")
+    adv_path = str(config.curated_dir / "adversarial_test_cases.json")
 
     # --- Indexing ---
     if not skip_indexing:
@@ -563,8 +611,13 @@ async def run_full_benchmark(
         print(f"  Running {len(engines)} engines concurrently...")
         trace_store.start_benchmark("retrieval")
 
+        _seed = config.seeds[0] if config.seeds else 0
+
         async def _retrieval_task(eng: ContextEngineAdapter):
-            return eng, await run_retrieval_benchmark(eng, gt_path, config.top_k_values, trace_store, config.max_queries)
+            return eng, await run_retrieval_benchmark(
+                eng, gt_path, config.top_k_values, trace_store,
+                max_queries=config.max_queries, seed=_seed,
+            )
 
         retrieval_results = await asyncio.gather(
             *[_retrieval_task(e) for e in engines], return_exceptions=True
@@ -598,8 +651,12 @@ async def run_full_benchmark(
         print(f"  Running {len(engines)} engines concurrently...")
         trace_store.start_benchmark("multihop")
 
+        _seed_mh = config.seeds[0] if config.seeds else 0
+
         async def _multihop_task(eng: ContextEngineAdapter):
-            return eng, await run_multihop_benchmark(eng, mh_path, max_queries=config.max_queries)
+            return eng, await run_multihop_benchmark(
+                eng, mh_path, max_queries=config.max_queries, seed=_seed_mh,
+            )
 
         multihop_results = await asyncio.gather(
             *[_multihop_task(e) for e in engines], return_exceptions=True
@@ -635,6 +692,8 @@ async def run_full_benchmark(
         print(f"  Running {len(engines)} engines concurrently...")
         trace_store.start_benchmark("code_qa")
 
+        _seed_cq = config.seeds[0] if config.seeds else 0
+
         async def _code_qa_task(eng: ContextEngineAdapter):
             return eng, await run_code_qa_benchmark(
                 eng, cq_path, max_queries=config.max_queries,
@@ -642,6 +701,7 @@ async def run_full_benchmark(
                 llm_provider=_llm_cfg.provider if _llm_cfg else "",
                 llm_model=_llm_cfg.model if _llm_cfg else "",
                 llm_api_key=_llm_cfg.api_key if _llm_cfg else "",
+                seed=_seed_cq,
             )
 
         code_qa_results = await asyncio.gather(
@@ -665,6 +725,8 @@ async def run_full_benchmark(
         print(f"  Running {len(engines)} engines concurrently...")
         trace_store.start_benchmark("adversarial")
 
+        _seed_adv = config.seeds[0] if config.seeds else 0
+
         async def _adversarial_task(eng: ContextEngineAdapter):
             return eng, await run_adversarial_benchmark(
                 eng, adv_path, max_queries=config.max_queries,
@@ -672,6 +734,7 @@ async def run_full_benchmark(
                 llm_provider=_llm_cfg.provider if _llm_cfg else "",
                 llm_model=_llm_cfg.model if _llm_cfg else "",
                 llm_api_key=_llm_cfg.api_key if _llm_cfg else "",
+                seed=_seed_adv,
             )
 
         adversarial_results = await asyncio.gather(
@@ -717,6 +780,8 @@ async def run_full_benchmark(
 
             print(f"  Running {len(engines)} engines concurrently per model...")
 
+            _seed_hal = config.seeds[0] if config.seeds else 0
+
             async def _hallucination_task(eng, mcfg):
                 result = await run_hallucination_benchmark(
                     engine=eng,
@@ -725,6 +790,7 @@ async def run_full_benchmark(
                     llm_model=mcfg.model,
                     llm_api_key=mcfg.api_key,
                     max_queries=config.max_queries,
+                    seed=_seed_hal,
                 )
                 return eng, mcfg, result
 
@@ -784,7 +850,7 @@ async def run_full_benchmark(
         ]
         found_any = False
         for filename, display_name, _key in validated_datasets:
-            ds_path = config.datasets_dir / filename
+            ds_path = config.validated_dir / filename
             if not ds_path.exists():
                 continue
             if not found_any:
@@ -793,7 +859,7 @@ async def run_full_benchmark(
 
             print(f"\n--- {display_name} (running {len(engines)} engines concurrently) ---")
 
-            async def _validated_task(eng, ds, kvals, mq, mm, lp, lm, lk):
+            async def _validated_task(eng, ds, kvals, mq, mm, lp, lm, lk, jtk, sd):
                 return eng, await run_validated_benchmark(
                     eng,
                     ds,
@@ -803,8 +869,11 @@ async def run_full_benchmark(
                     llm_provider=lp,
                     llm_model=lm,
                     llm_api_key=lk,
+                    judge_top_k=jtk,
+                    seed=sd,
                 )
 
+            _seed_val = config.seeds[0] if config.seeds else 0
             val_results = await asyncio.gather(
                 *[
                     _validated_task(
@@ -812,6 +881,8 @@ async def run_full_benchmark(
                         _llm_cfg.provider if _llm_cfg and match_mode == "llm" else "",
                         _llm_cfg.model if _llm_cfg and match_mode == "llm" else "",
                         _llm_cfg.api_key if _llm_cfg and match_mode == "llm" else "",
+                        config.judge_top_k,
+                        _seed_val,
                     )
                     for e in engines
                 ],
@@ -870,7 +941,7 @@ async def run_full_benchmark(
         else:
             found_any_judge = False
             for filename, display_name, _key in judge_datasets:
-                ds_path = config.datasets_dir / filename
+                ds_path = config.validated_dir / filename
                 if not ds_path.exists():
                     continue
                 if not found_any_judge:
@@ -965,7 +1036,7 @@ async def run_full_benchmark(
             valid_enh = [
                 (f, d, k)
                 for f, d, k in enh_datasets
-                if (config.datasets_dir / f).exists()
+                if (config.validated_dir / f).exists()
             ]
 
             if not valid_enh:
@@ -984,7 +1055,7 @@ async def run_full_benchmark(
                 )
 
                 async def _run_enh_dataset(filename, display_name, _key):
-                    ds_path = config.datasets_dir / filename
+                    ds_path = config.validated_dir / filename
                     return _key, display_name, await run_enhanced_judge_benchmark(
                         engines=engines,
                         dataset_path=str(ds_path),
@@ -1062,7 +1133,7 @@ async def run_full_benchmark(
     # ---- Phase 9: SWE-Agent Benchmark ----
     if not skip_swe_agent:
         print("\n=== Phase 9: SWE-Agent Benchmark ===")
-        swe_path = str(config.datasets_dir / "swe_agent_test_cases.json")
+        swe_path = str(config.curated_dir / "swe_agent_test_cases.json")
 
         if not config.llm_api_key:
             print("\n  [!] Skipping SWE-Agent — no LLM API keys configured")
@@ -1119,6 +1190,135 @@ async def run_full_benchmark(
                 traceback.print_exc()
 
             _save_progress("swe_agent")
+
+    # ---- Phase 10: Atlas Workflow Benchmark ----
+    if not skip_atlas:
+        atlas_path = config.curated_dir / "atlas_test_cases.json"
+        if not atlas_path.exists():
+            print(f"\n  [!] Skipping Atlas benchmark — dataset not found: {atlas_path}")
+        else:
+            print("\n=== Phase 10: Atlas Workflow Benchmark ===")
+            print(f"  Running {len(engines)} engines concurrently...")
+            trace_store.start_benchmark("atlas")
+
+            _seed_th = config.seeds[0] if config.seeds else 0
+            _atlas_lp = _llm_cfg.provider if _llm_cfg else ""
+            _atlas_lm = _llm_cfg.model if _llm_cfg else ""
+            _atlas_lk = _llm_cfg.api_key if _llm_cfg else ""
+
+            async def _atlas_task(eng: ContextEngineAdapter):
+                return eng, await run_atlas_benchmark(
+                    eng, str(atlas_path),
+                    max_cases=config.max_queries,
+                    seed=_seed_th,
+                    llm_provider=_atlas_lp,
+                    llm_model=_atlas_lm,
+                    llm_api_key=_atlas_lk,
+                )
+
+            atlas_results = await asyncio.gather(
+                *[_atlas_task(e) for e in engines], return_exceptions=True
+            )
+            for result in atlas_results:
+                if isinstance(result, Exception):
+                    print(f"\n  [!] Atlas failed: {result}")
+                    continue
+                engine, atlas_report = result
+                print(f"\n--- {engine.name} ---")
+                # Serialize. Per-case is large so we keep it inline for
+                # downstream report tooling and the failure taxonomy.
+                report.atlas[engine.name] = asdict(atlas_report)
+                # Per-case traces
+                for case_res in atlas_report.per_case:
+                    trace = QueryTrace.create(
+                        run_id=trace_store.run_id, engine=engine.name,
+                        benchmark_type="atlas",
+                    )
+                    trace.query_id = case_res.case_id
+                    trace.query_text = case_res.question
+                    trace.latency_ms = case_res.latency_ms
+                    trace.scores = {
+                        "composite": case_res.composite,
+                        "anchor_hit": case_res.anchor_hit,
+                        "evidence_recall": case_res.evidence_recall,
+                        "judge_score": case_res.judge_score,
+                        "hallucination_signals": case_res.hallucination_signals,
+                    }
+                    trace.query_metadata = {
+                        "category": case_res.category,
+                        "difficulty": case_res.difficulty,
+                    }
+                    if case_res.error:
+                        trace.error = case_res.error
+                    trace_store.add_trace(trace)
+                print_atlas_summary(atlas_report)
+
+            trace_store.end_benchmark("atlas")
+            _save_progress("atlas")
+
+    # ---- Phase 11: Session Replay Benchmark ----
+    if not skip_session_replay:
+        replay_path = config.curated_dir / "session_replay_cases.json"
+        if not replay_path.exists():
+            print(
+                f"\n  [!] Skipping Session Replay — dataset not found: {replay_path}"
+            )
+        else:
+            print("\n=== Phase 11: Session Replay Benchmark ===")
+            trace_store.start_benchmark("session_replay")
+            _seed_rsr = config.seeds[0] if config.seeds else 0
+            try:
+                replay_results = await run_session_replay_benchmark(
+                    engines, str(replay_path),
+                    max_cases=config.max_queries,
+                    seed=_seed_rsr,
+                )
+                for eng_name, rep in replay_results.items():
+                    report.session_replay[eng_name] = asdict(rep)
+                    for case_res in rep.per_case:
+                        trace = QueryTrace.create(
+                            run_id=trace_store.run_id, engine=eng_name,
+                            benchmark_type="session_replay",
+                        )
+                        trace.query_id = case_res.case_id
+                        trace.query_text = case_res.query
+                        trace.latency_ms = case_res.latency_ms
+                        trace.scores = {
+                            "score": case_res.score,
+                            "anchor_hit": case_res.anchor_hit,
+                            "evidence_recall": case_res.evidence_recall,
+                            "passed_threshold": int(case_res.passed_threshold),
+                            "regression_resolved": int(case_res.regression_resolved),
+                        }
+                        trace.query_metadata = {
+                            "category": case_res.category,
+                            "labeled_cause": case_res.labeled_cause,
+                            "re_classified_cause": case_res.re_classified_cause,
+                            "is_loser": case_res.is_loser,
+                            "is_winner": case_res.is_winner,
+                        }
+                        trace_store.add_trace(trace)
+                print_session_replay_summary(replay_results)
+            except Exception as e:
+                print(f"\n  [!] Session Replay benchmark failed: {e}")
+                import traceback
+                traceback.print_exc()
+            trace_store.end_benchmark("session_replay")
+            _save_progress("session_replay")
+
+    # --- Build per-category leaderboards and failure taxonomy ---
+    try:
+        report.leaderboards = _build_leaderboards(asdict(report))
+        if report.leaderboards:
+            print_leaderboards(report.leaderboards)
+    except Exception as e:
+        logger.warning("Leaderboard build failed: %s", e)
+    try:
+        report.failure_taxonomy = _build_failure_taxonomy(asdict(report))
+        if report.failure_taxonomy:
+            print_failure_taxonomy(report.failure_taxonomy)
+    except Exception as e:
+        logger.warning("Failure taxonomy build failed: %s", e)
 
     # --- Statistical Significance Analysis ---
     # Collect per-query scores for pairwise significance testing

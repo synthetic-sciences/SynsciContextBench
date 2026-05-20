@@ -4,10 +4,10 @@
 
 Benchmark harness for comparing code context engines head-to-head.
 
-Tests [Delphi](https://github.com/synthetic-sciences/synsc-delphi), [Context7](https://context7.com), and [Nia](https://trynia.ai) across 9 benchmark phases, ~3,600 data points, using automated IR metrics, a position-debiased LLM judge, and SWE-Agent code generation evaluation.
+Tests [Delphi](https://github.com/synthetic-sciences/synsc-delphi), [Context7](https://context7.com), and [Nia](https://trynia.ai) across **11 benchmark phases** — code retrieval, multi-hop, adversarial, hallucination, validated datasets, LLM-as-judge, position-debiased enhanced judge, SWE-Agent code generation, **Atlas workflows** (tool contracts / graph memory / paper QA / artifacts / prior decisions / synthesis), and **real-session replay** of cases where one engine visibly beat another.
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
-[![Suites](https://img.shields.io/badge/phases-9-58a6ff?style=for-the-badge)]()
+[![Suites](https://img.shields.io/badge/phases-11-58a6ff?style=for-the-badge)]()
 [![Engines](https://img.shields.io/badge/engines-3-f78166?style=for-the-badge)]()
 [![Judge](https://img.shields.io/badge/judge-Claude_Sonnet_4.6-blueviolet?style=for-the-badge&logo=anthropic&logoColor=white)]()
 
@@ -112,7 +112,30 @@ This benchmark addresses common fairness concerns in engine comparison:
 | 7 | **CoSQA** | Real web search queries (Huang et al. 2021) | 100 |
 | 8 | **Enhanced Judge** | Position-debiased 4D + faithfulness + RAGAS metrics | 200 |
 | 9 | **SWE-Agent** | Code generation with/without context, no-context baseline | 25 |
+| 10 | **Atlas Workflow** | Tool contracts, graph memory, artifacts, paper QA, multi-turn, prior decisions, avoid-repeat, synthesis | 20 |
+| 11 | **Session Replay** | Real moments from production Atlas sessions where one engine beat another | 10 |
 | — | *AdvTest (supplementary)* | Adversarial/obfuscated code queries | 100 |
+
+The diagnosis that drove the Phase 10/11 additions: pure code-retrieval benchmarks understate context-engine value-add. Real Atlas work needs graph state, artifacts, tool contracts, papers, and prior-decision memory — that's what Phases 10 and 11 measure.
+
+### Phase 10: Atlas Workflow (categories)
+
+| Category | What it tests |
+|----------|---------------|
+| `tool_contract` | Find MCP tool schemas and required parameters |
+| `graph_memory` | Recall prior nodes, hypotheses, outcomes |
+| `artifact` | Find the table/plot/log/diff that supports a claim |
+| `paper_qa` | Answer with paper citations |
+| `multi_turn` | Continue work from an existing branch |
+| `prior_decision` | Locate the rationale behind a choice |
+| `avoid_repeat` | Surface prior failed experiments |
+| `synthesis` | Combine paper + graph + code context |
+
+Per-category leaderboards are emitted separately so an engine that wins code-retrieval can lose Atlas-workflow without the report hiding it. See `benchmarks/leaderboards.py`.
+
+### Phase 11: Session Replay
+
+Real moments from production Atlas sessions, each labeled with the original failure cause (`missing_index_coverage`, `bad_retrieval`, `bad_ranking`, `bad_packaging`, `tool_ergonomics`, `benchmark_blind_spot`). The replay then re-classifies the failure under the live taxonomy so the report can show "10 cases labeled `bad_retrieval`, now 6 still failing / 2 reclassified as `bad_ranking` / 2 resolved." See `benchmarks/failure_taxonomy.py`.
 
 ---
 
@@ -159,6 +182,8 @@ uv run python -m benchmarks --enhanced-judge-only
 | Flag | Effect |
 |------|--------|
 | `--engines synsc nia context7` | Pick engines |
+| `--engines synsc-mcp` | Use Delphi via the MCP proxy (agent-realistic) |
+| `--synsc-quality-mode {agent,default}` | Pass-through to the Delphi adapter |
 | `--skip-indexing` | Skip repo indexing |
 | `--skip-retrieval` | Skip retrieval phase |
 | `--skip-multihop` | Skip multi-hop phase |
@@ -166,14 +191,22 @@ uv run python -m benchmarks --enhanced-judge-only
 | `--skip-adversarial` | Skip adversarial phase |
 | `--skip-hallucination` | Skip hallucination phase |
 | `--skip-validated` | Skip validated dataset phases |
+| `--skip-atlas` | Skip Atlas workflow (Phase 10) |
+| `--skip-session-replay` | Skip Session Replay (Phase 11) |
+| `--atlas-only` | Run only Atlas workflow |
+| `--session-replay-only` | Run only session replay |
 | `--validated-only` | Run only validated datasets |
 | `--enhanced-judge-only` | Run only enhanced judge |
 | `--match-mode llm` | Use LLM judge for validated scoring |
+| `--judge-top-k N` | Judge top-N (was hard-coded to 3; default now 10) |
+| `--seed N` | RNG seed for query sampling |
+| `--num-seeds N` | Run N seeds and aggregate (3-5 for CIs) |
 | `--no-debiasing` | Disable position debiasing (2x faster) |
 | `--no-significance` | Skip statistical analysis |
 | `--dataset cosqa codesearchnet advtest` | Pick specific datasets |
 | `--swe-agent-only` | Run only SWE-Agent benchmark |
 | `--skip-swe-agent` | Skip SWE-Agent benchmark |
+| `--real-patch` | Enable real-patch SWE evaluation (clone + run tests) |
 | `--with-agent-queries` | Also run AI-generated queries (default: gold only) |
 | `--engines none` | Baseline-only mode (with `--swe-agent-only`) |
 | `--max-queries N` | Limit query count per phase |
@@ -204,31 +237,92 @@ Add a new engine by implementing `ContextEngineAdapter` from `benchmarks/adapter
 ## Project Structure
 
 ```
-benchmarks/
-  __main__.py             cli entry point
-  runner.py               orchestrates phases
-  config.py               env config
-  logging_config.py       structured logging + traces
-  metrics.py              NDCG, MRR, P@K, R@K, MAP
-  semantic_metrics.py     CodeBLEU, AST similarity
-  statistical_analysis.py paired tests, bootstrap, effect sizes
-  llm_judge.py            3D blind scoring
-  enhanced_judge.py       4D debiased + RAGAS
-  validated_eval.py       CodeSearchNet / CoSQA / AdvTest
-  hallucination.py        hallucination rate
-  multihop.py             multi-hop retrieval
-  code_qa.py              code QA
-  adversarial.py          adversarial near-miss
-  swe_agent.py            SWE-Agent code generation benchmark
-  consistency.py          consistency checks
-  adapters/               engine adapters
-  datasets/               ground truth + downloads
-  results/                output data, traces, reports
-docs/
-  BENCHMARK_REPORT.md     full results + analysis
-scripts/
-  generate_charts.py      regenerate the chart
+synsci-context-bench/
+├── README.md                  this file
+├── ARCHITECTURE.md            high-level design + diagnosis traceability
+├── CHANGELOG.md               release notes (1.0 → 1.1 → reorg)
+├── CONTRIBUTING.md            how to add phases / engines / metrics
+├── pyproject.toml
+│
+├── benchmarks/
+│   ├── README.md              package overview
+│   ├── __main__.py            cli entry point
+│   ├── runner.py              phase orchestrator
+│   ├── config.py              env + path config (curated_dir, validated_dir, seeds)
+│   │
+│   ├── adapters/              one file per engine
+│   │   ├── synsc.py           Delphi HTTP (quality_mode aware)
+│   │   ├── synsc_mcp.py       Delphi MCP-proxy (build_context_pack)
+│   │   ├── nia.py             Nia REST (full-latency accounted)
+│   │   ├── context7.py        Context7 HTTP (full-latency accounted)
+│   │   └── base.py            ContextEngineAdapter interface
+│   │
+│   ├── phases/                one module per benchmark phase
+│   │   ├── multihop.py        Phase 2
+│   │   ├── code_qa.py         Phase 3
+│   │   ├── adversarial.py     Phase 4
+│   │   ├── hallucination.py   Phase 5
+│   │   ├── validated_eval.py  Phase 6 — CodeSearchNet / CoSQA / AdvTest
+│   │   ├── swe_agent.py       Phase 9 — code generation benchmark
+│   │   ├── swe_real_patch.py  Phase 9b — real-patch eval (opt-in)
+│   │   ├── atlas.py          Phase 10 — Atlas workflow
+│   │   └── session_replay.py  Phase 11 — production session replay
+│   │
+│   ├── judges/                LLM-as-judge implementations
+│   │   ├── llm_judge.py       3D blind scoring
+│   │   └── enhanced_judge.py  4D position-debiased + RAGAS
+│   │
+│   ├── scoring/               deterministic scoring + analysis
+│   │   ├── metrics.py         MRR, NDCG, P@K, R@K (dedup-fixed), MAP
+│   │   ├── semantic_metrics.py     CodeBLEU + AST similarity
+│   │   ├── context_grounding.py    citation, utilization, hallucination-reduction
+│   │   ├── leaderboards.py    per-category leaderboards
+│   │   ├── failure_taxonomy.py     classify failures into actionable buckets
+│   │   └── statistical_analysis.py paired tests, bootstrap, effect sizes
+│   │
+│   ├── infra/                 operational glue
+│   │   ├── logging_config.py  structured logging + per-query traces
+│   │   ├── sampling.py        seeded + stratified sampling
+│   │   ├── latency.py         end-to-end latency meter
+│   │   └── consistency.py     repeat-run consistency checks
+│   │
+│   ├── utils/                 standalone helpers
+│   │   ├── dataset_loader.py  downloads CodeSearchNet / CoSQA / ...
+│   │   └── create_benchmark_repo.py  fixture builder
+│   │
+│   ├── datasets/
+│   │   ├── curated/           hand-built cases owned by this repo
+│   │   │   ├── retrieval_ground_truth.json
+│   │   │   ├── multihop_test_cases.json
+│   │   │   ├── code_qa_test_cases.json
+│   │   │   ├── adversarial_test_cases.json
+│   │   │   ├── hallucination_test_cases.json
+│   │   │   ├── swe_agent_test_cases.json
+│   │   │   ├── atlas_test_cases.json
+│   │   │   └── session_replay_cases.json
+│   │   └── validated/         downloaded standard datasets
+│   │       ├── codesearchnet_benchmark.json
+│   │       ├── cosqa_benchmark.json
+│   │       ├── advtest_benchmark.json
+│   │       └── ...
+│   │
+│   └── results/               run_<ts>/ directories — traces, manifests, CSVs
+│
+├── docs/
+│   ├── README.md              docs index
+│   ├── PHASES.md              per-phase deep dive
+│   ├── METRICS.md             per-metric reference
+│   └── BENCHMARK_REPORT.md    last full-run report
+│
+├── scripts/
+│   └── generate_charts.py     regenerate assets/charts/results.png
+│
+└── assets/
+    └── charts/
 ```
+
+Every subdirectory has its own `README.md` that describes what's in it
+and the local conventions.
 
 ---
 

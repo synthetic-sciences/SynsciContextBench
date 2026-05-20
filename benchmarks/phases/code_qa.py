@@ -22,7 +22,7 @@ import re
 from tqdm import tqdm
 from dataclasses import dataclass, field
 
-from .adapters.base import ContextEngineAdapter, SearchResult
+from ..adapters.base import ContextEngineAdapter, SearchResult
 
 
 @dataclass
@@ -226,7 +226,7 @@ async def _llm_judge_code_qa(
 
     Returns (found, symbol_found, complete, relevance).
     """
-    from .llm_judge import _call_llm_judge_raw, _safe_parse_json
+    from ..judges.llm_judge import _call_llm_judge_raw, _safe_parse_json
 
     context = "\n---\n".join(
         f"[Result {i+1}] {r.file_path}\n{r.content[:1500]}"
@@ -274,16 +274,19 @@ async def run_code_qa_benchmark(
     llm_provider: str = "",
     llm_model: str = "",
     llm_api_key: str = "",
+    seed: int = 0,
 ) -> tuple[CodeQAAggregateMetrics, list[CodeQAResult]]:
     """Run code-specific QA benchmark against one engine.
 
     Args:
         scoring_mode: "structural" (file-path + keyword matching) or
                       "llm" (LLM judge evaluation, fair for doc-oriented engines).
+        seed: RNG seed for query sub-sampling (deterministic across engines).
     """
+    from ..infra.sampling import sample_seeded
+
     test_cases = load_code_qa_cases(dataset_path)
-    if max_queries is not None:
-        test_cases = test_cases[:max_queries]
+    test_cases = sample_seeded(test_cases, max_queries, seed=seed)
     results_list: list[CodeQAResult] = []
 
     for tc in tqdm(test_cases, desc=f"  {engine.name} code-qa", unit="q"):

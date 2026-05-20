@@ -9,13 +9,16 @@ Usage:
     python -m benchmarks --code-qa-only                # Only code-specific QA
     python -m benchmarks --adversarial-only            # Only adversarial near-miss
     python -m benchmarks --hallucination-only          # Only hallucination rate
-    python -m benchmarks --skip-indexing               # Skip repo indexing
-    python -m benchmarks --engines synsc               # Only test synsc-context
-    python -m benchmarks --engines nia                 # Only test Nia
-    python -m benchmarks --engines context7            # Only test Context7
-    python -m benchmarks --engines synsc nia context7  # All three engines
     python -m benchmarks --swe-agent-only               # Only SWE-Agent benchmark (Phase 9)
-    python -m benchmarks --swe-agent-only --engines none  # Baseline-only (LLM without context)
+    python -m benchmarks --atlas-only                  # Only Atlas-workflow benchmark (Phase 10)
+    python -m benchmarks --session-replay-only          # Only real-session replay (Phase 11)
+    python -m benchmarks --skip-indexing               # Skip repo indexing
+    python -m benchmarks --engines synsc               # Only the HTTP Delphi adapter
+    python -m benchmarks --engines synsc-mcp           # Delphi through the MCP proxy (agent path)
+    python -m benchmarks --engines nia context7        # Subset of engines
+    python -m benchmarks --num-seeds 3 --max-queries 100   # 3-seed CI mode
+    python -m benchmarks --judge-top-k 10 --match-mode llm # Fix old top-3 LLM judge cap
+    python -m benchmarks --real-patch --swe-agent-only     # Real-patch SWE eval mode
     python -m benchmarks --multi-model                 # Hallucination across all configured models
     python -m benchmarks --match-mode hybrid           # Match by content OR file path (default)
     python -m benchmarks --match-mode file             # Match by file path only (fair cross-engine)
@@ -29,7 +32,7 @@ import logging
 import signal
 import sys
 
-from .adapters import Context7Adapter, NiaAdapter, SynscAdapter
+from .adapters import Context7Adapter, NiaAdapter, SynscAdapter, SynscMCPAdapter
 from .config import BenchmarkConfig
 from .runner import run_full_benchmark
 
@@ -43,10 +46,20 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--engines",
         nargs="+",
-        choices=["synsc", "nia", "context7", "all", "none"],
+        choices=["synsc", "synsc-mcp", "nia", "context7", "all", "none"],
         default=["all"],
         help="Which engines to benchmark (default: all). "
-        "Use 'none' with --swe-agent-only to run baseline-only (LLM without context).",
+        "'synsc' uses the HTTP API; 'synsc-mcp' exercises the MCP proxy "
+        "with quality_mode=agent (closer to real agent usage). "
+        "Use 'none' with --swe-agent-only to run baseline-only.",
+    )
+    parser.add_argument(
+        "--synsc-quality-mode",
+        choices=["agent", "default"],
+        default="agent",
+        help="Pass-through to the Delphi adapter. 'agent' enables the "
+        "agent-quality endpoints (build_context_pack, deep_index). "
+        "Default: agent.",
     )
 
     # Dataset download
@@ -109,6 +122,16 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Only run SWE-Agent benchmark (Phase 9: context engine value-add for real SWE tasks)",
     )
+    only_group.add_argument(
+        "--atlas-only",
+        action="store_true",
+        help="Only run the Atlas-workflow benchmark (Phase 10).",
+    )
+    only_group.add_argument(
+        "--session-replay-only",
+        action="store_true",
+        help="Only run the real-session replay benchmark (Phase 11).",
+    )
 
     # --skip-* flags
     parser.add_argument("--skip-indexing", action="store_true", help="Skip indexing step")
@@ -130,6 +153,19 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--skip-swe-agent", action="store_true", help="Skip SWE-Agent benchmark (Phase 9)"
+    )
+    parser.add_argument(
+        "--skip-atlas", action="store_true",
+        help="Skip the Atlas-workflow benchmark (Phase 10).",
+    )
+    parser.add_argument(
+        "--skip-session-replay", action="store_true",
+        help="Skip the session-replay benchmark (Phase 11).",
+    )
+    parser.add_argument(
+        "--real-patch", action="store_true",
+        help="In SWE-Agent, also attempt real-patch evaluation when test cases "
+        "include repo_url + test_command. Off by default because it shells out.",
     )
 
     # Statistical analysis
@@ -196,6 +232,31 @@ def parse_args() -> argparse.Namespace:
         help="Max queries per dataset (default: all). Use 50-100 for quick runs.",
     )
 
+    # Sampling / scoring controls
+    parser.add_argument(
+        "--seed",
+        type=int,
+        default=0,
+        help="Seed for query sub-sampling. Use multiple values via --num-seeds "
+        "(repeats the run, then aggregates).",
+    )
+    parser.add_argument(
+        "--num-seeds",
+        type=int,
+        default=1,
+        help="Reserve N seeds in config (seed, seed+1, ..., seed+N-1). "
+        "Only seeds[0] is consumed by the current single-run pipeline; "
+        "the rest are recorded for downstream multi-seed aggregation. "
+        "Default 1.",
+    )
+    parser.add_argument(
+        "--judge-top-k",
+        type=int,
+        default=10,
+        help="When --match-mode llm is set, judge top-K results per query. "
+        "Default 10 (previously hard-coded to 3, which silently capped Recall@10).",
+    )
+
     # Resume from checkpoint
     parser.add_argument(
         "--resume",
@@ -221,7 +282,7 @@ async def main() -> int:
     config = BenchmarkConfig()
 
     # Set up structured logging
-    from .logging_config import TraceStore, setup_logging
+    from .infra.logging_config import TraceStore, setup_logging
     trace_store = TraceStore(config.results_dir)
     bench_logger = setup_logging(
         results_dir=config.results_dir,
@@ -229,6 +290,13 @@ async def main() -> int:
     )
     if args.max_queries is not None:
         config.max_queries = args.max_queries
+
+    # Threading sampling + judge controls through the config so every phase
+    # picks them up. --num-seeds expands --seed into a list.
+    base_seed = int(getattr(args, "seed", 0))
+    n_seeds = max(1, int(getattr(args, "num_seeds", 1)))
+    config.seeds = [base_seed + i for i in range(n_seeds)]
+    config.judge_top_k = int(getattr(args, "judge_top_k", 10))
     if args.multi_model:
         matrix = config.load_model_matrix()
         if not matrix:
@@ -243,7 +311,7 @@ async def main() -> int:
 
     # --- Download datasets mode ---
     if args.download_datasets:
-        from .dataset_loader import download_all
+        from .utils.dataset_loader import download_all
 
         download_all(
             csn_max_per_lang=args.dataset_max_samples,
@@ -258,13 +326,25 @@ async def main() -> int:
         engine_names = {"synsc", "nia", "context7"}
     engine_names.discard("none")
 
+    quality_mode = getattr(args, "synsc_quality_mode", "agent")
+
     # Validate config
     engines = []
     if "synsc" in engine_names:
         if not config.synsc_api_key:
             print("[!] SYNSC_API_KEY not set — skipping synsc-context")
         else:
-            engines.append(SynscAdapter(config.synsc_api_url, config.synsc_api_key))
+            engines.append(SynscAdapter(
+                config.synsc_api_url, config.synsc_api_key,
+                quality_mode=quality_mode,
+            ))
+
+    if "synsc-mcp" in engine_names:
+        engines.append(SynscMCPAdapter(
+            api_url=config.synsc_api_url,
+            api_key=config.synsc_api_key,
+            quality_mode=quality_mode,
+        ))
 
     if "nia" in engine_names:
         if not config.nia_api_key:
@@ -311,6 +391,8 @@ async def main() -> int:
         "skip_judge": args.skip_judge,
         "skip_enhanced_judge": args.skip_enhanced_judge,
         "skip_swe_agent": args.skip_swe_agent,
+        "skip_atlas": args.skip_atlas,
+        "skip_session_replay": args.skip_session_replay,
     }
 
     # --*-only: skip everything except the chosen one
@@ -324,6 +406,8 @@ async def main() -> int:
         "judge_only": "skip_judge",
         "enhanced_judge_only": "skip_enhanced_judge",
         "swe_agent_only": "skip_swe_agent",
+        "atlas_only": "skip_atlas",
+        "session_replay_only": "skip_session_replay",
     }
     for flag_name, keep_key in only_map.items():
         if getattr(args, flag_name, False):

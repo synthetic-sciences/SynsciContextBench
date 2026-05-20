@@ -20,7 +20,7 @@ import json
 from tqdm import tqdm
 from dataclasses import dataclass, field
 
-from .adapters.base import ContextEngineAdapter, SearchResult
+from ..adapters.base import ContextEngineAdapter, SearchResult
 
 
 @dataclass
@@ -159,11 +159,13 @@ async def run_multihop_benchmark(
     dataset_path: str,
     top_k: int = 10,
     max_queries: int | None = None,
+    seed: int = 0,
 ) -> tuple[MultiHopAggregateMetrics, list[MultiHopEvaluation]]:
     """Run multi-hop retrieval benchmark against one engine."""
+    from ..infra.sampling import sample_seeded
+
     test_cases = load_multihop_cases(dataset_path)
-    if max_queries is not None:
-        test_cases = test_cases[:max_queries]
+    test_cases = sample_seeded(test_cases, max_queries, seed=seed)
     evaluations: list[MultiHopEvaluation] = []
 
     for tc in tqdm(test_cases, desc=f"  {engine.name} multihop", unit="q"):
