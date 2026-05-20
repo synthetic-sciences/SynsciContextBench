@@ -53,10 +53,10 @@ from .phases.swe_agent import (
     print_swe_agent_summary,
     run_swe_agent_benchmark,
 )
-from .phases.thesis import (
-    ThesisEngineReport,
-    print_thesis_summary,
-    run_thesis_benchmark,
+from .phases.atlas import (
+    AtlasEngineReport,
+    print_atlas_summary,
+    run_atlas_benchmark,
 )
 from .phases.validated_eval import (
     MatchMode,
@@ -108,7 +108,7 @@ _PHASE_FIELDS = [
     "judge",
     "enhanced_judge",
     "swe_agent",
-    "thesis",
+    "atlas",
     "session_replay",
 ]
 
@@ -222,17 +222,17 @@ class BenchmarkReport:
     # SWE-Agent benchmark (Phase 9): context engine value-add for real SWE tasks
     swe_agent: dict[str, dict] = field(default_factory=dict)
 
-    # Thesis-workflow benchmark (Phase 10): tool contracts, graph memory,
+    # Atlas-workflow benchmark (Phase 10): tool contracts, graph memory,
     # artifacts, paper QA, multi-turn workflows, prior decisions.
-    thesis: dict[str, dict] = field(default_factory=dict)
+    atlas: dict[str, dict] = field(default_factory=dict)
 
     # Session-replay benchmark (Phase 11): real moments from production
-    # Thesis sessions where one engine beat another, replayed against the
+    # Atlas sessions where one engine beat another, replayed against the
     # current build of every engine with failure-cause labels.
     session_replay: dict[str, dict] = field(default_factory=dict)
 
     # Per-category leaderboards built at report time, separating "good at
-    # code retrieval" from "good at Thesis workflows" etc.
+    # code retrieval" from "good at Atlas workflows" etc.
     leaderboards: dict[str, list[dict]] = field(default_factory=dict)
 
     # Failure taxonomy classification per engine (failure-cause buckets).
@@ -503,7 +503,7 @@ async def run_full_benchmark(
     skip_judge: bool = False,
     skip_enhanced_judge: bool = False,
     skip_swe_agent: bool = False,
-    skip_thesis: bool = False,
+    skip_atlas: bool = False,
     skip_session_replay: bool = False,
     dataset_filter: list[str] | None = None,
     match_mode: MatchMode = "hybrid",
@@ -569,9 +569,9 @@ async def run_full_benchmark(
         if resume_report.get("swe_agent") and not skip_swe_agent:
             print("  [resume] Skipping swe_agent (already completed)")
             skip_swe_agent = True
-        if resume_report.get("thesis") and not skip_thesis:
-            print("  [resume] Skipping thesis (already completed)")
-            skip_thesis = True
+        if resume_report.get("atlas") and not skip_atlas:
+            print("  [resume] Skipping atlas (already completed)")
+            skip_atlas = True
         if resume_report.get("session_replay") and not skip_session_replay:
             print("  [resume] Skipping session_replay (already completed)")
             skip_session_replay = True
@@ -1191,48 +1191,48 @@ async def run_full_benchmark(
 
             _save_progress("swe_agent")
 
-    # ---- Phase 10: Thesis Workflow Benchmark ----
-    if not skip_thesis:
-        thesis_path = config.curated_dir / "thesis_test_cases.json"
-        if not thesis_path.exists():
-            print(f"\n  [!] Skipping Thesis benchmark — dataset not found: {thesis_path}")
+    # ---- Phase 10: Atlas Workflow Benchmark ----
+    if not skip_atlas:
+        atlas_path = config.curated_dir / "atlas_test_cases.json"
+        if not atlas_path.exists():
+            print(f"\n  [!] Skipping Atlas benchmark — dataset not found: {atlas_path}")
         else:
-            print("\n=== Phase 10: Thesis Workflow Benchmark ===")
+            print("\n=== Phase 10: Atlas Workflow Benchmark ===")
             print(f"  Running {len(engines)} engines concurrently...")
-            trace_store.start_benchmark("thesis")
+            trace_store.start_benchmark("atlas")
 
             _seed_th = config.seeds[0] if config.seeds else 0
-            _thesis_lp = _llm_cfg.provider if _llm_cfg else ""
-            _thesis_lm = _llm_cfg.model if _llm_cfg else ""
-            _thesis_lk = _llm_cfg.api_key if _llm_cfg else ""
+            _atlas_lp = _llm_cfg.provider if _llm_cfg else ""
+            _atlas_lm = _llm_cfg.model if _llm_cfg else ""
+            _atlas_lk = _llm_cfg.api_key if _llm_cfg else ""
 
-            async def _thesis_task(eng: ContextEngineAdapter):
-                return eng, await run_thesis_benchmark(
-                    eng, str(thesis_path),
+            async def _atlas_task(eng: ContextEngineAdapter):
+                return eng, await run_atlas_benchmark(
+                    eng, str(atlas_path),
                     max_cases=config.max_queries,
                     seed=_seed_th,
-                    llm_provider=_thesis_lp,
-                    llm_model=_thesis_lm,
-                    llm_api_key=_thesis_lk,
+                    llm_provider=_atlas_lp,
+                    llm_model=_atlas_lm,
+                    llm_api_key=_atlas_lk,
                 )
 
-            thesis_results = await asyncio.gather(
-                *[_thesis_task(e) for e in engines], return_exceptions=True
+            atlas_results = await asyncio.gather(
+                *[_atlas_task(e) for e in engines], return_exceptions=True
             )
-            for result in thesis_results:
+            for result in atlas_results:
                 if isinstance(result, Exception):
-                    print(f"\n  [!] Thesis failed: {result}")
+                    print(f"\n  [!] Atlas failed: {result}")
                     continue
-                engine, thesis_report = result
+                engine, atlas_report = result
                 print(f"\n--- {engine.name} ---")
                 # Serialize. Per-case is large so we keep it inline for
                 # downstream report tooling and the failure taxonomy.
-                report.thesis[engine.name] = asdict(thesis_report)
+                report.atlas[engine.name] = asdict(atlas_report)
                 # Per-case traces
-                for case_res in thesis_report.per_case:
+                for case_res in atlas_report.per_case:
                     trace = QueryTrace.create(
                         run_id=trace_store.run_id, engine=engine.name,
-                        benchmark_type="thesis",
+                        benchmark_type="atlas",
                     )
                     trace.query_id = case_res.case_id
                     trace.query_text = case_res.question
@@ -1251,10 +1251,10 @@ async def run_full_benchmark(
                     if case_res.error:
                         trace.error = case_res.error
                     trace_store.add_trace(trace)
-                print_thesis_summary(thesis_report)
+                print_atlas_summary(atlas_report)
 
-            trace_store.end_benchmark("thesis")
-            _save_progress("thesis")
+            trace_store.end_benchmark("atlas")
+            _save_progress("atlas")
 
     # ---- Phase 11: Session Replay Benchmark ----
     if not skip_session_replay:

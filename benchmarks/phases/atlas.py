@@ -1,16 +1,16 @@
-"""Phase 10 — Thesis-workflow benchmark.
+"""Phase 10 — Atlas-workflow benchmark.
 
-Real Thesis usage is not function-level code retrieval. It is the orchestration
+Real Atlas usage is not function-level code retrieval. It is the orchestration
 of tool contracts, graph state, artifacts, paper citations, and prior decisions
 across multiple turns. Pure CodeSearchNet/CoSQA-style benchmarks miss this
 entirely, which is why an engine can win retrieval and still feel worse than
-its competitors in a real Thesis session.
+its competitors in a real Atlas session.
 
-This module evaluates each engine on eight Thesis-shaped categories
+This module evaluates each engine on eight Atlas-shaped categories
 (tool_contract, graph_memory, artifact, paper_qa, multi_turn, prior_decision,
 avoid_repeat, synthesis). It reuses `search_code` and `search_papers` from the
 existing adapter contract, so it works against any engine without requiring
-new endpoints — engines that ship a Thesis-native retrieval path simply do
+new endpoints — engines that ship a Atlas-native retrieval path simply do
 better on these tasks because they surface the right evidence.
 
 Scoring per case:
@@ -48,7 +48,7 @@ from tqdm import tqdm
 from ..adapters.base import ContextEngineAdapter, SearchResult
 from ..infra.logging_config import get_logger
 
-logger = get_logger("thesis")
+logger = get_logger("atlas")
 
 
 # ---------------------------------------------------------------------------
@@ -57,8 +57,8 @@ logger = get_logger("thesis")
 
 
 @dataclass
-class ThesisCase:
-    """One Thesis-workflow test case."""
+class AtlasCase:
+    """One Atlas-workflow test case."""
 
     id: str
     category: str
@@ -71,7 +71,7 @@ class ThesisCase:
 
 
 @dataclass
-class ThesisResult:
+class AtlasResult:
     """Per-case result for one engine."""
 
     case_id: str
@@ -100,7 +100,7 @@ class ThesisResult:
 
 
 @dataclass
-class ThesisCategoryReport:
+class AtlasCategoryReport:
     """Per-category aggregate for one engine."""
 
     category: str
@@ -113,8 +113,8 @@ class ThesisCategoryReport:
 
 
 @dataclass
-class ThesisEngineReport:
-    """Full Thesis-benchmark report for one engine."""
+class AtlasEngineReport:
+    """Full Atlas-benchmark report for one engine."""
 
     engine: str
     num_cases: int = 0
@@ -123,8 +123,8 @@ class ThesisEngineReport:
     avg_evidence_recall: float = 0.0
     avg_hallucination_signals: float = 0.0
     avg_latency_ms: float = 0.0
-    categories: dict[str, ThesisCategoryReport] = field(default_factory=dict)
-    per_case: list[ThesisResult] = field(default_factory=list)
+    categories: dict[str, AtlasCategoryReport] = field(default_factory=dict)
+    per_case: list[AtlasResult] = field(default_factory=list)
 
 
 # ---------------------------------------------------------------------------
@@ -132,14 +132,14 @@ class ThesisEngineReport:
 # ---------------------------------------------------------------------------
 
 
-def load_thesis_cases(path: str | Path) -> list[ThesisCase]:
+def load_atlas_cases(path: str | Path) -> list[AtlasCase]:
     """Load cases from JSON. Robust to extra fields."""
     with open(path) as f:
         data = json.load(f)
-    out: list[ThesisCase] = []
+    out: list[AtlasCase] = []
     for raw in data.get("test_cases", []):
         out.append(
-            ThesisCase(
+            AtlasCase(
                 id=raw["id"],
                 category=raw.get("category", "unknown"),
                 difficulty=raw.get("difficulty", "medium"),
@@ -181,7 +181,7 @@ def _classify_chunk(chunk: SearchResult) -> dict[str, bool]:
 
     is_graph_node = any(
         marker in path_lower
-        for marker in ("graph/", "thesis", "node_", "hypothesis", "branch")
+        for marker in ("graph/", "atlas", "node_", "hypothesis", "branch")
     ) or any(m in text_lower for m in ("node id", "hypothesis", "committed", "campaign"))
 
     return {
@@ -226,8 +226,8 @@ def _hallucination_signals(chunks: list[SearchResult], negatives: list[str]) -> 
     return sum(1 for n in negatives if n.lower() in haystack)
 
 
-_THESIS_JUDGE_SYSTEM = (
-    "You are evaluating whether retrieved context answers a Thesis-workflow "
+_ATLAS_JUDGE_SYSTEM = (
+    "You are evaluating whether retrieved context answers a Atlas-workflow "
     "question. Score a single number in [0,1] for how well the context grounds "
     "an answer that satisfies the rubric. 0 means useless. 1 means a downstream "
     "agent could answer the question correctly using only this context. "
@@ -237,7 +237,7 @@ _THESIS_JUDGE_SYSTEM = (
 
 
 async def _judge_score(
-    case: ThesisCase,
+    case: AtlasCase,
     chunks: list[SearchResult],
     llm_provider: str,
     llm_model: str,
@@ -257,7 +257,7 @@ async def _judge_score(
     )
     try:
         text = await _call_llm_judge_raw(
-            system_prompt=_THESIS_JUDGE_SYSTEM,
+            system_prompt=_ATLAS_JUDGE_SYSTEM,
             user_prompt=user_prompt,
             llm_provider=llm_provider,
             llm_model=llm_model,
@@ -267,7 +267,7 @@ async def _judge_score(
         score = float(data.get("score", 0.0))
         return max(0.0, min(1.0, score))
     except Exception as e:  # pragma: no cover - judge failures are tolerated
-        logger.warning("Thesis judge failed for %s: %s", case.id, e)
+        logger.warning("Atlas judge failed for %s: %s", case.id, e)
         return 0.0
 
 
@@ -287,7 +287,7 @@ def _compose(anchor_hit: int, evidence_recall: float, judge_score: float, has_ju
 
 async def _retrieve_for_case(
     engine: ContextEngineAdapter,
-    case: ThesisCase,
+    case: AtlasCase,
     top_k: int,
 ) -> tuple[list[SearchResult], float, str]:
     """Run retrieval for one case. Paper-flavored cases also hit search_papers."""
@@ -300,7 +300,7 @@ async def _retrieve_for_case(
         total_latency += lat
     except Exception as e:
         error = f"search_code: {type(e).__name__}: {e}"
-        logger.warning("Thesis search_code failed [%s/%s]: %s", engine.name, case.id, e)
+        logger.warning("Atlas search_code failed [%s/%s]: %s", engine.name, case.id, e)
 
     if case.category in ("paper_qa", "synthesis"):
         try:
@@ -309,14 +309,14 @@ async def _retrieve_for_case(
             total_latency += plat
         except Exception as e:
             logger.info(
-                "Thesis search_papers fell back for %s (%s): %s",
+                "Atlas search_papers fell back for %s (%s): %s",
                 engine.name, case.id, e,
             )
 
     return chunks, total_latency, error
 
 
-async def run_thesis_benchmark(
+async def run_atlas_benchmark(
     engine: ContextEngineAdapter,
     dataset_path: str | Path,
     top_k: int = 10,
@@ -325,8 +325,8 @@ async def run_thesis_benchmark(
     llm_provider: str = "",
     llm_model: str = "",
     llm_api_key: str = "",
-) -> ThesisEngineReport:
-    """Run the Thesis benchmark for a single engine.
+) -> AtlasEngineReport:
+    """Run the Atlas benchmark for a single engine.
 
     The LLM judge is optional. Without it, the composite uses the structural
     anchor_hit + evidence_recall signals only, which still discriminates
@@ -334,13 +334,13 @@ async def run_thesis_benchmark(
     """
     from ..infra.sampling import stratified_sample
 
-    cases = load_thesis_cases(dataset_path)
+    cases = load_atlas_cases(dataset_path)
     cases = stratified_sample(cases, max_cases, key=lambda c: c.category, seed=seed)
 
     has_judge = bool(llm_api_key and llm_provider and llm_model)
-    per_case: list[ThesisResult] = []
+    per_case: list[AtlasResult] = []
 
-    for case in tqdm(cases, desc=f"  {engine.name} thesis", unit="q"):
+    for case in tqdm(cases, desc=f"  {engine.name} atlas", unit="q"):
         t0 = time.perf_counter()
         chunks, retrieval_latency, error = await _retrieve_for_case(engine, case, top_k)
         anchor = _anchor_hit(chunks, case.expected_anchors)
@@ -363,7 +363,7 @@ async def run_thesis_benchmark(
                    for term in case.expected_evidence):
                 chunks_with_evidence += 1
 
-        result = ThesisResult(
+        result = AtlasResult(
             case_id=case.id,
             category=case.category,
             difficulty=case.difficulty,
@@ -388,18 +388,18 @@ async def run_thesis_benchmark(
     return _aggregate(engine.name, per_case)
 
 
-def _aggregate(engine_name: str, per_case: list[ThesisResult]) -> ThesisEngineReport:
+def _aggregate(engine_name: str, per_case: list[AtlasResult]) -> AtlasEngineReport:
     if not per_case:
-        return ThesisEngineReport(engine=engine_name)
+        return AtlasEngineReport(engine=engine_name)
 
-    by_cat: dict[str, list[ThesisResult]] = {}
+    by_cat: dict[str, list[AtlasResult]] = {}
     for r in per_case:
         by_cat.setdefault(r.category, []).append(r)
 
-    cats: dict[str, ThesisCategoryReport] = {}
+    cats: dict[str, AtlasCategoryReport] = {}
     for name, rs in by_cat.items():
         n = len(rs)
-        cats[name] = ThesisCategoryReport(
+        cats[name] = AtlasCategoryReport(
             category=name,
             num_cases=n,
             avg_anchor_hit=sum(r.anchor_hit for r in rs) / n,
@@ -410,7 +410,7 @@ def _aggregate(engine_name: str, per_case: list[ThesisResult]) -> ThesisEngineRe
         )
 
     n_total = len(per_case)
-    return ThesisEngineReport(
+    return AtlasEngineReport(
         engine=engine_name,
         num_cases=n_total,
         avg_composite=sum(r.composite for r in per_case) / n_total,
@@ -428,7 +428,7 @@ def _aggregate(engine_name: str, per_case: list[ThesisResult]) -> ThesisEngineRe
 # ---------------------------------------------------------------------------
 
 
-def print_thesis_summary(report: ThesisEngineReport) -> None:
+def print_atlas_summary(report: AtlasEngineReport) -> None:
     """Console summary for one engine."""
     print(f"  Engine:                {report.engine}")
     print(f"  Cases:                 {report.num_cases}")

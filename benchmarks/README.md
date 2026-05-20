@@ -35,7 +35,7 @@ Common entry points:
 uv run python -m benchmarks
 
 # one phase
-uv run python -m benchmarks --thesis-only --max-queries 20
+uv run python -m benchmarks --atlas-only --max-queries 20
 uv run python -m benchmarks --session-replay-only
 uv run python -m benchmarks --swe-agent-only --real-patch
 
@@ -50,7 +50,7 @@ uv run python -m benchmarks --num-seeds 3 --max-queries 100
 
 | What | Where | Notes |
 |------|-------|-------|
-| New phase | `benchmarks/phases/` + wire into `runner.py` | Follow the `thesis.py` shape: dataset → `run_*_benchmark` → report dataclass |
+| New phase | `benchmarks/phases/` + wire into `runner.py` | Follow the `atlas.py` shape: dataset → `run_*_benchmark` → report dataclass |
 | New engine | `benchmarks/adapters/` | Implement `ContextEngineAdapter` from `adapters/base.py` |
 | New metric | `benchmarks/scoring/` | Pure function; add to phase aggregator |
 | New judge | `benchmarks/judges/` | Reuse `_call_llm_judge_raw` + `_safe_parse_json` |

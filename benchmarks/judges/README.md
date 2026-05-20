@@ -4,7 +4,7 @@ LLM-as-judge implementations. Two variants:
 
 | Module | Purpose |
 |--------|---------|
-| `llm_judge.py` | 3D blind scoring (relevance, completeness, faithfulness). Used by each per-phase fairness pass and reused by Thesis, SWE-Agent, and validated-eval through `_call_llm_judge_raw` + `_safe_parse_json`. |
+| `llm_judge.py` | 3D blind scoring (relevance, completeness, faithfulness). Used by each per-phase fairness pass and reused by Atlas, SWE-Agent, and validated-eval through `_call_llm_judge_raw` + `_safe_parse_json`. |
 | `enhanced_judge.py` | Position-debiased 4D scoring with faithfulness and RAGAS-style context-quality metrics. Each query is scored twice with shuffled chunk order to suppress positional bias documented in Zheng et al. (2023). |
 
 ## What goes here vs. `scoring/`

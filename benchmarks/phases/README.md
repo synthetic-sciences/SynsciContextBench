@@ -13,7 +13,7 @@ phases/
 ├── validated_eval.py      P6 — CodeSearchNet / CoSQA / AdvTest / APPS / SO-QA
 ├── swe_agent.py           P9 — code-gen w/ and w/o context, no-context baseline
 ├── swe_real_patch.py      P9b — opt-in: clone + apply patch + run tests
-├── thesis.py              P10 — Thesis-workflow tasks (8 categories)
+├── atlas.py              P10 — Atlas-workflow tasks (8 categories)
 └── session_replay.py      P11 — replay real production losses
 ```
 
@@ -39,8 +39,8 @@ async def run_<phase>_benchmark(
 ) -> tuple[<Aggregate>, list[<Per-Query>]]
 ```
 
-Newer phases (`thesis`, `session_replay`) return a single nested dataclass
-(`ThesisEngineReport`, `ReplayEngineReport`) that contains both the aggregate
+Newer phases (`atlas`, `session_replay`) return a single nested dataclass
+(`AtlasEngineReport`, `ReplayEngineReport`) that contains both the aggregate
 and the per-case list — this is the preferred shape for new phases.
 
 ## Sub-sampling
@@ -50,7 +50,7 @@ of slicing the dataset list. This guarantees:
 
 - The same `seed` produces the same draw across modules (so different
   engines see the same queries within a run).
-- Stratified phases (e.g., SWE-Agent on knowledge tiers, Thesis on
+- Stratified phases (e.g., SWE-Agent on knowledge tiers, Atlas on
   categories) keep their proportions when sub-sampled.
 
 The previous `[:N]` truncation has been removed everywhere.

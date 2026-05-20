@@ -108,12 +108,12 @@ for standalone solutions), and runs the case's test command in a sandbox.
 Test commands are screened by a safety filter; cases without `repo_url` and
 `test_command` are skipped.
 
-## Phase 10 — Thesis Workflow
+## Phase 10 — Atlas Workflow
 
 | | |
 |--|--|
-| **Code** | `benchmarks/phases/thesis.py` |
-| **Dataset** | `benchmarks/datasets/curated/thesis_test_cases.json` |
+| **Code** | `benchmarks/phases/atlas.py` |
+| **Dataset** | `benchmarks/datasets/curated/atlas_test_cases.json` |
 | **Cases** | 20 across 8 categories |
 | **Metrics** | anchor hit, evidence recall, optional LLM judge, hallucination signals, composite |
 
@@ -152,7 +152,7 @@ originally lost. The replay re-classifies failures under the live
 After all phases finish the runner emits two cross-cutting reports:
 
 - **Per-category leaderboards** (`scoring/leaderboards.py`):
-  `code_retrieval`, `docs_lookup`, `paper_qa`, `thesis_graph`,
+  `code_retrieval`, `docs_lookup`, `paper_qa`, `atlas_graph`,
   `tool_contract`, `swe_patch`, `context_utilization`,
   `hallucination_inverted`. Each is sorted independently.
 - **Failure taxonomy** (`scoring/failure_taxonomy.py`): per-engine bucket

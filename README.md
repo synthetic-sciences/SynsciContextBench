@@ -4,7 +4,7 @@
 
 Benchmark harness for comparing code context engines head-to-head.
 
-Tests [Delphi](https://github.com/synthetic-sciences/synsc-delphi), [Context7](https://context7.com), and [Nia](https://trynia.ai) across **11 benchmark phases** — code retrieval, multi-hop, adversarial, hallucination, validated datasets, LLM-as-judge, position-debiased enhanced judge, SWE-Agent code generation, **Thesis workflows** (tool contracts / graph memory / paper QA / artifacts / prior decisions / synthesis), and **real-session replay** of cases where one engine visibly beat another.
+Tests [Delphi](https://github.com/synthetic-sciences/synsc-delphi), [Context7](https://context7.com), and [Nia](https://trynia.ai) across **11 benchmark phases** — code retrieval, multi-hop, adversarial, hallucination, validated datasets, LLM-as-judge, position-debiased enhanced judge, SWE-Agent code generation, **Atlas workflows** (tool contracts / graph memory / paper QA / artifacts / prior decisions / synthesis), and **real-session replay** of cases where one engine visibly beat another.
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![Suites](https://img.shields.io/badge/phases-11-58a6ff?style=for-the-badge)]()
@@ -112,13 +112,13 @@ This benchmark addresses common fairness concerns in engine comparison:
 | 7 | **CoSQA** | Real web search queries (Huang et al. 2021) | 100 |
 | 8 | **Enhanced Judge** | Position-debiased 4D + faithfulness + RAGAS metrics | 200 |
 | 9 | **SWE-Agent** | Code generation with/without context, no-context baseline | 25 |
-| 10 | **Thesis Workflow** | Tool contracts, graph memory, artifacts, paper QA, multi-turn, prior decisions, avoid-repeat, synthesis | 20 |
-| 11 | **Session Replay** | Real moments from production Thesis sessions where one engine beat another | 10 |
+| 10 | **Atlas Workflow** | Tool contracts, graph memory, artifacts, paper QA, multi-turn, prior decisions, avoid-repeat, synthesis | 20 |
+| 11 | **Session Replay** | Real moments from production Atlas sessions where one engine beat another | 10 |
 | — | *AdvTest (supplementary)* | Adversarial/obfuscated code queries | 100 |
 
-The diagnosis that drove the Phase 10/11 additions: pure code-retrieval benchmarks understate context-engine value-add. Real Thesis work needs graph state, artifacts, tool contracts, papers, and prior-decision memory — that's what Phases 10 and 11 measure.
+The diagnosis that drove the Phase 10/11 additions: pure code-retrieval benchmarks understate context-engine value-add. Real Atlas work needs graph state, artifacts, tool contracts, papers, and prior-decision memory — that's what Phases 10 and 11 measure.
 
-### Phase 10: Thesis Workflow (categories)
+### Phase 10: Atlas Workflow (categories)
 
 | Category | What it tests |
 |----------|---------------|
@@ -131,11 +131,11 @@ The diagnosis that drove the Phase 10/11 additions: pure code-retrieval benchmar
 | `avoid_repeat` | Surface prior failed experiments |
 | `synthesis` | Combine paper + graph + code context |
 
-Per-category leaderboards are emitted separately so an engine that wins code-retrieval can lose Thesis-workflow without the report hiding it. See `benchmarks/leaderboards.py`.
+Per-category leaderboards are emitted separately so an engine that wins code-retrieval can lose Atlas-workflow without the report hiding it. See `benchmarks/leaderboards.py`.
 
 ### Phase 11: Session Replay
 
-Real moments from production Thesis sessions, each labeled with the original failure cause (`missing_index_coverage`, `bad_retrieval`, `bad_ranking`, `bad_packaging`, `tool_ergonomics`, `benchmark_blind_spot`). The replay then re-classifies the failure under the live taxonomy so the report can show "10 cases labeled `bad_retrieval`, now 6 still failing / 2 reclassified as `bad_ranking` / 2 resolved." See `benchmarks/failure_taxonomy.py`.
+Real moments from production Atlas sessions, each labeled with the original failure cause (`missing_index_coverage`, `bad_retrieval`, `bad_ranking`, `bad_packaging`, `tool_ergonomics`, `benchmark_blind_spot`). The replay then re-classifies the failure under the live taxonomy so the report can show "10 cases labeled `bad_retrieval`, now 6 still failing / 2 reclassified as `bad_ranking` / 2 resolved." See `benchmarks/failure_taxonomy.py`.
 
 ---
 
@@ -191,9 +191,9 @@ uv run python -m benchmarks --enhanced-judge-only
 | `--skip-adversarial` | Skip adversarial phase |
 | `--skip-hallucination` | Skip hallucination phase |
 | `--skip-validated` | Skip validated dataset phases |
-| `--skip-thesis` | Skip Thesis workflow (Phase 10) |
+| `--skip-atlas` | Skip Atlas workflow (Phase 10) |
 | `--skip-session-replay` | Skip Session Replay (Phase 11) |
-| `--thesis-only` | Run only Thesis workflow |
+| `--atlas-only` | Run only Atlas workflow |
 | `--session-replay-only` | Run only session replay |
 | `--validated-only` | Run only validated datasets |
 | `--enhanced-judge-only` | Run only enhanced judge |
@@ -265,7 +265,7 @@ synsci-context-bench/
 │   │   ├── validated_eval.py  Phase 6 — CodeSearchNet / CoSQA / AdvTest
 │   │   ├── swe_agent.py       Phase 9 — code generation benchmark
 │   │   ├── swe_real_patch.py  Phase 9b — real-patch eval (opt-in)
-│   │   ├── thesis.py          Phase 10 — Thesis workflow
+│   │   ├── atlas.py          Phase 10 — Atlas workflow
 │   │   └── session_replay.py  Phase 11 — production session replay
 │   │
 │   ├── judges/                LLM-as-judge implementations
@@ -298,7 +298,7 @@ synsci-context-bench/
 │   │   │   ├── adversarial_test_cases.json
 │   │   │   ├── hallucination_test_cases.json
 │   │   │   ├── swe_agent_test_cases.json
-│   │   │   ├── thesis_test_cases.json
+│   │   │   ├── atlas_test_cases.json
 │   │   │   └── session_replay_cases.json
 │   │   └── validated/         downloaded standard datasets
 │   │       ├── codesearchnet_benchmark.json

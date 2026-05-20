@@ -30,7 +30,7 @@ Each line in `traces/*.jsonl` is one query trace. Useful fields:
 | Field | What it tells you |
 |-------|------------------|
 | `engine` | which adapter produced this |
-| `benchmark_type` | which phase (`retrieval`, `thesis`, `swe_agent`, ...) |
+| `benchmark_type` | which phase (`retrieval`, `atlas`, `swe_agent`, ...) |
 | `query_text`, `query_id` | the input |
 | `latency_ms` | full user-visible wall-clock (includes retries/sleeps) |
 | `num_results` | how many chunks the engine returned |
