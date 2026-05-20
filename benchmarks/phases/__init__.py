@@ -16,7 +16,7 @@ Phases registered today (in the order the runner executes them):
 7.  ``runner._enhanced_judge``              position-debiased 4D judge
 8.  ``swe_agent``                           code generation with/without context
 8b. ``swe_real_patch``                      opt-in: clone, apply, run tests
-9.  ``atlas``                              tool contracts / graph / paper QA
+9.  ``diff_aware``                          diff-aware re-indexing (commit A → B)
 10. ``session_replay``                      replay real production losses
 
 Each phase is independently runnable through the CLI ``--<phase>-only`` flag.
@@ -29,7 +29,7 @@ from .multihop import run_multihop_benchmark
 from .session_replay import run_session_replay_benchmark
 from .swe_agent import run_swe_agent_benchmark
 from .swe_real_patch import run_real_patch
-from .atlas import run_atlas_benchmark
+from .diff_aware import run_diff_aware_benchmark
 from .validated_eval import run_validated_benchmark
 
 __all__ = [
@@ -40,6 +40,6 @@ __all__ = [
     "run_session_replay_benchmark",
     "run_swe_agent_benchmark",
     "run_real_patch",
-    "run_atlas_benchmark",
+    "run_diff_aware_benchmark",
     "run_validated_benchmark",
 ]

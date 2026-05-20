@@ -89,49 +89,26 @@ def _build_docs_lookup(report: dict, engines: list[str]) -> list[dict]:
     return sorted(rows, key=lambda r: r["score"], reverse=True)
 
 
-def _atlas_category_avg(report: dict, engine: str, cats: list[str]) -> float | None:
-    eng_rep = (report.get("atlas") or {}).get(engine)
-    if not eng_rep:
-        return None
-    available = eng_rep.get("categories") or {}
-    scores: list[float] = []
-    for cat in cats:
-        cat_rep = available.get(cat)
-        if cat_rep:
-            scores.append(float(cat_rep.get("avg_composite", 0.0)))
-    if not scores:
-        return None
-    return sum(scores) / len(scores)
+def _build_diff_aware(report: dict, engines: list[str]) -> list[dict]:
+    """Composite leaderboard from Phase 10 diff-aware indexing.
 
-
-def _build_paper_qa(report: dict, engines: list[str]) -> list[dict]:
+    Ranks by composite correctness, surfaces the three diagnostic rates so
+    a reader can see whether a low score is from staleness (not refreshing)
+    or freshness (not picking up new content) or stability (regression).
+    """
     rows: list[dict] = []
+    da = report.get("diff_aware") or {}
     for e in engines:
-        score = _atlas_category_avg(report, e, ["paper_qa", "synthesis"])
-        if score is None:
+        eng_data = da.get(e)
+        if not eng_data:
             continue
-        rows.append(_entry(e, score))
-    return sorted(rows, key=lambda r: r["score"], reverse=True)
-
-
-def _build_atlas_graph(report: dict, engines: list[str]) -> list[dict]:
-    rows: list[dict] = []
-    cats = ["graph_memory", "prior_decision", "avoid_repeat", "multi_turn"]
-    for e in engines:
-        score = _atlas_category_avg(report, e, cats)
-        if score is None:
-            continue
-        rows.append(_entry(e, score))
-    return sorted(rows, key=lambda r: r["score"], reverse=True)
-
-
-def _build_tool_contract(report: dict, engines: list[str]) -> list[dict]:
-    rows: list[dict] = []
-    for e in engines:
-        score = _atlas_category_avg(report, e, ["tool_contract"])
-        if score is None:
-            continue
-        rows.append(_entry(e, score))
+        rows.append(_entry(
+            e,
+            float(eng_data.get("correctness", 0.0)),
+            staleness_rate=float(eng_data.get("staleness_rate", 0.0)),
+            freshness_rate=float(eng_data.get("freshness_rate", 0.0)),
+            stability_rate=float(eng_data.get("stability_rate", 0.0)),
+        ))
     return sorted(rows, key=lambda r: r["score"], reverse=True)
 
 
@@ -205,9 +182,7 @@ def build_leaderboards(report: dict) -> dict[str, list[dict]]:
 
     _add("code_retrieval", _build_code_retrieval(report, engines))
     _add("docs_lookup", _build_docs_lookup(report, engines))
-    _add("paper_qa", _build_paper_qa(report, engines))
-    _add("atlas_graph", _build_atlas_graph(report, engines))
-    _add("tool_contract", _build_tool_contract(report, engines))
+    _add("diff_aware", _build_diff_aware(report, engines))
     _add("swe_patch", _build_swe_patch(report, engines))
     _add("context_utilization", _build_context_utilization(report, engines))
     _add("hallucination_inverted", _build_hallucination(report, engines))

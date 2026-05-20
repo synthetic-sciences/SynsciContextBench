@@ -8,7 +8,7 @@ make changes.
 
 1. **Compare context engines fairly.** All engines see the same queries,
    under the same latency accounting, scored by the same metrics.
-2. **Separate code retrieval from agent context.** Real Atlas usage is
+2. **Separate code retrieval from agent context.** Real-session usage is
    not function-level retrieval. The harness measures both, on separate
    leaderboards, so an engine winning one and losing the other is visibly
    shown to do so.
@@ -37,7 +37,7 @@ benchmarks/runner.py
         ├── Phase 7   judges.llm_judge.run_judge_benchmark         (per dataset)
         ├── Phase 8   judges.enhanced_judge.run_enhanced_judge_benchmark
         ├── Phase 9   phases.swe_agent.run_swe_agent_benchmark     (+ swe_real_patch opt-in)
-        ├── Phase 10  phases.atlas.run_atlas_benchmark
+        ├── Phase 10  phases.diff_aware.run_diff_aware_benchmark
         ├── Phase 11  phases.session_replay.run_session_replay_benchmark
         │
         ├── scoring.leaderboards.build_leaderboards
@@ -89,7 +89,7 @@ so a Ctrl-C still leaves usable data.
 
 ### Phase-to-report wiring
 
-Each phase populates one slot on `BenchmarkReport` (`retrieval`, `atlas`,
+Each phase populates one slot on `BenchmarkReport` (`retrieval`, `diff_aware`,
 `session_replay`, ...) plus, when applicable, per-query rows on
 `query_results`. After all phases finish, `scoring.leaderboards` and
 `scoring.failure_taxonomy` consume the report as a dict and write back
@@ -100,7 +100,7 @@ captures the full picture.
 
 The previous flat layout made it hard to see what the harness actually
 does. Reviewers asking "what's the difference between code retrieval and
-Atlas context?" had to read every phase. With phases / judges / scoring /
+the Phase-10 (diff-aware) context?" had to read every phase. With phases / judges / scoring /
 infra / utils as separate subpackages, the answer is the layout itself.
 
 It also made the diagnosis-driven changes physically visible:
@@ -112,7 +112,7 @@ next to the metrics that feed them.
 
 | Diagnosis item | Where it's addressed |
 |----------------|---------------------|
-| Code-retrieval favors Delphi but Atlas usage exposes weaker axes | `phases/atlas.py` + `phases/session_replay.py` + `scoring/leaderboards.py` |
+| Code-retrieval favors Delphi but real-session usage exposes weaker axes | `phases/diff_aware.py` + `phases/session_replay.py` + `scoring/leaderboards.py` |
 | Recall@K above 1.0 | `scoring/metrics.py:recall_at_k` (de-dup + clamp) |
 | Validated LLM judge only scores top 3 | `phases/validated_eval.py:run_validated_benchmark` (`judge_top_k`) |
 | Query sampling is first-N, not randomized | `infra/sampling.py` + every phase now uses it |

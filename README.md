@@ -4,7 +4,7 @@
 
 Benchmark harness for comparing code context engines head-to-head.
 
-Tests [Delphi](https://github.com/synthetic-sciences/synsc-delphi), [Context7](https://context7.com), and [Nia](https://trynia.ai) across **11 benchmark phases** — code retrieval, multi-hop, adversarial, hallucination, validated datasets, LLM-as-judge, position-debiased enhanced judge, SWE-Agent code generation, **Atlas workflows** (tool contracts / graph memory / paper QA / artifacts / prior decisions / synthesis), and **real-session replay** of cases where one engine visibly beat another.
+Tests [Delphi](https://github.com/synthetic-sciences/synsc-delphi), [Context7](https://context7.com), and [Nia](https://trynia.ai) across **11 benchmark phases** — code retrieval, multi-hop, adversarial, hallucination, validated datasets, LLM-as-judge, position-debiased enhanced judge, SWE-Agent code generation, **diff-aware indexing** (does the engine correctly refresh its index after a real commit?), and **real-session replay** of cases where one engine visibly beat another.
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![Suites](https://img.shields.io/badge/phases-11-58a6ff?style=for-the-badge)]()
@@ -112,30 +112,27 @@ This benchmark addresses common fairness concerns in engine comparison:
 | 7 | **CoSQA** | Real web search queries (Huang et al. 2021) | 100 |
 | 8 | **Enhanced Judge** | Position-debiased 4D + faithfulness + RAGAS metrics | 200 |
 | 9 | **SWE-Agent** | Code generation with/without context, no-context baseline | 25 |
-| 10 | **Atlas Workflow** | Tool contracts, graph memory, artifacts, paper QA, multi-turn, prior decisions, avoid-repeat, synthesis | 20 |
-| 11 | **Session Replay** | Real moments from production Atlas sessions where one engine beat another | 10 |
+| 10 | **Diff-Aware Indexing** | Does the engine correctly refresh its index after a real commit? Stale / fresh / stability checks. | 15 |
+| 11 | **Session Replay** | Real moments from production research sessions where one engine beat another | 10 |
 | — | *AdvTest (supplementary)* | Adversarial/obfuscated code queries | 100 |
 
-The diagnosis that drove the Phase 10/11 additions: pure code-retrieval benchmarks understate context-engine value-add. Real Atlas work needs graph state, artifacts, tool contracts, papers, and prior-decision memory — that's what Phases 10 and 11 measure.
+The diagnosis that drove the Phase 10/11 additions: pure code-retrieval benchmarks understate context-engine value-add. Real work needs the index to be *fresh* (not just accurate) and to handle the messy, mid-session moments where the engine that wins yesterday loses today. Phases 10 and 11 measure those.
 
-### Phase 10: Atlas Workflow (categories)
+### Phase 10: Diff-Aware Indexing
 
-| Category | What it tests |
-|----------|---------------|
-| `tool_contract` | Find MCP tool schemas and required parameters |
-| `graph_memory` | Recall prior nodes, hypotheses, outcomes |
-| `artifact` | Find the table/plot/log/diff that supports a claim |
-| `paper_qa` | Answer with paper citations |
-| `multi_turn` | Continue work from an existing branch |
-| `prior_decision` | Locate the rationale behind a choice |
-| `avoid_repeat` | Surface prior failed experiments |
-| `synthesis` | Combine paper + graph + code context |
+15 cases, each a real `(commit_A, commit_B)` pair on a public Python library (fastapi, httpx, pydantic, sqlalchemy, polars, litestar, msgspec, requests). Every case ships three queries:
 
-Per-category leaderboards are emitted separately so an engine that wins code-retrieval can lose Atlas-workflow without the report hiding it. See `benchmarks/leaderboards.py`.
+| Query class | What it asks | Engine wins by |
+|-------------|--------------|----------------|
+| `stale_query` | A symbol that existed in A but was deleted in B | **Not** returning the deleted symbol |
+| `fresh_query` | A symbol added in B (didn't exist in A) | Returning the new symbol |
+| `stable_query` | A symbol unchanged across A and B | Returning the unchanged symbol (regression guard) |
+
+Composite correctness = mean of `[1−stale_hit, fresh_hit, stable_hit]`. Three diagnostic rates are also reported: staleness (lower better), freshness, stability.
 
 ### Phase 11: Session Replay
 
-Real moments from production Atlas sessions, each labeled with the original failure cause (`missing_index_coverage`, `bad_retrieval`, `bad_ranking`, `bad_packaging`, `tool_ergonomics`, `benchmark_blind_spot`). The replay then re-classifies the failure under the live taxonomy so the report can show "10 cases labeled `bad_retrieval`, now 6 still failing / 2 reclassified as `bad_ranking` / 2 resolved." See `benchmarks/failure_taxonomy.py`.
+Real moments from production research sessions, each labeled with the original failure cause (`missing_index_coverage`, `bad_retrieval`, `bad_ranking`, `bad_packaging`, `tool_ergonomics`, `benchmark_blind_spot`). The replay then re-classifies the failure under the live taxonomy so the report can show "10 cases labeled `bad_retrieval`, now 6 still failing / 2 reclassified as `bad_ranking` / 2 resolved." See `benchmarks/scoring/failure_taxonomy.py`.
 
 ---
 
@@ -191,9 +188,9 @@ uv run python -m benchmarks --enhanced-judge-only
 | `--skip-adversarial` | Skip adversarial phase |
 | `--skip-hallucination` | Skip hallucination phase |
 | `--skip-validated` | Skip validated dataset phases |
-| `--skip-atlas` | Skip Atlas workflow (Phase 10) |
+| `--skip-diff-aware` | Skip diff-aware indexing (Phase 10) |
 | `--skip-session-replay` | Skip Session Replay (Phase 11) |
-| `--atlas-only` | Run only Atlas workflow |
+| `--diff-aware-only` | Run only diff-aware indexing |
 | `--session-replay-only` | Run only session replay |
 | `--validated-only` | Run only validated datasets |
 | `--enhanced-judge-only` | Run only enhanced judge |
@@ -265,7 +262,7 @@ synsci-context-bench/
 │   │   ├── validated_eval.py  Phase 6 — CodeSearchNet / CoSQA / AdvTest
 │   │   ├── swe_agent.py       Phase 9 — code generation benchmark
 │   │   ├── swe_real_patch.py  Phase 9b — real-patch eval (opt-in)
-│   │   ├── atlas.py          Phase 10 — Atlas workflow
+│   │   ├── diff_aware.py    Phase 10 — diff-aware indexing
 │   │   └── session_replay.py  Phase 11 — production session replay
 │   │
 │   ├── judges/                LLM-as-judge implementations
@@ -298,7 +295,7 @@ synsci-context-bench/
 │   │   │   ├── adversarial_test_cases.json
 │   │   │   ├── hallucination_test_cases.json
 │   │   │   ├── swe_agent_test_cases.json
-│   │   │   ├── atlas_test_cases.json
+│   │   │   ├── diff_aware_test_cases.json
 │   │   │   └── session_replay_cases.json
 │   │   └── validated/         downloaded standard datasets
 │   │       ├── codesearchnet_benchmark.json

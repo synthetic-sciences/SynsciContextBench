@@ -47,9 +47,9 @@ Four signals the diagnosis flagged as missing:
 
 The diagnosis was explicit: single-line "Engine X wins" hides reality.
 Eight leaderboards are emitted side-by-side so an engine winning code
-retrieval but losing Atlas-context is visibly shown to lose:
+retrieval but losing the diff-aware phase-context is visibly shown to lose:
 
-`code_retrieval`, `docs_lookup`, `paper_qa`, `atlas_graph`, `tool_contract`,
+`code_retrieval`, `docs_lookup`, `paper_qa`, `diff_aware_graph`, `tool_contract`,
 `swe_patch`, `context_utilization`, `hallucination_inverted`.
 
 ### `failure_taxonomy.py`

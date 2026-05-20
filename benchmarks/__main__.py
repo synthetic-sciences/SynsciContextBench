@@ -10,7 +10,7 @@ Usage:
     python -m benchmarks --adversarial-only            # Only adversarial near-miss
     python -m benchmarks --hallucination-only          # Only hallucination rate
     python -m benchmarks --swe-agent-only               # Only SWE-Agent benchmark (Phase 9)
-    python -m benchmarks --atlas-only                  # Only Atlas-workflow benchmark (Phase 10)
+    python -m benchmarks --diff-aware-only                  # Only Diff-aware indexing benchmark (Phase 10)
     python -m benchmarks --session-replay-only          # Only real-session replay (Phase 11)
     python -m benchmarks --skip-indexing               # Skip repo indexing
     python -m benchmarks --engines synsc               # Only the HTTP Delphi adapter
@@ -123,9 +123,9 @@ def parse_args() -> argparse.Namespace:
         help="Only run SWE-Agent benchmark (Phase 9: context engine value-add for real SWE tasks)",
     )
     only_group.add_argument(
-        "--atlas-only",
+        "--diff-aware-only",
         action="store_true",
-        help="Only run the Atlas-workflow benchmark (Phase 10).",
+        help="Only run the Diff-aware indexing benchmark (Phase 10).",
     )
     only_group.add_argument(
         "--session-replay-only",
@@ -155,8 +155,8 @@ def parse_args() -> argparse.Namespace:
         "--skip-swe-agent", action="store_true", help="Skip SWE-Agent benchmark (Phase 9)"
     )
     parser.add_argument(
-        "--skip-atlas", action="store_true",
-        help="Skip the Atlas-workflow benchmark (Phase 10).",
+        "--skip-diff-aware", action="store_true",
+        help="Skip the Diff-aware indexing benchmark (Phase 10).",
     )
     parser.add_argument(
         "--skip-session-replay", action="store_true",
@@ -391,7 +391,7 @@ async def main() -> int:
         "skip_judge": args.skip_judge,
         "skip_enhanced_judge": args.skip_enhanced_judge,
         "skip_swe_agent": args.skip_swe_agent,
-        "skip_atlas": args.skip_atlas,
+        "skip_diff_aware": args.skip_diff_aware,
         "skip_session_replay": args.skip_session_replay,
     }
 
@@ -406,7 +406,7 @@ async def main() -> int:
         "judge_only": "skip_judge",
         "enhanced_judge_only": "skip_enhanced_judge",
         "swe_agent_only": "skip_swe_agent",
-        "atlas_only": "skip_atlas",
+        "diff_aware_only": "skip_diff_aware",
         "session_replay_only": "skip_session_replay",
     }
     for flag_name, keep_key in only_map.items():

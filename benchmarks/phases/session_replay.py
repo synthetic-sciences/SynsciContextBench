@@ -1,7 +1,7 @@
 """Real-session replay benchmark.
 
-Cases come from production Atlas sessions where one engine visibly beat
-another (most of them: Nia beats Delphi on Atlas-flavored questions). The
+Cases come from production the diff-aware phase sessions where one engine visibly beat
+another (most of them: Nia beats Delphi on the diff-aware phase-flavored questions). The
 replay runs every engine on the same query and reports:
 
 - ``win_rate``   — share of cases where the engine cleared the
@@ -26,7 +26,7 @@ from pathlib import Path
 from tqdm import tqdm
 
 from ..adapters.base import ContextEngineAdapter, SearchResult
-from ..scoring.failure_taxonomy import _classify_atlas_failure
+from ..scoring.failure_taxonomy import _classify_diff_aware_failure
 from ..infra.logging_config import get_logger
 from ..infra.sampling import sample_seeded
 
@@ -148,7 +148,7 @@ async def _replay_for_engine(
         re_class = ""
         if not passed:
             # Re-classify with the live taxonomy
-            re_class, _ = _classify_atlas_failure({
+            re_class, _ = _classify_diff_aware_failure({
                 "num_chunks": len(chunks),
                 "anchor_hit": anchor,
                 "evidence_recall": recall,
@@ -236,7 +236,7 @@ def print_session_replay_summary(reports: dict[str, ReplayEngineReport]) -> None
     if not reports:
         return
     print("\n=== Session Replay Benchmark ===")
-    print("  (cases where one engine visibly beat another in a real Atlas session)")
+    print("  (cases where one engine visibly beat another in a real the diff-aware phase session)")
     for engine, rep in reports.items():
         print(f"\n  [{engine}]  n={rep.num_cases}")
         print(f"    win_rate={rep.win_rate:.3f}  avg_score={rep.avg_score:.3f}")

@@ -9,7 +9,7 @@ datasets/
 Two categories with very different ownership:
 
 - **`curated/`** — JSON files that this repo authors and ships. Editable by
-  reviewers. Includes the Phase 10 (Atlas) and Phase 11 (session replay)
+  reviewers. Includes the Phase 10 (the diff-aware phase) and Phase 11 (session replay)
   cases that came out of the diagnosis.
 - **`validated/`** — Data downloaded from third-party sources via
   `python -m benchmarks --download-datasets`. Larger files, regenerated on

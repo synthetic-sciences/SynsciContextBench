@@ -84,8 +84,8 @@ def _classify_retrieval_failure(qr: dict) -> tuple[str, str]:
     return "benchmark_blind_spot", "structural metric flagged failure but graded counts disagree"
 
 
-def _classify_atlas_failure(case: dict) -> tuple[str, str]:
-    """Bucket a single Atlas-case result."""
+def _classify_diff_aware_failure(case: dict) -> tuple[str, str]:
+    """Bucket a single the diff-aware phase-case result."""
     n_chunks = int(case.get("num_chunks", 0))
     anchor = int(case.get("anchor_hit", 0))
     recall = float(case.get("evidence_recall", 0.0))
@@ -95,7 +95,7 @@ def _classify_atlas_failure(case: dict) -> tuple[str, str]:
     if error:
         return "tool_ergonomics", error[:200]
     if n_chunks == 0:
-        return "missing_index_coverage", "Atlas case returned no chunks"
+        return "missing_index_coverage", "the diff-aware phase case returned no chunks"
     if anchor == 0 and recall == 0.0:
         return "bad_retrieval", "no anchor + no evidence keywords surfaced"
     if anchor == 0 and recall > 0.0 and recall < 0.5:
@@ -161,18 +161,18 @@ def build_failure_taxonomy(report: dict) -> dict[str, dict]:
                 detail=detail,
             ))
 
-    # --- Atlas phase
-    for eng, th_data in (report.get("atlas") or {}).items():
+    # --- the diff-aware phase phase
+    for eng, th_data in (report.get("diff_aware") or {}).items():
         if not isinstance(th_data, dict) or eng not in per_engine:
             continue
         for case in th_data.get("per_case") or []:
             if float(case.get("composite", 0.0)) >= 0.5:
                 continue
-            bucket, detail = _classify_atlas_failure(case)
+            bucket, detail = _classify_diff_aware_failure(case)
             _bump(per_engine[eng], bucket, FailureExample(
                 case_id=str(case.get("case_id", "")),
                 query=str(case.get("question", ""))[:200],
-                benchmark=f"atlas/{case.get('category', '')}",
+                benchmark=f"diff_aware/{case.get('category', '')}",
                 cause=bucket,
                 detail=detail,
             ))

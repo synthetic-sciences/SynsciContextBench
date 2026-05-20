@@ -12,7 +12,7 @@ context use.
 | `adversarial_test_cases.json` | 4 | 100 | Same name / wrong context decoys |
 | `hallucination_test_cases.json` | 5 | 100 | Anti-fabrication checks |
 | `swe_agent_test_cases.json` | 9 | 25 | Real-shape SWE tasks, stratified by knowledge tier |
-| `atlas_test_cases.json` | 10 | 20 | Tool contracts / graph memory / paper QA / synthesis |
+| `diff_aware_test_cases.json` | 10 | 20 | Tool contracts / graph memory / paper QA / synthesis |
 | `session_replay_cases.json` | 11 | 10 | Real production-session losses with labeled causes |
 
 ## Schema reference
@@ -34,7 +34,7 @@ Per-case fields vary by phase but always include `id`, `query` (or `question`),
 and at least one ground-truth signal (`expected_files`, `expected_evidence`,
 `expected_anchors`, `acceptance_criteria`, etc.).
 
-## atlas_test_cases.json
+## diff_aware_test_cases.json
 
 Categories: `tool_contract`, `graph_memory`, `artifact`, `paper_qa`,
 `multi_turn`, `prior_decision`, `avoid_repeat`, `synthesis`.
@@ -43,7 +43,7 @@ Each case has:
 - `question` — what an agent would ask
 - `expected_evidence` — keyword set that should appear in retrieved content
 - `expected_anchors` — paths / IDs the right surface would name
-- `judge_rubric` — optional LLM rubric for the Atlas judge
+- `judge_rubric` — optional LLM rubric for the the diff-aware phase judge
 - `negative_signals` — phrases that indicate fabrication
 
 ## session_replay_cases.json

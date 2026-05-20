@@ -1,6 +1,6 @@
 {
-  "_description": "Real-session-replay benchmark. Each case is a moment from a real Atlas session where one engine produced visibly better context than another. We re-run all engines on the same query and check whether the failing engine surfaces the missing evidence. The diagnosis explicitly asked for this: 'Replay real failures where Nia beat Delphi.'",
-  "_methodology": "Cases are sourced from production session traces (the Atlas project where the diagnosis originated) and stripped of any tenant-specific identifiers. Each case fixes (a) the question/query, (b) the engine that originally won and lost, and (c) the failure cause as labeled at the time of analysis. The replay step measures whether the modern Delphi build closes the gap.",
+  "_description": "Real-session-replay benchmark. Each case is a moment from a real the diff-aware phase session where one engine produced visibly better context than another. We re-run all engines on the same query and check whether the failing engine surfaces the missing evidence. The diagnosis explicitly asked for this: 'Replay real failures where Nia beat Delphi.'",
+  "_methodology": "Cases are sourced from production session traces (the the diff-aware phase project where the diagnosis originated) and stripped of any tenant-specific identifiers. Each case fixes (a) the question/query, (b) the engine that originally won and lost, and (c) the failure cause as labeled at the time of analysis. The replay step measures whether the modern Delphi build closes the gap.",
   "_failure_causes": [
     "missing_index_coverage",
     "bad_retrieval",
@@ -12,8 +12,8 @@
   "cases": [
     {
       "id": "rsr001",
-      "category": "atlas_context",
-      "query": "What MCP tools does Atlas expose for graph mutations?",
+      "category": "diff_aware_context",
+      "query": "What MCP tools does the diff-aware phase expose for graph mutations?",
       "loser_engine": "synsc-context",
       "winner_engine": "nia",
       "labeled_cause": "missing_index_coverage",
@@ -61,7 +61,7 @@
     {
       "id": "rsr005",
       "category": "tool_contract",
-      "query": "What is the schema for Atlas MCP node_create?",
+      "query": "What is the schema for the diff-aware phase MCP node_create?",
       "loser_engine": "synsc-context",
       "winner_engine": "nia",
       "labeled_cause": "missing_index_coverage",
@@ -113,7 +113,7 @@
       "loser_engine": "synsc-context",
       "winner_engine": "nia",
       "labeled_cause": "missing_index_coverage",
-      "labeled_cause_notes": "Atlas graph data was not indexed by Delphi at all; Nia had partial coverage via web search.",
+      "labeled_cause_notes": "the diff-aware phase graph data was not indexed by Delphi at all; Nia had partial coverage via web search.",
       "expected_evidence": ["open hypothesis", "active campaign"],
       "expected_anchors": ["graph/summary/active"],
       "minimum_relevance": 0.4

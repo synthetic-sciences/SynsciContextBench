@@ -124,7 +124,7 @@ class BenchmarkConfig:
 
     @property
     def curated_dir(self) -> Path:
-        """Hand-curated benchmark cases (Atlas, session replay, etc.)."""
+        """Hand-curated benchmark cases (diff-aware indexing, session replay, etc.)."""
         return self.datasets_dir / "curated"
 
     @property

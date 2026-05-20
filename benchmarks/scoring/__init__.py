@@ -9,7 +9,7 @@
                             hallucination-reduction signals.
 - ``leaderboards``          Per-category leaderboards. Replaces single-winner
                             reporting so an engine that wins code retrieval
-                            but loses Atlas context is visibly shown to lose.
+                            but loses the diff-aware phase context is visibly shown to lose.
 - ``failure_taxonomy``      Classifies every failure into one of six buckets
                             (missing_index_coverage, bad_retrieval,
                             bad_ranking, bad_packaging, tool_ergonomics,

@@ -53,10 +53,10 @@ from .phases.swe_agent import (
     print_swe_agent_summary,
     run_swe_agent_benchmark,
 )
-from .phases.atlas import (
-    AtlasEngineReport,
-    print_atlas_summary,
-    run_atlas_benchmark,
+from .phases.diff_aware import (
+    DiffAwareEngineReport,
+    print_diff_aware_summary,
+    run_diff_aware_benchmark,
 )
 from .phases.validated_eval import (
     MatchMode,
@@ -108,7 +108,7 @@ _PHASE_FIELDS = [
     "judge",
     "enhanced_judge",
     "swe_agent",
-    "atlas",
+    "diff_aware",
     "session_replay",
 ]
 
@@ -222,17 +222,19 @@ class BenchmarkReport:
     # SWE-Agent benchmark (Phase 9): context engine value-add for real SWE tasks
     swe_agent: dict[str, dict] = field(default_factory=dict)
 
-    # Atlas-workflow benchmark (Phase 10): tool contracts, graph memory,
-    # artifacts, paper QA, multi-turn workflows, prior decisions.
-    atlas: dict[str, dict] = field(default_factory=dict)
+    # Diff-aware indexing benchmark (Phase 10): does an engine correctly
+    # refresh its index after a code change? Tests staleness (deleted
+    # symbols stop returning), freshness (new symbols start returning),
+    # and stability (unchanged symbols keep working).
+    diff_aware: dict[str, dict] = field(default_factory=dict)
 
     # Session-replay benchmark (Phase 11): real moments from production
-    # Atlas sessions where one engine beat another, replayed against the
-    # current build of every engine with failure-cause labels.
+    # research sessions where one engine beat another, replayed against
+    # the current build of every engine with failure-cause labels.
     session_replay: dict[str, dict] = field(default_factory=dict)
 
     # Per-category leaderboards built at report time, separating "good at
-    # code retrieval" from "good at Atlas workflows" etc.
+    # code retrieval" from "good at diff-aware indexing" etc.
     leaderboards: dict[str, list[dict]] = field(default_factory=dict)
 
     # Failure taxonomy classification per engine (failure-cause buckets).
@@ -503,7 +505,7 @@ async def run_full_benchmark(
     skip_judge: bool = False,
     skip_enhanced_judge: bool = False,
     skip_swe_agent: bool = False,
-    skip_atlas: bool = False,
+    skip_diff_aware: bool = False,
     skip_session_replay: bool = False,
     dataset_filter: list[str] | None = None,
     match_mode: MatchMode = "hybrid",
@@ -569,9 +571,9 @@ async def run_full_benchmark(
         if resume_report.get("swe_agent") and not skip_swe_agent:
             print("  [resume] Skipping swe_agent (already completed)")
             skip_swe_agent = True
-        if resume_report.get("atlas") and not skip_atlas:
-            print("  [resume] Skipping atlas (already completed)")
-            skip_atlas = True
+        if resume_report.get("diff_aware") and not skip_diff_aware:
+            print("  [resume] Skipping diff_aware (already completed)")
+            skip_diff_aware = True
         if resume_report.get("session_replay") and not skip_session_replay:
             print("  [resume] Skipping session_replay (already completed)")
             skip_session_replay = True
@@ -1191,70 +1193,67 @@ async def run_full_benchmark(
 
             _save_progress("swe_agent")
 
-    # ---- Phase 10: Atlas Workflow Benchmark ----
-    if not skip_atlas:
-        atlas_path = config.curated_dir / "atlas_test_cases.json"
-        if not atlas_path.exists():
-            print(f"\n  [!] Skipping Atlas benchmark — dataset not found: {atlas_path}")
+    # ---- Phase 10: Diff-Aware Indexing Benchmark ----
+    # Does the engine correctly refresh its index after a code change?
+    # Tests three properties on a corpus indexed at commit A, then re-
+    # indexed at commit B (= A + a known diff):
+    #   - staleness:  symbols deleted in B should stop returning
+    #   - freshness:  symbols added in B should start returning
+    #   - stability:  symbols unchanged in B should keep working
+    if not skip_diff_aware:
+        diff_path = config.curated_dir / "diff_aware_test_cases.json"
+        if not diff_path.exists():
+            print(f"\n  [!] Skipping diff-aware benchmark — dataset not found: {diff_path}")
         else:
-            print("\n=== Phase 10: Atlas Workflow Benchmark ===")
+            print("\n=== Phase 10: Diff-Aware Indexing Benchmark ===")
             print(f"  Running {len(engines)} engines concurrently...")
-            trace_store.start_benchmark("atlas")
+            trace_store.start_benchmark("diff_aware")
 
-            _seed_th = config.seeds[0] if config.seeds else 0
-            _atlas_lp = _llm_cfg.provider if _llm_cfg else ""
-            _atlas_lm = _llm_cfg.model if _llm_cfg else ""
-            _atlas_lk = _llm_cfg.api_key if _llm_cfg else ""
+            _seed_di = config.seeds[0] if config.seeds else 0
 
-            async def _atlas_task(eng: ContextEngineAdapter):
-                return eng, await run_atlas_benchmark(
-                    eng, str(atlas_path),
+            async def _diff_task(eng: ContextEngineAdapter):
+                return eng, await run_diff_aware_benchmark(
+                    eng, str(diff_path),
                     max_cases=config.max_queries,
-                    seed=_seed_th,
-                    llm_provider=_atlas_lp,
-                    llm_model=_atlas_lm,
-                    llm_api_key=_atlas_lk,
+                    seed=_seed_di,
                 )
 
-            atlas_results = await asyncio.gather(
-                *[_atlas_task(e) for e in engines], return_exceptions=True
+            diff_results = await asyncio.gather(
+                *[_diff_task(e) for e in engines], return_exceptions=True
             )
-            for result in atlas_results:
+            for result in diff_results:
                 if isinstance(result, Exception):
-                    print(f"\n  [!] Atlas failed: {result}")
+                    print(f"\n  [!] Diff-aware failed: {result}")
                     continue
-                engine, atlas_report = result
+                engine, diff_report = result
                 print(f"\n--- {engine.name} ---")
-                # Serialize. Per-case is large so we keep it inline for
-                # downstream report tooling and the failure taxonomy.
-                report.atlas[engine.name] = asdict(atlas_report)
+                report.diff_aware[engine.name] = asdict(diff_report)
                 # Per-case traces
-                for case_res in atlas_report.per_case:
+                for case_res in diff_report.per_case:
                     trace = QueryTrace.create(
                         run_id=trace_store.run_id, engine=engine.name,
-                        benchmark_type="atlas",
+                        benchmark_type="diff_aware",
                     )
                     trace.query_id = case_res.case_id
-                    trace.query_text = case_res.question
+                    trace.query_text = case_res.query
                     trace.latency_ms = case_res.latency_ms
                     trace.scores = {
-                        "composite": case_res.composite,
-                        "anchor_hit": case_res.anchor_hit,
-                        "evidence_recall": case_res.evidence_recall,
-                        "judge_score": case_res.judge_score,
-                        "hallucination_signals": case_res.hallucination_signals,
+                        "correctness": case_res.correctness,
+                        "stale_hit": case_res.stale_hit,
+                        "fresh_hit": case_res.fresh_hit,
+                        "stable_hit": case_res.stable_hit,
                     }
                     trace.query_metadata = {
-                        "category": case_res.category,
-                        "difficulty": case_res.difficulty,
+                        "kind": case_res.kind,
+                        "library": case_res.library,
                     }
                     if case_res.error:
                         trace.error = case_res.error
                     trace_store.add_trace(trace)
-                print_atlas_summary(atlas_report)
+                print_diff_aware_summary(diff_report)
 
-            trace_store.end_benchmark("atlas")
-            _save_progress("atlas")
+            trace_store.end_benchmark("diff_aware")
+            _save_progress("diff_aware")
 
     # ---- Phase 11: Session Replay Benchmark ----
     if not skip_session_replay:

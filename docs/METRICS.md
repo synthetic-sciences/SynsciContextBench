@@ -98,7 +98,7 @@ clamped to [0,1]. Zero means context did nothing.
 `negative_signals_before - negative_signals_after`. Positive means
 context prevented some fabrications.
 
-## Atlas composite — `benchmarks/phases/atlas.py`
+## the diff-aware phase composite — `benchmarks/phases/diff_aware.py`
 
 For one case:
 
