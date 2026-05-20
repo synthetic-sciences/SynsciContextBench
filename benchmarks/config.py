@@ -57,12 +57,20 @@ def _get_model_matrix() -> list[LLMModelConfig]:
         },
     }
 
+    # Tier filter: BENCH_MULTI_MODEL_TIERS=high gives one model per
+    # provider (3 total with all three keys set). Default is all three
+    # tiers (9 total). Used to ship a "best-of-each-house ensemble" run.
+    tier_filter_raw = os.getenv("BENCH_MULTI_MODEL_TIERS", "low,mid,high")
+    allowed_tiers = {t.strip() for t in tier_filter_raw.split(",") if t.strip()}
+
     models = []
     for provider, cfg in providers.items():
         api_key = cfg["api_key"]
         if not api_key:
             continue
         for tier in ("low", "mid", "high"):
+            if tier not in allowed_tiers:
+                continue
             model_name = cfg[tier]
             if model_name:
                 models.append(LLMModelConfig(
