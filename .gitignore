@@ -14,3 +14,7 @@ build/
 # Stray top-level log files from interrupted runs (each run also writes
 # its own logs/ under results/run_<ts>/).
 benchmarks/results/bench_*.jsonl
+
+# Local scratch — partial bench runs, tmp logs, generation scripts, etc.
+# Anything that isn't a committed-to-history artifact lives here.
+ignore/

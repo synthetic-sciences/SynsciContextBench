@@ -324,13 +324,41 @@ class Context7Adapter(ContextEngineAdapter):
             raise RuntimeError(f"Context7 MCP error: {err.get('message', err)}")
         return resp.get("result", {})
 
+    # Per-request hard cap. The 2026-05-21 bench had one Context7 call hang
+    # mid-stream for >12 hours; the runner's asyncio.gather was waiting on it
+    # forever and blocked Phase 2 from starting. Wrapping every HTTP call in
+    # asyncio.wait_for guarantees no single request can hold the whole bench
+    # hostage. Tunable via the CONTEXT7_REQUEST_TIMEOUT env var (default 120s).
+    _PER_REQUEST_TIMEOUT_S = float(os.getenv("CONTEXT7_REQUEST_TIMEOUT", "120"))
+
     async def _request_with_retry(
         self, method: str, url: str, **kwargs: object
     ) -> httpx.Response:
-        """Make an HTTP request with exponential backoff on 429 and 5xx."""
+        """Make an HTTP request with exponential backoff on 429 and 5xx.
+
+        Each individual HTTP call is wrapped in ``asyncio.wait_for`` with the
+        per-request timeout so a single stuck request can't block forever.
+        On timeout we raise ``httpx.ReadTimeout`` so the per-query handler
+        in search_code marks the query failed (error_category='timeout') and
+        the asyncio.gather moves on instead of waiting.
+        """
         max_retries = 5
+        last_resp: httpx.Response | None = None
         for attempt in range(max_retries):
-            resp = await self._client.request(method, url, **kwargs)
+            try:
+                resp = await asyncio.wait_for(
+                    self._client.request(method, url, **kwargs),
+                    timeout=self._PER_REQUEST_TIMEOUT_S,
+                )
+            except asyncio.TimeoutError:
+                print(
+                    f"    [context7] Request timed out after "
+                    f"{self._PER_REQUEST_TIMEOUT_S}s ({method} {url})"
+                )
+                raise httpx.ReadTimeout(
+                    f"context7 request exceeded {self._PER_REQUEST_TIMEOUT_S}s"
+                ) from None
+            last_resp = resp
 
             if resp.status_code == 429:
                 retry_after = float(resp.headers.get("Retry-After", 2 ** attempt))
@@ -363,7 +391,10 @@ class Context7Adapter(ContextEngineAdapter):
 
             return resp
 
-        return resp  # Return last response even if retries exhausted
+        # All retries exhausted — return the last response we got.
+        if last_resp is None:
+            raise RuntimeError("context7 _request_with_retry: no response captured")
+        return last_resp
 
     async def _query_http(
         self, library_id: str, query: str, response_type: str = "txt"
