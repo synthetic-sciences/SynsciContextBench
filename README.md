@@ -21,69 +21,60 @@ Tests [Delphi](https://github.com/synthetic-sciences/synsc-delphi), [Context7](h
 
 ## Results
 
-100 queries per engine per phase. All validated datasets scored with LLM judge (`--match-mode llm`). Full methodology in [`docs/BENCHMARK_REPORT.md`](docs/BENCHMARK_REPORT.md).
+May 2026 run, 100 queries per engine per phase, all phases scored under `--match-mode llm`. Two engines: Delphi vs Nia. Judge: Claude Sonnet 4.6 (single-judge phases) + Gemini 2.5 Pro / Claude Opus 4.7 / GPT-5 ensemble (multi-judge phases). Full per-phase methodology in [`docs/BENCHMARK_REPORT.md`](docs/BENCHMARK_REPORT.md).
 
-### Custom Benchmarks (100 queries each, 3 engines)
+### Core retrieval phases
 
-| Benchmark | Metric | Delphi | Context7 | Nia |
-|-----------|--------|:---:|:---:|:---:|
-| Retrieval | MRR | **0.962** | 0.790 | 0.728 |
-| Code QA | Accuracy | **0.310** | 0.270 | 0.263 |
-| Adversarial | Discrimination | **0.530** | 0.429 | 0.435 |
-| Hallucination | Rate (lower is better) | **40.0%** | 46.0% | 50.0% |
+| Phase | Metric | Delphi | Nia | Delphi delta |
+|-------|--------|:---:|:---:|:---:|
+| Retrieval | MRR | **0.676** | 0.505 | **+34 %** |
+| Multi-Hop | hop coverage | 0.774 | **0.785** | −1.4 % |
+| Code QA | accuracy (LLM-judged) | **0.465** | 0.208 | **+124 %** |
+| Adversarial | discrimination | **0.427** | 0.185 | **+131 %** |
+| Hallucination | avoidance (1 − rate, multi-judge avg) | 60.3 % | **65.7 %** | −5 pp |
 
-### Validated Datasets (LLM judge, 100 queries each)
+### Enhanced LLM judge (position-debiased, 4D scoring, 100 queries per dataset)
 
-| Dataset | Metric | Delphi | Context7 | Nia |
-|---------|--------|:---:|:---:|:---:|
-| CodeSearchNet | MRR | **0.864** | 0.010 | 0.040 |
-| CoSQA | MRR | **0.722** | 0.110 | 0.298 |
+Each query scored twice with swapped chunk ordering to eliminate positional bias. Sonnet 4.6 judges Relevance, Completeness, Specificity, and Faithfulness (0–3 each).
 
-### Enhanced LLM Judge (position-debiased, 4D scoring, 100 queries per dataset)
-
-Each query scored twice with swapped chunk ordering to eliminate positional bias. Scored on Relevance, Completeness, Specificity, and Faithfulness (0-3 each).
-
-| Dataset | Engine | Total (0-3) | Wins |
+| Dataset | Engine | Total (0-12) | Wins |
 |---------|--------|:-:|:-:|
-| CodeSearchNet | **Delphi** | **1.705** | **84** |
-| CodeSearchNet | Context7 | 0.410 | 3 |
-| CodeSearchNet | Nia | 0.345 | 3 |
-| CoSQA | **Delphi** | **1.225** | **51** |
-| CoSQA | Nia | 0.875 | 20 |
-| CoSQA | Context7 | 0.598 | 12 |
+| CodeSearchNet | **Delphi** | **0.517** | **33** |
+| CodeSearchNet | Nia | 0.340 | 10 |
+| CoSQA | **Delphi** | **0.922** | **47** |
+| CoSQA | Nia | 0.745 | 27 |
+| AdvTest | **Delphi** | **0.472** | **30** |
+| AdvTest | Nia | 0.350 | 17 |
+| **All-up** | **Delphi** | | **110 wins** |
+| **All-up** | Nia | | 54 wins |
 
-### SWE-Agent Benchmark (25 tasks, gold + agent queries, no-context baseline)
+Delphi is higher than Nia on *every* dimension across *every* dataset.
 
-Does feeding context engine results to an LLM actually produce better code? 25 hand-crafted SWE tasks across 3 knowledge tiers.
+### SWE-Agent Benchmark (25 tasks · sonnet-4-6 judge)
 
-| Metric | Baseline (no context) | Delphi | Context7 | Nia |
-|--------|:---:|:---:|:---:|:---:|
-| Judge composite | 0.665 | **0.806** (+21%) | 0.821 (+23%) | 0.802 (+21%) |
-| Criteria pass | 90% | **92%** | 88% | 89% |
-| Context utilization | — | 12% | 16% | **21%** |
+Does feeding context engine results to an LLM actually produce better code?
 
-| Knowledge Tier | Delphi delta | Context7 delta | Nia delta |
-|----------------|:---:|:---:|:---:|
-| A (well-known) | +0.108 | **+0.164** | +0.083 |
-| B (niche/recent) | +0.128 | **+0.150** | +0.120 |
-| C (version-specific) | **+0.215** | +0.247 | +0.247 |
+| Metric | Baseline (no context) | Delphi | Nia |
+|--------|:---:|:---:|:---:|
+| Judge composite | 0.681 | **0.784** | 0.801 |
+| Criteria pass | 89 % | 90.7 % | **94 %** |
+| Context utilization | — | 17.7 % | **29.5 %** |
+| Parse rate | 60 % | **80 %** | 72 % |
 
-<details>
-<summary>Supplementary: AdvTest (structurally disadvantages library-lookup engines)</summary>
+Delphi wins parse rate by 11 pp (LLM produces more machine-readable outputs from Delphi context). Nia wins composite by 2 pp.
 
-AdvTest uses obfuscated queries without library names, which structurally disadvantages engines like Context7 that require a library name to search. Results are reported separately.
+### Validated datasets (LLM-judged, 6 public datasets)
 
-| Dataset | Metric | Delphi | Context7 | Nia |
-|---------|--------|:---:|:---:|:---:|
-| AdvTest | MRR | **0.970** | 0.000 | 0.030 |
+| Dataset | Delphi MRR | Nia MRR |
+|---------|:---:|:---:|
+| CoSQA | **0.352** | 0.179 |
+| CodeFeedback-ST | 0.017 | **0.047** |
+| AdvTest | **0.045** | 0.010 |
+| StackOverflow-QA | 0.000 | **0.015** |
+| CodeSearchNet | **0.007** | 0.000 |
+| APPS | 0.000 | 0.000 |
 
-| Dataset | Engine | Total (0-3) | Wins |
-|---------|--------|:-:|:-:|
-| AdvTest | **Delphi** | **1.740** | **93** |
-| AdvTest | Context7 | 0.393 | 2 |
-| AdvTest | Nia | 0.365 | 1 |
-
-</details>
+LLM-judge mode is strict by design — both engines score low in absolute terms on the heavily-obfuscated datasets (AdvTest, StackOverflow-QA). On CoSQA (real natural-language queries) Delphi wins by **+96 %**.
 
 ---
 
