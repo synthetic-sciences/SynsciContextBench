@@ -1,0 +1,51 @@
+run_id,trace_id,engine,benchmark_type,query_id,query_text,num_results,latency_ms,error,error_category,primary_repo,primary_language,total_tokens_returned,relevant_tokens_returned,token_efficiency,anchor_hit,correctness,evidence_recall,fresh_hit,passed_threshold,regression_resolved,score,stable_hit,stale_hit
+0fb01132498f,152edfa7f3d8,synsc-context,diff_aware,diff001,fastapi WebSocketRoute class signature and parameters,0,0.04,,,,,0,0,,,0.3333333333333333,,False,,,,False,False
+0fb01132498f,7fdfa33dc681,synsc-context,diff_aware,diff002,fastapi model_config ConfigDict in Pydantic v2,0,0.00,,,,,0,0,,,0.3333333333333333,,False,,,,False,False
+0fb01132498f,ad6a09581460,synsc-context,diff_aware,diff003,httpx Client proxy parameter for HTTP/SOCKS proxying,0,0.01,,,,,0,0,,,0.3333333333333333,,False,,,,False,False
+0fb01132498f,57f7d6ab2e31,synsc-context,diff_aware,diff004,httpx HTTPTransport retries parameter and exponential backoff,0,0.00,,,,,0,0,,,0.3333333333333333,,False,,,,False,False
+0fb01132498f,7c08fbbc8627,synsc-context,diff_aware,diff005,pydantic BaseModel model_dump method serialization,0,0.00,,,,,0,0,,,0.3333333333333333,,False,,,,False,False
+0fb01132498f,c9edc26b678e,synsc-context,diff_aware,diff006,pydantic field_validator decorator usage in v2,0,0.00,,,,,0,0,,,0.3333333333333333,,False,,,,False,False
+0fb01132498f,965d09f02c8d,synsc-context,diff_aware,diff007,sqlalchemy 2.0 DeclarativeBase class with type-annotated columns,0,0.00,,,,,0,0,,,0.3333333333333333,,False,,,,False,False
+0fb01132498f,c1b1f5834e11,synsc-context,diff_aware,diff008,sqlalchemy 2.0 Mapped and mapped_column for typed ORM columns,0,0.00,,,,,0,0,,,0.3333333333333333,,False,,,,False,False
+0fb01132498f,3ba819c9f663,synsc-context,diff_aware,diff009,polars with_row_index for adding monotonic row indices,0,0.00,,,,,0,0,,,0.3333333333333333,,False,,,,False,False
+0fb01132498f,861f49301dfc,synsc-context,diff_aware,diff010,polars business_day_count expression to count business days,0,0.00,,,,,0,0,,,0.3333333333333333,,False,,,,False,False
+0fb01132498f,4c1ba18ea7c7,synsc-context,diff_aware,diff011,litestar RateLimitMiddleware sliding window configuration,0,0.00,,,,,0,0,,,0.3333333333333333,,False,,,,False,False
+0fb01132498f,7f0b66a76c1e,synsc-context,diff_aware,diff012,litestar Provide modern signature with use_cache and sync_to_thread keyword,0,0.00,,,,,0,0,,,0.3333333333333333,,False,,,,False,False
+0fb01132498f,0844edae2b06,synsc-context,diff_aware,diff013,msgspec Meta annotation for min_length max_length pattern validation,0,0.00,,,,,0,0,,,0.3333333333333333,,False,,,,False,False
+0fb01132498f,f669fa21cb82,synsc-context,diff_aware,diff014,msgspec UNSET sentinel for Struct field absence in v0.18,0,0.00,,,,,0,0,,,0.3333333333333333,,False,,,,False,False
+0fb01132498f,5d47787a98ab,synsc-context,diff_aware,diff015,requests Session.resolve_redirects 2.32 cookie handling fix,0,0.00,,,,,0,0,,,0.3333333333333333,,False,,,,False,False
+0fb01132498f,e47f7e8656b7,nia,diff_aware,diff001,fastapi WebSocketRoute class signature and parameters,0,0.00,,,,,0,0,,,0.3333333333333333,,False,,,,False,False
+0fb01132498f,937f9ca54f66,nia,diff_aware,diff002,fastapi model_config ConfigDict in Pydantic v2,0,0.00,,,,,0,0,,,0.3333333333333333,,False,,,,False,False
+0fb01132498f,2d19091ca023,nia,diff_aware,diff003,httpx Client proxy parameter for HTTP/SOCKS proxying,0,0.00,,,,,0,0,,,0.3333333333333333,,False,,,,False,False
+0fb01132498f,d2831fee9b8e,nia,diff_aware,diff004,httpx HTTPTransport retries parameter and exponential backoff,0,0.00,,,,,0,0,,,0.3333333333333333,,False,,,,False,False
+0fb01132498f,27da7fd6f6b3,nia,diff_aware,diff005,pydantic BaseModel model_dump method serialization,0,0.00,,,,,0,0,,,0.3333333333333333,,False,,,,False,False
+0fb01132498f,bd97f4e8fcfa,nia,diff_aware,diff006,pydantic field_validator decorator usage in v2,0,0.00,,,,,0,0,,,0.3333333333333333,,False,,,,False,False
+0fb01132498f,7b90aa54e997,nia,diff_aware,diff007,sqlalchemy 2.0 DeclarativeBase class with type-annotated columns,0,0.00,,,,,0,0,,,0.3333333333333333,,False,,,,False,False
+0fb01132498f,42a52f236f03,nia,diff_aware,diff008,sqlalchemy 2.0 Mapped and mapped_column for typed ORM columns,0,0.00,,,,,0,0,,,0.3333333333333333,,False,,,,False,False
+0fb01132498f,a9f99e9ba687,nia,diff_aware,diff009,polars with_row_index for adding monotonic row indices,0,0.00,,,,,0,0,,,0.3333333333333333,,False,,,,False,False
+0fb01132498f,a5fc956da10b,nia,diff_aware,diff010,polars business_day_count expression to count business days,0,0.00,,,,,0,0,,,0.3333333333333333,,False,,,,False,False
+0fb01132498f,24918e5533c9,nia,diff_aware,diff011,litestar RateLimitMiddleware sliding window configuration,0,0.00,,,,,0,0,,,0.3333333333333333,,False,,,,False,False
+0fb01132498f,d13fdeb59984,nia,diff_aware,diff012,litestar Provide modern signature with use_cache and sync_to_thread keyword,0,0.00,,,,,0,0,,,0.3333333333333333,,False,,,,False,False
+0fb01132498f,ed493b09a9ed,nia,diff_aware,diff013,msgspec Meta annotation for min_length max_length pattern validation,0,0.00,,,,,0,0,,,0.3333333333333333,,False,,,,False,False
+0fb01132498f,4636ede576b1,nia,diff_aware,diff014,msgspec UNSET sentinel for Struct field absence in v0.18,0,0.00,,,,,0,0,,,0.3333333333333333,,False,,,,False,False
+0fb01132498f,0f734480eceb,nia,diff_aware,diff015,requests Session.resolve_redirects 2.32 cookie handling fix,0,0.00,,,,,0,0,,,0.3333333333333333,,False,,,,False,False
+0fb01132498f,a1c6f7c5aa72,synsc-context,session_replay,rsr001,What MCP tools does the diff-aware phase expose for graph mutations?,0,16859.21,,,,,0,0,,0,,0.0,,0,0,0.0,,
+0fb01132498f,bc9ee4fbd7c5,synsc-context,session_replay,rsr002,Why did we choose pgvector over Qdrant in last quarter's decision?,0,7989.50,,,,,0,0,,0,,0.0,,0,0,0.0,,
+0fb01132498f,98f1039d0aec,synsc-context,session_replay,rsr003,What does BEIR say about reranker effectiveness on sparse retrievers?,0,13560.15,,,,,0,0,,0,,0.0,,0,0,0.0,,
+0fb01132498f,d056b258cf26,synsc-context,session_replay,rsr004,Find the most recent retrieval ablation results table.,0,8206.44,,,,,0,0,,0,,0.6666666666666666,,0,0,0.3333333333333333,,
+0fb01132498f,6219b5e3ba56,synsc-context,session_replay,rsr005,What is the schema for the diff-aware phase MCP node_create?,0,8100.79,,,,,0,0,,0,,0.25,,0,0,0.125,,
+0fb01132498f,7c5ad0846bd8,synsc-context,session_replay,rsr006,Did we previously evaluate jina v2 embeddings on CodeSearchNet?,0,13052.60,,,,,0,0,,0,,0.3333333333333333,,0,0,0.16666666666666666,,
+0fb01132498f,9a7dca17a89e,synsc-context,session_replay,rsr007,Combine our reranking decision with the Husain MRR paper finding to recommend a config.,0,7879.76,,,,,0,0,,0,,0.0,,0,0,0.0,,
+0fb01132498f,99f1245bcf5a,synsc-context,session_replay,rsr008,We saw a regression after enabling reranking — show the trace.,0,11640.79,,,,,0,0,,0,,0.3333333333333333,,0,0,0.16666666666666666,,
+0fb01132498f,1e6e7024cbef,synsc-context,session_replay,rsr009,Summarize the open hypotheses across active campaigns.,0,9672.70,,,,,0,0,,0,,0.0,,0,0,0.0,,
+0fb01132498f,a288ab77de32,synsc-context,session_replay,rsr010,How do I tell Delphi to include test files in indexing?,0,7750.92,,,,,0,0,,0,,0.0,,0,0,0.0,,
+0fb01132498f,05078fd7ea61,nia,session_replay,rsr001,What MCP tools does the diff-aware phase expose for graph mutations?,0,10681.23,,,,,0,0,,0,,0.0,,0,0,0.0,,
+0fb01132498f,ca4ba496d74c,nia,session_replay,rsr002,Why did we choose pgvector over Qdrant in last quarter's decision?,0,8572.88,,,,,0,0,,0,,0.75,,0,0,0.375,,
+0fb01132498f,b80ac35b133c,nia,session_replay,rsr003,What does BEIR say about reranker effectiveness on sparse retrievers?,0,10084.72,,,,,0,0,,0,,0.6666666666666666,,0,0,0.3333333333333333,,
+0fb01132498f,04c3e43dd3cf,nia,session_replay,rsr004,Find the most recent retrieval ablation results table.,0,15178.20,,,,,0,0,,0,,0.6666666666666666,,0,0,0.3333333333333333,,
+0fb01132498f,e493637de3e2,nia,session_replay,rsr005,What is the schema for the diff-aware phase MCP node_create?,0,10741.04,,,,,0,0,,0,,0.5,,0,0,0.25,,
+0fb01132498f,7bbf1ac8ac8a,nia,session_replay,rsr006,Did we previously evaluate jina v2 embeddings on CodeSearchNet?,0,13141.69,,,,,0,0,,0,,0.6666666666666666,,0,0,0.3333333333333333,,
+0fb01132498f,1a39bd8a3cae,nia,session_replay,rsr007,Combine our reranking decision with the Husain MRR paper finding to recommend a config.,0,7573.45,,,,,0,0,,0,,0.6666666666666666,,0,0,0.3333333333333333,,
+0fb01132498f,451cd9e4da53,nia,session_replay,rsr008,We saw a regression after enabling reranking — show the trace.,0,7722.09,,,,,0,0,,0,,1.0,,1,0,0.5,,
+0fb01132498f,ab67894e2696,nia,session_replay,rsr009,Summarize the open hypotheses across active campaigns.,0,12202.13,,,,,0,0,,0,,0.0,,0,0,0.0,,
+0fb01132498f,e73e1331a7ff,nia,session_replay,rsr010,How do I tell Delphi to include test files in indexing?,0,6813.55,,,,,0,0,,0,,0.0,,0,0,0.0,,

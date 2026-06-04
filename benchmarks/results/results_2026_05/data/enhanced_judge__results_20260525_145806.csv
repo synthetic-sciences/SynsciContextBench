@@ -1,0 +1,7 @@
+run_id,trace_id,engine,benchmark_type,query_id,query_text,num_results,latency_ms,error,error_category,primary_repo,primary_language,total_tokens_returned,relevant_tokens_returned,token_efficiency,completeness,context_density,context_precision,faithfulness,relevance,specificity,total
+c27be9c508b7,5fa76d439a35,synsc-context,enhanced_judge_codesearchnet,,[aggregate] CodeSearchNet,100,0.00,,,,,0,0,,0.16,0.03271903691042345,0.2686666666666667,1.2,0.39,0.32,0.5175
+c27be9c508b7,b7d6da200c18,nia,enhanced_judge_codesearchnet,,[aggregate] CodeSearchNet,100,0.00,,,,,0,0,,0.05,0.04980852758346968,0.4326599326599328,0.97,0.22,0.12,0.34
+c27be9c508b7,fbcc7fca3591,synsc-context,enhanced_judge_cosqa,,[aggregate] CoSQA,100,0.00,,,,,0,0,,0.45,0.016863216026140885,0.41890000000000005,1.53,1.01,0.7,0.9225
+c27be9c508b7,c1302ee19474,nia,enhanced_judge_cosqa,,[aggregate] CoSQA,100,0.00,,,,,0,0,,0.39,0.027000467576005854,0.6512,1.39,0.76,0.44,0.745
+c27be9c508b7,683a30e4d594,synsc-context,enhanced_judge_advtest,,[aggregate] AdvTest,100,0.00,,,,,0,0,,0.08,0.033061958967032894,0.2390333333333333,1.16,0.38,0.27,0.4725
+c27be9c508b7,d02b45d57511,nia,enhanced_judge_advtest,,[aggregate] AdvTest,100,0.00,,,,,0,0,,0.04,0.04999226735010443,0.4240404040404039,1.0,0.26,0.1,0.35

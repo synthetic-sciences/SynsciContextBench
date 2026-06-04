@@ -21,7 +21,7 @@ Tests [Delphi](https://github.com/synthetic-sciences/synsc-delphi), [Context7](h
 
 ## Results
 
-May 2026 run, 100 queries per engine per phase, all phases scored under `--match-mode llm`. Two engines: Delphi vs Nia. Judge: Claude Sonnet 4.6 (single-judge phases) + Gemini 2.5 Pro / Claude Opus 4.7 / GPT-5 ensemble (multi-judge phases). Full per-phase methodology in [`docs/BENCHMARK_REPORT.md`](docs/BENCHMARK_REPORT.md).
+May 2026 run, 100 queries per engine per phase, all phases scored under `--match-mode llm`. Two engines: Delphi vs Nia. Judge: Claude Sonnet 4.6 (single-judge phases) + Gemini 2.5 Pro / Claude Opus 4.7 / GPT-5 ensemble (multi-judge phases). Raw CSVs + per-phase reports live in [`benchmarks/results/results_2026_05/`](benchmarks/results/results_2026_05/) with a manifest mapping each file to its source run. Full per-phase methodology in [`docs/BENCHMARK_REPORT.md`](docs/BENCHMARK_REPORT.md).
 
 ### Core retrieval phases
 
@@ -75,6 +75,36 @@ Delphi wins parse rate by 11 pp (LLM produces more machine-readable outputs from
 | APPS | 0.000 | 0.000 |
 
 LLM-judge mode is strict by design — both engines score low in absolute terms on the heavily-obfuscated datasets (AdvTest, StackOverflow-QA). On CoSQA (real natural-language queries) Delphi wins by **+96 %**.
+
+### Phase 10 (diff-aware) and Phase 11 (session replay) — *scoring issue, not reported*
+
+Both phases ran on both engines, but the symbol-match heuristic in `benchmarks/phases/diff_aware.py::_symbol_appears` is too strict for the chunk shapes the live adapters return — both engines landed at the `1/3 = 0.333` correctness floor on every diff-aware case and at `win_rate ≤ 0.1` on session replay. The phases ship with the bench but their numbers are not in the headline tables until the scorer is tightened. Details and a fix sketch in [`benchmarks/results/results_2026_05/README.md#known-issues`](benchmarks/results/results_2026_05/README.md#known-issues).
+
+---
+
+## Reproducing
+
+```bash
+# 1. Bring up Delphi (or any MCP-context engine on :8743)
+cd ~/Desktop/syntheticsciences/delphi
+docker compose up -d
+
+# 2. Index a code corpus into Delphi (one-time, ~10 min for the May 2026 set)
+#    Run dirs in results_2026_05/ used: fastapi, httpx, pydantic, starlette,
+#    django, pandas, sqlalchemy, flask, numpy, requests, aiohttp, litestar,
+#    msgspec, polars, typer, aiofiles, structlog
+#    (See benchmarks/results/results_2026_05/README.md for the exact curl loop.)
+
+# 3. Configure keys
+cd ~/Desktop/syntheticsciences/synsci-context-bench
+cp benchmarks/.env.local.example benchmarks/.env.local
+$EDITOR benchmarks/.env.local     # set SYNSC_API_KEY, NIA_API_KEY, BENCH_*
+
+# 4. Run the bench. ~2-3 hrs end to end.
+uv sync
+uv run python -m benchmarks --engines synsc nia --skip-indexing \
+    --match-mode llm --max-queries 100 --multi-model -v
+```
 
 ---
 

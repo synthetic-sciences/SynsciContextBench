@@ -1,0 +1,1062 @@
+{
+  "timestamp": "2026-05-22T17:15:38.914164+00:00",
+  "engines": [
+    "synsc-context",
+    "nia"
+  ],
+  "retrieval": {},
+  "hallucination": {},
+  "indexing": {},
+  "multihop": {},
+  "code_qa": {},
+  "adversarial": {},
+  "validated": {},
+  "judge": {},
+  "enhanced_judge": {},
+  "swe_agent": {},
+  "diff_aware": {
+    "synsc-context": {
+      "engine": "synsc-context",
+      "per_case": [
+        {
+          "case_id": "diff001",
+          "library": "fastapi",
+          "kind": "added",
+          "query": "fastapi WebSocketRoute class signature and parameters",
+          "stale_hit": false,
+          "fresh_hit": false,
+          "stable_hit": false,
+          "correctness": 0.3333333333333333,
+          "latency_ms": 0.03886222839355469,
+          "error": null
+        },
+        {
+          "case_id": "diff002",
+          "library": "fastapi",
+          "kind": "removed",
+          "query": "fastapi model_config ConfigDict in Pydantic v2",
+          "stale_hit": false,
+          "fresh_hit": false,
+          "stable_hit": false,
+          "correctness": 0.3333333333333333,
+          "latency_ms": 0.003814697265625,
+          "error": null
+        },
+        {
+          "case_id": "diff003",
+          "library": "httpx",
+          "kind": "renamed",
+          "query": "httpx Client proxy parameter for HTTP/SOCKS proxying",
+          "stale_hit": false,
+          "fresh_hit": false,
+          "stable_hit": false,
+          "correctness": 0.3333333333333333,
+          "latency_ms": 0.006198883056640625,
+          "error": null
+        },
+        {
+          "case_id": "diff004",
+          "library": "httpx",
+          "kind": "added",
+          "query": "httpx HTTPTransport retries parameter and exponential backoff",
+          "stale_hit": false,
+          "fresh_hit": false,
+          "stable_hit": false,
+          "correctness": 0.3333333333333333,
+          "latency_ms": 0.0030994415283203125,
+          "error": null
+        },
+        {
+          "case_id": "diff005",
+          "library": "pydantic",
+          "kind": "renamed",
+          "query": "pydantic BaseModel model_dump method serialization",
+          "stale_hit": false,
+          "fresh_hit": false,
+          "stable_hit": false,
+          "correctness": 0.3333333333333333,
+          "latency_ms": 0.0011920928955078125,
+          "error": null
+        },
+        {
+          "case_id": "diff006",
+          "library": "pydantic",
+          "kind": "removed",
+          "query": "pydantic field_validator decorator usage in v2",
+          "stale_hit": false,
+          "fresh_hit": false,
+          "stable_hit": false,
+          "correctness": 0.3333333333333333,
+          "latency_ms": 0.00095367431640625,
+          "error": null
+        },
+        {
+          "case_id": "diff007",
+          "library": "sqlalchemy",
+          "kind": "renamed",
+          "query": "sqlalchemy 2.0 DeclarativeBase class with type-annotated columns",
+          "stale_hit": false,
+          "fresh_hit": false,
+          "stable_hit": false,
+          "correctness": 0.3333333333333333,
+          "latency_ms": 0.0011920928955078125,
+          "error": null
+        },
+        {
+          "case_id": "diff008",
+          "library": "sqlalchemy",
+          "kind": "added",
+          "query": "sqlalchemy 2.0 Mapped and mapped_column for typed ORM columns",
+          "stale_hit": false,
+          "fresh_hit": false,
+          "stable_hit": false,
+          "correctness": 0.3333333333333333,
+          "latency_ms": 0.0019073486328125,
+          "error": null
+        },
+        {
+          "case_id": "diff009",
+          "library": "polars",
+          "kind": "renamed",
+          "query": "polars with_row_index for adding monotonic row indices",
+          "stale_hit": false,
+          "fresh_hit": false,
+          "stable_hit": false,
+          "correctness": 0.3333333333333333,
+          "latency_ms": 0.00095367431640625,
+          "error": null
+        },
+        {
+          "case_id": "diff010",
+          "library": "polars",
+          "kind": "added",
+          "query": "polars business_day_count expression to count business days",
+          "stale_hit": false,
+          "fresh_hit": false,
+          "stable_hit": false,
+          "correctness": 0.3333333333333333,
+          "latency_ms": 0.00095367431640625,
+          "error": null
+        },
+        {
+          "case_id": "diff011",
+          "library": "litestar",
+          "kind": "added",
+          "query": "litestar RateLimitMiddleware sliding window configuration",
+          "stale_hit": false,
+          "fresh_hit": false,
+          "stable_hit": false,
+          "correctness": 0.3333333333333333,
+          "latency_ms": 0.00095367431640625,
+          "error": null
+        },
+        {
+          "case_id": "diff012",
+          "library": "litestar",
+          "kind": "renamed",
+          "query": "litestar Provide modern signature with use_cache and sync_to_thread keyword",
+          "stale_hit": false,
+          "fresh_hit": false,
+          "stable_hit": false,
+          "correctness": 0.3333333333333333,
+          "latency_ms": 0.0011920928955078125,
+          "error": null
+        },
+        {
+          "case_id": "diff013",
+          "library": "msgspec",
+          "kind": "added",
+          "query": "msgspec Meta annotation for min_length max_length pattern validation",
+          "stale_hit": false,
+          "fresh_hit": false,
+          "stable_hit": false,
+          "correctness": 0.3333333333333333,
+          "latency_ms": 0.00095367431640625,
+          "error": null
+        },
+        {
+          "case_id": "diff014",
+          "library": "msgspec",
+          "kind": "renamed",
+          "query": "msgspec UNSET sentinel for Struct field absence in v0.18",
+          "stale_hit": false,
+          "fresh_hit": false,
+          "stable_hit": false,
+          "correctness": 0.3333333333333333,
+          "latency_ms": 0.0011920928955078125,
+          "error": null
+        },
+        {
+          "case_id": "diff015",
+          "library": "requests",
+          "kind": "modified",
+          "query": "requests Session.resolve_redirects 2.32 cookie handling fix",
+          "stale_hit": false,
+          "fresh_hit": false,
+          "stable_hit": false,
+          "correctness": 0.3333333333333333,
+          "latency_ms": 0.00095367431640625,
+          "error": null
+        }
+      ],
+      "correctness": 0.33333333333333326,
+      "staleness_rate": 0.0,
+      "freshness_rate": 0.0,
+      "stability_rate": 0.0
+    },
+    "nia": {
+      "engine": "nia",
+      "per_case": [
+        {
+          "case_id": "diff001",
+          "library": "fastapi",
+          "kind": "added",
+          "query": "fastapi WebSocketRoute class signature and parameters",
+          "stale_hit": false,
+          "fresh_hit": false,
+          "stable_hit": false,
+          "correctness": 0.3333333333333333,
+          "latency_ms": 0.0030994415283203125,
+          "error": null
+        },
+        {
+          "case_id": "diff002",
+          "library": "fastapi",
+          "kind": "removed",
+          "query": "fastapi model_config ConfigDict in Pydantic v2",
+          "stale_hit": false,
+          "fresh_hit": false,
+          "stable_hit": false,
+          "correctness": 0.3333333333333333,
+          "latency_ms": 0.00095367431640625,
+          "error": null
+        },
+        {
+          "case_id": "diff003",
+          "library": "httpx",
+          "kind": "renamed",
+          "query": "httpx Client proxy parameter for HTTP/SOCKS proxying",
+          "stale_hit": false,
+          "fresh_hit": false,
+          "stable_hit": false,
+          "correctness": 0.3333333333333333,
+          "latency_ms": 0.0011920928955078125,
+          "error": null
+        },
+        {
+          "case_id": "diff004",
+          "library": "httpx",
+          "kind": "added",
+          "query": "httpx HTTPTransport retries parameter and exponential backoff",
+          "stale_hit": false,
+          "fresh_hit": false,
+          "stable_hit": false,
+          "correctness": 0.3333333333333333,
+          "latency_ms": 0.00095367431640625,
+          "error": null
+        },
+        {
+          "case_id": "diff005",
+          "library": "pydantic",
+          "kind": "renamed",
+          "query": "pydantic BaseModel model_dump method serialization",
+          "stale_hit": false,
+          "fresh_hit": false,
+          "stable_hit": false,
+          "correctness": 0.3333333333333333,
+          "latency_ms": 0.00095367431640625,
+          "error": null
+        },
+        {
+          "case_id": "diff006",
+          "library": "pydantic",
+          "kind": "removed",
+          "query": "pydantic field_validator decorator usage in v2",
+          "stale_hit": false,
+          "fresh_hit": false,
+          "stable_hit": false,
+          "correctness": 0.3333333333333333,
+          "latency_ms": 0.00095367431640625,
+          "error": null
+        },
+        {
+          "case_id": "diff007",
+          "library": "sqlalchemy",
+          "kind": "renamed",
+          "query": "sqlalchemy 2.0 DeclarativeBase class with type-annotated columns",
+          "stale_hit": false,
+          "fresh_hit": false,
+          "stable_hit": false,
+          "correctness": 0.3333333333333333,
+          "latency_ms": 0.00095367431640625,
+          "error": null
+        },
+        {
+          "case_id": "diff008",
+          "library": "sqlalchemy",
+          "kind": "added",
+          "query": "sqlalchemy 2.0 Mapped and mapped_column for typed ORM columns",
+          "stale_hit": false,
+          "fresh_hit": false,
+          "stable_hit": false,
+          "correctness": 0.3333333333333333,
+          "latency_ms": 0.0011920928955078125,
+          "error": null
+        },
+        {
+          "case_id": "diff009",
+          "library": "polars",
+          "kind": "renamed",
+          "query": "polars with_row_index for adding monotonic row indices",
+          "stale_hit": false,
+          "fresh_hit": false,
+          "stable_hit": false,
+          "correctness": 0.3333333333333333,
+          "latency_ms": 0.00095367431640625,
+          "error": null
+        },
+        {
+          "case_id": "diff010",
+          "library": "polars",
+          "kind": "added",
+          "query": "polars business_day_count expression to count business days",
+          "stale_hit": false,
+          "fresh_hit": false,
+          "stable_hit": false,
+          "correctness": 0.3333333333333333,
+          "latency_ms": 0.0011920928955078125,
+          "error": null
+        },
+        {
+          "case_id": "diff011",
+          "library": "litestar",
+          "kind": "added",
+          "query": "litestar RateLimitMiddleware sliding window configuration",
+          "stale_hit": false,
+          "fresh_hit": false,
+          "stable_hit": false,
+          "correctness": 0.3333333333333333,
+          "latency_ms": 0.00095367431640625,
+          "error": null
+        },
+        {
+          "case_id": "diff012",
+          "library": "litestar",
+          "kind": "renamed",
+          "query": "litestar Provide modern signature with use_cache and sync_to_thread keyword",
+          "stale_hit": false,
+          "fresh_hit": false,
+          "stable_hit": false,
+          "correctness": 0.3333333333333333,
+          "latency_ms": 0.00095367431640625,
+          "error": null
+        },
+        {
+          "case_id": "diff013",
+          "library": "msgspec",
+          "kind": "added",
+          "query": "msgspec Meta annotation for min_length max_length pattern validation",
+          "stale_hit": false,
+          "fresh_hit": false,
+          "stable_hit": false,
+          "correctness": 0.3333333333333333,
+          "latency_ms": 0.00095367431640625,
+          "error": null
+        },
+        {
+          "case_id": "diff014",
+          "library": "msgspec",
+          "kind": "renamed",
+          "query": "msgspec UNSET sentinel for Struct field absence in v0.18",
+          "stale_hit": false,
+          "fresh_hit": false,
+          "stable_hit": false,
+          "correctness": 0.3333333333333333,
+          "latency_ms": 0.00095367431640625,
+          "error": null
+        },
+        {
+          "case_id": "diff015",
+          "library": "requests",
+          "kind": "modified",
+          "query": "requests Session.resolve_redirects 2.32 cookie handling fix",
+          "stale_hit": false,
+          "fresh_hit": false,
+          "stable_hit": false,
+          "correctness": 0.3333333333333333,
+          "latency_ms": 0.0011920928955078125,
+          "error": null
+        }
+      ],
+      "correctness": 0.33333333333333326,
+      "staleness_rate": 0.0,
+      "freshness_rate": 0.0,
+      "stability_rate": 0.0
+    }
+  },
+  "session_replay": {
+    "synsc-context": {
+      "engine": "synsc-context",
+      "num_cases": 10,
+      "win_rate": 0.0,
+      "avg_score": 0.07916666666666666,
+      "historical_losses": 10,
+      "losses_resolved": 0,
+      "losses_still_failing": 10,
+      "by_category": {
+        "diff_aware_context": 0.0,
+        "decision_memory": 0.0,
+        "paper_qa": 0.0,
+        "artifact_lookup": 0.3333,
+        "tool_contract": 0.125,
+        "avoid_repeat": 0.1667,
+        "synthesis": 0.0,
+        "regression_triage": 0.1667,
+        "graph_summary": 0.0,
+        "tool_ergonomics": 0.0
+      },
+      "by_labeled_cause": {
+        "missing_index_coverage": {
+          "total": 4,
+          "resolved": 0,
+          "by_now": {
+            "bad_retrieval": 3,
+            "bad_ranking": 1
+          }
+        },
+        "bad_retrieval": {
+          "total": 2,
+          "resolved": 0,
+          "by_now": {
+            "bad_retrieval": 1,
+            "bad_ranking": 1
+          }
+        },
+        "bad_packaging": {
+          "total": 2,
+          "resolved": 0,
+          "by_now": {
+            "bad_packaging": 1,
+            "bad_retrieval": 1
+          }
+        },
+        "bad_ranking": {
+          "total": 1,
+          "resolved": 0,
+          "by_now": {
+            "bad_ranking": 1
+          }
+        },
+        "tool_ergonomics": {
+          "total": 1,
+          "resolved": 0,
+          "by_now": {
+            "bad_retrieval": 1
+          }
+        }
+      },
+      "per_case": [
+        {
+          "case_id": "rsr001",
+          "category": "diff_aware_context",
+          "engine": "synsc-context",
+          "query": "What MCP tools does the diff-aware phase expose for graph mutations?",
+          "score": 0.0,
+          "anchor_hit": 0,
+          "evidence_recall": 0.0,
+          "passed_threshold": false,
+          "labeled_cause": "missing_index_coverage",
+          "re_classified_cause": "bad_retrieval",
+          "is_loser": true,
+          "is_winner": false,
+          "regression_resolved": false,
+          "latency_ms": 16859.209415968508
+        },
+        {
+          "case_id": "rsr002",
+          "category": "decision_memory",
+          "engine": "synsc-context",
+          "query": "Why did we choose pgvector over Qdrant in last quarter's decision?",
+          "score": 0.0,
+          "anchor_hit": 0,
+          "evidence_recall": 0.0,
+          "passed_threshold": false,
+          "labeled_cause": "missing_index_coverage",
+          "re_classified_cause": "bad_retrieval",
+          "is_loser": true,
+          "is_winner": false,
+          "regression_resolved": false,
+          "latency_ms": 7989.5040419651195
+        },
+        {
+          "case_id": "rsr003",
+          "category": "paper_qa",
+          "engine": "synsc-context",
+          "query": "What does BEIR say about reranker effectiveness on sparse retrievers?",
+          "score": 0.0,
+          "anchor_hit": 0,
+          "evidence_recall": 0.0,
+          "passed_threshold": false,
+          "labeled_cause": "bad_retrieval",
+          "re_classified_cause": "bad_retrieval",
+          "is_loser": true,
+          "is_winner": false,
+          "regression_resolved": false,
+          "latency_ms": 13560.146291041747
+        },
+        {
+          "case_id": "rsr004",
+          "category": "artifact_lookup",
+          "engine": "synsc-context",
+          "query": "Find the most recent retrieval ablation results table.",
+          "score": 0.3333333333333333,
+          "anchor_hit": 0,
+          "evidence_recall": 0.6666666666666666,
+          "passed_threshold": false,
+          "labeled_cause": "bad_packaging",
+          "re_classified_cause": "bad_packaging",
+          "is_loser": true,
+          "is_winner": false,
+          "regression_resolved": false,
+          "latency_ms": 8206.441374961287
+        },
+        {
+          "case_id": "rsr005",
+          "category": "tool_contract",
+          "engine": "synsc-context",
+          "query": "What is the schema for the diff-aware phase MCP node_create?",
+          "score": 0.125,
+          "anchor_hit": 0,
+          "evidence_recall": 0.25,
+          "passed_threshold": false,
+          "labeled_cause": "missing_index_coverage",
+          "re_classified_cause": "bad_ranking",
+          "is_loser": true,
+          "is_winner": false,
+          "regression_resolved": false,
+          "latency_ms": 8100.7906660670415
+        },
+        {
+          "case_id": "rsr006",
+          "category": "avoid_repeat",
+          "engine": "synsc-context",
+          "query": "Did we previously evaluate jina v2 embeddings on CodeSearchNet?",
+          "score": 0.16666666666666666,
+          "anchor_hit": 0,
+          "evidence_recall": 0.3333333333333333,
+          "passed_threshold": false,
+          "labeled_cause": "bad_ranking",
+          "re_classified_cause": "bad_ranking",
+          "is_loser": true,
+          "is_winner": false,
+          "regression_resolved": false,
+          "latency_ms": 13052.599624963477
+        },
+        {
+          "case_id": "rsr007",
+          "category": "synthesis",
+          "engine": "synsc-context",
+          "query": "Combine our reranking decision with the Husain MRR paper finding to recommend a config.",
+          "score": 0.0,
+          "anchor_hit": 0,
+          "evidence_recall": 0.0,
+          "passed_threshold": false,
+          "labeled_cause": "bad_packaging",
+          "re_classified_cause": "bad_retrieval",
+          "is_loser": true,
+          "is_winner": false,
+          "regression_resolved": false,
+          "latency_ms": 7879.758708062582
+        },
+        {
+          "case_id": "rsr008",
+          "category": "regression_triage",
+          "engine": "synsc-context",
+          "query": "We saw a regression after enabling reranking \u2014 show the trace.",
+          "score": 0.16666666666666666,
+          "anchor_hit": 0,
+          "evidence_recall": 0.3333333333333333,
+          "passed_threshold": false,
+          "labeled_cause": "bad_retrieval",
+          "re_classified_cause": "bad_ranking",
+          "is_loser": true,
+          "is_winner": false,
+          "regression_resolved": false,
+          "latency_ms": 11640.785083989613
+        },
+        {
+          "case_id": "rsr009",
+          "category": "graph_summary",
+          "engine": "synsc-context",
+          "query": "Summarize the open hypotheses across active campaigns.",
+          "score": 0.0,
+          "anchor_hit": 0,
+          "evidence_recall": 0.0,
+          "passed_threshold": false,
+          "labeled_cause": "missing_index_coverage",
+          "re_classified_cause": "bad_retrieval",
+          "is_loser": true,
+          "is_winner": false,
+          "regression_resolved": false,
+          "latency_ms": 9672.704000025988
+        },
+        {
+          "case_id": "rsr010",
+          "category": "tool_ergonomics",
+          "engine": "synsc-context",
+          "query": "How do I tell Delphi to include test files in indexing?",
+          "score": 0.0,
+          "anchor_hit": 0,
+          "evidence_recall": 0.0,
+          "passed_threshold": false,
+          "labeled_cause": "tool_ergonomics",
+          "re_classified_cause": "bad_retrieval",
+          "is_loser": true,
+          "is_winner": false,
+          "regression_resolved": false,
+          "latency_ms": 7750.9242499945685
+        }
+      ]
+    },
+    "nia": {
+      "engine": "nia",
+      "num_cases": 10,
+      "win_rate": 0.1,
+      "avg_score": 0.2458333333333333,
+      "historical_losses": 0,
+      "losses_resolved": 0,
+      "losses_still_failing": 0,
+      "by_category": {
+        "diff_aware_context": 0.0,
+        "decision_memory": 0.375,
+        "paper_qa": 0.3333,
+        "artifact_lookup": 0.3333,
+        "tool_contract": 0.25,
+        "avoid_repeat": 0.3333,
+        "synthesis": 0.3333,
+        "regression_triage": 0.5,
+        "graph_summary": 0.0,
+        "tool_ergonomics": 0.0
+      },
+      "by_labeled_cause": {
+        "missing_index_coverage": {
+          "total": 4,
+          "resolved": 0,
+          "by_now": {
+            "bad_retrieval": 2,
+            "bad_packaging": 2
+          }
+        },
+        "bad_retrieval": {
+          "total": 2,
+          "resolved": 1,
+          "by_now": {
+            "bad_packaging": 1
+          }
+        },
+        "bad_packaging": {
+          "total": 2,
+          "resolved": 0,
+          "by_now": {
+            "bad_packaging": 2
+          }
+        },
+        "bad_ranking": {
+          "total": 1,
+          "resolved": 0,
+          "by_now": {
+            "bad_packaging": 1
+          }
+        },
+        "tool_ergonomics": {
+          "total": 1,
+          "resolved": 0,
+          "by_now": {
+            "bad_retrieval": 1
+          }
+        }
+      },
+      "per_case": [
+        {
+          "case_id": "rsr001",
+          "category": "diff_aware_context",
+          "engine": "nia",
+          "query": "What MCP tools does the diff-aware phase expose for graph mutations?",
+          "score": 0.0,
+          "anchor_hit": 0,
+          "evidence_recall": 0.0,
+          "passed_threshold": false,
+          "labeled_cause": "missing_index_coverage",
+          "re_classified_cause": "bad_retrieval",
+          "is_loser": false,
+          "is_winner": true,
+          "regression_resolved": false,
+          "latency_ms": 10681.229625013657
+        },
+        {
+          "case_id": "rsr002",
+          "category": "decision_memory",
+          "engine": "nia",
+          "query": "Why did we choose pgvector over Qdrant in last quarter's decision?",
+          "score": 0.375,
+          "anchor_hit": 0,
+          "evidence_recall": 0.75,
+          "passed_threshold": false,
+          "labeled_cause": "missing_index_coverage",
+          "re_classified_cause": "bad_packaging",
+          "is_loser": false,
+          "is_winner": true,
+          "regression_resolved": false,
+          "latency_ms": 8572.884249966592
+        },
+        {
+          "case_id": "rsr003",
+          "category": "paper_qa",
+          "engine": "nia",
+          "query": "What does BEIR say about reranker effectiveness on sparse retrievers?",
+          "score": 0.3333333333333333,
+          "anchor_hit": 0,
+          "evidence_recall": 0.6666666666666666,
+          "passed_threshold": false,
+          "labeled_cause": "bad_retrieval",
+          "re_classified_cause": "bad_packaging",
+          "is_loser": false,
+          "is_winner": true,
+          "regression_resolved": false,
+          "latency_ms": 10084.719666978344
+        },
+        {
+          "case_id": "rsr004",
+          "category": "artifact_lookup",
+          "engine": "nia",
+          "query": "Find the most recent retrieval ablation results table.",
+          "score": 0.3333333333333333,
+          "anchor_hit": 0,
+          "evidence_recall": 0.6666666666666666,
+          "passed_threshold": false,
+          "labeled_cause": "bad_packaging",
+          "re_classified_cause": "bad_packaging",
+          "is_loser": false,
+          "is_winner": true,
+          "regression_resolved": false,
+          "latency_ms": 15178.196499939077
+        },
+        {
+          "case_id": "rsr005",
+          "category": "tool_contract",
+          "engine": "nia",
+          "query": "What is the schema for the diff-aware phase MCP node_create?",
+          "score": 0.25,
+          "anchor_hit": 0,
+          "evidence_recall": 0.5,
+          "passed_threshold": false,
+          "labeled_cause": "missing_index_coverage",
+          "re_classified_cause": "bad_packaging",
+          "is_loser": false,
+          "is_winner": true,
+          "regression_resolved": false,
+          "latency_ms": 10741.04045808781
+        },
+        {
+          "case_id": "rsr006",
+          "category": "avoid_repeat",
+          "engine": "nia",
+          "query": "Did we previously evaluate jina v2 embeddings on CodeSearchNet?",
+          "score": 0.3333333333333333,
+          "anchor_hit": 0,
+          "evidence_recall": 0.6666666666666666,
+          "passed_threshold": false,
+          "labeled_cause": "bad_ranking",
+          "re_classified_cause": "bad_packaging",
+          "is_loser": false,
+          "is_winner": true,
+          "regression_resolved": false,
+          "latency_ms": 13141.692957957275
+        },
+        {
+          "case_id": "rsr007",
+          "category": "synthesis",
+          "engine": "nia",
+          "query": "Combine our reranking decision with the Husain MRR paper finding to recommend a config.",
+          "score": 0.3333333333333333,
+          "anchor_hit": 0,
+          "evidence_recall": 0.6666666666666666,
+          "passed_threshold": false,
+          "labeled_cause": "bad_packaging",
+          "re_classified_cause": "bad_packaging",
+          "is_loser": false,
+          "is_winner": true,
+          "regression_resolved": false,
+          "latency_ms": 7573.447874980047
+        },
+        {
+          "case_id": "rsr008",
+          "category": "regression_triage",
+          "engine": "nia",
+          "query": "We saw a regression after enabling reranking \u2014 show the trace.",
+          "score": 0.5,
+          "anchor_hit": 0,
+          "evidence_recall": 1.0,
+          "passed_threshold": true,
+          "labeled_cause": "bad_retrieval",
+          "re_classified_cause": "",
+          "is_loser": false,
+          "is_winner": true,
+          "regression_resolved": false,
+          "latency_ms": 7722.089957911521
+        },
+        {
+          "case_id": "rsr009",
+          "category": "graph_summary",
+          "engine": "nia",
+          "query": "Summarize the open hypotheses across active campaigns.",
+          "score": 0.0,
+          "anchor_hit": 0,
+          "evidence_recall": 0.0,
+          "passed_threshold": false,
+          "labeled_cause": "missing_index_coverage",
+          "re_classified_cause": "bad_retrieval",
+          "is_loser": false,
+          "is_winner": true,
+          "regression_resolved": false,
+          "latency_ms": 12202.132708043791
+        },
+        {
+          "case_id": "rsr010",
+          "category": "tool_ergonomics",
+          "engine": "nia",
+          "query": "How do I tell Delphi to include test files in indexing?",
+          "score": 0.0,
+          "anchor_hit": 0,
+          "evidence_recall": 0.0,
+          "passed_threshold": false,
+          "labeled_cause": "tool_ergonomics",
+          "re_classified_cause": "bad_retrieval",
+          "is_loser": false,
+          "is_winner": false,
+          "regression_resolved": false,
+          "latency_ms": 6813.546041958034
+        }
+      ]
+    }
+  },
+  "leaderboards": {
+    "diff_aware": [
+      {
+        "engine": "synsc-context",
+        "score": 0.3333,
+        "staleness_rate": 0.0,
+        "freshness_rate": 0.0,
+        "stability_rate": 0.0
+      },
+      {
+        "engine": "nia",
+        "score": 0.3333,
+        "staleness_rate": 0.0,
+        "freshness_rate": 0.0,
+        "stability_rate": 0.0
+      }
+    ]
+  },
+  "failure_taxonomy": {
+    "synsc-context": {
+      "engine": "synsc-context",
+      "total_failures": 15,
+      "buckets": {
+        "missing_index_coverage": 15,
+        "bad_retrieval": 0,
+        "bad_ranking": 0,
+        "bad_packaging": 0,
+        "tool_ergonomics": 0,
+        "benchmark_blind_spot": 0
+      },
+      "examples": [
+        {
+          "case_id": "diff001",
+          "query": "",
+          "benchmark": "diff_aware/",
+          "cause": "missing_index_coverage",
+          "detail": "the diff-aware phase case returned no chunks"
+        },
+        {
+          "case_id": "diff002",
+          "query": "",
+          "benchmark": "diff_aware/",
+          "cause": "missing_index_coverage",
+          "detail": "the diff-aware phase case returned no chunks"
+        },
+        {
+          "case_id": "diff003",
+          "query": "",
+          "benchmark": "diff_aware/",
+          "cause": "missing_index_coverage",
+          "detail": "the diff-aware phase case returned no chunks"
+        },
+        {
+          "case_id": "diff004",
+          "query": "",
+          "benchmark": "diff_aware/",
+          "cause": "missing_index_coverage",
+          "detail": "the diff-aware phase case returned no chunks"
+        },
+        {
+          "case_id": "diff005",
+          "query": "",
+          "benchmark": "diff_aware/",
+          "cause": "missing_index_coverage",
+          "detail": "the diff-aware phase case returned no chunks"
+        },
+        {
+          "case_id": "diff006",
+          "query": "",
+          "benchmark": "diff_aware/",
+          "cause": "missing_index_coverage",
+          "detail": "the diff-aware phase case returned no chunks"
+        },
+        {
+          "case_id": "diff007",
+          "query": "",
+          "benchmark": "diff_aware/",
+          "cause": "missing_index_coverage",
+          "detail": "the diff-aware phase case returned no chunks"
+        },
+        {
+          "case_id": "diff008",
+          "query": "",
+          "benchmark": "diff_aware/",
+          "cause": "missing_index_coverage",
+          "detail": "the diff-aware phase case returned no chunks"
+        },
+        {
+          "case_id": "diff009",
+          "query": "",
+          "benchmark": "diff_aware/",
+          "cause": "missing_index_coverage",
+          "detail": "the diff-aware phase case returned no chunks"
+        },
+        {
+          "case_id": "diff010",
+          "query": "",
+          "benchmark": "diff_aware/",
+          "cause": "missing_index_coverage",
+          "detail": "the diff-aware phase case returned no chunks"
+        },
+        {
+          "case_id": "diff011",
+          "query": "",
+          "benchmark": "diff_aware/",
+          "cause": "missing_index_coverage",
+          "detail": "the diff-aware phase case returned no chunks"
+        },
+        {
+          "case_id": "diff012",
+          "query": "",
+          "benchmark": "diff_aware/",
+          "cause": "missing_index_coverage",
+          "detail": "the diff-aware phase case returned no chunks"
+        }
+      ]
+    },
+    "nia": {
+      "engine": "nia",
+      "total_failures": 15,
+      "buckets": {
+        "missing_index_coverage": 15,
+        "bad_retrieval": 0,
+        "bad_ranking": 0,
+        "bad_packaging": 0,
+        "tool_ergonomics": 0,
+        "benchmark_blind_spot": 0
+      },
+      "examples": [
+        {
+          "case_id": "diff001",
+          "query": "",
+          "benchmark": "diff_aware/",
+          "cause": "missing_index_coverage",
+          "detail": "the diff-aware phase case returned no chunks"
+        },
+        {
+          "case_id": "diff002",
+          "query": "",
+          "benchmark": "diff_aware/",
+          "cause": "missing_index_coverage",
+          "detail": "the diff-aware phase case returned no chunks"
+        },
+        {
+          "case_id": "diff003",
+          "query": "",
+          "benchmark": "diff_aware/",
+          "cause": "missing_index_coverage",
+          "detail": "the diff-aware phase case returned no chunks"
+        },
+        {
+          "case_id": "diff004",
+          "query": "",
+          "benchmark": "diff_aware/",
+          "cause": "missing_index_coverage",
+          "detail": "the diff-aware phase case returned no chunks"
+        },
+        {
+          "case_id": "diff005",
+          "query": "",
+          "benchmark": "diff_aware/",
+          "cause": "missing_index_coverage",
+          "detail": "the diff-aware phase case returned no chunks"
+        },
+        {
+          "case_id": "diff006",
+          "query": "",
+          "benchmark": "diff_aware/",
+          "cause": "missing_index_coverage",
+          "detail": "the diff-aware phase case returned no chunks"
+        },
+        {
+          "case_id": "diff007",
+          "query": "",
+          "benchmark": "diff_aware/",
+          "cause": "missing_index_coverage",
+          "detail": "the diff-aware phase case returned no chunks"
+        },
+        {
+          "case_id": "diff008",
+          "query": "",
+          "benchmark": "diff_aware/",
+          "cause": "missing_index_coverage",
+          "detail": "the diff-aware phase case returned no chunks"
+        },
+        {
+          "case_id": "diff009",
+          "query": "",
+          "benchmark": "diff_aware/",
+          "cause": "missing_index_coverage",
+          "detail": "the diff-aware phase case returned no chunks"
+        },
+        {
+          "case_id": "diff010",
+          "query": "",
+          "benchmark": "diff_aware/",
+          "cause": "missing_index_coverage",
+          "detail": "the diff-aware phase case returned no chunks"
+        },
+        {
+          "case_id": "diff011",
+          "query": "",
+          "benchmark": "diff_aware/",
+          "cause": "missing_index_coverage",
+          "detail": "the diff-aware phase case returned no chunks"
+        },
+        {
+          "case_id": "diff012",
+          "query": "",
+          "benchmark": "diff_aware/",
+          "cause": "missing_index_coverage",
+          "detail": "the diff-aware phase case returned no chunks"
+        }
+      ]
+    }
+  },
+  "extended_metrics": {},
+  "significance": {},
+  "query_results": {}
+}
