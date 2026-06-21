@@ -410,10 +410,15 @@ async def _call_enhanced_judge(
             data = resp.json()
             text = data["content"][0]["text"]
 
-    elif llm_provider == "openai":
+    elif llm_provider in ("openai", "openrouter"):
+        _base = (
+            "https://openrouter.ai/api/v1/chat/completions"
+            if llm_provider == "openrouter"
+            else "https://api.openai.com/v1/chat/completions"
+        )
         async with httpx.AsyncClient(timeout=60.0) as client:
             resp = await client.post(
-                "https://api.openai.com/v1/chat/completions",
+                _base,
                 headers={
                     "Authorization": f"Bearer {llm_api_key}",
                     "Content-Type": "application/json",
