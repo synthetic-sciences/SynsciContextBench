@@ -256,10 +256,18 @@ async def _generate_code_with_context(
             # Concatenate all text parts
             return "".join(p.get("text", "") for p in parts)
 
-    elif llm_provider == "openai":
+    elif llm_provider in ("openai", "openrouter"):
         async with httpx.AsyncClient(timeout=60.0) as client:
+            _base = (
+                "https://openrouter.ai/api/v1/chat/completions"
+                if llm_provider == "openrouter"
+                else "https://api.openai.com/v1/chat/completions"
+            )
             # GPT-5+ models use max_completion_tokens instead of max_tokens
-            is_gpt5 = "gpt-5" in llm_model or "gpt-4.1" in llm_model or "o" in llm_model.split("-")[0]
+            # (OpenAI only; OpenRouter normalizes max_tokens across vendors).
+            is_gpt5 = llm_provider == "openai" and (
+                "gpt-5" in llm_model or "gpt-4.1" in llm_model or "o" in llm_model.split("-")[0]
+            )
             token_param = "max_completion_tokens" if is_gpt5 else "max_tokens"
             body = {
                 "model": llm_model,
@@ -270,7 +278,7 @@ async def _generate_code_with_context(
                 ],
             }
             resp = await client.post(
-                "https://api.openai.com/v1/chat/completions",
+                _base,
                 headers={
                     "Authorization": f"Bearer {llm_api_key}",
                     "Content-Type": "application/json",

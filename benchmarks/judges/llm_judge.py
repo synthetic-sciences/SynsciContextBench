@@ -205,10 +205,16 @@ async def _call_llm_judge_raw_inner(
             data = resp.json()
             return data["content"][0]["text"]
 
-    elif llm_provider == "openai":
+    elif llm_provider in ("openai", "openrouter"):
+        # OpenRouter is OpenAI-compatible; only the base URL + auth differ.
+        base_url = (
+            "https://openrouter.ai/api/v1/chat/completions"
+            if llm_provider == "openrouter"
+            else "https://api.openai.com/v1/chat/completions"
+        )
         async with httpx.AsyncClient(timeout=60.0) as client:
             resp = await client.post(
-                "https://api.openai.com/v1/chat/completions",
+                base_url,
                 headers={
                     "Authorization": f"Bearer {llm_api_key}",
                     "Content-Type": "application/json",
@@ -290,10 +296,15 @@ async def _call_llm_judge(
             data = resp.json()
             text = data["content"][0]["text"]
 
-    elif llm_provider == "openai":
+    elif llm_provider in ("openai", "openrouter"):
+        _base = (
+            "https://openrouter.ai/api/v1/chat/completions"
+            if llm_provider == "openrouter"
+            else "https://api.openai.com/v1/chat/completions"
+        )
         async with httpx.AsyncClient(timeout=60.0) as client:
             resp = await client.post(
-                "https://api.openai.com/v1/chat/completions",
+                _base,
                 headers={
                     "Authorization": f"Bearer {llm_api_key}",
                     "Content-Type": "application/json",

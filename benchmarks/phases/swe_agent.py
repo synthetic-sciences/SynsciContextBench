@@ -181,12 +181,19 @@ async def _call_llm(
                 raise RuntimeError("Gemini returned empty parts")
             return "".join(p.get("text", "") for p in parts)
 
-    elif llm_provider == "openai":
+    elif llm_provider in ("openai", "openrouter"):
         async with httpx.AsyncClient(timeout=90.0) as client:
-            is_new = "gpt-5" in llm_model or "gpt-4.1" in llm_model or "o" in llm_model.split("-")[0]
+            _base = (
+                "https://openrouter.ai/api/v1/chat/completions"
+                if llm_provider == "openrouter"
+                else "https://api.openai.com/v1/chat/completions"
+            )
+            is_new = llm_provider == "openai" and (
+                "gpt-5" in llm_model or "gpt-4.1" in llm_model or "o" in llm_model.split("-")[0]
+            )
             token_param = "max_completion_tokens" if is_new else "max_tokens"
             resp = await client.post(
-                "https://api.openai.com/v1/chat/completions",
+                _base,
                 headers={
                     "Authorization": f"Bearer {llm_api_key}",
                     "Content-Type": "application/json",
