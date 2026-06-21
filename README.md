@@ -108,6 +108,28 @@ uv run python -m benchmarks --engines synsc nia --skip-indexing \
 
 ---
 
+## Testing & offline reproducibility
+
+The harness can run **without API keys, network, or Docker** via a deterministic
+`MockAdapter` and offline judge, so the scorers are unit-testable and CI can
+verify the pipeline end-to-end.
+
+```bash
+uv sync --extra dev
+uv run pytest          # 33 tests: metrics, diff-aware, session-replay, mock, offline judge
+```
+
+The test suite pins the behavior of every scorer (catching the class of bug that
+floored Phase 10) and includes a validated-eval pipeline check proving MRR is
+~1.0 when the relevant document is actually retrieved — i.e. near-zero validated
+MRRs are a corpus-coverage issue, not a metric bug.
+
+See [`docs/THREATS_TO_VALIDITY.md`](docs/THREATS_TO_VALIDITY.md) for the full
+validity treatment (contamination/leakage, vendor bias, judge reliability,
+statistical-conclusion validity) written to publication standard.
+
+---
+
 ## Fairness
 
 This benchmark addresses common fairness concerns in engine comparison:

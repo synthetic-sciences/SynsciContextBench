@@ -37,10 +37,10 @@ terms as the engines that ship diff-aware re-indexing (Delphi).
 
 from __future__ import annotations
 
-import asyncio
 import json
 import logging
 import random
+import re
 import time
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -86,6 +86,11 @@ class DiffAwareCaseResult:
     correctness: float  # composite of the three above
     latency_ms: float = 0.0
     error: str | None = None
+    # False when the engine cannot pin a commit (no diff-aware re-index). Such
+    # cases are reported separately and excluded from the headline freshness
+    # score instead of silently flooring it.
+    supported: bool = True
+    reindexed: bool = False  # True if the engine actually re-indexed A->B
 
 
 @dataclass
@@ -98,6 +103,9 @@ class DiffAwareEngineReport:
     staleness_rate: float = 0.0  # fraction of cases where deleted symbol re-surfaced
     freshness_rate: float = 0.0  # fraction of cases where new symbol was retrieved
     stability_rate: float = 0.0  # fraction of cases where unchanged symbol still works
+    supported_cases: int = 0  # cases where the engine actually re-indexed A->B
+    unsupported_cases: int = 0  # cases scored single-pass (no commit pinning)
+    supports_commit_pinning: bool = False
 
 
 # ---------------------------------------------------------------------------
@@ -136,28 +144,74 @@ def load_diff_aware_cases(path: str | Path) -> list[DiffAwareCase]:
 # ---------------------------------------------------------------------------
 
 
-def _symbol_appears(symbol: str, results: list[dict]) -> bool:
-    """True iff any of the engine's returned chunks mentions the symbol.
+_IDENT_RE = re.compile(r"[A-Za-z_][A-Za-z0-9_]*")
 
-    We do a case-sensitive substring match because:
-      - Code symbols are case-sensitive in every language the bench cares about.
-      - A retrieval engine that can't surface the symbol *name* anywhere in its
-        top-K context isn't really "returning" it.
+
+def _result_fields(r) -> tuple[str, str]:
+    """Extract (text, symbol_metadata) from a SearchResult OR a raw dict.
+
+    The adapters return ``SearchResult`` dataclasses, but legacy callers and
+    some engines hand back dicts — accept both so the matcher never silently
+    sees nothing.
+    """
+    if isinstance(r, dict):
+        text_parts = [
+            str(r.get(k, "") or "")
+            for k in ("content", "snippet", "text", "code", "context", "file_path")
+        ]
+        sym = ""
+        for k in ("symbol", "symbol_name", "name"):
+            if r.get(k):
+                sym = str(r[k])
+                break
+        meta = r.get("metadata") or {}
+        if not sym and isinstance(meta, dict):
+            sym = str(meta.get("symbol", "") or "")
+        return "\n".join(text_parts), sym
+    # SearchResult dataclass (or any object with attributes)
+    text = "\n".join(
+        str(getattr(r, k, "") or "") for k in ("content", "file_path")
+    )
+    meta = getattr(r, "metadata", {}) or {}
+    sym = str(meta.get("symbol", "")) if isinstance(meta, dict) else ""
+    return text, sym
+
+
+def _symbol_appears(symbol: str, results: list) -> bool:
+    """True iff the engine's returned chunks surface the symbol.
+
+    Matches the symbol as a whole identifier token (word boundary) in any
+    returned chunk's content/path, or as an exact symbol-metadata value. Also
+    matches the final dotted component (``Class.method`` -> ``method``), which
+    the previous naive substring match missed for qualified names — the strict
+    matcher was a documented cause of the phase flooring at 1/3.
     """
     if not symbol or not results:
         return False
-    needle = symbol
+    last = symbol.split(".")[-1].split("::")[-1]
+    needles = {symbol, last}
     for r in results:
-        for field_name in ("content", "snippet", "text", "code", "context"):
-            val = r.get(field_name)
-            if isinstance(val, str) and needle in val:
-                return True
-        # Some adapters surface symbol names in file_path / chunk_id metadata
-        for field_name in ("symbol", "symbol_name", "name"):
-            val = r.get(field_name)
-            if isinstance(val, str) and needle == val:
-                return True
+        text, sym = _result_fields(r)
+        if sym and sym in needles:
+            return True
+        tokens = set(_IDENT_RE.findall(text))
+        if needles & tokens:
+            return True
     return False
+
+
+def compute_correctness(stale_hit: bool, fresh_hit: bool, stable_hit: bool) -> float:
+    """Composite per-case correctness.
+
+    Staleness is a false positive (the deleted symbol must NOT resurface), so it
+    is inverted; freshness and stability are true positives. Pure function so it
+    is unit-testable without an engine.
+    """
+    return (
+        (0.0 if stale_hit else 1.0)
+        + (1.0 if fresh_hit else 0.0)
+        + (1.0 if stable_hit else 0.0)
+    ) / 3.0
 
 
 # ---------------------------------------------------------------------------
@@ -165,46 +219,68 @@ def _symbol_appears(symbol: str, results: list[dict]) -> bool:
 # ---------------------------------------------------------------------------
 
 
-async def _run_one_case(engine, case: DiffAwareCase) -> DiffAwareCaseResult:
+async def _query(engine, q: str, top_k: int = 10) -> tuple[list, str | None]:
+    """Query an engine via the adapter contract (``search_code`` -> results).
+
+    The previous implementation called ``engine.search`` / ``engine.asearch``,
+    which no adapter implements — so every query returned ``[]`` and every
+    engine floored at correctness 1/3. The adapter contract is
+    ``search_code(query, top_k) -> (list[SearchResult], latency)``.
+    """
+    try:
+        results, _latency = await engine.search_code(query=q, top_k=top_k)
+        return results or [], None
+    except Exception as e:  # noqa: BLE001
+        return [], f"{type(e).__name__}: {e}"
+
+
+async def _reindex_at(engine, repo_url: str, ref: str) -> str | None:
+    try:
+        await engine.index_repository_at_commit(repo_url, ref)
+        return None
+    except Exception as e:  # noqa: BLE001
+        return f"{type(e).__name__}: {e}"
+
+
+async def _run_one_case(engine, case: DiffAwareCase, top_k: int = 10) -> DiffAwareCaseResult:
     t0 = time.time()
     err: str | None = None
     stale_hit = fresh_hit = stable_hit = False
 
-    async def _query(q: str, top_k: int = 10) -> list[dict]:
-        try:
-            res = engine.search(q, top_k=top_k) if hasattr(engine, "search") else None
-            if res is None and hasattr(engine, "asearch"):
-                res = await engine.asearch(q, top_k=top_k)
-            if asyncio.iscoroutine(res):
-                res = await res
-            if isinstance(res, dict):
-                return res.get("results", res.get("hits", []))
-            return res or []
-        except Exception as e:
-            nonlocal err
-            err = f"{type(e).__name__}: {e}"
-            return []
+    supports = bool(getattr(engine, "supports_commit_pinning", False))
+    can_pin = supports and bool(case.repo_url and case.commit_before and case.commit_after)
+    reindexed = False
 
-    try:
-        # Stale check: any hit for the deleted symbol is bad.
-        stale_results = await _query(case.stale_query)
+    if can_pin:
+        # Freshness can only be measured by actually moving the index A -> B.
+        err = await _reindex_at(engine, case.repo_url, case.commit_before)
+        if err is None:
+            stale_at_a, e1 = await _query(engine, case.stale_query, top_k)
+            err = e1
+            # The deleted symbol exists at A; it should disappear after B.
+            err2 = await _reindex_at(engine, case.repo_url, case.commit_after)
+            err = err or err2
+            reindexed = err2 is None
+            stale_after_b, e2 = await _query(engine, case.stale_query, top_k)
+            fresh_after_b, e3 = await _query(engine, case.fresh_query, top_k)
+            stable_after_b, e4 = await _query(engine, case.stable_query, top_k)
+            err = err or e2 or e3 or e4
+            stale_hit = _symbol_appears(case.stale_symbol, stale_after_b)
+            fresh_hit = _symbol_appears(case.fresh_symbol, fresh_after_b)
+            stable_hit = _symbol_appears(case.stable_symbol, stable_after_b)
+    else:
+        # Engine can't pin a commit: run a single pass against whatever is
+        # indexed. Recorded as unsupported so it is excluded from the headline
+        # freshness score rather than masquerading as a real measurement.
+        stale_results, e1 = await _query(engine, case.stale_query, top_k)
+        fresh_results, e2 = await _query(engine, case.fresh_query, top_k)
+        stable_results, e3 = await _query(engine, case.stable_query, top_k)
+        err = e1 or e2 or e3
         stale_hit = _symbol_appears(case.stale_symbol, stale_results)
-
-        # Fresh check: we want a hit for the new symbol.
-        fresh_results = await _query(case.fresh_query)
         fresh_hit = _symbol_appears(case.fresh_symbol, fresh_results)
-
-        # Stability check: an unchanged symbol must still be findable.
-        stable_results = await _query(case.stable_query)
         stable_hit = _symbol_appears(case.stable_symbol, stable_results)
-    except Exception as e:
-        err = f"{type(e).__name__}: {e}"
 
-    correctness = (
-        (0.0 if stale_hit else 1.0)
-        + (1.0 if fresh_hit else 0.0)
-        + (1.0 if stable_hit else 0.0)
-    ) / 3.0
+    correctness = compute_correctness(stale_hit, fresh_hit, stable_hit)
 
     return DiffAwareCaseResult(
         case_id=case.id,
@@ -217,6 +293,8 @@ async def _run_one_case(engine, case: DiffAwareCase) -> DiffAwareCaseResult:
         correctness=correctness,
         latency_ms=(time.time() - t0) * 1000,
         error=err,
+        supported=can_pin,
+        reindexed=reindexed,
     )
 
 
@@ -243,24 +321,34 @@ async def run_diff_aware_benchmark(
 def _aggregate(engine_name: str, per_case: list[DiffAwareCaseResult]) -> DiffAwareEngineReport:
     if not per_case:
         return DiffAwareEngineReport(engine=engine_name)
-    n = len(per_case)
-    correctness = sum(r.correctness for r in per_case) / n
-    staleness_rate = sum(1 for r in per_case if r.stale_hit) / n
-    freshness_rate = sum(1 for r in per_case if r.fresh_hit) / n
-    stability_rate = sum(1 for r in per_case if r.stable_hit) / n
+    supported = [r for r in per_case if r.supported]
+    unsupported = [r for r in per_case if not r.supported]
+    # Headline freshness metrics are computed over cases the engine could
+    # actually demonstrate freshness on (i.e. it re-indexed A->B). Falling back
+    # to all cases only when no case supported pinning keeps single-pass engines
+    # visible while not crediting them with a freshness measurement.
+    scored = supported or per_case
+    n = len(scored)
     return DiffAwareEngineReport(
         engine=engine_name,
         per_case=per_case,
-        correctness=correctness,
-        staleness_rate=staleness_rate,
-        freshness_rate=freshness_rate,
-        stability_rate=stability_rate,
+        correctness=sum(r.correctness for r in scored) / n,
+        staleness_rate=sum(1 for r in scored if r.stale_hit) / n,
+        freshness_rate=sum(1 for r in scored if r.fresh_hit) / n,
+        stability_rate=sum(1 for r in scored if r.stable_hit) / n,
+        supported_cases=len(supported),
+        unsupported_cases=len(unsupported),
+        supports_commit_pinning=bool(supported),
     )
 
 
 def print_diff_aware_summary(report: DiffAwareEngineReport) -> None:
     print(f"  Engine: {report.engine}")
     print(f"  Cases:           {len(report.per_case)}")
+    print(
+        f"  Re-index (A->B): {'yes' if report.supports_commit_pinning else 'no — single-pass'} "
+        f"(supported={report.supported_cases}, unsupported={report.unsupported_cases})"
+    )
     print(f"  Correctness:     {report.correctness:.3f}")
     print(f"  Staleness rate:  {report.staleness_rate:.3f}  (lower better — % of deleted symbols still returned)")
     print(f"  Freshness rate:  {report.freshness_rate:.3f}  (higher better — % of new symbols retrieved)")

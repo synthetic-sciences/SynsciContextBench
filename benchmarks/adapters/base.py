@@ -65,6 +65,23 @@ class ContextEngineAdapter(ABC):
         """Index a GitHub repository."""
         ...
 
+    # Optional capability: re-index a repo pinned to a specific commit/ref.
+    # Required by the diff-aware phase to actually measure freshness (index at
+    # commit A, query, re-index at commit B, query). Engines that cannot pin a
+    # commit leave ``supports_commit_pinning`` False, and the diff-aware phase
+    # reports the result as "unsupported" rather than a misleading floor score.
+    supports_commit_pinning: bool = False
+
+    async def index_repository_at_commit(self, repo_url: str, ref: str) -> IndexResult:
+        """Re-index a repository pinned to a specific commit ref.
+
+        Default raises NotImplementedError; engines that support diff-aware
+        re-indexing override this and set ``supports_commit_pinning = True``.
+        """
+        raise NotImplementedError(
+            f"{self.name} does not support commit-pinned re-indexing"
+        )
+
     @abstractmethod
     async def index_paper(self, arxiv_id: str) -> IndexResult:
         """Index an arXiv paper."""
@@ -75,6 +92,6 @@ class ContextEngineAdapter(ABC):
         """List all indexed repositories."""
         ...
 
-    async def cleanup(self) -> None:
+    async def cleanup(self) -> None:  # noqa: B027 - optional hook, not abstract
         """Optional cleanup (close HTTP clients, etc.)."""
         pass

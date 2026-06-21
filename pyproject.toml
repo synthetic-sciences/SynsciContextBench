@@ -49,6 +49,8 @@ pdf = [
 dev = [
     "ruff>=0.4.0",
     "mypy>=1.10.0",
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
 ]
 
 [build-system]
@@ -65,3 +67,14 @@ target-version = "py310"
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B", "C4", "SIM"]
 ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+addopts = "-q"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "pytest-asyncio>=1.4.0",
+]
