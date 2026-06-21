@@ -5,6 +5,44 @@ Versions track the benchmark methodology, not just code edits.
 
 ## Unreleased
 
+### Added — correctness, reproducibility & publication rigor
+
+- **Offline harness.** `benchmarks/adapters/mock.py` (`MockAdapter`) — a
+  deterministic, dependency-free engine over an in-memory corpus, with
+  commit-pinned re-indexing — and `benchmarks/judges/offline_judge.py` — a
+  deterministic token-overlap judge. Together they let the whole harness and
+  every scorer run with no API keys, no network, and no Docker.
+- **Test suite (`tests/`, 33 tests).** Covers IR metrics, the diff-aware and
+  session-replay scorers, the mock adapter, the offline judge, and an
+  end-to-end validated-eval pipeline check. `pytest` added to dev deps.
+- **`docs/THREATS_TO_VALIDITY.md`** — a full validity treatment (internal,
+  construct, external, contamination/leakage, vendor bias, judge reliability,
+  statistical) written to publication standard.
+
+### Fixed
+
+- **Phase 10 (diff-aware) was structurally broken.** It called
+  `engine.search` / `engine.asearch` (methods no adapter implements; the
+  contract is `search_code`), so every engine received empty results and
+  floored at correctness `1/3`. It also never re-indexed between commits, so it
+  could not measure freshness at all. The phase now uses the adapter contract,
+  drives a real `A -> B` re-index via the new optional
+  `ContextEngineAdapter.index_repository_at_commit` capability, and scores
+  freshness only for engines that support commit pinning (others are reported as
+  *unsupported* rather than silently floored). Regression-tested: a fresh engine
+  scores 1.0, a frozen index floors at 1/3.
+- **Diff-aware symbol matcher** now accepts `SearchResult` objects (not only
+  dicts), matches on whole-identifier boundaries (no more `get` matching inside
+  `forget`), and resolves qualified names (`Class.method` -> `method`).
+- Documented that the near-zero validated MRRs are a corpus-coverage artifact,
+  not a metric bug (proven by `tests/test_validated_eval_offline.py`).
+
+### Removed
+
+- Dead reorg duplicates: top-level `benchmarks/consistency.py`,
+  `benchmarks/logging_config.py`, `benchmarks/swe_agent.py` (canonical versions
+  live in `infra/` and `phases/`).
+
 ### Added — package reorganization
 
 - `benchmarks/` is now subdivided into `phases/`, `judges/`, `scoring/`,
